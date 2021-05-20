@@ -10,7 +10,7 @@ export function Nav(props) {
 
     //const {navigation} = props
     const navigation = [
-        { name: 'Our Story', href: '#', current: true },
+        { name: 'Our Story', href: '/', current: true },
         { name: 'Our Eggs', href: '/products', current: false },
         { name: 'Recipes', href: '/recipes', current: false },
         { name: 'News', href: '/news', current: false },
