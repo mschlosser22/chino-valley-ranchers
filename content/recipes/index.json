@@ -1,0 +1,15 @@
+{
+    "blocks": [
+        {
+            "_template": "hero",
+            "heading": "Pasture Raised Products",
+            "image": "/images/hero-products.jpg"
+        },
+        {
+            "_template": "recipes",
+            "heading": "Recipes",
+            "image": "/images/bg-paper-edge.png",
+            "subheading": "Tasty meal recipes, from our kitchen to yours."
+        }
+    ]
+}

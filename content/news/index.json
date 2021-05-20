@@ -1,0 +1,15 @@
+{
+    "blocks": [
+        {
+            "_template": "hero",
+            "heading": "Pasture Raised Products",
+            "image": "/images/hero-products.jpg"
+        },
+        {
+            "_template": "featuredArticle",
+            "heading": "All the latest news",
+            "image": "/images/bg-paper-edge.png",
+            "subheading": "Ideas, updates, informations and more, served up fresh!"
+        }
+    ]
+}
