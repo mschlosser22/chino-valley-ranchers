@@ -3,7 +3,13 @@
     {
       "_template": "heroVideo",
       "heading": "Generations _of_ Quality",
-      "image": "/images/hero-home.jpg"
+      "image": {
+        "src": "/images/hero-home.jpg",
+        "alt": "Chickens"
+      },
+      "video": {
+        "src": "https://www.youtube.com/embed/VaYSIOteCcw"
+      }
     },
     {
       "_template": "eggSlider",

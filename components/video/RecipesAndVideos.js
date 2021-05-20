@@ -8,10 +8,10 @@ export function RecipesAndVideos(props) {
         <div className="relative pt-20 -mt-24 pb-20 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/white-burlap-bg.png')` }}>
             <div className="max-w-7xl mx-auto">
 
-                <div className="grid grid-cols-12 pt-12 lg:pt-36 pb-2 lg:pb-24 relative px-8 xl:px-0 gap-12">
+                <div className="grid grid-cols-12 pt-12 lg:pt-36 pb-2 lg:pb-24 relative px-8 xl:px-0 lg:gap-12">
                     {/* Heading */}
                     <div className="col-span-12 lg:col-span-5">
-                        <h3 className="text-4xl lg:text-7xl tracking-wide text-chinoblue font-ultra"><InlineTextarea name="heading" /></h3>
+                        <h3 className="text-4xl lg:text-7xl tracking-wide text-chinoblue font-ultra text-center lg:text-left"><InlineTextarea name="heading" /></h3>
                     </div>
                     {/* Content */}
                     <div className="col-span-12 lg:col-span-7">
@@ -22,7 +22,7 @@ export function RecipesAndVideos(props) {
                 {/* Videos */}
                 <div className="grid grid-cols-12 pb-12 lg:pb-24 relative px-8 xl:px-0 gap-2">
                     {props.data.videos.map( (video, index) => (
-                        <div key={index} className="col-span-12 lg:col-span-6">
+                        <div key={index} className="col-span-12 lg:col-span-6 mb-12 lg:mb-0">
                             <div className="border-8 border-white rounded mb-8 shadow-lg">
                                 <div className="aspect-w-16 aspect-h-9">
                                     <iframe src={video.src} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>

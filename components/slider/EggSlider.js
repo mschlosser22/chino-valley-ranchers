@@ -17,7 +17,7 @@ export function EggSlider(props) {
     return(
         <>
         {/* Top Border */}
-        <div className={`relative w-full hidden lg:block h-[95px] -mt-[75px] bg-cover bg-no-repeat`} style={{ backgroundImage: `url('/images/bg-paper-edge-border.png')` }}></div>
+        <div className={`relative w-full hidden lg:block h-[95px] -mt-12 bg-cover bg-no-repeat`} style={{ backgroundImage: `url('/images/bg-paper-edge-border.png')` }}></div>
         {/* Middle Section */}
         <div className="relative z-10" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="lg:min-h-[600px]" >
@@ -27,7 +27,7 @@ export function EggSlider(props) {
 
                 <div className="relative w-full overflow-visible egg-slider-bg">
 
-                    <Carousel className="absolute -top-0" responsive={responsive} additionalTransfrom={0} arrows={false} infinite renderDotsOutside showDots slidesToSlide={1} swipeable>
+                    <Carousel className="absolute -top-0" responsive={responsive} additionalTransfrom={0} arrows={false} autoplay infinite renderDotsOutside showDots slidesToSlide={1} swipeable>
                         {props.slides.map( (slide, index) => (
                             <div key={index} className="px-8 pb-12 xl:px-0 text-center lg:text-left">
 

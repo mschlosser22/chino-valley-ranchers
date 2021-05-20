@@ -14,23 +14,29 @@ export function InspectionSlider(props) {
 
     return(
         <>
-        <div className="relative bg-cover bg-no-repeat -mt-24 z-0" style={{ backgroundImage: `url('/images/grass-bg.jpg')`}}>
+        <div className="relative bg-cover bg-no-repeat -mt-24 z-0 pb-12 lg:pb-36" style={{ backgroundImage: `url('/images/grass-bg.jpg')`}}>
             <div className="max-w-7xl mx-auto relative">
-                {props.slides.map( (slide, index) => (
+                <Carousel className="absolute -top-0" responsive={responsive} additionalTransfrom={0} arrows={false} infinite renderDotsOutside showDots slidesToSlide={1} swipeable>
+                    {props.slides.map( (slide, index) => (
 
-                <div key={index} className="grid grid-cols-12 gap-8 pt-48">
-                    {/* Image */}
-                    <div className=" relative col-span-12 lg:col-span-3">
-                        <img src={slide.image.src} alt={slide.image.src} />
+                    <div key={index} className="grid grid-cols-12 gap-8 pt-48 relative">
+                        {/* Image */}
+                        <div className=" relative col-span-12 lg:col-span-3 flex justify-center lg:block">
+                            <img src={slide.image.src} alt={slide.image.src} />
+                        </div>
+
+                        {/* Content */}
+                        <div className="col-span-12 lg:col-span-9 font-ultra text-3xl leading-7 lg:text-6xl tracking-wide text-white uppercase pt-10">
+                            <p className="text-center lg:text-left px-8 lg:px-0">{slide.content}</p>
+                            {/* Inspection Point */}
+                            <div className="pt-12 pb-20 relative right-36">
+                                <img className="hidden lg:block" src="/images/inspection.png" alt="inspection point" />
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Content */}
-                    <div className="col-span-12 lg:col-span-9 font-ultra text-3xl leading-7 lg:text-6xl tracking-wide text-white uppercase pt-10">
-                        <p className="">{slide.content}</p>
-                    </div>
-                </div>
-
-                ))}
+                    ))}
+                </Carousel>
             </div>
         </div>
         </>

@@ -14,7 +14,7 @@ export function FeedVideo(props) {
                 <div className="grid grid-cols-12 relative z-30">
                     <div className="col-span-12">
                         {/* Heading */}
-                        <div className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide mb-8 text-center">
+                        <div className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide mb-8 text-center pt-12 lg:pt-0">
                             <InlineTextarea name="heading" />
                         </div>
                     </div>

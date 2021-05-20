@@ -7,45 +7,21 @@ import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
 
 export function HeroVideo(props) {
 
-    console.log(props)
-
     return(
 
-        <div className="relative overflow-hidden lg:overflow-visible z-40 lg:z-0 w-full min-h-[300px] lg:min-h-[516px] flex items-center">
-            <div className="absolute w-full min-h-[300px] lg:min-h-[516px]">
-                <InlineImage
-                    name="image"
-                    className="min-h-full"
-                    parse={media => media.id}
-                    uploadDir={() => "/images/"}
-                    alt="Organic Eggs"
-                >
-                    {(props) => (
-                        <div
-                            style={{
-                            height: 0,
-                            paddingBottom: "100%"
-                            }}
-                        >
-                            <Image
-                                src={props.src}
-                                alt={props.alt}
-                                layout="fill"
-                                objectFit="contain"
-                            />
-                        </div>
-                    )}
-                </InlineImage>
+        <header className="relative overflow-hidden lg:overflow-visible z-40 lg:z-0 w-full min-h-screen flex items-center" role="banner">
+            <div className="absolute h-screen w-full">
+                <video className="w-full h-screen absolute top-0 left-0 object-cover" src="https://css-tricks-post-videos.s3.us-east-1.amazonaws.com/Island%20-%204141.mp4" autoPlay loop playsInline muted></video>
             </div>
 
-            <div className="max-w-5xl mx-auto z-40 text-center">
-                <h1 className="text-3xl lg:text-7xl text-white font-ultra uppercase tracking-wide">
+            <div className="max-w-7xl mx-auto z-40 text-center">
+                <h1 className="text-3xl lg:text-7xl text-white font-ultra uppercase tracking-wide hero">
                     <InlineWysiwyg name="heading" format="markdown" sticky>
                         <ReactMarkdown>{props.heading}</ReactMarkdown>
                     </InlineWysiwyg>
                 </h1>
             </div>
-        </div>
+        </header>
 
     )
 
@@ -85,6 +61,23 @@ export const heroVideoBlock = {
                 name: 'subheading',
                 label: 'Subheading',
                 component: 'text'
+            },
+            {
+                name: 'image',
+                label: 'Image',
+                component: 'group',
+                fields: [
+                    {
+                        name: 'src',
+                        label: 'src',
+                        component: 'image'
+                    },
+                    {
+                        name: 'alt',
+                        label: 'Alt Text',
+                        component: 'text'
+                    }
+                ]
             }
         ],
     },
