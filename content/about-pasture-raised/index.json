@@ -1,0 +1,15 @@
+{
+    "blocks": [
+        {
+            "_template": "hero",
+            "heading": "Pasture Raised Products",
+            "image": "/images/hero-products.jpg"
+        },
+        {
+            "_template": "aboutPastureRaised",
+            "heading": "Pasture Raised Eggs",
+            "image": "/images/bg-paper-edge.png",
+            "subheading": "Pasture raised hens at Chino Valley Ranchers lay healthier, all natural eggs. Come see a little of their pastoral paradise for yourself."
+        }
+    ]
+}
