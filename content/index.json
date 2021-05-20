@@ -2,12 +2,201 @@
   "blocks": [
     {
       "_template": "heroVideo",
-      "heading": "Pasture Raised Products",
-      "image": "/images/hero-products.jpg"
+      "heading": "Generations _of_ Quality",
+      "image": {
+        "src": "/images/hero-home.jpg",
+        "alt": "Chickens"
+      },
+      "video": {
+        "src": "https://www.youtube.com/embed/VaYSIOteCcw"
+      }
     },
     {
       "_template": "eggSlider",
-      "classes": "test"
+      "classes": "test",
+      "slides": [
+        {
+          "name": "Organic",
+          "heading": "Free Range",
+          "subheading": "Large | Brown",
+          "content": "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms. Our ladies forage as they please on seeds, bugs and green grass.",
+          "image": {
+            "alt": "Organic Eggs",
+            "src": "/images/products/organic.png"
+          },
+          "icons": [
+            {
+              "image": {
+                "src": "/images/icon-certified.png",
+                "alt": "Certified Icon"
+              }
+            },
+            {
+              "image": {
+                "src": "/images/icon-certified.png",
+                "alt": "Certified Icon"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Organic Omega-3",
+          "heading": "Free Range",
+          "subheading": "Large | Brown",
+          "content": "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms. Our ladies forage as they please on seeds, bugs and green grass.",
+          "image": {
+            "src": "/images/products/organic-omega-3.png",
+            "alt": "Organic Omega-3"
+          },
+          "icons": [
+            {
+              "image": {
+                "src": "/images/icon-certified.png",
+                "alt": "Certified Icon"
+              }
+            },
+            {
+              "image": {
+                "src": "/images/icon-certified.png",
+                "alt": "Certified Icon"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Pasture Raised",
+          "heading": "Pastured",
+          "subheading": "Large | Brown",
+          "content": "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms. Our ladies forage as they please on seeds, bugs and green grass.",
+          "image": {
+            "src": "/images/products/pasture-raised.png",
+            "alt": "Pasture Raised Eggs"
+          },
+          "icons": [
+            {
+              "image": {
+                "src": "/images/icon-certified.png",
+                "alt": "Certified Icon"
+              }
+            },
+            {
+              "image": {
+                "src": "/images/icon-certified.png",
+                "alt": "Certified Icon"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_template": "inspectionSlider",
+      "slides": [
+        {
+          "content": "we inspect each egg so we know it’s fit to wear our name.",
+          "image": {
+            "alt": "Organic Eggs",
+            "src": "/images/egg.png"
+          }
+        },
+        {
+          "content": "we inspect each egg so we know it’s fit to wear our name.",
+          "image": {
+            "alt": "Organic Eggs",
+            "src": "/images/egg.png"
+          }
+        }
+      ]
+    },
+    {
+      "_template": "feedVideo",
+      "classes": "",
+      "heading": "It all starts with our feed",
+      "video": {
+        "src": "https://www.youtube.com/embed/VaYSIOteCcw?controls=0",
+        "props": ""
+      },
+      "content": "To ensure purity and quality, we mill our own feed onsite at Southern California’s only dedicated organic poultry feed mill.",
+      "image": {
+        "src": "/images/see-for-yourself.png",
+        "alt": "Feed Video"
+      }
+    },
+    {
+      "_template": "contentWithImageAlt",
+      "heading": "Pasture Raised Liquid Whole Egg",
+      "button": {
+        "link": "#",
+        "text": "Find a Store Near You"
+      },
+      "image": {
+        "src": "/images/pasture-raised-liquid-egg-whites.png",
+        "alt": "Pasture Raised Liquid Egg Whites"
+      },
+      "calloutImage": {
+        "src": "/images/new.png",
+        "alt": "New Product"
+      },
+      "blocks": [
+        {
+          "_template": "text",
+          "text": "Our 100% Liquid Organic Egg Whites come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields."
+        },
+        {
+          "_template": "text",
+          "text": "Egg whites are naturally fat free, cholesterol free, and contain no additives or artificial ingredients."
+        },
+        {
+          "_template": "text",
+          "text": "Each 16 oz. pint is equivalent to about 10 eggs, while 32 oz. pint is equivalent to about 20 eggs – both are fully pasteurized."
+        }
+      ],
+      "text": []
+    },
+    {
+      "_template": "imageWithContent",
+      "content": "Pasture raised hens at Chino Valley Ranchers lay healthier, all natural eggs. Come see a little of their pastoral paradise for yourself.",
+      "leftImage": {
+        "src": "/images/chicken.png",
+        "alt": "Chicken"
+      },
+      "rightImage": {
+        "src": "/images/sign-post.png",
+        "alt": "Sign Post"
+      },
+      "absoluteContent": [
+        "Better For Our Hens",
+        "Better For Our Eggs",
+        "Better For You!"
+      ]
+    },
+    {
+      "_template": "ourFamily",
+      "heading": "From Our Family To Yours",
+      "content": "From the early days more than half-century ago, Chino Valley Ranchers has been always been a family-owned company dedicated to bringing the freshest and best tasting eggs to your table. Consistent quality is our hallmark. In fact, for three generations now, our sole focus has been egg ranching (and nobody does it better).",
+      "image": {
+        "src": "/images/family.png",
+        "alt": "Our Family"
+      },
+      "button": {
+        "link": "#",
+        "text": "Learn More About Our Family"
+      }
+    },
+    {
+      "_template": "recipesAndVideos",
+      "heading": "Recipes & Videos",
+      "content": "Find out more about what makes our eggs so special and learn to make mornings magical with great recipes and helpful tips from our eggs-perts!",
+      "videos": [
+        {
+          "title": "How to cook over medium eggs",
+          "src": "https://www.youtube.com/embed/XvsMf2yvGi4"
+        },
+        {
+          "title": "How to cook baked eggs",
+          "src": "https://www.youtube.com/embed/1TiZTB_uhCI"
+        }
+      ]
     }
   ]
 }
