@@ -12,17 +12,20 @@ module.exports = {
       colors: {
         'chinored': '#b01116',
         'chinoyellow': '#f9a115',
-        'chinodarkblue': '#303c4b',
         'chinoblue': '#00608b',
+        'chinodarkblue': '#303c4b',
         'chinoorange': '#f9a115',
         'chinogray': '#9f9f9f',
         'chinodarkgray': '#b6afa9',
-        'chinodarkorange': '#f9a115'
+        'chinodarkorange': '#f9a115',
+        'chinobrown': '#5c311b',
       }
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }

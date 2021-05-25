@@ -8,6 +8,12 @@ import { Nav } from '../components/Nav'
 import { Footer } from '../components/footer/Footer'
 import { heroVideoBlock } from '../components/hero/HeroVideo'
 import { eggSliderBlock } from '../components/slider/EggSlider'
+import { inspectionSliderBlock } from '../components/slider/InspectionSlider'
+import { feedVideoBlock } from '../components/video/FeedVideo'
+import { contentWithImageAltBlock } from '../components/content/ContentWithImageAlt'
+import { imageWithContentBlock } from '../components/content/ImageWithContent'
+import { ourFamilyBlock } from '../components/content/OurFamily'
+import { recipesAndVideosBlock } from '../components/video/RecipesAndVideos'
 
 export default function Products({ file, isPreview }) {
 
@@ -53,7 +59,13 @@ export default function Products({ file, isPreview }) {
 
 const PAGE_BLOCKS = {
   heroVideo: heroVideoBlock,
-  eggSlider: eggSliderBlock
+  eggSlider: eggSliderBlock,
+  inspectionSlider: inspectionSliderBlock,
+  feedVideo: feedVideoBlock,
+  contentWithImageAlt: contentWithImageAltBlock,
+  imageWithContent: imageWithContentBlock,
+  ourFamily: ourFamilyBlock,
+  recipesAndVideos: recipesAndVideosBlock
 }
 
 export const getStaticProps = async function({
