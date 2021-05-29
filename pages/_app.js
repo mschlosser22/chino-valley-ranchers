@@ -5,10 +5,7 @@ import Head from 'next/head'
 import '../styles/globals.css'
 
 import { TinaCMS, TinaProvider } from 'tinacms'
-import {
-  GithubClient,
-  TinacmsGithubProvider
-} from 'react-tinacms-github'
+import { GithubClient, TinacmsGithubProvider } from 'react-tinacms-github'
 import { NextGithubMediaStore } from 'next-tinacms-github'
 import { MarkdownFieldPlugin } from 'react-tinacms-editor'
 

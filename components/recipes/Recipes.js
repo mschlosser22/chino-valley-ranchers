@@ -85,7 +85,7 @@ export function Recipes(props) {
     return(
         <div>
         <div className="relative lg:pt-8 pt-12 lg:-mt-12 -mt-36 bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
-          <div className="relative bg-repeat-y mt-4 pb-64" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
+          <div className="relative bg-repeat-y mt-4 lg:pb-64 pb-16" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="max-w-6xl mx-auto">
                 
                 {/* Page Heading */}
@@ -97,7 +97,7 @@ export function Recipes(props) {
                 <div className="flex max-w-6xl mx-auto mb-8">
                     <button className="bg-chinoblue w-full py-2">
                         <a>
-                        <span className="text-white sm:text-lg text-md tracking-wider uppercase font-ultra">Video Recipes</span>
+                            <span className="text-white sm:text-lg text-md tracking-wider uppercase font-ultra">Video Recipes</span>
                         </a>
                     </button>
                     <button className="border-b-2 border-chinoblue w-full py-2">
@@ -134,9 +134,9 @@ export function Recipes(props) {
                                             <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                                 {recipe.title}
                                             </h1>
-                                            <button class="bg-chinored rounded-md font-din tracking-wider lg:text-xl text-md uppercase text-white px-6">{recipe.button.text}</button>
+                                            <a className="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:mx-0 lg:text-2xl text-md uppercase text-white px-6 py-2 mb-12">{recipe.button.text}</a>
                                         </div>
-                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
+                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:text-2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
                                     </div>
                                     <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
                                 </div>
@@ -159,9 +159,9 @@ export function Recipes(props) {
                                             <h1 className="text-2xl lg:text-3xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                                 {recipe.title}
                                             </h1>
-                                            <button class="bg-chinored rounded-md font-din tracking-wider lg:text-xl text-md uppercase text-white px-6">{recipe.button.text}</button>
+                                            <a className="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:mx-0 lg:text-2xl text-md uppercase text-white px-6 py-2 mb-12">{recipe.button.text}</a>
                                         </div>
-                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
+                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:text-2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
                                     </div>
                                     <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
                                 </div>
@@ -184,9 +184,9 @@ export function Recipes(props) {
                                             <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                                 {recipe.title}
                                             </h1>
-                                            <button class="bg-chinored rounded-md font-din tracking-wider lg:text-xl text-md uppercase text-white px-6">{recipe.button.text}</button>
+                                            <a className="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:mx-0 lg:text-2xl text-md uppercase text-white px-6 py-2 mb-12">{recipe.button.text}</a>
                                         </div>
-                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
+                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:text-2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
                                     </div>
                                     <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
                                 </div>
@@ -209,9 +209,9 @@ export function Recipes(props) {
                                             <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                                 {recipe.title}
                                             </h1>
-                                            <button class="bg-chinored rounded-md font-din tracking-wider lg:text-xl text-md uppercase text-white px-6">{recipe.button.text}</button>
+                                            <a className="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:mx-0 lg:text-2xl text-md uppercase text-white px-6 py-2 mb-12">{recipe.button.text}</a>
                                         </div>
-                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
+                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:text-2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
                                     </div>
                                     <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
                                 </div>
@@ -234,9 +234,9 @@ export function Recipes(props) {
                                             <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                                 {recipe.title}
                                             </h1>
-                                            <button class="bg-chinored rounded-md font-din tracking-wider lg:text-xl text-md uppercase text-white px-6">{recipe.button.text}</button>
+                                            <a className="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:mx-0 lg:text-2xl text-md uppercase text-white px-6 py-2 mb-12">{recipe.button.text}</a>
                                         </div>
-                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
+                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:text-2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
                                     </div>
                                     <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
                                 </div>
@@ -259,9 +259,9 @@ export function Recipes(props) {
                                             <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                                 {recipe.title}
                                             </h1>
-                                            <button class="bg-chinored rounded-md font-din tracking-wider lg:text-xl text-md uppercase text-white px-6">{recipe.button.text}</button>
+                                            <a className="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:mx-0 lg:text-2xl text-md uppercase text-white px-6 py-2 mb-12">{recipe.button.text}</a>
                                         </div>
-                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
+                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:text-2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
                                     </div>
                                 </div>
                             </div>

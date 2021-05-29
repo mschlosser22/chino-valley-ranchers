@@ -2,17 +2,17 @@ import Image from 'next/image'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
 import { WhatItTakes } from '../../components/about-pasture-raised/WhatItTakes'
 import { PastureEggsFooter } from './PastureEggsFooter'
-
+import { ContentSingleColumn } from '../content/ContentSingleColumn'
+import { ContentSingleColumnTwo } from '../content/ContentSingleColumnTwo'
 
 export function AboutPastureRaised(props) {
 
     //const {content} = props
    
-
     return(
      <div>
         <div className="relative pt-8 lg:-mt-12 -mt-32 bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
-          <div className="relative bg-repeat-y pb-44 mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
+          <div className="relative bg-repeat-y lg:pb-44 pb-20 mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="max-w-6xl mx-auto">
                 
                 {/* Page Heading */}
@@ -43,6 +43,8 @@ export function AboutPastureRaised(props) {
         </div>
         
         <WhatItTakes />
+        <ContentSingleColumn />
+        <ContentSingleColumnTwo />
         <PastureEggsFooter />
      </div>
     

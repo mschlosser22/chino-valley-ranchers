@@ -104,9 +104,18 @@ export function Footer(props) {
             </div>
             <div className="col-span-12 lg:col-span-4 md:pt-8 pl-8 lg:pl-0 lg:pt-0 text-base">
             <ul>
-                {footer_content.column_three.map((item, index) => (
-                    <li key={index} className="text-white text-5 uppercase tracking-wider font-din pb-4"><a href="{item.url}">{item.text}</a></li>
-                ))}
+                {footer_content.column_three.map((item, index) => {
+                    if (index == 0) {
+                        return (
+                            <li key={index} className={`text-white text-5 uppercase tracking-wider font-din pb-4`}><a href="{item.url}">{item.text}</a></li>
+                        )
+                    } else {
+                        return (
+                            <li key={index} className={`text-white text-5 uppercase tracking-wider font-din`}><a href="{item.url}">{item.text}</a></li>
+                        )
+                    }
+                }
+                )}
                 </ul>
                     <button className="w-1/2 mt-10 font-din tracking-wider text-lg mb-52 uppercase bg-chinoorange text-chinodarkblue border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium">
                         Store Locator

@@ -60,6 +60,7 @@ export function Articles() {
     return (
         <div>
         {/* Featured Article */}
+       
             <div className="max-w-6xl mx-auto">
             {articles.map( (article, index) => {
                 if(index == 0) {
@@ -113,7 +114,7 @@ export function Articles() {
                                             </p>
                                         </div>
                                         <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
-                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More ></a>
+                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More</a>
                                 </div>
                             )
                         }
@@ -140,7 +141,7 @@ export function Articles() {
                                             </p>
                                         </div>
                                         <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
-                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More ></a>
+                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More</a>
                                 </div>
                         )
                     }
@@ -167,7 +168,7 @@ export function Articles() {
                                             </p>
                                         </div>
                                         <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
-                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More ></a>
+                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More</a>
                                 </div>
                             )
                         }
@@ -194,7 +195,7 @@ export function Articles() {
                                             </p>
                                         </div>
                                         <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
-                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More ></a>
+                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More</a>
                                 </div>
                             )
                         }
