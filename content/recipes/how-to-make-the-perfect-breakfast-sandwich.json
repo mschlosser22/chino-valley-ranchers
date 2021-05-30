@@ -1,0 +1,16 @@
+{
+    "title": "How To Make The Perfect Breakfast Sandwich",
+    "category": "recipe-article",
+    "tags": [
+        "breakfast"
+    ],
+    "image": {
+        "src": "/images/perfect-breakfast-sandwich.jpeg",
+        "alt": "The Perfect Breakfast Sandwich"
+    },
+    "button": {
+        "text": "Download Recipe Card",
+        "src": "#"
+    },
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl quam, nec convallis libero fringilla vitae. Sed tincidunt a lorem ac faucibus. Integer efficitur est a risus consectetur elementum."
+}

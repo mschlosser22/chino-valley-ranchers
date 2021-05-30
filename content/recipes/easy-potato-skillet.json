@@ -1,0 +1,17 @@
+{
+    "title": "Easy Potato Skillet",
+    "category": "recipe-video",
+    "tags": [
+        "breakfast"
+    ],
+    "video": {
+        "src": "/images/recipeVideo5.jpg",
+        "alt": "Recipe Video",
+        "code": "DHj4xFUcNK8"
+    },
+    "button": {
+        "text": "Download Recipe Card",
+        "src": "#"
+    },
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl quam, nec convallis libero fringilla vitae. Sed tincidunt a lorem ac faucibus. Integer efficitur est a risus consectetur elementum."
+}

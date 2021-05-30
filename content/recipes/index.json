@@ -2,8 +2,8 @@
     "blocks": [
         {
             "_template": "hero",
-            "heading": "Pasture Raised Products",
-            "image": "/images/hero-products.jpg"
+            "heading": "Good Eggs, Good Eatin'",
+            "image": "/images/hero-recipes.jpg"
         },
         {
             "_template": "recipes",
