@@ -26,8 +26,8 @@ export function Nav(props) {
         { name: 'Recipes', href: '/recipes', current: false },
         { name: 'News', href: '/news', current: false },
         { name: 'Being Humane', href: '/being-humane', current: false },
-        { name: 'Contact CVR', href: '#', current: false },
-        { name: 'Store Locator', href: '#', current: false, primary:true },
+        { name: 'Contact CVR', href: '/contact', current: false },
+        { name: 'Store Locator', href: '/store-locator', current: false, primary:true },
     ]
 
     return(

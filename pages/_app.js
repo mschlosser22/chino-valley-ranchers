@@ -59,10 +59,6 @@ function MyApp({ Component, pageProps }) {
           onLogout={onLogout}
           error={pageProps.error}
         >
-          {/**
-            * 6. Add a button for entering Preview/Edit Mode
-            */}
-          <EditLink cms={cms} />
           <Component {...pageProps} />
         </TinacmsGithubProvider>
       </TinaProvider>
