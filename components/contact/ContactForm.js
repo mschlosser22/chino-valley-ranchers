@@ -13,7 +13,7 @@ export function ContactForm(props) {
 
                         {/* Address */}
                         {props.address.map( (item, index) => (
-                            <p className="text-chinoblue font-ultra text-xl lg:text-4xl text-center">{item}</p>
+                            <p key={index} className="text-chinoblue font-ultra text-xl lg:text-4xl text-center">{item}</p>
                         ))}
 
                     </div>
