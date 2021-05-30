@@ -1,9 +1,9 @@
-const articles = [
+const articlesTemp = [
     {
-        title: "How to make and egg-celent brunch board",
+        title: "How to Make The Perfect Breakfast Sandwich",
         image: {
-            src: "/images/brunch-board.jpg",
-            alt: "Brunch board"
+            src: "/images/perfect-breakfast-sandwich.jpeg",
+            alt: "Perfect Breakfast Sandwich"
         },
         date: "20 April 2021",
         time: "13:30",
@@ -56,12 +56,28 @@ const articles = [
     }
 ]
 
-export function Articles() {
-    return (
-        <div>
+import { useState } from 'react'
+import { useNewsContext } from '../../context/news'
+
+export function Articles(props) {
+
+    const newsContext = useNewsContext()
+    const [articles, setArticles] = useState(newsContext)
+
+    if(articles) {
+
+        const parsedArticles = articles.map(article => JSON.parse(article.content))
+        parsedArticles.sort(function (a, b) {
+            return a.order - b.order;
+        });
+
+        return(
+
+            <div>
         {/* Featured Article */}
             <div className="max-w-6xl mx-auto">
-            {articles.map( (article, index) => {
+            {parsedArticles.map( (article, index) => {
+
                 if(index == 0) {
                     return (
                 <div className="max-w-6xl mx-auto">
@@ -91,14 +107,15 @@ export function Articles() {
             })}
         </div>
 
-        {/* Article 1 */}
+        {/* Articles */}
 
-        <div className="lg:max-w-6xl mx-auto">
+        <div className="lg:max-w-6xl mx-auto pb-12 lg:pb-24">
             <div className="grid grid-cols-12 lg:gap-16 gap-8 relative">
-                <div class="lg:col-span-6 col-span-12">
-                    {articles.map( (article, index) => {
-                        if(index == 1) {
+
+                    {parsedArticles.map( (article, index) => {
+                        if(index >= 1) {
                             return (
+                                <div class="lg:col-span-6 col-span-12">
                                 <div>
                                         <img src={article.image.src} alt={article.image.alt} className="mb-12 w-full"></img>
                                         <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
@@ -114,94 +131,91 @@ export function Articles() {
                                         </div>
                                         <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
                                         <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More ></a>
+                                </div>
                                 </div>
                             )
                         }
                     })}
-                </div>
 
-        {/* Article 2 */}
+            </div>
+        </div>
+    </div>
 
-            <div class="lg:col-span-6 col-span-12">
-                    {articles.map( (article, index) => {
-                        if(index == 2) {
-                            return (
-                                <div>
-                                        <img src={article.image.src} alt={article.image.alt} className="mb-12 w-full"></img>
+        )
+
+    } else {
+
+        return (
+            <div>
+            {/* Featured Article */}
+                <div className="max-w-6xl mx-auto">
+                {articles.map( (article, index) => {
+
+                    if(index == 0) {
+                        return (
+                    <div className="max-w-6xl mx-auto">
+                        <div className="grid grid-cols-12">
+                            <div className="col-span-12 relative">
+                                    <img src={article.image.src} alt={article.image.alt} className="mb-12"></img>
+                                    <div className="col-span-12">
                                         <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                             {article.title}
                                         </h1>
                                         <div className="sm:flex block px-8 lg:p-0">
-                                            <p className="text-md lg:text-xl text-chinogray lg:pr-2">
-                                            {article.date} - {article.time},
+                                            <p className="text-md lg:text-xl text-chinogray pr-2">
+                                                {article.date} - {article.time},
                                             </p>
                                             <p className="text-md lg:text-xl text-chinogray">
-                                            by {article.author}
+                                                by {article.author}
                                             </p>
                                         </div>
-                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
-                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More ></a>
+                                    </div>
+                                    <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
                                 </div>
+                                <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
+                            </div>
+                        </div>
                         )
                     }
                 })}
             </div>
 
-                {/* Article 3 */}
+            {/* Articles */}
 
-                <div class="lg:col-span-6 col-span-12">
-                    {articles.map( (article, index) => {
-                        if(index == 3) {
-                            return (
-                                <div>
-                                        <img src={article.image.src} alt={article.image.alt} className="mb-12 w-full"></img>
-                                        <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
-                                            {article.title}
-                                        </h1>
-                                        <div className="sm:flex block px-8 lg:p-0">
-                                            <p className="text-md lg:text-xl text-chinogray lg:pr-2">
-                                            {article.date} - {article.time},
-                                            </p>
-                                            <p className="text-md lg:text-xl text-chinogray">
-                                            by {article.author}
-                                            </p>
-                                        </div>
-                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
-                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More ></a>
-                                </div>
-                            )
-                        }
-                    })}
-                </div>
+            <div className="lg:max-w-6xl mx-auto">
+                <div className="grid grid-cols-12 lg:gap-16 gap-8 relative">
 
-        {/* Article 4 */}
+                        {articlesTemp.map( (article, index) => {
+                            if(index >= 1) {
+                                return (
+                                    <div class="lg:col-span-6 col-span-12">
+                                    <div>
+                                            <img src={article.image.src} alt={article.image.alt} className="mb-12 w-full"></img>
+                                            <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
+                                                {article.title}
+                                            </h1>
+                                            <div className="sm:flex block px-8 lg:p-0">
+                                                <p className="text-md lg:text-xl text-chinogray lg:pr-2">
+                                                {article.date} - {article.time},
+                                                </p>
+                                                <p className="text-md lg:text-xl text-chinogray">
+                                                by {article.author}
+                                                </p>
+                                            </div>
+                                            <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
+                                            <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More ></a>
+                                    </div>
+                                    </div>
+                                )
+                            }
+                        })}
 
-            <div class="lg:col-span-6 col-span-12">
-                    {articles.map( (article, index) => {
-                        if(index == 4) {
-                            return (
-                                <div>
-                                        <img src={article.image.src} alt={article.image.alt} className="mb-12 w-full"></img>
-                                        <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
-                                            {article.title}
-                                        </h1>
-                                        <div className="sm:flex block px-8 lg:p-0">
-                                            <p className="text-md lg:text-xl text-chinogray lg:pr-2">
-                                            {article.date} - {article.time},
-                                            </p>
-                                            <p className="text-md lg:text-xl text-chinogray">
-                                            by {article.author}
-                                            </p>
-                                        </div>
-                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
-                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More ></a>
-                                </div>
-                            )
-                        }
-                    })}
                 </div>
             </div>
         </div>
-    </div>
-    )
+        )
+
+    }
+
+
 }
