@@ -51,12 +51,14 @@ export function Nav(props) {
                     </div>
 
                     <div className="pt-28 hidden lg:block z-50">
-                        <Image
-                        src="/images/logo.png"
-                        height={161}
-                        width={237}
-                        alt="Chino Valley Ranchers"
-                        />
+                        <a href="/">
+                            <Image
+                            src="/images/logo.png"
+                            height={161}
+                            width={237}
+                            alt="Chino Valley Ranchers"
+                            />
+                        </a>
                     </div>
 
                     <div className="absolute inset-0 flex justify-center items-center z-0 lg:hidden">
