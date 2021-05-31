@@ -2,7 +2,7 @@ import { InlineText, InlineTextarea, InlineImage, BlocksControls, InlineGroup } 
 
 export function ButtonAlt(props) {
 
-    console.log(props)
+    //console.log(props)
 
     return (
         <div className="relative pb-4 lg:pb-12 bg-repeat-y bg-cover" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
