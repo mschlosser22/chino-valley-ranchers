@@ -1,0 +1,22 @@
+{
+    "blocks": [
+      {
+        "_template": "hero",
+        "heading": "Contact Us",
+        "image": "/images/hero-chicken.jpg"
+      },
+      {
+        "_template": "content",
+        "heading": "Drop Us a Line",
+        "image": "/images/bg-paper-edge.png"
+      },
+      {
+        "_template": "contactForm",
+        "address": [
+              "331 W Citrus St, Colton, CA 92324",
+              "(800) 354-4503",
+              "info@chinovalleyranchers.com"
+        ]
+      }
+    ]
+  }

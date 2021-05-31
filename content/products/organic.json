@@ -11,5 +11,99 @@
         "url": "#"
       },
       "text": "Learn More"
-    }
+    },
+    "blocks": [
+      {
+          "_template": "hero",
+          "heading": "Free Range & Fantastic",
+          "image": "/images/hero-products.jpg"
+      },
+      {
+        "_template": "productDescription",
+        "name": "Organic",
+        "text": [
+          "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+          "To ensure purity and quality, we mill our own feed onsite at Southern California’s only dedicated organic poultry feed mill. And we inspect each egg so we know it’s fit to wear our name."
+        ],
+        "category": "Organic",
+        "tags": [
+          "Free Range",
+          "Large",
+          "Brown"
+        ],
+        "image": {
+          "src": "/images/products/organic.png",
+          "alt": "Organic Eggs"
+        },
+        "nutrition": {
+          "src": "/images/nutrition-organic.png",
+          "alt": "Organic Egg Nutrition Facts"
+        },
+        "button": {
+          "link": "#",
+          "text": "Find a Store"
+        },
+        "icons": [
+          {
+            "src": "/images/free-range.png",
+            "alt": "Free Range"
+          },
+          {
+            "src": "/images/pareve.png",
+            "alt": "Pareve"
+          },
+          {
+            "src": "/images/usda-organic.png",
+            "alt": "USDA Organic"
+          }
+        ]
+      },
+      {
+        "_template": "sizeOptions",
+        "heading": "Four Size Options",
+        "image": {
+          "src": "/images/organic-sizes.png",
+          "alt": "Organic Eggs Size Options"
+        },
+        "sizes": [
+          "Jumbo",
+          "Large",
+          "Medium",
+          "6-Count Large"
+        ]
+      },
+      {
+        "_template": "contentSingleColumn",
+        "blocks": [
+          {
+            "_template": "content",
+            "text": [
+              "Some default paragraph text here"
+            ],
+            "heading": "Better For Our Hens",
+            "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
+          },
+          {
+            "_template": "content",
+            "text": [
+              "Some default paragraph text here"
+            ],
+            "heading": "Better For Our Eggs",
+            "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
+          },
+          {
+            "_template": "content",
+            "text": [
+              "Some default paragraph text here"
+            ],
+            "heading": "Better For You",
+            "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
+          }
+        ]
+      },
+      {
+        "_template": "moreProducts",
+        "heading": "More Organic Options"
+      }
+    ]
 }

@@ -46,20 +46,21 @@ const footer_content = {
 
 
 export function Footer(props) {
-    
+
     return(
 
 <footer className="bg-chinodarkblue min-h-36" aria-labelledby="footerHeading">
     <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-12 lg:gap-6 pt-16">
             <div className="col-span-12 lg:col-span-4 lg:pl-0 pl-8">
-                <Image 
+                <Image
                     src="/images/logo.png"
                     height={121}
                     width={197}
                     alt="Chino Valley Ranchers"
                 />
                 <div className="gap-2 flex lg:items-center pt-16 pb-12 text-center lg:pl-5">
+                    <a href="https://www.youtube.com/channel/UCfpxQ8Bri4ZVNE__73DD36A" className="cursor-pointer" target="_blank">
                         <div className="h-[28px]">
                             <Image
                                 src='/images/youtube.png'
@@ -68,6 +69,8 @@ export function Footer(props) {
                                 alt="Chino Valley Ranchers"
                             />
                         </div>
+                        </a>
+                        <a href="https://www.facebook.com/Chino-Valley-Ranchers-Organic-and-Specialty-Eggs-110085262344097/" className="cursor-pointer" target="_blank">
                         <div className="h-[28px]">
                             <Image
                                 src='/images/facebook.png'
@@ -76,6 +79,8 @@ export function Footer(props) {
                                 alt="Chino Valley Ranchers"
                             />
                         </div>
+                        </a>
+                        <a href="https://twitter.com/ChinoValleyEggs" className="cursor-pointer" target="_blank">
                         <div className="h-[28px]">
                             <Image
                                 src='/images/twitter.png'
@@ -84,6 +89,8 @@ export function Footer(props) {
                                 alt="Chino Valley Ranchers"
                             />
                         </div>
+                        </a>
+                        <a href="https://www.instagram.com/chinovalleyranchers/" className="cursor-pointer" target="_blank">
                         <div className="h-[28px]">
                             <Image
                                 src='/images/instagram.png'
@@ -92,6 +99,7 @@ export function Footer(props) {
                                 alt="Chino Valley Ranchers"
                             />
                         </div>
+                        </a>
                         </div>
 
             </div>

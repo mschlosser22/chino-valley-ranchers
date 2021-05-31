@@ -10,9 +10,10 @@
   "dependencies": {
     "@fontsource/ultra": "^4.2.2",
     "@glidejs/glide": "^3.4.1",
-    "@headlessui/react": "^1.1.1",
+    "@headlessui/react": "^1.2.0",
     "@heroicons/react": "^1.0.1",
     "@tailwindcss/aspect-ratio": "^0.2.0",
+    "@tailwindcss/forms": "^0.3.2",
     "dotenv": "^9.0.0",
     "lato-font": "^3.0.0",
     "next": "10.2.0",

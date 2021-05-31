@@ -11,5 +11,101 @@
         "url": "#"
       },
       "text": "Learn More"
-    }
+    },
+    "blocks": [
+      {
+          "_template": "hero",
+          "heading": "Free Range & Fantastic",
+          "image": "/images/hero-products.jpg"
+      },
+      {
+        "_template": "productDescription",
+        "name": "Organic Omega-3",
+        "text": [
+          "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+          "Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health."
+        ],
+        "category": "Organic",
+        "tags": [
+          "Free Range",
+          "Large",
+          "Brown"
+        ],
+        "image": {
+          "src": "/images/products/organic-omega-3.png",
+          "alt": "Organic Omega-3 Eggs"
+        },
+        "nutrition": {
+          "src": "/images/nutrition-organic-omega-3.png",
+          "alt": "Organic Omega-3 Egg Nutrition Facts"
+        },
+        "button": {
+          "link": "#",
+          "text": "Find a Store"
+        },
+        "icons": [
+          {
+            "src": "/images/pareve.png",
+            "alt": "Pareve"
+          },
+          {
+            "src": "/images/omega-3.png",
+            "alt": "Omega 3"
+          },
+          {
+            "src": "/images/usda-organic.png",
+            "alt": "USDA Organic"
+          },
+          {
+            "src": "/images/free-range.png",
+            "alt": "Free Range"
+          }
+        ]
+      },
+      {
+        "_template": "sizeOptions",
+        "heading": "Two Size Options",
+        "image": {
+          "src": "/images/organic-sizes.png",
+          "alt": "Organic Eggs Size Options"
+        },
+        "sizes": [
+          "Large",
+          "6-Count Large"
+        ]
+      },
+      {
+        "_template": "contentSingleColumn",
+        "blocks": [
+          {
+            "_template": "content",
+            "text": [
+              "Some default paragraph text here"
+            ],
+            "heading": "Better For Our Hens",
+            "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
+          },
+          {
+            "_template": "content",
+            "text": [
+              "Some default paragraph text here"
+            ],
+            "heading": "Better For Our Eggs",
+            "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
+          },
+          {
+            "_template": "content",
+            "text": [
+              "Some default paragraph text here"
+            ],
+            "heading": "Better For You",
+            "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
+          }
+        ]
+      },
+      {
+        "_template": "moreProducts",
+        "heading": "More Organic Options"
+      }
+    ]
 }

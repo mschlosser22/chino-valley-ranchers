@@ -1,0 +1,18 @@
+{
+    "title": "Baked Eggs",
+    "category": "recipe-video",
+    "tags": [
+        "lunch",
+        "dinner"
+    ],
+    "video": {
+        "src": "/images/recipeVideo2.jpg",
+        "alt": "Recipe Video",
+        "code": "1TiZTB_uhCI"
+    },
+    "button": {
+        "text": "Download Recipe Card",
+        "src": "#"
+    },
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl quam, nec convallis libero fringilla vitae. Sed tincidunt a lorem ac faucibus. Integer efficitur est a risus consectetur elementum."
+}

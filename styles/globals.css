@@ -1,6 +1,18 @@
 @tailwind base;
 @tailwind components;
 
+@font-face {
+    font-family: 'ultraregular';
+    src: url('/fonts/Ultra-webfont.eot');
+    src: url('/fonts/Ultra-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Ultra-webfont.woff2') format('woff2'),
+         url('/fonts/Ultra-webfont.woff') format('woff'),
+         url('/fonts/Ultra-webfont.ttf') format('truetype'),
+         url('/fonts/Ultra-webfont.svg#ultraregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .egg-slider-bg {
     background-position: center top 0 48px;
 }

@@ -1,0 +1,17 @@
+{
+    "title": "The Morning Wrap",
+    "category": "recipe-video",
+    "tags": [
+        "breakfast"
+    ],
+    "video": {
+        "src": "/images/recipeVideo0.jpg",
+        "alt": "Recipe Video",
+        "code": "xD3GV7gf5mw"
+    },
+    "button": {
+        "text": "Download Recipe Card",
+        "src": "#"
+    },
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl quam, nec convallis libero fringilla vitae. Sed tincidunt a lorem ac faucibus. Integer efficitur est a risus."
+}

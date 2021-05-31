@@ -4,12 +4,17 @@ import { useForm, usePlugin, useCMS } from 'tinacms'
 import { InlineForm, InlineBlocks } from 'react-tinacms-inline'
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github'
 
+import { promises as fs } from 'fs'
+import path from 'path'
+
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/footer/Footer'
 import { heroBlock } from '../../components/hero/Hero'
 import { recipesBlock } from '../../components/recipes/Recipes'
 
-export default function Products({ file, isPreview}) {
+import { RecipesWrapper } from '../../context/recipes'
+
+export default function Recipes({ file, isPreview, recipes}) {
 
   const cms = useCMS()
 
@@ -18,7 +23,7 @@ export default function Products({ file, isPreview}) {
     initialValues: file,
     label: 'Recipes Page',
     fields: [
-      
+
     ],
     onSubmit() {
       cms.alerts.success('Saved!')
@@ -42,9 +47,11 @@ export default function Products({ file, isPreview}) {
 
       <Nav />
 
-      <InlineForm form={form}>
-        <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} />
-      </InlineForm>
+      <RecipesWrapper recipes={recipes}>
+        <InlineForm form={form}>
+          <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} />
+        </InlineForm>
+      </RecipesWrapper>
     </div>
     <Footer />
     </>
@@ -61,12 +68,33 @@ export const getStaticProps = async function({
   previewData,
 }) {
 
+  // Get News Directory
+  const recipesDirectory = path.join(process.cwd(), 'content/recipes')
+  // Get Filenames from News Directory
+  const tempfilenames = await fs.readdir(recipesDirectory)
+  // Remove the index file from Products Filenames
+  const filenames = tempfilenames.filter(file => file != "index.json" )
+  // Get the file contents for each news article
+  const recipes = filenames.map(async (filename) => {
+    const filePath = path.join(recipesDirectory, filename)
+    const fileContents = await fs.readFile(filePath, 'utf8')
+
+    // Generally you would parse/transform the contents
+    // For example you can transform markdown to HTML here
+
+    return {
+      filename,
+      content: fileContents,
+    }
+  })
+
   if (preview) {
     return getGithubPreviewProps({
     ...previewData,
     fileRelativePath: 'content/recipes/index.json',
     parse: parseJson,
-    isPreview: true
+    isPreview: true,
+    recipes: await Promise.all(recipes)
     })
   }
 
@@ -78,7 +106,8 @@ export const getStaticProps = async function({
       file: {
         fileRelativePath: 'content/recipes/index.json',
         data: (await import('../../content/recipes/index.json')).default,
-      }
+      },
+      recipes: await Promise.all(recipes)
     },
   }
 
