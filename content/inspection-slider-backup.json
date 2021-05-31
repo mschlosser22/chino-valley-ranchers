@@ -1,0 +1,19 @@
+{
+    "_template": "inspectionSlider",
+    "slides": [
+      {
+        "content": "we inspect each egg so we know it’s fit to wear our name.",
+        "image": {
+          "alt": "Organic Eggs",
+          "src": "/images/egg.png"
+        }
+      },
+      {
+        "content": "we inspect each egg so we know it’s fit to wear our name.",
+        "image": {
+          "alt": "Organic Eggs",
+          "src": "/images/egg.png"
+        }
+      }
+    ]
+  },
