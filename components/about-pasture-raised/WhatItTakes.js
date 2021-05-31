@@ -3,7 +3,7 @@ export function WhatItTakes(props) {
 
     return (
         <div>
-            <div className="relative lg:pt-40 lg:-mt-48 -mt-64 pt-56 bg-repeat-x bg-cover" style={{ backgroundImage: `url('/images/bg-talons.png')` }}>
+            <div className="relative lg:pt-40 lg:-mt-48 -mt-64 pt-56 pb-20 bg-repeat-x bg-cover" style={{ backgroundImage: `url('/images/bg-talons.png')` }}>
             <div className="z-50 pt-20 pb-8 lg:py-24 max-w-4xl mx-auto px-8 lg:px-0">
                 <h1 className="text-2xl lg:text-5xl text-chinoblue font-ultra uppercase tracking-wide lg:mb-12 mb-6 text-center md:text-left">What it Takes to Produce Pasture Raised Eggs</h1>
                 <p className="font-lato text-black lg:2xl mx-auto w-5/6 font-medium text-xl text-center tracking-wide">Producing pasture raised eggs requires special care and attention. Chino Valley Ranchers personnel are trained in looking after these wildly happy hens to ensure their safety, satisfaction and welfare."</p>
@@ -38,7 +38,7 @@ export function WhatItTakes(props) {
             </div>
         </div>
         
-        <div className="z-50 pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
+        <div className="z-30 pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
             <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide lg:mb-12 mb-6">
                 From our family to yours, Chino Valley Ranchers pasture raised eggs represent 
                 <br />
@@ -46,7 +46,7 @@ export function WhatItTakes(props) {
                 </h1>
             <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide lg:mb-12 mb-6">Just ask the happy ladies out roaming in our wide open pastures!</h1>
             <img src="/images/redSeperator.png" className="my-20 mx-auto w-1/2"></img>
-            <button class="bg-chinored rounded-md font-din tracking-wider mx-auto lg:text-xl text-md uppercase text-white px-6 py-2 mb-12">Learn More</button>
+            <a href="#" className="bg-chinored rounded-md font-din tracking-wider mx-auto lg:text-2xl text-lg uppercase text-white px-6 py-2 mb-12">Learn More</a>
         </div>
         </div>
 

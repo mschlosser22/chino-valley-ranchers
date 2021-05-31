@@ -29,8 +29,8 @@ export function OrganiceFeed() {
                                 <img src="/images/usdaOrganic.png" className=""></img>
                             </div>
                         </div>
-                        <div className="mt-12 text-center">
-                            <a class="bg-chinored rounded-md font-din tracking-wider cursor-pointer mx-auto lg:text-2xl text-xl uppercase text-white px-6 py-2">Find Out More</a>
+                        <div className="mt-12 text-center pb-20">
+                            <a className="bg-chinored rounded-md font-din tracking-wider cursor-pointer mx-auto lg:text-2xl text-xl uppercase text-white px-6 py-2">Find Out More</a>
                         </div>
                     </div>
                 </div>

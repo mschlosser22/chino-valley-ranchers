@@ -8,7 +8,7 @@ export function DifferenceFeed() {
             </div>
             <div className="lg:flex block lg:justify-between max-w-5xl lg:pl-14 mx-auto">
                 <div className="text-center lg:mt-0 lg:mb-0 mb-8 mt-8">
-                    <a class="bg-chinored rounded-md font-din tracking-wider cursor-pointer mx-auto lg:text-xl text-md uppercase text-white px-6 py-2 mb-12">Discover The Difference</a>
+                    <a className="bg-chinored rounded-md font-din tracking-wider cursor-pointer mx-auto lg:text-2xl text-md uppercase text-white px-6 py-2 mb-12">Discover The Difference</a>
                 </div>
                 <div className="lg:-mb-12 lg:ml-12 z-30 mb-12">
                     <img src="/images/2eggs.png" className="w-56 mx-auto"></img>

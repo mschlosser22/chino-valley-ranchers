@@ -17,7 +17,7 @@ export function Studies() {
                     <p className="font-lato lg:text-2xl tracking-wider lg:mx-0 mx-14 text-center text-chinodarkblue">Chickens in these environments are stuffed into a cage with several other chickens, each with a space roughly the size of a sheet of notebook paper. There’s little room to stretch their wings or turn around. They’re uncomfortable and don’t get the exercise they need, unlike those that live outside the cage. Oftentimes they are too unhealthy to even stand up.</p>
                     <img src="/images/blueSeperator.jpg" className="py-8 "></img>
                     <p className="font-lato lg:text-2xl tracking-wider lg:mx-0 mx-14 text-center text-chinodarkblue lg:pb-24 pb-12">Research has shown that a comfortable low-stress environment throughout all stages of a chicken’s development makes for a happier and healthier life. We believe that free range environments are the best and produce the highest quality eggs.</p>
-                    <a class="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:text-2xl text-lg uppercase text-white px-6 py-2">Find a store near you</a>
+                    <a className="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:text-2xl text-lg uppercase text-white px-6 py-2">Find a store near you</a>
                 </div>
             </div>
         </div>
