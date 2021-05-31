@@ -1,4 +1,4 @@
-import "@fontsource/ultra"
+//import "@fontsource/ultra"
 import 'typeface-lato'
 import Head from 'next/head'
 
