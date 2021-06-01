@@ -52,7 +52,7 @@ export function EggSlider(props) {
                                 </div>
 
                                 <div className="max-w-5xl mx-auto">
-                                    <div className="grid grid-cols-12 gap-10">
+                                    <div className="grid grid-cols-12 lg:gap-10">
                                         <div className="col-span-12 lg:col-span-5 font-ultra tracking-wide -mt-10">
                                             <h3 className="text-3xl lg:text-7xl text-chinored mb-8">{slide.name}</h3>
                                             <p className="text-gray-900 text-xl lg:text-4xl">{slide.heading}</p>
