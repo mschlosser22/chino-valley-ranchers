@@ -9,7 +9,7 @@ export function EggSlider(props) {
 
     const responsive = {
         mobile: {
-          breakpoint: { max: 4000, min: 0 },
+          breakpoint: { max: 4000, min: 320 },
           items: 1
         }
     }
@@ -27,7 +27,19 @@ export function EggSlider(props) {
 
                 <div className="relative w-full overflow-visible egg-slider-bg">
 
-                    <Carousel className="absolute -top-0" responsive={responsive} additionalTransfrom={0} arrows={false} autoplay infinite renderDotsOutside showDots slidesToSlide={1} swipeable>
+                    <Carousel
+                        className="absolute -top-0"
+                        responsive={responsive}
+                        additionalTransfrom={0}
+                        arrows={false}
+                        autoPlay
+                        autoPlaySpeed={5000}
+                        infinite
+                        renderDotsOutside
+                        showDots
+                        slidesToSlide={1}
+                        swipeable
+                    >
                         {props.slides.map( (slide, index) => (
                             <div key={index} className="px-8 pb-12 xl:px-0 text-center lg:text-left">
 
