@@ -44,7 +44,6 @@ export default function NewsArticle({ file, isPreview, }) {
       <Nav />
 
       <InlineForm form={form}>
-        {console.log(file.data.content)}
         <article class="prose lg:prose-xl pt-48 pb-24 max-w-5xl mx-auto text-center px-8 lg:px-0">
           <img src={file.data.image.src} alt={file.data.image.alt} className="max-5xl mx-auto" />
           <h1 className="text-3xl lg:text-7xl !text-chinored font-ultra uppercase !tracking-wide !lg:mb-8">{file.data.title}</h1>
@@ -83,6 +82,7 @@ export const getStaticProps = async function({
   previewData,
 }) {
 
+  /*
   if (preview) {
     return getGithubPreviewProps({
     ...previewData,
@@ -92,7 +92,7 @@ export const getStaticProps = async function({
     isPreview: true,
     //post: await Promise.all(params)
     })
-  }
+  }*/
 
   return {
     props: {
