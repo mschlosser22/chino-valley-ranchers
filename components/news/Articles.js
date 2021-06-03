@@ -117,7 +117,7 @@ export function Articles(props) {
                     {parsedArticles.map( (article, index) => {
                         if(index >= 1) {
                             return (
-                                <div key={index} class="lg:col-span-6 col-span-12">
+                                <div key={index} className="lg:col-span-6 col-span-12">
                                     <div>
                                         <a href={`/news/${article.slug}`}><img src={article.image.src} alt={article.image.alt} className="mb-12 w-full"></img></a>
                                         <a href={`/news/${article.slug}`}>
@@ -192,7 +192,7 @@ export function Articles(props) {
                         {articlesTemp.map( (article, index) => {
                             if(index >= 1) {
                                 return (
-                                    <div class="lg:col-span-6 col-span-12">
+                                    <div className="lg:col-span-6 col-span-12">
                                     <div>
                                             <img src={article.image.src} alt={article.image.alt} className="mb-12 w-full"></img>
                                             <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
