@@ -80,14 +80,16 @@ export function Articles(props) {
 
                 if(index == 0) {
                     return (
-                <div className="max-w-6xl mx-auto">
+                <div key={index} className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-12">
                         <div className="col-span-12 relative">
-                                <img src={article.image.src} alt={article.image.alt} className="mb-12"></img>
+                            <a href={`/news/${article.slug}`}><img src={article.image.src} alt={article.image.alt} className="mb-12"></img></a>
                                 <div className="col-span-12">
-                                    <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
-                                        {article.title}
-                                    </h1>
+                                    <a href={`/news/${article.slug}`}>
+                                        <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
+                                            {article.title}
+                                        </h1>
+                                    </a>
                                     <div className="sm:flex block px-8 lg:p-0">
                                         <p className="text-md lg:text-xl text-chinogray pr-2">
                                             {article.date} - {article.time},
@@ -115,12 +117,14 @@ export function Articles(props) {
                     {parsedArticles.map( (article, index) => {
                         if(index >= 1) {
                             return (
-                                <div class="lg:col-span-6 col-span-12">
-                                <div>
-                                        <img src={article.image.src} alt={article.image.alt} className="mb-12 w-full"></img>
-                                        <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
-                                            {article.title}
-                                        </h1>
+                                <div key={index} class="lg:col-span-6 col-span-12">
+                                    <div>
+                                        <a href={`/news/${article.slug}`}><img src={article.image.src} alt={article.image.alt} className="mb-12 w-full"></img></a>
+                                        <a href={`/news/${article.slug}`}>
+                                            <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
+                                                {article.title}
+                                            </h1>
+                                        </a>
                                         <div className="sm:flex block px-8 lg:p-0">
                                             <p className="text-md lg:text-xl text-chinogray lg:pr-2">
                                             {article.date} - {article.time},
@@ -130,7 +134,7 @@ export function Articles(props) {
                                             </p>
                                         </div>
                                         <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
-                                        <a className="text-xl lg:2xl pl-8 lg:p-0 text-chinored underline cursor-pointer">Read More ></a>
+                                        <a href={`/news/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>
                                 </div>
                                 </div>
                             )

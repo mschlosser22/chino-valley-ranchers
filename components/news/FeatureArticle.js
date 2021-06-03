@@ -5,14 +5,14 @@ import { Articles } from '../../components/news/Articles'
 export function FeaturedArticle(props) {
 
     //const {content} = props
-   
+
 
     return(
 
         <div className="relative pt-8 -mt-12 bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
           <div className="relative bg-repeat-y mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="max-w-6xl mx-auto">
-                
+
                 {/* Page Heading */}
                 <div className="text-center z-50 pt-20 pb-8 lg:py-24 max-w-5xl mx-auto px-8 lg:px-0">
                     <h1 className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide lg:mb-4"><InlineTextarea name="heading" /></h1>
@@ -23,7 +23,7 @@ export function FeaturedArticle(props) {
             </div>
         </div>
         </div>
-       
+
 
     )
 
