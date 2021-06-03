@@ -65,7 +65,7 @@ export async function getStaticPaths() {
   const files = await fg(`${contentDir}**/*.json`)
 
   return {
-    fallback: true,
+    fallback: false,
     paths: files
       .filter(file => !file.endsWith('index.json'))
       .map((file) => {
@@ -82,17 +82,17 @@ export const getStaticProps = async function({
   previewData,
 }) {
 
-  /*
+
   if (preview) {
     return getGithubPreviewProps({
     ...previewData,
     //fileRelativePath: 'content/news/index.json',
-    //fileRelativePath: `content/news/${params.slug}`,
+    fileRelativePath: `content/news/${params.slug}`,
     parse: parseJson,
     isPreview: true,
     //post: await Promise.all(params)
     })
-  }*/
+  }
 
   return {
     props: {
