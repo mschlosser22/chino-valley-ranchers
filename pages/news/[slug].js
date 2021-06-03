@@ -101,7 +101,7 @@ export const getStaticProps = async function({
       preview: false,
       file: {
         //fileRelativePath: 'content/news/index.json',
-        //fileRelativePath: `content/news/${params.slug}`,
+        fileRelativePath: `content/news/${params.slug}`,
         //data: (await import('../../content/news/index.json')).default,
         data: (await import(`../../content/news/${params.slug}`)).default,
       },
