@@ -61,10 +61,12 @@
       {
         "_template": "sizeOptions",
         "heading": "One Size Option",
-        "image": {
-          "src": "/images/organic-sizes.png",
-          "alt": "Organic Eggs Size Options"
-        },
+        "images": [
+          {
+            "src": "/images/organic-sizes.png",
+            "alt": "Organic Eggs Size Options"
+          }
+        ],
         "sizes": [
           "Large"
         ]

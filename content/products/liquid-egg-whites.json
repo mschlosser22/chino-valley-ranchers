@@ -60,10 +60,12 @@
       {
         "_template": "sizeOptions",
         "heading": "Two Options",
-        "image": {
-          "src": "/images/organic-sizes.png",
-          "alt": "Organic Eggs Size Options"
-        },
+        "images": [
+          {
+            "src": "/images/organic-sizes.png",
+            "alt": "Organic Eggs Size Options"
+          }
+        ],
         "sizes": [
           "Organic",
           "Cage-Free"
