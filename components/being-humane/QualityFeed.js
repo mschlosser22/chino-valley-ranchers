@@ -1,3 +1,6 @@
+import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
+
+
 export function QualityFeed(props) {
    
 
@@ -32,3 +35,10 @@ export function QualityFeed(props) {
     )
 
 }
+
+export const qualityFeedBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <QualityFeed {...data} />
+      </BlocksControls>
+    )}

@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
 import { WhatItTakes } from '../../components/about-pasture-raised/WhatItTakes'
-import { PastureEggsFooter } from './PastureEggsFooter'
 
 
 export function AboutPastureRaised(props) {
@@ -41,9 +40,6 @@ export function AboutPastureRaised(props) {
                 </div>
             </div>
         </div>
-        
-        <WhatItTakes />
-        <PastureEggsFooter />
      </div>
     
     )

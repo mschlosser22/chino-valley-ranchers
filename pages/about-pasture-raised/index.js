@@ -8,6 +8,10 @@ import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/footer/Footer'
 import { heroBlock } from '../../components/hero/Hero'
 import { aboutPastureRaisedBlock } from '../../components/about-pasture-raised/AboutPastureRaised'
+import { whatItTakesBlock } from '../../components/about-pasture-raised/WhatItTakes'
+import { contentSingleColumnBlock } from '../../components/content/ContentSingleColumn'
+import { contentSingleColumnTwoBlock } from '../../components/content/ContentSingleColumnTwo'
+import { pastureEggsFooterBlock } from '../../components/about-pasture-raised/PastureEggsFooter'
 
 export default function Products({ file, isPreview}) {
 
@@ -53,7 +57,11 @@ export default function Products({ file, isPreview}) {
 
 const PAGE_BLOCKS = {
   hero: heroBlock,
-  aboutPastureRaised: aboutPastureRaisedBlock
+  aboutPastureRaised: aboutPastureRaisedBlock,
+  whatItTakes: whatItTakesBlock,
+  contentSingleColumn: contentSingleColumnBlock,
+  contentSingleColumnTwo: contentSingleColumnTwoBlock,
+  pastureEggsFooter: pastureEggsFooterBlock
 }
 
 export const getStaticProps = async function({

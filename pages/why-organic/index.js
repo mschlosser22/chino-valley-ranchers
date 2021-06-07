@@ -8,6 +8,11 @@ import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/footer/Footer'
 import { heroBlock } from '../../components/hero/Hero'
 import { whyOrganicBlock } from '../../components/why-organic/WhyOrganic'
+import { ourMissionBlock } from '../../components/why-organic/OurMission'
+import { organicMattersBlock } from '../../components/why-organic/OrganicMatters'
+import { ourCommitmentBlock } from '../../components/why-organic/OurCommitment'
+import { studiesBlock } from '../../components/why-organic/Studies'
+
 
 export default function Products({ file, isPreview}) {
 
@@ -53,7 +58,11 @@ export default function Products({ file, isPreview}) {
 
 const PAGE_BLOCKS = {
   hero: heroBlock,
-  whyOrganic: whyOrganicBlock
+  whyOrganic: whyOrganicBlock,
+  ourMission: ourMissionBlock,
+  organicMatters: organicMattersBlock,
+  ourCommitment: ourCommitmentBlock,
+  studies: studiesBlock
 }
 
 export const getStaticProps = async function({

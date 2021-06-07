@@ -8,6 +8,11 @@ import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/footer/Footer'
 import { heroBlock } from '../../components/hero/Hero'
 import { aboutFeedBlock } from '../../components/about-feed/AboutFeed'
+import { nutritiousFeedBlock } from '../../components/about-feed/NutritiousFeed'
+import { differenceFeedBlock } from '../../components/about-feed/DifferenceFeed'
+import { organicFeedBlock } from '../../components/about-feed/OrganicFeed'
+import { wayItsMadeBlock } from '../../components/about-feed/WayItsMade'
+
 
 export default function Products({ file, isPreview}) {
 
@@ -53,7 +58,11 @@ export default function Products({ file, isPreview}) {
 
 const PAGE_BLOCKS = {
   hero: heroBlock,
-  aboutFeed: aboutFeedBlock
+  aboutFeed: aboutFeedBlock,
+  nutritiousFeed: nutritiousFeedBlock,
+  differenceFeed: differenceFeedBlock,
+  organicFeed: organicFeedBlock,
+  wayItsMade: wayItsMadeBlock
 }
 
 export const getStaticProps = async function({

@@ -1,3 +1,6 @@
+import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
+
+
 export function HenParadise(props) {
 
     return(
@@ -21,3 +24,10 @@ export function HenParadise(props) {
     )
 
 }
+
+export const henParadiseBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <HenParadise {...data} />
+      </BlocksControls>
+    )}

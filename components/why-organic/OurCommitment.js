@@ -1,3 +1,6 @@
+import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
+
+
 export function OurCommitment() {
     return (
         <div>
@@ -16,3 +19,10 @@ export function OurCommitment() {
         </div>
     )
 }
+
+export const ourCommitmentBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <OurCommitment {...data} />
+      </BlocksControls>
+    )}

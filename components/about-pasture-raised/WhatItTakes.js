@@ -1,3 +1,6 @@
+import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, InlineGroup } from 'react-tinacms-inline'
+
+
 
 export function WhatItTakes(props) {
 
@@ -53,3 +56,10 @@ export function WhatItTakes(props) {
         </div>
     )
 }
+
+export const whatItTakesBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <WhatItTakes {...data} />
+      </BlocksControls>
+    )}

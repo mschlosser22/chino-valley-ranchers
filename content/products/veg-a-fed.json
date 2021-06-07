@@ -57,10 +57,24 @@
       {
         "_template": "sizeOptions",
         "heading": "Four Size Options",
-        "image": {
-          "src": "/images/organic-sizes.png",
-          "alt": "Organic Eggs Size Options"
-        },
+        "images": [ 
+          {
+            "src": "/images/jumboVeg-A-Fed.png",
+            "alt": "Veg A Fed Jumbo"
+          }, 
+          {
+            "src": "/images/extraLargeVeg-A-Fed.png",
+            "alt": "Veg A Fed Extra Large"
+          },
+          {
+            "src": "/images/largeVeg-A-Fed.png",
+            "alt": "Veg A Fed Large"
+          },
+          {
+            "src": "/images/mediumVeg-A-Fed.png",
+            "alt": "Veg A Fed Medium"
+          }
+        ],
         "sizes": [
           "Jumbo",
           "Extra Large",

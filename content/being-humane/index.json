@@ -10,6 +10,15 @@
             "heading": "A heritage of cage free",
             "image": "/images/bg-paper-edge.png",
             "subheading": "The Nichols family has been doing cage-free egg production for more than 40 years—well before the advent of government regulations and pleas from animal rights groups. As a strong proponent of humane practices, Chino Valley Ranchers is proud to be cage free."
+        },
+        {
+            "_template": "henParadise"
+        },
+        {
+            "_template": "qualityFeed"
+        },
+        {
+            "_template": "eggTermDef"
         }
     ]
 }

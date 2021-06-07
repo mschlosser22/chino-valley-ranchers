@@ -61,10 +61,20 @@
       {
         "_template": "sizeOptions",
         "heading": "Three Size Options",
-        "image": {
-          "src": "/images/organic-sizes.png",
-          "alt": "Organic Eggs Size Options"
-        },
+        "images": [ 
+          {
+            "src": "/images/extraLargeNutriFresh.png",
+            "alt": "Nutri Fresh Fertile Extra Large"
+          }, 
+          {
+            "src": "/images/darkYolkNutriFresh.png",
+            "alt": "Nutri Fresh Fertile Dark Yolk"
+          },
+          {
+            "src": "/images/largeNutriFresh.png",
+            "alt": "Nutri Fresh Fertile Large"
+          }
+        ],
         "sizes": [
           "Extra Large",
           "Dark Yolk",

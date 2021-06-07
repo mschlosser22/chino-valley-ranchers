@@ -56,10 +56,20 @@
       {
         "_template": "sizeOptions",
         "heading": "Three Size Options",
-        "image": {
-          "src": "/images/organic-sizes.png",
-          "alt": "Organic Eggs Size Options"
-        },
+        "images": [ 
+          {
+            "src": "/images/largePastureRaised.png",
+            "alt": "Pasture Raised Large"
+          }, 
+          {
+            "src": "/images/largeOrganicPastureRaised.png",
+            "alt": "Pasture Raised Organic Large"
+          },
+          {
+            "src": "/images/6ctOrganicPastureRaised.png",
+            "alt": "Pasture Raised Organic 6 count"
+          }
+        ],
         "sizes": [
           "Large",
           "Organic Large",

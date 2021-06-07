@@ -1,4 +1,7 @@
-export function PastureEggsFooter() {
+import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, InlineGroup } from 'react-tinacms-inline'
+
+
+export function PastureEggsFooter(props) {
     return (
         <div className="relative lg:pt-56 pt-36 -mt-48 pb-28" style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}>
                     <div className="grid grid-cols-12 max-w-5xl mx-auto pt-24 gap-8">
@@ -20,3 +23,10 @@ export function PastureEggsFooter() {
             </div>
     )
 }
+
+export const pastureEggsFooterBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <PastureEggsFooter {...data} />
+      </BlocksControls>
+    )}

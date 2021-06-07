@@ -1,3 +1,6 @@
+import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
+
+
 export function OurMission() {
     return (
         <div>
@@ -43,3 +46,10 @@ export function OurMission() {
         </div>
     )
 }
+
+export const ourMissionBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <OurMission {...data} />
+      </BlocksControls>
+    )}

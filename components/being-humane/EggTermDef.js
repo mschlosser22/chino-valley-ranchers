@@ -1,3 +1,6 @@
+import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
+
+
 export function EggTermDef(props) {
    
 
@@ -45,3 +48,10 @@ export function EggTermDef(props) {
     )
 
 }
+
+export const eggTermDefBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <EggTermDef {...data} />
+      </BlocksControls>
+    )}
