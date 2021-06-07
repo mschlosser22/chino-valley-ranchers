@@ -1,3 +1,6 @@
+import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, InlineGroup } from 'react-tinacms-inline'
+
+
 export function DifferenceFeed() {
     return (
         <div>
@@ -18,3 +21,10 @@ export function DifferenceFeed() {
         </div>
     )
 } 
+
+export const differenceFeedBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <DifferenceFeed {...data} />
+      </BlocksControls>
+    )}

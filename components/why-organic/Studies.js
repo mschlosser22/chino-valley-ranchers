@@ -1,3 +1,6 @@
+import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
+
+
 export function Studies() {
     return (
         <div>
@@ -23,3 +26,10 @@ export function Studies() {
         </div>
     )
 }
+
+export const studiesBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <Studies {...data} />
+      </BlocksControls>
+    )}

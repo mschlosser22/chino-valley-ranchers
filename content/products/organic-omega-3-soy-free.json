@@ -65,10 +65,16 @@
       {
         "_template": "sizeOptions",
         "heading": "Two Size Options",
-        "image": {
-          "src": "/images/organic-sizes.png",
-          "alt": "Organic Eggs Size Options"
-        },
+        "images": [ 
+          {
+            "src": "/images/largeOmega3SoyFree.png",
+            "alt": "Omega 3 Soy Free Large"
+          }, 
+          {
+            "src": "/images/6ctOmega3SoyFree.png",
+            "alt": "Omega 3 Soy Free 6 count"
+          }
+        ],
         "sizes": [
           "Large",
           "6-Count Large"

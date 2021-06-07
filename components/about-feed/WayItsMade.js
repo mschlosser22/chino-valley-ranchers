@@ -54,3 +54,10 @@ export function WayItsMade() {
     </div>  
     )
 }
+
+export const wayItsMadeBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <WayItsMade {...data} />
+      </BlocksControls>
+    )}

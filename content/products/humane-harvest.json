@@ -57,10 +57,20 @@
       {
         "_template": "sizeOptions",
         "heading": "Three Size Options",
-        "image": {
-          "src": "/images/organic-sizes.png",
-          "alt": "Organic Eggs Size Options"
-        },
+        "images": [ 
+          {
+            "src": "/images/humane-harvest.png",
+            "alt": "Humane Harvest Large"
+          }, 
+          {
+            "src": "/images/mediumHumaneHarvest.png",
+            "alt": "Humane Harvest Medium"
+          },
+          {
+            "src": "/images/6ctHumaneHarvest.png",
+            "alt": "Humane Harvest 6 Count"
+          }
+        ],
         "sizes": [
           "Large",
           "Medium",

@@ -1,3 +1,6 @@
+import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, InlineGroup } from 'react-tinacms-inline'
+
+
 export function NutritiousFeed() {
     return (
         <div>
@@ -40,3 +43,10 @@ export function NutritiousFeed() {
         </div>
     )
 } 
+
+export const nutritiousFeedBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <NutritiousFeed {...data} />
+      </BlocksControls>
+    )}

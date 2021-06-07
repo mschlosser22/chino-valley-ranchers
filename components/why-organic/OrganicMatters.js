@@ -1,3 +1,6 @@
+import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
+
+
 export function OrganicMatters() {
     return (
         <div>
@@ -51,3 +54,10 @@ export function OrganicMatters() {
         </div>
     )
 }
+
+export const organicMattersBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <OrganicMatters {...data} />
+      </BlocksControls>
+    )}

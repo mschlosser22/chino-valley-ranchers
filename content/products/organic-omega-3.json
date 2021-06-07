@@ -65,10 +65,16 @@
       {
         "_template": "sizeOptions",
         "heading": "Two Size Options",
-        "image": {
-          "src": "/images/organic-sizes.png",
-          "alt": "Organic Eggs Size Options"
-        },
+        "images": [ 
+          {
+            "src": "/images/largeOmega3.png",
+            "alt": "Omega Jumbo"
+          }, 
+          {
+            "src": "/images/6ctOmega3.png",
+            "alt": "Omega 6 count "
+          }
+        ],
         "sizes": [
           "Large",
           "6-Count Large"

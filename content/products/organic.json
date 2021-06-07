@@ -61,10 +61,24 @@
       {
         "_template": "sizeOptions",
         "heading": "Four Size Options",
-        "image": {
-          "src": "/images/organic-sizes.png",
-          "alt": "Organic Eggs Size Options"
-        },
+        "images": [
+          {
+            "src": "/images/jumboOrganic.png",
+            "alt": "Organic Jumbo"
+          }, 
+          {
+            "src": "/images/largeOrganic.png",
+            "alt": "Organic Large"
+          },
+          {
+            "src": "/images/mediumOrganic.png",
+            "alt": "Organic Medium"
+          },
+          {
+            "src": "/images/6ctOrganic.png",
+            "alt": "Organic 6 count"
+          }
+        ],
         "sizes": [
           "Jumbo",
           "Large",

@@ -1,11 +1,6 @@
 import { DiffieHellman } from 'crypto'
 import Image from 'next/image'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
-import { DifferenceFeed } from './DifferenceFeed'
-import { NutritiousFeed } from './NutritiousFeed'
-import { OrganiceFeed } from './OrganicFeed'
-import { WayItsMade } from './WayItsMade'
-
 
 export function AboutFeed(props) {
 
@@ -53,10 +48,6 @@ export function AboutFeed(props) {
                 </div>
             </div>
         </div>
-        <NutritiousFeed />
-        <DifferenceFeed />
-        <OrganiceFeed />
-        <WayItsMade />
      </div>
     
     )

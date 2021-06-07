@@ -16,10 +16,12 @@ export function SizeOptions(props) {
                         <h3 className="text-center text-chinored text-2xl lg:text-5xl font-ultra tracking-wide"><InlineTextarea name="heading" /></h3>
                     </div>
                     {/* Size Options */}
-                    <div className="col-span-12 grid grid-cols-4 items-stretch">
-                        {props.image && (
-                            <div className="col-span-4"><img src={props.image.src} alt={props.image.alt} /></div>
-                        )}
+                    <div className={`col-span-12 grid grid-cols-${props.images.length}`}>
+                        {props.images && props.images.map( (image, index) => (
+                            <div key={index} className="col-span-1">
+                                <img src={image.src} alt={image.alt} />
+                            </div>
+                        ))}
                         {props.sizes && props.sizes.map( (size, index) => (
                             <div key={index} className="col-span-4 lg:col-span-1 text-center lg:text-left text-gray-900 font-ultra text-lg lg:text-3xl pt-8 tracking-wide">
                                 <h4>{size}</h4>

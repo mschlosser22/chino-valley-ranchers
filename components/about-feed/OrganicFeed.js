@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
 
-export function OrganiceFeed() {
+export function OrganicFeed() {
     return (
         <div>
             <div className="relative lg:pt-16 lg:-mt-11 -mt-24 pt-20 bg-no-repeat bg-auto" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
@@ -38,3 +38,10 @@ export function OrganiceFeed() {
         </div>
     )
 } 
+
+export const organicFeedBlock = {
+    Component: ({ index, data }) => (
+      <BlocksControls index={index}>
+        <OrganicFeed {...data} />
+      </BlocksControls>
+    )}

@@ -10,6 +10,18 @@
             "heading": "Our mission is simple",
             "image": "/images/bg-paper-edge.png",
             "subheading": "Produce the freshest and highest quality eggs at the best price, treat all our hens with kindness and respect through personalized care, and put back into the earth what we take out of it."
+        },
+        {
+            "_template": "ourMission"
+        },
+        {
+            "_template": "organicMatters"
+        },
+        {
+            "_template": "ourCommitment"
+        },
+        {
+            "_template": "studies"
         }
     ]
 }

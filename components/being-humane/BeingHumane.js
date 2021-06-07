@@ -1,8 +1,5 @@
 import Image from 'next/image'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
-import { EggTermDef } from './EggTermDef'
-import { HenParadise } from './HenParadise'
-import { QualityFeed } from './QualityFeed'
 
 export function BeingHumane(props) {
 
@@ -40,9 +37,6 @@ export function BeingHumane(props) {
                 </div>
             </div>
         </div>
-        <HenParadise />
-        <QualityFeed />
-        <EggTermDef />
      </div>
     
     )

@@ -8,6 +8,9 @@ import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/footer/Footer'
 import { heroBlock } from '../../components/hero/Hero'
 import { beingHumaneBlock } from '../../components/being-humane/BeingHumane'
+import { henParadiseBlock } from '../../components/being-humane/HenParadise'
+import { qualityFeedBlock } from '../../components/being-humane/QualityFeed'
+import { eggTermDefBlock } from '../../components/being-humane/EggTermDef'
 
 export default function Products({ file, isPreview}) {
 
@@ -53,7 +56,10 @@ export default function Products({ file, isPreview}) {
 
 const PAGE_BLOCKS = {
   hero: heroBlock,
-  beingHumane: beingHumaneBlock
+  beingHumane: beingHumaneBlock,
+  henParadise: henParadiseBlock,
+  qualityFeed: qualityFeedBlock,
+  eggTermDef: eggTermDefBlock
 }
 
 export const getStaticProps = async function({
