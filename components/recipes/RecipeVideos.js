@@ -16,11 +16,11 @@ export default function RecipeVideos(props) {
                                     <iframe src={`https://www.youtube.com/embed/${recipe.video.code}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                 </div>
                             </div>
-                            <div className="col-span-12 flex justify-between lg:px-0 px-3">
+                            <div className="col-span-12 md:flex flex-wrap justify-between">
                                 <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                     {recipe.title}
                                 </h1>
-                                <button className="bg-chinored rounded-md font-din tracking-wider lg:text-xl text-md uppercase text-white px-6">{recipe.button.text}</button>
+                                <button className="bg-chinored rounded-md font-din tracking-wider lg:text-xl text-lg uppercase text-white px-6 mx-8 lg:mx-0">{recipe.button.text}</button>
                             </div>
                             <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
                         </div>
