@@ -8,7 +8,7 @@ export function ContentWithImageAlt(props) {
 
     return(
 
-        <div className="relative pt-20 -mt-24 pb-36 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/yellow-egg-bg.png')` }}>
+        <div className="w-full relative -mt-24 -mb-24 z-20 bg-cover bg-no-repeat" style={{ backgroundImage: `url('/images/bg-orange-egg-ripped.png')` }}>
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-12 pt-24 lg:pt-36 pb-12 lg:pb-24">
 

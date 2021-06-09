@@ -5,17 +5,17 @@ export function RecipesAndVideos(props) {
 
     return(
 
-        <div className="relative pt-20 -mt-24 pb-20 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/white-burlap-bg.png')` }}>
+        <div className="relative pt-20 -mt-24 lg:pb-20 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/white-burlap-bg.png')` }}>
             <div className="max-w-7xl mx-auto">
 
                 <div className="grid grid-cols-12 pt-12 lg:pt-36 pb-2 lg:pb-24 relative px-8 xl:px-0 lg:gap-12">
                     {/* Heading */}
                     <div className="col-span-12 lg:col-span-5">
-                        <h3 className="text-4xl lg:text-7xl tracking-wide text-chinoblue font-ultra text-center lg:text-left"><InlineTextarea name="heading" /></h3>
+                        <h3 className="text-4xl lg:text-7xl tracking-wide text-chinoblue font-ultra text-left uppercase"><InlineTextarea name="heading" /></h3>
                     </div>
                     {/* Content */}
                     <div className="col-span-12 lg:col-span-7">
-                        <p className="font-lato lg:text-3xl tracking-wide mb-8 pt-4 text-center lg:text-left"><InlineTextarea name="content" /></p>
+                        <p className="font-lato lg:text-3xl tracking-wide mb-8 pt-4 text-left"><InlineTextarea name="content" /></p>
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@ export function RecipesAndVideos(props) {
                                     <iframe src={video.src} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                 </div>
                             </div>
-                            <h5 className="font-lato lg:text-3xl tracking-wide text-center lg:text-left">{video.title}</h5>
+                            <h5 className="font-lato lg:text-3xl tracking-wide text-left">{video.title}</h5>
                         </div>
                     ))}
                 </div>

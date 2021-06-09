@@ -22,8 +22,8 @@ export function OurFamily(props) {
                     </div>
                     {/* Right/Content */}
                     <div className="col-span-12 lg:col-span-6 relative">
-                        <p className="font-lato lg:text-3xl tracking-wide mb-8 pt-8 text-center lg:text-left"><InlineTextarea name="content" /></p>
-                        <div className="flex justify-center lg:block"><Button button={props.data.button} classes={`mt-12 xl:absolute lg:bottom-0 xl:right-0`} /></div>
+                        <p className="font-lato lg:text-3xl tracking-wide lg:mb-8 pt-8 text-left"><InlineTextarea name="content" /></p>
+                        <div className="flex lg:justify-center lg:block"><Button button={props.data.button} classes={`mt-12 xl:absolute lg:bottom-0 xl:right-0`} /></div>
                     </div>
                 </div>
             </div>

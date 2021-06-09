@@ -17,13 +17,13 @@ export function EggSlider(props) {
     return(
         <>
         {/* Top Border */}
-        <div className={`relative w-full hidden lg:block h-[95px] -mt-12 bg-cover bg-no-repeat`} style={{ backgroundImage: `url('/images/bg-paper-edge-border.png')` }}></div>
+        <div className={`relative w-full block z-10 h-[95px] -mt-12 bg-cover bg-no-repeat`} style={{ backgroundImage: `url('/images/bg-paper-edge-border.png')` }}></div>
         {/* Middle Section */}
         <div className="relative z-10" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
-            <div className="lg:min-h-[600px]" >
+            <div className="min-h-[625px] lg:min-h-[600px]" >
 
             </div>
-            <div className="lg:absolute w-full lg:-top-48 overflow-y-hidden">
+            <div className="absolute w-full -top-36 lg:-top-48 overflow-y-hidden">
 
                 <div className="relative w-full overflow-visible egg-slider-bg">
 
@@ -32,7 +32,6 @@ export function EggSlider(props) {
                         responsive={responsive}
                         additionalTransfrom={0}
                         arrows={false}
-                        autoPlay
                         autoPlaySpeed={5000}
                         infinite
                         renderDotsOutside
@@ -45,7 +44,7 @@ export function EggSlider(props) {
 
                                 <div className="max-w-xl mx-auto">
                                     <div className="grid grid-cols-12 pb-20">
-                                        <div className="col-span-12 h-64">
+                                        <div className="col-span-12 h-52 lg:h-64 xs:px-2 sm:px-8 lg:px-0">
                                             <img src={slide.image.src} alt={slide.image.alt} />
                                         </div>
                                     </div>
@@ -62,7 +61,7 @@ export function EggSlider(props) {
                                             <p>{slide.content}</p>
                                         </div>
                                         {/* Icons */}
-                                        <div className="col-span-12 flex justify-center gap-12">
+                                        <div className="col-span-12 flex justify-center gap-12 py-8">
                                             {slide.icons && slide.icons.map( (icon, index) => (
                                                 <img key={index} src={icon.image.src} alt={icon.image.alt} className="h-24" />
                                             ))}

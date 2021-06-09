@@ -29,7 +29,7 @@ export function ImageWithContent(props) {
                     {/* Absolute Div */}
                     <div className="col-span-12 xl:absolute bottom-0 right-0 xl:bottom-36 grid grid-cols-3 justify-around pt-20 divide-x divide-red-500 text-center xl:max-w-4xl xl:mr-0">
                         {props.data.absoluteContent.map((paragraph, index) => (
-                            <p key={index} className="font-ultra text-xl lg:text-4xl tracking-wide">{paragraph}</p>
+                            <p key={index} className="font-ultra text-xl lg:text-4xl tracking-wide px-2 lg:px-0 leading-none lg:leading-9">{paragraph}</p>
                         ))}
                     </div>
                 </div>

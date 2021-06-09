@@ -7,7 +7,7 @@ export function FeedVideo(props) {
 
     return(
         <>
-        <div className="w-full relative -mt-12 -mb-12 z-20 bg-cover bg-no-repeat" style={{ backgroundImage: `url('/images/dirt-bg.png')`}}>
+        <div className="w-full relative -mt-12 -mb-12 z-20 pb-24 bg-cover bg-no-repeat" style={{ backgroundImage: `url('/images/dirt-bg.png')`}}>
             <div className="w-full h-screen absolute z-20 bg-cover bg-no-repeat" style={{ backgroundImage: `url('/images/chicken-feet.png')`}}></div>
             <div className="max-w-5xl mx-auto pt-12 pb-24 lg:pt-28 relative">
 
