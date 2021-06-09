@@ -10,8 +10,8 @@ export function AboutPastureRaised(props) {
 
     return(
      <div>
-        <div className="relative pt-8 lg:-mt-12 -mt-32 bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
-          <div className="relative bg-repeat-y pb-44 mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
+        <div className="relative pt-8 z-40 lg:-mt-12 -mt-28 bg-repeat-x" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
+          <div className="relative bg-repeat pb-44 mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="max-w-6xl mx-auto">
                 
                 {/* Page Heading */}

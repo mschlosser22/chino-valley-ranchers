@@ -9,8 +9,8 @@ export function FeaturedArticle(props) {
 
     return(
 
-        <div className="relative pt-8 md:-mt-18 -mt-28 z-40 bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
-          <div className="relative bg-repeat-y mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
+        <div className="relative pt-8 md:-mt-18 -mt-28 z-40 bg-repeat-x" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
+          <div className="relative bg-repeat mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="max-w-6xl mx-auto">
 
                 {/* Page Heading */}

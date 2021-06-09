@@ -17,10 +17,10 @@ export function QualityFeed(props) {
                     <p className="font-lato lg:text-xl tracking-wide leading-normal font-bold pb-12 lg:pb-0">It all starts with the finest grains. Chino Valley Ranchers uses only top grade corn, soybean (except for our Organic Soy Free), alfalfa, flax seed and other select seeds, plus limestone meal for essential minerals. All of our organic grains come from non-genetically-modified seeds and are grown in certified organic fields that are free of pesticide.</p>
                 </div>
                 <div>
-                    <img src="/images/orangeSeperator.jpg"></img>
+                    <img src="/images/orangeSeperator.jpg" className="px-8 lg:px-0" />
                     <p className="lg:text-3xl text-xl font-ultra text-center max-w-4xl py-9 mx-auto px-8 lg:px-0 tracking-wide">As you would expect, <br /> our natural feed formulations <br />
                     <span className="text-chinored font-ultra border-b-2 border-chinored">NEVER</span> contain hormones, animal proteins, steroids, or antibiotics.</p>
-                    <img src="/images/orangeSeperator.jpg"></img>
+                    <img src="/images/orangeSeperator.jpg" className="px-8 lg:px-0" />
                 </div>
                 <div className="lg:text-center pt-12 lg:py-16  max-w-4xl mx-auto px-8 lg:px-0">
                     <p className="font-lato lg:text-xl tracking-wide leading-normal pb-12 font-bold">We have an Avian Nutritionist on staff to formulate grain combinations into the most nutritious diet for our chickens, and to optimize precision and quality for the variety of specialty eggs we produce. This important process is based on years of company research evaluating how different feed formulations affect the nutritional properties of eggs.</p>

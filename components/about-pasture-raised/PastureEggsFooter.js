@@ -3,7 +3,7 @@ import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, 
 
 export function PastureEggsFooter(props) {
     return (
-        <div className="relative lg:pt-56 pt-36 -mt-48 pb-28 z-40" style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}>
+        <div className="relative pt-8 -mt-12 pb-12 z-40 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/bg-paper-white3.png')` }}>
                     <div className="grid grid-cols-12 max-w-5xl mx-auto pt-24 gap-8">
                         <div className="lg:col-span-6 col-span-12">
                             <h1 className="text-4xl lg:text-6xl text-chinoblue font-ultra uppercase tracking-wide lg:pb-24 pb-8 px-8 lg:px-0">Pasture Raised Products</h1>

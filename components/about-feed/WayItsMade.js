@@ -4,9 +4,9 @@ import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inlin
 export function WayItsMade() {
     return (
     <div>
-        <div className="relative lg:pt-56 pt-36 -mt-48 pb-28  bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}>
+        <div className="relative pt-8 -mt-24 pb-32 z-40 bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-white3.png')` }}>
             <div className="max-w-5xl mx-auto">
-                <div className="grid grid-cols-12 lg:gap-8 pt-20 md:mx-auto px-8">
+                <div className="grid grid-cols-12 lg:gap-8 pt-24 md:mx-auto px-8 ">
                     <div className="md:col-span-5 col-span-12">
                         <h1 className="text-2xl lg:text-5xl text-chinoblue lg:leading-tight font-ultra uppercase tracking-wide mb-6">Eggs made the way you want</h1>
                     </div>
