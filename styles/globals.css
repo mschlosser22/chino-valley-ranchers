@@ -37,7 +37,35 @@
     height: unset !important;
 }
 
+@media (min-width: 320px) {
+
+    .hero-video em {
+        font-size: 1rem;
+        text-decoration: underline;
+        text-decoration-thickness: 0.25rem;
+        display: inline-block;
+        position: relative;
+        top: -0.5rem;
+    }
+
+    .hero em {
+        font-size: 1.5rem;
+        text-decoration: underline;
+        text-decoration-thickness: 0.5rem;
+        display: block;
+        padding-bottom: 0.75rem;
+    }
+}
+
 @media (min-width: 1024px) {
+    .hero-video em {
+        font-size: 2.5rem;
+        text-decoration: underline;
+        text-decoration-thickness: 0.5rem;
+        display: inline-block;
+        position: relative;
+        top: -0.75rem;
+    }
 
     .hero em {
         font-size: 2.5rem;
@@ -45,7 +73,7 @@
         text-decoration-thickness: 0.5rem;
         display: inline-block;
         position: relative;
-        top: -0.75rem;
+        top: -1rem;
     }
 }
 

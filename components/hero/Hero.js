@@ -1,5 +1,7 @@
 import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
+import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
 
 export function Hero(props) {
 
@@ -8,8 +10,8 @@ export function Hero(props) {
 
     return(
 
-        <div className="relative overflow-hidden lg:overflow-visible z-40 lg:z-0 w-full min-h-[300px] lg:min-h-[516px] flex items-center">
-            <div className="absolute w-full min-h-[300px] lg:min-h-[516px]">
+        <div className="relative overflow-hidden lg:overflow-visible z-40 lg:z-0 w-full min-h-[400px] sm:min-h-[400px] lg:min-h-[516px] flex items-center hero-component">
+            <div className="absolute w-full min-h-[400px] sm:min-h-[400px] lg:h-[600px]">
                 <InlineImage
                     name="image"
                     parse={media => media.id}
@@ -27,7 +29,9 @@ export function Hero(props) {
                             src={props.src}
                             alt={props.alt}
                             layout="fill"
-                            objectFit="contain"
+                            objectFit="cover"
+                            objectPosition="center"
+                            className="hidden lg:initial"
                             />
                         </div>
                     )}
@@ -35,8 +39,15 @@ export function Hero(props) {
 
             </div>
 
+            {/*<div className="absolute w-full h-full lg:hidden bg-cover" style={{ backgroundImage: `url(${props.image_mobile.src})` }}>
+            </div>*/}
+
             <div className="max-w-5xl mx-auto z-40 text-center">
-                <h1 className="text-3xl lg:text-7xl text-white font-ultra uppercase tracking-wide"><InlineTextarea name="heading" /></h1>
+                <h1 className="text-3xl sm:text-5xl lg:text-7xl text-white font-ultra uppercase tracking-wide hero">
+                    <InlineWysiwyg name="heading" format="markdown" sticky>
+                        <ReactMarkdown>{props.heading}</ReactMarkdown>
+                    </InlineWysiwyg>
+                </h1>
             </div>
         </div>
 
@@ -45,9 +56,9 @@ export function Hero(props) {
 }
 
 export const heroBlock = {
-    Component: ({ index }) => (
+    Component: ({ index, data }) => (
       <BlocksControls index={index}>
-        <Hero />
+        <Hero {...data} />
       </BlocksControls>
     ),
     template: {

@@ -19,7 +19,8 @@ export function Nav(props) {
             current: false,
             children: [
                 { name: 'Why Organic Matters', href: '/why-organic' },
-                { name: 'It Starts With Our Feed', href: '/about-feed' }
+                { name: 'It Starts With Our Feed', href: '/about-feed' },
+                { name: 'Pasture Raised Eggs', href: '/about-pasture-raised' }
             ]
         },
         { name: 'Our Eggs', href: '/products', current: false },
