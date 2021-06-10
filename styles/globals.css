@@ -49,4 +49,10 @@
     }
 }
 
+@media (min-width: 640px) {
+    .pasture-raised-image-container > div {
+        height: initial;
+    }
+}
+
 @tailwind utilities;

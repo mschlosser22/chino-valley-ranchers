@@ -14,12 +14,12 @@ export function FeedVideo(props) {
                 <div className="grid grid-cols-12 relative z-30">
                     <div className="col-span-12">
                         {/* Heading */}
-                        <div className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide mb-8 text-center pt-12 lg:pt-0">
+                        <div className="text-3xl sm:text-6xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide mb-8 text-center pt-12 lg:pt-0">
                             <InlineTextarea name="heading" />
                         </div>
                     </div>
                     {/* Video */}
-                    <div className="col-span-12 z-40">
+                    <div className="col-span-12 z-40 sm:px-4 lg:px-0">
                         <div className="border-8 border-white rounded">
                             <div className="aspect-w-16 aspect-h-9">
                                 <iframe src={props.video.src} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
@@ -29,7 +29,7 @@ export function FeedVideo(props) {
                     {/* Content */}
                     <div className="col-span-12 relative lg:-mt-6">
                         <div className="max-w-xl mx-auto">
-                            <div className="bg-cover bg-no-repeat px-8 pt-8 pb-12 text-center flex items-center text-xl lg:text-3xl text-white font-lato font-bold tracking-wide" style={{ backgroundImage: `url('/images/content-bg.png')`}}>
+                            <div className="bg-cover bg-no-repeat px-8 pt-8 pb-12 text-center flex items-center text-xl leading-body lg:text-3xl lg:leading-body text-white font-lato font-bold tracking-wide" style={{ backgroundImage: `url('/images/content-bg.png')`}}>
                                 <InlineTextarea name="content" />
                             </div>
                         </div>

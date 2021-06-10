@@ -21,16 +21,17 @@ export function InspectionSlider(props) {
 
                     <div key={index} className="grid grid-cols-12 gap-8 pt-48 relative">
                         {/* Image */}
-                        <div className=" relative col-span-12 lg:col-span-3 flex justify-center lg:block">
+                        <div className=" relative col-span-12 lg:col-span-3 flex justify-center lg:block px-24 lg:px-0">
                             <img src={slide.image.src} alt={slide.image.src} />
                         </div>
 
                         {/* Content */}
-                        <div className="col-span-12 lg:col-span-9 font-ultra text-3xl leading-7 lg:text-6xl tracking-wide text-white uppercase pt-10">
+                        <div className="col-span-12 lg:col-span-9 font-ultra text-3xl sm:leading-body lg:text-6xl tracking-wide text-white uppercase pt-10">
                             <p className="text-center lg:text-left px-8 lg:px-0">{slide.content}</p>
                             {/* Inspection Point */}
-                            <div className="pt-12 pb-20 relative right-36">
+                            <div className="pt-12 pb-20 relative lg:right-36 px-8 sm:px-12 lg:px-0">
                                 <img className="hidden lg:block" src="/images/inspection.png" alt="inspection point" />
+                                <img className="lg:hidden" src="/images/inspection-mobile.png" alt="inspection point" />
                             </div>
                         </div>
                     </div>

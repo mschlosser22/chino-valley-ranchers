@@ -13,7 +13,7 @@ export function OurFamily(props) {
 
                 <div className="grid grid-cols-12 pt-12 lg:pt-36 pb-12 lg:pb-24 relative px-8 xl:px-0 gap-4">
                     {/* Heading */}
-                    <div className="col-span-12 text-center font-ultra uppercase text-chinobrown text-3xl lg:text-6xl mb-0 lg:mb-8">
+                    <div className="col-span-12 text-center font-ultra uppercase text-chinobrown text-3xl sm:text-5xl lg:text-6xl mb-0 lg:mb-8 tracking-wide">
                         <InlineText name="heading" />
                     </div>
                     {/* Left/Photo */}
@@ -22,7 +22,7 @@ export function OurFamily(props) {
                     </div>
                     {/* Right/Content */}
                     <div className="col-span-12 lg:col-span-6 relative">
-                        <p className="font-lato lg:text-3xl tracking-wide lg:mb-8 pt-8 text-left"><InlineTextarea name="content" /></p>
+                        <p className="font-lato lg:text-3xl sm:leading-body tracking-wide lg:mb-8 pt-8 text-left"><InlineTextarea name="content" /></p>
                         <div className="flex lg:justify-center lg:block"><Button button={props.data.button} classes={`mt-12 xl:absolute lg:bottom-0 xl:right-0`} /></div>
                     </div>
                 </div>

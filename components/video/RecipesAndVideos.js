@@ -11,11 +11,11 @@ export function RecipesAndVideos(props) {
                 <div className="grid grid-cols-12 pt-12 lg:pt-36 pb-2 lg:pb-24 relative px-8 xl:px-0 lg:gap-12">
                     {/* Heading */}
                     <div className="col-span-12 lg:col-span-5">
-                        <h3 className="text-4xl lg:text-7xl tracking-wide text-chinoblue font-ultra text-left uppercase"><InlineTextarea name="heading" /></h3>
+                        <h3 className="text-4xl sm:text-6xl lg:text-7xl tracking-wide text-chinoblue font-ultra text-left uppercase"><InlineTextarea name="heading" /></h3>
                     </div>
                     {/* Content */}
                     <div className="col-span-12 lg:col-span-7">
-                        <p className="font-lato lg:text-3xl tracking-wide mb-8 pt-4 text-left"><InlineTextarea name="content" /></p>
+                        <p className="font-lato sm:leading-body lg:text-3xl lg:leading-body tracking-wide mb-8 pt-4 text-left"><InlineTextarea name="content" /></p>
                     </div>
                 </div>
 

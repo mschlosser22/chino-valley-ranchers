@@ -11,23 +11,26 @@ export function ImageWithContent(props) {
         <div className="relative pt-20 -mt-24 pb-12 bg-no-repeat bg-contain" style={{ backgroundImage: `url('/images/blue-bg.jpg')` }}>
             <div className="max-w-7xl mx-auto">
 
-                <div className="grid grid-cols-12 pt-12 lg:pt-36 pb-12 lg:pb-24 relative px-8 xl:px-0">
+                <div className="grid grid-cols-12 pt-12 lg:pt-36 pb-0 lg:pb-24 relative px-0 xl:px-0">
 
                     {/* Left */}
                     <div className="col-span-12 lg:col-span-6">
-                        <p className="font-lato lg:text-3xl tracking-wide mb-8"><InlineTextarea name="content" /></p>
-                        <div className="w-full flex lg:block justify-center max-w-xs mx-auto lg:max-w-full">
+                        <p className="font-lato lg:text-3xl sm:leading-body tracking-wide mb-8 px-8 xl:px-0"><InlineTextarea name="content" /></p>
+                        <div className="w-full hidden lg:flex lg:block justify-center max-w-xs mx-auto lg:max-w-full">
                             <img src={props.data.leftImage.src} alt={props.data.leftImage.alt} />
+                        </div>
+                        <div className="w-full lg:hidden justify-center mx-auto relative -mb-10">
+                            <img src={props.data.leftImageMobile.src} alt={props.data.leftImageMobile.alt} />
                         </div>
                     </div>
                     {/* Right */}
-                    <div className="col-span-12 lg:col-span-6 flex lg:block justify-center">
+                    <div className="col-span-12 lg:col-span-6 hidden lg:flex lg:block justify-center">
                         <div className="max-w-xs mx-auto lg:max-w-full">
                             <img src={props.data.rightImage.src} alt={props.data.rightImage.alt} />
                         </div>
                     </div>
                     {/* Absolute Div */}
-                    <div className="col-span-12 xl:absolute bottom-0 right-0 xl:bottom-36 grid grid-cols-3 justify-around pt-20 divide-x divide-red-500 text-center xl:max-w-4xl xl:mr-0">
+                    <div className="col-span-12 xl:absolute bottom-0 right-0 xl:bottom-36 hidden lg:grid grid-cols-3 justify-around pt-20 divide-x divide-red-500 text-center xl:max-w-4xl xl:mr-0 px-8 xl:px-0">
                         {props.data.absoluteContent.map((paragraph, index) => (
                             <p key={index} className="font-ultra text-xl lg:text-4xl tracking-wide px-2 lg:px-0 leading-none lg:leading-9">{paragraph}</p>
                         ))}

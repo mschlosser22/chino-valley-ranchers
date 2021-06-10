@@ -10,19 +10,19 @@ export function ContentWithImageAlt(props) {
 
         <div className="w-full relative -mt-24 -mb-24 z-20 bg-cover bg-no-repeat" style={{ backgroundImage: `url('/images/bg-orange-egg-ripped.png')` }}>
             <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-12 pt-24 lg:pt-36 pb-12 lg:pb-24">
+                <div className="grid grid-cols-12 pt-24 sm:pt-36 pb-12 sm:pb-24">
 
-                    <div className="col-span-12 lg:col-span-8 text-center lg:text-left px-8 xl:px-0 xl:pr-8">
-                        <h3 className="text-3xl lg:text-7xl text-white font-ultra uppercase tracking-wide mb-12"><InlineTextarea name="heading" /></h3>
+                    <div className="col-span-12 sm:col-span-8 text-center text-left px-8 xl:px-0 xl:pr-8">
+                        <h3 className="text-3xl sm:text-4xl lg:text-7xl text-white font-ultra uppercase tracking-wide mb-12"><InlineTextarea name="heading" /></h3>
                         <div className="pb-16">
                             <InlineBlocks name="blocks" blocks={CONTENT_WITH_IMAGE_BLOCKS} />
                         </div>
 
                         <Button button={props.data.button} />
                     </div>
-                    <div className="col-span-12 lg:col-span-4 relative flex flex-col-reverse lg:block">
+                    <div className="col-span-12 sm:col-span-4 relative flex flex-col-reverse sm:block">
                         {/* Image */}
-                        <div className="overflow-hidden w-full h-full relative max-w-xs mx-auto lg:max-w-full">
+                        <div className="overflow-hidden w-full h-full relative max-w-xs mx-auto sm:max-w-full sm:flex sm:flex-col sm:justify-end md:block pasture-raised-image-container">
                             <InlineImage
                                 name="image.src"
                                 parse={media => media.id}
@@ -31,7 +31,7 @@ export function ContentWithImageAlt(props) {
                             />
                         </div>
                         {/* Callout Image */}
-                        <div className="relative lg:absolute lg:-top-24 lg:right-0 flex justify-center lg:block pt-12 lg:pt-0">
+                        <div className="relative sm:absolute sm:top-1/2 md:-top-24 sm:right-0 flex justify-center sm:block pt-12 sm:pt-0 px-10 lg:px-0">
                             <img src={props.data.calloutImage.src} alt={props.data.calloutImage.alt} />
                         </div>
 

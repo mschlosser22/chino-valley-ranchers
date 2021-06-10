@@ -19,6 +19,14 @@ module.exports = {
         'chinodarkgray': '#b6afa9',
         'chinodarkorange': '#f9a115',
         'chinobrown': '#5c311b',
+      },
+      lineHeight: {
+        'body': '2.75rem',
+        'heading-lh': '5.313rem',
+        'heading-mobile': '4rem'
+      },
+      fontSize: {
+        'heading': '4.969rem',
       }
     },
   },

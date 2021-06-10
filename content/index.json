@@ -160,6 +160,10 @@
         "src": "/images/chicken.png",
         "alt": "Chicken"
       },
+      "leftImageMobile": {
+        "src": "/images/chicken-post-mobile.png",
+        "alt": "Chicken"
+      },
       "rightImage": {
         "src": "/images/sign-post.png",
         "alt": "Sign Post"
