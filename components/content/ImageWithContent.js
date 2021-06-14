@@ -1,10 +1,41 @@
 import Image from 'next/image'
 import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, InlineGroup } from 'react-tinacms-inline'
+import { useTransition, useSpring, animated } from 'react-spring'
+import { useState, useEffect, useCallback, useRef } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { useScrollPercentage, ScrollPercentage } from 'react-scroll-percentage'
 
 import { Button } from '../button/Button'
 import { Paragraph } from './paragraph/Paragraph'
 
 export function ImageWithContent(props) {
+
+    const [left, setLeft] = useState('-50rem')
+    const [shouldAnimate, setShouldAnimate] = useState(true)
+
+    const [ref, percentage] = useScrollPercentage({
+        /* Optional options */
+        threshold: 0,
+        triggerOnce: true,
+    })
+
+    const determineLeft = (percentage) => {
+        if (shouldAnimate) {
+            if(percentage <= 45) {
+                setLeft(`-${45 - percentage}rem`)
+            } else {
+                setLeft('0rem')
+                setShouldAnimate(false)
+            }
+        } else {
+            setLeft('0rem')
+        }
+        //`-${35 - percentage.toPrecision(2) * 100}rem`
+    }
+
+    const styles = useSpring({
+        marginLeft: left,
+    })
 
     return(
 
@@ -14,11 +45,21 @@ export function ImageWithContent(props) {
                 <div className="grid grid-cols-12 pt-12 lg:pt-36 pb-0 lg:pb-24 relative px-0 xl:px-0">
 
                     {/* Left */}
-                    <div className="col-span-12 lg:col-span-6">
+                    <div className="col-span-12 lg:col-span-6 relative">
                         <p className="font-lato lg:text-3xl sm:leading-body tracking-wide mb-8 px-8 xl:px-0"><InlineTextarea name="content" /></p>
-                        <div className="w-full hidden lg:flex lg:block justify-center max-w-xs mx-auto lg:max-w-full">
-                            <img src={props.data.leftImage.src} alt={props.data.leftImage.alt} />
+                        <div className="w-full hidden lg:flex lg:block justify-center max-w-xs mx-auto lg:max-w-full" ref={ref}>
+                            {/* Animation Test */}
+                            <ScrollPercentage
+                                as="div"
+                                onChange={(percentage, entry) => determineLeft(percentage.toPrecision(2) * 100)}
+                            >
+                                    <animated.div style={styles}>
+                                        <img src={props.data.leftImage.src} alt={props.data.leftImage.alt} />
+                                    </animated.div>
+                            </ScrollPercentage>
+                            {/* End Animation Test */}
                         </div>
+
                         <div className="w-full lg:hidden justify-center mx-auto relative -mb-10">
                             <img src={props.data.leftImageMobile.src} alt={props.data.leftImageMobile.alt} />
                         </div>
