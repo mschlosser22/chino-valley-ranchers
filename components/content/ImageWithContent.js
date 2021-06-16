@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, InlineGroup } from 'react-tinacms-inline'
-import { useTransition, useSpring, animated } from 'react-spring'
+import { useTransition, useSpring, animated, useChain, useSpringRef } from 'react-spring'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useScrollPercentage, ScrollPercentage } from 'react-scroll-percentage'
@@ -11,7 +11,10 @@ import { Paragraph } from './paragraph/Paragraph'
 export function ImageWithContent(props) {
 
     const [left, setLeft] = useState('-50rem')
+    const [bottom, setBottom] = useState('-50rem')
+    const [signPostScale, setSignPostScale] = useState('0.75')
     const [shouldAnimate, setShouldAnimate] = useState(true)
+    const [shouldAnimateSign, setShouldAnimateSign] = useState(true)
 
     const [ref, percentage] = useScrollPercentage({
         /* Optional options */
@@ -36,6 +39,38 @@ export function ImageWithContent(props) {
     const styles = useSpring({
         marginLeft: left,
     })
+
+    const determineSign = (percentage) => {
+        if (shouldAnimateSign) {
+            if(percentage <= 35) {
+                setBottom(`-${35 - percentage}rem`)
+                //setZoom(percentage)
+            } else {
+                setBottom('0rem')
+                setSignPostScale('1')
+                setShouldAnimateSign(false)
+            }
+        } else {
+            setBottom('0rem')
+            //setZoom('1')
+        }
+    }
+
+    const signPost = useSpringRef()
+    const stylesSign = useSpring({
+        bottom: bottom,
+        //transform: `scale(${zoom})`,
+        position: 'relative',
+        ref: signPost
+    })
+
+    const signPostScaleRef = useSpringRef()
+    const stylesSignScale = useSpring({
+        transform: `scale(${signPostScale})`,
+        ref: signPostScaleRef
+    })
+
+    useChain([signPost, signPostScaleRef])
 
     return(
 
@@ -67,7 +102,23 @@ export function ImageWithContent(props) {
                     {/* Right */}
                     <div className="col-span-12 lg:col-span-6 hidden lg:flex lg:block justify-center">
                         <div className="max-w-xs mx-auto lg:max-w-full">
-                            <img src={props.data.rightImage.src} alt={props.data.rightImage.alt} />
+                            {/* Sign Post Animation */}
+                            <ScrollPercentage
+                                as="div"
+                                onChange={(percentage, entry) => determineSign(percentage.toPrecision(2) * 100)}
+                            >
+                                <animated.div style={stylesSign}>
+                                    <animated.div style={stylesSignScale}>
+                                        <a
+                                            href="#"
+                                            className="block transition duration-300 ease-in-out transform hover:rotate-3 cursor pointer relative"
+                                        >
+                                            <img src={props.data.rightImage.src} alt={props.data.rightImage.alt} />
+                                        </a>
+                                    </animated.div>
+                                </animated.div>
+                            </ScrollPercentage>
+                            {/* End Sign Post Animation */}
                         </div>
                     </div>
                     {/* Absolute Div */}
