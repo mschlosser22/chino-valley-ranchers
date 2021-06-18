@@ -1,14 +1,31 @@
 import Image from 'next/image'
+import { useRef } from 'react'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 
 export function FeedVideo(props) {
+
+    const parallax = useRef(null)
 
     return(
         <>
         <div className="w-full relative -mt-12 -mb-12 z-20 pb-24 bg-cover bg-no-repeat" style={{ backgroundImage: `url('/images/dirt-bg.png')`}}>
-            <div className="w-full h-screen absolute z-20 bg-cover bg-no-repeat" style={{ backgroundImage: `url('/images/chicken-feet.png')`}}></div>
+            <Parallax ref={parallax} pages={1}>
+
+                <ParallaxLayer
+                    offset={0}
+                    speed={-10}
+                    factor={1}
+                    className="z-0"
+                    style={{
+                        backgroundAttachment: 'fixed',
+                      backgroundImage: `url('/images/chicken-feet.png')`
+                    }}
+                />
+
+            </Parallax>
             <div className="max-w-5xl mx-auto pt-12 pb-24 lg:pt-28 relative">
 
                 <div className="grid grid-cols-12 relative z-30">
