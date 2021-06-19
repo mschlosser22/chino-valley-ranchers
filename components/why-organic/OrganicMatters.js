@@ -4,7 +4,7 @@ import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inlin
 export function OrganicMatters() {
     return (
         <div>
-            <div className="relative -mt-12 pt-36 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/bg-gray-stripes.jpg')` }}>
+            <div className="relative -mt-12 pt-36 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/bg-gray-stripes-alt.png')` }}>
                 <div className="max-w-5xl mx-auto">
                     <div className="grid grid-cols-12">
                         <div className="lg:col-span-8 col-span-12">

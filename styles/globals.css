@@ -83,8 +83,8 @@
     }
 }
 
-.hero-component {
-
+#destini{
+    padding-top: 12rem;
 }
 
 @tailwind utilities;

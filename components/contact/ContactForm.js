@@ -9,16 +9,16 @@ export function ContactForm(props) {
 
                 <div className="grid grid-cols-12 relative">
 
-                    <div className="col-span-12 pb-12">
+                    <div className="col-span-12 pb-12 px-8 lg:px-0">
 
                         {/* Address */}
                         {props.address.map( (item, index) => (
-                            <p key={index} className="text-chinoblue font-ultra text-xl lg:text-4xl text-center">{item}</p>
+                            <p key={index} className="text-chinoblue font-ultra text-xl lg:text-4xl text-center break-words lg:break-normal">{item}</p>
                         ))}
 
                     </div>
 
-                    <div className="col-span-12 pb-12 grid grid-cols-12">
+                    <div className="col-span-12 pb-12 grid grid-cols-12 px-8 lg:px-0">
 
                         {/* Form */}
                         <form

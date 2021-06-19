@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Script from 'next/script'
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
 import { useForm, usePlugin, useCMS } from 'tinacms'
 import { InlineForm, InlineBlocks } from 'react-tinacms-inline'
@@ -21,7 +22,6 @@ export default function StoreLocator({ file, isPreview}) {
       </Head>
 
       <Nav />
-      <div className="h-24 w-full"></div>
 
     </div>
     <Footer />

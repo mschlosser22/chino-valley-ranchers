@@ -126,7 +126,9 @@
       "_template": "contentWithImageAlt",
       "heading": "Pasture Raised Liquid Whole Egg",
       "button": {
-        "link": "#",
+        "link": {
+          "url": "/store-locator"
+        },
         "text": "Find a Store Near You"
       },
       "image": {
