@@ -4,19 +4,30 @@ import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inlin
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
+import { Spring, animated } from 'react-spring'
+import { useInView } from 'react-intersection-observer'
 
 export function FeedVideo(props) {
 
+    const { ref, inView, entry } = useInView({
+        threshold: 0,
+    });
+
     const parallax = useRef(null)
+
+    const handleAsyncTo = async (next, cancel) => {
+        await next({ opacity: 1, color: '#ffaaee' })
+        await next({ opacity: 0, color: 'rgb(14,26,19)' })
+    }
 
     return(
         <>
-        <div className="w-full relative -mt-12 -mb-12 z-20 pb-24 bg-cover bg-no-repeat" style={{ backgroundImage: `url('/images/dirt-bg.png')`}}>
+        <div className="w-full relative -mt-16 -mb-12 z-10 pb-24 bg-cover bg-no-repeat bg-fixed" style={{ backgroundImage: `url('/images/dirt-bg.png')`}}>
             <Parallax ref={parallax} pages={1}>
 
                 <ParallaxLayer
                     offset={0}
-                    speed={-10}
+                    speed={10}
                     factor={1}
                     className="z-0"
                     style={{
@@ -46,7 +57,7 @@ export function FeedVideo(props) {
                     {/* Content */}
                     <div className="col-span-12 relative lg:-mt-6">
                         <div className="max-w-xl mx-auto">
-                            <div className="bg-cover bg-no-repeat px-8 pt-8 pb-12 text-center flex items-center text-xl leading-body lg:text-3xl lg:leading-body text-white font-lato font-bold tracking-wide" style={{ backgroundImage: `url('/images/content-bg.png')`}}>
+                            <div ref={ref} className="bg-cover bg-no-repeat px-8 pt-8 pb-12 text-center flex items-center text-xl leading-body lg:text-3xl lg:leading-body text-white font-lato font-bold tracking-wide" style={{ backgroundImage: `url('/images/content-bg.png')`}}>
                                 <InlineTextarea name="content" />
                             </div>
                         </div>
@@ -55,7 +66,23 @@ export function FeedVideo(props) {
 
                 {/* Image */}
                 <div className="hidden xl:block xl:absolute -right-32 bottom-24 2xl:-right-52 2xl:bottom-48 z-40">
-                    <img src={props.image.src} alt={props.image.alt} />
+                    {inView}
+                    <Spring
+                        style="perspective: 400px"
+                        config={{
+                            mass: 1, tension: 120, friction: 14
+                        }}
+                        from={{ transform: `rotateZ(0deg)` }}
+                        to={[
+                            //{ transform: `rotateZ(-15deg)` },
+                            { transform: `rotateZ(15deg)` },
+                            { transform: `rotateZ(0deg)` }
+                        ]}
+                    >
+                        {styles => (
+                            <animated.div style={styles}><img src={props.image.src} alt={props.image.alt} /></animated.div>
+                        )}
+                    </Spring>
                 </div>
             </div>
         </div>

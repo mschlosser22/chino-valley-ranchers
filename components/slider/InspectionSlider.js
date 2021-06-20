@@ -14,7 +14,7 @@ export function InspectionSlider(props) {
 
     return(
         <>
-        <div className="relative bg-cover bg-no-repeat -mt-24 z-0 pb-12 lg:pb-36" style={{ backgroundImage: `url('/images/grass-bg.jpg')`}}>
+        <div className="relative bg-cover bg-no-repeat -mt-24 z-20 pb-12 lg:pb-36" style={{ backgroundImage: `url('/images/grass-bg.png')`}}>
             <div className="max-w-7xl mx-auto relative">
                 <Carousel className="absolute -top-0" responsive={responsive} additionalTransfrom={0} arrows={false} infinite renderDotsOutside showDots slidesToSlide={1} swipeable>
                     {props.slides.map( (slide, index) => (

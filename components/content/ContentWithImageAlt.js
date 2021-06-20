@@ -3,6 +3,8 @@ import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, 
 
 import { Button } from '../button/Button'
 import { Paragraph } from './paragraph/Paragraph'
+import { Spring, animated } from 'react-spring'
+import { ScrollPercentage } from 'react-scroll-percentage'
 
 export function ContentWithImageAlt(props) {
 
@@ -31,9 +33,27 @@ export function ContentWithImageAlt(props) {
                             />
                         </div>
                         {/* Callout Image */}
-                        <div className="relative sm:absolute sm:top-1/2 md:-top-24 sm:right-0 flex justify-center sm:block pt-12 sm:pt-0 px-10 lg:px-0">
-                            <img src={props.data.calloutImage.src} alt={props.data.calloutImage.alt} />
-                        </div>
+                        <ScrollPercentage>
+                            {({ percentage, ref, entry }) => (
+                                <div ref={ref} className="relative sm:absolute sm:top-1/2 md:-top-24 sm:right-0 flex justify-center sm:block pt-12 sm:pt-0 px-10 lg:px-0">
+                                    <Spring
+                                        style="perspective: 400px"
+                                        config={{
+                                            mass: 1, tension: 210, friction: 20
+                                        }}
+                                        from={{ transform: `rotateZ(-0deg)` }}
+                                        to={[
+                                            { transform: `rotateZ(${(percentage.toPrecision(2)) * 25}deg)` }
+                                        ]}
+                                    >
+                                        {styles => (
+                                            <animated.div style={styles}><img src={props.data.calloutImage.src} alt={props.data.calloutImage.alt} /></animated.div>
+                                        )}
+                                    </Spring>
+                                </div>
+
+                            )}
+                        </ScrollPercentage>
 
                     </div>
 
