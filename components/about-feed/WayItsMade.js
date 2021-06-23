@@ -4,7 +4,7 @@ import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inlin
 export function WayItsMade() {
     return (
     <div>
-        <div className="relative lg:pt-56 pt-36 -mt-48 pb-28  bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}>
+        <div className="relative lg:pt-56 pt-36 -mt-56 pb-28 bg-repeat-y bg-cover" style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}>
             <div className="max-w-5xl mx-auto">
                 <div className="grid grid-cols-12 lg:gap-8 pt-20 md:mx-auto px-8">
                     <div className="md:col-span-5 col-span-12">
@@ -26,7 +26,7 @@ export function WayItsMade() {
                         <h1 className="text-2xl md:text-4xl text-chinored uppercase font-ultra tracking-wide">Organic<br />Omega-3:</h1>
                     </div>
                     <div className="lg:col-span-7 col-span-12 lg:my-0 my-6">
-                        <p className="text-black lg:text-2xl font-lato font-medium text-xl">Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA), which has a positive effect on cardiovascular health.</p> 
+                        <p className="text-black lg:text-2xl font-lato font-medium text-xl">Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA), which has a positive effect on cardiovascular health.</p>
                     </div>
                     <hr className="solid col-span-12 border-chinodarkgray" />
 
@@ -34,7 +34,7 @@ export function WayItsMade() {
                         <h1 className="text-2xl md:text-4xl text-chinored uppercase font-ultra tracking-wide">Omega-3 <br />Soy-Free:</h1>
                     </div>
                     <div className="lg:col-span-7 col-span-12 lg:my-0 my-6">
-                        <p className="text-black lg:text-2xl font-lato font-medium text-xl">Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seeds.</p> 
+                        <p className="text-black lg:text-2xl font-lato font-medium text-xl">Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seeds.</p>
                     </div>
 
                     <hr className="solid border-chinodarkgray col-span-12" />
@@ -43,7 +43,7 @@ export function WayItsMade() {
                         <h1 className="text-2xl md:text-4xl text-chinored uppercase font-ultra tracking-wide">Veg-a-Fed:</h1>
                     </div>
                     <div className="lg:col-span-7 col-span-12 lg:my-0 my-6">
-                        <p className="text-black lg:text-2xl font-lato font-medium text-xl">Our Veg-A-Fed eggs come from hens raised in free roaming environments and fed a pure vegetarian diet consisting of premium grains, seeds, and meal.</p> 
+                        <p className="text-black lg:text-2xl font-lato font-medium text-xl">Our Veg-A-Fed eggs come from hens raised in free roaming environments and fed a pure vegetarian diet consisting of premium grains, seeds, and meal.</p>
                     </div>
                 </div>
                 <div className="text-center pt-16">
@@ -51,7 +51,7 @@ export function WayItsMade() {
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
     )
 }
 

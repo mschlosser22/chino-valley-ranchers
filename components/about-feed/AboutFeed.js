@@ -2,17 +2,19 @@ import { DiffieHellman } from 'crypto'
 import Image from 'next/image'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
 
+import { Spring, animated, interpolate } from 'react-spring'
+import { Controller, Scene } from 'react-scrollmagic'
+import { scale } from 'tailwindcss/defaultTheme'
+
 export function AboutFeed(props) {
 
-    //const {content} = props
-   
-
     return(
+    <Controller>
      <div>
-        <div className="relative pt-8 lg:-mt-12 -mt-32 bg-no-repeat bg-auto z-40" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
-          <div className="relative bg-repeat-y pb-44 mt-4 z-30" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
+        <div className="relative pt-8 lg:-mt-12 -mt-32 bg-no-repeat bg-contain bg-auto z-40" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
+          <div className="relative bg-repeat-y pb-44 mt-4 z-30 bg-contain" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="max-w-6xl mx-auto">
-                
+
                 {/* Page Heading */}
                 <div className="text-center z-40 pt-20 pb-8 lg:py-24 max-w-3xl mx-auto">
                     <h1 className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 lg:px-0 px-8"><InlineTextarea name="heading" /></h1>
@@ -22,22 +24,66 @@ export function AboutFeed(props) {
                            <div className="max-w-5xl mx-auto">
                                <div className="grid grid-cols-12 gap-8 lg:ml-6 lg:-mb-16">
                                    <div className="md:col-span-5 col-span-12 mx-auto relative">
-                                        <img src="/images/youarewhatyoueat.png" className="lg:pb-6 w-48 md:w-full" />
+                                   <Scene duration={400} triggerElement="#eat">
+                                        {(progress, event) => (
+                                            <Spring
+                                            style="perspective: 400px"
+                                            config={{
+                                                mass: 1, tension: 120, friction: 14
+                                            }}
+                                            from={
+                                                { opacity: '0', transform: 'scale(0.8)' }
+                                            }
+                                            to={[
+                                                { opacity: `${progress}`, transform: `scale(${(progress + 9) / 10})` }
+                                            ]}
+                                        >
+                                            {styles => (
+
+                                                <animated.div style={styles}>
+                                                    <img id="eat" src="/images/youarewhatyoueat.png" className="lg:pb-6 w-48 md:w-full" />
+                                                </animated.div>
+                                            )}
+                                        </Spring>
+                                        )}
+                                    </Scene>
                                     </div>
                                     <div className="md:col-span-7 col-span-12">
                                         <img src="/images/orangeSeperator.jpg" className="mb-12 mt-4 col-span-12 lg:px-0 px-8" />
-                                        <p className="text-black lg:text-2xl lg:px-8 px-8 font-lato font-medium text-xl leading-relaxed">For more than six decades, we’ve been producing high quality eggs and that’s how we know that the difference is in the feed. As they say, “you are what you eat,” and the same rules apply to our chickens.</p> 
+                                        <p className="text-black lg:text-2xl lg:px-8 px-8 font-lato font-medium text-xl leading-relaxed">For more than six decades, we’ve been producing high quality eggs and that’s how we know that the difference is in the feed. As they say, “you are what you eat,” and the same rules apply to our chickens.</p>
                                         <img src="/images/orangeSeperator.jpg" className="mt-12 col-span-12 lg:px-0 px-8" />
                                     </div>
                                 </div>
                                 <div className="flex justify-end">
-                                    <img src="/images/seeing-believingArrow.png" className="pb-4 pr-24 lg:w-1/3 w-3/5 mt-8 lg:mt-0" />
+                                    <Scene duration={400} triggerElement="#eat">
+                                        {(progress, event) => (
+                                            <Spring
+                                            style="perspective: 400px"
+                                            config={{
+                                                mass: 1, tension: 120, friction: 14
+                                            }}
+                                            from={
+                                                { transform: 'rotate(0deg)' }
+                                            }
+                                            to={[
+                                                { transform: `rotate(-${progress * 5}deg)` }
+                                            ]}
+                                        >
+                                            {styles => (
+
+                                                <animated.div style={styles} className="pb-4 pr-24 lg:w-1/3 w-3/5 mt-8 lg:mt-0">
+                                                    <img src="/images/seeing-believingArrow.png" />
+                                                </animated.div>
+                                            )}
+                                        </Spring>
+                                        )}
+                                    </Scene>
                                 </div>
                                 <img src="/images/aboutFeedVideo.jpg" alt="About Feed Video" className="md:mb-12 mb-8" />
                             </div>
                             <div className="z-50 pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
                                 <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide">
-                                    Chino Valley Ranchers owns and operates 
+                                    Chino Valley Ranchers owns and operates
                                     <br />
                                     <span className="bg-chinodarkorange lg:px-2 mx-0 mx-8 leading-snug">Southern California’s only certified organic feed mill for poultry</span>
                                     <br />
@@ -49,7 +95,7 @@ export function AboutFeed(props) {
             </div>
         </div>
      </div>
-    
+    </Controller>
     )
 
 }

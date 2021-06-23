@@ -4,8 +4,8 @@ import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inlin
 export function OrganicFeed() {
     return (
         <div>
-            <div className="relative lg:pt-16 lg:-mt-11 -mt-24 pt-20 bg-no-repeat bg-auto" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
-                <div className="relative bg-repeat-y pb-32 mt-4 bg-no-repeat bg-auto" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
+            <div className="relative lg:pt-16 lg:-mt-11 -mt-24 pt-20 bg-no-repeat bg-contain" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
+                <div className="relative bg-repeat-y pb-32 mt-4 bg-contain" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center lg:pt-20 pb-8  max-w-5xl mx-auto px-8 lg:px-0">
                             <h1 className="text-2xl lg:text-5xl text-chinored font-ultra uppercase tracking-wide lg:leading-tight lg:mb-20 mb-6 lg:px-12">Our feed formulations never contain hormones, animal proteins, steroids, or antibiotics.</h1>
@@ -37,7 +37,7 @@ export function OrganicFeed() {
             </div>
         </div>
     )
-} 
+}
 
 export const organicFeedBlock = {
     Component: ({ index, data }) => (
