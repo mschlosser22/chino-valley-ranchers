@@ -21,7 +21,7 @@ export function DifferenceFeed() {
             </div>
 
             <div>
-              <Scene duration={400} triggerElement="#difference" indicators={true}>
+              <Scene duration={400} triggerElement="#difference">
                 {(progress, event) => (
                     <Spring
                         config={{

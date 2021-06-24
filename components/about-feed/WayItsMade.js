@@ -1,20 +1,41 @@
 import Image from 'next/image'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
+import { Spring, animated, interpolate } from 'react-spring'
+import { Controller, Scene } from 'react-scrollmagic'
 
 export function WayItsMade() {
     return (
+    <Controller>
     <div>
         <div className="relative lg:pt-56 pt-36 -mt-56 pb-28 bg-repeat-y bg-cover" style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}>
             <div className="max-w-5xl mx-auto">
                 <div className="grid grid-cols-12 lg:gap-8 pt-20 md:mx-auto px-8">
                     <div className="md:col-span-5 col-span-12">
-                        <h1 className="text-2xl lg:text-5xl text-chinoblue lg:leading-tight font-ultra uppercase tracking-wide mb-6">Eggs made the way you want</h1>
+                        <h1 id="eggsMade" className="text-2xl lg:text-5xl text-chinoblue lg:leading-tight font-ultra uppercase tracking-wide mb-6">Eggs made the way you want</h1>
                     </div>
                     <div className="md:col-span-7 col-span-12">
                         <p className=" text-black lg:leading-normal lg:text-2xl font-lato font-medium text-xl">What we put into our feed changes the composition of our eggs. Chickens that eat a soy-free diet can produce soy-free eggs. We can also produce higher omega-3 fatty acids in our produce by changing up the custom feed. The possibilities are virtually limitless!</p>
                     </div>
                     <div className="md:col-span-5 col-span-12 lg:-mt-6 my-4 lg:my-0 mx-auto">
-                        <img src="/images/bowl-of-eggs.png" className=""></img>
+                    <Scene duration={400} triggerElement="#eggsMade">
+                                        {(progress, event) => (
+                                            <Spring
+                                            style="perspective: 400px"
+                                            config={{
+                                                mass: 1, tension: 120, friction: 14
+                                            }}
+                                            from={{ transform: 'rotate(-10deg) scale(0.8)', }}
+                                            to={{ transform: `rotate(${(progress * 10) -10}deg) scale(${(progress + 9) / 10})` }}
+                                        >
+                                            {styles => (
+
+                                                <animated.div style={styles}>
+                                                    <img src="/images/bowl-of-eggs.png"></img>
+                                                </animated.div>
+                                            )}
+                                        </Spring>
+                                        )}
+                                    </Scene>
                     </div>
                     <div className="md:col-span-7 col-span-12">
                         <p className="text-black lg:leading-normal lg:text-2xl font-lato font-medium text-xl">We have an Avian Nutritionist on staff to formulate grain combinations into the most nutritious diet for our chickens, and to optimize precision and quality for the variety of specialty eggs we produce. This important process is based on years of company research evaluating how different feed formulations affect the nutritional properties of eggs.</p>
@@ -52,6 +73,7 @@ export function WayItsMade() {
             </div>
         </div>
     </div>
+    </Controller>
     )
 }
 
