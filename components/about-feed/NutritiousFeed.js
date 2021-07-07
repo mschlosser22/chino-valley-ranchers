@@ -8,7 +8,7 @@ export function NutritiousFeed() {
         <div>
             <div className="relative lg:pt-40 lg:-mt-12 z-40 -mt-64 pt-24 pb-32  bg-cover" style={{ backgroundImage: `url('/images/dirt-alt.png')` }}>
             <div className=" pt-20 lg:pt-24 lg:mb-28 max-w-5xl mx-auto px-8 lg:px-0 lg:flex block justify-between">
-                <h1 className="text-2xl lg:text-5xl text-chinoblue font-ultra uppercase tracking-wider lg:leading-tight lg:text-center mb-6">Using nutritious organic feed has many benefits, including</h1>
+                <h1 className="text-2xl lg:text-5xl text-chinoblue font-ultra uppercase tracking-wider lg:leading-tight lg:text-center mb-6">Using nutritious organic feed has many benefits, including:</h1>
                 <img src="/images/chicken.jpg" className="lg:-mt-40 lg:w-72 w-56 mx-auto"></img>
             </div>
             <div className="max-w-4xl mx-auto">

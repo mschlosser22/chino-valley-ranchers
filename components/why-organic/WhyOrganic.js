@@ -9,9 +9,9 @@ export function WhyOrganic(props) {
                     {/* Page Heading */}
                     <div className="lg:text-center text-left z-40 pt-20 pb-8 lg:py-24 max-w-5xl mx-auto">
                         <h1 className="text-3xl lg:text-6xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 mx-8 lg:mx-0"><InlineTextarea name="heading" /></h1>
-                        <p className="font-lato lg:text-2xl tracking-wide lg:mx-52 mx-8"><InlineTextarea name="subheading" /></p>
+                        <p className="font-lato lg:text-2xl tracking-wide lg:mx-52 mx-8 lg:text-left"><InlineTextarea name="subheading" /></p>
                     </div>
-                </div>             
+                </div>
         </div>
     </div>
     )

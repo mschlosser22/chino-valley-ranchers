@@ -68,7 +68,7 @@ export function WayItsMade() {
                     </div>
                 </div>
                 <div className="text-center pt-16">
-                    <a className="bg-chinored rounded-md font-din tracking-wider cursor-pointer mx-auto lg:text-2xl text-xl uppercase text-white px-6 py-2">View our products</a>
+                    <a href="/products" className="bg-chinored rounded-md font-din tracking-wider cursor-pointer mx-auto lg:text-2xl text-xl uppercase text-white px-6 py-2">View our products</a>
                 </div>
             </div>
         </div>

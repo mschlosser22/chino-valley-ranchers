@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, InlineGroup } from 'react-tinacms-inline'
 
+import { Button } from '../button/Button'
+
 export function RecipesAndVideos(props) {
 
     return(
@@ -31,6 +33,9 @@ export function RecipesAndVideos(props) {
                             <h5 className="font-lato lg:text-3xl tracking-wide text-left">{video.title}</h5>
                         </div>
                     ))}
+                </div>
+                <div className="flex lg:justify-center lg:block">
+                    <Button button={props.data.button} classes={`mt-12`} />
                 </div>
             </div>
         </div>

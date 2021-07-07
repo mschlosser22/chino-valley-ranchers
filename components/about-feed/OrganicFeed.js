@@ -78,18 +78,18 @@ export function OrganicFeed() {
                             </div>
                             <div className="lg:col-span-9 sm:col-span-8 col-span-12">
                                 <h3 className="lg:text-3xl text-xl lg:text-center tracking-wider font-ultra pb-6 pt-4 lg:pt-0">Better Feed Creates Better Eggs</h3>
-                                <p className="lg:text-center text-black lg:text-2xl font-lato font-medium text-xl">The best way to control quality of our eggs is to give our chickens the healthiest life possible. Aside from providing cage free environments, we mill our own feed onsite. As a result, we have healthy chickens that produce eggs with the highest nutritional value for our customers.</p>
+                                <p className="lg:text-left text-black lg:text-2xl font-lato font-medium text-xl">The best way to control quality of our eggs is to give our chickens the healthiest life possible. Aside from providing cage free environments, we mill our own feed onsite. As a result, we have healthy chickens that produce eggs with the highest nutritional value for our customers.</p>
                             </div>
                             <div className="lg:col-span-9 sm:col-span-8 col-span-12 pt-12 lg:mx-12">
                                 <h3 className="lg:text-3xl text-xl lg:text-center tracking-wider font-ultra pb-6">Certified Organic Means Quality</h3>
-                                <p className="lg:text-center text-black lg:text-2xl font-lato font-medium text-xl">We are certified organic by CCOF (California Certified Organic Farmers). All areas of production, from the feed mill to the processing plant, are inspected to ensure our compliance with the organic standards.</p>
+                                <p className="lg:text-left text-black lg:text-2xl font-lato font-medium text-xl">We are certified organic by CCOF (California Certified Organic Farmers). All areas of production, from the feed mill to the processing plant, are inspected to ensure our compliance with the organic standards.</p>
                             </div>
                             <div className="lg:col-span-3 sm:col-span-4 col-span-12 lg:w-56 w-32 md:mx-0 mx-auto pt-4">
                                 <img src="/images/usdaOrganic.png" className=""></img>
                             </div>
                         </div>
-                        <div className="mt-12 text-center">
-                            <a class="bg-chinored rounded-md font-din tracking-wider cursor-pointer mx-auto lg:text-2xl text-xl uppercase text-white px-6 py-2">Find Out More</a>
+                        <div className="mt-12 mb-28 text-center">
+                            <a href="/why-organic" class="bg-chinored rounded-md font-din tracking-wider cursor-pointer mx-auto lg:text-2xl text-xl uppercase text-white px-6 py-2">Find Out More</a>
                         </div>
                     </div>
                 </div>

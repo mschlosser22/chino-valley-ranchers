@@ -61,7 +61,7 @@ export function FeedVideo(props) {
 
                     <div className="col-span-12 relative lg:-mt-6">
                         <div className="max-w-xl mx-auto">
-                            <div ref={ref} className="bg-cover bg-no-repeat px-8 pt-8 pb-12 text-center flex items-center text-xl leading-body lg:text-3xl lg:leading-body text-white font-lato font-bold tracking-wide" style={{ backgroundImage: `url('/images/content-bg.png')`}}>
+                            <div ref={ref} className="bg-cover bg-no-repeat px-8 pt-8 pb-12 text-left flex items-center text-xl leading-body lg:text-3xl lg:leading-body text-white font-lato font-bold tracking-wide" style={{ backgroundImage: `url('/images/content-bg.png')`}}>
                                 <InlineTextarea name="content" />
                             </div>
                         </div>

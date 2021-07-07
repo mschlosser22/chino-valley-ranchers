@@ -11,7 +11,7 @@ export function HeroVideo(props) {
 
         <header className="relative overflow-hidden lg:overflow-visible z-0 w-full min-h-[400px] lg:min-h-screen flex items-center" role="banner">
             <div className="absolute h-[400px] lg:h-screen w-full">
-                <video className="w-full h-screen absolute top-0 left-0 object-cover" src="https://css-tricks-post-videos.s3.us-east-1.amazonaws.com/Island%20-%204141.mp4" autoPlay loop playsInline muted></video>
+                <video className="w-full h-screen absolute top-0 left-0 object-cover" src={props.video.src} autoPlay loop playsInline muted></video>
             </div>
 
             <div className="max-w-7xl mx-auto z-40 text-center">

@@ -137,6 +137,17 @@ export function Nav(props) {
 
                         <div className="gap-2 hidden lg:flex lg:items-center">
 
+                        <a href="https://www.instagram.com/chinovalleyranchers/" className="cursor-pointer" target="_blank">
+                        <div className="h-[28px]">
+                            <Image
+                                src='/images/instagram.png'
+                                height={28}
+                                width={28}
+                                alt="Chino Valley Ranchers"
+                            />
+                        </div>
+                        </a>
+
                         <a href="https://www.youtube.com/channel/UCfpxQ8Bri4ZVNE__73DD36A" className="cursor-pointer" target="_blank">
                         <div className="h-[28px]">
                             <Image
@@ -167,16 +178,7 @@ export function Nav(props) {
                             />
                         </div>
                         </a>
-                        <a href="https://www.instagram.com/chinovalleyranchers/" className="cursor-pointer" target="_blank">
-                        <div className="h-[28px]">
-                            <Image
-                                src='/images/instagram.png'
-                                height={28}
-                                width={28}
-                                alt="Chino Valley Ranchers"
-                            />
-                        </div>
-                        </a>
+
                         </div>
 
                     </div>
