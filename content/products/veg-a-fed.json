@@ -40,7 +40,9 @@
           "alt": "Veg-A-Fed Nutrition Facts"
         },
         "button": {
-          "link": "#",
+          "link": {
+            "url": "/store-locator"
+          },
           "text": "Find a Store"
         },
         "icons": [
@@ -57,11 +59,11 @@
       {
         "_template": "sizeOptions",
         "heading": "Four Size Options",
-        "images": [ 
+        "images": [
           {
             "src": "/images/jumboVeg-A-Fed.png",
             "alt": "Veg A Fed Jumbo"
-          }, 
+          },
           {
             "src": "/images/extraLargeVeg-A-Fed.png",
             "alt": "Veg A Fed Extra Large"
@@ -113,7 +115,7 @@
       },
       {
         "_template": "moreProducts",
-        "heading": "More Organic Options"
+        "heading": "MORE DELICIOUS OPTIONS"
       }
     ]
 }

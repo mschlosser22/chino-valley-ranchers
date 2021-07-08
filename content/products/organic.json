@@ -40,7 +40,9 @@
           "alt": "Organic Egg Nutrition Facts"
         },
         "button": {
-          "link": "#",
+          "link": {
+            "url": "/store-locator"
+          },
           "text": "Find a Store"
         },
         "icons": [
@@ -65,7 +67,7 @@
           {
             "src": "/images/jumboOrganic.png",
             "alt": "Organic Jumbo"
-          }, 
+          },
           {
             "src": "/images/largeOrganic.png",
             "alt": "Organic Large"
@@ -117,7 +119,7 @@
       },
       {
         "_template": "moreProducts",
-        "heading": "More Organic Options"
+        "heading": "MORE DELICIOUS OPTIONS"
       }
     ]
 }

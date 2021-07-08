@@ -40,7 +40,9 @@
           "alt": "Humane Harvest Nutrition Facts"
         },
         "button": {
-          "link": "#",
+          "link": {
+            "url": "/store-locator"
+          },
           "text": "Find a Store"
         },
         "icons": [
@@ -57,11 +59,11 @@
       {
         "_template": "sizeOptions",
         "heading": "Three Size Options",
-        "images": [ 
+        "images": [
           {
             "src": "/images/humane-harvest.png",
             "alt": "Humane Harvest Large"
-          }, 
+          },
           {
             "src": "/images/mediumHumaneHarvest.png",
             "alt": "Humane Harvest Medium"
@@ -108,7 +110,7 @@
       },
       {
         "_template": "moreProducts",
-        "heading": "More Organic Options"
+        "heading": "MORE DELICIOUS OPTIONS"
       }
     ]
 }

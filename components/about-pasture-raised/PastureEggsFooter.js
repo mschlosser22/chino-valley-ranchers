@@ -12,12 +12,14 @@ export function PastureEggsFooter(props) {
                                 <p className="text-black lg:2xl text-xl lg:pb-24 lg:w-10/12 font-lato lg:text-left px-8 lg:px-0 lg:hidden block">Explore our entire family of egg products, all of which are produced by healthy and happy, free range hens.</p>
                                 <img src="/images/pastureArrow.png" className="lg:block hidden mx-auto"></img>
                             </div>
-                            
+
                         </div>
                         <div className="lg:col-span-6 col-span-12">
-                            <p className="text-black lg:2xl text-xl lg:pb-24 lg:w-10/12 mx-12 lg:mx-0 font-lato lg:text-left text-center lg:block hidden">Explore our entire family of egg products, all of which are produced by healthy and happy, free range hens.</p>
+                            <p className="text-black lg:2xl text-3xl lg:pb-24 lg:w-10/12 mx-12 lg:mx-0 font-lato lg:text-left text-center lg:block hidden">Explore our entire family of egg products, all of which are produced by healthy and happy, free range hens.</p>
                             <p className="text-xl lg:text-3xl text-chinoblue font-ultra tracking-wide px-8 lg:px-0 lg:hidden block pb-6">you're gonna love these eggs!</p>
-                            <img src="/images/pastureEggCarton.png" className="px-8 lg:px-0"></img>
+                            <a href="/products/pasture-raised">
+                                <img src="/images/pastureEggCarton.png" className="px-8 lg:px-0" />
+                            </a>
                         </div>
                     </div>
             </div>

@@ -39,7 +39,9 @@
           "alt": "Pasture Raised Egg Nutrition Facts"
         },
         "button": {
-          "link": "#",
+          "link": {
+            "url": "/store-locator"
+          },
           "text": "Find a Store"
         },
         "icons": [
@@ -56,11 +58,11 @@
       {
         "_template": "sizeOptions",
         "heading": "Three Size Options",
-        "images": [ 
+        "images": [
           {
             "src": "/images/largePastureRaised.png",
             "alt": "Pasture Raised Large"
-          }, 
+          },
           {
             "src": "/images/largeOrganicPastureRaised.png",
             "alt": "Pasture Raised Organic Large"
@@ -107,7 +109,7 @@
       },
       {
         "_template": "moreProducts",
-        "heading": "More Organic Options"
+        "heading": "MORE DELICIOUS OPTIONS"
       }
     ]
 }

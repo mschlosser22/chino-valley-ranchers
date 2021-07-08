@@ -40,7 +40,9 @@
           "alt": "Organic Omega-3 Soy Free Egg Nutrition Facts"
         },
         "button": {
-          "link": "#",
+          "link": {
+            "url": "/store-locator"
+          },
           "text": "Find a Store"
         },
         "icons": [
@@ -65,11 +67,11 @@
       {
         "_template": "sizeOptions",
         "heading": "Two Size Options",
-        "images": [ 
+        "images": [
           {
             "src": "/images/largeOmega3SoyFree.png",
             "alt": "Omega 3 Soy Free Large"
-          }, 
+          },
           {
             "src": "/images/6ctOmega3SoyFree.png",
             "alt": "Omega 3 Soy Free 6 count"
@@ -111,7 +113,7 @@
       },
       {
         "_template": "moreProducts",
-        "heading": "More Organic Options"
+        "heading": "MORE DELICIOUS OPTIONS"
       }
     ]
 }

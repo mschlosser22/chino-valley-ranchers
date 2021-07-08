@@ -40,7 +40,9 @@
           "alt": "Organic Omega-3 Egg Nutrition Facts"
         },
         "button": {
-          "link": "#",
+          "link": {
+            "url": "/store-locator"
+          },
           "text": "Find a Store"
         },
         "icons": [
@@ -65,11 +67,11 @@
       {
         "_template": "sizeOptions",
         "heading": "Two Size Options",
-        "images": [ 
+        "images": [
           {
             "src": "/images/largeOmega3.png",
             "alt": "Omega Jumbo"
-          }, 
+          },
           {
             "src": "/images/6ctOmega3.png",
             "alt": "Omega 6 count "
@@ -111,7 +113,7 @@
       },
       {
         "_template": "moreProducts",
-        "heading": "More Organic Options"
+        "heading": "MORE DELICIOUS OPTIONS"
       }
     ]
 }

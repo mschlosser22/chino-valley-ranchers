@@ -40,7 +40,9 @@
           "alt": "Nutri-Fresh Fertile Nutrition Facts"
         },
         "button": {
-          "link": "#",
+          "link": {
+            "url": "/store-locator"
+          },
           "text": "Find a Store"
         },
         "icons": [
@@ -61,11 +63,11 @@
       {
         "_template": "sizeOptions",
         "heading": "Three Size Options",
-        "images": [ 
+        "images": [
           {
             "src": "/images/extraLargeNutriFresh.png",
             "alt": "Nutri Fresh Fertile Extra Large"
-          }, 
+          },
           {
             "src": "/images/darkYolkNutriFresh.png",
             "alt": "Nutri Fresh Fertile Dark Yolk"
@@ -112,7 +114,7 @@
       },
       {
         "_template": "moreProducts",
-        "heading": "More Organic Options"
+        "heading": "MORE DELICIOUS OPTIONS"
       }
     ]
 }
