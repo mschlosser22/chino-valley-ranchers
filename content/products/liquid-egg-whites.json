@@ -64,8 +64,12 @@
         "heading": "Two Options",
         "images": [
           {
-            "src": "/images/organic-sizes.png",
+            "src": "/images/liquidEggWhites.png",
             "alt": "Organic Eggs Size Options"
+          },
+          {
+            "src": "/images/liquidEggWhitesCageFree.png",
+            "alt": "Cage Free"
           }
         ],
         "sizes": [

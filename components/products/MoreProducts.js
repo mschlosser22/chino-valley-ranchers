@@ -16,7 +16,9 @@ export function MoreProducts(props) {
                 alt: 'Organic Eggs'
             },
             button: {
-                link: '/products/organic-omega-3',
+                link: {
+                    url: '/products/organic-omega-3'
+                },
                 text: 'Learn More'
             }
         },
@@ -28,7 +30,9 @@ export function MoreProducts(props) {
                 alt: 'Organic Eggs'
             },
             button: {
-                link: '/products/organic-omega-3-soy-free',
+                link: {
+                    url: '/products/organic-omega-3-soy-free'
+                },
                 text: 'Learn More'
             }
         }

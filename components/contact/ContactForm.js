@@ -15,6 +15,7 @@ export function ContactForm(props) {
                         {props.address.map( (item, index) => (
                             <p key={index} className="text-chinoblue font-ultra text-xl lg:text-4xl text-center break-words lg:break-normal">{item}</p>
                         ))}
+                        <p className="text-chinoblue font-ultra text-xl lg:text-4xl text-center break-words lg:break-normal"><a href="mailto:info@chinovalleyranchers.com">info@chinovalleyranchers.com</a></p>
 
                     </div>
 

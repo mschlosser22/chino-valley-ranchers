@@ -92,7 +92,7 @@ export function Articles(props) {
                                     </a>
                                     <div className="sm:flex block px-8 lg:p-0">
                                         <p className="text-md lg:text-xl text-chinogray pr-2">
-                                            {article.date} - {article.time},
+                                            {article.date},
                                         </p>
                                         <p className="text-md lg:text-xl text-chinogray">
                                             by {article.author}
@@ -100,6 +100,7 @@ export function Articles(props) {
                                     </div>
                                 </div>
                                 <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
+                                <a href={`/news/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>
                             </div>
                             <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
                         </div>
@@ -127,7 +128,7 @@ export function Articles(props) {
                                         </a>
                                         <div className="sm:flex block px-8 lg:p-0">
                                             <p className="text-md lg:text-xl text-chinogray lg:pr-2">
-                                            {article.date} - {article.time},
+                                            {article.date},
                                             </p>
                                             <p className="text-md lg:text-xl text-chinogray">
                                             by {article.author}
@@ -167,7 +168,7 @@ export function Articles(props) {
                                         </h1>
                                         <div className="sm:flex block px-8 lg:p-0">
                                             <p className="text-md lg:text-xl text-chinogray pr-2">
-                                                {article.date} - {article.time},
+                                                {article.date},
                                             </p>
                                             <p className="text-md lg:text-xl text-chinogray">
                                                 by {article.author}
@@ -175,6 +176,7 @@ export function Articles(props) {
                                         </div>
                                     </div>
                                     <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
+                                    <a href={`/news/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>
                                 </div>
                                 <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
                             </div>
@@ -200,7 +202,7 @@ export function Articles(props) {
                                             </h1>
                                             <div className="sm:flex block px-8 lg:p-0">
                                                 <p className="text-md lg:text-xl text-chinogray lg:pr-2">
-                                                {article.date} - {article.time},
+                                                {article.date},
                                                 </p>
                                                 <p className="text-md lg:text-xl text-chinogray">
                                                 by {article.author}

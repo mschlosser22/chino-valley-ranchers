@@ -56,13 +56,13 @@ export function EggTermDef(props) {
                         <Disclosure as="div" key={term.title} className="pt-6">
                             {({ open }) => (
                             <>
-                                <dt className="lg:text-center max-w-3xl mx-auto px-8 lg:px-0">
+                                <dt className="max-w-3xl mx-auto px-8 lg:px-0">
                                     <Disclosure.Button>
-                                        <h3 className="font-ultra text-white text-2xl pb-6 uppercase tracking-wider">{term.title}</h3>
+                                        <h3 className="font-ultra text-white text-2xl pb-6 uppercase tracking-wider lg:text-left">{term.title}</h3>
                                     </Disclosure.Button>
                                 </dt>
                                 <Disclosure.Panel as="dd">
-                                    <p className="font-lato lg:text-xl tracking-wide leading-normal text-white font-bold pb-10 px-8 lg:px-16">{term.description}</p>
+                                    <p className="font-lato lg:text-xl tracking-wide leading-normal text-white font-bold pb-10 px-8 lg:px-16 lg:text-left">{term.description}</p>
                                 </Disclosure.Panel>
                                 <img src="/images/orangeSeperator1.jpg" className=""></img>
                             </>

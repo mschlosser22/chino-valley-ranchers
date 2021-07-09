@@ -7,9 +7,9 @@
         },
         {
             "_template": "featuredArticle",
-            "heading": "All the latest news",
+            "heading": "All the latest",
             "image": "/images/bg-paper-edge.png",
-            "subheading": "Ideas, updates, informations and more, served up fresh!"
+            "subheading": "News, updates and more — served up fresh!"
         }
     ]
 }
