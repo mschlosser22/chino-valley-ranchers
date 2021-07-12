@@ -9,6 +9,9 @@
             "_template": "aboutFeed",
             "heading": "It All Starts With Our Feed",
             "image": "/images/bg-paper-edge.png",
+            "video": {
+                "src": "https://www.youtube.com/embed/a2HTZADKVYA"
+            },
             "subheading": "Our commitment to organic goes well beyond standard. We strive to provide you with the highest quality eggs. That’s why we control every step of the process. It all starts with our feed."
         },
         {

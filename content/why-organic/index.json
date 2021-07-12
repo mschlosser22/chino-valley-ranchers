@@ -16,7 +16,10 @@
             "subheading": "Produce the freshest and highest quality eggs at the best price, treat all our hens with kindness and respect through personalized care, and put back into the earth what we take out of it."
         },
         {
-            "_template": "ourMission"
+            "_template": "ourMission",
+            "video": {
+                "src": "https://www.youtube.com/embed/9_FQFLd1lok"
+            }
         },
         {
             "_template": "organicMatters"

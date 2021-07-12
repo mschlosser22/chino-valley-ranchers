@@ -79,7 +79,13 @@ export function AboutFeed(props) {
                                         )}
                                     </Scene>
                                 </div>
-                                <img src="/images/aboutFeedVideo.jpg" alt="About Feed Video" className="md:mb-12 mb-8" />
+                                <div style={{ backgroundImage: `url('/images/blue-board.jpg')` }} className="bg-cover w-full">
+                                    <div className="p-8">
+                                        <div className="aspect-w-16 aspect-h-9">
+                                            <iframe src={props.video.src} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div className="z-50 pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
                                 <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide">

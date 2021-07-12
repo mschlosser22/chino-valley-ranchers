@@ -4,7 +4,7 @@ import { ScrollPercentage } from 'react-scroll-percentage'
 import { useInView } from 'react-intersection-observer'
 import { Controller, Scene } from 'react-scrollmagic'
 
-export function OurMission() {
+export function OurMission(props) {
 
     return (
         <Controller>
@@ -77,7 +77,13 @@ export function OurMission() {
                             </Spring>
                         )}
                     </Scene>
-                    <img src="/images/aboutFeedVideo.jpg" />
+                    <div style={{ backgroundImage: `url('/images/blue-board.jpg')` }} className="bg-cover w-full">
+                        <div className="p-8">
+                            <div className="aspect-w-16 aspect-h-9">
+                                <iframe src={props.video.src} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <Scene duration={400} triggerElement="#chickens">
                 {(progress, event) => (
