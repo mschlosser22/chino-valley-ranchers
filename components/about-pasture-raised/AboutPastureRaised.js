@@ -2,13 +2,39 @@ import Image from 'next/image'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
 import { WhatItTakes } from '../../components/about-pasture-raised/WhatItTakes'
 
+import { Spring, animated, interpolate } from 'react-spring'
+import { Controller, Scene } from 'react-scrollmagic'
+
 
 export function AboutPastureRaised(props) {
 
-    //const {content} = props
+    const scrollPositionOverHalf = (progress) => {
+        if((progress * 100) >= 25) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    const scrollPositionOverHalfAlt = (progress) => {
+        if((progress * 100) >= 75) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    const scrollPositionEven = (progress) => {
+        if( (Math.ceil(progress * 10)) % 2 == 0 ) {
+            return false
+        } else {
+            return true
+        }
+    }
 
 
     return(
+    <Controller>
      <div>
         <div className="relative pt-8 lg:-mt-12 -mt-32 bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
           <div className="relative bg-repeat-y pb-44 mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
@@ -22,9 +48,33 @@ export function AboutPastureRaised(props) {
 
                            <div className="max-w-5xl mx-auto">
                                <div className="grid grid-cols-12 gap-8">
-                                   <div className="md:col-span-4 col-span-12 mx-auto lg:mx-0 relative">
-                                        <img src="/images/darnGoodEgg-Img.png" alt="" className="mb-12 w-48 md:w-full"></img>
-                                    </div>
+
+                                <Scene duration={400} triggerElement="#chickens">
+                                        {(progress, event) => (
+                                            <>
+                                            <Spring
+                                                style="perspective: 400px"
+                                                config={{
+                                                    mass: 1, tension: 80, friction: 14
+                                                }}
+                                                from={
+                                                    { transform: 'rotate(-5deg) scale(0.9)', }
+                                                }
+                                                to={[
+                                                    { transform: `rotate(${(progress * 5) - 5}deg) scale(${(progress + 9) / 10})` }
+                                                ]}
+
+                                            >
+                                                {styles => (
+                                                    <animated.div style={styles} className="md:col-span-4 col-span-12 mx-auto lg:mx-0 relative">
+                                                        <img src="/images/darnGoodEgg-Img.png" alt="" className="mb-12 w-48 md:w-full"></img>
+                                                    </animated.div>
+                                                )}
+                                            </Spring>
+                                            </>
+                                        )}
+                                    </Scene>
+
                                     <div className="md:col-span-8 col-span-12">
                                         <img src="/images/orangeSeperator.jpg" className="md:mt-16 mb-12 col-span-12"></img>
                                         <p className="text-black lg:2xl lg:mx-4 mx-8 text-center md:text-left font-lato font-medium text-xl leading-relaxed">There’s nothing better than eggs that come from pasture raised hens who are free to roam about during the day in wide-open fields. They eat what is natural to them, including grass, seed, bugs and worms. They have all the shade, water, organic feed and freedom to roam about. The chickens are happier and healthier, which is why Chino Valley Ranchers pasture raised eggs are so delicious and nutritious.</p>
@@ -47,7 +97,7 @@ export function AboutPastureRaised(props) {
             </div>
         </div>
      </div>
-
+     </Controller>
     )
 
 }

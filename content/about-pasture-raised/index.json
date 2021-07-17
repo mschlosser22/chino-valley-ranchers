@@ -51,8 +51,9 @@
             "blocks": [
               {
                 "_template": "imageAlt",
-                "image": "/images/american-humane-certified.png",
-                "undefined": "/images/american-humane-certified.png"
+                "image": "/images/ahc.png",
+                "imageAnimated": "/images/heart.png",
+                "undefined": "/images/ahc.png"
               },
               {
                 "_template": "subheadingAlt",

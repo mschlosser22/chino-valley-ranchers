@@ -13,6 +13,14 @@ export function HenParadise(props) {
         }
     }
 
+    const scrollPositionOverHalfAlt = (progress) => {
+        if((progress * 100) >= 75) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     const scrollPositionEven = (progress) => {
         if( (Math.ceil(progress * 10)) % 2 == 0 ) {
             return false
@@ -24,7 +32,7 @@ export function HenParadise(props) {
     return(
     <Controller>
      <div>
-        <div className="relative lg:pt-16 pt-6 z-40 lg:-mt-12 -mt-32 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/dirt-background.png')` }}>
+        <div className="relative lg:pt-16 pt-6 z-40 lg:-mt-12 -mt-32 bg-no-repeat bg-cover overflow-hidden" style={{ backgroundImage: `url('/images/dirt-background.png')` }}>
             <div className="max-w-5xl mx-auto">
 
                 {/* Page Heading */}
@@ -42,9 +50,9 @@ export function HenParadise(props) {
                             <Spring
                                 style="perspective: 400px"
                                 config={{
-                                    mass: 1, tension: 120, friction: 14
+                                    mass: 1, tension: 80, friction: 14
                                 }}
-                                left={ scrollPositionOverHalf(progress) ? `${progress * 4}rem` : '-30rem' }
+                                left={ scrollPositionOverHalf(progress) ? `${progress * 4}rem` : '-45rem' }
                             >
                                 {styles => (
                                     <animated.div style={styles} className="relative">
@@ -56,12 +64,69 @@ export function HenParadise(props) {
                         )}
                     </Scene>
 
-                    <div className="relative">
-                        <img src="/images/chicken-middle.png" className="relative top-24" />
-                    </div>
+                    <Scene duration={600} triggerElement="#chickens">
+                        {(progress, event) => (
+                            <>
+                            <Spring
+                                style="perspective: 400px"
+                                config={{
+                                    mass: 1, tension: 60, friction: 14
+                                }}
+                                bottom={ scrollPositionOverHalf(progress) ? `0rem` : '-30rem' }
+                            >
+                                {styles => (
+                                    <animated.div style={styles} className="relative">
+                                        <img src="/images/chicken-middle.png" className="relative top-24" />
+                                    </animated.div>
+                                )}
+                            </Spring>
+                            </>
+                        )}
+                    </Scene>
+
                     <div>
-                        <img src="/images/chicken-bubble.png" />
-                        <img src="/images/chicken-right.png" />
+                        <Scene duration={400} triggerElement="#chickens">
+                            {(progress, event) => (
+                                <>
+                                <Spring
+                                    style="perspective: 400px"
+                                    config={{
+                                        mass: 1, tension: 40, friction: 10
+                                    }}
+                                    right={ scrollPositionOverHalf(progress) ? `${progress * 4}rem` : '-45rem' }
+                                    bottom={ scrollPositionOverHalfAlt(progress) ? `0rem` : '-7rem' }
+                                    opacity={ scrollPositionOverHalfAlt(progress) ? `1` : '0' }
+                                >
+                                    {styles => (
+                                        <animated.div style={styles} className="relative">
+                                            <img src="/images/chicken-bubble.png" />
+                                        </animated.div>
+                                    )}
+                                </Spring>
+                                </>
+                            )}
+                        </Scene>
+
+                        <Scene duration={400} triggerElement="#chickens">
+                            {(progress, event) => (
+                                <>
+                                <Spring
+                                    style="perspective: 400px"
+                                    config={{
+                                        mass: 1, tension: 40, friction: 10
+                                    }}
+                                    right={ scrollPositionOverHalf(progress) ? `${progress * 4}rem` : '-45rem' }
+                                >
+                                    {styles => (
+                                        <animated.div style={styles} className="relative">
+                                            <img src="/images/chicken-right.png" />
+                                        </animated.div>
+                                    )}
+                                </Spring>
+                                </>
+                            )}
+                        </Scene>
+
                     </div>
                 </div>
 
