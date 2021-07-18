@@ -97,11 +97,6 @@ export const eggSliderBlock = {
         },
         fields: [
             {
-                name: 'classes',
-                label: 'Tailwind CSS Classes',
-                component: 'text'
-            },
-            {
                 label: 'Slides',
                 name: 'slides',
                 component: 'group-list',

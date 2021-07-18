@@ -62,7 +62,9 @@ export const ourFamilyBlock = {
                     {
                         name: 'src',
                         label: 'src',
-                        component: 'image'
+                        component: 'image',
+                        parse: media => `/images/${media.filename}`,
+                        uploadDir: () => '/images'
                     },
                     {
                         name: 'alt',

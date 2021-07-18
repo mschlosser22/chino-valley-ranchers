@@ -112,11 +112,6 @@ export const feedVideoBlock = {
         },
         fields: [
             {
-                name: 'classes',
-                label: 'Tailwind CSS Classes',
-                component: 'text'
-            },
-            {
                 name: 'heading',
                 label: 'Heading',
                 component: 'text'
@@ -129,11 +124,6 @@ export const feedVideoBlock = {
                     {
                         name: 'src',
                         label: 'src',
-                        component: 'text'
-                    },
-                    {
-                        name: 'props',
-                        label: 'Props',
                         component: 'text'
                     }
                 ]

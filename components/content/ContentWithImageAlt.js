@@ -82,14 +82,6 @@ export const contentWithImageAltBlock = {
                 component: 'textarea'
             },
             {
-                name: 'text',
-                label: 'Text',
-                component: 'list',
-                field: {
-                    component: 'textarea'
-                }
-            },
-            {
                 name: 'button',
                 label: 'Button',
                 component: 'group',
@@ -97,7 +89,14 @@ export const contentWithImageAltBlock = {
                     {
                         name: 'link',
                         label: "Link",
-                        component: 'text'
+                        component: 'group',
+                        fields: [
+                            {
+                                name: 'url',
+                                label: 'src',
+                                component: 'text'
+                            }
+                        ]
                     },
                     {
                         name: 'text',

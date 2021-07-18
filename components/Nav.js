@@ -1,13 +1,19 @@
 import Image from 'next/image'
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useContext } from 'react'
 import { Disclosure, Dialog, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon, ChevronDownIcon, ChevronUpIcon, } from '@heroicons/react/outline'
+import { useCMS } from 'tinacms'
+
+import { TinaCMS, TinaProvider } from 'tinacms'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export function Nav(props) {
+
+    const cms = useCMS()
+    console.log(`CMS is enabled: ${cms.enabled}`)
 
     const [open, setOpen] = useState(false)
 
@@ -32,8 +38,8 @@ export function Nav(props) {
     ]
 
     return(
-
-        <Disclosure as="nav" className="bg-gray-800 bg-opacity-100 lg:bg-opacity-80 top-0 z-50 fixed w-full">
+        <>
+        <Disclosure as="nav" className={`bg-gray-800 bg-opacity-100 lg:bg-opacity-80 top-0 z-50 ${cms.enabled ? 'relative' : 'fixed'} w-full`}>
             {({ open }) => (
                 <>
                 <div className="max-w-7xl mx-auto px-2 md:px-6 lg:px-8">
@@ -232,7 +238,7 @@ export function Nav(props) {
                 </>
             )}
             </Disclosure>
-
+            </>
     )
 
 }

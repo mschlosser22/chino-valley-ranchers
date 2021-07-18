@@ -56,28 +56,6 @@ export const heroVideoBlock = {
                 name: 'heading',
                 label: 'Heading',
                 component: 'text'
-            },
-            {
-                name: 'subheading',
-                label: 'Subheading',
-                component: 'text'
-            },
-            {
-                name: 'image',
-                label: 'Image',
-                component: 'group',
-                fields: [
-                    {
-                        name: 'src',
-                        label: 'src',
-                        component: 'image'
-                    },
-                    {
-                        name: 'alt',
-                        label: 'Alt Text',
-                        component: 'text'
-                    }
-                ]
             }
         ],
     },

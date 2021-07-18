@@ -160,14 +160,16 @@ export const imageWithContentBlock = {
                 }
             },
             {
-                name: 'imageLeft',
+                name: 'leftImage',
                 label: 'Image Left',
                 component: 'group',
                 fields: [
                     {
                         name: 'src',
                         label: 'src',
-                        component: 'text'
+                        component: 'image',
+                        parse: media => `/images/${media.filename}`,
+                        uploadDir: () => '/images'
                     },
                     {
                         name: 'alt',
@@ -177,14 +179,16 @@ export const imageWithContentBlock = {
                 ]
             },
             {
-                name: 'imageRight',
+                name: 'rightImage',
                 label: 'Image Right',
                 component: 'group',
                 fields: [
                     {
                         name: 'src',
                         label: 'src',
-                        component: 'text'
+                        component: 'image',
+                        parse: media => `/images/${media.filename}`,
+                        uploadDir: () => '/images'
                     },
                     {
                         name: 'alt',
