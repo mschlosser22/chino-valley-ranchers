@@ -1,4 +1,3 @@
-//import "@fontsource/ultra"
 import 'typeface-lato'
 import Head from 'next/head'
 
@@ -11,8 +10,6 @@ import {
 } from 'react-tinacms-github'
 import { NextGithubMediaStore } from 'next-tinacms-github'
 import { MarkdownFieldPlugin } from 'react-tinacms-editor'
-
-import { EditLink } from '../components/tinacms/EditLink'
 
 
 function MyApp({ Component, pageProps }) {

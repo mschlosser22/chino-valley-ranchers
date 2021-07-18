@@ -23,7 +23,7 @@ export default function Products({ file, isPreview}) {
     initialValues: file,
     label: 'Why Organic',
     fields: [
-      
+
     ],
     onSubmit() {
       cms.alerts.success('Saved!')

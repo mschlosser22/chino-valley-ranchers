@@ -5,8 +5,7 @@ import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
 
 export function Hero(props) {
 
-    //const {image, heading} = props
-    //const {image} = props
+
 
     return(
 
@@ -68,7 +67,28 @@ export const heroBlock = {
             image: '/images/hero-products.jpg'
         },
         fields: [
-
+            {
+                name: 'image',
+                label: 'Image',
+                component: 'group',
+                fields: [
+                    {
+                        name: 'src',
+                        label: 'src',
+                        component: 'text'
+                    },
+                    {
+                        name: 'alt',
+                        label: 'Alt',
+                        component: 'text'
+                    }
+                ]
+            },
+            {
+                name: 'heading',
+                label: 'Heading',
+                component: 'text'
+            }
         ],
     },
 }
