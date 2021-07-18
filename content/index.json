@@ -167,7 +167,7 @@
         "alt": "Chicken"
       },
       "rightImage": {
-        "src": "static/ahc.png",
+        "src": "/images/ahc.png",
         "alt": "Sign Post"
       },
       "absoluteContent": [
