@@ -98,4 +98,30 @@
     font-style: normal;
 }
 
+#ourCommitment p br {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#ourCommitment p {
+    padding-bottom: 2rem;
+}
+
+#ourCommitment h1,
+#ourCommitment h2,
+#ourCommitment h3,
+#ourCommitment h4,
+#ourCommitment h5,
+#ourCommitment h6 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: ultraregular;
+    padding-bottom: 2rem;
+}
+
 @tailwind utilities;

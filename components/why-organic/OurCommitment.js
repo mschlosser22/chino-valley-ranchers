@@ -10,7 +10,7 @@ export function OurCommitment(props) {
                    <h1 className="font-ultra lg:text-6xl text-3xl lg:mx-0 mx-8 text-white uppercase tracking-normal pb-8">
                        <InlineTextarea name="heading" />
                    </h1>
-                   <div>
+                   <div className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 text-white lg:pb-8 pb-6" id="ourCommitment">
                         <InlineWysiwyg name="markdown" format="markdown" sticky>
                             <ReactMarkdown>{props.markdown}</ReactMarkdown>
                         </InlineWysiwyg>
