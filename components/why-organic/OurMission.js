@@ -46,7 +46,7 @@ export function OurMission(props) {
                     </Scene>
 
                         <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8">
-                            {props.description}
+                            <InlineTextarea name="description" />
                         </p>
                     </div>
                     <div className="lg:col-span-6 col-span-12">
@@ -225,9 +225,11 @@ export function OurMission(props) {
                             </Spring>
                         )}
                     </Scene>
-                    <p className="text-sm font-lato text-center">Source: Study: 82% of U.S Households Buy Organic Food Regularly,
-                    <br />
-                    Organic Trade Association, 2017.</p>
+                    <p className="text-sm font-lato text-center">
+                        <InlineWysiwyg name="source" format="markdown" sticky>
+                            <ReactMarkdown>{props.source}</ReactMarkdown>
+                        </InlineWysiwyg>
+                    </p>
                 </div>
             </div>
         </div>
@@ -262,9 +264,19 @@ export const ourMissionBlock = {
                 ]
             },
             {
+                name: 'description',
+                label: 'Description',
+                component: 'textarea'
+            },
+            {
                 name: 'stat',
                 label: 'Stat',
                 component: 'textarea'
+            },
+            {
+                name: 'source',
+                label: 'Source',
+                component: 'text'
             }
         ],
     },
