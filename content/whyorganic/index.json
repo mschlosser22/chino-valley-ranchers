@@ -78,7 +78,18 @@
     {
       "_template": "studies",
       "stat": "Studies have found that battery hens have a _25X higher chance_ of contracting Salmonella than cage-free hens.",
-      "heading": "California Free Range   \n vs. The Other Guys"
+      "heading": "California Free Range   \n vs. The Other Guys",
+      "list": [
+        {
+          "description": "Cage free farming is the standard in the humane treatment of chickens. As a result, we don’t believe that any other technique is acceptable. Other egg providers attempt to produce eggs on a mass scale, keeping their chickens in large buildings without direct access to the outdoors."
+        },
+        {
+          "description": "Chickens in these environments are stuffed into a cage with several other chickens, each with a space roughly the size of a sheet of notebook paper. There’s little room to stretch their wings or turn around. They’re uncomfortable and don’t get the exercise they need, unlike those that live outside the cage. Oftentimes they are too unhealthy to even stand up."
+        },
+        {
+          "description": "Research has shown that a comfortable low-stress environment throughout all stages of a chicken’s development makes for a happier and healthier life. We believe that free range environments are the best and produce the highest quality eggs."
+        }
+      ]
     }
   ]
 }
