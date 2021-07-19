@@ -28,7 +28,7 @@ export function OrganicMatters(props) {
                             <InlineTextarea name="listHeading" />
                         </h3>
                     </div>
-                    <div className="w-full">
+                    <div className="w-full pb-24">
                         {props.list.map((item, index) =>
                             <div key={index} className="grid grid-cols-12 gap-6">
                                 <div className="lg:col-span-4 col-span-12">

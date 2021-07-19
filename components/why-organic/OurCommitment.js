@@ -1,5 +1,6 @@
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
-
+import ReactMarkdown from 'react-markdown'
+import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
 
 export function OurCommitment(props) {
     return (
@@ -9,6 +10,11 @@ export function OurCommitment(props) {
                    <h1 className="font-ultra lg:text-6xl text-3xl lg:mx-0 mx-8 text-white uppercase tracking-normal pb-8">
                        <InlineTextarea name="heading" />
                    </h1>
+                   <div>
+                        <InlineWysiwyg name="markdown" format="markdown" sticky>
+                            <ReactMarkdown>{props.markdown}</ReactMarkdown>
+                        </InlineWysiwyg>
+                   </div>
                     <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 text-white lg:pb-8 pb-6">As a CCOF (California Certified Organic Farmers) certified organic provider, we strive to go beyond standard to ensure that you enjoy the tastiest organic eggs possible.</p>
                     <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 text-white">All of our hens are fed the finest organic, non-GMO grains and seeds from certified pesticide-free fields. We also own and operate Southern California’s only certified organic feed mill for poultry for complete quality control.</p>
                     <h3 className="font-ultra lg:text-3xl text-2xl lg:mx-0 mx-8 text-white uppercase tracking-wider lg:pt-12 pt-8 pb-8">Cage Free Means Happier Chickens</h3>
@@ -40,6 +46,11 @@ export const ourCommitmentBlock = {
                 name: 'heading',
                 label: 'Heading',
                 component: 'text'
+            },
+            {
+                name: 'markdown',
+                label: 'Markdown',
+                component: 'markdown'
             }
         ]
     }
