@@ -119,7 +119,9 @@ export function Studies(props) {
                 )}
                 </Scene>
                 <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wider text-center lg:px-0 px-8 stat">
-                    <InlineTextarea name="stat" />
+                    <InlineWysiwyg name="stat" format="markdown" sticky>
+                        <ReactMarkdown>{props.stat}</ReactMarkdown>
+                    </InlineWysiwyg>
                 </h1>
                 <div className="max-w-3xl mx-auto">
                 <Scene duration={300} triggerElement="#chickensTwo">
@@ -147,7 +149,11 @@ export function Studies(props) {
                         )}
                     </Scene>
                 </div>
-                <h1 className="font-ultra lg:text-6xl text-3xl lg:text-center text-left lg:mx-0 mx-8 text-chinored uppercase tracking-wide lg:pb-4 pb-8">California Free Range <br className="lg:block hidden" />vs. The Other Guys</h1>
+                <h1 className="font-ultra lg:text-6xl text-3xl lg:text-center text-left lg:mx-0 mx-8 text-chinored uppercase tracking-wide lg:pb-4 pb-8">
+                    <InlineWysiwyg name="heading" format="markdown" sticky>
+                        <ReactMarkdown>{props.heading}</ReactMarkdown>
+                    </InlineWysiwyg>
+                </h1>
                 <div className="max-w-3xl mx-auto lg:mb-24 mb-16">
                     <p className="font-lato lg:text-2xl tracking-wider text-left lg:mx-0 mx-8 text-chinodarkblue">Cage free farming is the standard in the humane treatment of chickens. As a result, we don’t believe that any other technique is acceptable. Other egg providers attempt to produce eggs on a mass scale, keeping their chickens in large buildings without direct access to the outdoors.</p>
                     <img src="/images/blueSeperator.jpg" className="py-8 lg:px-0 px-8" />
@@ -167,4 +173,23 @@ export const studiesBlock = {
       <BlocksControls index={index}>
         <Studies {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: 'Studies Component',
+        defaultItems: [
+
+        ],
+        fields: [
+            {
+                name: 'stat',
+                label: 'Stat',
+                component: 'markdown'
+            },
+            {
+                name: 'heading',
+                label: 'Heading',
+                component: 'markdown'
+            }
+        ]
+    }
+}
