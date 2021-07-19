@@ -43,7 +43,14 @@
       "imageRightAlt": {
         "src": "/images/organic-eggs-arrow.jpg",
         "alt": "Organic Eggs are Better Eggs"
-      }
+      },
+      "listHeading": "What Organic Means For Your Health",
+      "list": [
+        {
+          "title": "Preservative  /n Free",
+          "description": "Organic food doesn’t contain preservatives to make it last longer on the shelves. These foods are often produced on small, family-run farms, like ours, and delivered locally for fresh results."
+        }
+      ]
     },
     {
       "_template": "ourCommitment"
