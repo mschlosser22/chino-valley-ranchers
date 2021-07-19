@@ -49,6 +49,18 @@
         {
           "title": "Preservative  \n Free",
           "description": "Organic food doesn’t contain preservatives to make it last longer on the shelves. These foods are often produced on small, family-run farms, like ours, and delivered locally for fresh results."
+        },
+        {
+          "title": "Environmental  \n Friendly",
+          "description": "Organic farming helps reduce pollution, conserve water, reduce soil erosion, and uses less energy. Farming with less pesticides is also better for those that live around the community."
+        },
+        {
+          "title": "Antibiotic  \n Free",
+          "description": "We don’t give our chickens antibiotics, so that means no antibiotic-resistant strains of bacteria in your body. They also don’t receive growth hormones or animal byproducts."
+        },
+        {
+          "title": "GMO-free  \n diet",
+          "description": "Genetically Modified Organisms (GMOs) foods have been altered to be resistant to pesticides. We feed our chickens all organic feed, so your eggs don’t contain any chemicals."
         }
       ]
     },

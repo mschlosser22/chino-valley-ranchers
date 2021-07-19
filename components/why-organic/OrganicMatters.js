@@ -46,33 +46,7 @@ export function OrganicMatters(props) {
                                 <hr className="solid border-chinodarkgray col-span-12"></hr>
                             </div>
                         )}
-                        <div className="lg:col-span-4 col-span-12">
-                            <h4 className="text-2xl uppercase black font-ultra lg:mx-0 mx-8">Preservative<br className="lg:block hidden" /> Free</h4>
-                        </div>
-                        <div className="lg:col-span-8 col-span-12">
-                            <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 lg:pr-16 pr-0">Organic food doesn’t contain preservatives to make it last longer on the shelves. These foods are often produced on small, family-run farms, like ours, and delivered locally for fresh results.</p>
-                        </div>
-                        <hr className="solid border-chinodarkgray col-span-12"></hr>
-                        <div className="lg:col-span-4 col-span-12">
-                            <h4 className="text-2xl uppercase black font-ultra lg:mx-0 mx-8">Environmental<br className="lg:block hidden" /> Friendly</h4>
-                        </div>
-                        <div className="lg:col-span-8 col-span-12">
-                            <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 lg:pr-16 pr-0">Organic farming helps reduce pollution, conserve water, reduce soil erosion, and uses less energy. Farming with less pesticides is also better for those that live around the community.</p>
-                        </div>
-                        <hr className="solid border-chinodarkgray col-span-12"></hr>
-                        <div className="lg:col-span-4 col-span-12">
-                            <h4 className="text-2xl uppercase black font-ultra lg:mx-0 mx-8">Antibiotic<br className="lg:block hidden" /> Free</h4>
-                        </div>
-                        <div className="lg:col-span-8 col-span-12">
-                            <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 lg:pr-16 pr-0">We don’t give our chickens antibiotics, so that means no antibiotic-resistant strains of bacteria in your body. They also don’t receive growth hormones or animal byproducts.</p>
-                        </div>
-                        <hr className="solid border-chinodarkgray col-span-12"></hr>
-                        <div className="lg:col-span-4 col-span-12">
-                            <h4 className="text-2xl uppercase black font-ultra lg:mx-0 mx-8">GMO-free<br className="lg:block hidden" />diet</h4>
-                        </div>
-                        <div className="lg:col-span-8 col-span-12 pb-36">
-                            <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 lg:pr-16 pr-0">Genetically Modified Organisms (GMOs) foods have been altered to be resistant to pesticides. We feed our chickens all organic feed, so your eggs don’t contain any chemicals.</p>
-                        </div>
+
                     </div>
 
                 </div>
