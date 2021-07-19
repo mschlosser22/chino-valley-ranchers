@@ -1,37 +1,37 @@
 {
-    "blocks": [
-      {
-        "_template": "hero",
-        "heading": "Family Farmed _Not_ Factory Farmed",
-        "image": {
+  "blocks": [
+    {
+      "_template": "hero",
+      "heading": "Family Farmed _Not_ Factory Farmed",
+      "image": {
         "src": "/images/hero-why-organic.jpg",
         "alt": "Why Organic"
-        },
-        "image_mobile": {
+      },
+      "image_mobile": {
         "src": "/images/hero-why-organic.jpg",
         "alt": "Why Organic"
-        }
+      }
     },
     {
-        "_template": "whyOrganic",
-        "heading": "Our mission is simple",
-        "image": "/images/bg-paper-edge.png",
-        "subheading": "Produce the freshest and highest quality eggs at the best price, treat all our hens with kindness and respect through personalized care, and put back into the earth what we take out of it."
+      "_template": "whyOrganic",
+      "heading": "Our mission is simple",
+      "image": "/images/bg-paper-edge.png",
+      "subheading": "Produce the freshest and highest quality eggs at the best price, treat all our hens with kindness and respect through personalized care, and put back into the earth what we take out of it."
     },
     {
-        "_template": "ourMission",
-        "video": {
-            "src": "https://www.youtube.com/embed/9_FQFLd1lok"
-        }
+      "_template": "ourMission",
+      "video": {
+        "src": "https://www.youtube.com/embed/9_FQFLd1lok"
+      }
     },
     {
-        "_template": "organicMatters"
+      "_template": "organicMatters"
     },
     {
-        "_template": "ourCommitment"
+      "_template": "ourCommitment"
     },
     {
-        "_template": "studies"
+      "_template": "studies"
     }
-    ]
-  }
+  ]
+}
