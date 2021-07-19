@@ -278,6 +278,28 @@ export const ourMissionBlock = {
                 component: 'textarea'
             },
             {
+                name: 'callout',
+                label: 'Callout',
+                component: 'group',
+                fields: [
+                    {
+                        name: 'heading',
+                        label: 'Heading',
+                        component: 'text'
+                    },
+                    {
+                        name: 'subheading',
+                        label: 'Sub Heading',
+                        component: 'text'
+                    },
+                    {
+                        name: 'description',
+                        label: 'Description',
+                        component: 'textarea'
+                    }
+                ]
+            },
+            {
                 name: 'stat',
                 label: 'Stat',
                 component: 'textarea'

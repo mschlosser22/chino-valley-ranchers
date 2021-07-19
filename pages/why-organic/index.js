@@ -59,7 +59,7 @@ const PAGE_BLOCKS = {
   hero: heroBlock,
   whyOrganic: whyOrganicBlock,
   ourMission: ourMissionBlock,
-  //organicMatters: organicMattersBlock,
+  organicMatters: organicMattersBlock,
   //ourCommitment: ourCommitmentBlock,
   //studies: studiesBlock
 }

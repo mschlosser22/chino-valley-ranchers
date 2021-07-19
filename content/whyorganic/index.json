@@ -33,7 +33,9 @@
       "source": "Source: Study: 82% of U.S Households Buy Organic Food Regularly,  \n Organic Trade Association, 2017."
     },
     {
-      "_template": "organicMatters"
+      "_template": "organicMatters",
+      "heading": "Organic Matters",
+      "description": "Organic is a direct reference to the way agricultural products are grown and processed. In the U.S., organic livestock raised for eggs must have access to the outdoors and be given organic feed. They cannot consume antibiotics, growth hormones, or any animal by-products"
     },
     {
       "_template": "ourCommitment"

@@ -8,8 +8,12 @@ export function OrganicMatters() {
                 <div className="max-w-5xl mx-auto">
                     <div className="grid grid-cols-12">
                         <div className="lg:col-span-8 col-span-12">
-                            <h1 className="text-2xl lg:text-5xl text-chinoblue font-ultra uppercase tracking-wider lg:leading-tight lg:mx-0 mx-8 lg:pb-6 pb-4">Organic Matters</h1>
-                            <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 lg:pr-16 pr-0">Organic is a direct reference to the way agricultural products are grown and processed. In the U.S., organic livestock raised for eggs must have access to the outdoors and be given organic feed. They cannot consume antibiotics, growth hormones, or any animal by-products</p>
+                            <h1 className="text-2xl lg:text-5xl text-chinoblue font-ultra uppercase tracking-wider lg:leading-tight lg:mx-0 mx-8 lg:pb-6 pb-4">
+                                <InlineTextarea name="heading" />
+                            </h1>
+                            <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 lg:pr-16 pr-0">
+                                <InlineTextarea name="description" />
+                            </p>
                         </div>
                         <div className="lg:col-span-4 col-span-12 lg:-mt-12 mx-auto">
                             <img src="/images/3eggs.png" className="w-64 lg:w-full" />
@@ -60,4 +64,13 @@ export const organicMattersBlock = {
       <BlocksControls index={index}>
         <OrganicMatters {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: 'Organic Matters Component',
+        defaultItem: {
+
+        },
+        fields: [
+
+        ],
+    }}
