@@ -1,5 +1,7 @@
 import { propTypes } from 'react-markdown'
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
+import ReactMarkdown from 'react-markdown'
+import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
 
 
 export function OrganicMatters(props) {
@@ -26,12 +28,14 @@ export function OrganicMatters(props) {
                             <InlineTextarea name="listHeading" />
                         </h3>
                     </div>
-                    <div className="grid grid-cols-12 gap-6">
+                    <div className="w-full">
                         {props.list.map((item, index) =>
-                            <div key={index}>
+                            <div key={index} className="grid grid-cols-12 gap-6">
                                 <div className="lg:col-span-4 col-span-12">
                                     <h4 className="text-2xl uppercase black font-ultra lg:mx-0 mx-8">
-                                        <InlineTextarea name="title" />
+                                        <InlineWysiwyg name="item.title" format="markdown" sticky>
+                                            <ReactMarkdown>{item.title}</ReactMarkdown>
+                                        </InlineWysiwyg>
                                     </h4>
                                 </div>
                                 <div className="lg:col-span-8 col-span-12">
