@@ -50,12 +50,21 @@ export function OurMission(props) {
                         </p>
                     </div>
                     <div className="lg:col-span-6 col-span-12">
-                        <h1 className="text-3xl lg:text-6xl text-chinored font-ultra uppercase tracking-wide pb-4 lg:mx-0 mx-8">California Organic:</h1>
-                        <h3 className="font-ultra text-xl lg:text-3xl tracking-widest uppercase lg:mx-0 mx-8">The Natural Choice</h3>
+                        <h1 className="text-3xl lg:text-6xl text-chinored font-ultra uppercase tracking-wide pb-4 lg:mx-0 mx-8">
+                            <InlineTextarea name="callout.heading" />
+                        </h1>
+                        <h3 className="font-ultra text-xl lg:text-3xl tracking-widest uppercase lg:mx-0 mx-8">
+                            <InlineTextarea name="callout.subheading" />
+                        </h3>
                     </div>
                     <div className="lg:col-span-6 col-span-12">
                         <img src="/images/orangeSeperator-thick.png" className="lg:px-0 px-8" />
-                        <p className="font-lato text-xl tracking-wide py-6 lg:mx-0 mx-14 lg:mx-0 mx-8"><span className="font-bold">For more than 30 years,</span> we’ve been a leading provider of honestly organic eggs dedicated to providing free range lifestyle for our chickens.</p>
+                        <p className="font-lato text-xl tracking-wide py-6 lg:mx-0 mx-14 lg:mx-0 mx-8" id="why-organic__callout--description">
+                            <InlineWysiwyg name="callout.description" format="markdown" sticky>
+                                <ReactMarkdown>{props.callout.description}</ReactMarkdown>
+                            </InlineWysiwyg>
+                            <span className="font-bold"></span>
+                        </p>
                         <img src="/images/orangeSeperator-thick.png" className="lg:px-0 px-8" />
                     </div>
                 </div>
