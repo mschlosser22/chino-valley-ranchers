@@ -237,4 +237,25 @@ export const ourMissionBlock = {
       <BlocksControls index={index}>
         <OurMission {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: 'Our Mission Component',
+        defaultItem: {
+
+        },
+        fields: [
+            {
+                name: 'video',
+                label: 'Video',
+                component: 'group',
+                fields: [
+                    {
+                        name: 'src',
+                        label: 'src',
+                        component: 'text'
+                    }
+                ]
+            }
+        ],
+    },
+}

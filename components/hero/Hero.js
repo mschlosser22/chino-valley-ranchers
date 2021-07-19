@@ -13,7 +13,7 @@ export function Hero(props) {
             <div className="absolute w-full min-h-[400px] sm:min-h-[400px] lg:h-[600px]">
                 <InlineImage
                     name="image"
-                    parse={media => media.id}
+                    parse={media => `/images/${media.filename}`}
                     uploadDir={() => "/images/"}
                     alt="Organic Eggs"
                 >
@@ -75,7 +75,9 @@ export const heroBlock = {
                     {
                         name: 'src',
                         label: 'src',
-                        component: 'text'
+                        component: 'image',
+                        parse: media => `/images/${media.filename}`,
+                        uploadDir: () => '/images'
                     },
                     {
                         name: 'alt',
