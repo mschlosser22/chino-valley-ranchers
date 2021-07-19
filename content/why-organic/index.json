@@ -1,16 +1,7 @@
 {
   "blocks": [
     {
-      "_template": "hero",
-      "heading": "Family Farmed _Not_ Factory Farmed",
-      "image": {
-        "src": "/images/hero-why-organic.jpg",
-        "alt": "Why Organic"
-      },
-      "image_mobile": {
-        "src": "/images/hero-why-organic.jpg",
-        "alt": "Why Organic"
-      }
+        "_template": "organicMatters"
     }
   ],
   "seo": "some stuff"

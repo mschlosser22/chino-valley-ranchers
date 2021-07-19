@@ -38,10 +38,10 @@ export function Nav(props) {
     ]
 
     return(
-        <>
+        <div>
         <Disclosure as="nav" className={`bg-gray-800 bg-opacity-100 lg:bg-opacity-80 top-0 z-50 ${cms.enabled ? 'relative' : 'fixed'} w-full`}>
             {({ open }) => (
-                <>
+                <div>
                 <div className="max-w-7xl mx-auto px-2 md:px-6 lg:px-8">
                     <div className="relative flex items-center justify-between h-16">
 
@@ -83,7 +83,7 @@ export function Nav(props) {
                             {navigation.map( (item) => item.children && item.children.length ? (
                                 <Menu key={item.name} as="div" className="relative text-left z-50">
                                     {({ open }) => (
-                                    <>
+                                    <div>
                                         <Menu.Button className="flex items-center text-sm font-medium text-gray-900 rounded-md focus:outline-none">
                                             <span className={`px-3 py-2 rounded-md text-sm font-medium text-white uppercase ${item.current ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white'} ${item.primary ? 'bg-yellow-500 text-gray-700' : null }`}>{item.name}</span>
                                         </Menu.Button>
@@ -121,7 +121,7 @@ export function Nav(props) {
                                             </div>
                                         </Menu.Items>
                                         </Transition>
-                                    </>
+                                    </div>
                                     )}
                                 </Menu>
                                 )
@@ -194,7 +194,7 @@ export function Nav(props) {
                 <Disclosure.Panel className="lg:hidden">
                     <div className="px-2 pt-2 pb-3 space-y-1">
                     {navigation.map((item) => item.children && item.children.length ? (
-                        <>
+                        <div key={item.name}>
                         <a
                         key={item.name}
                         href={item.href}
@@ -218,7 +218,7 @@ export function Nav(props) {
                                 {child.name}
                             </a>
                         ))}
-                        </>
+                        </div>
                     ) : (
                         <a
                         key={item.name}
@@ -235,10 +235,10 @@ export function Nav(props) {
                     )}
                     </div>
                 </Disclosure.Panel>
-                </>
+                </div>
             )}
             </Disclosure>
-            </>
+            </div>
     )
 
 }

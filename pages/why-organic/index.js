@@ -23,7 +23,11 @@ export default function Products({ file, isPreview}) {
     initialValues: file,
     label: 'Why Organic',
     fields: [
-
+      {
+        name: 'seo',
+        name: 'seo',label: 'SEO stuff',
+        component: 'text'
+      }
     ],
     onSubmit() {
       cms.alerts.success('Saved!')
@@ -37,7 +41,11 @@ export default function Products({ file, isPreview}) {
 
   useGithubToolbarPlugins()
 
+  console.log(`SEO Stuff: ${file.data.seo}`)
+  //console.log(file)
+
   return (
+
     <>
     <div className={`relative`}>
       <Head>
