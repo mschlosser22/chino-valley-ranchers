@@ -19,7 +19,7 @@ export default function whyOrganic({ file, isPreview}) {
   const cms = useCMS()
 
   const formConfig = {
-    id: '../../content/why-organic/index.json',
+    id: '../../content/whyorganic/index.json',
     initialValues: file,
     label: 'Why Organic',
     fields: [
@@ -83,7 +83,7 @@ export const getStaticProps = async function({
   if (preview) {
     return getGithubPreviewProps({
     ...previewData,
-    fileRelativePath: 'content/why-organic/index.json',
+    fileRelativePath: 'content/whyorganic/index.json',
     parse: parseJson,
     isPreview: true
     })
@@ -95,8 +95,8 @@ export const getStaticProps = async function({
       error: null,
       preview: false,
       file: {
-        fileRelativePath: 'content/why-organic/index.json',
-        data: (await import('../../content/why-organic/index.json')).default,
+        fileRelativePath: 'content/whyorganic/index.json',
+        data: (await import('../../content/whyorganic/index.json')).default,
       }
     },
   }
