@@ -14,7 +14,7 @@ import { ourCommitmentBlock } from '../../components/why-organic/OurCommitment'
 import { studiesBlock } from '../../components/why-organic/Studies'
 
 
-export default function Products({ file, isPreview}) {
+export default function whyOrganic({ file, isPreview}) {
 
   const cms = useCMS()
 
@@ -33,6 +33,8 @@ export default function Products({ file, isPreview}) {
       cms.alerts.success('Saved!')
     },
   }
+
+  console.log(formConfig)
 
   // Registers a JSON Tina Form
   //const [data, form] = useGithubJsonForm(file, formConfig)
