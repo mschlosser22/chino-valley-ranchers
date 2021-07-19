@@ -61,7 +61,7 @@ const PAGE_BLOCKS = {
   ourMission: ourMissionBlock,
   organicMatters: organicMattersBlock,
   ourCommitment: ourCommitmentBlock,
-  //studies: studiesBlock
+  studies: studiesBlock
 }
 
 export const getStaticProps = async function({

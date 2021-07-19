@@ -2,7 +2,12 @@ import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inlin
 import { Spring, animated, interpolate } from 'react-spring'
 import { Controller, Scene } from 'react-scrollmagic'
 
-export function Studies() {
+import ReactMarkdown from 'react-markdown'
+import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
+
+import { Button } from '../../components/button/Button'
+
+export function Studies(props) {
     return (
         <Controller>
         <div>
@@ -113,9 +118,8 @@ export function Studies() {
                 </div>
                 )}
                 </Scene>
-                <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wider text-center lg:px-0 px-8">Studies have found that battery hens have a
-                <span className="bg-chinodarkorange px-2 leading-snug mx-2">25X higher chance</span>
-                of contracting Salmonella than cage-free hens.
+                <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wider text-center lg:px-0 px-8 stat">
+                    <InlineTextarea name="stat" />
                 </h1>
                 <div className="max-w-3xl mx-auto">
                 <Scene duration={300} triggerElement="#chickensTwo">

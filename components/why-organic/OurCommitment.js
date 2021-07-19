@@ -20,7 +20,6 @@ export function OurCommitment(props) {
 
                     <div className="flex justify-center">
                         <Button button={props.button} />
-                        <a href="/products/organic" className="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:text-2xl text-xl uppercase text-white px-6 py-2 mb-12 lg:mx-0 mx-8">Eat Organic Eggs</a>
                     </div>
                 </div>
             </div>
@@ -66,6 +65,11 @@ export const ourCommitmentBlock = {
                                 component: 'text'
                             }
                         ]
+                    },
+                    {
+                        name: 'text',
+                        label: 'Text',
+                        component: 'text'
                     }
                 ]
             }
