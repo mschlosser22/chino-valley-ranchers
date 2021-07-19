@@ -197,7 +197,7 @@ export function OurMission(props) {
                 </Scene>
                 <div className="z-50 lg:pb-20 pb-12 pt-4 max-w-6xl mx-auto px-8 lg:px-0 text-center">
                     <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wider" id="stat">
-                        <InlineWysiwyg name="heading" format="markdown" sticky>
+                        <InlineWysiwyg name="stat" format="markdown" sticky>
                             <ReactMarkdown>{props.stat}</ReactMarkdown>
                         </InlineWysiwyg>
                     </h1>
