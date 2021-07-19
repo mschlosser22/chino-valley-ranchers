@@ -8,33 +8,22 @@ import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/footer/Footer'
 import { heroBlock } from '../../components/hero/Hero'
 import { whyOrganicBlock } from '../../components/why-organic/WhyOrganic'
-import { ourMissionBlock } from '../../components/why-organic/OurMission'
-import { organicMattersBlock } from '../../components/why-organic/OrganicMatters'
-import { ourCommitmentBlock } from '../../components/why-organic/OurCommitment'
-import { studiesBlock } from '../../components/why-organic/Studies'
 
-
-export default function whyOrganic({ file, isPreview}) {
+export default function Products({ file, isPreview}) {
 
   const cms = useCMS()
 
   const formConfig = {
     id: '../../content/whyorganic/index.json',
     initialValues: file,
-    label: 'Why Organic',
+    label: 'Contact Page',
     fields: [
-      {
-        name: 'seo',
-        name: 'seo',label: 'SEO stuff',
-        component: 'text'
-      }
+
     ],
     onSubmit() {
       cms.alerts.success('Saved!')
     },
   }
-
-  console.log(formConfig)
 
   // Registers a JSON Tina Form
   //const [data, form] = useGithubJsonForm(file, formConfig)
@@ -43,15 +32,11 @@ export default function whyOrganic({ file, isPreview}) {
 
   useGithubToolbarPlugins()
 
-  console.log(`SEO Stuff: ${file.data.seo}`)
-  //console.log(file)
-
   return (
-
     <>
     <div className={`relative`}>
       <Head>
-        <title>Chino Valley Ranchers | Why Organic</title>
+        <title>Chino Valley Ranchers | Contact</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -68,11 +53,8 @@ export default function whyOrganic({ file, isPreview}) {
 
 const PAGE_BLOCKS = {
   hero: heroBlock,
-  whyOrganic: whyOrganicBlock,
-  ourMission: ourMissionBlock,
-  organicMatters: organicMattersBlock,
-  ourCommitment: ourCommitmentBlock,
-  studies: studiesBlock
+  content: contentBlock,
+  contactForm: contactFormBlock
 }
 
 export const getStaticProps = async function({
