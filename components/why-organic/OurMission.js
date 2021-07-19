@@ -3,6 +3,8 @@ import { Spring, animated, interpolate } from 'react-spring'
 import { ScrollPercentage } from 'react-scroll-percentage'
 import { useInView } from 'react-intersection-observer'
 import { Controller, Scene } from 'react-scrollmagic'
+import ReactMarkdown from 'react-markdown'
+import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
 
 export function OurMission(props) {
 
@@ -43,7 +45,9 @@ export function OurMission(props) {
                             )}
                     </Scene>
 
-                        <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8">For us, it starts with family. Since the beginning, we’ve worked together to focus solely on egg ranching. That’s how we maintain the highest quality possible. We bring the freshest produce to your table because to us, our chickens are family.</p>
+                        <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8">
+                            {props.description}
+                        </p>
                     </div>
                     <div className="lg:col-span-6 col-span-12">
                         <h1 className="text-3xl lg:text-6xl text-chinored font-ultra uppercase tracking-wide pb-4 lg:mx-0 mx-8">California Organic:</h1>
@@ -192,9 +196,10 @@ export function OurMission(props) {
                 )}
                 </Scene>
                 <div className="z-50 lg:pb-20 pb-12 pt-4 max-w-6xl mx-auto px-8 lg:px-0 text-center">
-                    <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wider">More than
-                        <span className="bg-chinodarkorange px-2 leading-snug mx-2">82% of U.S. households</span>
-                        buy organic foods on a regular basis.
+                    <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wider" id="stat">
+                        <InlineWysiwyg name="heading" format="markdown" sticky>
+                            <ReactMarkdown>{props.stat}</ReactMarkdown>
+                        </InlineWysiwyg>
                     </h1>
                     <Scene duration={300} triggerElement="#chickens">
                         {(progress, event) => (
@@ -255,6 +260,11 @@ export const ourMissionBlock = {
                         component: 'text'
                     }
                 ]
+            },
+            {
+                name: 'stat',
+                label: 'Stat',
+                component: 'textarea'
             }
         ],
     },

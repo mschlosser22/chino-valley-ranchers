@@ -87,4 +87,15 @@
     padding-top: 12rem;
 }
 
+#stat p em {
+    --tw-bg-opacity: 1;
+    background-color: rgba(249, 161, 21, var(--tw-bg-opacity));
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    line-height: 1.375;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    font-style: normal;
+}
+
 @tailwind utilities;
