@@ -89,7 +89,13 @@
         {
           "description": "Research has shown that a comfortable low-stress environment throughout all stages of a chicken’s development makes for a happier and healthier life. We believe that free range environments are the best and produce the highest quality eggs."
         }
-      ]
+      ],
+      "button": {
+        "link": {
+          "url": "/store-locator"
+        },
+        "text": "Find a store near you"
+      }
     }
   ]
 }

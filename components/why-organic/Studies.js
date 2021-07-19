@@ -163,7 +163,7 @@ export function Studies(props) {
                             <img src="/images/blueSeperator.jpg" className="py-8 lg:px-0 px-8" />
                         </div>
                     )}
-
+                    <Button button={props.button} />
                     <a href="/store-locator" className="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:text-2xl text-lg uppercase text-white px-6 py-2 lg:text-center text-left lg:mx-0 mx-8">Find a store near you</a>
                 </div>
             </div>
