@@ -35,7 +35,15 @@
     {
       "_template": "organicMatters",
       "heading": "Organic Matters",
-      "description": "Organic is a direct reference to the way agricultural products are grown and processed. In the U.S., organic livestock raised for eggs must have access to the outdoors and be given organic feed. They cannot consume antibiotics, growth hormones, or any animal by-products"
+      "description": "Organic is a direct reference to the way agricultural products are grown and processed. In the U.S., organic livestock raised for eggs must have access to the outdoors and be given organic feed. They cannot consume antibiotics, growth hormones, or any animal by-products",
+      "imageRight": {
+        "src": "/images/3eggs.png",
+        "alt": "Organic Eggs"
+      },
+      "imageRightAlt": {
+        "src": "/images/organic-eggs-arrow.jpg",
+        "alt": "Organic Eggs are Better Eggs"
+      }
     },
     {
       "_template": "ourCommitment"
