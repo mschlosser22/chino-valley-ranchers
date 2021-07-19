@@ -65,7 +65,8 @@
       ]
     },
     {
-      "_template": "ourCommitment"
+      "_template": "ourCommitment",
+      "heading": "Our Commitment to You"
     },
     {
       "_template": "studies"

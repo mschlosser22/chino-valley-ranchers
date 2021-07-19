@@ -1,12 +1,14 @@
 import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inline'
 
 
-export function OurCommitment() {
+export function OurCommitment(props) {
     return (
         <div>
             <div className="relative -mt-12 lg:pt-36 pt-20 pb-32 bg-cover" style={{ backgroundImage: `url('/images/bg-blue-talons.jpg')` }}>
                 <div className="max-w-5xl mx-auto">
-                   <h1 className="font-ultra lg:text-6xl text-3xl lg:mx-0 mx-8 text-white uppercase tracking-normal pb-8">Our Commitment to You</h1>
+                   <h1 className="font-ultra lg:text-6xl text-3xl lg:mx-0 mx-8 text-white uppercase tracking-normal pb-8">
+                       <InlineTextarea name="heading" />
+                   </h1>
                     <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 text-white lg:pb-8 pb-6">As a CCOF (California Certified Organic Farmers) certified organic provider, we strive to go beyond standard to ensure that you enjoy the tastiest organic eggs possible.</p>
                     <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 text-white">All of our hens are fed the finest organic, non-GMO grains and seeds from certified pesticide-free fields. We also own and operate Southern California’s only certified organic feed mill for poultry for complete quality control.</p>
                     <h3 className="font-ultra lg:text-3xl text-2xl lg:mx-0 mx-8 text-white uppercase tracking-wider lg:pt-12 pt-8 pb-8">Cage Free Means Happier Chickens</h3>
@@ -27,4 +29,18 @@ export const ourCommitmentBlock = {
       <BlocksControls index={index}>
         <OurCommitment {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: 'Our Commitment Component',
+        defaultItem: [
+
+        ],
+        fields: [
+            {
+                name: 'heading',
+                label: 'Heading',
+                component: 'text'
+            }
+        ]
+    }
+}

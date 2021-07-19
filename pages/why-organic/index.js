@@ -60,7 +60,7 @@ const PAGE_BLOCKS = {
   whyOrganic: whyOrganicBlock,
   ourMission: ourMissionBlock,
   organicMatters: organicMattersBlock,
-  //ourCommitment: ourCommitmentBlock,
+  ourCommitment: ourCommitmentBlock,
   //studies: studiesBlock
 }
 

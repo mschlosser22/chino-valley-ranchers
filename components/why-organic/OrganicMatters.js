@@ -114,6 +114,28 @@ export const organicMattersBlock = {
                         component: 'text'
                     }
                 ]
+            },
+            {
+                name: "listHeading",
+                label: "List Heading",
+                component: "text"
+            },
+            {
+                name: "list",
+                label: "List",
+                component: "group-list",
+                fields: [
+                    {
+                        name: "title",
+                        label: "Title",
+                        component: "markdown"
+                    },
+                    {
+                        name: "description",
+                        label: "Description",
+                        component: "textarea"
+                    }
+                ]
             }
         ],
     }}
