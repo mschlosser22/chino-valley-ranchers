@@ -50,7 +50,7 @@ export function NutritiousFeed(props) {
                         {styles => (
 
                             <animated.div style={styles} className="w-36 ml-24 pt-2 lg:block hidden relative">
-                                <img src="/images/yourFamilyArrow.png"></img>
+                                <img src={props.imageBottom.src} alt={props.imageBottom.alt}></img>
                             </animated.div>
                         )}
                     </Spring>

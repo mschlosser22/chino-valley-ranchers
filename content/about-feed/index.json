@@ -40,7 +40,11 @@
                     "title": "Better For You",
                     "description": "Our chickens don’t consume hormones, antibiotics, or animal by-products, which means you don’t either!"
                 }
-            ]
+            ],
+            "imageBottom": {
+                "src": "/images/yourFamilyArrow.png",
+                "alt": "sign"
+            }
         },
         {
             "_template": "differenceFeed"
