@@ -87,6 +87,14 @@
     padding-top: 12rem;
 }
 
+#callout p em {
+    --tw-text-opacity: 1;
+    color: rgba(176, 17, 22, var(--tw-text-opacity));
+    font-family: ultraregular;
+    border-color: rgba(176, 17, 22, var(--tw-border-opacity));
+    border-bottom-width: 2px;
+}
+
 #stat p em, .stat p em {
     --tw-bg-opacity: 1;
     background-color: rgba(249, 161, 21, var(--tw-bg-opacity));
