@@ -39,6 +39,7 @@ const terms = [
 
 export function EggTermDef(props) {
 
+    const {terms} = props
 
     return(
      <div>
@@ -89,7 +90,33 @@ export const eggTermDefBlock = {
         label: 'Egg Term Component',
         defaultItems: [],
         fields: [
-
+            {
+                name: "heading",
+                label: "Heading",
+                component: "text"
+            },
+            {
+                name: "subheading",
+                label: "Sub Heading",
+                component: "textarea"
+            },
+            {
+                name: "terms",
+                label: "Terms",
+                component: "group-list",
+                fields: [
+                    {
+                        name: "title",
+                        label: "Title",
+                        component: "text"
+                    },
+                    {
+                        name: "description",
+                        label: "Description",
+                        component: "textarea"
+                    }
+                ]
+            }
         ]
     }
 }

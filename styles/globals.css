@@ -93,6 +93,7 @@
     font-family: ultraregular;
     border-color: rgba(176, 17, 22, var(--tw-border-opacity));
     border-bottom-width: 2px;
+    font-style: normal;
 }
 
 #stat p em, .stat p em {
