@@ -5,6 +5,20 @@ import { PastureEggsFooter } from '../about-pasture-raised/PastureEggsFooter'
 import RecipeVideos from '../../components/recipes/RecipeVideos'
 import RecipeArticles from '../../components/recipes/RecipeArticles'
 
+const recipeFooter = {
+    heading: "Pasture Raised Products",
+    description: "Explore our entire family of egg products, all of which are produced by healthy and happy, free range hens.",
+    textLeft: "you're gonna love these eggs!",
+    imageLeft: {
+        src: "/images/pastureArrow.png",
+        alt: "arrow"
+    },
+    imageRight: {
+        src: "/images/pastureEggCarton.png",
+        alt: "carton"
+    }
+}
+
 const recipesTemp = [
     {
         title: "The Morning Wrap",
@@ -180,7 +194,7 @@ export function Recipes(props) {
                 </div>
                 </div>
                 </div>
-                <PastureEggsFooter />
+                <PastureEggsFooter {...recipeFooter} />
             </div>
 
         )
@@ -239,7 +253,7 @@ export function Recipes(props) {
                 </div>
                 </div>
                 </div>
-                <PastureEggsFooter />
+                <PastureEggsFooter {...recipeFooter} />
             </div>
 
         )

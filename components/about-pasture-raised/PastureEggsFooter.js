@@ -2,16 +2,18 @@ import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, 
 
 
 export function PastureEggsFooter(props) {
+
+    console.log(props)
     return (
         <div className="relative lg:pt-56 pt-36 -mt-48 pb-28 z-40" style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}>
                     <div className="grid grid-cols-12 max-w-5xl mx-auto pt-24 gap-8">
                         <div className="lg:col-span-6 col-span-12">
                             <h1 className="text-4xl lg:text-6xl text-chinoblue font-ultra uppercase tracking-wide lg:pb-24 pb-8 px-8 lg:px-0">
-                                <InlineTextarea name="heading" />
+                                {props.heading}
                             </h1>
                             <div className="flex lg:my-0 lg:ml-16 lg:pt-7">
                                 <p className="text-lg lg:text-3xl text-chinoblue font-ultra tracking-wide lg:block hidden">
-                                    <InlineTextarea name="textLeft" />
+                                    {props.textLeft}
                                 </p>
                                 <p className="text-black lg:2xl text-xl lg:pb-24 lg:w-10/12 font-lato lg:text-left px-8 lg:px-0 lg:hidden block">
                                     {props.description}
@@ -22,7 +24,7 @@ export function PastureEggsFooter(props) {
                         </div>
                         <div className="lg:col-span-6 col-span-12">
                             <p className="text-black lg:2xl text-3xl lg:pb-24 lg:w-10/12 mx-12 lg:mx-0 font-lato lg:text-left text-center lg:block hidden">
-                                <InlineTextarea name="description" />
+                                {props.description}
                             </p>
                             <p className="text-xl lg:text-3xl text-chinoblue font-ultra tracking-wide px-8 lg:px-0 lg:hidden block pb-6">
                                 {props.textLeft}
