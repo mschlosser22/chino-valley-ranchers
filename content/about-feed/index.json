@@ -21,7 +21,26 @@
             "subheading": "Our commitment to organic goes well beyond standard. We strive to provide you with the highest quality eggs. That’s why we control every step of the process. It all starts with our feed."
         },
         {
-            "_template": "nutritiousFeed"
+            "_template": "nutritiousFeed",
+            "headingLeft": "Using nutritious organic feed has many benefits, including:",
+            "imageRight": {
+                "src": "/images/chicken.jpg",
+                "alt": "Chicken"
+            },
+            "list": [
+                {
+                    "title": "Better For Our Chickens",
+                    "description": "We develop our feed specifically to help keep our chickens stay healthy, active and content."
+                },
+                {
+                    "title": "Better For Our Eggs",
+                    "description": "Organic feed has a positive impact on the quality and nutritional value of our eggs."
+                },
+                {
+                    "title": "Better For You",
+                    "description": "Our chickens don’t consume hormones, antibiotics, or animal by-products, which means you don’t either!"
+                }
+            ]
         },
         {
             "_template": "differenceFeed"
