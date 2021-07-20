@@ -144,4 +144,12 @@ export const henParadiseBlock = {
       <BlocksControls index={index}>
         <HenParadise {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: 'Hen Paradise Component',
+        defaultItems: [],
+        fields: [
+
+        ]
+    }
+}

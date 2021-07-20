@@ -41,4 +41,12 @@ export const qualityFeedBlock = {
       <BlocksControls index={index}>
         <QualityFeed {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: 'Quality Feed Component',
+        defaultItems: [],
+        fields: [
+
+        ]
+    }
+}

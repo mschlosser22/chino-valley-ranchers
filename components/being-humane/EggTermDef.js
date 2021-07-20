@@ -84,4 +84,12 @@ export const eggTermDefBlock = {
       <BlocksControls index={index}>
         <EggTermDef {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: 'Egg Term Component',
+        defaultItems: [],
+        fields: [
+
+        ]
+    }
+}

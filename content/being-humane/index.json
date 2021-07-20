@@ -9,7 +9,17 @@
             "_template": "beingHumane",
             "heading": "A heritage of cage free",
             "image": "/images/bg-paper-edge.png",
-            "subheading": "The Nichols family has been doing cage-free egg production for more than 40 years—well before the advent of government regulations and pleas from animal rights groups. As a strong proponent of humane practices, Chino Valley Ranchers is proud to be cage free."
+            "subheading": "The Nichols family has been doing cage-free egg production for more than 40 years—well before the advent of government regulations and pleas from animal rights groups. As a strong proponent of humane practices, Chino Valley Ranchers is proud to be cage free.",
+            "imageLeft": {
+                "src": "/images/humanePictureFrame1.png",
+                "alt": "Nichols Egg Ranch"
+            },
+            "textRight": "Raising chickens without cages, as well as free range and organic upbringings, typify our philosophy of treating all hens with kindness and respect. Research has shown that a comfortable low-stress environment throughout all stages of a chicken’s development makes for a happier and healthier life.",
+            "textLeft": "A few decades ago we developed a number of consistent systems for both our Pullet Farm (where we raise our chickens) and our Egg Ranch (where the mature hens lay their eggs). For example, we keep the same feed and water system in place from the Brood-House to the Grow-House and finally to the Lay-House. This makes things easy for our birds and provides familiarity throughout their lives.",
+            "imageRight": {
+                "src": "/images/humanePictureFrame2.png",
+                "alt": "Picture Frame"
+            }
         },
         {
             "_template": "henParadise"
