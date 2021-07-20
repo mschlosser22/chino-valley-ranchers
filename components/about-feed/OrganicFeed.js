@@ -104,4 +104,10 @@ export const organicFeedBlock = {
       <BlocksControls index={index}>
         <OrganicFeed {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: 'Organic Feed Component',
+        defaultItems: [],
+        fields: []
+    }
+}

@@ -74,4 +74,10 @@ export const nutritiousFeedBlock = {
       <BlocksControls index={index}>
         <NutritiousFeed {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: 'Nutricious Feed Component',
+        defaultItems: [],
+        fields: []
+    }
+}

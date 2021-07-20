@@ -94,7 +94,8 @@
         "link": {
           "url": "/store-locator"
         },
-        "text": "Find a store near you"
+        "text": "Find a store near you",
+        "classes": "mt-12"
       }
     }
   ]

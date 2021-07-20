@@ -157,6 +157,7 @@ export function Studies(props) {
                 <div className="max-w-3xl mx-auto lg:mb-24 mb-16">
                     {props.list.map((item, index) =>
                         <div>
+                            {console.log(item)}
                             <p className="font-lato lg:text-2xl tracking-wider text-left lg:mx-0 mx-8 text-chinodarkblue">
                                 {item.description}
                             </p>
@@ -164,7 +165,6 @@ export function Studies(props) {
                         </div>
                     )}
                     <Button button={props.button} />
-                    <a href="/store-locator" className="bg-chinored rounded-md font-din tracking-wider text-center cursor-pointer mx-auto lg:text-2xl text-lg uppercase text-white px-6 py-2 lg:text-center text-left lg:mx-0 mx-8">Find a store near you</a>
                 </div>
             </div>
         </div>
@@ -193,6 +193,18 @@ export const studiesBlock = {
                 name: 'heading',
                 label: 'Heading',
                 component: 'markdown'
+            },
+            {
+                name: 'list',
+                label: 'List',
+                component: 'group-list',
+                fields: [
+                    {
+                        name: 'description',
+                        label: 'Description',
+                        component: 'textarea'
+                    }
+                ]
             }
         ]
     }

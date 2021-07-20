@@ -41,7 +41,7 @@ export function AboutFeed(props) {
                                             {styles => (
 
                                                 <animated.div style={styles}>
-                                                    <img id="eat" src="/images/youarewhatyoueat.png" className="lg:pb-6 w-48 md:w-full" />
+                                                    <img id="eat" src={props.imageLeft.src} className="lg:pb-6 w-48 md:w-full" alt={props.imageLeft.alt} />
                                                 </animated.div>
                                             )}
                                         </Spring>
@@ -120,7 +120,35 @@ export const aboutFeedBlock = {
             image: '/images/bg-paper-edge.png'
         },
         fields: [
-
+            {
+                name: "heading",
+                label: "Heading",
+                component: "text"
+            },
+            {
+                name: "subheading",
+                label: "Sub Heading",
+                component: "textarea"
+            },
+            {
+                name: "imageLeft",
+                label: 'Image Left',
+                component: "group",
+                fields: [
+                    {
+                        name: 'src',
+                        label: 'src',
+                        component: 'image',
+                        parse: media => `/images/${media.filename}`,
+                        uploadDir: () => '/images'
+                    },
+                    {
+                        name: 'alt',
+                        label: 'Alt',
+                        component: 'text'
+                    }
+                ]
+            },
         ],
     },
 }

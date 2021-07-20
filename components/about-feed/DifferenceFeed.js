@@ -51,4 +51,10 @@ export const differenceFeedBlock = {
       <BlocksControls index={index}>
         <DifferenceFeed {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+      label: 'Difference in Our Feed Component',
+      defaultItems: [],
+      fields: []
+    }
+  }

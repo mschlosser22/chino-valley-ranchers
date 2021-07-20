@@ -82,4 +82,10 @@ export const wayItsMadeBlock = {
       <BlocksControls index={index}>
         <WayItsMade {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: 'Way Its Made Component',
+        defaultItems: [],
+        fields: []
+    }
+}
