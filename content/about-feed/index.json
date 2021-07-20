@@ -58,7 +58,18 @@
             }
         },
         {
-            "_template": "organicFeed"
+            "_template": "organicFeed",
+            "heading": "Our feed formulations never contain hormones, animal proteins, steroids, or antibiotics.",
+            "headingRight": "Better Feed Creates Better Eggs",
+            "descriptionRight": "The best way to control quality of our eggs is to give our chickens the healthiest life possible. Aside from providing cage free environments, we mill our own feed onsite. As a result, we have healthy chickens that produce eggs with the highest nutritional value for our customers.",
+            "headingLeft": "Certified Organic Means Quality",
+            "descriptionLeft": "We are certified organic by CCOF (California Certified Organic Farmers). All areas of production, from the feed mill to the processing plant, are inspected to ensure our compliance with the organic standards.",
+            "button": {
+                "text": "Find Out More",
+                "link": {
+                    "url": "/why-organic"
+                }
+            }
         },
         {
             "_template": "wayItsMade"

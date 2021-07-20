@@ -4,7 +4,7 @@ import { Controller, Scene } from 'react-scrollmagic'
 import { propTypes } from 'react-markdown'
 import { Button } from '../../components/button/Button'
 
-export function DifferenceFeed() {
+export function DifferenceFeed(props) {
     return (
       <Controller>
         <div>
