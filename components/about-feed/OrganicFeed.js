@@ -101,7 +101,7 @@ export function OrganicFeed(props) {
                             </div>
                         </div>
                         <div className="mt-12 mb-28 text-center">
-                            <Button button={propTypes.button} />
+                            <Button button={props.button} />
                         </div>
                     </div>
                 </div>
