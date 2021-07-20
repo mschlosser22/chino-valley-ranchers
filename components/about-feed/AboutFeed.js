@@ -6,6 +6,9 @@ import { Spring, animated, interpolate } from 'react-spring'
 import { Controller, Scene } from 'react-scrollmagic'
 import { scale } from 'tailwindcss/defaultTheme'
 
+import ReactMarkdown from 'react-markdown'
+import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
+
 export function AboutFeed(props) {
 
     return(
@@ -89,12 +92,11 @@ export function AboutFeed(props) {
                             </div>
                             <div className="z-50 pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
                                 <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide">
-                                    Chino Valley Ranchers owns and operates
-                                    <br />
-                                    <span className="bg-chinodarkorange lg:px-2 mx-0 mx-8 leading-snug">Southern California’s only certified organic feed mill for poultry</span>
-                                    <br />
-                                    to ensure the highest quality and purity.
-                                    </h1>
+                                    <InlineWysiwyg name="stat" format="markdown" sticky>
+                                        <ReactMarkdown>{props.stat}</ReactMarkdown>
+                                    </InlineWysiwyg>
+
+                                </h1>
                                 <img src="/images/redSeperator.png" className="mt-20 mx-auto lg:w-1/2 w-3/4" />
                             </div>
                 </div>
@@ -149,6 +151,23 @@ export const aboutFeedBlock = {
                     }
                 ]
             },
+            {
+                name: 'stat',
+                label: 'Stat',
+                component: 'markdown'
+            },
+            {
+                name: 'video',
+                label: 'Video',
+                component: 'group',
+                fields: [
+                    {
+                        name: 'src',
+                        label: 'src',
+                        component: 'text'
+                    }
+                ]
+            }
         ],
     },
 }
