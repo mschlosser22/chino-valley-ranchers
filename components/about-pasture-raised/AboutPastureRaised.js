@@ -77,7 +77,9 @@ export function AboutPastureRaised(props) {
 
                                     <div className="md:col-span-8 col-span-12">
                                         <img src="/images/orangeSeperator.jpg" className="md:mt-16 mb-12 col-span-12"></img>
-                                        <p className="text-black lg:2xl lg:mx-4 mx-8 text-center md:text-left font-lato font-medium text-xl leading-relaxed">There’s nothing better than eggs that come from pasture raised hens who are free to roam about during the day in wide-open fields. They eat what is natural to them, including grass, seed, bugs and worms. They have all the shade, water, organic feed and freedom to roam about. The chickens are happier and healthier, which is why Chino Valley Ranchers pasture raised eggs are so delicious and nutritious.</p>
+                                        <p className="text-black lg:2xl lg:mx-4 mx-8 text-center md:text-left font-lato font-medium text-xl leading-relaxed">
+                                            <InlineTextarea name="description" />
+                                        </p>
                                         <img src="/images/orangeSeperator.jpg" className="mt-12 mb-12 col-span-12"></img>
                                     </div>
                                 </div>
@@ -116,7 +118,33 @@ export const aboutPastureRaisedBlock = {
             image: '/images/bg-paper-edge.png'
         },
         fields: [
-
+            {
+                name: "heading",
+                label: "Heading",
+                component: "text"
+            },
+            {
+                name: "subheading",
+                label: "Sub Heading",
+                component: "textarea"
+            },
+            {
+                name: "description",
+                label: "Description",
+                component: "textarea"
+            },
+            {
+                name: "video",
+                label: "Video",
+                component: "group",
+                fields: [
+                    {
+                        name: "src",
+                        label: 'src',
+                        component: 'text'
+                    }
+                ]
+            }
         ],
     },
 }
