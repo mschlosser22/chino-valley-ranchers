@@ -72,7 +72,31 @@
             }
         },
         {
-            "_template": "wayItsMade"
+            "_template": "wayItsMade",
+            "heading": "Eggs made the way you want",
+            "descriptionTop": "What we put into our feed changes the composition of our eggs. Chickens that eat a soy-free diet can produce soy-free eggs. We can also produce higher omega-3 fatty acids in our produce by changing up the custom feed. The possibilities are virtually limitless!",
+            "descriptionBottom": "We have an Avian Nutritionist on staff to formulate grain combinations into the most nutritious diet for our chickens, and to optimize precision and quality for the variety of specialty eggs we produce. This important process is based on years of company research evaluating how different feed formulations affect the nutritional properties of eggs.",
+            "listHeading": "Our specialty eggs include varieties such as:",
+            "list": [
+                {
+                    "title": "Organic  \n Omega-3:",
+                    "description": "Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA), which has a positive effect on cardiovascular health."
+                },
+                {
+                    "title": "Omega-3  \n Soy-Free:",
+                    "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seeds."
+                },
+                {
+                    "title": "Veg-a-Fed:",
+                    "description": "Our Veg-A-Fed eggs come from hens raised in free roaming environments and fed a pure vegetarian diet consisting of premium grains, seeds, and meal."
+                }
+            ],
+            "button": {
+                "text": "View Our Products",
+                "link": {
+                    "url": "/products"
+                }
+            }
         }
     ]
 }
