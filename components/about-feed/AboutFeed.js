@@ -53,7 +53,9 @@ export function AboutFeed(props) {
                                     </div>
                                     <div className="md:col-span-7 col-span-12">
                                         <img src="/images/orangeSeperator.jpg" className="mb-12 mt-4 col-span-12 lg:px-0 px-8" />
-                                        <p className="text-black lg:text-2xl lg:px-8 px-8 font-lato font-medium text-xl leading-relaxed">For more than six decades, we’ve been producing high quality eggs and that’s how we know that the difference is in the feed. As they say, “you are what you eat,” and the same rules apply to our chickens.</p>
+                                        <p className="text-black lg:text-2xl lg:px-8 px-8 font-lato font-medium text-xl leading-relaxed">
+                                            <InlineTextarea name="textRight" />
+                                        </p>
                                         <img src="/images/orangeSeperator.jpg" className="mt-12 col-span-12 lg:px-0 px-8" />
                                     </div>
                                 </div>
@@ -91,7 +93,7 @@ export function AboutFeed(props) {
                                 </div>
                             </div>
                             <div className="z-50 pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
-                                <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide">
+                                <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide" id="stat">
                                     <InlineWysiwyg name="stat" format="markdown" sticky>
                                         <ReactMarkdown>{props.stat}</ReactMarkdown>
                                     </InlineWysiwyg>
@@ -150,6 +152,11 @@ export const aboutFeedBlock = {
                         component: 'text'
                     }
                 ]
+            },
+            {
+                name: 'textRight',
+                label: 'Text Right',
+                component: 'textarea'
             },
             {
                 name: 'stat',
