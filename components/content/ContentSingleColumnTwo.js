@@ -73,7 +73,13 @@ const heading_alt_template = {
     defaultItem: {
         heading: "Some Heading"
     },
-    fields: [],
+    fields: [
+        {
+            name: "heading",
+            label: "Heading",
+            component: "text"
+        }
+    ],
 }
 
 const subheading_alt_template = {
@@ -81,7 +87,13 @@ const subheading_alt_template = {
     defaultItem: {
         subheading: "Some paragraph Text Here."
     },
-    fields: [],
+    fields: [
+        {
+            name: "subheading",
+            label: "Sub Heading",
+            component: "textarea"
+        }
+    ],
 }
 
 const image_alt_template = {

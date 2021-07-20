@@ -39,13 +39,13 @@ export function WhatItTakes(props) {
         </div>
 
         <div className="z-50 pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
-            <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide lg:mb-12 mb-6">
+            <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide lg:mb-12 mb-6 stat">
                 <InlineWysiwyg name="statOne" format="markdown" sticky>
                     <ReactMarkdown>{props.statOne}</ReactMarkdown>
                 </InlineWysiwyg>
 
             </h1>
-            <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide lg:mb-12 mb-6">
+            <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide lg:mb-12 mb-6 stat">
                 <InlineWysiwyg name="statTwp" format="markdown" sticky>
                     <ReactMarkdown>{props.statTwo}</ReactMarkdown>
                 </InlineWysiwyg>
