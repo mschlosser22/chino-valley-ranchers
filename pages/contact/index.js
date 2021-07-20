@@ -19,7 +19,11 @@ export default function Products({ file, isPreview}) {
     initialValues: file,
     label: 'Contact Page',
     fields: [
-
+      {
+        name: "email",
+        label: "Email",
+        component: "text"
+      }
     ],
     onSubmit() {
       cms.alerts.success('Saved!')
@@ -44,7 +48,7 @@ export default function Products({ file, isPreview}) {
       <Nav />
 
       <InlineForm form={form}>
-        <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} />
+        <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} email={file.data.email} />
       </InlineForm>
     </div>
     <Footer />

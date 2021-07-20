@@ -2,6 +2,8 @@ import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inlin
 
 export function ContactForm(props) {
 
+    console.log(props)
+
     return(
         <>
         <div className="w-full relative -mt-12 -mb-12 z-20 bg-cover bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper.png')`}}>
