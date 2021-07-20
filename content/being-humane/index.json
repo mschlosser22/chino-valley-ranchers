@@ -22,7 +22,19 @@
             }
         },
         {
-            "_template": "henParadise"
+            "_template": "henParadise",
+            "heading": "Hello Hen Paradise!",
+            "list": [
+                {
+                    "description": "At Chino Valley Ranchers we strive to provide an environment that allows our chickens to live and act in their natural ways. They have unlimited access to sunlight, premium grain feed, and plenty of fresh air and water. In fact, their fresh water is drawn from our own wells."
+                },
+                {
+                    "description": "Our cage free hen houses are specially built to give the birds freedom to roam the floor, and also are equipped with special roosting and nesting areas. All of our hen houses are environmentally controlled to maintain comfortable temperatures."
+                },
+                {
+                    "description": "Besides enjoying the interior amenities of the cage free houses, our free range and organic chickens are free to go outside—for sunning, socializing or dust bathing—anytime they want."
+                }
+            ]
         },
         {
             "_template": "qualityFeed"
