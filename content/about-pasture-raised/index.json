@@ -16,7 +16,31 @@
             "description": "There’s nothing better than eggs that come from pasture raised hens who are free to roam about during the day in wide-open fields. They eat what is natural to them, including grass, seed, bugs and worms. They have all the shade, water, organic feed and freedom to roam about. The chickens are happier and healthier, which is why Chino Valley Ranchers pasture raised eggs are so delicious and nutritious."
         },
         {
-          "_template": "whatItTakes"
+          "_template": "whatItTakes",
+          "heading": "What it Takes to Produce Pasture Raised Eggs",
+          "description": "Producing pasture raised eggs requires special care and attention. Chino Valley Ranchers personnel are trained in looking after these wildly happy hens to ensure their safety, satisfaction and welfare.",
+          "list": [
+            {
+              "title": "Plenty of Room to Roam",
+              "description": "Chino Valley Ranchers pasture raised farms provide 108 square feet of land per hen. That equates to one full acre for every 400 hens. They have plenty of room to roam around, stretch their legs, forage naturally, bath in the dust, bask in the sunshine and relax in the shade before coming back to a warm and comfortable barn to roost at night. They live a life that keeps them happy and healthy. These truly are birds of paradise!"
+            },
+            {
+              "title": "Better for the Hens, Better for You",
+              "description": "What’s good for the hens is good for the eggs that these lovely ladies lay. Our ranchers package up the eggs and sends them directly to stores and customers. When you buy Chino Valley Ranchers pasture raised eggs, you know you are getting nothing but the best organic quality, nutrition and flavor."
+            },
+            {
+              "title": "American Humane Certified",
+              "description": "If you are buying pasture raised eggs, make sure you see the American Humane Certified seal of approval. This means they are certified by American Humane and the hens are being treated properly. At Chino Valley Ranchers, we have been using humane egg production practices since our early days in business. American Humane sets strict requirements for all aspects of hen raising and egg production. We follow these regulations and more to ensure the most caring treatment of our hens."
+            }
+          ],
+          "statOne": "",
+          "statTwo": "",
+          "button": {
+            "text": "Learn More",
+            "link": {
+              "url": "/"
+            }
+          }
         },
         {
             "_template": "contentSingleColumn",

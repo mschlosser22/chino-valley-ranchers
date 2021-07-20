@@ -31,4 +31,12 @@ export const pastureEggsFooterBlock = {
       <BlocksControls index={index}>
         <PastureEggsFooter {...data} />
       </BlocksControls>
-    )}
+    ),
+    template: {
+        label: "Pasture Eggs Component",
+        defaultItems: [],
+        fields: [
+
+        ]
+    }
+}
