@@ -3,7 +3,7 @@ import { Spring, animated, interpolate } from 'react-spring'
 import { Controller, Scene } from 'react-scrollmagic'
 import { propTypes } from 'react-markdown'
 
-export function NutritiousFeed() {
+export function NutritiousFeed(props) {
     return (
         <Controller>
         <div>
@@ -15,9 +15,9 @@ export function NutritiousFeed() {
                 <img src={props.imageRight.src} className="lg:-mt-40 lg:w-72 w-56 mx-auto" alt={props.imageRight.alt}></img>
             </div>
             <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-12 gap-8">
+            <div className="grid grid-cols-12">
                 {props.list.map((item, index) =>
-                    <div className="" key={index}>
+                    <div className="col-span-12 grid grid-cols-12 gap-8" key={index}>
                         <div className="lg:col-span-5 col-span-12 relative">
                             <h1 className="text-xl md:text-3xl text-chinored uppercase font-ultra tracking-wide px-8 md:px-0 lg:pt-0 pt-4">
                                 {item.title}
