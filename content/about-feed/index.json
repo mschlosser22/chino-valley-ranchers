@@ -47,7 +47,15 @@
             }
         },
         {
-            "_template": "differenceFeed"
+            "_template": "differenceFeed",
+            "heading": "The Difference is in Our Feed",
+            "description": "As a leading producer of organic eggs, we take great pride in providing you with a wide variety of options including omega-3, vegetarian, and soy free. We also ensure that our eggs have the highest nutritional values and the best taste. This is all possible thanks to our precision feed formulation. We begin with the finest grains, using only top grade corn, soybean, alfalfa, flax seed, and other select seeds, plus limestone meal for essential minerals. All of our organic grains come from non-genetically modified (non-GMO) seeds and are grown in certified organic fields that are free of pesticides, which means healthier food for your table.",
+            "button": {
+                "text": "Discover The Difference",
+                "link": {
+                    "url": "/"
+                }
+            }
         },
         {
             "_template": "organicFeed"
