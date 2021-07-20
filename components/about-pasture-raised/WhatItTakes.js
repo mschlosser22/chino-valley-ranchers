@@ -1,6 +1,7 @@
 import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, InlineGroup } from 'react-tinacms-inline'
-
-
+import ReactMarkdown from 'react-markdown'
+import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
+import { Button } from '../../components/button/Button'
 
 export function WhatItTakes(props) {
 
@@ -22,7 +23,7 @@ export function WhatItTakes(props) {
                     <div className="col-span-12 grid grid-cols-12 gap-8" key={index}>
                         <div className="lg:col-span-5 col-span-12 mx-auto lg:mx-0 relative">
                             <h1 className="text-lg md:text-3xl text-chinored uppercase font-ultra text-center md:text-left tracking-wide">
-                                <InlineTextarea name="title" />
+                                {item.title}
                             </h1>
                         </div>
                         <div className="lg:col-span-7 col-span-12">
@@ -34,33 +35,23 @@ export function WhatItTakes(props) {
                     </div>
                 )}
 
-                <div className="lg:col-span-5 col-span-12 mx-auto lg:mx-0 relative">
-                    <h1 className="text-lg md:text-3xl text-chinored uppercase font-ultra text-center md:text-left mx-8 md:mx-0 tracking-wide"></h1>
-                </div>
-                <div className="lg:col-span-7 col-span-12">
-                    <p className="text-black lg:2xl mx-4 font-lato font-medium text-xl text-center md:text-left mx-8 md:mx-0"></p>
-                </div>
-
-                <hr className="solid border-chinodarkgray col-span-12 my-10" />
-
-                <div className="lg:col-span-5 col-span-12 mx-auto lg:mx-0 relative">
-                    <h1 className="text-lg md:text-3xl text-chinored uppercase font-ultra text-center md:text-left tracking-wide mx-8 md:mx-0"></h1>
-                </div>
-                <div className="lg:col-span-7 col-span-12">
-                    <p className="text-black lg:2xl mx-4 font-lato font-medium text-xl text-center md:text-left mx-8 md:mx-0"></p>
-                </div>
             </div>
         </div>
 
         <div className="z-50 pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
             <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide lg:mb-12 mb-6">
-                From our family to yours, Chino Valley Ranchers pasture raised eggs represent
-                <br />
-                <span className="bg-chinodarkorange px-2">quality you can count on.</span>
-                </h1>
-            <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide lg:mb-12 mb-6">Just ask the happy ladies out roaming in our wide open pastures!</h1>
+                <InlineWysiwyg name="statOne" format="markdown" sticky>
+                    <ReactMarkdown>{props.statOne}</ReactMarkdown>
+                </InlineWysiwyg>
+
+            </h1>
+            <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide lg:mb-12 mb-6">
+                <InlineWysiwyg name="statTwp" format="markdown" sticky>
+                    <ReactMarkdown>{props.statTwo}</ReactMarkdown>
+                </InlineWysiwyg>
+            </h1>
             <img src="/images/redSeperator.png" className="my-20 mx-auto w-1/2"></img>
-            <button class="bg-chinored rounded-md font-din tracking-wider mx-auto lg:text-xl text-md uppercase text-white px-6 py-2 mb-12">Learn More</button>
+            <Button button={props.button} />
         </div>
         </div>
 
