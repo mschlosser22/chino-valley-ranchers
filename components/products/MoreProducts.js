@@ -82,6 +82,66 @@ export const moreProductsBlock = {
                 component: 'text'
             },
             {
+                name: "moreOptions",
+                label: "More Options",
+                component: "group-list",
+                fields: [
+                    {
+                        name: "name",
+                        label: "Name",
+                        component: "text"
+                    },
+                    {
+                        name: "description",
+                        label: "Description",
+                        component: "textarea"
+                    },
+                    {
+                        name: "photo",
+                        label: 'Product Photo',
+                        component: "group",
+                        fields: [
+                            {
+                                name: 'src',
+                                label: 'src',
+                                component: 'image',
+                                parse: media => `/images/${media.filename}`,
+                                uploadDir: () => '/images'
+                            },
+                            {
+                                name: 'alt',
+                                label: 'Alt',
+                                component: 'text'
+                            }
+                        ]
+                    },
+                    {
+                        name: "button",
+                        label: "Button",
+                        component: "group",
+                        fields: [
+                            {
+                                name: "text",
+                                label: "Text",
+                                component: "text"
+                            },
+                            {
+                                name: "link",
+                                label: "Link",
+                                component: "group",
+                                fields: [
+                                    {
+                                        name: "url",
+                                        label: "URL",
+                                        component: "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 name: 'subheading',
                 label: 'Subheading',
                 component: 'textarea'
