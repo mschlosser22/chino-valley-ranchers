@@ -1,151 +1,151 @@
 {
-    "name": "Veg-A-Fed",
-    "order": 5,
-    "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
-    "photo": {
-      "src": "/images/products/veg-a-fed.png",
-      "alt": "Organic Omega-3 Soy Free Eggs"
+  "name": "Veg-A-Fed",
+  "order": 5,
+  "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+  "photo": {
+    "src": "/images/products/veg-a-fed.png",
+    "alt": "Organic Omega-3 Soy Free Eggs"
+  },
+  "button": {
+    "link": {
+      "url": "/products/veg-a-fed"
     },
-    "button": {
-      "link": {
-        "url": "/products/veg-a-fed"
-      },
-      "text": "Learn More"
+    "text": "Learn More"
+  },
+  "blocks": [
+    {
+      "_template": "hero",
+      "heading": "Free Range & Fantastic",
+      "image": "/images/hero-products.jpg"
     },
-    "blocks": [
-      {
-          "_template": "hero",
-          "heading": "Free Range & Fantastic",
-          "image": "/images/hero-products.jpg"
+    {
+      "_template": "productDescription",
+      "name": "Veg-A-Fed",
+      "text": [
+        "Our Veg-A-Fed eggs come from hens raised in free roaming environments and fed a pure vegetarian diet consisting of premium grains, seeds & meal.",
+        "These are happy hens that can walk around, scratch in the sunlight and enjoy plenty of fresh air and water. Naturally, they produce healthier and tastier eggs for all of us."
+      ],
+      "category": "Veg-A-Fed",
+      "tags": [
+        "Cage Free",
+        "Large",
+        "White"
+      ],
+      "image": {
+        "src": "/images/products/veg-a-fed.png",
+        "alt": "Veg-A-Fed Eggs"
       },
-      {
-        "_template": "productDescription",
-        "name": "Veg-A-Fed",
-        "text": [
-          "Our Veg-A-Fed eggs come from hens raised in free roaming environments and fed a pure vegetarian diet consisting of premium grains, seeds & meal.",
-          "These are happy hens that can walk around, scratch in the sunlight and enjoy plenty of fresh air and water. Naturally, they produce healthier and tastier eggs for all of us."
-        ],
-        "category": "Veg-A-Fed",
-        "tags": [
-          "Cage Free",
-          "Large",
-          "White"
-        ],
-        "image": {
-          "src": "/images/products/veg-a-fed.png",
-          "alt": "Veg-A-Fed Eggs"
+      "nutrition": {
+        "src": "/images/nutrition-veg-a-fed.png",
+        "alt": "Veg-A-Fed Nutrition Facts"
+      },
+      "button": {
+        "link": {
+          "url": "/store-locator"
         },
-        "nutrition": {
-          "src": "/images/nutrition-veg-a-fed.png",
-          "alt": "Veg-A-Fed Nutrition Facts"
+        "text": "Find a Store"
+      },
+      "icons": [
+        {
+          "src": "/images/pareve.png",
+          "alt": "Pareve"
         },
-        "button": {
-          "link": {
-            "url": "/store-locator"
-          },
-          "text": "Find a Store"
+        {
+          "src": "/images/cage-free.png",
+          "alt": "Cage Free"
+        }
+      ]
+    },
+    {
+      "_template": "sizeOptions",
+      "heading": "Four Size Options",
+      "images": [
+        {
+          "src": "/images/jumboVeg-A-Fed.png",
+          "alt": "Veg A Fed Jumbo"
         },
-        "icons": [
-          {
-            "src": "/images/pareve.png",
-            "alt": "Pareve"
+        {
+          "src": "/images/extraLargeVeg-A-Fed.png",
+          "alt": "Veg A Fed Extra Large"
+        },
+        {
+          "src": "/images/largeVeg-A-Fed.png",
+          "alt": "Veg A Fed Large"
+        },
+        {
+          "src": "/images/mediumVeg-A-Fed.png",
+          "alt": "Veg A Fed Medium"
+        }
+      ],
+      "sizes": [
+        "Jumbo",
+        "Extra Large",
+        "Large",
+        "Medium"
+      ]
+    },
+    {
+      "_template": "contentSingleColumn",
+      "blocks": [
+        {
+          "_template": "content",
+          "text": [
+            "Some default paragraph text here"
+          ],
+          "heading": "Better For Our Hens",
+          "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
+        },
+        {
+          "_template": "content",
+          "text": [
+            "Some default paragraph text here"
+          ],
+          "heading": "Better For Our Eggs",
+          "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
+        },
+        {
+          "_template": "content",
+          "text": [
+            "Some default paragraph text here"
+          ],
+          "heading": "Better For You",
+          "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
+        }
+      ]
+    },
+    {
+      "_template": "moreProducts",
+      "heading": "MORE DELICIOUS OPTIONS",
+      "moreOptions": [
+        {
+          "name": "Veg-a-fed Omega 3",
+          "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+          "photo": {
+            "src": "/images/veg-a-fed-omega-3.png",
+            "alt": "Veg-a-fed Omega 3"
           },
-          {
-            "src": "/images/cage-free.png",
-            "alt": "Cage Free"
-          }
-        ]
-      },
-      {
-        "_template": "sizeOptions",
-        "heading": "Four Size Options",
-        "images": [
-          {
-            "src": "/images/jumboVeg-A-Fed.png",
-            "alt": "Veg A Fed Jumbo"
-          },
-          {
-            "src": "/images/extraLargeVeg-A-Fed.png",
-            "alt": "Veg A Fed Extra Large"
-          },
-          {
-            "src": "/images/largeVeg-A-Fed.png",
-            "alt": "Veg A Fed Large"
-          },
-          {
-            "src": "/images/mediumVeg-A-Fed.png",
-            "alt": "Veg A Fed Medium"
-          }
-        ],
-        "sizes": [
-          "Jumbo",
-          "Extra Large",
-          "Large",
-          "Medium"
-        ]
-      },
-      {
-        "_template": "contentSingleColumn",
-        "blocks": [
-          {
-            "_template": "content",
-            "text": [
-              "Some default paragraph text here"
-            ],
-            "heading": "Better For Our Hens",
-            "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
-          },
-          {
-            "_template": "content",
-            "text": [
-              "Some default paragraph text here"
-            ],
-            "heading": "Better For Our Eggs",
-            "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
-          },
-          {
-            "_template": "content",
-            "text": [
-              "Some default paragraph text here"
-            ],
-            "heading": "Better For You",
-            "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
-          }
-        ]
-      },
-      {
-        "_template": "moreProducts",
-        "heading": "MORE DELICIOUS OPTIONS",
-        "moreOptions": [
-          {
-            "name": "Organic Omega-3",
-            "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.",
-            "photo": {
-                "src": "/images/organic-omega-3.png",
-                "alt": "Organic Eggs"
+          "button": {
+            "link": {
+              "url": "/products/veg-a-fed-omega-3"
             },
-            "button": {
-                "link": {
-                    "url": "/products/organic-omega-3"
-                },
-                "text": "Learn More"
-            }
-          },
-          {
-            "name": "ORGANIC OMEGA-3 SOY FREE",
-            "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.",
-            "photo": {
-                "src": "/images/organic-omega-3-soy-free.png",
-                "alt": "ORGANIC OMEGA-3 SOY FREE"
-            },
-            "button": {
-                "link": {
-                    "url": "/products/organic-omega-3-soy-free"
-                },
-                "text": "Learn More"
-            }
+            "text": "Learn More"
           }
-        ]
-      }
-    ]
+        },
+        {
+          "name": "Humane Harvest",
+          "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+          "photo": {
+            "src": "/images/humane-harvest.png",
+            "alt": "Humane Harvest"
+          },
+          "button": {
+            "link": {
+              "url": "/products/humane-harvest"
+            },
+            "text": "Learn More"
+          }
+        }
+      ]
+    }
+  ]
 }
