@@ -1,144 +1,144 @@
 {
-    "name": "Liquid Egg Whites",
-    "order": 9,
-    "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
-    "photo": {
-      "src": "/images/products/liquid-egg-whites.png",
-      "alt": "Organic Eggs"
+  "name": "Liquid Egg Whites",
+  "order": 9,
+  "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+  "photo": {
+    "src": "/images/products/liquid-egg-whites.png",
+    "alt": "Organic Eggs"
+  },
+  "button": {
+    "link": {
+      "url": "/products/liquid-egg-whites"
     },
-    "button": {
-      "link": {
-        "url": "/products/liquid-egg-whites"
-      },
-      "text": "Learn More"
+    "text": "Learn More"
+  },
+  "blocks": [
+    {
+      "_template": "hero",
+      "heading": "Liquid Egg Whites – Organic",
+      "image": "/images/hero-products.jpg"
     },
-    "blocks": [
-      {
-          "_template": "hero",
-          "heading": "Liquid Egg Whites – Organic",
-          "image": "/images/hero-products.jpg"
+    {
+      "_template": "productDescription",
+      "name": "Liquid Egg Whites",
+      "text": [
+        "Our 100% Liquid Organic Egg Whites come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+        "Egg whites are naturally fat free, cholesterol free, and contain no additives or artificial ingredients.",
+        "Each 16 oz. pint is equivalent to about 10 eggs, while 32 oz. pint is equivalent to about 20 eggs – both are fully pasteurized."
+      ],
+      "category": "Liquid Egg Whites",
+      "tags": [
+        "Organic"
+      ],
+      "image": {
+        "src": "/images/liquid-egg-whites-large.png",
+        "alt": "Liquid Egg Whites"
       },
-      {
-        "_template": "productDescription",
-        "name": "Liquid Egg Whites",
-        "text": [
-          "Our 100% Liquid Organic Egg Whites come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
-          "Egg whites are naturally fat free, cholesterol free, and contain no additives or artificial ingredients.",
-          "Each 16 oz. pint is equivalent to about 10 eggs, while 32 oz. pint is equivalent to about 20 eggs – both are fully pasteurized."
-        ],
-        "category": "Liquid Egg Whites",
-        "tags": [
-          "Organic"
-        ],
-        "image": {
-          "src": "/images/liquid-egg-whites-large.png",
-          "alt": "Liquid Egg Whites"
+      "nutrition": {
+        "src": "/images/nutrition-liquid-egg-whites.png",
+        "alt": "Liquid Egg Whites Nutrition Facts"
+      },
+      "button": {
+        "link": {
+          "url": "/store-locator"
         },
-        "nutrition": {
-          "src": "/images/nutrition-liquid-egg-whites.png",
-          "alt": "Liquid Egg Whites Nutrition Facts"
+        "text": "Find a Store"
+      },
+      "icons": [
+        {
+          "src": "/images/pareve.png",
+          "alt": "Pareve"
         },
-        "button": {
-          "link": {
-            "url": "/store-locator"
-          },
-          "text": "Find a Store"
+        {
+          "src": "/images/usda-organic.png",
+          "alt": "USDA Organic"
         },
-        "icons": [
-          {
-            "src": "/images/pareve.png",
-            "alt": "Pareve"
+        {
+          "src": "/images/free-range.png",
+          "alt": "Free Range"
+        }
+      ]
+    },
+    {
+      "_template": "sizeOptions",
+      "heading": "Two Options",
+      "images": [
+        {
+          "src": "/images/liquidEggWhites.png",
+          "alt": "Organic Eggs Size Options"
+        },
+        {
+          "src": "/images/liquidEggWhitesCageFree.png",
+          "alt": "Cage Free"
+        }
+      ],
+      "sizes": [
+        "Organic",
+        "Cage-Free"
+      ]
+    },
+    {
+      "_template": "contentSingleColumn",
+      "blocks": [
+        {
+          "_template": "content",
+          "text": [
+            "Some default paragraph text here"
+          ],
+          "heading": "Better For Our Hens",
+          "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
+        },
+        {
+          "_template": "content",
+          "text": [
+            "Some default paragraph text here"
+          ],
+          "heading": "Better For Our Eggs",
+          "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
+        },
+        {
+          "_template": "content",
+          "text": [
+            "Some default paragraph text here"
+          ],
+          "heading": "Better For You",
+          "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
+        }
+      ]
+    },
+    {
+      "_template": "moreProducts",
+      "heading": "MORE DELICIOUS OPTIONS",
+      "moreOptions": [
+        {
+          "name": "Pasture Raised",
+          "description": "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+          "photo": {
+            "src": "/images/pastureEggCarton.png",
+            "alt": "Pasture Raised"
           },
-          {
-            "src": "/images/usda-organic.png",
-            "alt": "USDA Organic"
-          },
-          {
-            "src": "/images/free-range.png",
-            "alt": "Free Range"
-          }
-        ]
-      },
-      {
-        "_template": "sizeOptions",
-        "heading": "Two Options",
-        "images": [
-          {
-            "src": "/images/liquidEggWhites.png",
-            "alt": "Organic Eggs Size Options"
-          },
-          {
-            "src": "/images/liquidEggWhitesCageFree.png",
-            "alt": "Cage Free"
-          }
-        ],
-        "sizes": [
-          "Organic",
-          "Cage-Free"
-        ]
-      },
-      {
-        "_template": "contentSingleColumn",
-        "blocks": [
-          {
-            "_template": "content",
-            "text": [
-              "Some default paragraph text here"
-            ],
-            "heading": "Better For Our Hens",
-            "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
-          },
-          {
-            "_template": "content",
-            "text": [
-              "Some default paragraph text here"
-            ],
-            "heading": "Better For Our Eggs",
-            "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
-          },
-          {
-            "_template": "content",
-            "text": [
-              "Some default paragraph text here"
-            ],
-            "heading": "Better For You",
-            "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
-          }
-        ]
-      },
-      {
-        "_template": "moreProducts",
-        "heading": "MORE DELICIOUS OPTIONS",
-        "moreOptions": [
-          {
-            "name": "Organic Omega-3",
-            "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.",
-            "photo": {
-                "src": "/images/organic-omega-3.png",
-                "alt": "Organic Eggs"
+          "button": {
+            "link": {
+              "url": "/products/pasture-raised"
             },
-            "button": {
-                "link": {
-                    "url": "/products/organic-omega-3"
-                },
-                "text": "Learn More"
-            }
-          },
-          {
-            "name": "ORGANIC OMEGA-3 SOY FREE",
-            "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.",
-            "photo": {
-                "src": "/images/organic-omega-3-soy-free.png",
-                "alt": "ORGANIC OMEGA-3 SOY FREE"
-            },
-            "button": {
-                "link": {
-                    "url": "/products/organic-omega-3-soy-free"
-                },
-                "text": "Learn More"
-            }
+            "text": "Learn More"
           }
-        ]
-      }
-    ]
+        },
+        {
+          "name": "ORGANIC",
+          "description": "Our organic free-range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains and seeds from certifide pesticide-free fields.",
+          "photo": {
+            "src": "/images/organic-large.png",
+            "alt": "ORGANIC"
+          },
+          "button": {
+            "link": {
+              "url": "/products/organic"
+            },
+            "text": "Learn More"
+          }
+        }
+      ]
+    }
+  ]
 }
