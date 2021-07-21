@@ -110,7 +110,7 @@
             "name": "Veg-a-fed",
             "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
             "photo": {
-                "src": "/images/veg-a-fed.png",
+                "src": "/images/products/veg-a-fed.png",
                 "alt": "Veg-a-fed"
             },
             "button": {
@@ -124,7 +124,7 @@
             "name": "Pasture Raised",
             "description": "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
             "photo": {
-                "src": "/images/pasture-raised.png",
+                "src": "/images/products/pasture-raised.png",
                 "alt": "Pasture Raised"
             },
             "button": {
