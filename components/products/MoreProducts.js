@@ -7,37 +7,6 @@ import { Button } from '../../components/button/Button'
 
 export function MoreProducts(props) {
 
-    const products = [
-        {
-            name: 'Organic Omega-3',
-            description: 'Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.',
-            photo: {
-                src: '/images/organic-omega-3.png',
-                alt: 'Organic Eggs'
-            },
-            button: {
-                link: {
-                    url: '/products/organic-omega-3'
-                },
-                text: 'Learn More'
-            }
-        },
-        {
-            name: 'Organic Omega-3 Soy Free',
-            description: 'Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.',
-            photo: {
-                src: '/images/organic-omega-3-soy-free.png',
-                alt: 'Organic Eggs'
-            },
-            button: {
-                link: {
-                    url: '/products/organic-omega-3-soy-free'
-                },
-                text: 'Learn More'
-            }
-        }
-    ]
-
     return (
         <>
         <div className="relative pt-8 -mt-12 pb-12 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
@@ -53,7 +22,7 @@ export function MoreProducts(props) {
         </div>
 
         <div className="relative -mt-12">
-            {products.map((product, index) => (
+            {props.moreOptions.map((product, index) => (
                         <div key={index} className="relative bg-repeat-y bg-cover" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
                             <div className="max-w-7xl mx-auto">
                                 <div className="grid grid-cols-12 lg:gap-8 pb-24 lg:pb-32 px-8 xl:px-0 overflow-hidden">
