@@ -1,106 +1,106 @@
 {
-    "blocks": [
+  "blocks": [
+    {
+      "_template": "hero",
+      "heading": "Being Humane",
+      "image": "/images/hero-products.jpg"
+    },
+    {
+      "_template": "beingHumane",
+      "heading": "A heritage of cage free",
+      "image": "/images/bg-paper-edge.png",
+      "subheading": "The Nichols family has been doing cage-free egg production for more than 40 years—well before the advent of government regulations and pleas from animal rights groups. As a strong proponent of humane practices, Chino Valley Ranchers is proud to be cage free.",
+      "imageLeft": {
+        "src": "/images/humanePictureFrame1.png",
+        "alt": "Nichols Egg Ranch"
+      },
+      "textRight": "Raising chickens without cages, as well as free range and organic upbringings, typify our philosophy of treating all hens with kindness and respect. Research has shown that a comfortable low-stress environment throughout all stages of a chicken’s development makes for a happier and healthier life.",
+      "textLeft": "A few decades ago we developed a number of consistent systems for both our Pullet Farm (where we raise our chickens) and our Egg Ranch (where the mature hens lay their eggs). For example, we keep the same feed and water system in place from the Brood-House to the Grow-House and finally to the Lay-House. This makes things easy for our birds and provides familiarity throughout their lives.",
+      "imageRight": {
+        "src": "/images/humanePictureFrame2.png",
+        "alt": "Picture Frame"
+      }
+    },
+    {
+      "_template": "henParadise",
+      "heading": "Hello Hen Paradise!",
+      "list": [
         {
-            "_template": "hero",
-            "heading": "Being Humane",
-            "image": "/images/hero-products.jpg"
+          "description": "At Chino Valley Ranchers we strive to provide an environment that allows our chickens to live and act in their natural ways. They have unlimited access to sunlight, premium grain feed, and plenty of fresh air and water. In fact, their fresh water is drawn from our own wells."
         },
         {
-            "_template": "beingHumane",
-            "heading": "A heritage of cage free",
-            "image": "/images/bg-paper-edge.png",
-            "subheading": "The Nichols family has been doing cage-free egg production for more than 40 years—well before the advent of government regulations and pleas from animal rights groups. As a strong proponent of humane practices, Chino Valley Ranchers is proud to be cage free.",
-            "imageLeft": {
-                "src": "/images/humanePictureFrame1.png",
-                "alt": "Nichols Egg Ranch"
-            },
-            "textRight": "Raising chickens without cages, as well as free range and organic upbringings, typify our philosophy of treating all hens with kindness and respect. Research has shown that a comfortable low-stress environment throughout all stages of a chicken’s development makes for a happier and healthier life.",
-            "textLeft": "A few decades ago we developed a number of consistent systems for both our Pullet Farm (where we raise our chickens) and our Egg Ranch (where the mature hens lay their eggs). For example, we keep the same feed and water system in place from the Brood-House to the Grow-House and finally to the Lay-House. This makes things easy for our birds and provides familiarity throughout their lives.",
-            "imageRight": {
-                "src": "/images/humanePictureFrame2.png",
-                "alt": "Picture Frame"
-            }
+          "description": "Our cage free hen houses are specially built to give the birds freedom to roam the floor, and also are equipped with special roosting and nesting areas. All of our hen houses are environmentally controlled to maintain comfortable temperatures."
         },
         {
-            "_template": "henParadise",
-            "heading": "Hello Hen Paradise!",
-            "list": [
-                {
-                    "description": "At Chino Valley Ranchers we strive to provide an environment that allows our chickens to live and act in their natural ways. They have unlimited access to sunlight, premium grain feed, and plenty of fresh air and water. In fact, their fresh water is drawn from our own wells."
-                },
-                {
-                    "description": "Our cage free hen houses are specially built to give the birds freedom to roam the floor, and also are equipped with special roosting and nesting areas. All of our hen houses are environmentally controlled to maintain comfortable temperatures."
-                },
-                {
-                    "description": "Besides enjoying the interior amenities of the cage free houses, our free range and organic chickens are free to go outside—for sunning, socializing or dust bathing—anytime they want."
-                }
-            ]
-        },
-        {
-            "_template": "qualityFeed",
-            "heading": "Quality feed",
-            "listTop": [
-                {
-                    "description": "As egg ranchers for more than six decades, we are committed to using nutritious top quality feed for several important reasons. First, it helps keep our chickens healthy, active and content. Equally important, it has a direct effect on the quality and nutritional value of Chino Valley Ranchers eggs."
-                },
-                {
-                    "description": "As a leader in the specialty egg industry, we take great pride in producing egg varieties—organic, omega-3, vegetarian, soy free and more—with the highest nutritional values and the best taste. Precision feed formulation plays a major role in this."
-                },
-                {
-                    "description": "It all starts with the finest grains. Chino Valley Ranchers uses only top grade corn, soybean (except for our Organic Soy Free), alfalfa, flax seed and other select seeds, plus limestone meal for essential minerals. All of our organic grains come from non-genetically-modified seeds and are grown in certified organic fields that are free of pesticide."
-                }
-            ],
-            "callout": "As you would expect,  \n our natural feed formulations  \n _NEVER_ contain hormones, animal proteins, steroids, or antibiotics.",
-            "listBottom": [
-                {
-                    "description": "We have an Avian Nutritionist on staff to formulate grain combinations into the most nutritious diet for our chickens, and to optimize precision and quality for the variety of specialty eggs we produce. This important process is based on years of company research evaluating how different feed formulations affect the nutritional properties of eggs."
-                },
-                {
-                    "description": "Notably, Chino Valley Ranchers is proud to have Southern California’s only dedicated organic poultry feed mill. We have found that the best way to maintain precise and proprietary dietary formulations is to mill our own feed onsite. Our extensive mill and silo system allows us to continuously monitor and control diets for our birds."
-                },
-                {
-                    "description": "These many steps & protocols—nutrition research, top grade grains, precision feed formulation, staff nutritionist, our organic feed mill—all make a difference. The result is healthy chickens producing eggs that are of the highest quality and nutritional value for our customers."
-                }
-            ]
-        },
-        {
-            "_template": "eggTermDef",
-            "heading": "Egg Terms & Definitions",
-            "subheading": "Here are common terms & definitions per the American Egg Board and their Egg Nutrition Center – click on the words below to see more information:",
-            "terms": [
-                {
-                    "title": "Cage-Free Eggs",
-                    "description": "Eggs laid by hens at indoor floor operations, sometimes called free roaming. The hens may roam in a building, room or open area, usually in a barn or poultry house, and have unlimited access to fresh food and water, while some may also forage for food if they are allowed outdoors. Cage- free systems vary and include barn-raised and free-range hens, both of which have shelter that helps protect against predators. Both types are produced under common handling and care practices, which provide floor space, nest space and perches."
-                },
-                {
-                    "title": "Fertile Eggs",
-                    "description": "Eggs laid by hens at indoor floor operations, sometimes called free roaming. The hens may roam in a building, room or open area, usually in a barn or poultry house, and have unlimited access to fresh food and water, while some may also forage for food if they are allowed outdoors. Cage- free systems vary and include barn-raised and free-range hens, both of which have shelter that helps protect against predators. Both types are produced under common handling and care practices, which provide floor space, nest space and perches."
-                },
-                {
-                    "title": "Free Range Eggs",
-                    "description": "Eggs laid by hens at indoor floor operations, sometimes called free roaming. The hens may roam in a building, room or open area, usually in a barn or poultry house, and have unlimited access to fresh food and water, while some may also forage for food if they are allowed outdoors. Cage- free systems vary and include barn-raised and free-range hens, both of which have shelter that helps protect against predators. Both types are produced under common handling and care practices, which provide floor space, nest space and perches."
-                },
-                {
-                    "title": "Omega-3 Eggs",
-                    "description": "Eggs laid by hens at indoor floor operations, sometimes called free roaming. The hens may roam in a building, room or open area, usually in a barn or poultry house, and have unlimited access to fresh food and water, while some may also forage for food if they are allowed outdoors. Cage- free systems vary and include barn-raised and free-range hens, both of which have shelter that helps protect against predators. Both types are produced under common handling and care practices, which provide floor space, nest space and perches."
-                },
-                {
-                    "title": "Organic Eggs",
-                    "description": "Eggs laid by hens at indoor floor operations, sometimes called free roaming. The hens may roam in a building, room or open area, usually in a barn or poultry house, and have unlimited access to fresh food and water, while some may also forage for food if they are allowed outdoors. Cage- free systems vary and include barn-raised and free-range hens, both of which have shelter that helps protect against predators. Both types are produced under common handling and care practices, which provide floor space, nest space and perches."
-                },
-                {
-                    "title": "Pastured Eggs",
-                    "description": "Eggs laid by hens at indoor floor operations, sometimes called free roaming. The hens may roam in a building, room or open area, usually in a barn or poultry house, and have unlimited access to fresh food and water, while some may also forage for food if they are allowed outdoors. Cage- free systems vary and include barn-raised and free-range hens, both of which have shelter that helps protect against predators. Both types are produced under common handling and care practices, which provide floor space, nest space and perches."
-                },
-                {
-                    "title": "Vegetarian Eggs",
-                    "description": "Eggs laid by hens at indoor floor operations, sometimes called free roaming. The hens may roam in a building, room or open area, usually in a barn or poultry house, and have unlimited access to fresh food and water, while some may also forage for food if they are allowed outdoors. Cage- free systems vary and include barn-raised and free-range hens, both of which have shelter that helps protect against predators. Both types are produced under common handling and care practices, which provide floor space, nest space and perches."
-                },
-                {
-                    "title": "Grade AA Eggs",
-                    "description": "Eggs laid by hens at indoor floor operations, sometimes called free roaming. The hens may roam in a building, room or open area, usually in a barn or poultry house, and have unlimited access to fresh food and water, while some may also forage for food if they are allowed outdoors. Cage- free systems vary and include barn-raised and free-range hens, both of which have shelter that helps protect against predators. Both types are produced under common handling and care practices, which provide floor space, nest space and perches."
-                }
-            ]
+          "description": "Besides enjoying the interior amenities of the cage free houses, our free range and organic chickens are free to go outside—for sunning, socializing or dust bathing—anytime they want."
         }
-    ]
+      ]
+    },
+    {
+      "_template": "qualityFeed",
+      "heading": "Quality feed",
+      "listTop": [
+        {
+          "description": "As egg ranchers for more than six decades, we are committed to using nutritious top quality feed for several important reasons. First, it helps keep our chickens healthy, active and content. Equally important, it has a direct effect on the quality and nutritional value of Chino Valley Ranchers eggs."
+        },
+        {
+          "description": "As a leader in the specialty egg industry, we take great pride in producing egg varieties—organic, omega-3, vegetarian, soy free and more—with the highest nutritional values and the best taste. Precision feed formulation plays a major role in this."
+        },
+        {
+          "description": "It all starts with the finest grains. Chino Valley Ranchers uses only top grade corn, soybean (except for our Organic Soy Free), alfalfa, flax seed and other select seeds, plus limestone meal for essential minerals. All of our organic grains come from non-genetically-modified seeds and are grown in certified organic fields that are free of pesticide."
+        }
+      ],
+      "callout": "As you would expect,  \n our natural feed formulations  \n _NEVER_ contain hormones, animal proteins, steroids, or antibiotics.",
+      "listBottom": [
+        {
+          "description": "We have an Avian Nutritionist on staff to formulate grain combinations into the most nutritious diet for our chickens, and to optimize precision and quality for the variety of specialty eggs we produce. This important process is based on years of company research evaluating how different feed formulations affect the nutritional properties of eggs."
+        },
+        {
+          "description": "Notably, Chino Valley Ranchers is proud to have Southern California’s only dedicated organic poultry feed mill. We have found that the best way to maintain precise and proprietary dietary formulations is to mill our own feed onsite. Our extensive mill and silo system allows us to continuously monitor and control diets for our birds."
+        },
+        {
+          "description": "These many steps & protocols—nutrition research, top grade grains, precision feed formulation, staff nutritionist, our organic feed mill—all make a difference. The result is healthy chickens producing eggs that are of the highest quality and nutritional value for our customers."
+        }
+      ]
+    },
+    {
+      "_template": "eggTermDef",
+      "heading": "Egg Terms & Definitions",
+      "subheading": "Here are common terms & definitions per the American Egg Board and their Egg Nutrition Center – click on the words below to see more information:",
+      "terms": [
+        {
+          "title": "Cage-Free Eggs",
+          "description": "Eggs laid by hens at indoor floor operations, sometimes called free roaming. The hens may roam in a building, room or open area, usually in a barn or poultry house, and have unlimited access to fresh food and water, while some may also forage for food if they are allowed outdoors. Cage- free systems vary and include barn-raised and free-range hens, both of which have shelter that helps protect against predators. Both types are produced under common handling and care practices, which provide floor space, nest space and perches."
+        },
+        {
+          "title": "Fertile Eggs",
+          "description": "Eggs that, if not refrigerated, can be incubated and hatch into chicks. These eggs result when hens and roosters are housed together. While these eggs may contain a small amount of male hormone, they do not possess any known nutritional differences from non-fertile eggs."
+        },
+        {
+          "title": "Free Range Eggs",
+          "description": "Eggs produced by hens that have access to outdoors in accordance with weather, environmental or state laws. The birds have continuous access to fresh food and water and may forage for wild plants and insects. They are also provided floor space, nesting space and perches."
+        },
+        {
+          "title": "Omega-3 Eggs",
+          "description": "While eggs contain some naturally occurring omega-3 fatty acids (on average about 30 mg per egg), Omega-3-enhanced eggs provide more—from 100 to over 600 mg per egg."
+        },
+        {
+          "title": "Organic Eggs",
+          "description": "Eggs that are laid by cage-free, free-roaming hens that are raised on certified organic feed and have access to the outdoors. The hens’ feed is grown without most synthetic pesticides, fungicides, herbicides or fertilizers, and 100% of the agricultural ingredients must be certified organic. Antibiotics and growth hormones are prohibited (although these will not be found in any shell eggs)."
+        },
+        {
+          "title": "Pastured Eggs",
+          "description": "Pastured eggs originate from hens free to roam and forage on a maintained pasture area. The vegetarian diet may be supplemented with grain. The hens are moved to various pasture areas to maintain vegetation."
+        },
+        {
+          "title": "Vegetarian Eggs",
+          "description": "Eggs produced by hens fed a vegetarian diet."
+        },
+        {
+          "title": "Grade AA Eggs",
+          "description": "In descending order of quality, grades are designated AA, A and B according to both their interior and exterior quality. Grade quality and weight (size) are not related to one another. Eggs of any quality grade may differ in weight (size). There is no difference in nutritive value between the different grades. All eggs sold at the retail level must meet the standards for Grade B or better."
+        }
+      ]
+    }
+  ]
 }
