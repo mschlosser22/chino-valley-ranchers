@@ -1,149 +1,149 @@
 {
-    "name": "Organic Omega-3 Soy Free",
-    "order": 3,
-    "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
-    "photo": {
-      "src": "/images/products/organic-omega-3-soy-free.png",
-      "alt": "Organic Omega-3 Soy Free Eggs"
+  "name": "Organic Omega-3 Soy Free",
+  "order": 3,
+  "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+  "photo": {
+    "src": "/images/products/organic-omega-3-soy-free.png",
+    "alt": "Organic Omega-3 Soy Free Eggs"
+  },
+  "button": {
+    "link": {
+      "url": "/products/organic-omega-3-soy-free"
     },
-    "button": {
-      "link": {
-        "url": "/products/organic-omega-3-soy-free"
-      },
-      "text": "Learn More"
+    "text": "Learn More"
+  },
+  "blocks": [
+    {
+      "_template": "hero",
+      "heading": "Free Range & Fantastic",
+      "image": "/images/hero-products.jpg"
     },
-    "blocks": [
-      {
-          "_template": "hero",
-          "heading": "Free Range & Fantastic",
-          "image": "/images/hero-products.jpg"
+    {
+      "_template": "productDescription",
+      "name": "Organic Omega-3 Soy Free",
+      "text": [
+        "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+        "Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health."
+      ],
+      "category": "Organic",
+      "tags": [
+        "Free Range",
+        "Large",
+        "Brown"
+      ],
+      "image": {
+        "src": "/images/products/organic-omega-3-soy-free.png",
+        "alt": "Organic Omega-3 Soy Free Eggs"
       },
-      {
-        "_template": "productDescription",
-        "name": "Organic Omega-3 Soy Free",
-        "text": [
-          "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
-          "Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health."
-        ],
-        "category": "Organic",
-        "tags": [
-          "Free Range",
-          "Large",
-          "Brown"
-        ],
-        "image": {
-          "src": "/images/products/organic-omega-3-soy-free.png",
-          "alt": "Organic Omega-3 Soy Free Eggs"
+      "nutrition": {
+        "src": "/images/nutrition-organic-omega-3-soy-free.png",
+        "alt": "Organic Omega-3 Soy Free Egg Nutrition Facts"
+      },
+      "button": {
+        "link": {
+          "url": "/store-locator"
         },
-        "nutrition": {
-          "src": "/images/nutrition-organic-omega-3-soy-free.png",
-          "alt": "Organic Omega-3 Soy Free Egg Nutrition Facts"
+        "text": "Find a Store"
+      },
+      "icons": [
+        {
+          "src": "/images/pareve.png",
+          "alt": "Pareve"
         },
-        "button": {
-          "link": {
-            "url": "/store-locator"
-          },
-          "text": "Find a Store"
+        {
+          "src": "/images/omega-3.png",
+          "alt": "Omega 3"
         },
-        "icons": [
-          {
-            "src": "/images/pareve.png",
-            "alt": "Pareve"
+        {
+          "src": "/images/usda-organic.png",
+          "alt": "USDA Organic"
+        },
+        {
+          "src": "/images/free-range.png",
+          "alt": "Free Range"
+        }
+      ]
+    },
+    {
+      "_template": "sizeOptions",
+      "heading": "Two Size Options",
+      "images": [
+        {
+          "src": "/images/largeOmega3SoyFree.png",
+          "alt": "Omega 3 Soy Free Large"
+        },
+        {
+          "src": "/images/6ctOmega3SoyFree.png",
+          "alt": "Omega 3 Soy Free 6 count"
+        }
+      ],
+      "sizes": [
+        "Large",
+        "6-Count Large"
+      ]
+    },
+    {
+      "_template": "contentSingleColumn",
+      "blocks": [
+        {
+          "_template": "content",
+          "text": [
+            "Some default paragraph text here"
+          ],
+          "heading": "Better For Our Hens",
+          "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
+        },
+        {
+          "_template": "content",
+          "text": [
+            "Some default paragraph text here"
+          ],
+          "heading": "Better For Our Eggs",
+          "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
+        },
+        {
+          "_template": "content",
+          "text": [
+            "Some default paragraph text here"
+          ],
+          "heading": "Better For You",
+          "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
+        }
+      ]
+    },
+    {
+      "_template": "moreProducts",
+      "heading": "MORE DELICIOUS OPTIONS",
+      "moreOptions": [
+        {
+          "name": "Organic Omega-3",
+          "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.",
+          "photo": {
+            "src": "/images/organic-omega-3.png",
+            "alt": "Organic Eggs"
           },
-          {
-            "src": "/images/omega-3.png",
-            "alt": "Omega 3"
-          },
-          {
-            "src": "/images/usda-organic.png",
-            "alt": "USDA Organic"
-          },
-          {
-            "src": "/images/free-range.png",
-            "alt": "Free Range"
-          }
-        ]
-      },
-      {
-        "_template": "sizeOptions",
-        "heading": "Two Size Options",
-        "images": [
-          {
-            "src": "/images/largeOmega3SoyFree.png",
-            "alt": "Omega 3 Soy Free Large"
-          },
-          {
-            "src": "/images/6ctOmega3SoyFree.png",
-            "alt": "Omega 3 Soy Free 6 count"
-          }
-        ],
-        "sizes": [
-          "Large",
-          "6-Count Large"
-        ]
-      },
-      {
-        "_template": "contentSingleColumn",
-        "blocks": [
-          {
-            "_template": "content",
-            "text": [
-              "Some default paragraph text here"
-            ],
-            "heading": "Better For Our Hens",
-            "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
-          },
-          {
-            "_template": "content",
-            "text": [
-              "Some default paragraph text here"
-            ],
-            "heading": "Better For Our Eggs",
-            "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
-          },
-          {
-            "_template": "content",
-            "text": [
-              "Some default paragraph text here"
-            ],
-            "heading": "Better For You",
-            "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
-          }
-        ]
-      },
-      {
-        "_template": "moreProducts",
-        "heading": "MORE DELICIOUS OPTIONS",
-        "moreOptions": [
-          {
-            "name": "Organic Omega-3",
-            "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.",
-            "photo": {
-                "src": "/images/organic-omega-3.png",
-                "alt": "Organic Eggs"
+          "button": {
+            "link": {
+              "url": "/products/organic-omega-3"
             },
-            "button": {
-                "link": {
-                    "url": "/products/organic-omega-3"
-                },
-                "text": "Learn More"
-            }
-          },
-          {
-            "name": "ORGANIC OMEGA-3 SOY FREE",
-            "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.",
-            "photo": {
-                "src": "/images/organic-omega-3-soy-free.png",
-                "alt": "ORGANIC OMEGA-3 SOY FREE"
-            },
-            "button": {
-                "link": {
-                    "url": "/products/organic-omega-3-soy-free"
-                },
-                "text": "Learn More"
-            }
+            "text": "Learn More"
           }
-        ]
-      }
-    ]
+        },
+        {
+          "name": "ORGANIC",
+          "description": "Our organic free-range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains and seeds from certifide pesticide-free fields.",
+          "photo": {
+            "src": "/images/organic-large.png",
+            "alt": "ORGANIC"
+          },
+          "button": {
+            "link": {
+              "url": "/products/organic"
+            },
+            "text": "Learn More"
+          }
+        }
+      ]
+    }
+  ]
 }
