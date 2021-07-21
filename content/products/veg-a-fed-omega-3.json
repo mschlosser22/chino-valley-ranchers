@@ -107,29 +107,29 @@
         "heading": "MORE DELICIOUS OPTIONS",
         "moreOptions": [
           {
-            "name": "Organic Omega-3",
-            "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.",
+            "name": "Veg-a-fed",
+            "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
             "photo": {
-                "src": "/images/organic-omega-3.png",
-                "alt": "Organic Eggs"
+                "src": "/images/veg-a-fed.png",
+                "alt": "Veg-a-fed"
             },
             "button": {
                 "link": {
-                    "url": "/products/organic-omega-3"
+                    "url": "/products/veg-a-fed"
                 },
                 "text": "Learn More"
             }
           },
           {
-            "name": "ORGANIC OMEGA-3 SOY FREE",
-            "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seed—a grain naturally high in Omega-3 fatty acids. Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health.",
+            "name": "Pasture Raised",
+            "description": "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
             "photo": {
-                "src": "/images/organic-omega-3-soy-free.png",
-                "alt": "ORGANIC OMEGA-3 SOY FREE"
+                "src": "/images/pasture-raised.png",
+                "alt": "Pasture Raised"
             },
             "button": {
                 "link": {
-                    "url": "/products/organic-omega-3-soy-free"
+                    "url": "/products/pasture-raised"
                 },
                 "text": "Learn More"
             }
