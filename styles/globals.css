@@ -133,4 +133,12 @@
     padding-bottom: 2rem;
 }
 
+@media not all and (min-resolution:.001dpcm) {
+    @media {
+        .safari10 {
+            height: 50px;
+        }
+    }
+}
+
 @tailwind utilities;

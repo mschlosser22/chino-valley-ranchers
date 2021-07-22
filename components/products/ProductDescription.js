@@ -53,7 +53,7 @@ export function ProductDescription(props) {
                         {/* Icons */}
                         <div className="flex justify-end h-12 gap-8 w-full col-span-12">
                             {props.icons && props.icons.map( (icon, index) => (
-                                <img key={index} src={icon.src} alt={icon.alt} className="object-cover" />
+                                <img key={index} src={icon.src} alt={icon.alt} className="object-cover h-12" />
                             ))}
                         </div>
                         {/* Nutrition Info */}
