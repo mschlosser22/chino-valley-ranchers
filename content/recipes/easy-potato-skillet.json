@@ -11,7 +11,7 @@
     },
     "button": {
         "text": "Download Recipe Card",
-        "src": "#"
+        "src": "/images/Recipe-Card-easy-potato-skillet.jpg"
     },
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl quam, nec convallis libero fringilla vitae. Sed tincidunt a lorem ac faucibus. Integer efficitur est a risus consectetur elementum."
 }
