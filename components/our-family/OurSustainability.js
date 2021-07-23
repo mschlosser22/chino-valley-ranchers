@@ -40,53 +40,14 @@ export const ourSustainabilityBlock = {
         },
         fields: [
             {
-                name: 'video',
-                label: 'Video',
-                component: 'group',
-                fields: [
-                    {
-                        name: 'src',
-                        label: 'src',
-                        component: 'text'
-                    }
-                ]
+                name: 'heading',
+                label: 'Heading',
+                component: 'textarea',
             },
             {
-                name: 'description',
-                label: 'Description',
-                component: 'textarea'
-            },
-            {
-                name: 'callout',
-                label: 'Callout',
-                component: 'group',
-                fields: [
-                    {
-                        name: 'heading',
-                        label: 'Heading',
-                        component: 'text'
-                    },
-                    {
-                        name: 'subheading',
-                        label: 'Sub Heading',
-                        component: 'text'
-                    },
-                    {
-                        name: 'description',
-                        label: 'Description',
-                        component: 'textarea'
-                    }
-                ]
-            },
-            {
-                name: 'stat',
-                label: 'Stat',
-                component: 'textarea'
-            },
-            {
-                name: 'source',
-                label: 'Source',
-                component: 'text'
+                name: 'markdown',
+                label: 'Markdown',
+                component: 'markdown'
             }
         ],
     },

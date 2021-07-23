@@ -58,7 +58,28 @@ export const ourRanchersBlock = {
             ]
         },
         fields: [
-
+            {
+                name: "heading",
+                label: "Heading",
+                component: "textarea"
+            },
+            {
+                name: "subheading",
+                label: "Sub Heading",
+                component: "textarea"
+            },
+            {
+                name: "list",
+                label: "List",
+                component: "group-list",
+                fields: [
+                    {
+                        name: "description",
+                        label: "Description",
+                        component: "textarea"
+                    }
+                ]
+            }
         ],
     },
 }
