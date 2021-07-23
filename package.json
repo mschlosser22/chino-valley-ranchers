@@ -33,6 +33,7 @@
     "react-tinacms-editor": "^0.41.0",
     "react-tinacms-github": "^0.40.0",
     "react-tinacms-inline": "^0.40.1",
+    "request": "^2.88.2",
     "scrollmagic": "^2.0.8",
     "smooth-scrollbar": "^8.6.2",
     "styled-components": "^5.2.3",

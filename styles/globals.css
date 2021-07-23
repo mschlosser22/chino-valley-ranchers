@@ -115,8 +115,22 @@
     margin-bottom: 1.5rem;
 }
 
-#ourCommitment p {
+#ourCommitment p, .sustainability p {
     padding-bottom: 2rem;
+}
+
+.sustainability h1,
+.sustainability h2,
+.sustainability h3,
+.sustainability h4,
+.sustainability h5,
+.sustainability h6 {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+    line-height: 1.25;
+    letter-spacing: 0.05em;
+    font-family: ultraregular;
 }
 
 #ourCommitment h1,

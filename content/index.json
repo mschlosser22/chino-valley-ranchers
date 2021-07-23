@@ -185,7 +185,9 @@
         "alt": "Our Family"
       },
       "button": {
-        "link": "#",
+        "link": {
+          "url": "/our-family"
+        },
         "text": "Learn More About Our Family"
       }
     },
