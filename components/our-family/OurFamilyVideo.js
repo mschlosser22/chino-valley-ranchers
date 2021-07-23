@@ -6,7 +6,7 @@ export function OurFamilyVideo(props) {
 
     return (
         <div>
-            <div class="relative -mt-12 pt-8 lg:pt-20 pb-12 bg-no-repeat bg-cover min-h-[56px]" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}></div>
+            <div className="relative -mt-12 pt-8 lg:pt-20 pb-12 bg-no-repeat bg-cover min-h-[56px]" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}></div>
             <div className="relative bg-contain" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
                 <div className="max-w-5xl mx-auto pb-36">
 
