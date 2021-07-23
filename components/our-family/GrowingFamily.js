@@ -48,63 +48,10 @@ export const growingFamilyBlock = {
                 component: "textarea"
             },
             {
-                name: "description",
-                label: 'Description',
-                component: "textarea"
-            },
-            {
-                name: "imageRight",
-                label: 'Image Right',
-                component: "group",
-                fields: [
-                    {
-                        name: 'src',
-                        label: 'src',
-                        component: 'image',
-                        parse: media => `/images/${media.filename}`,
-                        uploadDir: () => '/images'
-                    },
-                    {
-                        name: 'alt',
-                        label: 'Alt',
-                        component: 'text'
-                    }
-                ]
-            },
-            {
-                name: "imageRightAlt",
-                label: 'Image Right Bottom',
-                component: "group",
-                fields: [
-                    {
-                        name: 'src',
-                        label: 'src',
-                        component: 'image',
-                        parse: media => `/images/${media.filename}`,
-                        uploadDir: () => '/images'
-                    },
-                    {
-                        name: 'alt',
-                        label: 'Alt',
-                        component: 'text'
-                    }
-                ]
-            },
-            {
-                name: "listHeading",
-                label: "List Heading",
-                component: "text"
-            },
-            {
                 name: "list",
                 label: "List",
                 component: "group-list",
                 fields: [
-                    {
-                        name: "title",
-                        label: "Title",
-                        component: "markdown"
-                    },
                     {
                         name: "description",
                         label: "Description",
