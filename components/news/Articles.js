@@ -58,8 +58,29 @@ const articlesTemp = [
 
 import { useState } from 'react'
 import { useNewsContext } from '../../context/news'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import moment from 'moment'
+
+export function  Loader(props) {
+
+    return(
+        <div className="fixed inset-x-0 bottom-0 rounded-lg">
+            <div className="bg-indigo-600">
+            <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between flex-wrap">
+                    <div className="text-white text-2xl">
+                        Loading...
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    )
+}
 
 export function Articles(props) {
+
+    const truncate = (str, max, suffix) => str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`;
 
     const newsContext = useNewsContext()
     const [articles, setArticles] = useState(newsContext)
@@ -68,8 +89,27 @@ export function Articles(props) {
 
         const parsedArticles = articles.map(article => JSON.parse(article.content))
         parsedArticles.sort(function (a, b) {
-            return a.order - b.order;
+            return new Date(b.date) - new Date(a.date)
         });
+
+        const [count, setCount] = useState({
+            prev: 0,
+            next: 11
+        })
+
+        const [hasMore, setHasMore] = useState(true);
+        const [current, setCurrent] = useState(parsedArticles.slice(count.prev, count.next))
+
+        const getMoreData = () => {
+            if (current.length === parsedArticles.length) {
+              setHasMore(false);
+              return;
+            }
+            setTimeout(() => {
+              setCurrent(current.concat(parsedArticles.slice(count.prev + 10, count.next + 10)))
+            }, 1000)
+            setCount((prevState) => ({ prev: prevState.prev + 10, next: prevState.next + 10 }))
+        }
 
         return(
 
@@ -83,7 +123,14 @@ export function Articles(props) {
                 <div key={index} className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-12">
                         <div className="col-span-12 relative">
-                            <a href={`/news/${article.slug}`}><img src={article.image.src} alt={article.image.alt} className="mb-12"></img></a>
+                            <a href={`/news/${article.slug}`}>
+                                {article.image ?
+                                <img src={article.image.src} alt={article.image.alt} className="mb-12"></img>
+                                :
+                                <img src="/images/article1.jpg" alt="placeholder image" className="mb-12"></img>
+                                }
+
+                            </a>
                                 <div className="col-span-12">
                                     <a href={`/news/${article.slug}`}>
                                         <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
@@ -92,14 +139,14 @@ export function Articles(props) {
                                     </a>
                                     <div className="sm:flex block px-8 lg:p-0">
                                         <p className="text-md lg:text-xl text-chinogray pr-2">
-                                            {article.date},
+                                            {moment(article.date).format("MMM Do YYYY")},
                                         </p>
                                         <p className="text-md lg:text-xl text-chinogray">
                                             by {article.author}
                                         </p>
                                     </div>
                                 </div>
-                                <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
+                                <div className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl" dangerouslySetInnerHTML={{ __html: truncate( article.content.replace(/(<([^>]+)>)/gi, ""), 500, '...') }}></div>
                                 <a href={`/news/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>
                             </div>
                             <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
@@ -113,14 +160,27 @@ export function Articles(props) {
         {/* Articles */}
 
         <div className="lg:max-w-6xl mx-auto pb-12 lg:pb-24">
-            <div className="grid grid-cols-12 lg:gap-16 gap-8 relative">
+            <div>
+            <InfiniteScroll
+            dataLength={current.length}
+            next={getMoreData}
+            hasMore={hasMore}
+            loader={<Loader></Loader>}
+            className="grid grid-cols-12 lg:gap-16 gap-8 relative"
+            >
 
-                    {parsedArticles.map( (article, index) => {
+                    {current && current.map( (article, index) => {
                         if(index >= 1) {
                             return (
                                 <div key={index} className="lg:col-span-6 col-span-12">
                                     <div>
-                                        <a href={`/news/${article.slug}`}><img src={article.image.src} alt={article.image.alt} className="mb-12 w-full"></img></a>
+                                        <a href={`/news/${article.slug}`} className="block h-full w-full">
+                                        {article.image ?
+                                        <img src={article.image.src} alt={article.image.alt} className="mb-12 object-cover h-72 w-full"></img>
+                                        :
+                                        <img src="/images/article1.jpg" alt="placeholder image" className="mb-12 object-cover h-48 w-full"></img>
+                                        }
+                                        </a>
                                         <a href={`/news/${article.slug}`}>
                                             <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                                 {article.title}
@@ -128,19 +188,20 @@ export function Articles(props) {
                                         </a>
                                         <div className="sm:flex block px-8 lg:p-0">
                                             <p className="text-md lg:text-xl text-chinogray lg:pr-2">
-                                            {article.date},
+                                            {moment(article.date).format("MMM Do YYYY")},
                                             </p>
                                             <p className="text-md lg:text-xl text-chinogray">
                                             by {article.author}
                                             </p>
                                         </div>
-                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl">{article.content}</p>
+                                        <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl" dangerouslySetInnerHTML={{ __html: truncate( article.content.replace(/(<([^>]+)>)/gi, ""), 250, '...') }}></p>
                                         <a href={`/news/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>
                                 </div>
                                 </div>
                             )
                         }
                     })}
+                </InfiniteScroll>
 
             </div>
         </div>
@@ -168,7 +229,7 @@ export function Articles(props) {
                                         </h1>
                                         <div className="sm:flex block px-8 lg:p-0">
                                             <p className="text-md lg:text-xl text-chinogray pr-2">
-                                                {article.date},
+                                                {moment(article.date).format("MMM Do YYYY")},
                                             </p>
                                             <p className="text-md lg:text-xl text-chinogray">
                                                 by {article.author}
@@ -202,7 +263,7 @@ export function Articles(props) {
                                             </h1>
                                             <div className="sm:flex block px-8 lg:p-0">
                                                 <p className="text-md lg:text-xl text-chinogray lg:pr-2">
-                                                {article.date},
+                                                {moment(article.date).format("MMM Do YYYY")},
                                                 </p>
                                                 <p className="text-md lg:text-xl text-chinogray">
                                                 by {article.author}

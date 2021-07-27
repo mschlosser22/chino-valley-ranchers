@@ -44,10 +44,13 @@ export default function NewsArticle({ file, isPreview, }) {
       <Nav />
 
       <InlineForm form={form}>
-        <article className="prose lg:prose-xl pt-48 pb-24 max-w-5xl mx-auto text-center px-8 lg:px-0">
-          <img src={file.data.image.src} alt={file.data.image.alt} className="max-5xl mx-auto" />
+        <article className="prose lg:prose-xl pt-48 pb-24 max-w-5xl mx-auto text-left px-8 lg:px-0">
+          {file.data.image ?
+          <img src={file.data.image.src} alt={file.data.image.alt} className="max-5xl" />
+          : <img src="/images/article1.jpg" alt="placeholder image" className="max-5xl" />
+          }
           <h1 className="text-3xl lg:text-7xl !text-chinored font-ultra uppercase !tracking-wide !lg:mb-8">{file.data.title}</h1>
-          {file.data.content}
+          <div dangerouslySetInnerHTML={{ __html: file.data.content }}></div>
         </article>
       </InlineForm>
 

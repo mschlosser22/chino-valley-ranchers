@@ -48,6 +48,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Ultra"
+          rel="stylesheet"
+        />
         <link rel="stylesheet" href="https://use.typekit.net/yyq5ssh.css"></link>
       </Head>
       <TinaProvider cms={cms}>

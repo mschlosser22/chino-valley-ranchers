@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'ultra': ['ultraregular'],
+        'ultra': ['Ultra'],
         'lato': ['Lato'],
         'din': ['din-condensed', 'sans-serif'],
       },
