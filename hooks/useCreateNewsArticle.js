@@ -12,6 +12,8 @@ const useCreateNewsArticle = () => {
   const router = useRouter()
   const cms = useCMS()
 
+  const github = cms.api.github
+
   usePlugins([
       HtmlFieldPlugin,
     {
@@ -30,24 +32,36 @@ const useCreateNewsArticle = () => {
           },
         },
         {
+            label: 'Image',
+            name: 'src',
+            component: 'image',
+            parse: media => `/images/${media.filename}`,
+            uploadDir: () => '/images',
+        },
+        {
+            label: 'Image Alt Text',
+            name: 'alt',
+            component: 'text',
+        },
+        {
             name: "content",
             label: "Content",
             component: "html"
         }
       ],
       onSubmit: async (frontMatter) => {
-        console.log(cms)
-        const github = cms.api.github
+        //console.log(cms)
+        //const github = cms.api.github
         const slug = removeInvalidChars(slugify(frontMatter.title, { lower: true }))
-        console.log(slug)
+        //console.log(slug)
         const fileRelativePath = `content/news/${slug}.json`
-        console.log(fileRelativePath)
+        //console.log(fileRelativePath)
         const testFileContent = {
             title: frontMatter.title,
             slug: slug,
             image: {
-                src: "",
-                alt: ""
+                src: frontMatter.src,
+                alt: frontMatter.alt
             },
             date: Date.now(),
             author: "Chino Valley Ranchers",

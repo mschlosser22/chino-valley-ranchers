@@ -134,7 +134,7 @@ export const getStaticProps = async function({
 
   })
 
-  const posts = await getNewsArticles(preview, previewData, "content/news")
+  //const posts = await getNewsArticles(preview, previewData, "content/news")
 
   if (preview) {
     return getGithubPreviewProps({
