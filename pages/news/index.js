@@ -81,8 +81,8 @@ export const getStaticProps = async function({
   previewData,
 }) {
 
-  const posts = await getNewsArticles(preview, previewData, "content/news")
-  //console.log(posts.length)
+  //const posts = await getNewsArticles(preview, previewData, "content/news")
+  //console.log(posts)
 
   // Get News Directory
   const newsDirectory = path.join(process.cwd(), 'content/news')
@@ -134,7 +134,7 @@ export const getStaticProps = async function({
 
   })
 
-  //const posts = await getNewsArticles(preview, previewData, "content/news")
+  const posts = await getNewsArticles(preview, previewData, "content/news")
 
   if (preview) {
     return getGithubPreviewProps({
@@ -144,7 +144,7 @@ export const getStaticProps = async function({
     isPreview: true,
     //news: await Promise.all(news)
     news: newsPreview,
-    posts
+    //posts
     //news: posts
     })
   }
@@ -159,7 +159,7 @@ export const getStaticProps = async function({
         data: (await import('../../content/news/index.json')).default,
       },
       news: await Promise.all(news),
-      posts
+      //posts
       //news: news
       //news: posts
     },
