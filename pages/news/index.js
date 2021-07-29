@@ -142,8 +142,8 @@ export const getStaticProps = async function({
     fileRelativePath: 'content/news/index.json',
     parse: parseJson,
     isPreview: true,
-    //news: await Promise.all(news)
-    news: newsPreview,
+    news: await Promise.all(news)
+    //news: newsPreview,
     //posts
     //news: posts
     })

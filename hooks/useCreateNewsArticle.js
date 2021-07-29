@@ -62,7 +62,7 @@ const useCreateNewsArticle = () => {
             "Update from TinaCMS"
           )
           .then((response) => {
-            setTimeout(() => router.push(`/news/${slug}`), 1500)
+            setTimeout(() => router.push(`/news`), 1500)
           })
           .catch((e) => {
             return { [FORM_ERROR]: e }
