@@ -1,25 +1,64 @@
 import Head from 'next/head'
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
-import { useForm, usePlugin, useCMS } from 'tinacms'
+import { useForm, usePlugin, useCMS, usePlugins } from 'tinacms'
 import { InlineForm, InlineBlocks } from 'react-tinacms-inline'
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github'
+import { HtmlFieldPlugin } from "react-tinacms-editor"
 
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/footer/Footer'
 import { heroBlock } from '../../components/hero/Hero'
 import { featuredArticleBlock } from '../../components/news/FeatureArticle'
+import getNewsArticles from '../../utils/getNewsArticles'
 
 
 export default function NewsArticle({ file, isPreview, }) {
 
   const cms = useCMS()
 
+  usePlugins([
+    HtmlFieldPlugin
+  ])
+
   const formConfig = {
     id: '../../content/news/index.json',
     initialValues: file,
     label: 'News Page',
     fields: [
-
+      {
+        name: "title",
+        label: "Title",
+        component: "text"
+      },
+      {
+        name: "image",
+        label: "Image",
+        component: "group",
+        fields: [
+          {
+            name: 'src',
+            label: 'src',
+            component: 'image',
+            parse: media => `/images/${media.filename}`,
+            uploadDir: () => '/images'
+          },
+          {
+            name: 'alt',
+            label: 'Alt',
+            component: 'text'
+          }
+        ]
+      },
+      {
+        name: "author",
+        label: "Author",
+        component: "text"
+      },
+      {
+        name: "content",
+        label: "Content",
+        component: "html"
+      }
     ],
     onSubmit() {
       cms.alerts.success('Saved!')
@@ -85,17 +124,18 @@ export const getStaticProps = async function({
   previewData,
 }) {
 
+  //const article =  await getNewsArticle()
 
   if (preview) {
     return getGithubPreviewProps({
     ...previewData,
-    fileRelativePath: `content/news/${params.slug}`,
+    fileRelativePath: `content/news/${params.slug}.json`,
     parse: parseJson,
-    isPreview: true,
-    file: {
+    //isPreview: true,
+    /*file: {
       fileRelativePath: `content/news/${params.slug}`,
       data: (await import(`../../content/news/${params.slug}`)).default,
-    },
+    },*/
     })
   }
 
