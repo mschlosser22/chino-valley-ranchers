@@ -91,7 +91,7 @@
 #callout p em {
     --tw-text-opacity: 1;
     color: rgba(176, 17, 22, var(--tw-text-opacity));
-    font-family: ultraregular;
+    font-family: Ultra;
     border-color: rgba(176, 17, 22, var(--tw-border-opacity));
     border-bottom-width: 2px;
     font-style: normal;
@@ -131,7 +131,7 @@
     font-size: 2rem;
     line-height: 1.25;
     letter-spacing: 0.05em;
-    font-family: ultraregular;
+    font-family: Ultra;
 }
 
 #ourCommitment h1,

@@ -85,6 +85,8 @@ export function Articles(props) {
     const newsContext = useNewsContext()
     const [articles, setArticles] = useState(newsContext)
 
+    //console.log(articles)
+
     if(articles) {
 
         const parsedArticles = articles.map(article => JSON.parse(article.content))
@@ -215,7 +217,7 @@ export function Articles(props) {
             <div>
             {/* Featured Article */}
                 <div className="max-w-6xl mx-auto">
-                {articles.map( (article, index) => {
+                {articlesTemp.map( (article, index) => {
 
                     if(index == 0) {
                         return (

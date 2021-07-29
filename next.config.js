@@ -12,4 +12,10 @@ module.exports = {
   images: {
     domains: ['raw.githubusercontent.com'],
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false;
+    }
+    return config;
+  },
 }

@@ -89,11 +89,13 @@ export const getStaticProps = async function({
   if (preview) {
     return getGithubPreviewProps({
     ...previewData,
-    //fileRelativePath: 'content/news/index.json',
     fileRelativePath: `content/news/${params.slug}`,
     parse: parseJson,
     isPreview: true,
-    //post: await Promise.all(params)
+    file: {
+      fileRelativePath: `content/news/${params.slug}`,
+      data: (await import(`../../content/news/${params.slug}`)).default,
+    },
     })
   }
 
@@ -103,12 +105,9 @@ export const getStaticProps = async function({
       error: null,
       preview: false,
       file: {
-        //fileRelativePath: 'content/news/index.json',
         fileRelativePath: `content/news/${params.slug}`,
-        //data: (await import('../../content/news/index.json')).default,
         data: (await import(`../../content/news/${params.slug}`)).default,
       },
-      //news: await Promise.all(news)
     },
   }
 

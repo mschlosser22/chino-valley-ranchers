@@ -21,7 +21,7 @@ export default function Products({ file, isPreview}) {
     initialValues: file,
     label: 'Being Humane Page',
     fields: [
-      
+
     ],
     onSubmit() {
       cms.alerts.success('Saved!')
