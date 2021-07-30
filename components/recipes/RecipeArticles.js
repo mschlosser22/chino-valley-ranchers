@@ -22,7 +22,7 @@ export default function RecipeArticles(props) {
                                 </h1>
 
                             </div>
-                            <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl lg:w-2/3 w-full">{recipe.content}</p>
+                            <div className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl lg:w-2/3 w-full" dangerouslySetInnerHTML={{ __html: recipe.content }}></div>
                         </div>
                         <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
                         </>

@@ -63,7 +63,7 @@ const useCreateRecipeArticle = () => {
             name: 'tags',
             label: 'Tags',
             component: 'tags',
-            description: 'Use: breakfast, lunch, or dinner tags only.'
+            description: 'Use: breakfast, lunch, or dinner tags only. Space to add tag.'
         },
         {
             name: 'buttonText',
