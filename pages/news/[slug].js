@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
 import { useForm, usePlugin, useCMS, usePlugins } from 'tinacms'
 import { InlineForm, InlineBlocks } from 'react-tinacms-inline'
-import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github'
+import { useGithubJsonForm, useGithubToolbarPlugins, createGithubDeleteAction } from 'react-tinacms-github'
 import { HtmlFieldPlugin } from "react-tinacms-editor"
 
 import { Nav } from '../../components/Nav'
@@ -16,6 +16,8 @@ export default function NewsArticle({ file, isPreview, }) {
 
   const cms = useCMS()
 
+  const deleteAction = createGithubDeleteAction()
+
   usePlugins([
     HtmlFieldPlugin
   ])
@@ -24,6 +26,7 @@ export default function NewsArticle({ file, isPreview, }) {
     id: '../../content/news/index.json',
     initialValues: file,
     label: 'News Page',
+    actions: [deleteAction],
     fields: [
       {
         name: "title",
