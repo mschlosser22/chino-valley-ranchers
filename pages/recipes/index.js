@@ -14,6 +14,8 @@ import { recipesBlock } from '../../components/recipes/Recipes'
 
 import { RecipesWrapper } from '../../context/recipes'
 
+import useCreateRecipeArticle from "../../hooks/useCreateRecipeArticle"
+
 export default function Recipes({ file, isPreview, recipes}) {
 
   const cms = useCMS()
@@ -29,6 +31,8 @@ export default function Recipes({ file, isPreview, recipes}) {
       cms.alerts.success('Saved!')
     },
   }
+
+  useCreateRecipeArticle(recipes)
 
   // Registers a JSON Tina Form
   //const [data, form] = useGithubJsonForm(file, formConfig)

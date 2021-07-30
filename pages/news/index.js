@@ -143,9 +143,6 @@ export const getStaticProps = async function({
     parse: parseJson,
     isPreview: true,
     news: await Promise.all(news)
-    //news: newsPreview,
-    //posts
-    //news: posts
     })
   }
 
@@ -159,9 +156,6 @@ export const getStaticProps = async function({
         data: (await import('../../content/news/index.json')).default,
       },
       news: await Promise.all(news),
-      //posts
-      //news: news
-      //news: posts
     },
   }
 
