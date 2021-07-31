@@ -13,6 +13,7 @@ import getNewsArticles from '../../utils/getNewsArticles'
 
 
 export default function NewsArticle({ file, isPreview, }) {
+  console.log(file)
 
   const cms = useCMS()
 
@@ -79,7 +80,9 @@ export default function NewsArticle({ file, isPreview, }) {
     <>
     <div className={`relative`}>
       <Head>
-        <title>Chino Valley Ranchers | News</title>
+        <title>{file.data.title ? file.data.title : 'News'} | Chino Valley Ranchers</title>
+        <meta name="description" content="One way to change up your breakfast is to try a different omelette sauce. Whether you want cheesy, creamy, sweet, or spicy, we've got five easy-to-make omelette sauce recipes sure to take your breakfast to the next level."></meta>
+        <meta name="keywords" content="chino valley ranchers,cvr,omelette,eggs,breakfast ideas,recipes"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

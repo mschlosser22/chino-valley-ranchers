@@ -23,7 +23,29 @@ export default function Products({ file, isPreview}) {
     initialValues: file,
     label: 'About Feed Page',
     fields: [
-      
+      {
+        name: 'title',
+        label: 'Title',
+        component: 'text'
+      },
+      {
+        name: 'meta',
+        label: 'Meta',
+        component: 'group',
+        fields: [
+          {
+            name: 'description',
+            label: 'Description',
+            component: 'textarea'
+          },
+          {
+            name: 'keywords',
+            label: 'Keywords',
+            component: 'text',
+            description: 'Comma seperated list.'
+          }
+        ]
+      }
     ],
     onSubmit() {
       cms.alerts.success('Saved!')
@@ -41,7 +63,9 @@ export default function Products({ file, isPreview}) {
     <>
     <div className={`relative`}>
       <Head>
-        <title>Chino Valley Ranchers | About Feed</title>
+        <title>{file.data.meta.title ? file.data.meta.title : 'About Feed'} | Chino Valley Ranchers</title>
+        <meta name="description" content={file.data.meta.description ? file.data.meta.description : 'Chino Valley Ranchers'}></meta>
+        <meta name="keywords" content={file.data.meta.keywords ? file.data.meta.keywords : 'Chino Valley Ranchers'}></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
