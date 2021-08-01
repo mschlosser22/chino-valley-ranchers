@@ -62,6 +62,19 @@ export default function NewsArticle({ file, isPreview, }) {
         name: "content",
         label: "Content",
         component: "html"
+      },
+      {
+        name: 'excerpt',
+        label: 'Meta Excerpt',
+        component: 'html'
+      },
+      {
+        name: 'keywords',
+        label: 'Meta Keywords',
+        component: 'list',
+        field: {
+          component: 'text'
+        }
       }
     ],
     onSubmit() {
@@ -81,8 +94,8 @@ export default function NewsArticle({ file, isPreview, }) {
     <div className={`relative`}>
       <Head>
         <title>{file.data.title ? file.data.title : 'News'} | Chino Valley Ranchers</title>
-        <meta name="description" content="One way to change up your breakfast is to try a different omelette sauce. Whether you want cheesy, creamy, sweet, or spicy, we've got five easy-to-make omelette sauce recipes sure to take your breakfast to the next level."></meta>
-        <meta name="keywords" content="chino valley ranchers,cvr,omelette,eggs,breakfast ideas,recipes"></meta>
+        <meta name="description" content={file.data.excerpt ? file.data.excerpt.replace(/(<([^>]+)>)/gi, "") : "One way to change up your breakfast is to try a different omelette sauce. Whether you want cheesy, creamy, sweet, or spicy, we've got five easy-to-make omelette sauce recipes sure to take your breakfast to the next level."}></meta>
+        <meta name="keywords" content={file.data.keywords && file.data.keywords.length > 0 ? file.data.keywords.join() : "chino valley ranchers,cvr,omelette,eggs,breakfast ideas,recipes" }></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
