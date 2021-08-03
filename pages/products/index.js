@@ -29,29 +29,25 @@ export default function Products({ file, isPreview, products }) {
     label: 'Products Page',
     fields: [
       {
-        label: 'Heading',
-        name: 'heading',
+        name: 'title',
+        label: 'Title',
         component: 'text'
       },
       {
-        label: 'Image',
-        name: 'image',
-        component: 'image'
-      },
-      {
-        label: 'Content',
-        name: 'content',
+        name: 'meta',
+        label: 'Meta',
         component: 'group',
         fields: [
           {
-            label: 'Heading',
-            name: 'heading',
-            component: 'text'
+            name: 'description',
+            label: 'Description',
+            component: 'textarea'
           },
           {
-            label: 'Sub Heading',
-            name: 'subheading',
-            component: 'text'
+            name: 'keywords',
+            label: 'Keywords',
+            component: 'text',
+            description: 'Comma seperated list.'
           }
         ]
       }
@@ -72,7 +68,9 @@ export default function Products({ file, isPreview, products }) {
     <>
     <div className={`relative`}>
       <Head>
-        <title>Chino Valley Ranchers | Products</title>
+        <title>{file.data.title ? file.data.title : 'Products'} | Chino Valley Ranchers</title>
+        <meta name="description" content={file.data.meta && file.data.meta.description ? file.data.meta.description : 'Chino Valley Ranchers'}></meta>
+        <meta name="keywords" content={file.data.meta && file.data.meta.keywords ? file.data.meta.keywords : 'Chino Valley Ranchers'}></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

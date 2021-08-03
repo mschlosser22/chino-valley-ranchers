@@ -23,6 +23,29 @@ export default function Products({ file, isPreview}) {
         name: "email",
         label: "Email",
         component: "text"
+      },
+      {
+        name: 'title',
+        label: 'Title',
+        component: 'text'
+      },
+      {
+        name: 'meta',
+        label: 'Meta',
+        component: 'group',
+        fields: [
+          {
+            name: 'description',
+            label: 'Description',
+            component: 'textarea'
+          },
+          {
+            name: 'keywords',
+            label: 'Keywords',
+            component: 'text',
+            description: 'Comma seperated list.'
+          }
+        ]
       }
     ],
     onSubmit() {
@@ -41,7 +64,9 @@ export default function Products({ file, isPreview}) {
     <>
     <div className={`relative`}>
       <Head>
-        <title>Chino Valley Ranchers | Contact</title>
+      <title>{file.data.title ? file.data.title : 'Contact'} | Chino Valley Ranchers</title>
+        <meta name="description" content={file.data.meta && file.data.meta.description ? file.data.meta.description : 'Chino Valley Ranchers'}></meta>
+        <meta name="keywords" content={file.data.meta && file.data.meta.keywords ? file.data.meta.keywords : 'Chino Valley Ranchers'}></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

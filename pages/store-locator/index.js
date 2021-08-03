@@ -16,7 +16,9 @@ export default function StoreLocator({ file, isPreview}) {
     <>
     <div className={`relative`}>
       <Head>
-        <title>Chino Valley Ranchers | Store Locator</title>
+        <title>Store Locator | Chino Valley Ranchers</title>
+        <meta name="description" content="Healthy And Delicious Organic Eggs Since 1953"></meta>
+        <meta name="keywords" content="chino valley ranchers, store locator"></meta>
         <link rel="icon" href="/favicon.ico" />
         <script src="//destinilocators.com/chinovalleyranchers/site/install/"></script>
       </Head>
