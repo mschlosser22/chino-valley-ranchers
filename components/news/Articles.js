@@ -96,7 +96,7 @@ export function Articles(props) {
 
         const [count, setCount] = useState({
             prev: 0,
-            next: 11
+            next: 10
         })
 
         const [hasMore, setHasMore] = useState(true);
@@ -177,15 +177,14 @@ export function Articles(props) {
                                 <div key={index} className="lg:col-span-6 col-span-12">
                                     <div>
                                         <a href={`/news/${article.slug}`} className="block h-full w-full">
-                                        {article.image ?
+                                        {article.image && article.image.src ?
                                         <img src={article.image.src} alt={article.image.alt} className="mb-12 object-cover h-72 w-full"></img>
                                         :
-                                        <img src="/images/article1.jpg" alt="placeholder image" className="mb-12 object-cover h-48 w-full"></img>
+                                        <img src="/images/CVR_Blog_Thumbnail.png" alt="placeholder image" className="mb-12 object-cover h-48 w-full"></img>
                                         }
                                         </a>
                                         <a href={`/news/${article.slug}`}>
-                                            <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
-                                                {article.title}
+                                            <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4" dangerouslySetInnerHTML={{ __html: article.title }}>
                                             </h1>
                                         </a>
                                         <div className="sm:flex block px-8 lg:p-0">

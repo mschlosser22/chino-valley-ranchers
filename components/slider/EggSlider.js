@@ -20,7 +20,7 @@ export function EggSlider(props) {
         <div className={`relative w-full block z-10 h-[95px] -mt-12 bg-cover bg-no-repeat`} style={{ backgroundImage: `url('/images/bg-paper-edge-border.png')` }}></div>
         {/* Middle Section */}
         <div className="relative z-10" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
-            <div className="min-h-[800px] sm:min-h-[775px] lg:min-h-[625px]" >
+            <div className="min-h-[800px] sm:min-h-[775px] lg:min-h-[650px]" >
 
             </div>
             <div className="absolute w-full -top-36 lg:-top-48 overflow-y-hidden">
@@ -61,7 +61,7 @@ export function EggSlider(props) {
                                             <p className="sm:leading-body">{slide.content}</p>
                                         </div>
                                         {/* Icons */}
-                                        <div className="col-span-12 flex justify-center gap-12 py-8">
+                                        <div className="col-span-12 flex justify-center gap-12 pb-8">
                                             {slide.icons && slide.icons.map( (icon, index) => (
                                                 <img key={index} src={icon.image.src} alt={icon.image.alt} className="h-24" />
                                             ))}
