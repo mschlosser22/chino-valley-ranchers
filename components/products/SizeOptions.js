@@ -20,13 +20,11 @@ export function SizeOptions(props) {
                     {/* Size Options */}
                     <div className={`grid grid-cols-${props.images.length} gap-4 auto-rows-min`}>
                         {props.images && props.images.map( (image, index) => (
-                            <div key={index} className="col-span-1">
+                            <div key={index} className="col-span-4 sm:col-span-1">
                                 <img src={image.src} alt={image.alt} />
-                            </div>
-                        ))}
-                        {props.sizes && props.sizes.map( (size, index) => (
-                            <div key={index} className="col-span-4 lg:col-span-1 text-center lg:text-left text-gray-900 font-ultra text-lg lg:text-3xl pt-8 tracking-wide">
-                                <h4>{size}</h4>
+                                <div className="w-full text-center lg:text-left text-gray-900 font-ultra text-lg lg:text-3xl pt-8 tracking-wide">
+                                    <h4>{props.sizes[index]}</h4>
+                                </div>
                             </div>
                         ))}
                     </div>

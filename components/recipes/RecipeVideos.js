@@ -20,7 +20,7 @@ export default function RecipeVideos(props) {
                                 <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                     {recipe.title}
                                 </h1>
-                                <a href={recipe.button.src} className="bg-chinored rounded-md font-din tracking-wider lg:text-xl text-lg uppercase text-white px-6 mx-8 lg:mx-0 py-8" download>{recipe.button.text}</a>
+                                <a href={recipe.button.src} className="bg-chinored rounded-md font-din tracking-wider lg:text-xl text-lg uppercase text-white px-6 mx-8 lg:mx-0 py-8 my-12 lg:my-0 inline-block" download>{recipe.button.text}</a>
                             </div>
                             <div className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl lg:w-2/3 w-full" dangerouslySetInnerHTML={{ __html: recipe.content }}></div>
                         </div>

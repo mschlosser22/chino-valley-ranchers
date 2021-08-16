@@ -13,7 +13,7 @@ export function ProductDescription(props) {
 
     return(
         <>
-        <div className="relative -mt-12 pb-20 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}></div>
+        <div className="relative -mt-12 pb-20 bg-no-repeat bg-cover z-40" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}></div>
         <div className="relative pb-20 bg-repeat-y bg-contain" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="max-w-7xl mx-auto">
 

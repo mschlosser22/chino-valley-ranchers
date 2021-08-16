@@ -11,7 +11,7 @@ export function ContactForm(props) {
 
                 <div className="grid grid-cols-12 relative">
 
-                    <div className="col-span-12 pb-12 px-8 lg:px-0">
+                    <div className="col-span-12 pb-12 px-8 lg:px-0 pt-12">
 
                         {/* Address */}
                         {props.address.map( (item, index) => (

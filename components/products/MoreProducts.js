@@ -9,7 +9,7 @@ export function MoreProducts(props) {
 
     return (
         <>
-        <div className="relative pt-8 -mt-12 pb-12 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
+        <div className="relative pt-8 -mt-12 pb-12 bg-no-repeat bg-cover z-40" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
             <div className="max-w-7xl mx-auto">
 
                 {/* Page Heading */}
