@@ -7,8 +7,8 @@ export function WhatItTakes(props) {
 
     return (
         <div>
-            <div className="relative lg:pt-40 lg:-mt-48 -mt-64 pt-56 bg-repeat-x bg-cover" style={{ backgroundImage: `url('/images/bg-talons.png')` }}>
-            <div className="z-50 pt-20 pb-8 lg:py-24 max-w-4xl mx-auto px-8 lg:px-0">
+            <div className="relative lg:pt-40 -mt-56 lg:-mt-48 2xl:-mt-72 pt-56 bg-repeat-x bg-cover z-40" style={{ backgroundImage: `url('/images/bg-talons.png')` }}>
+            <div className="z-50 pt-20 pb-8 lg:py-24 2xl:pt-72 max-w-4xl mx-auto px-8 lg:px-0">
                 <h1 className="text-2xl lg:text-5xl text-chinoblue font-ultra uppercase tracking-wide lg:mb-12 mb-6 text-center md:text-left">
                     <InlineTextarea name="heading" />
                 </h1>
@@ -51,7 +51,7 @@ export function WhatItTakes(props) {
                 </InlineWysiwyg>
             </h1>
             <img src="/images/redSeperator.png" className="my-20 mx-auto w-1/2"></img>
-            <Button button={props.button} />
+            <div className="pb-16 lg:pb-0"><Button button={props.button} /></div>
         </div>
         </div>
 

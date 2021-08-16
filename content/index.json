@@ -140,7 +140,7 @@
       "_template": "imageWithContent",
       "content": "Pasture raised hens at Chino Valley Ranchers lay healthier, all natural eggs. Come see a little of their pastoral paradise for yourself.",
       "leftImage": {
-        "src": "/images/chicken.png",
+        "src": "/images/chicken-past.png",
         "alt": "Chicken"
       },
       "leftImageMobile": {

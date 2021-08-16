@@ -7,7 +7,7 @@ export function ContactForm(props) {
     return(
         <>
         <div className="w-full relative -mt-12 -mb-12 z-20 bg-cover bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper.png')`}}>
-            <div className="max-w-5xl mx-auto relative">
+            <div className="max-w-5xl mx-auto relative mb-8">
 
                 <div className="grid grid-cols-12 relative">
 

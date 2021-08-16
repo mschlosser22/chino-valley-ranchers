@@ -10,7 +10,7 @@ export function WayItsMade(props) {
     return (
     <Controller>
     <div>
-        <div className="relative lg:pt-56 pt-36 -mt-56 pb-28 bg-repeat-y bg-cover" style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}>
+        <div className="relative lg:pt-56 pt-16 -mt-56 pb-28 bg-no-repeat bg-contain lg:bg-cover" style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}>
             <div className="max-w-5xl mx-auto">
                 <div className="grid grid-cols-12 lg:gap-8 pt-20 md:mx-auto px-8">
                     <div className="md:col-span-5 col-span-12">
@@ -56,7 +56,7 @@ export function WayItsMade(props) {
                     </div>
 
                     {props.list.map((item, index) =>
-                        <div key={index} className="col-span-12 grid grid-cols-12">
+                        <div key={index} className="col-span-12 grid grid-cols-12 pt-12 lg:pt-0">
                             <div className="lg:col-span-5 col-span-12 lg:mx-auto">
                                 <h1 className="text-2xl md:text-4xl text-chinored uppercase font-ultra tracking-wide">
                                     <InlineWysiwyg name="title" format="markdown" sticky>
@@ -64,7 +64,7 @@ export function WayItsMade(props) {
                                     </InlineWysiwyg>
                                 </h1>
                             </div>
-                            <div className="lg:col-span-7 col-span-12 lg:my-0 my-6">
+                            <div className="lg:col-span-7 col-span-12 lg:my-0 my-6 pb-8">
                                 <p className="text-black lg:text-2xl font-lato font-medium text-xl">
                                     <InlineWysiwyg name="description" format="markdown" sticky>
                                         <ReactMarkdown>{item.description}</ReactMarkdown>

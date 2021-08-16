@@ -164,7 +164,7 @@ export function Studies(props) {
                             <img src="/images/blueSeperator.jpg" className="py-8 lg:px-0 px-8" />
                         </div>
                     )}
-                    <Button button={props.button} />
+                    <div className="px-8 lg:px-0"><Button button={props.button} /></div>
                 </div>
             </div>
         </div>

@@ -4,29 +4,29 @@ import { Button } from '../button/Button'
 const footer_content = {
     column_two: [
         {
-            url: "#",
+            url: "/why-organic",
             text: "Our Story"
         },
         {
-            url: "#",
+            url: "/products",
             text: "Our Eggs"
         },
         {
-            url: "#",
+            url: "/recipes",
             text: "Recipes"
         },
         {
-            url: "#",
+            url: "/news",
             text: "News"
         },
         {
-            url: "#",
+            url: "/being-humane",
             text: "Being Humane"
         }
     ],
     column_three: [
         {
-            url: "#",
+            url: "/contact",
             text: 'Contact Cvr'
         },
         {
@@ -109,7 +109,7 @@ export function Footer(props) {
             <div className="col-span-12 lg:col-span-4 lg:pl-0 pl-8 text-base">
                 <ul>
                 {footer_content.column_two.map((item, index) => (
-                    <li key={index} className="text-white text-5 uppercase font-din tracking-wider pb-4"><a href="{item.url}">{item.text}</a></li>
+                    <li key={index} className="text-white text-5 uppercase font-din tracking-wider pb-4"><a href={item.url}>{item.text}</a></li>
                 ))}
                 </ul>
             </div>

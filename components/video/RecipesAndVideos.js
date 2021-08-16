@@ -34,8 +34,8 @@ export function RecipesAndVideos(props) {
                         </div>
                     ))}
                 </div>
-                <div className="flex lg:justify-center lg:block">
-                    <Button button={props.data.button} classes={`mt-12`} />
+                <div className="flex lg:justify-center lg:block px-8 lg:px-0 pb-12 lg:pb-0">
+                    <Button button={props.data.button} classes={`lg:mt-12`} />
                 </div>
             </div>
         </div>

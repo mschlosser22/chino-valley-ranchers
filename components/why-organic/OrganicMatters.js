@@ -30,7 +30,7 @@ export function OrganicMatters(props) {
                     </div>
                     <div className="w-full pb-24">
                         {props.list.map((item, index) =>
-                            <div key={index} className="grid grid-cols-12 gap-6">
+                            <div key={index} className="grid grid-cols-12 gap-6 pt-8">
                                 <div className="lg:col-span-4 col-span-12">
                                     <h4 className="text-2xl uppercase black font-ultra lg:mx-0 mx-8">
                                         <InlineWysiwyg name="item.title" format="markdown" sticky>

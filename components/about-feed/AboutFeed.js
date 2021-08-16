@@ -14,7 +14,7 @@ export function AboutFeed(props) {
     return(
     <Controller>
      <div>
-        <div className="relative pt-8 lg:-mt-12 -mt-32 bg-no-repeat bg-contain bg-auto z-40" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
+        <div className="relative pt-8 lg:-mt-12 -mt-32 bg-repeat-x bg-contain bg-auto z-40" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
           <div className="relative bg-repeat-y pb-44 mt-4 z-30 bg-contain" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="max-w-6xl mx-auto">
 

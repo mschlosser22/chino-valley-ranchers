@@ -132,8 +132,8 @@ export function Recipes(props) {
 
         return(
             <div>
-            <div className="relative lg:pt-8 pt-12 lg:-mt-12 z-40 -mt-28 bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
-              <div className="relative bg-repeat-y mt-4 pb-16" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
+            <div className="relative lg:pt-8 pt-12 lg:-mt-12 z-40 -mt-28 bg-no-repeat bg-contain bg-no-repeat" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
+              <div className="relative g-repeat-y bg-contain mt-4 pb-16" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
                 <div className="max-w-6xl mx-auto">
 
                     {/* Page Heading */}

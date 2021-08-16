@@ -21,7 +21,7 @@ export function Nav(props) {
     const navigation = [
         {
             name: 'Our Story',
-            href: '/',
+            href: '/why-organic',
             current: false,
             children: [
                 { name: 'Why Organic Matters', href: '/why-organic' },
@@ -69,12 +69,14 @@ export function Nav(props) {
                     </div>
 
                     <div className="absolute inset-0 flex justify-center items-center z-0 lg:hidden">
-                        <Image
-                            src="/images/logo.png"
-                            height={52}
-                            width={77}
-                            alt="Chino Valley Ranchers"
-                        />
+                        <a href="/">
+                            <Image
+                                src="/images/logo.png"
+                                height={52}
+                                width={77}
+                                alt="Chino Valley Ranchers"
+                            />
+                        </a>
                     </div>
 
                     <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
@@ -209,7 +211,7 @@ export function Nav(props) {
                         {item.children.map( (child, index) => (
                             <a
                             key={item.name}
-                            href={item.href}
+                            href={child.href}
                             className={classNames(
                                 item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                 'block px-3 py-1 rounded-md text-base font-medium pl-8'

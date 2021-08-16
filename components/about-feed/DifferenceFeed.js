@@ -8,7 +8,7 @@ export function DifferenceFeed(props) {
     return (
       <Controller>
         <div>
-          <div id="difference" className="relative lg:pt-8 pt-12 z-20 -mt-16 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/bg-orange-egg-ripped.png')` }}>
+          <div id="difference" className="relative lg:pt-8 pt-12 z-20 -mt-20 xs:-mt-16 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/bg-orange-egg-ripped.png')` }}>
             <div className="pt-20 max-w-4xl mx-auto px-8 lg:px-0">
                 <h1 className="text-2xl lg:text-5xl lg:w-2/3 w-full text-white font-ultra uppercase tracking-wider lg:mb-12 mb-6 text-center md:text-left">
                   <InlineTextarea name="heading" />
