@@ -21,7 +21,7 @@ export function ProductsList(props) {
 
     return(
 
-        <div className="relative -top-12">
+        <div className="relative -top-12 z-40">
                 {parsedProducts.map((product, index) => (
                     <div key={index} className="relative bg-repeat-y bg-cover" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
                         <div className="max-w-7xl mx-auto">
