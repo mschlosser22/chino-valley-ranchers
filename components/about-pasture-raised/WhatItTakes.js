@@ -28,7 +28,7 @@ export function WhatItTakes(props) {
                         </div>
                         <div className="lg:col-span-7 col-span-12">
                             <p className="text-black lg:2xl mx-4 font-lato font-medium text-xl mx-8 md:mx-0 text-center md:text-left">
-                                <InlineTextarea name="description" />
+                                {item.description}
                             </p>
                         </div>
                         <hr className="solid col-span-12 border-chinodarkgray my-10" />

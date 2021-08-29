@@ -1,7 +1,9 @@
 {
   "name": "Pasture Raised",
   "order": 4,
-  "description": "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+  "description": [
+    "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms. Our ladies forage as they please on seeds, bugs and green grass. All on dedicated pastureland with at least 108 sq ft for each bird. We also provide premium feed to ensure a complete and balanced diet."
+  ],
   "photo": {
     "src": "/images/products/pasture-raised.png",
     "alt": "Organic Omega-3 Soy Free Eggs"

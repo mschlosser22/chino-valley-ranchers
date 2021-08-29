@@ -40,7 +40,9 @@ export function OrganicMatters(props) {
                                 </div>
                                 <div className="lg:col-span-8 col-span-12">
                                     <p className="font-lato lg:text-2xl tracking-wide lg:mx-0 mx-8 lg:pr-16 pr-0">
-                                        <InlineTextarea name="description" />
+                                        <InlineWysiwyg name="item.description" format="markdown" sticky>
+                                            <ReactMarkdown>{item.description}</ReactMarkdown>
+                                        </InlineWysiwyg>
                                     </p>
                                 </div>
                                 <hr className="solid border-chinodarkgray col-span-12"></hr>

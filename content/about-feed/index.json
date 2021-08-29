@@ -2,7 +2,7 @@
     "blocks": [
         {
             "_template": "hero",
-            "heading": "About Feed Products",
+            "heading": "It starts with our feed",
             "image": "/images/hero-products.jpg"
         },
         {

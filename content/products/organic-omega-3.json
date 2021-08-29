@@ -1,7 +1,10 @@
 {
   "name": "Organic Omega-3",
   "order": 2,
-  "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+  "description": [
+    "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+    "Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health."
+  ],
   "photo": {
     "src": "/images/products/organic-omega-3.png",
     "alt": "Organic Eggs"
@@ -61,6 +64,10 @@
         {
           "src": "/images/free-range.png",
           "alt": "Free Range"
+        },
+        {
+          "src": "/images/icon-certified.png",
+          "alt": "ahc"
         }
       ]
     },
@@ -131,7 +138,7 @@
         },
         {
           "name": "Pasture Raised",
-          "description": "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+          "description": "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms. Our ladies forage as they please on seeds, bugs and green grass. All on dedicated pastureland with at least 108 sq ft for each bird. We also provide premium feed to ensure a complete and balanced diet.",
           "photo": {
             "src": "/images/pastureEggCarton.png",
             "alt": "ORGANIC OMEGA-3 SOY FREE"

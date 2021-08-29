@@ -110,7 +110,7 @@ export function ImageWithContent(props) {
                                 <animated.div style={stylesSign}>
                                     <animated.div style={stylesSignScale}>
                                         <a
-                                            href="#"
+                                            href="/about-pasture-raised"
                                             className="block transition duration-300 ease-in-out transform hover:rotate-3 cursor pointer relative"
                                         >
                                             <img src={props.data.rightImage.src} alt={props.data.rightImage.alt} />

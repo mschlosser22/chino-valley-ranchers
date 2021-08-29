@@ -1,7 +1,10 @@
 {
   "name": "Humane Harvest",
   "order": 7,
-  "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+  "description": [
+    "Our Humane Harvest eggs come from hens raised in free roaming environments and fed a pure vegetarian diet consisting of premium grains, seeds & meal.",
+    "These are happy hens that can walk around, scratch in the sunlight and enjoy plenty of fresh air and water. Naturally, they produce healthier and tastier eggs for all of us."
+  ],
   "photo": {
     "src": "/images/products/humane-harvest.png",
     "alt": "Organic Eggs"
@@ -53,6 +56,10 @@
         {
           "src": "/images/cage-free.png",
           "alt": "Cage Free"
+        },
+        {
+          "src": "/images/icon-certified.png",
+          "alt": "ahc"
         }
       ]
     },

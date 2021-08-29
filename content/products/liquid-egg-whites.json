@@ -1,7 +1,11 @@
 {
   "name": "Liquid Egg Whites",
   "order": 9,
-  "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+  "description": [
+    "Our 100% Liquid Organic Egg Whites come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+    "Egg whites are naturally fat free, cholesterol free, and contain no additives or artificial ingredients.",
+    "Each 16 oz. pint is equivalent to about 10 eggs, while 32 oz. pint is equivalent to about 20 eggs – both are fully pasteurized."
+  ],
   "photo": {
     "src": "/images/products/liquid-egg-whites.png",
     "alt": "Organic Eggs"

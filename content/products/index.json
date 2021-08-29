@@ -2,7 +2,7 @@
   "blocks": [
     {
       "_template": "hero",
-      "heading": "Pasture Raised Products",
+      "heading": "Products",
       "image": "/images/hero-products.jpg"
     },
     {
@@ -17,7 +17,7 @@
         {
           "name": "Sample Product",
           "order": 1,
-          "description": "These are just placeholder products for the product list block, to edit which products show up here you can use edit via the /admin/products page.",
+          "description": "These are just placeholder products for the product list block.",
           "photo": {
             "src": "/images/products/humane-harvest.png",
             "alt": "Organic Eggs"
@@ -32,7 +32,7 @@
         {
           "name": "Another Sample",
           "order": 2,
-          "description": "These are just placeholder products for the product list block, to edit which products show up here you can use edit via the /admin/products page.",
+          "description": "These are just placeholder products for the product list block.",
           "photo": {
             "src": "/images/products/humane-harvest.png",
             "alt": "Organic Eggs"
@@ -64,8 +64,8 @@
           "alt": "Organic Fed Chickens"
         },
         "button": {
-          "link": "#",
-          "text": "View Pricing"
+          "link": "/contact",
+          "text": "Contact us for list of products"
         }
       }
     },
@@ -115,19 +115,13 @@
           "subheading": "Our passion for quality egg production permeates all operations and every employee is personally responsible for doing their part. Company employees and all personnel follow American Humane’s strict requirements for documentation, inspections, equipment maintenance, and access to feed and water. Maintaining pasture raised quality demands extra attention, but we believe it’s worth it."
         },
         {
-          "_template": "headingAlt",
-          "heading": "Proudly Pasture Raised For You"
-        },
-        {
           "_template": "subheadingAlt",
-          "subheading": "From our family to yours, Chino Valley Ranchers pasture raised eggs are produced with your health and well-being in mind."
+          "subheading": "From our family to yours, Chino Valley Ranchers eggs are produced with your health and well-being in mind."
         },
         {
           "_template": "buttonAlt",
           "button": {
-            "link": {
-              "url": "/store-locator"
-            },
+            "link": "/store-locator",
             "text": "Find A Store Near You"
           }
         }

@@ -1,7 +1,10 @@
 {
     "name": "Organic",
     "order": 1,
-    "description": "Our organic free-range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains and seeds from certifide pesticide-free fields.",
+    "description": [
+      "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+      "To ensure purity and quality, we mill our own feed onsite at Southern California’s only dedicated organic poultry feed mill. And we inspect each egg so we know it’s fit to wear our name."
+    ],
     "photo": {
       "src": "/images/products/organic.png",
       "alt": "Organic Eggs"
@@ -57,6 +60,10 @@
           {
             "src": "/images/usda-organic.png",
             "alt": "USDA Organic"
+          },
+          {
+            "src": "/images/icon-certified.png",
+            "alt": "ahc"
           }
         ]
       },
