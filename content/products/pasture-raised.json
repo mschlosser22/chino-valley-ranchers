@@ -2,7 +2,8 @@
   "name": "Pasture Raised",
   "order": 4,
   "description": [
-    "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms. Our ladies forage as they please on seeds, bugs and green grass. All on dedicated pastureland with at least 108 sq ft for each bird. We also provide premium feed to ensure a complete and balanced diet."
+    "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms.",
+    "Our ladies forage as they please on seeds, bugs and green grass. All on dedicated pastureland with at least 108 sq ft for each bird. We also provide premium feed to ensure a complete and balanced diet."
   ],
   "photo": {
     "src": "/images/products/pasture-raised.png",
@@ -89,7 +90,7 @@
             "Some default paragraph text here"
           ],
           "heading": "Better For Our Hens",
-          "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
+          "subheading": "Our hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
         },
         {
           "_template": "content",
@@ -97,7 +98,7 @@
             "Some default paragraph text here"
           ],
           "heading": "Better For Our Eggs",
-          "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
+          "subheading": "Healthy food, sunshine and exercise - what else could be better for a hen? That's why our eggs are flavorful and nutritious!"
         },
         {
           "_template": "content",

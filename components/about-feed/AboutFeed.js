@@ -24,10 +24,10 @@ export function AboutFeed(props) {
                     <p className="font-lato lg:text-2xl text-xl tracking-wide lg:px-24 px-8 lg:text-left"><InlineTextarea name="subheading" /></p>
                 </div>
 
-                           <div className="max-w-5xl mx-auto">
+                           <div className="max-w-5xl mx-auto" id="eatalt">
                                <div className="grid grid-cols-12 gap-8 lg:ml-6 lg:-mb-16">
                                    <div className="md:col-span-5 col-span-12 mx-auto relative">
-                                   <Scene duration={400} triggerElement="#eat">
+                                   <Scene duration={150} triggerElement="#eatalt">
                                         {(progress, event) => (
                                             <Spring
                                             style="perspective: 400px"

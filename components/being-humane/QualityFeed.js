@@ -21,6 +21,7 @@ export function QualityFeed(props) {
                         </p>
                     )}
                 </div>
+                {props.listBottom &&
                 <div>
                     <img src="/images/orangeSeperator.jpg"></img>
                     <p className="lg:text-3xl text-xl font-ultra text-center max-w-4xl py-9 mx-auto px-8 lg:px-0 tracking-wide" id="callout">
@@ -30,6 +31,8 @@ export function QualityFeed(props) {
                     </p>
                     <img src="/images/orangeSeperator.jpg"></img>
                 </div>
+                }
+                {props.listBottom &&
                 <div className="lg:text-center pt-12 lg:py-16  max-w-4xl mx-auto px-8 lg:px-0">
                     {props.listBottom.map((item, index) =>
                         <p className="font-lato lg:text-xl tracking-wide leading-normal pb-12 font-bold lg:text-left">
@@ -37,6 +40,7 @@ export function QualityFeed(props) {
                         </p>
                     )}
                 </div>
+                }
             </div>
         </div>
      </div>

@@ -2,14 +2,14 @@
   "blocks": [
     {
       "_template": "hero",
-      "heading": "Products",
+      "heading": "Our Products",
       "image": "/images/hero-products.jpg"
     },
     {
       "_template": "content",
       "heading": "Happy Chickens Make Better Eggs",
       "image": "/images/bg-paper-edge.png",
-      "subheading": "Chino Valley Ranchers hens eat better feed and run free on open fields. That's why they lay healthier, all natural eggs. Try our products and taste the difference."
+      "subheading": "Try our products and taste the difference! "
     },
     {
       "_template": "products",
@@ -65,7 +65,7 @@
         },
         "button": {
           "link": "/contact",
-          "text": "Contact us for list of products"
+          "text": "CONTACT US FOR A LIST OF PRODUCTS"
         }
       }
     },
@@ -78,7 +78,7 @@
             "Some default paragraph text here"
           ],
           "heading": "Better For Our Hens",
-          "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
+          "subheading": "Our hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
         },
         {
           "_template": "content",
@@ -86,7 +86,7 @@
             "Some default paragraph text here"
           ],
           "heading": "Better For Our Eggs",
-          "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
+          "subheading": "Healthy food, sunshine and exercise - what else could be better for a hen? That's why our eggs are flavorful and nutritious!"
         },
         {
           "_template": "content",
@@ -108,7 +108,7 @@
         },
         {
           "_template": "subheadingAlt",
-          "subheading": "Our passion for quality egg production practices dates back to our early beginnings. Along the way, we’ve received various certifications to assure our customers of our commitment to the highest standards. Chino Valley Ranchers pasture raised eggs are certified by American Humane and carry the American Humane Certified seal."
+          "subheading": "Our passion for quality egg production practices dates back to our early beginnings. Along the way, we’ve received various certifications to assure our customers of our commitment to the highest standards. Chino Valley Ranchers eggs are certified by American Humane and carry the American Humane Certified seal."
         },
         {
           "_template": "subheadingAlt",

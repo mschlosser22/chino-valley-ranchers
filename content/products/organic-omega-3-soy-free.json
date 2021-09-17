@@ -2,8 +2,8 @@
   "name": "Organic Omega-3 Soy Free",
   "order": 3,
   "description": [
-    "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special soy-free diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
-    "Each egg contains 225 mg of Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health."
+    "Our Organic Omega-3 eggs are fed a special soy-free diet that contains flax seed—a grain naturally high in Omega-3 fatty acids reaching levels of around 225mg or more. You can expect the same brilliant colored yolks, great taste and superior quality that you find in the rest of our organic eggs, but without the soy.",
+    "Omega-3, also known as alpha-linoleic acid (ALA). ALA has been shown to have positive health effects in humans, especially for cardiovascular health."
   ],
   "photo": {
     "src": "/images/products/organic-omega-3-soy-free.png",
@@ -98,7 +98,7 @@
             "Some default paragraph text here"
           ],
           "heading": "Better For Our Hens",
-          "subheading": "Our pasture raised hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
+          "subheading": "Our hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
         },
         {
           "_template": "content",
@@ -106,7 +106,7 @@
             "Some default paragraph text here"
           ],
           "heading": "Better For Our Eggs",
-          "subheading": "Natural pastures, plants and bugs - what else could be better for a hen? That's why pasture raised eggs are more flavorful and nutricious!"
+          "subheading": "Healthy food, sunshine and exercise - what else could be better for a hen? That's why our eggs are flavorful and nutritious!"
         },
         {
           "_template": "content",

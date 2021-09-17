@@ -11,6 +11,7 @@ import { beingHumaneBlock } from '../../components/being-humane/BeingHumane'
 import { henParadiseBlock } from '../../components/being-humane/HenParadise'
 import { qualityFeedBlock } from '../../components/being-humane/QualityFeed'
 import { eggTermDefBlock } from '../../components/being-humane/EggTermDef'
+import { contentSingleColumnBlock } from '../../components/content/ContentSingleColumn'
 
 export default function Products({ file, isPreview}) {
 
@@ -83,7 +84,8 @@ const PAGE_BLOCKS = {
   beingHumane: beingHumaneBlock,
   henParadise: henParadiseBlock,
   qualityFeed: qualityFeedBlock,
-  eggTermDef: eggTermDefBlock
+  eggTermDef: eggTermDefBlock,
+  contentSingleColumn: contentSingleColumnBlock
 }
 
 export const getStaticProps = async function({

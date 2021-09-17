@@ -158,7 +158,7 @@ export function Recipes(props) {
                     </div>
 
                     {/* Breakfast Lunch Dinner */}
-                    <div className="flex justify-center max-w-6xl mx-auto mb-12">
+                    {/* <div className="flex justify-center max-w-6xl mx-auto mb-12">
                         <div>
                             <a
                                 onClick={() => setRecipeTagPre('breakfast')}
@@ -178,7 +178,7 @@ export function Recipes(props) {
                         >Dinner</a>
                         </div>
                     </div>
-
+                    */}
 
                     {/* Video Recipes */}
                     {recipeCategory == 'recipe-videos' &&
