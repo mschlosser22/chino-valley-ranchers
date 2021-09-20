@@ -58,25 +58,10 @@ const articlesTemp = [
 
 import { useState } from 'react'
 import { useNewsContext } from '../../context/news'
-import InfiniteScroll from 'react-infinite-scroll-component'
 import moment from 'moment'
+import { PaginatedList } from 'react-paginated-list'
 
-export function  Loader(props) {
-
-    return(
-        <div className="fixed inset-x-0 bottom-0 rounded-lg">
-            <div className="bg-indigo-600">
-            <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between flex-wrap">
-                    <div className="text-white text-2xl">
-                        Loading...
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-    )
-}
+import {FacebookShareButton, TwitterShareButton, EmailShareButton, LinkedinShareButton, PinterestShareButton, RedditShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, EmailIcon, LinkedinIcon, PinterestIcon, RedditIcon, WhatsappIcon} from "react-share"
 
 export function Articles(props) {
 
@@ -85,8 +70,6 @@ export function Articles(props) {
     const newsContext = useNewsContext()
     const [articles, setArticles] = useState(newsContext)
 
-    //console.log(articles)
-
     if(articles) {
 
         const parsedArticles = articles.map(article => JSON.parse(article.content))
@@ -94,31 +77,15 @@ export function Articles(props) {
             return new Date(b.date) - new Date(a.date)
         });
 
-        const [count, setCount] = useState({
-            prev: 0,
-            next: 10
-        })
-
-        const [hasMore, setHasMore] = useState(true);
-        const [current, setCurrent] = useState(parsedArticles.slice(count.prev, count.next))
-
-        const getMoreData = () => {
-            if (current.length === parsedArticles.length) {
-              setHasMore(false);
-              return;
-            }
-            setTimeout(() => {
-              setCurrent(current.concat(parsedArticles.slice(count.prev + 10, count.next + 10)))
-            }, 1000)
-            setCount((prevState) => ({ prev: prevState.prev + 10, next: prevState.next + 10 }))
-        }
+        const featuredArticle = parsedArticles.splice(0,1)
 
         return(
 
             <div>
-        {/* Featured Article */}
+
+            {/* Featured Article */}
             <div className="max-w-6xl mx-auto">
-            {parsedArticles.map( (article, index) => {
+            {featuredArticle.map( (article, index) => {
 
                 if(index == 0) {
                     return (
@@ -139,6 +106,7 @@ export function Articles(props) {
                                             {article.title}
                                         </h1>
                                     </a>
+
                                     <div className="sm:flex block px-8 lg:p-0">
                                         <p className="text-md lg:text-xl text-chinogray pr-2">
                                             {moment(article.date).format("MMM Do YYYY")},
@@ -146,6 +114,29 @@ export function Articles(props) {
                                         <p className="text-md lg:text-xl text-chinogray">
                                             by {article.author}
                                         </p>
+                                    </div>
+                                    <div className="pt-4 flex gap-2">
+                                        <FacebookShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <FacebookIcon size={32} round={true} />
+                                        </FacebookShareButton>
+                                        <TwitterShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <TwitterIcon size={32} round={true} />
+                                        </TwitterShareButton>
+                                        <EmailShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <EmailIcon size={32} round={true} />
+                                        </EmailShareButton>
+                                        <LinkedinShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <LinkedinIcon size={32} round={true} />
+                                        </LinkedinShareButton>
+                                        <PinterestShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <PinterestIcon size={32} round={true} />
+                                        </PinterestShareButton>
+                                        <RedditShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <RedditIcon size={32} round={true} />
+                                        </RedditShareButton>
+                                        <WhatsappShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <WhatsappIcon size={32} round={true} />
+                                        </WhatsappShareButton>
                                     </div>
                                 </div>
                                 <div className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl" dangerouslySetInnerHTML={{ __html: truncate( article.content.replace(/(<([^>]+)>)/gi, ""), 500, '...') }}></div>
@@ -162,20 +153,15 @@ export function Articles(props) {
         {/* Articles */}
 
         <div className="lg:max-w-6xl mx-auto pb-12 lg:pb-24">
-            <div>
-            <InfiniteScroll
-            dataLength={current.length}
-            next={getMoreData}
-            hasMore={hasMore}
-            loader={<Loader></Loader>}
-            className="grid grid-cols-12 lg:gap-16 gap-8 relative"
-            >
-
-                    {current && current.map( (article, index) => {
-                        if(index >= 1) {
-                            return (
-                                <div key={index} className="lg:col-span-6 col-span-12">
-                                    <div>
+            <PaginatedList
+                list={parsedArticles}
+                itemsPerPage={8}
+                renderList={(list) => (
+                    <div className="grid grid-cols-12 lg:gap-16 gap-8 relative">
+                    {list.map((article, index) => {
+                    return (
+                        <div key={index} className="lg:col-span-6 col-span-12">
+                            <div>
                                         <a href={`/news/${article.slug}`} className="block h-full w-full">
                                         {article.image && article.image.src ?
                                         <img src={article.image.src} alt={article.image.alt} className="mb-12 object-cover h-72 w-full"></img>
@@ -195,16 +181,39 @@ export function Articles(props) {
                                             by {article.author}
                                             </p>
                                         </div>
+                                        <div className="pt-4 flex gap-2">
+                                        <FacebookShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <FacebookIcon size={32} round={true} />
+                                        </FacebookShareButton>
+                                        <TwitterShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <TwitterIcon size={32} round={true} />
+                                        </TwitterShareButton>
+                                        <EmailShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <EmailIcon size={32} round={true} />
+                                        </EmailShareButton>
+                                        <LinkedinShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <LinkedinIcon size={32} round={true} />
+                                        </LinkedinShareButton>
+                                        <PinterestShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <PinterestIcon size={32} round={true} />
+                                        </PinterestShareButton>
+                                        <RedditShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <RedditIcon size={32} round={true} />
+                                        </RedditShareButton>
+                                        <WhatsappShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                            <WhatsappIcon size={32} round={true} />
+                                        </WhatsappShareButton>
+                                    </div>
                                         <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl" dangerouslySetInnerHTML={{ __html: truncate( article.content.replace(/(<([^>]+)>)/gi, ""), 250, '...') }}></p>
                                         <a href={`/news/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>
-                                </div>
-                                </div>
-                            )
-                        }
+                            </div>
+                        </div>
+                    );
                     })}
-                </InfiniteScroll>
+                </div>
+                )}
+            />
 
-            </div>
         </div>
     </div>
 
