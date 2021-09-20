@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Fragment, useState, useContext } from 'react'
+import { Fragment, useState, useContext, useEffect } from 'react'
 import { Disclosure, Dialog, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon, ChevronDownIcon, ChevronUpIcon, } from '@heroicons/react/outline'
 import { useCMS } from 'tinacms'
@@ -11,6 +11,16 @@ function classNames(...classes) {
 }
 
 export function Nav(props) {
+
+    const [small, setSmall] = useState(false)
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+          window.addEventListener("scroll", () =>
+            setSmall(window.pageYOffset > 50)
+          );
+        }
+    }, [])
 
     const cms = useCMS()
     console.log(`CMS is enabled: ${cms.enabled}`)
@@ -58,13 +68,14 @@ export function Nav(props) {
                         </Disclosure.Button>
                     </div>
 
-                    <div className="pt-28 hidden lg:block z-50">
+                    <div className={`hidden lg:block z-50 min-w-[237px] ${small ? "pt-2" : "pt-28"}`}>
                         <a href="/">
                             <Image
                             src="/images/logo.png"
-                            height={161}
-                            width={237}
+                            height={`${small ? 60 : 161}`}
+                            width={`${small ? 88 : 237}`}
                             alt="Chino Valley Ranchers"
+                            className="transition transform duration-500 ease-in-out"
                             />
                         </a>
                     </div>

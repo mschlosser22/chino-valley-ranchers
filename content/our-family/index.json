@@ -58,7 +58,6 @@
       {
         "_template": "ourRanchers",
         "heading": "Our Ranches",
-        "subheading": "Company Owned Ranches",
         "list": [
             {
                 "description": "Our headquarters resides in sunny Colton, California where we bring in and handle the eggs from our local farms. Our ranches are all in close proximity to ensure the freshest eggs possible.  Three are located in Riverside County, one in San Diego County and one in San Bernardino County. We also have a ranch in Idalou, Texas. Each serves their local community by supplying fresh organic and specialty eggs to outlets throughout the region."
@@ -77,7 +76,14 @@
       {
         "_template": "ourSustainability",
         "heading": "Our Sustainability",
-        "markdown": "At Chino Valley Ranchers we believe in sustainable practices to help offset the natural resources we all use everyday. In these challenging times for our environment, doing what we can to preserve our planet has never been more important.  \n \n As a company, we take steps in a number of areas to help reduce our carbon footprint, including: \n ## Solar Panels and Turbines \n Our processing plant is powered by the sun! Rooftop solar and parking lot carport solar arrays are the source of nearly all of the power we use at our headquarters. The rest is provided by natural gas powered turbines. Our turbines provide a nearly zero emission solution in place of coal powered generation plants. \n ## Packaging Material  \n All of our egg cartons are made from recycled materials and only soy-based inks are used.  We use a variety of packaging items—labels, cartons, corrugated boxes and plastic containers—and they’re all recyclable.  \n ## Water Recycling  \n We recycle the treated water from our processing to provide all of the irrigation water for our landscaping at our headquarters.  \n ## Sustainable Forestry Initiative  \n All of our liquid egg cartons bear the Sustainable Forestry Initiative (SFI) symbol, which certifies the paper materials are sourced through responsible and sustainable management of North American forests.  \n ## Composting  \n We take the manure from our chickens, mix it with green waste from our farms and create a beautiful thing: fertilizer.  Then it goes directly to organic farms in neighboring communities.  Also noteworthy: all of the paper-based egg cartons we use are compostable."
+        "markdown": "At Chino Valley Ranchers we believe in sustainable practices to help offset the natural resources we all use everyday. In these challenging times for our environment, doing what we can to preserve our planet has never been more important.  \n \n As a company, we take steps in a number of areas to help reduce our carbon footprint, including: \n ## Solar Panels and Turbines \n Our processing plant is powered by the sun! Rooftop solar and parking lot carport solar arrays are the source of nearly all of the power we use at our headquarters. The rest is provided by natural gas powered turbines. Our turbines provide a nearly zero emission solution in place of coal powered generation plants. \n ## Packaging Material  \n All of our egg cartons are made from recycled materials and only soy-based inks are used.  We use a variety of packaging items—labels, cartons, corrugated boxes and plastic containers—and they’re all recyclable.  \n ## Water Recycling  \n We recycle the treated water from our processing to provide all of the irrigation water for our landscaping at our headquarters.  \n ## Sustainable Forestry Initiative  \n All of our liquid egg cartons bear the Sustainable Forestry Initiative (SFI) symbol, which certifies the paper materials are sourced through responsible and sustainable management of North American forests.  \n ## Composting  \n We take the manure from our chickens, mix it with green waste from our farms and create a beautiful thing: fertilizer.  Then it goes directly to organic farms in neighboring communities.  Also noteworthy: all of the paper-based egg cartons we use are compostable.",
+        "button": {
+          "link": {
+            "url": "/store-locator"
+          },
+          "text": "Find a store near you",
+          "classes": "mt-12"
+        }
       }
 
     ]

@@ -2,6 +2,8 @@ import { InlineTextarea, InlineImage, BlocksControls } from 'react-tinacms-inlin
 import ReactMarkdown from 'react-markdown'
 import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
 
+import { Button } from '../../components/button/Button'
+
 export function OurSustainability(props) {
 
     return (
@@ -19,6 +21,10 @@ export function OurSustainability(props) {
                     <InlineWysiwyg name="markdown" format="markdown" sticky>
                         <ReactMarkdown className="font-lato lg:text-xl tracking-wide leading-normal pb-12 font-lato font-bold sustainability">{props.markdown}</ReactMarkdown>
                     </InlineWysiwyg>
+
+                    {props.button &&
+                        <div className="px-8 lg:px-0"><Button button={props.button} /></div>
+                    }
 
                 </div>
             </div>
