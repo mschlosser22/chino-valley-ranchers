@@ -13,6 +13,8 @@ import { organicMattersBlock } from '../../components/why-organic/OrganicMatters
 import { ourCommitmentBlock } from '../../components/why-organic/OurCommitment'
 import { studiesBlock } from '../../components/why-organic/Studies'
 
+import { HtmlFieldPlugin } from "react-tinacms-editor"
+
 export default function Products({ file, isPreview}) {
 
   const cms = useCMS()
@@ -62,9 +64,9 @@ export default function Products({ file, isPreview}) {
     <>
     <div className={`relative`}>
       <Head>
-      <title>{file.data.title ? file.data.title : 'Why Organic'} | Chino Valley Ranchers</title>
-        <meta name="description" content={file.data.meta && file.data.meta.description ? file.data.meta.description : 'Chino Valley Ranchers'}></meta>
-        <meta name="keywords" content={file.data.meta && file.data.meta.keywords ? file.data.meta.keywords : 'Chino Valley Ranchers'}></meta>
+        <title>{file.data.title ? file.data.title : 'Chino Valley Ranchers'}</title>
+        <meta name="description" content={file.data.meta && file.data.meta.excerpt ? file.data.meta.excerpt.replace(/(<([^>]+)>)/gi, "") : "Chino Valley Ranchers"}></meta>
+        <meta name="keywords" content={file.data.meta && file.data.meta.keywords && file.data.meta.keywords.length > 0 ? file.data.meta.keywords.join() : "chino valley ranchers,cvr,omelette,eggs,breakfast ideas,recipes" }></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
-import { useForm, usePlugin, useCMS } from 'tinacms'
+import { useForm, usePlugin, useCMS, usePlugins } from 'tinacms'
 import { InlineForm, InlineBlocks } from 'react-tinacms-inline'
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github'
 
@@ -24,7 +24,29 @@ export default function Products({ file, isPreview }) {
     initialValues: file,
     label: 'Home Page',
     fields: [
-
+      {
+        name: 'title',
+        label: 'Title',
+        component: 'text'
+      },
+      {
+        name: 'meta',
+        label: 'Meta',
+        component: 'group',
+        fields: [
+          {
+            name: 'description',
+            label: 'Description',
+            component: 'textarea'
+          },
+          {
+            name: 'keywords',
+            label: 'Keywords',
+            component: 'text',
+            description: 'Comma seperated list.'
+          }
+        ]
+      }
     ],
     onSubmit() {
       cms.alerts.success('Saved!')
@@ -42,7 +64,9 @@ export default function Products({ file, isPreview }) {
     <>
     <div className={`relative`}>
       <Head>
-        <title>Chino Valley Ranchers | Products</title>
+        <title>{file.data.title ? file.data.title : 'Chino Valley Ranchers'}</title>
+        <meta name="description" content={file.data.meta && file.data.meta.excerpt ? file.data.meta.excerpt.replace(/(<([^>]+)>)/gi, "") : "Chino Valley Ranchers"}></meta>
+        <meta name="keywords" content={file.data.meta && file.data.meta.keywords && file.data.meta.keywords.length > 0 ? file.data.meta.keywords.join() : "chino valley ranchers,cvr,omelette,eggs,breakfast ideas,recipes" }></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

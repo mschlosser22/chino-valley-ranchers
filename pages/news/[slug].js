@@ -13,7 +13,6 @@ import getNewsArticles from '../../utils/getNewsArticles'
 
 
 export default function NewsArticle({ file, isPreview, }) {
-  console.log(file)
 
   const cms = useCMS()
 
