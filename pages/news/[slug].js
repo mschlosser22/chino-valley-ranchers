@@ -10,6 +10,8 @@ import { Footer } from '../../components/footer/Footer'
 import { heroBlock } from '../../components/hero/Hero'
 import { featuredArticleBlock } from '../../components/news/FeatureArticle'
 import getNewsArticles from '../../utils/getNewsArticles'
+import {FacebookShareButton, TwitterShareButton, EmailShareButton, LinkedinShareButton, PinterestShareButton, RedditShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, EmailIcon, LinkedinIcon, PinterestIcon, RedditIcon, WhatsappIcon} from "react-share"
+
 
 
 export default function NewsArticle({ file, isPreview, }) {
@@ -107,6 +109,29 @@ export default function NewsArticle({ file, isPreview, }) {
           : <img src="/images/article1.jpg" alt="placeholder image" className="max-5xl" />
           }
           <h1 className="text-3xl lg:text-7xl !text-chinored font-ultra uppercase !tracking-wide !lg:mb-8">{file.data.title}</h1>
+          <div className="pt-4 flex gap-2">
+                                        <FacebookShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                            <FacebookIcon size={32} round={true} />
+                                        </FacebookShareButton>
+                                        <TwitterShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                            <TwitterIcon size={32} round={true} />
+                                        </TwitterShareButton>
+                                        <EmailShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                            <EmailIcon size={32} round={true} />
+                                        </EmailShareButton>
+                                        <LinkedinShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                            <LinkedinIcon size={32} round={true} />
+                                        </LinkedinShareButton>
+                                        <PinterestShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                            <PinterestIcon size={32} round={true} />
+                                        </PinterestShareButton>
+                                        <RedditShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                            <RedditIcon size={32} round={true} />
+                                        </RedditShareButton>
+                                        <WhatsappShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                            <WhatsappIcon size={32} round={true} />
+                                        </WhatsappShareButton>
+                                    </div>
           <div dangerouslySetInnerHTML={{ __html: file.data.content }}></div>
         </article>
       </InlineForm>
