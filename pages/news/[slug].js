@@ -110,25 +110,25 @@ export default function NewsArticle({ file, isPreview, }) {
           }
           <h1 className="text-3xl lg:text-7xl !text-chinored font-ultra uppercase !tracking-wide !lg:mb-8">{file.data.title}</h1>
           <div className="pt-4 flex gap-2">
-                                        <FacebookShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                        <FacebookShareButton url={`https://www.chinovalleyranchers.com/news/${file.data.slug}`}>
                                             <FacebookIcon size={32} round={true} />
                                         </FacebookShareButton>
-                                        <TwitterShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                        <TwitterShareButton url={`https://www.chinovalleyranchers.com/news/${file.data.slug}`}>
                                             <TwitterIcon size={32} round={true} />
                                         </TwitterShareButton>
-                                        <EmailShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                        <EmailShareButton url={`https://www.chinovalleyranchers.com/news/${file.data.slug}`}>
                                             <EmailIcon size={32} round={true} />
                                         </EmailShareButton>
-                                        <LinkedinShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                        <LinkedinShareButton url={`https://www.chinovalleyranchers.com/news/${file.data.slug}`}>
                                             <LinkedinIcon size={32} round={true} />
                                         </LinkedinShareButton>
-                                        <PinterestShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                        <PinterestShareButton url={`https://www.chinovalleyranchers.com/news/${file.data.slug}`}>
                                             <PinterestIcon size={32} round={true} />
                                         </PinterestShareButton>
-                                        <RedditShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                        <RedditShareButton url={`https://www.chinovalleyranchers.com/news/${file.data.slug}`}>
                                             <RedditIcon size={32} round={true} />
                                         </RedditShareButton>
-                                        <WhatsappShareButton url={`https://www.chinovalleyranchers.com${window.location.pathname}`}>
+                                        <WhatsappShareButton url={`https://www.chinovalleyranchers.com/news/${file.data.slug}`}>
                                             <WhatsappIcon size={32} round={true} />
                                         </WhatsappShareButton>
                                     </div>
@@ -166,8 +166,6 @@ export const getStaticProps = async function({
   preview,
   previewData,
 }) {
-
-  //const article =  await getNewsArticle()
 
   if (preview) {
     return getGithubPreviewProps({

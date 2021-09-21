@@ -23,8 +23,6 @@ import { NewsWrapper } from '../../context/news'
 
 export default function News({ file, isPreview, news, posts}) {
 
-  console.log(posts)
-
   const cms = useCMS()
   //cms.plugins.add(NewsPostCreatorPlugin)
 
