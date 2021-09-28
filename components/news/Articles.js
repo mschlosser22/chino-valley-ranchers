@@ -134,9 +134,7 @@ export function Articles(props) {
                                         <RedditShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
                                             <RedditIcon size={32} round={true} />
                                         </RedditShareButton>
-                                        <WhatsappShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
+
                                     </div>
                                 </div>
                                 <div className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl" dangerouslySetInnerHTML={{ __html: truncate( article.content.replace(/(<([^>]+)>)/gi, ""), 500, '...') }}></div>
@@ -200,9 +198,7 @@ export function Articles(props) {
                                         <RedditShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
                                             <RedditIcon size={32} round={true} />
                                         </RedditShareButton>
-                                        <WhatsappShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
-                                            <WhatsappIcon size={32} round={true} />
-                                        </WhatsappShareButton>
+
                                     </div>
                                         <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl" dangerouslySetInnerHTML={{ __html: truncate( article.content.replace(/(<([^>]+)>)/gi, ""), 250, '...') }}></p>
                                         <a href={`/news/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>

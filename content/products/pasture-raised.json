@@ -60,25 +60,15 @@
     },
     {
       "_template": "sizeOptions",
-      "heading": "Three Size Options",
+      "heading": "One Size Option",
       "images": [
         {
           "src": "/images/largePastureRaised.png",
           "alt": "Pasture Raised Large"
-        },
-        {
-          "src": "/images/largeOrganicPastureRaised.png",
-          "alt": "Pasture Raised Organic Large"
-        },
-        {
-          "src": "/images/6ctOrganicPastureRaised.png",
-          "alt": "Pasture Raised Organic 6 count"
         }
       ],
       "sizes": [
-        "Large",
-        "Organic Large",
-        "Organic 6-Count"
+        "Large"
       ]
     },
     {
@@ -129,15 +119,15 @@
           }
         },
         {
-          "name": "Humane Harvest",
-          "description": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+          "name": "Pasture Raised Organic",
+          "description": "Our pasture raised organic eggs are delicious! These eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms.",
           "photo": {
-            "src": "/images/humane-harvest.png",
-            "alt": "Humane Harvest"
+            "src": "/images/products/pasture-raised-organic.png",
+            "alt": "Pasture Raised Organic"
           },
           "button": {
             "link": {
-              "url": "/products/humane-harvest"
+              "url": "/products/pasture-raised-organic"
             },
             "text": "Learn More"
           }

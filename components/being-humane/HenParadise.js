@@ -40,14 +40,16 @@ export function HenParadise(props) {
                     <h1 className="text-3xl lg:text-6xl text-chinored font-ultra uppercase lg:mb-12 mb-6">
                         <InlineTextarea name="heading" />
                     </h1>
+                    <div id="chickens">
                     {props.list.map((item, index) =>
                         <p className="font-lato lg:text-xl tracking-wide leading-normal pb-12 font-lato font-bold">
                             {item.description}
                         </p>
                     )}
+                    </div>
                 </div>
 
-                <div className="flex relative" id="chickens">
+                <div className="flex relative">
                     <Scene duration={400} triggerElement="#chickens">
                         {(progress, event) => (
                             <>
