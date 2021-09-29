@@ -14,8 +14,8 @@ export function ContentWithImageAlt(props) {
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-12 pt-24 sm:pt-36 pb-12 sm:pb-24">
 
-                    <div className="col-span-12 sm:col-span-8 text-center text-left px-8 xl:px-0 xl:pr-8">
-                        <h3 className="text-3xl sm:text-4xl lg:text-7xl text-white font-ultra uppercase tracking-wide mb-12"><InlineTextarea name="heading" /></h3>
+                    <div className="col-span-12 sm:col-span-8 text-left px-8 xl:px-0 xl:pr-8">
+                        <h3 className="text-3xl sm:text-4xl lg:text-7xl text-white font-ultra uppercase tracking-wide mb-12 text-center"><InlineTextarea name="heading" /></h3>
                         <div className="pb-16">
                             <InlineBlocks name="blocks" blocks={CONTENT_WITH_IMAGE_BLOCKS} />
                         </div>

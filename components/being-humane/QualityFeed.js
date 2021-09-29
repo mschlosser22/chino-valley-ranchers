@@ -11,12 +11,12 @@ export function QualityFeed(props) {
          <div className="relative pb-24 mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="max-w-5xl mx-auto">
                 {/* Page Heading */}
-                <div className="lg:text-center pt-12 lg:py-16 max-w-4xl mx-auto px-8 lg:px-0">
-                    <h1 className="text-3xl lg:text-6xl text-chinored font-ultra uppercase lg:mb-12 mb-6">
+                <div className="pt-12 lg:py-16 max-w-4xl mx-auto px-8 lg:px-0">
+                    <h1 className="text-3xl lg:text-6xl text-chinored font-ultra uppercase lg:mb-12 mb-6 text-center">
                         <InlineTextarea name="heading" />
                     </h1>
                     {props.listTop.map((item, index) =>
-                        <p className="font-lato lg:text-xl tracking-wide leading-normal pb-12 font-bold lg:text-left">
+                        <p className="font-lato text-gray-900 tracking-wide mb-8 lg:mb-8 text-xl lg:text-3xl">
                             {item.description}
                         </p>
                     )}

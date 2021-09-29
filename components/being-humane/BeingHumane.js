@@ -13,9 +13,9 @@ export function BeingHumane(props) {
             <div className="max-w-6xl mx-auto">
 
                 {/* Page Heading */}
-                <div className="text-center z-50 pt-12 pb-8 lg:py-24 max-w-5xl mx-auto px-8 lg:px-0">
-                    <h1 className="text-3xl lg:text-6xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6"><InlineTextarea name="heading" /></h1>
-                    <p className="font-lato lg:text-2xl tracking-wide"><InlineTextarea name="subheading" /></p>
+                <div className="z-50 pt-12 pb-8 lg:py-24 max-w-5xl mx-auto px-8 lg:px-0">
+                    <h1 className="text-3xl lg:text-6xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 text-center"><InlineTextarea name="heading" /></h1>
+                    <p className="font-lato text-gray-900 tracking-wide mb-8 lg:mb-8 text-xl lg:text-3xl"><InlineTextarea name="subheading" /></p>
                 </div>
 
                            <div className="max-w-5xl mx-auto">
@@ -24,12 +24,12 @@ export function BeingHumane(props) {
                                         <img src={props.imageLeft.src} className="mx-auto md:m-0" alt={props.imageLeft.alt} />
                                     </div>
                                     <div className="lg:col-span-7 md:col-span-6 col-span-12">
-                                        <p className="lg:text-2xl text-xl font-lato leading-normal md:pt-8 pt-8 md:pl-8 md:mx-0 mx-6">
+                                        <p className="font-lato text-gray-900 tracking-wide mb-8 lg:mb-8 text-xl lg:text-3xl md:pl-8 md:mx-0 mx-6 pb-20">
                                             <InlineTextarea name="textRight" />
                                         </p>
                                     </div>
                                     <div className="lg:col-span-7 md:col-span-6 col-span-12">
-                                        <p className="lg:text-2xl text-xl font-lato lg:pl-12 pt-8 pb-8 md:pb-0 leading-normal md:mx-0 mx-6">
+                                        <p className="font-lato text-gray-900 tracking-wide mb-8 lg:mb-8 text-xl lg:text-3xl lg:pl-12 pt-8 pb-8 md:pb-0 leading-normal md:mx-0 mx-6">
                                             <InlineTextarea name="textLeft" />
                                         </p>
                                     </div>
