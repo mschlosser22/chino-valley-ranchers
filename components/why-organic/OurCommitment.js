@@ -7,7 +7,7 @@ import { Button } from '../../components/button/Button'
 export function OurCommitment(props) {
     return (
         <div>
-            <div className="relative -mt-12 lg:pt-36 pt-20 pb-32 bg-cover" style={{ backgroundImage: `url('/images/bg-blue-talons.jpg')` }}>
+            <div className="relative -mt-12 lg:pt-36 pt-20 pb-12 lg:pb-32 bg-cover" style={{ backgroundImage: `url('/images/bg-blue-talons.png')` }}>
                 <div className="max-w-5xl mx-auto">
                    <h1 className="font-ultra lg:text-6xl text-3xl lg:mx-0 mx-8 text-white uppercase tracking-normal pb-8">
                        <InlineTextarea name="heading" />

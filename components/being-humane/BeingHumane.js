@@ -24,7 +24,7 @@ export function BeingHumane(props) {
                                         <img src={props.imageLeft.src} className="mx-auto md:m-0" alt={props.imageLeft.alt} />
                                     </div>
                                     <div className="lg:col-span-7 md:col-span-6 col-span-12">
-                                        <p className="font-lato text-gray-900 tracking-wide mb-8 lg:mb-8 text-xl lg:text-3xl md:pl-8 md:mx-0 mx-6 pb-20">
+                                        <p className="font-lato text-gray-900 tracking-wide lg:mb-8 text-xl lg:text-3xl md:pl-8 md:mx-0 mx-6 pb-8 lg:pb-20">
                                             <InlineTextarea name="textRight" />
                                         </p>
                                     </div>

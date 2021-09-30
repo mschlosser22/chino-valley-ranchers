@@ -22,19 +22,19 @@ export function RecipesAndVideos(props) {
                 </div>
 
                 {/* Videos */}
-                <div className="grid grid-cols-12 pb-12 lg:pb-24 relative px-8 xl:px-0 gap-2">
+                <div className="grid grid-cols-12 pb-8 lg:pb-24 relative px-8 xl:px-0 gap-2">
                     {props.data.videos.map( (video, index) => (
-                        <div key={index} className="col-span-12 lg:col-span-6 mb-12 lg:mb-0">
-                            <div className="border-8 border-white rounded mb-8 shadow-lg">
+                        <div key={index} className="col-span-12 lg:col-span-6 mb-2 lg:mb-12 lg:mb-0">
+                            <div className="border-8 border-white rounded mb-2 lg:mb-8 shadow-lg">
                                 <div className="aspect-w-16 aspect-h-9">
                                     <iframe src={video.src} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                 </div>
                             </div>
-                            <h5 className="font-lato lg:text-3xl tracking-wide text-left">{video.title}</h5>
+                            <h5 className="font-lato lg:text-3xl tracking-wide text-left">{video.title}!</h5>
                         </div>
                     ))}
                 </div>
-                <div className="flex lg:justify-center lg:block px-8 lg:px-0 pb-12 lg:pb-0">
+                <div className="flex justify-center lg:block px-8 lg:px-0 pb-12 lg:pb-0">
                     <Button button={props.data.button} classes={`lg:mt-12`} />
                 </div>
             </div>

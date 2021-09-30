@@ -4,7 +4,7 @@ export function Paragraph(props) {
 
     return (
         <BlocksControls index={props.index}>
-            <p className="font-lato lg:text-3xl sm:leading-body tracking-wide mb-8"><InlineTextarea name="text" /></p>
+            <p className="font-lato lg:text-3xl sm:leading-body tracking-wide mb-4 lg:mb-8"><InlineTextarea name="text" /></p>
         </BlocksControls>
     )
 }

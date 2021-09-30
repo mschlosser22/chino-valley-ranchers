@@ -19,11 +19,11 @@ export function OurSustainability(props) {
                     </h1>
 
                     <InlineWysiwyg name="markdown" format="markdown" sticky>
-                        <ReactMarkdown className="font-lato lg:text-xl tracking-wide leading-normal pb-12 font-lato font-bold sustainability">{props.markdown}</ReactMarkdown>
+                        <ReactMarkdown className="font-lato lg:text-xl tracking-wide leading-normal pb-12 font-lato font-bold sustainability px-8 lg:px-0">{props.markdown}</ReactMarkdown>
                     </InlineWysiwyg>
 
                     {props.button &&
-                        <div className="px-8 lg:px-0"><Button button={props.button} /></div>
+                        <div className="px-8 lg:px-0 flex justify-center lg:justify-left"><Button button={props.button} /></div>
                     }
 
                 </div>

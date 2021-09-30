@@ -115,7 +115,7 @@ export function Articles(props) {
                                             by {article.author}
                                         </p>
                                     </div>
-                                    <div className="pt-4 flex gap-2">
+                                    <div className="pt-4 flex gap-2 px-8 lg:px-0">
                                         <FacebookShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
                                             <FacebookIcon size={32} round={true} />
                                         </FacebookShareButton>
@@ -179,7 +179,7 @@ export function Articles(props) {
                                             by {article.author}
                                             </p>
                                         </div>
-                                        <div className="pt-4 flex gap-2">
+                                        <div className="pt-4 flex gap-2 px-8 lg:px-0">
                                         <FacebookShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
                                             <FacebookIcon size={32} round={true} />
                                         </FacebookShareButton>

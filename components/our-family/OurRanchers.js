@@ -9,10 +9,10 @@ export function OurRanchers({data, index}) {
 
     return(
 
-        <div className="relative pt-8 -mt-12 pb-24 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/blue-bg.png')` }}>
+        <div className="relative pt-8 -mt-20 sm:-mt-12 pb-24 bg-no-repeat bg-cover px-8 lg:px-0" style={{ backgroundImage: `url('/images/blue-bg.png')` }}>
             <div className="max-w-5xl mx-auto pt-8 lg:pt-32 text-left">
 
-                <h1 className="text-3xl lg:text-6xl text-white font-ultra uppercase lg:mb-12 mb-6">
+                <h1 className="text-3xl lg:text-6xl text-white font-ultra uppercase lg:mb-12 mb-6 pt-12 lg:pt-0">
                     <InlineTextarea name="heading" />
                 </h1>
 

@@ -19,7 +19,7 @@ export function AboutFeed(props) {
             <div className="max-w-6xl mx-auto">
 
                 {/* Page Heading */}
-                <div className="text-center z-40 pt-20 pb-8 lg:py-24 max-w-3xl mx-auto">
+                <div className="text-center z-40 pt-8 lg:pt-20 pb-8 lg:py-24 max-w-3xl mx-auto">
                     <h1 className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 lg:px-0 px-8"><InlineTextarea name="heading" /></h1>
                     <p className="font-lato lg:text-2xl text-xl tracking-wide lg:px-24 px-8 lg:text-left"><InlineTextarea name="subheading" /></p>
                 </div>

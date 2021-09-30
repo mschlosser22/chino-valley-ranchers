@@ -37,11 +37,11 @@ export function AboutPastureRaised(props) {
     <Controller>
      <div>
         <div className="relative pt-8 lg:-mt-12 -mt-32 bg-contain bg-no-repeat z-40" style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}>
-          <div className="relative bg-repeat bg-contain pb-44 mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
+          <div className="relative bg-repeat bg-contain pb-36 lg:pb-44 mt-4" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
             <div className="max-w-6xl mx-auto">
 
                 {/* Page Heading */}
-                <div className="text-center z-50 pt-20 pb-8 lg:py-24 max-w-5xl mx-auto px-8 lg:px-0">
+                <div className="text-center z-50 pt-8 lg:pt-20 pb-8 lg:py-24 max-w-5xl mx-auto px-8 lg:px-0">
                     <h1 className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6"><InlineTextarea name="heading" /></h1>
                     <p className="font-lato lg:text-3xl tracking-wide"><InlineTextarea name="subheading" /></p>
                 </div>
@@ -67,7 +67,7 @@ export function AboutPastureRaised(props) {
                                             >
                                                 {styles => (
                                                     <animated.div style={styles} className="md:col-span-4 col-span-12 mx-auto lg:mx-0 relative">
-                                                        <img src="/images/darnGoodEgg-Img.png" alt="" className="mb-12 w-48 md:w-full"></img>
+                                                        <img src="/images/darnGoodEgg-Img.png" alt="" className="mb-4 lg:mb-12 w-48 md:w-full"></img>
                                                     </animated.div>
                                                 )}
                                             </Spring>

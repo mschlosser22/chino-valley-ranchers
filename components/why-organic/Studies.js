@@ -11,7 +11,7 @@ export function Studies(props) {
     return (
         <Controller>
         <div>
-            <div className="lg:pb-20 pb-12 mt-24 max-w-6xl mx-auto lg:text-center">
+            <div className="sm:pb-12 lg:pb-20 mt-8 lg:mt-24 max-w-6xl mx-auto lg:text-center">
             <Scene duration={400} triggerElement="#chickensTwo">
                 {(progress, event) => (
                 <div className="max-w-3xl mx-auto flex justify-between" id="chickensTwo">

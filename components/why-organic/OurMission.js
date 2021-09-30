@@ -204,7 +204,7 @@ export function OurMission(props) {
                 </div>
                 )}
                 </Scene>
-                <div className="z-50 lg:pb-20 pb-12 pt-4 max-w-6xl mx-auto px-8 lg:px-0 text-center">
+                <div className="z-50 lg:pb-20 pb-12 pt-4 max-w-6xl mx-auto px-8 lg:px-0 lg:text-center">
                     <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wider" id="stat">
                         <InlineWysiwyg name="stat" format="markdown" sticky>
                             <ReactMarkdown>{props.stat}</ReactMarkdown>
@@ -234,7 +234,7 @@ export function OurMission(props) {
                             </Spring>
                         )}
                     </Scene>
-                    <p className="text-sm font-lato text-center">
+                    <p className="text-sm font-lato lg:text-center">
                         <InlineWysiwyg name="source" format="markdown" sticky>
                             <ReactMarkdown>{props.source}</ReactMarkdown>
                         </InlineWysiwyg>

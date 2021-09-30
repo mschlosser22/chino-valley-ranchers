@@ -23,7 +23,7 @@ export function FeedVideo(props) {
 
     return(
         <>
-        <div className="w-full relative -mt-16 -mb-12 z-10 pb-24 bg-cover bg-no-repeat bg-fixed" style={{ backgroundImage: `url('/images/dirt-bg.png')`}}>
+        <div className="w-full relative -mt-16 -mb-12 z-10 sm:mb-10 lg:pb-24 bg-cover bg-no-repeat bg-fixed" style={{ backgroundImage: `url('/images/dirt-bg.png')`}}>
             <Parallax ref={parallax} pages={1}>
 
                 <ParallaxLayer
@@ -46,7 +46,7 @@ export function FeedVideo(props) {
                 <div className="grid grid-cols-12 relative z-30">
                     <div className="col-span-12">
 
-                        <div className="text-3xl sm:text-6xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide mb-8 text-center pt-12 lg:pt-0">
+                        <div className="text-3xl sm:text-6xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide mb-8 text-center lg:pt-0">
                             <InlineTextarea name="heading" />
                         </div>
                     </div>
@@ -60,7 +60,7 @@ export function FeedVideo(props) {
                     </div>
 
                     <div className="col-span-12 relative lg:-mt-6">
-                        <div className="max-w-xl mx-auto">
+                        <div className="lg:max-w-xl mx-auto pr-4 sm:pr-0">
                             <div ref={ref} className="bg-cover bg-no-repeat px-8 pt-8 pb-12 text-left flex items-center text-xl leading-body lg:text-3xl lg:leading-body text-white font-lato font-bold tracking-wide" style={{ backgroundImage: `url('/images/content-bg.png')`}}>
                                 <InlineTextarea name="content" />
                             </div>

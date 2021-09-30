@@ -7,7 +7,7 @@ import { InlineWysiwyg } from '../../components/tinacms/InlineWYSIWYG'
 export function OrganicMatters(props) {
     return (
         <div>
-            <div className="relative -mt-12 pt-36 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/bg-gray-stripes-alt.png')` }}>
+            <div className="relative -mt-12 pt-20 lg:pt-36 bg-no-repeat bg-cover" style={{ backgroundImage: `url('/images/bg-gray-stripes-alt.png')` }}>
                 <div className="max-w-5xl mx-auto">
                     <div className="grid grid-cols-12">
                         <div className="lg:col-span-8 col-span-12">
@@ -23,7 +23,7 @@ export function OrganicMatters(props) {
                             <img src={props.imageRightAlt.src} className="lg:-ml-16 lg:-mt-2 -mt-0 -ml-0 w-52 lg:w-full" alt={props.imageRightAlt.alt} />
                         </div>
                     </div>
-                    <div className="lg:mt-16 mt-12 lg:pb-12 pb-6 ">
+                    <div className="lg:mt-16 mt-12 lg:pb-12">
                         <h3 className="text-chinored lg:text-4xl text-3xl lg:mx-0 mx-8 uppercase font-ultra ">
                             <InlineTextarea name="listHeading" />
                         </h3>

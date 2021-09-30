@@ -7,8 +7,8 @@ export function WhatItTakes(props) {
 
     return (
         <div>
-            <div className="relative lg:pt-40 -mt-56 lg:-mt-48 2xl:-mt-72 pt-56 bg-repeat-x bg-cover z-40" style={{ backgroundImage: `url('/images/bg-talons.png')` }}>
-            <div className="z-50 pt-20 pb-8 lg:py-24 2xl:pt-72 max-w-4xl mx-auto px-8 lg:px-0">
+            <div className="relative pt-20 sm:pt-56 lg:pt-40 -mt-72 lg:-mt-56 lg:-mt-48 2xl:-mt-72 bg-repeat-x bg-cover z-40" style={{ backgroundImage: `url('/images/bg-talons.png')` }}>
+            <div className="z-50 pt-56 sm:pt-24 pb-8 lg:py-24 2xl:pt-72 max-w-4xl mx-auto px-8 lg:px-0">
                 <h1 className="text-2xl lg:text-5xl text-chinoblue font-ultra uppercase tracking-wide lg:mb-12 mb-6 text-center md:text-left">
                     <InlineTextarea name="heading" />
                 </h1>
@@ -20,7 +20,7 @@ export function WhatItTakes(props) {
             <div className="grid grid-cols-12">
 
                 {props.list.map((item, index) =>
-                    <div className="col-span-12 grid grid-cols-12 gap-8" key={index}>
+                    <div className="col-span-12 grid grid-cols-12 gap-4 lg:gap-8" key={index}>
                         <div className="lg:col-span-5 col-span-12 mx-auto lg:mx-0 relative">
                             <h1 className="text-lg md:text-3xl text-chinored uppercase font-ultra text-center md:text-left tracking-wide">
                                 {item.title}
@@ -38,7 +38,7 @@ export function WhatItTakes(props) {
             </div>
         </div>
 
-        <div className="z-50 pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
+        <div className="z-50 pt-8 lg:pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
             <h1 className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide lg:mb-12 mb-6 stat">
                 <InlineWysiwyg name="statOne" format="markdown" sticky>
                     <ReactMarkdown>{props.statOne}</ReactMarkdown>
@@ -50,7 +50,7 @@ export function WhatItTakes(props) {
                     <ReactMarkdown>{props.statTwo}</ReactMarkdown>
                 </InlineWysiwyg>
             </h1>
-            <img src="/images/redSeperator.png" className="my-20 mx-auto w-1/2"></img>
+            <img src="/images/redSeperator.png" className="my-8 lg:my-20 mx-auto w-1/2"></img>
             <div className="pb-16 lg:pb-0"><Button button={props.button} /></div>
         </div>
         </div>

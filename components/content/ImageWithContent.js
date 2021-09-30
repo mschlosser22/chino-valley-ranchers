@@ -96,7 +96,12 @@ export function ImageWithContent(props) {
                         </div>
 
                         <div className="w-full lg:hidden justify-center mx-auto relative -mb-10">
-                            <img src={props.data.leftImageMobile.src} alt={props.data.leftImageMobile.alt} />
+                            <a
+                                href="/about-pasture-raised"
+                                className="block"
+                            >
+                                <img src={props.data.leftImageMobile.src} alt={props.data.leftImageMobile.alt} />
+                            </a>
                         </div>
                     </div>
                     {/* Right */}

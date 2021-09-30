@@ -7,8 +7,8 @@ export function NutritiousFeed(props) {
     return (
         <Controller>
         <div>
-            <div className="relative lg:pt-40 lg:-mt-12 z-40 -mt-64 pt-24 pb-32 bg-cover" style={{ backgroundImage: `url('/images/dirt-alt.png')` }}>
-            <div className=" pt-20 lg:pt-24 lg:mb-12 max-w-5xl mx-auto px-8 lg:px-0 lg:flex block justify-between">
+            <div className="relative lg:pt-40 lg:-mt-12 z-40 -mt-64 pt-24 pb-12 lg:pb-32 bg-cover" style={{ backgroundImage: `url('/images/dirt-alt.png')` }}>
+            <div className="pt-8 sm:pt-20 lg:pt-24 lg:mb-12 max-w-5xl mx-auto px-8 lg:px-0 lg:flex block justify-between">
                 <h1 className="text-2xl lg:text-5xl text-chinoblue font-ultra uppercase tracking-wider lg:leading-tight lg:text-center mb-6">
                     <InlineTextarea name="headingLeft" />
                 </h1>
@@ -17,7 +17,7 @@ export function NutritiousFeed(props) {
             <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-12">
                 {props.list.map((item, index) =>
-                    <div className="col-span-12 grid grid-cols-12 gap-8" key={index}>
+                    <div className="col-span-12 grid grid-cols-12 gap-4 lg:gap-8" key={index}>
                         <div className="lg:col-span-5 col-span-12 relative">
                             <h1 className="text-xl md:text-3xl text-chinored uppercase font-ultra tracking-wide px-8 md:px-0 lg:pt-0 pt-4">
                                 {item.title}
