@@ -215,6 +215,10 @@ export function Articles(props) {
 
         )
 
+    } else {
+        return (
+            <div className="max-w-6xl mx-auto h-96"></div>
+        )
     }
 
 
