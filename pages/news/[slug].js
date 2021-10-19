@@ -11,7 +11,7 @@ import { heroBlock } from '../../components/hero/Hero'
 import { featuredArticleBlock } from '../../components/news/FeatureArticle'
 import getNewsArticles from '../../utils/getNewsArticles'
 import {FacebookShareButton, TwitterShareButton, EmailShareButton, LinkedinShareButton, PinterestShareButton, RedditShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, EmailIcon, LinkedinIcon, PinterestIcon, RedditIcon, WhatsappIcon} from "react-share"
-
+import { DateFieldPlugin } from 'react-tinacms-date'
 
 
 export default function NewsArticle({ file, isPreview, }) {
@@ -21,7 +21,8 @@ export default function NewsArticle({ file, isPreview, }) {
   const deleteAction = createGithubDeleteAction()
 
   usePlugins([
-    HtmlFieldPlugin
+    HtmlFieldPlugin,
+    DateFieldPlugin
   ])
 
   const formConfig = {
@@ -76,6 +77,13 @@ export default function NewsArticle({ file, isPreview, }) {
         field: {
           component: 'text'
         }
+      },
+      {
+        name: 'date',
+        label: 'Publish Date',
+        component: 'date',
+        dateFormat: 'MMMM DD YYYY',
+        timeFormat: false
       }
     ],
     onSubmit() {
