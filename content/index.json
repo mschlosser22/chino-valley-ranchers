@@ -76,7 +76,7 @@
       "classes": "",
       "heading": "It all starts with our feed",
       "video": {
-        "src": "https://www.youtube.com/embed/a2HTZADKVYA",
+        "src": "https://www.youtube.com/embed/a2HTZADKVYA?rel=0",
         "props": ""
       },
       "content": "To ensure purity and quality, we mill our own feed onsite at Southern California’s only dedicated organic poultry feed mill.",
@@ -161,11 +161,11 @@
       "videos": [
         {
           "title": "How to cook over medium eggs",
-          "src": "https://www.youtube.com/embed/XvsMf2yvGi4"
+          "src": "https://www.youtube.com/embed/XvsMf2yvGi4?rel=0"
         },
         {
           "title": "How to cook baked eggs",
-          "src": "https://www.youtube.com/embed/1TiZTB_uhCI"
+          "src": "https://www.youtube.com/embed/1TiZTB_uhCI?rel=0"
         }
       ],
       "button": {

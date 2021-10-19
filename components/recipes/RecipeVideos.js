@@ -13,7 +13,7 @@ export default function RecipeVideos(props) {
                         <div className={`col-span-12 relative recipe`}>
                             <div className="p-8 bg-cover mb-12" style={{ backgroundImage: `url('/images/bg-blue-wood.jpg')` }}>
                                 <div className="aspect-w-16 aspect-h-9">
-                                    <iframe src={`https://www.youtube.com/embed/${recipe.video.code}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                    <iframe src={`https://www.youtube.com/embed/${recipe.video.code}?rel=0`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                 </div>
                             </div>
                             <div className="col-span-12 md:flex flex-wrap justify-between">

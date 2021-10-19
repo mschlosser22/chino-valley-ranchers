@@ -27,7 +27,7 @@ export function RecipesAndVideos(props) {
                         <div key={index} className="col-span-12 lg:col-span-6 mb-2 lg:mb-12 lg:mb-0">
                             <div className="border-8 border-white rounded mb-2 lg:mb-8 shadow-lg">
                                 <div className="aspect-w-16 aspect-h-9">
-                                    <iframe src={video.src} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                    <iframe src={`${video.src}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                 </div>
                             </div>
                             <h5 className="font-lato lg:text-3xl tracking-wide text-left">{video.title}!</h5>

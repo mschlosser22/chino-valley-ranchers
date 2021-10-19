@@ -15,7 +15,7 @@
       {
         "_template": "ourFamilyVideo",
         "video": {
-            "src": "https://www.youtube.com/embed/s7L-grBARCA"
+            "src": "https://www.youtube.com/embed/s7L-grBARCA?rel=0"
         },
         "headingOne": "Our Three Generations",
         "image": "/images/bg-paper-edge.png",
