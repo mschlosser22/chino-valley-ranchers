@@ -68,6 +68,7 @@ export default function Products({ file, isPreview}) {
         <meta name="description" content={file.data.meta && file.data.meta.description ? file.data.meta.description : 'Chino Valley Ranchers'}></meta>
         <meta name="keywords" content={file.data.meta && file.data.meta.keywords ? file.data.meta.keywords : 'Chino Valley Ranchers'}></meta>
         <link rel="icon" href="/favicon.ico" />
+        <script src="https://www.google.com/recaptcha/api.js?render=6Lcjx-ocAAAAAKcLYl8Q2oiB2G6IbcnVKF16yXWX"></script>
       </Head>
 
       <Nav />

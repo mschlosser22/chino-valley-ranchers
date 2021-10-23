@@ -30,6 +30,8 @@ export function ContactForm(props) {
                             className="col-span-12 grid grid-cols-1 gap-y-6"
                         >
 
+                            <input type="hidden" id="captchaResponse" name="g-recaptcha-response">
+
                         <div className="col-span-1">
                             <label htmlFor="name" className="block text-xl font-medium text-gray-700">
                                 Name
