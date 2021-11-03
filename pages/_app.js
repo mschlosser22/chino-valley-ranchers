@@ -10,6 +10,7 @@ import {
 } from 'react-tinacms-github'
 import { NextGithubMediaStore } from 'next-tinacms-github'
 import { MarkdownFieldPlugin } from 'react-tinacms-editor'
+import Script from "next/script"
 
 
 function MyApp({ Component, pageProps }) {
@@ -47,6 +48,21 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=UA-37752280-1`}
+      />
+
+      <Script strategy="lazyOnload">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-37752280-1', {
+              page_path: window.location.pathname,
+            });
+        `}
+      </Script>
       <Head>
         <link
           href="https://fonts.googleapis.com/css2?family=Ultra"
