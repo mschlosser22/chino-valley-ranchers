@@ -17,13 +17,13 @@ export function Nav(props) {
     useEffect(() => {
         if (typeof window !== "undefined") {
           window.addEventListener("scroll", () =>
-            setSmall(window.pageYOffset > 0)
+            setSmall(window.pageYOffset > 50)
           );
         }
     }, [])
 
     const cms = useCMS()
-    //console.log(`CMS is enabled: ${cms.enabled}`)
+    console.log(`CMS is enabled: ${cms.enabled}`)
 
     const [open, setOpen] = useState(false)
 
@@ -49,8 +49,8 @@ export function Nav(props) {
     ]
 
     return(
-        <div className="relative">
-        <Disclosure as="nav" className={`bg-gray-800 bg-opacity-100 lg:bg-opacity-80 z-50 ${cms.enabled ? 'relative' : 'fixed'} w-full`}>
+        <div>
+        <Disclosure as="nav" className={`bg-gray-800 bg-opacity-100 lg:bg-opacity-80 top-0 z-50 ${cms.enabled ? 'relative' : 'fixed'} w-full`}>
             {({ open }) => (
                 <div>
                 <div className="max-w-7xl mx-auto px-2 md:px-6 lg:px-8">
@@ -200,8 +200,6 @@ export function Nav(props) {
                         </a>
 
                         </div>
-
-
 
                     </div>
                     </div>

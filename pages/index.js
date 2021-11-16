@@ -14,7 +14,6 @@ import { contentWithImageAltBlock } from '../components/content/ContentWithImage
 import { imageWithContentBlock } from '../components/content/ImageWithContent'
 import { ourFamilyBlock } from '../components/content/OurFamily'
 import { recipesAndVideosBlock } from '../components/video/RecipesAndVideos'
-import { CtaCommercial, ctaCommercialBlock } from '../components/cta/CtaCommercial'
 
 export default function Products({ file, isPreview }) {
 
@@ -63,7 +62,7 @@ export default function Products({ file, isPreview }) {
 
   return (
     <>
-    <div>
+    <div className={`relative`}>
       <Head>
         <title>{file.data.title ? file.data.title : 'Chino Valley Ranchers'}</title>
         <meta name="description" content={file.data.meta && file.data.meta.excerpt ? file.data.meta.excerpt.replace(/(<([^>]+)>)/gi, "") : "Chino Valley Ranchers"}></meta>
@@ -71,14 +70,11 @@ export default function Products({ file, isPreview }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={`relative`}>
-        <CtaCommercial />
-        <Nav />
+      <Nav />
 
-        <InlineForm form={form}>
-          <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} />
-        </InlineForm>
-      </div>
+      <InlineForm form={form}>
+        <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} />
+      </InlineForm>
     </div>
     <Footer />
     </>
@@ -93,8 +89,7 @@ const PAGE_BLOCKS = {
   contentWithImageAlt: contentWithImageAltBlock,
   imageWithContent: imageWithContentBlock,
   ourFamily: ourFamilyBlock,
-  recipesAndVideos: recipesAndVideosBlock,
-  ctaCommercial: ctaCommercialBlock
+  recipesAndVideos: recipesAndVideosBlock
 }
 
 export const getStaticProps = async function({
