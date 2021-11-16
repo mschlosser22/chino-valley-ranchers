@@ -3,16 +3,6 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    zIndex: {
-      '0': 0,
-      '10': 10,
-      '20': 20,
-      '30': 30,
-      '40': 40,
-      '50': 50,
-      '60': 60,
-      'auto': 'auto',
-    },
     extend: {
       fontFamily: {
         'ultra': ['Ultra'],
@@ -29,7 +19,6 @@ module.exports = {
         'chinodarkgray': '#b6afa9',
         'chinodarkorange': '#f9a115',
         'chinobrown': '#5c311b',
-        'ctagray': '#1a1818',
       },
       lineHeight: {
         'body': '2.75rem',
