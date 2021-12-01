@@ -29,7 +29,7 @@ export function ProductsList(props) {
                                 <div className="col-span-12 lg:col-span-5">
                                     <h3 className="font-ultra text-2xl lg:text-5xl text-center lg:text-left text-gray-900 mb-2 lg:mb-12 tracking-wide uppercase">{product.name}</h3>
                                     {product.description.map((text, index) => (
-                                        <p className="font-lato text-gray-900 tracking-wide mb-8 lg:mb-8 text-xl lg:text-3xl text-center lg:text-left">{text}</p>
+                                        <p key={index} className="font-lato text-gray-900 tracking-wide mb-8 lg:mb-8 text-xl lg:text-3xl text-center lg:text-left">{text}</p>
                                     ))}
                                 </div>
                                 <div className="col-span-12 lg:col-span-7 relative h-[128px] lg:h-full">
