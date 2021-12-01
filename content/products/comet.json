@@ -60,7 +60,7 @@
     },
     {
       "_template": "sizeOptions",
-      "heading": "One Size Options",
+      "heading": "One Size Option",
       "images": [
         {
           "src": "/images/comet-new.png",
@@ -72,33 +72,8 @@
       ]
     },
     {
-      "_template": "contentSingleColumn",
-      "blocks": [
-        {
-          "_template": "content",
-          "text": [
-            "Some default paragraph text here"
-          ],
-          "heading": "Better For Our Hens",
-          "subheading": "Our hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
-        },
-        {
-          "_template": "content",
-          "text": [
-            "Some default paragraph text here"
-          ],
-          "heading": "Better For Our Eggs",
-          "subheading": "Healthy food, sunshine and exercise - what else could be better for a hen? That's why our eggs are flavorful and nutritious!"
-        },
-        {
-          "_template": "content",
-          "text": [
-            "Some default paragraph text here"
-          ],
-          "heading": "Better For You",
-          "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
-        }
-      ]
+      "_template": "youtubeVideo",
+      "video": "https://www.youtube.com/embed/stFcjrL6T9M?controls=0?rel=0"
     },
     {
       "_template": "moreProducts",

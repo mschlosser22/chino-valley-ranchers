@@ -15,6 +15,7 @@ import { contentSingleColumnTwoBlock } from '../../components/content/ContentSin
 import { productDescriptionBlock } from '../../components/products/ProductDescription'
 import { sizeOptionsBlock } from '../../components/products/SizeOptions'
 import { moreProductsBlock } from '../../components/products/MoreProducts'
+import { youtubeBlock } from '../../components/video/Youtube'
 
 import { ProductsWrapper } from '../../context/products'
 
@@ -96,7 +97,8 @@ const PAGE_BLOCKS = {
   contentSingleColumnTwo: contentSingleColumnTwoBlock,
   productDescription: productDescriptionBlock,
   sizeOptions: sizeOptionsBlock,
-  moreProducts: moreProductsBlock
+  moreProducts: moreProductsBlock,
+  youtubeVideo: youtubeBlock
 }
 
 export const getStaticProps = async function({
