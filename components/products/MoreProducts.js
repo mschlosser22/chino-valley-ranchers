@@ -21,7 +21,7 @@ export function MoreProducts(props) {
             </div>
         </div>
 
-        <div className="relative -mt-12">
+        <div className="relative">
             {props.moreOptions.map((product, index) => (
                         <div key={index} className="relative bg-repeat-y bg-cover" style={{ backgroundImage: `url('/images/bg-paper.png')` }}>
                             <div className="max-w-7xl mx-auto">
