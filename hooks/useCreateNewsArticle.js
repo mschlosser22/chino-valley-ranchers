@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import slugify from "slugify"
 import { FORM_ERROR } from "final-form"
 import { HtmlFieldPlugin } from "react-tinacms-editor"
+import { DateFieldPlugin } from 'react-tinacms-date'
 
 import { JsonFile } from 'next-tinacms-json'
 import { removeInvalidChars } from "../utils/removeInvalidChars"
@@ -16,6 +17,7 @@ const useCreateNewsArticle = () => {
 
   usePlugins([
       HtmlFieldPlugin,
+      DateFieldPlugin,
     {
       __type: "content-creator",
       name: "Create a News Article",
@@ -47,6 +49,13 @@ const useCreateNewsArticle = () => {
             name: "content",
             label: "Content",
             component: "html"
+        },
+        {
+          name: 'date',
+          label: 'Publish Date',
+          component: 'date',
+          dateFormat: 'MMMM DD YYYY',
+          timeFormat: false
         }
       ],
       onSubmit: async (frontMatter) => {
