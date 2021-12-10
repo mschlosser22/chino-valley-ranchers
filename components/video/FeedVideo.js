@@ -23,7 +23,7 @@ export function FeedVideo(props) {
 
     return(
         <>
-        <div className="w-full relative -mt-16 -mb-12 z-10 sm:mb-10 lg:pb-24 bg-cover bg-no-repeat bg-fixed" style={{ backgroundImage: `url('/images/dirt-bg.png')`}}>
+        <div className="w-full relative -mt-16 -mb-12 z-10 sm:mb-10 lg:pb-24 bg-cover bg-no-repeat bg-fixed pt-12" style={{ backgroundImage: `url('/images/dirt-bg.png')`}}>
             <Parallax ref={parallax} pages={1}>
 
                 <ParallaxLayer

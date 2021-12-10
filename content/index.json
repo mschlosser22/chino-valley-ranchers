@@ -72,6 +72,10 @@
       ]
     },
     {
+      "_template": "youtubeVideoComet",
+      "video": "https://www.youtube.com/embed/stFcjrL6T9M?controls=0?rel=0"
+    },
+    {
       "_template": "feedVideo",
       "classes": "",
       "heading": "It all starts with our feed",

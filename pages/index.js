@@ -15,6 +15,7 @@ import { imageWithContentBlock } from '../components/content/ImageWithContent'
 import { ourFamilyBlock } from '../components/content/OurFamily'
 import { recipesAndVideosBlock } from '../components/video/RecipesAndVideos'
 import { CtaCommercial, ctaCommercialBlock } from '../components/cta/CtaCommercial'
+import { youtubeBlockComet } from '../components/video/YouTubeComet'
 
 export default function Products({ file, isPreview }) {
 
@@ -94,7 +95,8 @@ const PAGE_BLOCKS = {
   imageWithContent: imageWithContentBlock,
   ourFamily: ourFamilyBlock,
   recipesAndVideos: recipesAndVideosBlock,
-  ctaCommercial: ctaCommercialBlock
+  ctaCommercial: ctaCommercialBlock,
+  youtubeVideoComet: youtubeBlockComet
 }
 
 export const getStaticProps = async function({
