@@ -1,0 +1,122 @@
+{
+  "name": "Pasture Raised Liquid Whole Eggs",
+  "order": 9,
+  "description": [
+    "Chino Valley Ranchers Pasture Raised Liquid Whole Eggs come from pasture raised hens who are free to roam the fields and eat grass, seeds, bugs and worms. Each pasture raised chicken has at least 108 square feet of land where they can enjoy the sunlight, dust bathe, and rest in the shade.",
+    "Busy moms, fitness enthusiasts, and those following ketogenic and Whole30 diets need an egg product that will support their unique lifestyle. Chino Valley Ranchers Pasture Raised Liquid Whole Eggs are a nutritional powerhouse packed with protein and healthy fats, easy to use and offer a convenient way to enjoy eggs!",
+    "Each 16 oz. pint is equivalent to about 10 eggs."
+  ],
+  "photo": {
+    "src": "/images/products/pasture-raised-liquid-whole-eggs.png",
+    "alt": "Pasture Raised Liquid Whole Eggs"
+  },
+  "button": {
+    "link": {
+      "url": "/products/pasture-raised-liquid-whole-eggs"
+    },
+    "text": "Learn More"
+  },
+  "blocks": [
+    {
+      "_template": "hero",
+      "heading": "Pasture Raised Liquid Whole Eggs",
+      "image": "/images/hero-products.jpg"
+    },
+    {
+      "_template": "productDescription",
+      "name": "Liquid Whole Eggs",
+      "text": [
+        "Chino Valley Ranchers Pasture Raised Liquid Whole Eggs come from pasture raised hens who are free to roam the fields and eat grass, seeds, bugs and worms. Each pasture raised chicken has at least 108 square feet of land where they can enjoy the sunlight, dust bathe, and rest in the shade.",
+        "Busy moms, fitness enthusiasts, and those following ketogenic and Whole30 diets need an egg product that will support their unique lifestyle. Chino Valley Ranchers Pasture Raised Liquid Whole Eggs are a nutritional powerhouse packed with protein and healthy fats, easy to use and offer a convenient way to enjoy eggs!",
+        "Each 16 oz. pint is equivalent to about 10 eggs."
+      ],
+      "category": "Liquid Whole Eggs",
+      "tags": ["Pasture Raised"],
+      "image": {
+        "src": "/images/products/pasture-raised-liquid-whole-eggs.png",
+        "alt": "Pasture Raised Liquid Whole Eggs"
+      },
+      "nutrition": {
+        "src": "/images/nutrition-liquid-egg-whites.png",
+        "alt": "Pasture Raised Liquid Whole Eggs Nutrition Facts"
+      },
+      "button": {
+        "link": {
+          "url": "/store-locator"
+        },
+        "text": "Find a Store"
+      },
+      "icons": [
+        {
+          "src": "/images/pareve.png",
+          "alt": "Pareve"
+        },
+        {
+          "src": "/images/usda-organic.png",
+          "alt": "USDA Organic"
+        },
+        {
+          "src": "/images/free-range.png",
+          "alt": "Free Range"
+        }
+      ]
+    },
+    {
+      "_template": "contentSingleColumn",
+      "blocks": [
+        {
+          "_template": "content",
+          "text": ["Some default paragraph text here"],
+          "heading": "Better For Our Hens",
+          "subheading": "Our hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
+        },
+        {
+          "_template": "content",
+          "text": ["Some default paragraph text here"],
+          "heading": "Better For Our Eggs",
+          "subheading": "Healthy food, sunshine and exercise - what else could be better for a hen? That's why our eggs are flavorful and nutritious!"
+        },
+        {
+          "_template": "content",
+          "text": ["Some default paragraph text here"],
+          "heading": "Better For You",
+          "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
+        }
+      ]
+    },
+    {
+      "_template": "moreProducts",
+      "heading": "MORE DELICIOUS OPTIONS",
+      "moreOptions": [
+        {
+          "name": "Pasture Raised",
+          "description": "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+          "photo": {
+            "src": "/images/pastureEggCarton.png",
+            "alt": "Pasture Raised"
+          },
+          "button": {
+            "link": {
+              "url": "/products/pasture-raised"
+            },
+            "text": "Learn More"
+          }
+        },
+        {
+          "name": "ORGANIC",
+          "description": "Our organic free-range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains and seeds from certifide pesticide-free fields.",
+          "photo": {
+            "src": "/images/organic-large.png",
+            "alt": "ORGANIC"
+          },
+          "button": {
+            "link": {
+              "url": "/products/organic"
+            },
+            "text": "Learn More"
+          }
+        }
+      ]
+    }
+  ]
+}
