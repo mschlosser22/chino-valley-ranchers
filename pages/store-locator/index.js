@@ -14,19 +14,19 @@ export default function StoreLocator({ file, isPreview}) {
 
   return (
     <>
-    <div className={`relative`}>
-      <Head>
+    <Head>
         <title>Store Locator | Chino Valley Ranchers</title>
         <meta name="description" content="Healthy And Delicious Organic Eggs Since 1953"></meta>
         <meta name="keywords" content="chino valley ranchers, store locator"></meta>
         <link rel="icon" href="/favicon.ico" />
-        <script src="//destinilocators.com/chinovalleyranchers/site/install/"></script>
-      </Head>
-
+        <script src="//destinilocators.com/chinovalleyranchers/site/install/" />
+    </Head>
+    <div className={`relative min-`}>
       <Nav />
-
     </div>
-    <Footer />
+    <div className='destini-footer'>
+      <Footer />
+    </div>
     </>
   )
 }
