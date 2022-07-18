@@ -156,16 +156,7 @@ export const getStaticProps = async function({
 
   })
 
-  //const posts = await getNewsArticles(preview, previewData, "content/news")
-
   if (preview) {
-    /*return getGithubPreviewProps({
-    ...previewData,
-    fileRelativePath: 'content/news/index.json',
-    parse: parseJson,
-    isPreview: true,
-    news: await Promise.all(news)
-    })*/
     return {
       props: {
         sourceProvider: null,

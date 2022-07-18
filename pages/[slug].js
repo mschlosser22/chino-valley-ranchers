@@ -5,11 +5,11 @@ import { InlineForm, InlineBlocks } from 'react-tinacms-inline'
 import { useGithubJsonForm, useGithubToolbarPlugins, createGithubDeleteAction } from 'react-tinacms-github'
 import { HtmlFieldPlugin } from "react-tinacms-editor"
 
-import { Nav } from '../../components/Nav'
-import { Footer } from '../../components/footer/Footer'
-import { heroBlock } from '../../components/hero/Hero'
-import { featuredArticleBlock } from '../../components/news/FeatureArticle'
-import getNewsArticles from '../../utils/getNewsArticles'
+import { Nav } from '../components/Nav'
+import { Footer } from '../components/footer/Footer'
+import { heroBlock } from '../components/hero/Hero'
+import { featuredArticleBlock } from '../components/news/FeatureArticle'
+import getNewsArticles from '../utils/getNewsArticles'
 import {FacebookShareButton, TwitterShareButton, EmailShareButton, LinkedinShareButton, PinterestShareButton, RedditShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, EmailIcon, LinkedinIcon, PinterestIcon, RedditIcon, WhatsappIcon} from "react-share"
 import { DateFieldPlugin } from 'react-tinacms-date'
 
@@ -26,7 +26,7 @@ export default function NewsArticle({ file, isPreview, }) {
   ])
 
   const formConfig = {
-    id: '../../content/news/index.json',
+    id: '../content/news/index.json',
     initialValues: file,
     label: 'News Page',
     actions: [deleteAction],
@@ -197,7 +197,7 @@ export const getStaticProps = async function({
       preview: false,
       file: {
         fileRelativePath: `content/news/${params.slug}`,
-        data: (await import(`../../content/news/${params.slug}`)).default,
+        data: (await import(`../content/news/${params.slug}`)).default,
       },
     },
   }
