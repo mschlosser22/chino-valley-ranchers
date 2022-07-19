@@ -6,8 +6,8 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/news/news',
-        destination: '/news', // Matched parameters can be used in the destination
+        source: '/news/:slug',
+        destination: '/:slug', // Matched parameters can be used in the destination
         permanent: true,
       },
     ]

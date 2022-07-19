@@ -101,7 +101,7 @@ export function Articles(props) {
 
                             </a>
                                 <div className="col-span-12">
-                                    <a href={`=/${article.slug}`}>
+                                    <a href={`/${article.slug}`}>
                                         <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                             {article.title}
                                         </h1>
