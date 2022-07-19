@@ -92,7 +92,7 @@ export function Articles(props) {
                 <div key={index} className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-12">
                         <div className="col-span-12 relative">
-                            <a href={`/news/${article.slug}`}>
+                            <a href={`/${article.slug}`}>
                                 {article.image ?
                                 <img src={article.image.src} alt={article.image.alt} className="mb-12"></img>
                                 :
@@ -101,7 +101,7 @@ export function Articles(props) {
 
                             </a>
                                 <div className="col-span-12">
-                                    <a href={`/news/${article.slug}`}>
+                                    <a href={`/${article.slug}`}>
                                         <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
                                             {article.title}
                                         </h1>
@@ -116,29 +116,29 @@ export function Articles(props) {
                                         </p>
                                     </div>
                                     <div className="pt-4 flex gap-2 px-8 lg:px-0">
-                                        <FacebookShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <FacebookShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <FacebookIcon size={32} round={true} />
                                         </FacebookShareButton>
-                                        <TwitterShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <TwitterShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <TwitterIcon size={32} round={true} />
                                         </TwitterShareButton>
-                                        <EmailShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <EmailShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <EmailIcon size={32} round={true} />
                                         </EmailShareButton>
-                                        <LinkedinShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <LinkedinShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <LinkedinIcon size={32} round={true} />
                                         </LinkedinShareButton>
-                                        <PinterestShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <PinterestShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <PinterestIcon size={32} round={true} />
                                         </PinterestShareButton>
-                                        <RedditShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <RedditShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <RedditIcon size={32} round={true} />
                                         </RedditShareButton>
 
                                     </div>
                                 </div>
                                 <div className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl" dangerouslySetInnerHTML={{ __html: truncate( article.content.replace(/(<([^>]+)>)/gi, ""), 500, '...') }}></div>
-                                <a href={`/news/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>
+                                <a href={`/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>
                             </div>
                             <img src="/images/orangeSeperator.jpg" className="mt-20 mb-20 col-span-12"></img>
                         </div>
@@ -160,14 +160,14 @@ export function Articles(props) {
                     return (
                         <div key={index} className="lg:col-span-6 col-span-12">
                             <div>
-                                        <a href={`/news/${article.slug}`} className="block h-full w-full">
+                                        <a href={`/${article.slug}`} className="block h-full w-full">
                                         {article.image && article.image.src ?
                                         <img src={article.image.src} alt={article.image.alt} className="mb-12 object-cover h-72 w-full"></img>
                                         :
                                         <img src="/images/CVR_Blog_Thumbnail.png" alt="placeholder image" className="mb-12 object-cover h-48 w-full"></img>
                                         }
                                         </a>
-                                        <a href={`/news/${article.slug}`}>
+                                        <a href={`/${article.slug}`}>
                                             <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4" dangerouslySetInnerHTML={{ __html: article.title }}>
                                             </h1>
                                         </a>
@@ -180,28 +180,28 @@ export function Articles(props) {
                                             </p>
                                         </div>
                                         <div className="pt-4 flex gap-2 px-8 lg:px-0">
-                                        <FacebookShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <FacebookShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <FacebookIcon size={32} round={true} />
                                         </FacebookShareButton>
-                                        <TwitterShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <TwitterShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <TwitterIcon size={32} round={true} />
                                         </TwitterShareButton>
-                                        <EmailShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <EmailShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <EmailIcon size={32} round={true} />
                                         </EmailShareButton>
-                                        <LinkedinShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <LinkedinShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <LinkedinIcon size={32} round={true} />
                                         </LinkedinShareButton>
-                                        <PinterestShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <PinterestShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <PinterestIcon size={32} round={true} />
                                         </PinterestShareButton>
-                                        <RedditShareButton url={`https://www.chinovalleyranchers.com/news/${article.slug}`}>
+                                        <RedditShareButton url={`https://www.chinovalleyranchers.com/${article.slug}`}>
                                             <RedditIcon size={32} round={true} />
                                         </RedditShareButton>
 
                                     </div>
                                         <p className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl" dangerouslySetInnerHTML={{ __html: truncate( article.content.replace(/(<([^>]+)>)/gi, ""), 250, '...') }}></p>
-                                        <a href={`/news/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>
+                                        <a href={`/${article.slug}`} className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer">Read More ></a>
                             </div>
                         </div>
                     );
