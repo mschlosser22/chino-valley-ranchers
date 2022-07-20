@@ -1,0 +1,11 @@
+{
+  "title": "How To Make Poached Eggs",
+  "category": "recipe-video-chris",
+  "tags": ["lunch", "dinner"],
+  "video": {
+    "src": "/images/recipeVideo2.jpg",
+    "alt": "Recipe Video Chris",
+    "code": "uzKNg0vupsA"
+  },
+  "content": "Chris shows you how a poached egg is a simple way to enhance your breakfast routine!"
+}

@@ -16,6 +16,7 @@ import { ourFamilyBlock } from '../components/content/OurFamily'
 import { recipesAndVideosBlock } from '../components/video/RecipesAndVideos'
 import { CtaCommercial, ctaCommercialBlock } from '../components/cta/CtaCommercial'
 import { youtubeBlockComet } from '../components/video/YouTubeComet'
+import { ChrisCanCookBlock } from '../components/chriscancook/ChrisCanCook'
 
 export default function Products({ file, isPreview }) {
 
@@ -96,7 +97,8 @@ const PAGE_BLOCKS = {
   ourFamily: ourFamilyBlock,
   recipesAndVideos: recipesAndVideosBlock,
   ctaCommercial: ctaCommercialBlock,
-  youtubeVideoComet: youtubeBlockComet
+  youtubeVideoComet: youtubeBlockComet,
+  chrisCanCook: ChrisCanCookBlock,
 }
 
 export const getStaticProps = async function({

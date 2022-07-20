@@ -1,0 +1,12 @@
+{
+  "blocks": [
+    {
+      "_template": "hero",
+      "image": "/images/chris-flat.jpg"
+    },
+    {
+      "_template": "recipes",
+      "image": "/images/bg-paper-edge.png"
+    }
+  ]
+}
