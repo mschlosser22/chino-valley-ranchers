@@ -16,6 +16,24 @@
       "classes": "test",
       "slides": [
         {
+          "name": "Pasture Raised",
+          "heading": "Pastured",
+          "subheading": "Large | Brown",
+          "content": "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms. Our ladies forage as they please on seeds, bugs and green grass.",
+          "image": {
+            "src": "/images/products/pasture-raised.png",
+            "alt": "Pasture Raised Eggs"
+          },
+          "icons": [
+            {
+              "image": {
+                "src": "/images/icon-certified.png",
+                "alt": "Certified Icon"
+              }
+            }
+          ]
+        },
+        {
           "name": "Organic",
           "heading": "Free Range",
           "subheading": "Large | Brown",
@@ -41,24 +59,6 @@
           "image": {
             "src": "/images/products/organic-omega-3.png",
             "alt": "Organic Omega-3"
-          },
-          "icons": [
-            {
-              "image": {
-                "src": "/images/icon-certified.png",
-                "alt": "Certified Icon"
-              }
-            }
-          ]
-        },
-        {
-          "name": "Pasture Raised",
-          "heading": "Pastured",
-          "subheading": "Large | Brown",
-          "content": "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms. Our ladies forage as they please on seeds, bugs and green grass.",
-          "image": {
-            "src": "/images/products/pasture-raised.png",
-            "alt": "Pasture Raised Eggs"
           },
           "icons": [
             {
@@ -178,6 +178,10 @@
         },
         "text": "More Recipes"
       }
+    },
+    {
+      "_template": "chrisCanCook",
+      "video": "https://www.youtube.com/embed/stFcjrL6T9M?controls=0?rel=0"
     }
   ]
 }
