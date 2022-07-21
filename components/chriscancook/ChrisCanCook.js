@@ -17,12 +17,14 @@ export function ChrisCanCook(props) {
 
         <div className="relative -mt-28 pt-8 bg-cover bg-no-repeat z-40" /*style={{ backgroundImage: `url('/images/chris.jpg')` }}*/>
             <div className="mx-auto pt-8 lg:pt-20 text-center relative">
-
+                <div className=''>
                 <Image
                 src={chrisImage}
                 alt="Chris Can Cook"
                 layout='responsive'
                 />
+                </div>
+
 
                 <ChrisText />
 

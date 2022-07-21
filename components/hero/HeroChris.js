@@ -8,12 +8,14 @@ export function HeroChris(props) {
 
     return(
 
-        <div className="relative h-24 lg:h-auto pt-16 lg:mt-0">
-            <Image
+        <div className="relative h-[370px] sm:h-auto pt-16 lg:mt-0">
+            <div className=''>
+                <Image
                 src={chrisImage}
                 alt="Chris Can Cook"
                 layout='responsive'
                 />
+            </div>
 
             {/*<div className="absolute w-full h-full lg:hidden bg-cover" style={{ backgroundImage: `url(${props.image_mobile.src})` }}>
             </div>*/}
