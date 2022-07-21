@@ -40,6 +40,10 @@ const footer_content = {
         {
             url: "#",
             text: 'info@chinovalleyranchers.com'
+        },
+        {
+            url: "https://www.bigchiefcreative.com",
+            text: 'WEBSITE BY BCCM'
         }
     ]
 }
