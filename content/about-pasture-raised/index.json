@@ -1,123 +1,117 @@
 {
-    "blocks": [
+  "blocks": [
+    {
+      "_template": "hero",
+      "heading": "Pasture Raised Products",
+      "image": "/images/hero-products.jpg"
+    },
+    {
+      "_template": "aboutPastureRaised",
+      "heading": "Pasture Raised Eggs",
+      "image": "/images/bg-paper-edge.png",
+      "video": {
+        "src": "https://www.youtube.com/embed/VaYSIOteCcw?rel=0"
+      },
+      "subheading": "Pasture raised hens at Chino Valley Ranchers lay healthier, all natural eggs. Come see a little of their pastoral paradise for yourself.",
+      "description": "There’s nothing better than eggs that come from pasture raised hens who are free to roam about during the day in wide-open fields. They eat what is natural to them, including grass, seed, bugs and worms. They have all the shade, water, organic feed and freedom to roam about. The chickens are happier and healthier, which is why Chino Valley Ranchers pasture raised eggs are so delicious and nutritious."
+    },
+    {
+      "_template": "whatItTakes",
+      "heading": "What it Takes to Produce Pasture Raised Eggs",
+      "description": "Producing pasture raised eggs requires special care and attention. Chino Valley Ranchers personnel are trained in looking after these wildly happy hens to ensure their safety, satisfaction and welfare.",
+      "list": [
         {
-            "_template": "hero",
-            "heading": "Pasture Raised Products",
-            "image": "/images/hero-products.jpg"
+          "title": "Plenty Of Room To Roam, Inside And Out",
+          "description": "Chino Valley Ranchers pasture raised farms provide 108 square feet of land per hen. That equates to one full acre for every 400 hens. They have plenty of room to roam around, stretch their legs, forage naturally, bath in the dust, bask in the sunshine and relax in the shade before coming back to a warm and comfortable barn to roost at night. They live a life that keeps them happy and healthy. These truly are birds of paradise!"
         },
         {
-            "_template": "aboutPastureRaised",
-            "heading": "Pasture Raised Eggs",
-            "image": "/images/bg-paper-edge.png",
-            "video": {
-              "src": "https://www.youtube.com/embed/VaYSIOteCcw?rel=0"
-            },
-            "subheading": "Pasture raised hens at Chino Valley Ranchers lay healthier, all natural eggs. Come see a little of their pastoral paradise for yourself.",
-            "description": "There’s nothing better than eggs that come from pasture raised hens who are free to roam about during the day in wide-open fields. They eat what is natural to them, including grass, seed, bugs and worms. They have all the shade, water, organic feed and freedom to roam about. The chickens are happier and healthier, which is why Chino Valley Ranchers pasture raised eggs are so delicious and nutritious."
+          "title": "Better for the Hens, Better for You",
+          "description": "What’s good for the hens is good for the eggs that these lovely ladies lay. Our ranchers package up the eggs and sends them directly to stores and customers. When you buy Chino Valley Ranchers pasture raised eggs, you know you are getting nothing but the best organic quality, nutrition and flavor."
         },
         {
-          "_template": "whatItTakes",
-          "heading": "What it Takes to Produce Pasture Raised Eggs",
-          "description": "Producing pasture raised eggs requires special care and attention. Chino Valley Ranchers personnel are trained in looking after these wildly happy hens to ensure their safety, satisfaction and welfare.",
-          "list": [
-            {
-              "title": "Plenty Of Room To Roam, Inside And Out",
-              "description": "Chino Valley Ranchers pasture raised farms provide 108 square feet of land per hen. That equates to one full acre for every 400 hens. They have plenty of room to roam around, stretch their legs, forage naturally, bath in the dust, bask in the sunshine and relax in the shade before coming back to a warm and comfortable barn to roost at night. They live a life that keeps them happy and healthy. These truly are birds of paradise!"
-            },
-            {
-              "title": "Better for the Hens, Better for You",
-              "description": "What’s good for the hens is good for the eggs that these lovely ladies lay. Our ranchers package up the eggs and sends them directly to stores and customers. When you buy Chino Valley Ranchers pasture raised eggs, you know you are getting nothing but the best organic quality, nutrition and flavor."
-            },
-            {
-              "title": "American Humane Certified",
-              "description": "If you are buying pasture raised eggs, make sure you see the American Humane Certified seal of approval. This means they are certified by American Humane and the hens are being treated properly. At Chino Valley Ranchers, we have been using humane egg production practices since our early days in business. American Humane sets strict requirements for all aspects of hen raising and egg production. We follow these regulations and more to ensure the most caring treatment of our hens."
-            }
-          ],
-          "statOne": "From our family to yours, Chino Valley Ranchers pasture raised eggs represent  \n _quality you can count on._",
-          "statTwo": "Just ask the happy ladies out roaming in our wide open pastures!",
+          "title": "American Humane Certified",
+          "description": "If you are buying pasture raised eggs, make sure you see the American Humane Certified seal of approval. This means they are certified by American Humane and the hens are being treated properly. At Chino Valley Ranchers, we have been using humane egg production practices since our early days in business. American Humane sets strict requirements for all aspects of hen raising and egg production. We follow these regulations and more to ensure the most caring treatment of our hens."
+        }
+      ],
+      "statOne": "From our family to yours, Chino Valley Ranchers pasture raised eggs represent  \n _quality you can count on._",
+      "statTwo": "Just ask the happy ladies out roaming in our wide open pastures!",
+      "button": {
+        "text": "Learn More",
+        "link": {
+          "url": "/pasture-raised"
+        }
+      }
+    },
+    {
+      "_template": "contentSingleColumn",
+      "blocks": [
+        {
+          "_template": "content",
+          "text": ["Some default paragraph text here"],
+          "heading": "Better For Our Hens",
+          "subheading": "Our hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
+        },
+        {
+          "_template": "content",
+          "text": ["Some default paragraph text here"],
+          "heading": "Better For Our Eggs",
+          "subheading": "Healthy food, sunshine and exercise - what else could be better for a hen? That's why our eggs are flavorful and nutritious!"
+        },
+        {
+          "_template": "content",
+          "text": ["Some default paragraph text here"],
+          "heading": "Better For You",
+          "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
+        }
+      ]
+    },
+    {
+      "_template": "contentSingleColumnTwo",
+      "blocks": [
+        {
+          "_template": "imageAlt",
+          "image": "/images/ahc.png",
+          "imageAnimated": "/images/heart.png",
+          "undefined": "/images/ahc.png"
+        },
+        {
+          "_template": "subheadingAlt",
+          "subheading": "Our passion for quality egg production practices dates back to our early beginnings. Along the way, we’ve received various certifications to assure our customers of our commitment to the highest standards. Chino Valley Ranchers pasture raised eggs are certified by American Humane and carry the American Humane Certified seal."
+        },
+        {
+          "_template": "subheadingAlt",
+          "subheading": "Our passion for quality egg production permeates all operations and every employee is personally responsible for doing their part. Company employees and all personnel follow American Humane’s strict requirements for documentation, inspections, equipment maintenance, and access to feed and water. Maintaining pasture raised quality demands extra attention, but we believe it’s worth it."
+        },
+        {
+          "_template": "headingAlt",
+          "heading": "Proudly Pasture Raised For You"
+        },
+        {
+          "_template": "subheadingAlt",
+          "subheading": "From our family to yours, Chino Valley Ranchers pasture raised eggs are produced with your health and well-being in mind."
+        },
+        {
+          "_template": "buttonAlt",
           "button": {
-            "text": "Learn More",
-            "link": {
-              "url": "/"
-            }
+            "link": "/store-locator",
+            "text": "Find A Store Near You"
           }
-        },
-        {
-            "_template": "contentSingleColumn",
-            "blocks": [
-              {
-                "_template": "content",
-                "text": [
-                  "Some default paragraph text here"
-                ],
-                "heading": "Better For Our Hens",
-                "subheading": "Our hens enjoy the outdoors and all the benefits that come with the freedom to roam wild and free."
-              },
-              {
-                "_template": "content",
-                "text": [
-                  "Some default paragraph text here"
-                ],
-                "heading": "Better For Our Eggs",
-                "subheading": "Healthy food, sunshine and exercise - what else could be better for a hen? That's why our eggs are flavorful and nutritious!"
-              },
-              {
-                "_template": "content",
-                "text": [
-                  "Some default paragraph text here"
-                ],
-                "heading": "Better For You",
-                "subheading": "Happier hens make higher quality eggs to support a healthier you. It's that simple."
-              }
-            ]
-          },
-          {
-            "_template": "contentSingleColumnTwo",
-            "blocks": [
-              {
-                "_template": "imageAlt",
-                "image": "/images/ahc.png",
-                "imageAnimated": "/images/heart.png",
-                "undefined": "/images/ahc.png"
-              },
-              {
-                "_template": "subheadingAlt",
-                "subheading": "Our passion for quality egg production practices dates back to our early beginnings. Along the way, we’ve received various certifications to assure our customers of our commitment to the highest standards. Chino Valley Ranchers pasture raised eggs are certified by American Humane and carry the American Humane Certified seal."
-              },
-              {
-                "_template": "subheadingAlt",
-                "subheading": "Our passion for quality egg production permeates all operations and every employee is personally responsible for doing their part. Company employees and all personnel follow American Humane’s strict requirements for documentation, inspections, equipment maintenance, and access to feed and water. Maintaining pasture raised quality demands extra attention, but we believe it’s worth it."
-              },
-              {
-                "_template": "headingAlt",
-                "heading": "Proudly Pasture Raised For You"
-              },
-              {
-                "_template": "subheadingAlt",
-                "subheading": "From our family to yours, Chino Valley Ranchers pasture raised eggs are produced with your health and well-being in mind."
-              },
-              {
-                "_template": "buttonAlt",
-                "button": {
-                  "link": "/store-locator",
-                  "text": "Find A Store Near You"
-                }
-              }
-            ]
-          },
-          {
-            "_template": "pastureEggsFooter",
-            "heading": "Pasture Raised Products",
-            "description": "Explore our entire family of egg products, all of which are produced by healthy and happy, hens.",
-            "textLeft": "you're gonna love these eggs!",
-            "imageLeft": {
-              "src": "/images/pastureArrow.png",
-              "alt": "arrow"
-            },
-            "imageRight": {
-              "src": "/images/pastureEggCarton.png",
-              "alt": "carton"
-            }
-          }
-    ]
+        }
+      ]
+    },
+    {
+      "_template": "pastureEggsFooter",
+      "heading": "Pasture Raised Products",
+      "description": "Explore our entire family of egg products, all of which are produced by healthy and happy, hens.",
+      "textLeft": "you're gonna love these eggs!",
+      "imageLeft": {
+        "src": "/images/pastureArrow.png",
+        "alt": "arrow"
+      },
+      "imageRight": {
+        "src": "/images/pastureEggCarton.png",
+        "alt": "carton"
+      }
+    }
+  ]
 }
