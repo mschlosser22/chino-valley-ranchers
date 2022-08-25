@@ -30,6 +30,7 @@ module.exports = {
         'chinodarkorange': '#f9a115',
         'chinobrown': '#5c311b',
         'ctagray': '#1a1818',
+        'ctablue': '#004f76',
       },
       lineHeight: {
         'body': '2.75rem',
@@ -39,6 +40,9 @@ module.exports = {
       fontSize: {
         'heading': '4.969rem',
       }
+    },
+    backgroundImage: {
+      'balloonsBanner': "url('/images/balloonsBanner.png')",
     },
   },
   variants: {
