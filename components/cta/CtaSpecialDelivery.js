@@ -64,7 +64,7 @@ const buttonProps = {
 
                 <div>
                     <div className="text-center mx-auto lg:w-min xl:pt-10 lg:pt-8 sm:pt-4">
-                        <div className="">
+                        <div>
                             <h1 className="uppercase z-60 2xl:text-6xl xl:text-4xl lg:text-3xl sm:text-xl text-xl font-ultra text-ctablue leading-4">Special Delivery!</h1>
                         </div>
                         <div className="bg-ctablue w-max sm:mx-auto ml-3 lg:px-6 md:px-4 md:py-3 px-1 xl:mt-4 md:mt-2 xs:mt-3 mt-1.5 xl:mb-6 lg:mb-4 md:mb-3 xs:mb-4 mb-2">
