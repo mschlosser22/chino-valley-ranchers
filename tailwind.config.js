@@ -40,14 +40,14 @@ module.exports = {
       fontSize: {
         'heading': '4.969rem',
       },
+      screens: {
+        '2xl': '1280px',
+        '3xl': '1664px',
+      },
     },
     backgroundImage: {
       'balloonsBanner': "url('/images/balloonsBanner.png')",
-    },
-    screens: {
-      '2xl': '1280px',
-      '3xl': '1664px',
-    },
+    }
   },
   variants: {
     extend: {},
