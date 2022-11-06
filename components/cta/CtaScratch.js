@@ -6,7 +6,7 @@ import styles from '@tailwindcss/typography/src/styles';
 const buttonProps = {
     button: {
       link: {
-        url: "https://youtu.be/kDgO22nhVEQ"
+        url: "https://youtu.be/rZaYeqYh-Ik"
       },
       text: "Watch the video"
     }
