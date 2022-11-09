@@ -41,13 +41,14 @@ module.exports = {
         'heading': '4.969rem',
       },
       screens: {
+        // 'xs': '475px',
         '2xl': '1280px',
         '3xl': '1664px',
       },
+      backgroundImage: {
+        'scratchBanner': "url('/images/scratchBanner.png')",
+      }
     },
-    backgroundImage: {
-      'balloonsBanner': "url('/images/balloonsBanner.png')",
-    }
   },
   variants: {
     extend: {},
