@@ -8,7 +8,8 @@ import { useRecipesContext } from '../../context/recipes'
 
 const getVideoRecipes = (recipes) => {
     const results = recipes.filter( recipe => recipe.category == 'recipe-video-chris')
-    return results
+    const sortResults = results.sort((a, b) => b.number - a.number)
+    return sortResults
 }
 
 export function RecipesChris(props) {
