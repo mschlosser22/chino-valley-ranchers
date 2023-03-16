@@ -1,90 +1,89 @@
 {
-    "blocks": [
-      {
-        "_template": "hero",
-        "heading": "Family Owned For Generations",
-        "image": {
-            "src": "/images/hero-why-organic.jpg",
-            "alt": "Why Organic"
-        },
-        "image_mobile": {
-            "src": "/images/hero-why-organic.jpg",
-            "alt": "Why Organic"
-        }
+  "blocks": [
+    {
+      "_template": "hero",
+      "heading": "Family Owned For Generations",
+      "image": {
+        "src": "/images/hero-why-organic.jpg",
+        "alt": "Why Organic"
       },
-      {
-        "_template": "ourFamilyVideo",
-        "video": {
-            "src": "https://www.youtube.com/embed/s7L-grBARCA?rel=0"
-        },
-        "headingOne": "Our Three Generations",
-        "image": "/images/bg-paper-edge.png",
-        "descriptionListOne": [
-            {
-                "description": "From the early days more than half-century ago, Chino Valley Ranchers has been always been a family-owned company dedicated to bringing the freshest and best tasting eggs to your table. Consistent quality is our hallmark. In fact, for three generations now, our sole focus has been egg ranching (and nobody does it better)."
-            },
-            {
-                "description": "It was the early 1950s when our egg business began, ironically, without chickens. Charles Burton Nichols worked out an arrangement with Southern California farmers to sell their fresh eggs to local grocery stores. Using the family truck for deliveries, that's how we started."
-            }
-        ],
-        "headingTwo": "Egg Innovations",
-        "descriptionListTwo": [
-            {
-                "description": "In 1959, we began acquiring chickens and producing our own eggs. Charles, wife Isabella and their three sons, David, Steve and Charles Jr, worked hard and used innovative methods to provide better care for their birds. One of these was taking the chickens out of their cages and placing nests directly on the floor, allowing the birds to walk around on their own."
-            },
-            {
-                "description": "It marked the early beginnings of the “cage free” approach to raising chickens, which has become a standard in humane treatment within the industry. From those early days right through present day, we are (and have always been) proud to be cage free."
-            }
-        ]
-      },
-      {
-        "_template": "growingFamily",
-        "heading": "A growing Family",
-        "list": [
-          {
-            "description": "Over the years our family has grown in many ways. Today, as second-generation Steve & Kathy and their son, third-generation Chris and Mindy, lead the company forward, the focus on fresh organic and specialty eggs has never been greater. We offer a wide variety of egg products available at your local grocery or natural store."
-          },
-          {
-            "description": "It’s not an exaggeration to say our employees really are like family. We have many staff members who have been with the company 20+ years. This level of dedication and commitment makes a difference. Our collective family effort helps bring you, our customer, the highest quality eggs possible."
-          },
-          {
-            "description": "And let’s not forget our feathered family members. Our chickens are also treated like family. They’re raised in free roaming environments with access to sunlight, premium grain feeds and plenty of fresh air and water. We believe that happy, healthy hens are productive hens."
-          },
-          {
-              "description": "The entire Nichols family (staff members and chickens alike) is committed to bringing you great egg products based on generations of quality. Your satisfaction is our number one goal."
-          }
-        ]
-      },
-      {
-        "_template": "ourRanchers",
-        "heading": "Our Ranches",
-        "list": [
-            {
-                "description": "Our headquarters resides in sunny Colton, California where we bring in and handle the eggs from our local farms. Our ranches are all in close proximity to ensure the freshest eggs possible.  Three are located in Riverside County, one in San Diego County and one in San Bernardino County. We also have a ranch in Idalou, Texas. Each serves their local community by supplying fresh organic and specialty eggs to outlets throughout the region."
-            },
-            {
-                "description": "We have other California ranches as well. Three are located in Riverside County, one in San Diego County and one in San Bernardino County. We also have a ranch in Idalou, Texas. Each serves their local community by supplying fresh organic and specialty eggs to outlets throughout the region."
-            },
-            {
-                "description": "The benefit of providing locally produced fresh eggs to the community has prompted us to partner with more and more small independent farms throughout the United States. It’s good for farming families and good for the local economy."
-            },
-            {
-                "description": "Our community farm relationships extend throughout the Midwest. Importantly, every one of these farms follows the same high standards of bird care that are practiced at our facility in California. That goes for our stringent quality assurance protocols as well."
-            }
-        ]
-      },
-      {
-        "_template": "ourSustainability",
-        "heading": "Our Sustainability",
-        "markdown": "At Chino Valley Ranchers we believe in sustainable practices to help offset the natural resources we all use everyday. In these challenging times for our environment, doing what we can to preserve our planet has never been more important.  \n \n As a company, we take steps in a number of areas to help reduce our carbon footprint, including: \n ## Solar Panels and Turbines \n Our processing plant is powered by the sun! Rooftop solar and parking lot carport solar arrays are the source of nearly all of the power we use at our headquarters. The rest is provided by natural gas powered turbines. Our turbines provide a nearly zero emission solution in place of coal powered generation plants. \n ## Packaging Material  \n All of our egg cartons are made from recycled materials and only soy-based inks are used.  We use a variety of packaging items—labels, cartons, corrugated boxes and plastic containers—and they’re all recyclable.  \n ## Water Recycling  \n We recycle the treated water from our processing to provide all of the irrigation water for our landscaping at our headquarters.  \n ## Sustainable Forestry Initiative  \n All of our liquid egg cartons bear the Sustainable Forestry Initiative (SFI) symbol, which certifies the paper materials are sourced through responsible and sustainable management of North American forests.  \n ## Composting  \n We take the manure from our chickens, mix it with green waste from our farms and create a beautiful thing: fertilizer.  Then it goes directly to organic farms in neighboring communities.  Also noteworthy: all of the paper-based egg cartons we use are compostable.",
-        "button": {
-          "link": {
-            "url": "/store-locator"
-          },
-          "text": "Find a store near you",
-          "classes": "mt-12"
-        }
+      "image_mobile": {
+        "src": "/images/hero-why-organic.jpg",
+        "alt": "Why Organic"
       }
-
-    ]
-  }
+    },
+    {
+      "_template": "ourFamilyVideo",
+      "video": {
+        "src": "https://www.youtube.com/embed/s7L-grBARCA?rel=0"
+      },
+      "headingOne": "Our Three Generations",
+      "image": "/images/bg-paper-edge.png",
+      "descriptionListOne": [
+        {
+          "description": "From the early days more than half-century ago, Chino Valley Ranchers has been a family-owned company dedicated to bringing the freshest and best tasting eggs to your table. Consistent quality is our hallmark. In fact, for three generations now, our sole focus has been egg ranching."
+        },
+        {
+          "description": "It was the early 1950s when our egg business began, ironically, without chickens. Charles Burton Nichols worked out an arrangement with Southern California farmers to sell their fresh eggs to local grocery stores. Using the family truck for deliveries, that's how we started."
+        }
+      ],
+      "headingTwo": "Egg Innovations",
+      "descriptionListTwo": [
+        {
+          "description": "In 1959, we began acquiring chickens and producing our own eggs. Charles, wife Isabella and their three sons, David, Steve and Charles Jr, worked hard and used innovative methods to provide better care for their birds. One of these was taking the chickens out of their cages and placing nests directly on the floor, allowing the birds to walk around on their own."
+        },
+        {
+          "description": "It marked the early beginnings of the “cage free” approach to raising chickens, which has become a standard in humane treatment within the industry. From those early days right through present day, we are (and have always been) proud to be cage free."
+        }
+      ]
+    },
+    {
+      "_template": "growingFamily",
+      "heading": "A growing Family",
+      "list": [
+        {
+          "description": "Over the years our family has grown in many ways. Today, as second-generation Steve & Kathy and their son, third-generation Chris and Mindy, lead the company forward, the focus on fresh organic and specialty eggs has never been greater. We offer a wide variety of egg products available at your local grocery or natural store."
+        },
+        {
+          "description": "It’s not an exaggeration to say our employees really are like family. We have many staff members who have been with the company 20+ years. This level of dedication and commitment makes a difference. Our collective family effort helps bring you, our customer, the highest quality eggs possible."
+        },
+        {
+          "description": "And let’s not forget our feathered family members. Our chickens are also treated like family. They’re raised in free roaming environments with access to sunlight, premium grain feeds and plenty of fresh air and water. We believe that happy, healthy hens are productive hens."
+        },
+        {
+          "description": "The entire Nichols family (staff members and chickens alike) is committed to bringing you great egg products based on generations of quality. Your satisfaction is our number one goal."
+        }
+      ]
+    },
+    {
+      "_template": "ourRanchers",
+      "heading": "Our Ranches",
+      "list": [
+        {
+          "description": "Our headquarters resides in sunny Colton, California where we bring in and handle the eggs from our local farms. Our ranches are all in close proximity to ensure the freshest eggs possible.  Three are located in Riverside County, one in San Diego County and one in San Bernardino County. We also have a ranch in Idalou, Texas. Each serves their local community by supplying fresh organic and specialty eggs to outlets throughout the region."
+        },
+        {
+          "description": "We have other California ranches as well. Three are located in Riverside County, one in San Diego County and one in San Bernardino County. We also have a ranch in Idalou, Texas. Each serves their local community by supplying fresh organic and specialty eggs to outlets throughout the region."
+        },
+        {
+          "description": "The benefit of providing locally produced fresh eggs to the community has prompted us to partner with more and more small independent farms throughout the United States. It’s good for farming families and good for the local economy."
+        },
+        {
+          "description": "Our community farm relationships extend throughout the Midwest. Importantly, every one of these farms follows the same high standards of bird care that are practiced at our facility in California. That goes for our stringent quality assurance protocols as well."
+        }
+      ]
+    },
+    {
+      "_template": "ourSustainability",
+      "heading": "Our Sustainability",
+      "markdown": "At Chino Valley Ranchers we believe in sustainable practices to help offset the natural resources we all use everyday. In these challenging times for our environment, doing what we can to preserve our planet has never been more important.  \n \n As a company, we take steps in a number of areas to help reduce our carbon footprint, including: \n ## Solar Panels and Turbines \n Our processing plant is powered by the sun! Rooftop solar and parking lot carport solar arrays are the source of nearly all of the power we use at our headquarters. The rest is provided by natural gas powered turbines. Our turbines provide a nearly zero emission solution in place of coal powered generation plants. \n ## Packaging Material  \n All of our egg cartons are made from recycled materials and only soy-based inks are used.  We use a variety of packaging items—labels, cartons, corrugated boxes and plastic containers—and they’re all recyclable.  \n ## Water Recycling  \n We recycle the treated water from our processing to provide all of the irrigation water for our landscaping at our headquarters.  \n ## Sustainable Forestry Initiative  \n All of our liquid egg cartons bear the Sustainable Forestry Initiative (SFI) symbol, which certifies the paper materials are sourced through responsible and sustainable management of North American forests.  \n ## Composting  \n We take the manure from our chickens, mix it with green waste from our farms and create a beautiful thing: fertilizer.  Then it goes directly to organic farms in neighboring communities.  Also noteworthy: all of the paper-based egg cartons we use are compostable.",
+      "button": {
+        "link": {
+          "url": "/store-locator"
+        },
+        "text": "Find a store near you",
+        "classes": "mt-12"
+      }
+    }
+  ]
+}
