@@ -237,7 +237,7 @@ export function Nav(props) {
                         />
                       </div>
                     </a>
-                    <a
+                    {/* <a
                       href="https://twitter.com/ChinoValleyEggs"
                       className="cursor-pointer"
                       target="_blank"
@@ -250,7 +250,7 @@ export function Nav(props) {
                           alt="Chino Valley Ranchers"
                         />
                       </div>
-                    </a>
+                    </a> */}
                     <a
                       href="https://www.tiktok.com/@chinovalleyranchers?lang=en"
                       className="cursor-pointer"
