@@ -38,7 +38,7 @@ export default function RecipeArticles(props) {
                           >
                             <div className="aspect-w-16 aspect-h-9">
                               <img
-                                src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${recipe.image.src}`}
+                                src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${recipe.image.src}`}
                                 alt={recipe.image.alt}
                               />
                             </div>
@@ -73,7 +73,7 @@ export default function RecipeArticles(props) {
                           </div>
                         </div>
                         <img
-                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
+                          src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
                           className="mt-20 mb-20 col-span-12"
                         ></img>
                       </>

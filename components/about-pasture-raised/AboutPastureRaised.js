@@ -83,7 +83,7 @@ export function AboutPastureRaised(props) {
                               className="md:col-span-4 col-span-12 mx-auto lg:mx-0 relative"
                             >
                               <img
-                                src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/darnGoodEgg-Img.png"
+                                src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/darnGoodEgg-Img.png"
                                 alt=""
                                 className="mb-4 lg:mb-12 w-48 md:w-full"
                               ></img>
@@ -96,14 +96,14 @@ export function AboutPastureRaised(props) {
 
                   <div className="md:col-span-8 col-span-12">
                     <img
-                      src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
+                      src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
                       className="md:mt-16 mb-12 col-span-12"
                     ></img>
                     <p className="text-black lg:2xl lg:mx-4 mx-8 text-center md:text-left font-lato font-medium text-xl leading-relaxed">
                       <InlineTextarea name="description" />
                     </p>
                     <img
-                      src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
+                      src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
                       className="mt-12 mb-12 col-span-12"
                     ></img>
                   </div>
@@ -114,7 +114,7 @@ export function AboutPastureRaised(props) {
                     <span>ready to roam</span>
                   </p>
                   <img
-                    src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/freeRangeArrow.png"
+                    src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/freeRangeArrow.png"
                     className="w-24 pt-6 pb-4"
                   ></img>
                 </div>

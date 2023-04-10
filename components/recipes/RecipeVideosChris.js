@@ -37,7 +37,7 @@ export default function RecipeVideosChris(props) {
                   ></div>
                 </div>
                 <img
-                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
+                  src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
                   className="mt-20 mb-20 col-span-12"
                 ></img>
               </>

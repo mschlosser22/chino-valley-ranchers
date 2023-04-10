@@ -65,7 +65,7 @@ export function ImageAlt(props) {
                       >
                         {(styles) => (
                           <animated.div style={styles} className="">
-                            <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/heart.png" />
+                            <img src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/heart.png" />
                           </animated.div>
                         )}
                       </Spring>

@@ -67,7 +67,7 @@ export function ContentWithImageAlt(props) {
                     {(styles) => (
                       <animated.div style={styles}>
                         <img
-                          src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.data.calloutImage.src}`}
+                          src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.data.calloutImage.src}`}
                           alt={props.data.calloutImage.alt}
                         />
                       </animated.div>

@@ -36,7 +36,7 @@ export function Studies(props) {
                     <animated.div style={styles} className="h-56 flex relative">
                       <img
                         className="h-28 self-end"
-                        src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/right-chickens.svg"
+                        src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/right-chickens.svg"
                       />
                     </animated.div>
                   )}
@@ -55,7 +55,7 @@ export function Studies(props) {
                     <animated.div style={styles} className="h-56 flex relative">
                       <img
                         className="h-28 self-center"
-                        src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/left-chickens.svg"
+                        src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/left-chickens.svg"
                       />
                     </animated.div>
                   )}
@@ -74,7 +74,7 @@ export function Studies(props) {
                     <animated.div style={styles} className="h-56 flex relative">
                       <img
                         className="h-56 self-center"
-                        src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/chicken-middle-two.svg"
+                        src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/chicken-middle-two.svg"
                       />
                     </animated.div>
                   )}
@@ -93,7 +93,7 @@ export function Studies(props) {
                     <animated.div style={styles} className="h-56 flex relative">
                       <img
                         className="h-28 self-center"
-                        src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/right-chickens.svg"
+                        src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/right-chickens.svg"
                       />
                     </animated.div>
                   )}
@@ -112,7 +112,7 @@ export function Studies(props) {
                     <animated.div style={styles} className="h-56 flex relative">
                       <img
                         className="h-28 self-end"
-                        src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/left-chickens.svg"
+                        src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/left-chickens.svg"
                       />
                     </animated.div>
                   )}
@@ -141,7 +141,7 @@ export function Studies(props) {
                   {(styles) => (
                     <animated.div style={styles} className="relative mx-auto">
                       <img
-                        src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/redSeperator.png"
+                        src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/redSeperator.png"
                         className="pt-6 pb-6 w-full"
                       />
                     </animated.div>
@@ -163,7 +163,7 @@ export function Studies(props) {
                   {item.description}
                 </p>
                 <img
-                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/blueSeperator.jpg"
+                  src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/blueSeperator.jpg"
                   className="py-8 lg:px-0 px-8"
                 />
               </div>

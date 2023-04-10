@@ -27,7 +27,7 @@ export function PastureEggsFooter(props) {
               {props.description}
             </p>
             <img
-              src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageLeft.src}`}
+              src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageLeft.src}`}
               className="lg:block hidden mx-auto"
               alt={props.imageLeft.alt}
             ></img>
@@ -42,7 +42,7 @@ export function PastureEggsFooter(props) {
           </p>
           <a href="/products/pasture-raised">
             <img
-              src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageRight.src}`}
+              src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageRight.src}`}
               className="px-8 lg:px-0"
               alt={props.imageRight.alt}
             />

@@ -5,7 +5,7 @@ export function ChrisText(props) {
     <div className="relative md:absolute max-w-xs md:max-w-sm md:-mb-48 mx-auto md:right-12 md:top-64">
       <a href={`/chriscancook`}>
         <img
-          src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/chris-text.png`}
+          src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/chris-text.png`}
           alt="Chris Can Cook Text"
         />
       </a>

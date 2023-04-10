@@ -33,7 +33,7 @@ export function BeingHumane(props) {
               <div className="grid grid-cols-12">
                 <div className="lg:col-span-5 md:col-span-6 col-span-12">
                   <img
-                    src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageLeft.src}`}
+                    src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageLeft.src}`}
                     className="mx-auto md:m-0"
                     alt={props.imageLeft.alt}
                   />
@@ -50,7 +50,7 @@ export function BeingHumane(props) {
                 </div>
                 <div className="lg:col-span-5 md:col-span-6 col-span-12 lg:-mt-20 lg:pl-16">
                   <img
-                    src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageRight.src}`}
+                    src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageRight.src}`}
                     className="mx-auto md:m-0"
                     alt={props.imageRight.alt}
                   />

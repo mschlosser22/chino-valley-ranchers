@@ -31,7 +31,7 @@ export function QualityFeed(props) {
             </div>
             {props.listBottom && (
               <div>
-                <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"></img>
+                <img src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"></img>
                 <p
                   className="lg:text-3xl text-xl font-ultra text-center max-w-4xl py-9 mx-auto px-8 lg:px-0 tracking-wide"
                   id="callout"
@@ -40,7 +40,7 @@ export function QualityFeed(props) {
                     <ReactMarkdown>{props.callout}</ReactMarkdown>
                   </InlineWysiwyg>
                 </p>
-                <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"></img>
+                <img src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"></img>
               </div>
             )}
             {props.listBottom && (

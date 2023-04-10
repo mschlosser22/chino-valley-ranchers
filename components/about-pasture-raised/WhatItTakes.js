@@ -60,7 +60,7 @@ export function WhatItTakes(props) {
             </InlineWysiwyg>
           </h1>
           <img
-            src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/redSeperator.png"
+            src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/redSeperator.png"
             className="my-8 lg:my-20 mx-auto w-1/2"
           ></img>
           <div className="pb-16 lg:pb-0">

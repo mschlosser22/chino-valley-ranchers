@@ -60,7 +60,7 @@ export function AboutFeed(props) {
                             <animated.div style={styles}>
                               <img
                                 id="eat"
-                                src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageLeft.src}`}
+                                src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageLeft.src}`}
                                 className="lg:pb-6 w-48 md:w-full"
                                 alt={props.imageLeft.alt}
                               />
@@ -72,14 +72,14 @@ export function AboutFeed(props) {
                   </div>
                   <div className="md:col-span-7 col-span-12">
                     <img
-                      src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
+                      src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
                       className="mb-12 mt-4 col-span-12 lg:px-0 px-8"
                     />
                     <p className="text-black lg:text-2xl lg:px-8 px-8 font-lato font-medium text-xl leading-relaxed">
                       <InlineTextarea name="textRight" />
                     </p>
                     <img
-                      src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
+                      src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
                       className="mt-12 col-span-12 lg:px-0 px-8"
                     />
                   </div>
@@ -102,7 +102,7 @@ export function AboutFeed(props) {
                             style={styles}
                             className="pb-4 pr-24 lg:w-1/3 w-3/5 mt-8 lg:mt-0"
                           >
-                            <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/seeing-believingArrow.png" />
+                            <img src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/seeing-believingArrow.png" />
                           </animated.div>
                         )}
                       </Spring>
@@ -136,7 +136,7 @@ export function AboutFeed(props) {
                   </InlineWysiwyg>
                 </h1>
                 <img
-                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/redSeperator.png"
+                  src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/redSeperator.png"
                   className="mt-20 mx-auto lg:w-1/2 w-3/4"
                 />
               </div>

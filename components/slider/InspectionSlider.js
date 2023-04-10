@@ -41,7 +41,7 @@ export function InspectionSlider(props) {
                 {/* Image */}
                 <div className=" relative col-span-12 lg:col-span-3 flex justify-center lg:block px-24 lg:px-0">
                   <img
-                    src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${slide.image.src}`}
+                    src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${slide.image.src}`}
                     alt={slide.image.src}
                   />
                 </div>
@@ -55,12 +55,12 @@ export function InspectionSlider(props) {
                   <div className="pt-12 pb-20 relative lg:right-36 px-8 sm:px-12 lg:px-0">
                     <img
                       className="hidden lg:block"
-                      src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/inspection.png"
+                      src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/inspection.png"
                       alt="inspection point"
                     />
                     <img
                       className="lg:hidden"
-                      src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/inspection-mobile.png"
+                      src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/inspection-mobile.png"
                       alt="inspection point"
                     />
                   </div>

@@ -57,7 +57,7 @@ export function CtaSpecialDelivery(props) {
         <div className="flex justify-center xl:ml-96 lg:ml-72 md:ml-36 sm:ml-48">
           <div className="absolute left-2">
             <img
-              src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/twoGuysBanner.png"
+              src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/twoGuysBanner.png"
               className="sm:block hidden items-end 2xl:h-96 xl:h-72 lg:h-64 md:h-44 sm:h-36"
             />
             {/* <Image
@@ -69,7 +69,7 @@ export function CtaSpecialDelivery(props) {
           </div>
           <div className="absolute top-0 2xl:left-[625px] xl:left-[485px] lg:left-[420px] md:left-[280px] sm:left-[260px] left-4">
             <img
-              src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/images/museBanner.gif"
+              src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/images/museBanner.gif"
               className="xl-h-72 lg:h-56 md:h-28 sm:h-24 h-20"
             />
           </div>
@@ -94,7 +94,7 @@ export function CtaSpecialDelivery(props) {
 
           <div className="absolute bottom-[5] right-4">
             <img
-              src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/womanBanner.png"
+              src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/womanBanner.png"
               className=" sm:block hidden 2xl:h-96 xl:h-72 lg:h-64 md:h-44 sm:h-40"
             />
             {/* <Image
