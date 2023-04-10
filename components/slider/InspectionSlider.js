@@ -19,7 +19,9 @@ export function InspectionSlider(props) {
     <>
       <div
         className="relative bg-cover bg-no-repeat -mt-24 z-20 pb-12 lg:pb-36"
-        style={{ backgroundImage: `url('/images/grass-bg.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/grass-bg.png')`,
+        }}
       >
         <div className="max-w-7xl mx-auto relative">
           <Carousel

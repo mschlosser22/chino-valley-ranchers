@@ -12,7 +12,9 @@ export function OrganicMatters(props) {
     <div>
       <div
         className="relative -mt-12 pt-20 lg:pt-36 bg-no-repeat bg-cover"
-        style={{ backgroundImage: `url('/images/bg-gray-stripes-alt.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-gray-stripes-alt.png')`,
+        }}
       >
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-12">

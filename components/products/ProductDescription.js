@@ -21,11 +21,15 @@ export function ProductDescription(props) {
     <>
       <div
         className="relative -mt-12 pb-20 bg-no-repeat bg-cover z-40"
-        style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper-edge.png')`,
+        }}
       ></div>
       <div
         className="relative pb-20 bg-repeat-y bg-contain"
-        style={{ backgroundImage: `url('/images/bg-paper.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
+        }}
       >
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-12 pt-12 pb-12 lg:pb-24 relative px-8 xl:px-0 gap-4">

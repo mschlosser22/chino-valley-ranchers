@@ -12,7 +12,9 @@ export function EggTermDef(props) {
     <div>
       <div
         className="relative pt-16 z-40 lg:-mt-12 pb-20 -mt-32 md:bg-no-repeat md:bg-cover"
-        style={{ backgroundImage: `url('/images/bg-blueEgg.jpg')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-blueEgg.jpg')`,
+        }}
       >
         <div className="max-w-6xl mx-auto">
           {/* Page Heading */}

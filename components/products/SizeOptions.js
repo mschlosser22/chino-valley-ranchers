@@ -15,7 +15,9 @@ export function SizeOptions(props) {
   return (
     <div
       className="relative pb-20 bg-no-repeat bg-cover -mt-20"
-      style={{ backgroundImage: `url('/images/dirt-bg-alt.png')` }}
+      style={{
+        backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/dirt-bg-alt.png')`,
+      }}
     >
       <div className="max-w-7xl mx-auto">
         <div className="w-full pt-48 pb-12 lg:pb-24 relative px-8 xl:px-0">

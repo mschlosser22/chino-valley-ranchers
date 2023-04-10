@@ -31,11 +31,15 @@ export function OrganicFeed(props) {
       <div>
         <div
           className="relative lg:pt-16 lg:-mt-11 -mt-24 pt-20 bg-no-repeat bg-contain"
-          style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper-edge.png')`,
+          }}
         >
           <div
             className="relative bg-repeat-y pb-32 mt-4 bg-contain"
-            style={{ backgroundImage: `url('/images/bg-paper.png')` }}
+            style={{
+              backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
+            }}
           >
             <div className="max-w-6xl mx-auto">
               <div className="text-center lg:pt-20 pb-8  max-w-5xl mx-auto px-8 lg:px-0">

@@ -37,7 +37,9 @@ export function HenParadise(props) {
       <div>
         <div
           className="relative lg:pt-16 pt-6 z-40 lg:-mt-12 -mt-32 bg-no-repeat bg-cover overflow-hidden"
-          style={{ backgroundImage: `url('/images/dirt-background.png')` }}
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/dirt-background.png')`,
+          }}
         >
           <div className="max-w-5xl mx-auto">
             {/* Page Heading */}

@@ -11,11 +11,15 @@ export function QualityFeed(props) {
     <div>
       <div
         className="relative pt-8 z-40 lg:-mt-12 -mt-16"
-        style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper-edge.png')`,
+        }}
       >
         <div
           className="relative pb-24 mt-4"
-          style={{ backgroundImage: `url('/images/bg-paper.png')` }}
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
+          }}
         >
           <div className="max-w-5xl mx-auto">
             {/* Page Heading */}

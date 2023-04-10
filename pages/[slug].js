@@ -143,7 +143,9 @@ export default function NewsArticle({ file, isPreview }) {
         <InlineForm form={form}>
           <div
             className="relative bg-repeat-y bg-contain mt-4"
-            style={{ backgroundImage: `url('/images/bg-paper.png')` }}
+            style={{
+              backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
+            }}
           >
             <article className="prose lg:prose-xl pt-20 lg:pt-48 pb-24 max-w-5xl mx-auto text-left px-8 lg:px-0">
               {file.data.image ? (

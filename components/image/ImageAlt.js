@@ -38,7 +38,9 @@ export function ImageAlt(props) {
     <Controller>
       <div
         className="relative pb-4 lg:pb-12 bg-repeat-y bg-cover"
-        style={{ backgroundImage: `url('/images/bg-paper.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
+        }}
       >
         <div className="max-w-5xl mx-auto text-center" id="ahc">
           <div className="mb-2 px-8 xl:px-0">

@@ -17,7 +17,9 @@ export function ContentWithImageAlt(props) {
   return (
     <div
       className="w-full relative -mt-24 -mb-24 z-20 bg-cover bg-no-repeat"
-      style={{ backgroundImage: `url('/images/bg-orange-egg-ripped.png')` }}
+      style={{
+        backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-orange-egg-ripped.png')`,
+      }}
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-12 pt-24 sm:pt-36 pb-12 sm:pb-24">

@@ -12,11 +12,15 @@ export function BeingHumane(props) {
     <div>
       <div
         className="relative pt-8 lg:-mt-18 z-40 -mt-32 bg-no-repeat"
-        style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper-edge.png')`,
+        }}
       >
         <div
           className="relative bg-repeat-y pb-44 mt-4"
-          style={{ backgroundImage: `url('/images/bg-paper.png')` }}
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
+          }}
         >
           <div className="max-w-6xl mx-auto">
             {/* Page Heading */}

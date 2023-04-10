@@ -39,11 +39,15 @@ export function AboutPastureRaised(props) {
       <div>
         <div
           className="relative pt-8 lg:-mt-12 -mt-32 bg-contain bg-no-repeat z-40"
-          style={{ backgroundImage: `url('/images/bg-paper-edge.png')` }}
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper-edge.png')`,
+          }}
         >
           <div
             className="relative bg-repeat bg-contain pb-36 lg:pb-44 mt-4"
-            style={{ backgroundImage: `url('/images/bg-paper.png')` }}
+            style={{
+              backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
+            }}
           >
             <div className="max-w-6xl mx-auto">
               {/* Page Heading */}
@@ -119,7 +123,9 @@ export function AboutPastureRaised(props) {
                   ></img>
                 </div>
                 <div
-                  style={{ backgroundImage: `url('/images/blue-board.jpg')` }}
+                  style={{
+                    backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/blue-board.jpg')`,
+                  }}
                   className="bg-cover w-full"
                 >
                   <div className="p-8">

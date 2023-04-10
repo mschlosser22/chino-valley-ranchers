@@ -16,7 +16,9 @@ export function NutritiousFeed(props) {
       <div>
         <div
           className="relative lg:pt-40 lg:-mt-12 z-40 -mt-64 pt-24 pb-12 lg:pb-32 bg-cover"
-          style={{ backgroundImage: `url('/images/dirt-alt.png')` }}
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/dirt-alt.png')`,
+          }}
         >
           <div className="pt-8 sm:pt-20 lg:pt-24 lg:mb-12 max-w-5xl mx-auto px-8 lg:px-0 lg:flex block justify-between">
             <h1 className="text-2xl lg:text-5xl text-chinoblue font-ultra uppercase tracking-wider lg:leading-tight lg:text-center mb-6">

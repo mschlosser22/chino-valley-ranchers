@@ -12,7 +12,9 @@ export function PastureEggsFooter(props) {
   return (
     <div
       className="relative lg:pt-56 pt-36 -mt-48 pb-28 z-40"
-      style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}
+      style={{
+        backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper-white2.png')`,
+      }}
     >
       <div className="grid grid-cols-12 max-w-5xl mx-auto pt-24 gap-8">
         <div className="lg:col-span-6 col-span-12">

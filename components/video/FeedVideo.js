@@ -28,7 +28,9 @@ export function FeedVideo(props) {
     <>
       <div
         className="w-full relative -mt-16 -mb-12 z-10 sm:mb-10 lg:pb-24 bg-cover bg-no-repeat bg-fixed pt-12"
-        style={{ backgroundImage: `url('/images/dirt-bg.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/dirt-bg.png')`,
+        }}
       >
         <Parallax ref={parallax} pages={1}>
           <ParallaxLayer
@@ -38,7 +40,7 @@ export function FeedVideo(props) {
             className="z-0"
             style={{
               backgroundAttachment: "fixed",
-              backgroundImage: `url('/images/chicken-feet.png')`,
+              backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/chicken-feet.png')`,
             }}
           />
         </Parallax>
@@ -75,7 +77,7 @@ export function FeedVideo(props) {
                           ref={ref}
                           className="bg-cover bg-no-repeat px-8 pt-8 pb-12 text-left flex items-center text-xl leading-body lg:text-3xl lg:leading-body text-white font-lato font-bold tracking-wide"
                           style={{
-                            backgroundImage: `url('/images/content-bg.png')`,
+                            backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/content-bg.png')`,
                           }}
                         >
                           <InlineTextarea name="content" />

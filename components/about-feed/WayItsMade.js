@@ -16,7 +16,9 @@ export function WayItsMade(props) {
       <div>
         <div
           className="relative lg:pt-56 pt-16 -mt-56 pb-12 lg:pb-28 bg-no-repeat bg-contain lg:bg-cover"
-          style={{ backgroundImage: `url('/images/bg-paper-white2.png')` }}
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper-white2.png')`,
+          }}
         >
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-12 lg:gap-8 pt-20 md:mx-auto px-8">

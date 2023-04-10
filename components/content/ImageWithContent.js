@@ -87,7 +87,9 @@ export function ImageWithContent(props) {
   return (
     <div
       className="relative pt-20 -mt-24 pb-12 bg-no-repeat bg-contain"
-      style={{ backgroundImage: `url('/images/blue-bg.jpg')` }}
+      style={{
+        backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/blue-bg.jpg')`,
+      }}
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-12 pt-12 lg:pt-36 pb-0 lg:pb-24 relative px-0 xl:px-0">

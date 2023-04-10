@@ -13,7 +13,7 @@ export default function RecipeVideos(props) {
                   <div
                     className="p-8 bg-cover mb-12"
                     style={{
-                      backgroundImage: `url('/images/bg-blue-wood.jpg')`,
+                      backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-blue-wood.jpg')`,
                     }}
                   >
                     <div className="aspect-w-16 aspect-h-9">

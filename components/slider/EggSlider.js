@@ -22,12 +22,16 @@ export function EggSlider(props) {
       {/* Top Border */}
       <div
         className={`relative w-full block z-10 h-[95px] -mt-12 bg-cover bg-no-repeat`}
-        style={{ backgroundImage: `url('/images/bg-paper-edge-border.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper-edge-border.png')`,
+        }}
       ></div>
       {/* Middle Section */}
       <div
         className="relative z-10"
-        style={{ backgroundImage: `url('/images/bg-paper.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
+        }}
       >
         <div className="min-h-[615px] sm:min-h-[775px] lg:min-h-[650px]"></div>
         <div className="absolute w-full -top-36 lg:-top-48 overflow-y-hidden">
@@ -102,7 +106,7 @@ export function EggSlider(props) {
       <div
         className={`relative w-full hidden lg:block h-[95px] bg-cover bg-no-repeat z-10`}
         style={{
-          backgroundImage: `url('/images/bg-paper-edge-border-bottom.png')`,
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper-edge-border-bottom.png')`,
         }}
       ></div>
     </>

@@ -15,7 +15,9 @@ export function WhatItTakes(props) {
     <div>
       <div
         className="relative pt-20 sm:pt-56 lg:pt-40 -mt-72 lg:-mt-56 lg:-mt-48 2xl:-mt-72 bg-repeat-x bg-cover z-40"
-        style={{ backgroundImage: `url('/images/bg-talons.png')` }}
+        style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-talons.png')`,
+        }}
       >
         <div className="z-50 pt-56 sm:pt-24 pb-8 lg:py-24 2xl:pt-72 max-w-4xl mx-auto px-8 lg:px-0">
           <h1 className="text-2xl lg:text-5xl text-chinoblue font-ultra uppercase tracking-wide lg:mb-12 mb-6 text-center md:text-left">
