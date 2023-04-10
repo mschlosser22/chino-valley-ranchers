@@ -1,73 +1,75 @@
-import Image from 'next/image'
-import { InlineText, InlineTextarea, InlineBlocks, InlineImage, BlocksControls, InlineGroup } from 'react-tinacms-inline'
+import Image from "next/image";
+import {
+  InlineText,
+  InlineTextarea,
+  InlineBlocks,
+  InlineImage,
+  BlocksControls,
+  InlineGroup,
+} from "react-tinacms-inline";
 
-import { HeadingSubheading } from '../../components/heading/HeadingSubheading'
+import { HeadingSubheading } from "../../components/heading/HeadingSubheading";
 
-export function ContentSingleColumn({data, index}) {
+export function ContentSingleColumn({ data, index }) {
+  //const {content} = props
 
-    //const {content} = props
-
-    return(
-
-        <div className="relative pt-8 -mt-12 2xl:-mt-16 pb-12 bg-no-repeat bg-cover z-40" style={{ backgroundImage: `url('/images/blue-bg.png')` }}>
-            <div className="max-w-5xl mx-auto pt-8 lg:pt-32 text-center">
-                <InlineBlocks name="blocks" blocks={CONTENT_SINGLE_COLUMN_BLOCKS} />
-            </div>
-        </div>
-
-    )
-
+  return (
+    <div
+      className="relative pt-8 -mt-12 2xl:-mt-16 pb-12 bg-no-repeat bg-cover z-40"
+      style={{
+        backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/blue-bg.png')`,
+      }}
+    >
+      <div className="max-w-5xl mx-auto pt-8 lg:pt-32 text-center">
+        <InlineBlocks name="blocks" blocks={CONTENT_SINGLE_COLUMN_BLOCKS} />
+      </div>
+    </div>
+  );
 }
 
 export const contentSingleColumnBlock = {
-    Component: ({ index, data }) => (
-      <BlocksControls index={index}>
-        <ContentSingleColumn data={data} />
-      </BlocksControls>
-    ),
-    template: {
-        label: 'Content Single Column',
-        defaultItem: {
-            content: [
-                {
-                    heading: "Some Heading",
-                    subheading: "Some subheading"
-                },
-                {
-                    heading: "Some Heading",
-                    subheading: "Some subheading"
-                },
-                {
-                    heading: "Some Heading",
-                    subheading: "Some subheading"
-                }
-            ]
+  Component: ({ index, data }) => (
+    <BlocksControls index={index}>
+      <ContentSingleColumn data={data} />
+    </BlocksControls>
+  ),
+  template: {
+    label: "Content Single Column",
+    defaultItem: {
+      content: [
+        {
+          heading: "Some Heading",
+          subheading: "Some subheading",
         },
-        fields: [
-
-        ],
+        {
+          heading: "Some Heading",
+          subheading: "Some subheading",
+        },
+        {
+          heading: "Some Heading",
+          subheading: "Some subheading",
+        },
+      ],
     },
-}
+    fields: [],
+  },
+};
 
 const content_template = {
-    label: 'Heading Block',
-    defaultItem: {
-        text: [
-            'Some default paragraph text here'
-        ]
-    },
-    /*
-     ** Define fields to render
-     ** in a Settings Modal form
-     */
-    fields: [
-
-    ],
-}
+  label: "Heading Block",
+  defaultItem: {
+    text: ["Some default paragraph text here"],
+  },
+  /*
+   ** Define fields to render
+   ** in a Settings Modal form
+   */
+  fields: [],
+};
 
 const CONTENT_SINGLE_COLUMN_BLOCKS = {
-    content: {
-      Component: HeadingSubheading,
-      template: content_template,
-    },
-}
+  content: {
+    Component: HeadingSubheading,
+    template: content_template,
+  },
+};
