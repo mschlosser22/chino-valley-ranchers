@@ -55,7 +55,7 @@ export function ProductDescription(props) {
                   <InlineText name="category" />
                 </h2>
                 <img
-                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
+                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
                   alt="border"
                   className="pb-8"
                 />
@@ -73,7 +73,7 @@ export function ProductDescription(props) {
             <div className="col-span-12 lg:col-span-7 grid grid-cols-12">
               <div className="relative col-span-12 lg:-top-20 px-12">
                 <img
-                  src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.image.src}`}
+                  src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.image.src}`}
                   alt={props.image.alt}
                 />
               </div>
@@ -83,7 +83,7 @@ export function ProductDescription(props) {
                   props.icons.map((icon, index) => (
                     <img
                       key={index}
-                      src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${icon.src}`}
+                      src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${icon.src}`}
                       alt={icon.alt}
                       className="object-cover h-12"
                     />
@@ -146,7 +146,7 @@ export function ProductDescription(props) {
                   <div className="mt-3 text-center sm:mt-5">
                     <div className="mt-2">
                       <img
-                        src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.nutrition.src}`}
+                        src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.nutrition.src}`}
                         alt={props.nutrition.alt}
                       />
                     </div>

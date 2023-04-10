@@ -73,7 +73,7 @@ export function HenParadise(props) {
                     >
                       {(styles) => (
                         <animated.div style={styles} className="relative">
-                          <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/chicken-left.png" />
+                          <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/chicken-left.png" />
                         </animated.div>
                       )}
                     </Spring>
@@ -98,7 +98,7 @@ export function HenParadise(props) {
                       {(styles) => (
                         <animated.div style={styles} className="relative">
                           <img
-                            src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/chicken-middle.png"
+                            src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/chicken-middle.png"
                             className="relative top-24"
                           />
                         </animated.div>
@@ -133,7 +133,7 @@ export function HenParadise(props) {
                       >
                         {(styles) => (
                           <animated.div style={styles} className="relative">
-                            <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/chicken-bubble.png" />
+                            <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/chicken-bubble.png" />
                           </animated.div>
                         )}
                       </Spring>
@@ -159,7 +159,7 @@ export function HenParadise(props) {
                       >
                         {(styles) => (
                           <animated.div style={styles} className="relative">
-                            <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/chicken-right.png" />
+                            <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/chicken-right.png" />
                           </animated.div>
                         )}
                       </Spring>

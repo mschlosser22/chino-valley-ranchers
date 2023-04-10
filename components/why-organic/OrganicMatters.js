@@ -26,12 +26,12 @@ export function OrganicMatters(props) {
             </div>
             <div className="lg:col-span-4 col-span-12 lg:-mt-12 mx-auto">
               <img
-                src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageRight.src}`}
+                src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageRight.src}`}
                 className="w-64 lg:w-full"
                 alt={props.imageRight.alt}
               />
               <img
-                src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageRightAlt.src}`}
+                src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageRightAlt.src}`}
                 className="lg:-ml-16 lg:-mt-2 -mt-0 -ml-0 w-52 lg:w-full"
                 alt={props.imageRightAlt.alt}
               />

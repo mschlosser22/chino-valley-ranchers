@@ -118,13 +118,13 @@ export function Articles(props) {
                       <a href={`/${article.slug}`}>
                         {article.image ? (
                           <img
-                            src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${article.image.src}`}
+                            src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${article.image.src}`}
                             alt={article.image.alt}
                             className="mb-12"
                           ></img>
                         ) : (
                           <img
-                            src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/article1.jpg"
+                            src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/article1.jpg"
                             alt="placeholder image"
                             className="mb-12"
                           ></img>
@@ -196,7 +196,7 @@ export function Articles(props) {
                       </a>
                     </div>
                     <img
-                      src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
+                      src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
                       className="mt-20 mb-20 col-span-12"
                     ></img>
                   </div>
@@ -224,13 +224,13 @@ export function Articles(props) {
                         >
                           {article.image && article.image.src ? (
                             <img
-                              src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${article.image.src}`}
+                              src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${article.image.src}`}
                               alt={article.image.alt}
                               className="mb-12 object-cover h-72 w-full"
                             ></img>
                           ) : (
                             <img
-                              src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/CVR_Blog_Thumbnail.png"
+                              src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/CVR_Blog_Thumbnail.png"
                               alt="placeholder image"
                               className="mb-12 object-cover h-48 w-full"
                             ></img>

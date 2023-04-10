@@ -26,7 +26,7 @@ export function OurFamily(props) {
           {/* Left/Photo */}
           <div className="col-span-12 lg:col-span-6 flex lg:block justify-center">
             <img
-              src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.data.image.src}`}
+              src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.data.image.src}`}
               alt={props.data.image.alt}
             />
           </div>

@@ -52,7 +52,7 @@ export function WayItsMade(props) {
                     >
                       {(styles) => (
                         <animated.div style={styles}>
-                          <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/bowl-of-eggs.png"></img>
+                          <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bowl-of-eggs.png"></img>
                         </animated.div>
                       )}
                     </Spring>

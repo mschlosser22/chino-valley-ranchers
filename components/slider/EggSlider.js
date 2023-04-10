@@ -53,7 +53,7 @@ export function EggSlider(props) {
                     <div className="grid grid-cols-12 sm:pb-10 lg:pb-20">
                       <div className="col-span-12 h-52 lg:h-64 xs:px-2 sm:px-8 lg:px-0">
                         <img
-                          src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${slide.image.src}`}
+                          src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${slide.image.src}`}
                           alt={slide.image.alt}
                         />
                       </div>
@@ -84,7 +84,7 @@ export function EggSlider(props) {
                           slide.icons.map((icon, index) => (
                             <img
                               key={index}
-                              src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${icon.image.src}`}
+                              src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${icon.image.src}`}
                               alt={icon.image.alt}
                               className="h-24"
                             />

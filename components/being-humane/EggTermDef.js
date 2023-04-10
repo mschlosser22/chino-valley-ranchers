@@ -43,7 +43,7 @@ export function EggTermDef(props) {
                       </p>
                     </Disclosure.Panel>
                     <img
-                      src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator1.jpg"
+                      src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator1.jpg"
                       className=""
                     ></img>
                   </>

@@ -34,7 +34,7 @@ export function SizeOptions(props) {
               props.images.map((image, index) => (
                 <div key={index} className="col-span-4 sm:col-span-1">
                   <img
-                    src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${image.src}`}
+                    src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${image.src}`}
                     alt={image.alt}
                   />
                   <div className="w-full text-center lg:text-left text-gray-900 font-ultra text-lg lg:text-3xl pt-8 tracking-wide">

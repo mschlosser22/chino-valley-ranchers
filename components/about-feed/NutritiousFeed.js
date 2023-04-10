@@ -23,7 +23,7 @@ export function NutritiousFeed(props) {
               <InlineTextarea name="headingLeft" />
             </h1>
             <img
-              src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageRight.src}`}
+              src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageRight.src}`}
               className="lg:-mt-40 mx-auto"
               alt={props.imageRight.alt}
             ></img>
@@ -73,7 +73,7 @@ export function NutritiousFeed(props) {
                       className="w-36 ml-24 pt-2 lg:block hidden relative"
                     >
                       <img
-                        src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageBottom.src}`}
+                        src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.imageBottom.src}`}
                         alt={props.imageBottom.alt}
                       ></img>
                     </animated.div>

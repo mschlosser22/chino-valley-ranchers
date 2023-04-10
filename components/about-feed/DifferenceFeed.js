@@ -34,7 +34,7 @@ export function DifferenceFeed(props) {
             </div>
             <div className="lg:-mb-12 lg:ml-12 z-30 mb-12">
               <img
-                src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/2eggs.png"
+                src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/2eggs.png"
                 className="w-96 mx-auto"
               ></img>
             </div>
@@ -56,7 +56,7 @@ export function DifferenceFeed(props) {
                       style={styles}
                       className="hidden lg:block absolute right-0 -top-96 h-80 w-96"
                     >
-                      <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/hand.svg" />
+                      <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/hand.svg" />
                     </animated.div>
                   )}
                 </Spring>

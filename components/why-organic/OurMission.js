@@ -22,7 +22,7 @@ export function OurMission(props) {
             <div className="grid grid-cols-12 gap-4">
               <div className="lg:col-span-5 col-span-12">
                 <img
-                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/family-picture.jpg"
+                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/family-picture.jpg"
                   className="mx-auto lg:w-full w-72"
                 />
               </div>
@@ -47,7 +47,7 @@ export function OurMission(props) {
                     >
                       {(styles) => (
                         <animated.div style={styles}>
-                          <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/family-owned-sign.png" />
+                          <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/family-owned-sign.png" />
                         </animated.div>
                       )}
                     </Spring>
@@ -68,7 +68,7 @@ export function OurMission(props) {
               </div>
               <div className="lg:col-span-6 col-span-12">
                 <img
-                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator-thick.png"
+                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator-thick.png"
                   className="lg:px-0 px-8"
                 />
                 <p
@@ -85,7 +85,7 @@ export function OurMission(props) {
                   <span className="font-bold"></span>
                 </p>
                 <img
-                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator-thick.png"
+                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator-thick.png"
                   className="lg:px-0 px-8"
                 />
               </div>
@@ -111,7 +111,7 @@ export function OurMission(props) {
                       <animated.div className="relative" style={stylesNew}>
                         <img
                           id="true-free-range"
-                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/true-range-arrow.png"
+                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/true-range-arrow.png"
                           className="lg:pl-28 lg:w-96 w-56 lg:pb-4 lg:mx-0 mx-8"
                         />
                       </animated.div>
@@ -159,7 +159,7 @@ export function OurMission(props) {
                       >
                         <img
                           className="h-28 self-end"
-                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/right-chickens.svg"
+                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/right-chickens.svg"
                         />
                       </animated.div>
                     )}
@@ -181,7 +181,7 @@ export function OurMission(props) {
                       >
                         <img
                           className="h-28 self-center"
-                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/left-chickens.svg"
+                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/left-chickens.svg"
                         />
                       </animated.div>
                     )}
@@ -203,7 +203,7 @@ export function OurMission(props) {
                       >
                         <img
                           className="h-56 self-center"
-                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/chickens-middle.svg"
+                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/chickens-middle.svg"
                         />
                       </animated.div>
                     )}
@@ -225,7 +225,7 @@ export function OurMission(props) {
                       >
                         <img
                           className="h-28 self-center"
-                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/right-chickens.svg"
+                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/right-chickens.svg"
                         />
                       </animated.div>
                     )}
@@ -247,7 +247,7 @@ export function OurMission(props) {
                       >
                         <img
                           className="h-28 self-end"
-                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/left-chickens.svg"
+                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/left-chickens.svg"
                         />
                       </animated.div>
                     )}
@@ -279,7 +279,7 @@ export function OurMission(props) {
                     {(styles) => (
                       <animated.div style={styles} className="relative mx-auto">
                         <img
-                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/redSeperator.png"
+                          src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/redSeperator.png"
                           className="pt-6 pb-6 w-full"
                         />
                       </animated.div>

@@ -109,7 +109,7 @@ export function ImageWithContent(props) {
               >
                 <animated.div style={styles}>
                   <img
-                    src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.data.leftImage.src}`}
+                    src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.data.leftImage.src}`}
                     alt={props.data.leftImage.alt}
                   />
                 </animated.div>
@@ -120,7 +120,7 @@ export function ImageWithContent(props) {
             <div className="w-full lg:hidden justify-center mx-auto relative -mb-10">
               <a href="/about-pasture-raised" className="block">
                 <img
-                  src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.data.leftImageMobile.src}`}
+                  src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.data.leftImageMobile.src}`}
                   alt={props.data.leftImageMobile.alt}
                 />
               </a>
@@ -143,7 +143,7 @@ export function ImageWithContent(props) {
                       className="block transition duration-300 ease-in-out transform hover:rotate-3 cursor pointer relative"
                     >
                       <img
-                        src={`https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.data.rightImage.src}`}
+                        src={`https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.data.rightImage.src}`}
                         alt={props.data.rightImage.alt}
                       />
                     </a>

@@ -46,7 +46,7 @@ export function OrganicFeed(props) {
                   <InlineTextarea name="heading" />
                 </h1>
                 <img
-                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/redSeperator.png"
+                  src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/redSeperator.png"
                   className="mx-auto lg:pl-12 lg:w-3/5 lg:pb-6"
                 ></img>
               </div>
@@ -81,7 +81,7 @@ export function OrganicFeed(props) {
                                 style={styles}
                                 className="absolute w-full h-full transform rotate-2"
                               >
-                                <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/burst.svg" />
+                                <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/burst.svg" />
                               </animated.div>
                             )}
                           </Spring>
@@ -104,7 +104,7 @@ export function OrganicFeed(props) {
                                 style={styles}
                                 className="absolute px-6 w-full h-full transform rotate-2"
                               >
-                                <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/egg.svg" />
+                                <img src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/SVG/egg.svg" />
                               </animated.div>
                             )}
                           </Spring>
@@ -131,7 +131,7 @@ export function OrganicFeed(props) {
                 </div>
                 <div className="lg:col-span-3 sm:col-span-4 col-span-12 lg:w-56 w-32 md:mx-0 mx-auto pt-4">
                   <img
-                    src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/usdaOrganic.png"
+                    src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/usdaOrganic.png"
                     className=""
                   ></img>
                 </div>

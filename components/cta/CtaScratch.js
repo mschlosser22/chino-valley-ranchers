@@ -57,7 +57,7 @@ export function CtaScratch(props) {
         <div className="grid grid-cols-2 3xl:gap-80 2xl:gap-64 xl:gap-56 lg:gap-56 md:gap-36 sm:gap-28 gap-16">
           <div className="col-span-1 p-0 m-0">
             <img
-              src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/suitcase.png"
+              src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/suitcase.png"
               className="3xl:h-96 xl:h-80 lg:h-56 md:h-44 sm:h-44  h-20 3xl:pl-40 xl:pl-32 lg:pl-12 md:pl-20 sm:pl-12 pl-6"
             />
             {/* <Image
@@ -71,7 +71,7 @@ export function CtaScratch(props) {
           <div className="col-span-1">
             <div class="sm:flex block relative">
               <img
-                src="https://res.cloudinary.com/dmlnena1u/image/fetch/q_auto:eco/https://www.chinovalleyranchers.com//images/scratch.png"
+                src="https://res.cloudinary.com/dmlnena1u/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/scratch.png"
                 className="3xl:h-80 xl:h-64 lg:h-48 md:h-44 sm:h-36 sm:h-32 xs:h-28 h-16 md:ml-0 ml-4 z-10"
               />
               {/* <Image
