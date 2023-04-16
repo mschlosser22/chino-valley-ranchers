@@ -5,7 +5,7 @@ import cometTextImage from "../../public/images/comet-eggs-have-arrived.png";
 
 const button = {
   link: {
-    url: "/products/comet",
+    url: "/products/comet-eggs",
   },
   classes: "mt-8",
   text: "Learn More",
