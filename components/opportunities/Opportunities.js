@@ -13,7 +13,7 @@ import { scale } from "tailwindcss/defaultTheme";
 import ReactMarkdown from "react-markdown";
 import { InlineWysiwyg } from "../../components/tinacms/InlineWYSIWYG";
 
-export function AboutFeed(props) {
+export function Opportunities(props) {
   return (
     <Controller>
       <div>
@@ -24,15 +24,15 @@ export function AboutFeed(props) {
           }}
         >
           <div
-            className={`relative bg-repeat-y ${props.imageLeft ? 'pb-44' : ''} mt-4 z-30 bg-contain`}
+            className="relative bg-repeat-y pb-44 mt-4 z-30 bg-contain"
             style={{
               backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
             }}
           >
             <div className="max-w-6xl mx-auto">
               {/* Page Heading */}
-              <div className={`text-center z-40 pt-8 lg:pt-20 pb-8 ${props.imageLeft ? 'lg:py-24' : ''} max-w-3xl mx-auto`}>
-                <h1 className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 lg:px-0 px-8 break-words">
+              <div className="text-center z-40 pt-8 lg:pt-20 pb-8 lg:py-24 max-w-3xl mx-auto">
+                <h1 className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 lg:px-0 px-8">
                   <InlineTextarea name="heading" />
                 </h1>
                 <p className="font-lato lg:text-2xl text-xl tracking-wide lg:px-24 px-8 lg:text-left">
@@ -138,7 +138,6 @@ export function AboutFeed(props) {
                 </div>
               </div>
 }
-{props.stat &&
               <div className="z-50 pt-20 pb-8 lg:py-24 max-w-6xl mx-auto px-8 lg:px-0 text-center">
                 <h1
                   className="text-2xl lg:text-4xl text-black font-ultra uppercase tracking-wide"
@@ -154,7 +153,6 @@ export function AboutFeed(props) {
                   className="mt-20 mx-auto lg:w-1/2 w-3/4"
                 />
               </div>
-}
             </div>
           </div>
         </div>
@@ -163,14 +161,14 @@ export function AboutFeed(props) {
   );
 }
 
-export const aboutFeedBlock = {
+export const OpportunitiesBlock = {
   Component: ({ index, data }) => (
     <BlocksControls index={index}>
-      <AboutFeed {...data} />
+      <Opportunities {...data} />
     </BlocksControls>
   ),
   template: {
-    label: "About Feed Component",
+    label: "Opportunities Component",
     defaultItem: {
       heading: "Some Headline Here",
       subheading:

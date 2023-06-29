@@ -1,0 +1,9 @@
+{
+    "blocks": [
+        {
+            "_template": "aboutFeed",
+            "heading": "OPPORTUNITIES",
+            "image": "/images/bg-paper-edge.png"
+        }
+    ]
+}
