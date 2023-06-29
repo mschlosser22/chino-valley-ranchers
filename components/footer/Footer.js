@@ -160,9 +160,12 @@ export function Footer(props) {
                 </li>
               ))}
             </ul>
-            <button className="w-1/2 mt-10 font-din tracking-wider text-lg mb-52 uppercase bg-chinoorange text-chinodarkblue border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium">
+            <a href="/store-locator" className="w-1/2 mt-10 font-din tracking-wider text-lg mb-8 uppercase bg-chinoorange text-chinodarkblue border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium">
               Store Locator
-            </button>
+            </a>
+            <a href="https://forms.westock.io/brand/1309?source=website&medium=website" className="w-5/6 lg:w-2/3 mt-10 font-din text-lg mb-52 uppercase bg-chinored text-white border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium">
+            Request Chino Valley Locally
+            </a>
           </div>
         </div>
       </div>
