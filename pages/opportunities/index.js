@@ -75,7 +75,7 @@ export default function Products({ file, isPreview}) {
       <InlineForm form={form}>
         <InlineBlocks name="blocks" blocks={PAGE_BLOCKS} />
       </InlineForm>
-      <div className='bg-repeat-y bg-contain' style={{
+      <div className='bg-repeat-y bg-cover' style={{
               backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
             }}>
       <div className='max-w-7xl mx-auto px-8 z-50'>
