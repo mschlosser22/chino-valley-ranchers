@@ -118,7 +118,7 @@ export function Articles(props) {
                       <a href={`/${article.slug}`}>
                         {article.image ? (
                           <img
-                            src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${article.image.src}`}
+                            src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_500,w_500/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${article.image.src}`}
                             alt={article.image.alt}
                             className="mb-12"
                           ></img>
