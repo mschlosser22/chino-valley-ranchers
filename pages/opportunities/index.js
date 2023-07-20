@@ -3,6 +3,7 @@ import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
 import { useForm, usePlugin, useCMS } from 'tinacms'
 import { InlineForm, InlineBlocks } from 'react-tinacms-inline'
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github'
+import JobApplicationForm from '../../components/JobApplicationForm'
 
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/footer/Footer'
@@ -89,7 +90,7 @@ export default function Products({ file, isPreview}) {
                 </div>
             </div>
 
-            <div className='max-w-5xl mx-auto grid lg:grid-cols-1 gap-8 text-center lg:text-left pb-20'>
+            <div className='max-w-5xl mx-auto grid lg:grid-cols-2 gap-8 text-center lg:text-left pb-20'>
                 <div className='text-center'>
                     <h2 className="text-xl lg:text-3xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 lg:px-0 px-8 break-words">Available Positions</h2>
                     <div className='flex flex-col gap-3 text-center lg:text-left'>
@@ -97,24 +98,10 @@ export default function Products({ file, isPreview}) {
                         <a href='https://employers.indeed.com/jobs/view?id=97e62e318a06&employerJobId=aXJpOi8vYXBpcy5pbmRlZWQuY29tL0VtcGxveWVySm9iL2I1MWJiYzQxLTRkMDEtNDE2Ni04MDQyLTJjYTE1ZmZlZjFlYQ%3D%3D&from=%3Ffrom%3Dgnav-empcenter' target='_blank' className='text-chinored uppercase font-bold text-xl hover:underline'>Class B Driver, Colton, CA - Job Details | Indeed.com</a>
                     </div>
                 </div>
-                <div className='hidden'>
+                <div>
                     <h2 className="text-xl lg:text-3xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 lg:px-0 px-8 break-words">Submit Application</h2>
-                    <form className='flex flex-col gap-2'>
-                        <input type='text' placeholder='First Name' className='border border-black rounded p-2' />
-                        <input type='text' placeholder='Last Name' className='border border-black rounded p-2' />
-                        <input type='tel' placeholder='Phone Number' className='border border-black rounded p-2' />
-                        <input type='email' placeholder='Email Address' className='border border-black rounded p-2' />
-                        <select className='border border-black rounded p-2'>
-                            <option value={'Shipping/Receiving - 2nd Shift, Colton, CA - Job Details'}>Shipping/Receiving - 2nd Shift, Colton, CA - Job Details</option>
-                            <option value={'Class B Driver, Colton, CA - Job Details'}>Class B Driver, Colton, CA - Job Details</option>
-                        </select>
-                        <label className='uppercase text-gray-600'>Upload your resume</label>
-                        <input type='file' className='pb-8' />
-                        <div className='text-center'>
-                            <button className='bg-chinored text-white uppercase font-bold py-2 rounded-lg text-4xl w-48'>Submit</button>
-                        </div>
+                    <JobApplicationForm />
 
-                    </form>
                 </div>
             </div>
         </div>
