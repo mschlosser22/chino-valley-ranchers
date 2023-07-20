@@ -150,7 +150,7 @@ export default function NewsArticle({ file, isPreview }) {
             <article className="prose lg:prose-xl pt-20 lg:pt-48 pb-24 max-w-5xl mx-auto text-left px-8 lg:px-0">
               {file.data.image ? (
                 <img
-                  src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${file.data.image.src}`}
+                  src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${file.data.image.src}`}
                   alt={file.data.image.alt}
                   className="max-5xl"
                 />
