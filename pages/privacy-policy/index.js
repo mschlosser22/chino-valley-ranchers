@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/footer/Footer'
 
@@ -80,3 +81,31 @@ export default function Products({ file}) {
     </>
   )
 }
+
+export const getStaticProps = async function({
+    preview,
+    previewData,
+  }) {
+
+    if (preview) {
+      return getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: 'content/about-feed/index.json',
+      parse: parseJson,
+      isPreview: true
+      })
+    }
+
+    return {
+      props: {
+        sourceProvider: null,
+        error: null,
+        preview: false,
+        file: {
+          fileRelativePath: 'content/about-feed/index.json',
+          data: (await import('../../content/about-feed/index.json')).default,
+        }
+      },
+    }
+
+  }
