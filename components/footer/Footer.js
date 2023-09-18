@@ -23,6 +23,10 @@ const footer_content = {
       url: "/being-humane",
       text: "Being Humane",
     },
+    {
+      url: "/privacy-policy",
+      text: "Privacy Policy",
+    },
   ],
   column_three: [
     {
