@@ -18,7 +18,7 @@ export default function Products({ file}) {
       <Nav />
 
       <b>Privacy Policy for ChinoValleyRanchers.com</b>
-
+<div className='mt-20 px-8 prose'>
 <b>1. Introduction</b>
 <p>Welcome to Chino Valley Ranchers ("we," "us," or "our"). We are committed to safeguarding the privacy of our website visitors and users. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you interact with our website, chinovalleyranchers.com (the "Website"). By using the Website, you agree to the practices described in this Privacy Policy.</p>
 
@@ -75,7 +75,7 @@ export default function Products({ file}) {
 
 <p>Thank you for visiting chinovalleyranchers.com. Your privacy is important to us.</p>
 
-
+</div>
     </div>
     <Footer />
     </>
