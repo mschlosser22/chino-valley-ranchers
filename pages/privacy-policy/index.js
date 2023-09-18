@@ -17,7 +17,7 @@ export default function Products({ file}) {
 
       <Nav />
       <div className='pt-20 pb-12 xl:pt-48 px-8 prose mx-auto'>
-      <b>Privacy Policy for ChinoValleyRanchers.com</b>
+      <b>Privacy Policy for ChinoValleyRanchers.com</b><br />
 <b>1. Introduction</b>
 <p>Welcome to Chino Valley Ranchers ("we," "us," or "our"). We are committed to safeguarding the privacy of our website visitors and users. This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you interact with our website, chinovalleyranchers.com (the "Website"). By using the Website, you agree to the practices described in this Privacy Policy.</p>
 
