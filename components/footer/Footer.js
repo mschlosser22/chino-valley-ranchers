@@ -38,7 +38,7 @@ const footer_content = {
       text: "331 W. Citrus Street, Colton, CA 92324",
     },
     {
-      url: "#",
+      url: "tel:8003544503",
       text: "(800) 354-4503",
     },
     {
