@@ -84,15 +84,13 @@ export function EggSlider(props) {
                       </div>
                       {/* Icons */}
                       <div className="col-span-12 flex justify-center gap-12 lg:pb-8">
-                        {slide.icons &&
-                          slide.icons.map((icon, index) => (
-                            <img
-                              key={index}
+                        <a href="https://www.instagram.com/chinovalleyranchers/">
+                        <img
                               src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${icon.image.src}`}
-                              alt={icon.image.alt}
+                              alt="CVR Instagram"
                               className="h-24"
                             />
-                          ))}
+                        </a>
                       </div>
                     </div>
                   </div>
