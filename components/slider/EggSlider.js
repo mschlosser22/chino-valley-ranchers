@@ -86,7 +86,7 @@ export function EggSlider(props) {
                       <div className="col-span-12 flex justify-center gap-12 lg:pb-8">
                         <a href="https://www.instagram.com/chinovalleyranchers/">
                         <img
-                              src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/images/instagram-new.png`}
+                              src={`/images/instagram-new.png`}
                               alt="CVR Instagram"
                               className="h-24"
                             />
