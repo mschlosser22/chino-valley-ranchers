@@ -68,7 +68,7 @@ export default function RecipeArticles(props) {
                               href={`/recipes/${recipe.slug}`}
                               className="text-xl lg:2xl pl-8 mt-8 lg:p-0 text-chinored hover:underline cursor-pointer block"
                             >
-                              Read More >
+                              Read More &gt;
                             </a>
                           </div>
                         </div>
