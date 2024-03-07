@@ -69,7 +69,7 @@ export function CtaScratch(props) {
           </div>
 
           <div className="col-span-1">
-            <div class="sm:flex block relative">
+            <div className="sm:flex block relative">
               <img
                 src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/scratch.png"
                 className="3xl:h-80 xl:h-64 lg:h-48 md:h-44 sm:h-36 sm:h-32 xs:h-28 h-16 md:ml-0 ml-4 z-10"

@@ -5,7 +5,9 @@
       "heading": "Family Farmed _Not_ Factory Farmed",
       "image": {
         "src": "/images/hero-why-organic.jpg",
-        "alt": "Why Organic"
+        "alt": "Why Organic",
+        "width": 2107,
+        "height": 893
       },
       "image_mobile": {
         "src": "/images/hero-why-organic.jpg",
