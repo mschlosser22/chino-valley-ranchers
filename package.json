@@ -20,6 +20,7 @@
     "dotenv": "^9.0.0",
     "fast-glob": "^3.2.5",
     "final-form": "^4.20.2",
+    "formidable": "^3.5.1",
     "gatsby-tinacms-git": "^0.43.3",
     "gatsby-tinacms-json": "^0.43.3",
     "gray-matter": "^4.0.3",
@@ -31,6 +32,7 @@
     "next-tinacms-json": "^0.50.0",
     "next-transpile-modules": "^8.0.0",
     "parse-url": "^5.0.7",
+    "prosemirror-state": "1.2.4",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
@@ -59,8 +61,7 @@
     "tinacms": "^0.40.0",
     "typeface-lato": "^1.1.13",
     "url-parse": "^1.5.3",
-    "utils": "^0.3.1",
-    "prosemirror-state": "1.2.4"
+    "utils": "^0.3.1"
   },
   "devDependencies": {
     "@types/node": "^15.0.1",
