@@ -18,7 +18,7 @@ export function ChrisCanCook(props) {
     >
       <div className="mx-auto pt-8 lg:pt-20 text-center relative">
         <div className="">
-          <Image src={chrisImage} alt="Chris Can Cook" layout="responsive" />
+          <Image src={chrisImage} alt="Chris Can Cook" layout="responsive" height={1095} width={2075} />
         </div>
 
         <ChrisText />
