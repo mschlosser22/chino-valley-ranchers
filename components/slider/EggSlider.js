@@ -86,7 +86,7 @@ export function EggSlider(props) {
                       <div className="col-span-12 flex justify-center gap-12 lg:pb-8">
                         <a href="https://www.instagram.com/chinovalleyranchers/">
                         <img
-                              src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${icon.image.src}`}
+                              src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/images/instagram-new.png`}
                               alt="CVR Instagram"
                               className="h-24"
                             />
@@ -104,7 +104,7 @@ export function EggSlider(props) {
       <div
         className={`relative w-full hidden lg:block h-[95px] bg-cover bg-no-repeat z-10`}
         style={{
-          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper-edge-border-bottom.png')`,
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/images/bg-paper-edge-border-bottom.png')`,
         }}
       ></div>
     </>
