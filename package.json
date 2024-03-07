@@ -9,6 +9,7 @@
     "start": "next start --port 7500"
   },
   "dependencies": {
+    "@directus/sdk": "^15.0.2",
     "@fontsource/ultra": "^4.2.2",
     "@glidejs/glide": "^3.4.1",
     "@headlessui/react": "^1.2.0",
