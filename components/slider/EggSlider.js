@@ -83,12 +83,12 @@ export function EggSlider(props) {
                         </p>
                       </div>
                       {/* Icons */}
-                      <div className="col-span-12 flex justify-center gap-12 lg:pb-8">
+                      <div className="col-span-12 flex justify-center gap-12 pb-8">
                         <a href="https://www.instagram.com/chinovalleyranchers/">
                         <img
                               src={`/images/instagram-new.png`}
                               alt="CVR Instagram"
-                              className="h-24"
+                              className="h-12 lg:h-24"
                             />
                         </a>
                       </div>
