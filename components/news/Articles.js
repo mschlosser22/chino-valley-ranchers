@@ -96,21 +96,14 @@ export function Articles(props) {
   const [articles, setArticles] = useState(newsContext);
 
   if (articles) {
-    const parsedArticles = articles.map((article) =>
-      JSON.parse(article.content)
-    );
-    parsedArticles.sort(function (a, b) {
-      return new Date(b.date) - new Date(a.date);
-    });
-
-    const featuredArticle = parsedArticles.splice(0, 1);
 
     return (
-      <div>
+      <div className="prose lg:prose-xl pt-20 lg:pt-48 pb-24 max-w-5xl mx-auto text-left px-8 lg:px-0">
         {/* Featured Article */}
         <div className="max-w-6xl mx-auto">
-          {featuredArticle.map((article, index) => {
+          {articles.map((article, index) => {
             if (index == 0) {
+              console.log("FEATURED ARTICLE", article);
               return (
                 <div key={index} className="max-w-6xl mx-auto">
                   <div className="grid grid-cols-12">
@@ -118,21 +111,21 @@ export function Articles(props) {
                       <a href={`/${article.slug}`}>
                         {article.image ? (
                           <img
-                            src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_500,w_500/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${article.image.src}`}
+                            src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/${article.image}`}
                             alt={article.image.alt}
                             className="mb-12"
                           ></img>
                         ) : (
                           <img
-                            src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/article1.jpg"
+                            src="https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/ec8a2445-ec51-4a80-87ba-ae894661fe79"
                             alt="placeholder image"
                             className="mb-12"
                           ></img>
                         )}
                       </a>
                       <div className="col-span-12">
-                        <a href={`/${article.slug}`}>
-                          <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4">
+                        <a href={`/${article.slug}`} className="!no-underline">
+                          <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 !text-chinored font-ultra uppercase tracking-wide mb-4">
                             {article.title}
                           </h1>
                         </a>
@@ -190,7 +183,7 @@ export function Articles(props) {
                       ></div>
                       <a
                         href={`/${article.slug}`}
-                        className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer"
+                        className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer !no-underline"
                       >
                         Read More &gt;
                       </a>
@@ -210,35 +203,39 @@ export function Articles(props) {
 
         <div className="lg:max-w-6xl mx-auto pb-12 lg:pb-24">
           <PaginatedList
-            list={parsedArticles}
+            list={articles}
             itemsPerPage={8}
             renderList={(list) => (
               <div className="grid grid-cols-12 lg:gap-16 gap-8 relative">
                 {list.map((article, index) => {
+                  // Skip the first article
+                  if (index == 0) {
+                    return;
+                  }
                   return (
                     <div key={index} className="lg:col-span-6 col-span-12">
                       <div>
                         <a
                           href={`/${article.slug}`}
-                          className="block h-full w-full"
+                          className="block h-full w-full !no-underline"
                         >
-                          {article.image && article.image.src ? (
+                          {article.image ? (
                             <img
-                              src={`https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${article.image.src}`}
+                              src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/${article.image}`}
                               alt={article.image.alt}
                               className="mb-12 object-cover h-72 w-full"
                             ></img>
                           ) : (
                             <img
-                              src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/CVR_Blog_Thumbnail.png"
+                              src="https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/ec8a2445-ec51-4a80-87ba-ae894661fe79"
                               alt="placeholder image"
                               className="mb-12 object-cover h-48 w-full"
                             ></img>
                           )}
                         </a>
-                        <a href={`/${article.slug}`}>
+                        <a href={`/${article.slug}`}className="!no-underline">
                           <h1
-                            className="text-2xl lg:text-4xl px-8 lg:p-0 text-chinored font-ultra uppercase tracking-wide mb-4"
+                            className="text-2xl lg:text-4xl px-8 lg:p-0 !text-chinored font-ultra uppercase tracking-wide mb-4"
                             dangerouslySetInnerHTML={{ __html: article.title }}
                           ></h1>
                         </a>
@@ -294,7 +291,7 @@ export function Articles(props) {
                         ></p>
                         <a
                           href={`/${article.slug}`}
-                          className="text-xl lg:2xl pl-8 lg:p-0 text-chinored hover:underline cursor-pointer"
+                          className="text-xl lg:2xl pl-8 lg:p-0 !text-chinored hover:underline cursor-pointer !no-underline"
                         >
                           Read More &gt;
                         </a>
