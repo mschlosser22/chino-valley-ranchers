@@ -113,19 +113,19 @@ export function Articles(props) {
                           <img
                             src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/${article.image}`}
                             alt={article.image.alt}
-                            className="mb-12"
+                            className="mb-8"
                           ></img>
                         ) : (
                           <img
                             src="https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/ec8a2445-ec51-4a80-87ba-ae894661fe79"
                             alt="placeholder image"
-                            className="mb-12"
+                            className="mb-4"
                           ></img>
                         )}
                       </a>
                       <div className="col-span-12">
                         <a href={`/${article.slug}`} className="!no-underline">
-                          <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 !text-chinored font-ultra uppercase tracking-wide mb-4">
+                          <h1 className="text-2xl lg:text-4xl px-8 lg:p-0 !text-chinored font-ultra uppercase tracking-wide mb-2">
                             {article.title}
                           </h1>
                         </a>
@@ -172,7 +172,7 @@ export function Articles(props) {
                         </div>
                       </div>
                       <div
-                        className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl"
+                        className="mt-6 mb-4 px-8 lg:p-0 text-black lg:2xl text-xl"
                         dangerouslySetInnerHTML={{
                           __html: truncate(
                             article.content.replace(/(<([^>]+)>)/gi, ""),
@@ -190,7 +190,7 @@ export function Articles(props) {
                     </div>
                     <img
                       src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
-                      className="mt-20 mb-20 col-span-12"
+                      className="mt-20 mb-12 col-span-12"
                     ></img>
                   </div>
                 </div>
@@ -223,13 +223,13 @@ export function Articles(props) {
                             <img
                               src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/${article.image}`}
                               alt={article.image.alt}
-                              className="mb-12 object-cover h-72 w-full"
+                              className="mb-4 object-cover h-72 w-full"
                             ></img>
                           ) : (
                             <img
                               src="https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/ec8a2445-ec51-4a80-87ba-ae894661fe79"
                               alt="placeholder image"
-                              className="mb-12 object-cover h-48 w-full"
+                              className="mb-4 object-cover h-48 w-full"
                             ></img>
                           )}
                         </a>
@@ -280,7 +280,7 @@ export function Articles(props) {
                           </RedditShareButton>
                         </div>
                         <p
-                          className="mt-6 mb-6 px-8 lg:p-0 text-black lg:2xl text-xl"
+                          className="mt-6 mb-2 px-8 lg:p-0 text-black lg:2xl text-xl"
                           dangerouslySetInnerHTML={{
                             __html: truncate(
                               article.content.replace(/(<([^>]+)>)/gi, ""),

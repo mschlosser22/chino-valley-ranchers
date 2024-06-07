@@ -12,6 +12,9 @@ import { WhatIs } from '../../components/regenerative/WhatIs';
 import { Content } from '../../components/regenerative/Content';
 import { ImageFull } from '../../components/regenerative/ImageFull';
 import { ImageGrid } from '../../components/regenerative/ImageGrid';
+import { Certified } from '../../components/regenerative/Certified';
+import { EggsOpen } from '../../components/regenerative/EggsOpen';
+import { Logos } from '../../components/regenerative/Logos';
 
 export default function Products() {
 
@@ -33,6 +36,9 @@ export default function Products() {
         <Content />
         <ImageFull />
         <ImageGrid />
+        <Certified />
+        <EggsOpen />
+        <Logos />
       </div>
 
     </div>
