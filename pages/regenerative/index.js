@@ -10,6 +10,8 @@ import { eggTermDefBlock } from '../../components/being-humane/EggTermDef'
 import { contentSingleColumnBlock } from '../../components/content/ContentSingleColumn'
 import { WhatIs } from '../../components/regenerative/WhatIs';
 import { Content } from '../../components/regenerative/Content';
+import { ImageFull } from '../../components/regenerative/ImageFull';
+import { ImageGrid } from '../../components/regenerative/ImageGrid';
 
 export default function Products() {
 
@@ -29,6 +31,8 @@ export default function Products() {
         <RegenerativeHero />
         <WhatIs />
         <Content />
+        <ImageFull />
+        <ImageGrid />
       </div>
 
     </div>
