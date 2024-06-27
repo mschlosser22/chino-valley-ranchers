@@ -17,15 +17,15 @@ export function FeaturedArticle(props) {
       }}
     >
       <div
-        className="relative bg-repeat-y bg-contain mt-4"
+        className="relative bg-repeat-y bg-contain mt-2"
         style={{
           backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
         }}
       >
         <div className="max-w-6xl mx-auto">
           {/* Page Heading */}
-          <div className="text-center z-50 pb-8 lg:py-24 max-w-5xl mx-auto px-8 lg:px-0">
-            <h1 className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide lg:mb-4">
+          <div className="text-center z-50 pb-4 lg:py-24 max-w-5xl mx-auto px-8 lg:px-0">
+            <h1 className="text-3xl lg:text-7xl text-chinored font-ultra uppercase tracking-wide lg:mb-2">
               <InlineTextarea name="heading" />
             </h1>
             <p className="font-lato lg:text-3xl tracking-wide">

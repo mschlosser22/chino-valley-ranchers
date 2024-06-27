@@ -1,0 +1,63 @@
+{
+    "blocks": [
+        {
+            "_template": "hero",
+            "heading": "Humane Home For Happy Hens",
+            "image": "/images/hero-products.jpg"
+        },
+        {
+            "_template": "beingHumane",
+            "heading": "A heritage of cage free",
+            "image": "/images/bg-paper-edge.png",
+            "subheading": "The Nichols family has been doing cage-free egg production for more than 40 years—well before the advent of government regulations and pleas from animal rights groups. As a strong proponent of humane practices, Chino Valley Ranchers is proud to be cage free.",
+            "imageLeft": {
+                "src": "/images/humanePictureFrame1.png",
+                "alt": "Nichols Egg Ranch"
+            },
+            "textRight": "Raising chickens without cages, as well as free range and organic upbringings, typify our philosophy of treating all hens with kindness and respect. Research has shown that a comfortable low-stress environment throughout all stages of a chicken’s development makes for a happier and healthier life.",
+            "textLeft": "A few decades ago we developed a number of consistent systems for both our Pullet Farm (where we raise our chickens) and our Egg Ranch (where the mature hens lay their eggs). For example, we keep the same feed and water system in place from the Brood-House to the Grow-House and finally to the Lay-House. This makes things easy for our birds and provides familiarity throughout their lives.",
+            "imageRight": {
+                "src": "/images/humanePictureFrame2.png",
+                "alt": "Picture Frame"
+            }
+        },
+        {
+            "_template": "henParadise",
+            "heading": "American Humane Certified™",
+            "list": [
+                {
+                    "description": "As American Humane Certified™ ranchers, we are committed to consumer transparency and strive to go above and beyond for our chickens’ health, safety, and happiness. Each chicken has unlimited access to sunlight, premium grain feed, and fresh air and water. The cage free hen houses are equipped with special roosting and nesting areas and have plenty of room for chickens to roam and stretch their legs. In addition, indoor temperatures are carefully controlled to ensure comfort and safety."
+                }
+            ]
+        },
+        {
+            "_template": "qualityFeed",
+            "heading": "Early Adopters",
+            "listTop": [
+                {
+                    "description": "From the very beginning, Chino Valley Ranchers put the health of chickens above profits and success because we believe all animals should be free from hunger, thirst, discomfort, pain, injury, disease, and fear and distress; instead, they should be free to express normal animal behaviors."
+                },
+                {
+                    "description": "Chino Valley Ranchers was one of the first to adopt American Humane standards and create a low-stress environment for all chickens. The sacrifices we made — and continue to make — have earned us the trust and recognition of animal rights advocates, business partners, and consumers."
+                }
+            ]
+        },
+        {
+            "_template": "contentSingleColumn",
+            "blocks": [
+                {
+                    "_template": "content",
+                    "text": [
+                        "Some default paragraph text here"
+                    ],
+                    "heading": "Higher & More Humane Standards",
+                    "subheading": "Chino Valley Ranchers farms undergo routine audits and inspections to maintain American Humane certification. Each farm is required to follow strict rules for space, air and water quality, heating, lighting, shade, and freedom to engage in natural behaviors, such as sunbathing, roaming for bugs and worms, dustbathing, and socializing."
+                },
+                {
+                    "_template": "content",
+                    "subheading": "Employees are trained to provide the highest quality of care across the farm — whatever their role may be — to keep chickens safe, healthy, and happy."
+                }
+            ]
+        }
+    ]
+}

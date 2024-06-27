@@ -31,6 +31,8 @@ module.exports = {
         'chinobrown': '#5c311b',
         'ctagray': '#1a1818',
         'ctablue': '#004f76',
+        'chinotan': '#f5e5c8',
+        'chinolightblue': '#004f76',
       },
       lineHeight: {
         'body': '2.75rem',
