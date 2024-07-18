@@ -111,13 +111,13 @@ export function Articles(props) {
                       <a href={`/${article.slug}`}>
                         {article.image ? (
                           <img
-                            src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/https://cvr-dashboard.com/assets/${article.image}`}
+                            src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/${article.image}`}
                             alt={article.image.alt}
                             className="mb-8"
                           ></img>
                         ) : (
                           <img
-                            src="https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/https://cvr-dashboard.com/assets/ec8a2445-ec51-4a80-87ba-ae894661fe79"
+                            src="https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/ec8a2445-ec51-4a80-87ba-ae894661fe79"
                             alt="placeholder image"
                             className="mb-4"
                           ></img>
@@ -221,13 +221,13 @@ export function Articles(props) {
                         >
                           {article.image ? (
                             <img
-                              src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/https://cvr-dashboard.com/assets/${article.image}`}
+                              src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/${article.image}`}
                               alt={article.image.alt}
                               className="mb-4 object-cover h-72 w-full"
                             ></img>
                           ) : (
                             <img
-                              src="https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/https://cvr-dashboard.com/assets/ec8a2445-ec51-4a80-87ba-ae894661fe79"
+                              src="https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/ec8a2445-ec51-4a80-87ba-ae894661fe79"
                               alt="placeholder image"
                               className="mb-4 object-cover h-48 w-full"
                             ></img>

@@ -13,7 +13,7 @@ async function processJsonFile(filePath) {
       const jsonData = JSON.parse(data.toString()); // Convert buffer to string
       console.log('Processing:', jsonData.image);
       jsonData.imageAlt = jsonData.image?.alt || ''; // Use optional chaining
-      const client = createDirectus('https://cvr-dashboard.com').with(rest());
+      const client = createDirectus('http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com').with(rest());
       let tempImageResult;
       // if there is an image, import it to Directus
         if (jsonData.image) {
