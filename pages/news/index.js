@@ -6,7 +6,7 @@ import { Articles } from '../../components/news/Articles';
 import { createDirectus, rest, readItems } from '@directus/sdk';
 
 export async function getServerSideProps() {
-  const client = createDirectus('http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com').with(rest());
+  const client = createDirectus('https://cvr-dashboard.com').with(rest());
   // Fetch data from external API
   const res = await client.request(
     readItems('news', {

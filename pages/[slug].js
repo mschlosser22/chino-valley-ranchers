@@ -23,7 +23,7 @@ import {
 
 export async function getServerSideProps({params}) {
   // Fetch data from external API
-  const res = await fetch(`http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/items/news?filter[slug][_eq]=${params.slug}`);
+  const res = await fetch(`https://cvr-dashboard.com/items/news?filter[slug][_eq]=${params.slug}`);
   const articles = await res.json();
   console.log('ARTICLES', articles)
 
@@ -70,13 +70,13 @@ export default function NewsArticle({ article }) {
             <article className="prose lg:prose-xl pt-20 lg:pt-48 pb-24 max-w-5xl mx-auto text-left px-8 lg:px-0">
               {article.image ? (
                 <img
-                  src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/${article.image}`}
+                  src={`https://res.cloudinary.com/dmfgntgym/image/fetch/c_fill,h_450/f_auto/q_auto:eco/https://cvr-dashboard.com/assets/${article.image}`}
                   alt={article.imageAlt ? article.imageAlt : "placeholder image"}
                   className="max-5xl"
                 />
               ) : (
                 <img
-                  src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/assets/ec8a2445-ec51-4a80-87ba-ae894661fe79"
+                  src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://cvr-dashboard.com/assets/ec8a2445-ec51-4a80-87ba-ae894661fe79"
                   alt="placeholder image"
                   className="max-5xl"
                 />
