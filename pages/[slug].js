@@ -23,7 +23,7 @@ import {
 
 export async function getServerSideProps({params}) {
   // Fetch data from external API
-  const res = await fetch(`http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/items/news?filter[slug][_eq]=${params.slug}`);
+  const res = await fetch(`http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/items/news_two?filter[slug][_eq]=${params.slug}`);
   const articles = await res.json();
   console.log('ARTICLES', articles)
 
@@ -31,6 +31,8 @@ export async function getServerSideProps({params}) {
 }
 
 export default function NewsArticle({ article }) {
+
+  console.log('ARTICLE', article);
 
   return (
     <>
