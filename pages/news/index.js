@@ -9,7 +9,7 @@ export async function getServerSideProps() {
   const client = createDirectus('http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com').with(rest());
   // Fetch data from external API
   const res = await client.request(
-    readItems('news', {
+    readItems('news_two', {
       sort: ['sort', '-date'], //Sort by sort field and creation date descending
     })
   );
