@@ -22,7 +22,9 @@ export default function News({articles}) {
 
   return (
     <>
-    <div className={`relative`}>
+    <div className={`relative bg-repeat-y bg-contain`} style={{
+          backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
+        }}>
       <Head>
       <title>{'News'} | Chino Valley Ranchers</title>
         <meta name="description" content={'Chino Valley Ranchers'}></meta>
