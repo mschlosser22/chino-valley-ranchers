@@ -1,0 +1,15 @@
+{
+    "title": "Chris Can Cook With Alec Treffers Featuring The Original GreenPan",
+    "number": 7,
+    "category": "recipe-video-chris",
+    "tags": [
+        "lunch",
+        "dinner"
+    ],
+    "video": {
+        "src": "/images/recipeVideo2.jpg",
+        "alt": "Recipe Video Chris",
+        "code": "Pd-aHrPViN0"
+    },
+    "content": "Join Chris Nichols and superstar foodie influencer Alec Treffers as they cook up something special using The Original GreenPan in this exciting episode of 'Chris Can Cook.'"
+}

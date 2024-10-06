@@ -1,0 +1,15 @@
+{
+    "title": "Chris Can Cook With Johnathan Benvenuti And Bar Becky Long Beach",
+    "number": 7,
+    "category": "recipe-video-chris",
+    "tags": [
+        "lunch",
+        "dinner"
+    ],
+    "video": {
+        "src": "/images/recipeVideo2.jpg",
+        "alt": "Recipe Video Chris",
+        "code": "Id-Kx429b-4"
+    },
+    "content": "Chris Nichols joins Chef Johnathan Benvenuti at Bar Becky, an Italian-American kitchen inspired by his mom, to create a mouthwatering raviolo recipe using the vibrant, viral Comet Eggs in this flavorful episode of 'Chris Can Cook.'"
+}
