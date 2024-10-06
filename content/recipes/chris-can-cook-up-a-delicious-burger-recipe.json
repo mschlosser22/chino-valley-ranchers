@@ -1,0 +1,15 @@
+{
+    "title": "Chris Can Cook Up A Delicious Burger Recipe",
+    "number": 7,
+    "category": "recipe-video-chris",
+    "tags": [
+        "lunch",
+        "dinner"
+    ],
+    "video": {
+        "src": "/images/recipeVideo2.jpg",
+        "alt": "Recipe Video Chris",
+        "code": "ib6zlPVrCvo"
+    },
+    "content": "Chris Nichols (@CVRCEO) of Chino Valley Ranchers shows us how to grill up mouthwatering organic beef burgers in this episode of #ChrisCanCook! #burgerrecipe"
+}
