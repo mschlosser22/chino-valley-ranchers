@@ -81,9 +81,16 @@ export default function Products({ file, isPreview}) {
             }}>
       <div className='max-w-7xl mx-auto px-8 z-50'>
             <div className='text-center pb-24 flex flex-col justify-between gap-6'>
-                <div className="lg:text-xl text-xl lg:text-center tracking-wider font-ultra pt-4 lg:pt-0 uppercase">Become part of a winning team dedicated to excellence in the egg industry!</div>
+                <div className="lg:text-xl text-xl lg:text-center tracking-wider font-ultra pt-4 lg:pt-0 uppercase">At Chino Valley Ranchers, our mission is to produce high-quality eggs while prioritizing animal welfare and environmental sustainability. Our mission is based on the following principles:</div>
                 <div className='text-black lg:text-lg font-lato font-medium text-xl'>
-                    As a leader in sustainable egg production since 1953, we take pride in providing high-quality food to our customers. We are seeking motivated individuals who share our commitment to ethical practices, exceptional product quality, and customer satisfaction. Join us today and be a part of the Chino Valley Ranchers difference!
+                    <ul>
+                        <li>Quality: We produce the freshest and highest-quality eggs possible.</li>
+                        <li>Animal Welfare: We treat our hens with kindness and respect through personalized care.</li>
+                        <li>Sustainability: We put back into the earth what we take out of it.</li>
+                    </ul>
+                </div>
+                <div className='text-black lg:text-lg font-lato font-medium text-xl'>
+                We are always on the lookout for top-tier talent to join our growing team of dedicated professionals. Become part of a winning team that has been a leader in egg production since 1953, providing high-quality food to our customers. We take pride in ethical practices, exceptional product quality, and customer satisfaction. Whether you are passionate about agriculture, animal welfare, or food production, we offer a variety of opportunities to contribute to our mission. Join us today and be a part of the Chino Valley Ranchers difference!
                 </div>
                 <div className='text-black lg:text-lg font-lato font-medium text-xl font-bold'>
                     View our current open opportunities below.
@@ -94,9 +101,7 @@ export default function Products({ file, isPreview}) {
                 <div className='text-center'>
                     <h2 className="text-xl lg:text-3xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 lg:px-0 px-8 break-words">Available Positions</h2>
                     <div className='flex flex-col gap-3 text-center lg:text-left'>
-                        <a href='https://employers.indeed.com/jobs/view?id=2d82fd976a20&employerJobId=aXJpOi8vYXBpcy5pbmRlZWQuY29tL0VtcGxveWVySm9iL2U0ODNmMTI0LTQ3MzUtNDQwZC04YzM4LWRmMWEyZjlhY2QxZg%3D%3D&from=%3Ffrom%3Dgnav-empcenter' target='_blank' className='text-chinored uppercase font-bold text-xl hover:underline'>Shipping/Receiving - 2nd Shift, Colton, CA - Job Details | Indeed.com</a>
-                        <a href='https://employers.indeed.com/jobs/view?id=97e62e318a06&employerJobId=aXJpOi8vYXBpcy5pbmRlZWQuY29tL0VtcGxveWVySm9iL2I1MWJiYzQxLTRkMDEtNDE2Ni04MDQyLTJjYTE1ZmZlZjFlYQ%3D%3D&from=%3Ffrom%3Dgnav-empcenter' target='_blank' className='text-chinored uppercase font-bold text-xl hover:underline'>Class B Driver, Colton, CA - Job Details | Indeed.com</a>
-                    </div>
+                      </div>
                 </div>
                 <div>
                     <h2 className="text-xl lg:text-3xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 lg:px-0 px-8 break-words">Submit Application</h2>

@@ -40,6 +40,7 @@ export function Nav(props) {
         { name: "It Starts With Our Feed", href: "/about-feed" },
         { name: "Pasture Raised Eggs", href: "/about-pasture-raised" },
         { name: "Our Family", href: "/our-family" },
+        { name: "Careers", href: "/opportunities" },
       ],
     },
     { name: "Our Eggs", href: "/products", current: false },
