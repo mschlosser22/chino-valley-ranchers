@@ -14,7 +14,7 @@ const getVideoRecipes = (recipes) => {
   const results = recipes.filter(
     (recipe) => recipe.category == "recipe-video-chris"
   );
-  const sortResults = results.sort((a, b) => b.number - a.number);
+  const sortResults = results.sort((a, b) => a.number - b.number);
   return sortResults;
 };
 
