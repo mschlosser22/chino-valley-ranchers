@@ -95,12 +95,16 @@ export default function Products({ file, isPreview}) {
                 <div className='text-black lg:text-lg font-lato font-medium text-xl font-bold'>
                     View our current open opportunities below.
                 </div>
+                <div className='text-black lg:text-lg font-lato font-medium text-xl'>For general resume submissions please send them to <a href="mailto:info@chinovalleyranchers.com">info@chinovalleyranchers.com</a>.</div>
             </div>
 
             <div className='max-w-5xl mx-auto grid lg:grid-cols-2 gap-8 text-center lg:text-left pb-20'>
                 <div className='text-center'>
                     <h2 className="text-xl lg:text-3xl text-chinored font-ultra uppercase tracking-wide lg:mb-12 mb-6 lg:px-0 px-8 break-words">Available Positions</h2>
                     <div className='flex flex-col gap-3 text-center lg:text-left'>
+                    <a href="/cvr-maintenance-mechanic.pdf" download className="text-chinored hover:underline">
+                      Maintenance Mechanic I - Egg Products
+                    </a>
                       </div>
                 </div>
                 <div>

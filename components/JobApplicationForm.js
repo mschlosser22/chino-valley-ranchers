@@ -52,7 +52,7 @@ export default function JobApplicationForm() {
       <input name="email" placeholder="Email" onChange={handleChange} className='border border-black rounded p-2' required />
       <select name="job" onChange={handleChange} className='border border-black rounded p-2' required>
         <option value={``}>Select job</option>
-
+        <option value={`Maintenance Mechanic I - Egg Products`}>Maintenance Mechanic I - Egg Products</option>
       </select>
       <label className='uppercase text-gray-600'>Upload your resume</label>
       <input type="file" name="resume" onChange={handleFileChange} className='pb-8' accept="application/pdf" required />
