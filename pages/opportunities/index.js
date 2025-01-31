@@ -105,6 +105,9 @@ export default function Products({ file, isPreview}) {
                     <a href="/cvr-maintenance-mechanic.pdf" download className="text-chinored hover:underline">
                       Maintenance Mechanic I - Egg Products
                     </a>
+                    <a href="/assistant-complex-manager.pdf" download className="text-chinored hover:underline">
+                    Assistant Complex Manager (TX)
+                    </a>
                       </div>
                 </div>
                 <div>
