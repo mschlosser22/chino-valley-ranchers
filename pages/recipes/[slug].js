@@ -108,10 +108,7 @@ export default function RecipesArticle({ file, isPreview }) {
     <>
       <div className={`relative`}>
         <Head>
-          <title>
-            {file.data.title ? file.data.title : "Recipes"} | Chino Valley
-            Ranchers
-          </title>
+          <title>{file.data.title ? file.data.title : "Recipes"} | Chino Valley Ranchers</title>
           <meta
             name="description"
             content={

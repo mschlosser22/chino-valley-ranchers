@@ -38,9 +38,7 @@ export default function NewsArticle({ article }) {
     <>
       <div className={`relative`}>
         <Head>
-          <title>
-            {article.title ? article.title : "News"} | Chino Valley Ranchers
-          </title>
+          <title>{article.title ? article.title : "News"} | Chino Valley Ranchers</title>
           <meta
             name="description"
             content={

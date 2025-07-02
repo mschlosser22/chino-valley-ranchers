@@ -8,7 +8,7 @@ export default function RecipeVideosChris(props) {
             props.recipeTag == "all"
           ) {
             return (
-              <>
+              <div key={recipe.slug || `recipe-${index}`} className="col-span-12">
                 <div className={`col-span-12 relative recipe`}>
                   <div
                     className="p-8 bg-cover mb-12"
@@ -40,7 +40,7 @@ export default function RecipeVideosChris(props) {
                   src="https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/orangeSeperator.jpg"
                   className="mt-20 mb-20 col-span-12"
                 ></img>
-              </>
+              </div>
             );
           }
         })}

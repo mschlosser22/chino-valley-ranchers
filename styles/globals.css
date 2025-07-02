@@ -155,11 +155,9 @@
   padding-bottom: 2rem;
 }
 
-@media not all and (min-resolution: 0.001dpcm) {
-  @media {
-    .safari10 {
-      height: 50px;
-    }
+@supports (-webkit-appearance: none) and (not (min-resolution: 0.001dpcm)) {
+  .safari10 {
+    height: 50px;
   }
 }
 

@@ -1,0 +1,15 @@
+{
+    "title": "Chris Can Cook With Tumble 22 - Texas Chicken Joint",
+    "number": 0.1,
+    "category": "recipe-video-chris",
+    "tags": [
+        "lunch",
+        "dinner"
+    ],
+    "video": {
+        "src": "/images/recipeVideo2.jpg",
+        "alt": "Recipe Video Chris",
+        "code": "vq5oTuProYs"
+    },
+    "content": "Chris Nichols heads to Austin, TX, and stops by Tumble 22 - Texas Chicken Joint, home of legendary fried chicken, to get a taste of their Heavenly Eggs in this flavorful episode of 'Chris Can Cook'."
+}

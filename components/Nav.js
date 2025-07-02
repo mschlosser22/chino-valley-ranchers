@@ -197,74 +197,64 @@ export function Nav(props) {
                   <div className="gap-2 hidden lg:flex lg:items-center">
                     <a
                       href="https://www.instagram.com/chinovalleyranchers/"
-                      className="cursor-pointer"
+                      className="cursor-pointer inline-block h-[28px]"
                       target="_blank"
                     >
-                      <div className="h-[28px]">
-                        <Image
-                          src="/images/instagram.png"
-                          height={28}
-                          width={28}
-                          alt="Chino Valley Ranchers"
-                        />
-                      </div>
+                      <Image
+                        src="/images/instagram.png"
+                        height={28}
+                        width={28}
+                        alt="Chino Valley Ranchers"
+                      />
                     </a>
 
                     <a
                       href="https://www.youtube.com/channel/UCfpxQ8Bri4ZVNE__73DD36A"
-                      className="cursor-pointer"
+                      className="cursor-pointer inline-block h-[28px]"
                       target="_blank"
                     >
-                      <div className="h-[28px]">
-                        <Image
-                          src="/images/youtube.png"
-                          height={28}
-                          width={28}
-                          alt="Chino Valley Ranchers"
-                        />
-                      </div>
+                      <Image
+                        src="/images/youtube.png"
+                        height={28}
+                        width={28}
+                        alt="Chino Valley Ranchers"
+                      />
                     </a>
                     <a
                       href="https://www.facebook.com/Chino-Valley-Ranchers-Organic-and-Specialty-Eggs-110085262344097/"
-                      className="cursor-pointer"
+                      className="cursor-pointer inline-block h-[28px]"
                       target="_blank"
                     >
-                      <div className="h-[28px]">
-                        <Image
-                          src="/images/facebook.png"
-                          height={28}
-                          width={28}
-                          alt="Chino Valley Ranchers"
-                        />
-                      </div>
+                      <Image
+                        src="/images/facebook.png"
+                        height={28}
+                        width={28}
+                        alt="Chino Valley Ranchers"
+                      />
                     </a>
                     {/* <a
                       href="https://twitter.com/ChinoValleyEggs"
-                      className="cursor-pointer"
+                      className="cursor-pointer inline-block h-[28px]"
                       target="_blank"
                     >
-                      <div className="h-[28px]">
-                        <Image
-                          src="/images/twitter.png"
-                          height={28}
-                          width={28}
-                          alt="Chino Valley Ranchers"
-                        />
-                      </div>
+                      <Image
+                        src="/images/twitter.png"
+                        height={28}
+                        width={28}
+                        alt="Chino Valley Ranchers"
+                      />
                     </a> */}
                     <a
                       href="https://www.tiktok.com/@chinovalleyranchers?lang=en"
-                      className="cursor-pointer"
+                      className="cursor-pointer inline-block h-[28px]"
                       target="_blank"
                     >
-                      <div className="h-[28px]">
-                        <Image
-                          src="/images/tiktok.png"
-                          height={28}
-                          width={28}
-                          alt="Chino Valley Ranchers"
-                        />
-                      </div>
+                      <Image
+                        src="/images/tiktok.png"
+                        height={28}
+                        width={28}
+                        alt="Chino Valley Ranchers"
+                      />
                     </a>
                   </div>
                 </div>
