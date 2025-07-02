@@ -44,6 +44,12 @@ export default class MyDocument extends Document {
 
             `
           }}></script>
+          {/* Google Fonts */}
+          <link
+            href="https://fonts.googleapis.com/css2?family=Ultra"
+            rel="stylesheet"
+          />
+          <link rel="stylesheet" href="https://use.typekit.net/yyq5ssh.css" />
           {/* Styled Components CSS */}
           {this.props.styles}
         </Head>

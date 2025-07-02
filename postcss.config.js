@@ -1,6 +1,9 @@
 module.exports = {
   plugins: {
     tailwindcss: {},
-    autoprefixer: {},
+    autoprefixer: {
+      ignoreUnknownVersions: true,
+      flexbox: 'no-2009',
+    },
   },
 }

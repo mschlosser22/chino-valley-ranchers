@@ -69,9 +69,7 @@ export default function Products({ file, isPreview, products }) {
     <>
       <div className={`relative`}>
         <Head>
-          <title>
-            {file.data.title ? file.data.title : 'Chino Valley Ranchers'}
-          </title>
+          <title>{file.data.title ? file.data.title : 'Chino Valley Ranchers'}</title>
           <meta
             name='description'
             content={

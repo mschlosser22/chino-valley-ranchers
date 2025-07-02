@@ -12,7 +12,7 @@ export function HeroChris(props) {
   return (
     <div className="relative h-[370px] sm:h-auto pt-16 lg:mt-0">
       <div className="">
-        <Image src={chrisImage} alt="Chris Can Cook" layout="responsive" />
+        <Image src={chrisImage} alt="Chris Can Cook" style={{ width: '100%', height: 'auto' }} />
       </div>
 
       {/*<div className="absolute w-full h-full lg:hidden bg-cover" style={{ backgroundImage: `url(https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com/${props.image_mobile.src})` }}>

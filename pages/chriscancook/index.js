@@ -67,7 +67,7 @@ export default function Recipes({ file, isPreview, recipes}) {
     <>
     <div className={`relative`}>
       <Head>
-      <title>{file.data.title ? file.data.title : 'Recipes'} | Chino Valley Ranchers</title>
+        <title>{file.data.title ? file.data.title : 'Recipes'} | Chino Valley Ranchers</title>
         <meta name="description" content={file.data.meta && file.data.meta.description ? file.data.meta.description : 'Chino Valley Ranchers'}></meta>
         <meta name="keywords" content={file.data.meta && file.data.meta.keywords ? file.data.meta.keywords : 'Chino Valley Ranchers'}></meta>
         <link rel="icon" href="/favicon.ico" />

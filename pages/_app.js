@@ -1,6 +1,4 @@
 import 'typeface-lato'
-import Head from 'next/head'
-
 import '../styles/globals.css'
 
 import { TinaCMS, TinaProvider } from 'tinacms'
@@ -63,13 +61,7 @@ function MyApp({ Component, pageProps }) {
             });
         `}
       </Script>
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Ultra"
-          rel="stylesheet"
-        />
-        <link rel="stylesheet" href="https://use.typekit.net/yyq5ssh.css"></link>
-      </Head>
+
       <TinaProvider cms={cms}>
         <TinacmsGithubProvider
           onLogin={onLogin}
