@@ -34,7 +34,7 @@ export function EggSlider(props) {
         }}
       >
         <div className="egg-slider-min-height"></div>
-        <div className="absolute w-full -top-36 lg:-top-48 overflow-y-hidden">
+        <div className="absolute w-full top-12 lg:-top-48 overflow-y-hidden">
           <div className="relative w-full overflow-visible egg-slider-bg">
             <Carousel
               className="absolute -top-0"
