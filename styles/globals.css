@@ -22,6 +22,20 @@
   background-position: center top 1rem;
 }
 
+.egg-slider-min-height {
+  min-height: 615px;
+}
+@media (min-width: 640px) {
+  .egg-slider-min-height {
+    min-height: 775px;
+  }
+}
+@media (min-width: 1024px) {
+  .egg-slider-min-height {
+    min-height: 650px;
+  }
+}
+
 .image-container {
   width: 100%;
 }

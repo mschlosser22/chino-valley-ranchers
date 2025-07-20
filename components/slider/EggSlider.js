@@ -33,7 +33,7 @@ export function EggSlider(props) {
           backgroundImage: `url('https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/bg-paper.png')`,
         }}
       >
-        <div className="min-h-[615px] sm:min-h-[775px] lg:min-h-[650px]"></div>
+        <div className="egg-slider-min-height"></div>
         <div className="absolute w-full -top-36 lg:-top-48 overflow-y-hidden">
           <div className="relative w-full overflow-visible egg-slider-bg">
             <Carousel
