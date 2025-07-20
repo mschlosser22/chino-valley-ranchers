@@ -12,6 +12,66 @@
       }
     },
     {
+      "_template": "eggSlider",
+      "classes": "test",
+      "slides": [
+        {
+          "name": "Pasture Raised",
+          "heading": "Pastured",
+          "subheading": "Large | Brown",
+          "content": "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms. Our ladies forage as they please on seeds, bugs and green grass.",
+          "image": {
+            "src": "/images/products/pasture-raised.png",
+            "alt": "Pasture Raised Eggs"
+          },
+          "icons": [
+            {
+              "image": {
+                "src": "/images/instagram-new.png",
+                "alt": "Instagram Icon"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Organic",
+          "heading": "Free Range",
+          "subheading": "Large | Brown",
+          "content": "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+          "image": {
+            "alt": "Organic Eggs",
+            "src": "/images/products/organic.png"
+          },
+          "icons": [
+            {
+              "image": {
+                "src": "/images/icon-certified.png",
+                "alt": "Certified Icon"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Organic Omega-3",
+          "heading": "Free Range",
+          "subheading": "Large | Brown",
+          "content": "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
+          "image": {
+            "src": "/images/products/organic-omega-3.png",
+            "alt": "Organic Omega-3"
+          },
+          "icons": [
+            {
+              "image": {
+                "src": "/images/icon-certified.png",
+                "alt": "Certified Icon"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "_template": "youtubeVideoComet",
       "video": "https://www.youtube.com/embed/stFcjrL6T9M?controls=0?rel=0"
     },
