@@ -14,6 +14,10 @@
 }
 */
 
+.hero-component {
+  min-height: 400px;
+}
+
 .egg-slider-bg {
   background-position: center top 0 48px;
 }
