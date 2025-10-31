@@ -22,6 +22,15 @@
   background-position: center top 1rem;
 }
 
+.egg-slider-min-height {
+  min-height: 615px;
+}
+@media (min-width: 640px) {
+  .egg-slider-min-height {
+    min-height: 775px;
+  }
+}
+
 .image-container {
   width: 100%;
 }
