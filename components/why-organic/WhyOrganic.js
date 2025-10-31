@@ -22,6 +22,17 @@ export function WhyOrganic(props) {
             <div className="font-lato lg:text-2xl tracking-wide lg:mx-52 mx-8 lg:text-left">
               <InlineTextarea name="subheading" />
             </div>
+            <div className="font-lato lg:text-2xl tracking-wide lg:mx-52 mx-8 lg:text-left mt-8">
+              <h3 className="text-2xl uppercase font-ultra">Core Values (IMPACT):</h3>
+              <ul className="list-outside list-disc space-y-2 text-xl ml-6 break-words">
+                <li className="leading-relaxed">Innovation: Curious, forward-thinking</li>
+                <li className="leading-relaxed">Multi-Generational: Growing into the future and honoring the legacy we were founded on</li>
+                <li className="leading-relaxed">Passion: Unwavering commitment to what we produce and how we produce it</li>
+                <li className="leading-relaxed">Action: Seeking improvement and never accepting the status quo</li>
+                <li className="leading-relaxed">Character: We treat our employees, customers, and hens with honesty, integrity, and respect</li>
+                <li className="leading-relaxed">Teamwork: We are one team united — accountable to ourselves, each other, and our customers</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
