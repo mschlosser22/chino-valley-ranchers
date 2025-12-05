@@ -30,7 +30,7 @@ export function Hero(props) {
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
-                className="hidden lg:inline-block"
+                className="lg:inline-block"
               />
             </div>
           )}
