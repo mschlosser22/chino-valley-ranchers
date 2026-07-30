@@ -9,6 +9,7 @@ import {
 } from "react-tinacms-inline";
 
 import { Button } from "../button/Button";
+import { ConsentGatedVideo } from "./ConsentGatedVideo";
 
 export function RecipesAndVideos(props) {
   return (
@@ -42,15 +43,7 @@ export function RecipesAndVideos(props) {
               className="col-span-12 lg:col-span-6 mb-2 lg:mb-12 lg:mb-0"
             >
               <div className="border-8 border-white rounded mb-2 lg:mb-8 shadow-lg">
-                <div className="aspect-w-16 aspect-h-9">
-                  <iframe
-                    src={`${video.src}`}
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
+                <ConsentGatedVideo src={video.src} title={video.title} />
               </div>
               <h5 className="font-lato lg:text-3xl tracking-wide text-left">
                 {video.title}!

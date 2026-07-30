@@ -31,17 +31,33 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          {/* Google Tag Manager - add the <head> part here */}
+          {/*
+            Google Consent Mode v2 defaults.
+
+            This MUST be the first script in <head>, before anything that could
+            load a Google tag. It denies every storage category up front; the
+            consent UI sends an 'update' once the visitor chooses.
+
+            The GTM container itself is NOT loaded here -- it is loaded from
+            components/consent/GatedTagManager.js only after consent, so no tag
+            inside the container can fire pre-consent regardless of how it is
+            configured. See docs/gtm-handoff.md.
+          */}
           <script dangerouslySetInnerHTML={{
             __html: `
-            <!-- Google Tag Manager -->
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5BWNNM7F');
-            <!-- End Google Tag Manager -->
-
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied',
+                'functionality_storage': 'granted',
+                'security_storage': 'granted',
+                'wait_for_update': 500
+              });
+              gtag('set', 'ads_data_redaction', true);
+              gtag('set', 'url_passthrough', false);
             `
           }}></script>
           {/* Google Fonts */}
@@ -54,11 +70,13 @@ export default class MyDocument extends Document {
           {this.props.styles}
         </Head>
         <body>
-          {/* Google Tag Manager - add the <body> part here */}
-          <noscript dangerouslySetInnerHTML={{
-            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BWNNM7F"
-              height="0" width="0" style="display:none;visibility:hidden"></iframe>`
-          }}></noscript>
+          {/*
+            The GTM <noscript> iframe has been removed. It loads
+            googletagmanager.com unconditionally for no-JS visitors and cannot
+            be consent-gated -- there is no way to ask a no-JS visitor for
+            consent before it fires. Restoring it would reintroduce exactly the
+            pre-consent transmission this work removes.
+          */}
           <Main />
           <NextScript />
         </body>

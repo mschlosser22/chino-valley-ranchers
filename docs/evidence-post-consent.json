@@ -1,0 +1,117 @@
+{
+  "capturedAt": "2026-07-30T18:40:16.219Z",
+  "phase": "post-remediation (Phases 1 & 2) \u2014 pre-consent state",
+  "pages": [
+    {
+      "path": "/",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/recipes",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/contact",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/store-locator",
+      "totalTrackerRequests": 2,
+      "byHost": {
+        "destinilocators.com": 2
+      },
+      "cookiesSet": [],
+      "sample": [
+        "https://destinilocators.com/chinovalleyranchers/site/install/",
+        "http://destinilocators.com/control/pscript.js"
+      ]
+    },
+    {
+      "path": "/products/comet-eggs",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/our-family",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/about-feed",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/about-pasture-raised",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/why-organic",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/opportunities",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/chriscancook",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/news",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/being-humane",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/regenerative",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    },
+    {
+      "path": "/products",
+      "totalTrackerRequests": 0,
+      "byHost": {},
+      "cookiesSet": [],
+      "sample": []
+    }
+  ],
+  "note": "Requests recorded on a fresh profile with no consent choice made. The only remaining third-party request is the Destini store locator, loaded as a functional third party with on-page disclosure."
+}

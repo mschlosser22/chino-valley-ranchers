@@ -2,6 +2,7 @@ import { BlocksControls } from "react-tinacms-inline";
 import { Button } from "../../components/button/Button";
 import Image from "next/image";
 import cometTextImage from "../../public/images/comet-eggs-have-arrived.png";
+import { ConsentGatedVideo } from "./ConsentGatedVideo";
 
 const button = {
   link: {
@@ -24,15 +25,7 @@ export function YoutubeComet(props) {
 
         <div className="bg-cover w-full pb-8 lg:pb-20 pt-8 lg:pt-12 px-2 lg:px-0">
           <div className="border-2 border-white rounded-sm">
-            <div className="aspect-w-16 aspect-h-9">
-              <iframe
-                src={props.video}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+            <ConsentGatedVideo src={props.video} />
           </div>
         </div>
 
