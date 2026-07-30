@@ -7,7 +7,7 @@ import {
   useGithubToolbarPlugins,
   createGithubDeleteAction,
 } from "react-tinacms-github";
-import { HtmlFieldPlugin } from "react-tinacms-editor";
+import { useEffect, useState } from "react";
 
 import { Nav } from "../../components/Nav";
 import { Footer } from "../../components/footer/Footer";
@@ -33,10 +33,20 @@ import {
 
 export default function RecipesArticle({ file, isPreview }) {
   const cms = useCMS();
+  const [HtmlFieldPlugin, setHtmlFieldPlugin] = useState(null);
 
   const deleteAction = createGithubDeleteAction();
 
-  usePlugins([HtmlFieldPlugin]);
+  // Dynamically import HtmlFieldPlugin only on client side
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      import('react-tinacms-editor').then((module) => {
+        setHtmlFieldPlugin(module.HtmlFieldPlugin)
+      })
+    }
+  }, [])
+
+  usePlugins([...(HtmlFieldPlugin ? [HtmlFieldPlugin] : [])])
 
   const formConfig = {
     id: "../../content/recipes/index.json",

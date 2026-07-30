@@ -2,8 +2,8 @@ import { useCMS, usePlugins } from "tinacms"
 import { useRouter } from "next/router"
 import slugify from "slugify"
 import { FORM_ERROR } from "final-form"
-import { HtmlFieldPlugin } from "react-tinacms-editor"
 import { DateFieldPlugin } from 'react-tinacms-date'
+import { useEffect, useState } from "react"
 
 import { JsonFile } from 'next-tinacms-json'
 import { removeInvalidChars } from "../utils/removeInvalidChars"
@@ -12,11 +12,21 @@ const useCreateNewsArticle = () => {
   //console.log(allArticles)
   const router = useRouter()
   const cms = useCMS()
+  const [HtmlFieldPlugin, setHtmlFieldPlugin] = useState(null)
 
   const github = cms.api.github
 
+  // Dynamically import HtmlFieldPlugin only on client side
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      import('react-tinacms-editor').then((module) => {
+        setHtmlFieldPlugin(module.HtmlFieldPlugin)
+      })
+    }
+  }, [])
+
   usePlugins([
-      HtmlFieldPlugin,
+      ...(HtmlFieldPlugin ? [HtmlFieldPlugin] : []),
       DateFieldPlugin,
     {
       __type: "content-creator",

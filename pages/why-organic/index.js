@@ -12,12 +12,23 @@ import { ourMissionBlock } from '../../components/why-organic/OurMission'
 import { organicMattersBlock } from '../../components/why-organic/OrganicMatters'
 import { ourCommitmentBlock } from '../../components/why-organic/OurCommitment'
 import { studiesBlock } from '../../components/why-organic/Studies'
-
-import { HtmlFieldPlugin } from "react-tinacms-editor"
+import { useEffect } from 'react'
 
 export default function Products({ file, isPreview}) {
 
   const cms = useCMS()
+
+  // Dynamically import HtmlFieldPlugin only on client side
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      import('react-tinacms-editor').then(({ HtmlFieldPlugin }) => {
+        // Check if plugin is already added to avoid duplicates
+        if (!cms.plugins.all().find(p => p.name === HtmlFieldPlugin.name)) {
+          cms.plugins.add(HtmlFieldPlugin)
+        }
+      })
+    }
+  }, [cms])
 
   const formConfig = {
     id: '../../content/whyorganic/index.json',
