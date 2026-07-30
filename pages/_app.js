@@ -7,12 +7,13 @@ import {
   TinacmsGithubProvider
 } from 'react-tinacms-github'
 import { NextGithubMediaStore } from 'next-tinacms-github'
-import Script from "next/script"
 import { useEffect } from 'react'
 
 import { ConsentProvider } from '../context/consent'
 import { ConsentBanner } from '../components/consent/ConsentBanner'
 import { ConsentPreferences } from '../components/consent/ConsentPreferences'
+import { GatedAnalytics } from '../components/consent/GatedAnalytics'
+import { GatedTagManager } from '../components/consent/GatedTagManager'
 
 
 function MyApp({ Component, pageProps }) {
@@ -69,38 +70,24 @@ function MyApp({ Component, pageProps }) {
 
 
   return (
-    <>
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=UA-37752280-1`}
-      />
+    <ConsentProvider>
+      {/* Both render null until the matching consent is granted. */}
+      <GatedAnalytics />
+      <GatedTagManager />
 
-      <Script strategy="lazyOnload">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-37752280-1', {
-              page_path: window.location.pathname,
-            });
-        `}
-      </Script>
+      <TinaProvider cms={cms}>
+        <TinacmsGithubProvider
+          onLogin={onLogin}
+          onLogout={onLogout}
+          error={pageProps.error}
+        >
+          <Component {...pageProps} />
+        </TinacmsGithubProvider>
+      </TinaProvider>
 
-      <ConsentProvider>
-        <TinaProvider cms={cms}>
-          <TinacmsGithubProvider
-            onLogin={onLogin}
-            onLogout={onLogout}
-            error={pageProps.error}
-          >
-            <Component {...pageProps} />
-          </TinacmsGithubProvider>
-        </TinaProvider>
-
-        <ConsentBanner />
-        <ConsentPreferences />
-      </ConsentProvider>
-    </>
+      <ConsentBanner />
+      <ConsentPreferences />
+    </ConsentProvider>
   )
 }
 

@@ -8,6 +8,7 @@ import { WhatItTakes } from "../../components/about-pasture-raised/WhatItTakes";
 
 import { Spring, animated, interpolate } from "react-spring";
 import { Controller, Scene } from "react-scrollmagic";
+import { ConsentGatedVideo } from "../video/ConsentGatedVideo";
 
 export function AboutPastureRaised(props) {
   const scrollPositionOverHalf = (progress) => {
@@ -129,15 +130,7 @@ export function AboutPastureRaised(props) {
                   className="bg-cover w-full"
                 >
                   <div className="p-8">
-                    <div className="aspect-w-16 aspect-h-9">
-                      <iframe
-                        src={props.video.src}
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
+                    <ConsentGatedVideo src={props.video.src} />
                   </div>
                 </div>
               </div>

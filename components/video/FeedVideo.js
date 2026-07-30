@@ -11,6 +11,7 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Spring, animated } from "react-spring";
 import { useInView } from "react-intersection-observer";
 import { Controller, Scene } from "react-scrollmagic";
+import { ConsentGatedVideo } from "./ConsentGatedVideo";
 
 export function FeedVideo(props) {
   const { ref, inView, entry } = useInView({
@@ -58,16 +59,7 @@ export function FeedVideo(props) {
 
                     <div className="col-span-12 z-40 sm:px-4 lg:px-0">
                       <div className="border-8 border-white rounded">
-                        <div className="aspect-w-16 aspect-h-9">
-                          <iframe
-                            id="trigger"
-                            src={props.video.src}
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          ></iframe>
-                        </div>
+                        <ConsentGatedVideo src={props.video.src} />
                       </div>
                     </div>
 
