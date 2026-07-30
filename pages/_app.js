@@ -7,8 +7,12 @@ import {
   TinacmsGithubProvider
 } from 'react-tinacms-github'
 import { NextGithubMediaStore } from 'next-tinacms-github'
-import { MarkdownFieldPlugin } from 'react-tinacms-editor'
 import Script from "next/script"
+import { useEffect } from 'react'
+
+import { ConsentProvider } from '../context/consent'
+import { ConsentBanner } from '../components/consent/ConsentBanner'
+import { ConsentPreferences } from '../components/consent/ConsentPreferences'
 
 
 function MyApp({ Component, pageProps }) {
@@ -42,7 +46,17 @@ function MyApp({ Component, pageProps }) {
     toolbar: pageProps.preview,
   })
 
-  cms.plugins.add(MarkdownFieldPlugin)
+  // Dynamically import MarkdownFieldPlugin only on client side
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      import('react-tinacms-editor').then(({ MarkdownFieldPlugin }) => {
+        // Check if plugin is already added to avoid duplicates
+        if (!cms.plugins.all().find(p => p.name === MarkdownFieldPlugin.name)) {
+          cms.plugins.add(MarkdownFieldPlugin)
+        }
+      })
+    }
+  }, [cms])
 
   return (
     <>
@@ -62,15 +76,20 @@ function MyApp({ Component, pageProps }) {
         `}
       </Script>
 
-      <TinaProvider cms={cms}>
-        <TinacmsGithubProvider
-          onLogin={onLogin}
-          onLogout={onLogout}
-          error={pageProps.error}
-        >
-          <Component {...pageProps} />
-        </TinacmsGithubProvider>
-      </TinaProvider>
+      <ConsentProvider>
+        <TinaProvider cms={cms}>
+          <TinacmsGithubProvider
+            onLogin={onLogin}
+            onLogout={onLogout}
+            error={pageProps.error}
+          >
+            <Component {...pageProps} />
+          </TinacmsGithubProvider>
+        </TinaProvider>
+
+        <ConsentBanner />
+        <ConsentPreferences />
+      </ConsentProvider>
     </>
   )
 }

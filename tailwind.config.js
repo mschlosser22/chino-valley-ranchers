@@ -14,6 +14,9 @@ module.exports = {
       '40': 40,
       '50': 50,
       '60': 60,
+      // Consent UI must paint above every other layer, including the z-60
+      // promo bars (CtaScratch / CtaCommercial) and the fixed nav.
+      'consent': 2147483000,
       'auto': 'auto',
     },
     extend: {
