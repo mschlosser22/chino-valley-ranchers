@@ -48,7 +48,7 @@ export function EggSlider(props) {
               slidesToSlide={1}
               swipeable
             >
-              {props.slides.map((slide, index) => (
+              {(props.slides || []).map((slide, index) => (
                 <div
                   key={index}
                   className="px-8 xl:px-0 text-left lg:text-left lg:text-left"
