@@ -10,6 +10,10 @@ import { NextGithubMediaStore } from 'next-tinacms-github'
 import Script from "next/script"
 import { useEffect } from 'react'
 
+import { ConsentProvider } from '../context/consent'
+import { ConsentBanner } from '../components/consent/ConsentBanner'
+import { ConsentPreferences } from '../components/consent/ConsentPreferences'
+
 
 function MyApp({ Component, pageProps }) {
 
@@ -63,6 +67,7 @@ function MyApp({ Component, pageProps }) {
     }
   }, [pageProps.preview])
 
+
   return (
     <>
       <Script
@@ -81,15 +86,20 @@ function MyApp({ Component, pageProps }) {
         `}
       </Script>
 
-      <TinaProvider cms={cms}>
-        <TinacmsGithubProvider
-          onLogin={onLogin}
-          onLogout={onLogout}
-          error={pageProps.error}
-        >
-          <Component {...pageProps} />
-        </TinacmsGithubProvider>
-      </TinaProvider>
+      <ConsentProvider>
+        <TinaProvider cms={cms}>
+          <TinacmsGithubProvider
+            onLogin={onLogin}
+            onLogout={onLogout}
+            error={pageProps.error}
+          >
+            <Component {...pageProps} />
+          </TinacmsGithubProvider>
+        </TinaProvider>
+
+        <ConsentBanner />
+        <ConsentPreferences />
+      </ConsentProvider>
     </>
   )
 }

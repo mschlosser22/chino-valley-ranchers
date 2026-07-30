@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "../button/Button";
+import { ManageCookiesLink } from "../consent/ManageCookiesLink";
 
 const footer_content = {
   column_two: [
@@ -151,6 +152,9 @@ export function Footer(props) {
                   <a href={item.url}>{item.text}</a>
                 </li>
               ))}
+              <li className="text-white text-5 uppercase font-din tracking-wider pb-4">
+                <ManageCookiesLink />
+              </li>
             </ul>
           </div>
           <div className="col-span-12 lg:col-span-4 md:pt-8 pl-8 lg:pl-0 lg:pt-0 text-base">
