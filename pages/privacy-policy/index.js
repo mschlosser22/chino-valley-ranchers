@@ -52,7 +52,7 @@ export default function Products({ file}) {
 
 <p><b>Marketing and embedded media</b> &mdash; Google advertising technologies and embedded video players (including YouTube and Meta/Facebook advertising technologies delivered through our tag manager). These run only if you allow them. If you decline, embedded videos display a placeholder and load only when you click to play them.</p>
 
-<p>Our store finder is provided by Destini and is treated as a necessary service on that page: it may set cookies from destinilocators.com so the map and your search results work. This is disclosed on the store locator page itself.</p>
+<p>Our store finder is provided by Destini. Like embedded video, it does not load until you allow marketing cookies or choose to load it for that visit, because it contacts Destini and their mapping provider and sets cookies from destinilocators.com. If you would rather not load it, the store locator page lists a phone number and email address so we can help you find a store directly.</p>
 
 <p>You can also control cookies through your browser settings, though disabling cookies may impact your experience on our Website.</p>
 

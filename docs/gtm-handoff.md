@@ -110,11 +110,11 @@ re-adding the script.
 visitors without JavaScript and cannot be consent-gated — there's no way to ask
 a no-JS visitor for consent first.
 
-**Destini store locator** is loaded as a *functional* third party with a visible
-disclosure on the page, rather than gated. Hard-gating it would leave visitors
-who decline cookies on an empty page, since the locator is the page's entire
-purpose. **This treatment is pending client and counsel sign-off**, and the
-decision is more consequential than it first appears — see the next section.
+**Destini store locator is gated behind consent.** With marketing consent it
+loads immediately as it always did. Without it, the page shows a branded
+placeholder explaining what loading involves, with a "Load store finder" button
+— the same click-to-load pattern used for embedded video — plus a phone number
+and email address for anyone who would rather not load it at all.
 
 We also had to change *how* it loads. Destini's installer script builds its
 iframe with `document.write()`, which silently does nothing once a page has
@@ -123,11 +123,12 @@ the locator iframe directly and skip the installer. A side benefit: the
 installer pulled in jQuery 1.11.3 from `code.jquery.com`, which is no longer
 loaded at all.
 
-### What the Destini locator brings with it
+### Why the locator needed gating
 
-`/store-locator` is the **only** page on the site that still contacts third
-parties before a consent choice. Measured on a fresh browser profile with no
-consent given, the locator iframe loads **116 requests across 13 hosts**:
+Gating this was not obvious — the locator *is* the page, so blocking it looked
+like breaking the page. What settled it was measuring what the embed actually
+pulls in. On a fresh profile with no consent, it loaded **116 requests across 13
+hosts**:
 
 | Host | What it is |
 |---|---|
@@ -136,27 +137,17 @@ consent given, the locator iframe loads **116 requests across 13 hosts**:
 | `cdnjs.cloudflare.com`, `netdna.bootstrapcdn.com`, `cdn.icomoon.io` | CDNs for jQuery, Bootstrap, icons |
 | **`www.google-analytics.com`** | **Destini's own Google Analytics** |
 
-It also sets one cookie, `AWSALBTGCORS` on `destinilocators.com` (an AWS load
-balancer cookie).
+It also set a cookie, `AWSALBTGCORS` on `destinilocators.com`.
 
-The Google Analytics call is worth flagging to counsel. It is *Destini's*
-analytics, running inside *Destini's* iframe under *their* property — not a CVR
-tag, and CVR does not receive the data. But it fires because our page embeds
-their locator, before our visitor has consented to anything.
+That Google Analytics call is worth flagging to counsel. It is *Destini's*
+analytics, inside *Destini's* iframe, under *their* property — not a CVR tag,
+and CVR receives none of the data. But it fired because our page embedded their
+locator, before our visitor had consented to anything. One page quietly
+contacting thirteen third parties including Google Analytics was not a
+comfortable thing to leave running pre-consent, so the client chose to gate it.
 
-Every other page on the site makes zero third-party requests pre-consent.
-
-**Two options, for the client and counsel to choose between:**
-
-1. **Keep the functional treatment** (current state). The page works for
-   everyone; the disclosure names the provider. Defensible on the basis that the
-   locator *is* the page, but it means one page still transmits pre-consent.
-2. **Gate the locator behind consent**, showing a "Load store finder" button in
-   its place for visitors who have not accepted. Same click-to-load pattern we
-   use for videos. Achieves zero pre-consent transmission site-wide, at the cost
-   of one extra click on that page.
-
-We can implement option 2 in well under an hour if that is the call.
+**Result: the site now makes zero tracking requests and sets zero cookies on
+every page tested, before a consent choice.**
 
 **The old GTM snippet had a syntax error.** HTML comments were embedded inside
 the JavaScript block, which likely prevented the `<head>` container script from
