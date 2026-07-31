@@ -96,13 +96,15 @@
   }
 }
 
+/*
+  The store locator iframe is now rendered in-flow by pages/store-locator,
+  rather than injected by Destini's document.write() installer. It no longer
+  needs absolute positioning, and the footer no longer needs 770px of padding
+  reserved beneath an out-of-flow element.
+*/
 #destini {
-  padding-top: 12rem;
-  position: absolute;
-}
-
-.destini-footer {
-  padding-top: 770px;
+  display: block;
+  width: 100%;
 }
 
 #callout p em {

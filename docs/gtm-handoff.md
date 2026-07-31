@@ -113,7 +113,50 @@ a no-JS visitor for consent first.
 **Destini store locator** is loaded as a *functional* third party with a visible
 disclosure on the page, rather than gated. Hard-gating it would leave visitors
 who decline cookies on an empty page, since the locator is the page's entire
-purpose. **This treatment is pending client and counsel sign-off.**
+purpose. **This treatment is pending client and counsel sign-off**, and the
+decision is more consequential than it first appears — see the next section.
+
+We also had to change *how* it loads. Destini's installer script builds its
+iframe with `document.write()`, which silently does nothing once a page has
+finished loading. Deferring that script left the page blank, so we now render
+the locator iframe directly and skip the installer. A side benefit: the
+installer pulled in jQuery 1.11.3 from `code.jquery.com`, which is no longer
+loaded at all.
+
+### What the Destini locator brings with it
+
+`/store-locator` is the **only** page on the site that still contacts third
+parties before a consent choice. Measured on a fresh browser profile with no
+consent given, the locator iframe loads **116 requests across 13 hosts**:
+
+| Host | What it is |
+|---|---|
+| `destinilocators.com`, `api.`, `maxmind.` | Destini itself, incl. geolocation |
+| `js.arcgis.com`, `basemaps.arcgis.com`, +3 more | Esri ArcGIS mapping |
+| `cdnjs.cloudflare.com`, `netdna.bootstrapcdn.com`, `cdn.icomoon.io` | CDNs for jQuery, Bootstrap, icons |
+| **`www.google-analytics.com`** | **Destini's own Google Analytics** |
+
+It also sets one cookie, `AWSALBTGCORS` on `destinilocators.com` (an AWS load
+balancer cookie).
+
+The Google Analytics call is worth flagging to counsel. It is *Destini's*
+analytics, running inside *Destini's* iframe under *their* property — not a CVR
+tag, and CVR does not receive the data. But it fires because our page embeds
+their locator, before our visitor has consented to anything.
+
+Every other page on the site makes zero third-party requests pre-consent.
+
+**Two options, for the client and counsel to choose between:**
+
+1. **Keep the functional treatment** (current state). The page works for
+   everyone; the disclosure names the provider. Defensible on the basis that the
+   locator *is* the page, but it means one page still transmits pre-consent.
+2. **Gate the locator behind consent**, showing a "Load store finder" button in
+   its place for visitors who have not accepted. Same click-to-load pattern we
+   use for videos. Achieves zero pre-consent transmission site-wide, at the cost
+   of one extra click on that page.
+
+We can implement option 2 in well under an hour if that is the call.
 
 **The old GTM snippet had a syntax error.** HTML comments were embedded inside
 the JavaScript block, which likely prevented the `<head>` container script from
