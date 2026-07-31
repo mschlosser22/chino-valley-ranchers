@@ -4,34 +4,39 @@ import { useEffect, useState } from 'react'
 
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/footer/Footer'
+import { useConsent } from '../../context/consent'
 
 /**
  * Store locator.
  *
  * Destini's installer script (destinilocators.com/.../install/) builds its
- * iframe with document.write(). That only works while the document is still
- * open, so loading it through next/script -- which runs after hydration -- is a
- * silent no-op and leaves a blank page. We therefore render the same iframe
- * ourselves and skip the installer entirely.
+ * iframe with document.write(), which is a silent no-op once the document is
+ * closed. Loading it through next/script left the page blank, so we render the
+ * same iframe ourselves and skip the installer. That also avoids the jQuery
+ * 1.11.3 fetch from code.jquery.com the installer pulled in for its resize
+ * helper.
  *
- * The installer also pulls in jQuery 1.11.3 from code.jquery.com purely to
- * drive an auto-resize helper. Rendering the iframe directly avoids that
- * third-party dependency as well; the iframe carries the same fixed 770px
- * height the installer used.
+ * Consent: the locator is gated. It is by far the heaviest third party on the
+ * site -- a measured page load pulls 116 requests across 13 hosts (Destini,
+ * Esri ArcGIS mapping, three CDNs) and runs Destini's own Google Analytics
+ * inside their iframe. None of that should fire before the visitor agrees.
  *
- * Consent: the locator is the entire purpose of this page, so it is treated as
- * a FUNCTIONAL third party -- loaded so the page works, with a visible
- * disclosure naming the provider. This treatment is pending client and counsel
- * sign-off. To gate it strictly instead, wrap `showLocator` in a marketing
- * consent check from useConsent().
+ * With marketing consent the locator loads immediately, as it always did.
+ * Without it, a placeholder explains what loading it involves and offers a
+ * one-click load -- the same pattern used for embedded video.
  */
 export default function StoreLocator() {
-  // The iframe URL includes the referring host, which is only known client-side.
+  const { consent, ready, openPreferences } = useConsent()
+  const [loadedByClick, setLoadedByClick] = useState(false)
+
+  // The iframe URL embeds the referring host, only known client-side.
   const [origin, setOrigin] = useState(null)
 
   useEffect(() => {
     setOrigin(`${window.location.protocol}//${window.location.hostname}`)
   }, [])
+
+  const allowed = (ready && consent.marketing) || loadedByClick
 
   const locatorSrc = origin
     ? `https://destinilocators.com/chinovalleyranchers/site/locator.php?MM=panel2&RFR=${encodeURIComponent(origin)}`
@@ -52,35 +57,83 @@ export default function StoreLocator() {
 
       {/* Clears the fixed nav, whose logo hangs below the bar on desktop. */}
       <div className="pt-20 lg:pt-48">
-        {locatorSrc && (
-          <iframe
-            id="destini"
-            title="Chino Valley Ranchers store locator"
-            src={locatorSrc}
-            scrolling="no"
-            frameBorder="0"
-            style={{ width: '100%', height: '770px' }}
-          >
-            chinovalleyranchers product locator. Your browser does not support
-            iframes.
-          </iframe>
+        {allowed ? (
+          <>
+            {locatorSrc && (
+              <iframe
+                id="destini"
+                title="Chino Valley Ranchers store locator"
+                src={locatorSrc}
+                scrolling="no"
+                frameBorder="0"
+                style={{ width: '100%', height: '770px' }}
+              >
+                chinovalleyranchers product locator. Your browser does not
+                support iframes.
+              </iframe>
+            )}
+
+            {/*
+              Destini's resize helper, which listens for postMessage from the
+              iframe and adjusts its height. Only loaded alongside the iframe.
+            */}
+            <Script
+              id="destini-resize"
+              strategy="afterInteractive"
+              src="https://destinilocators.com/control/dscript_s.js"
+            />
+          </>
+        ) : (
+          <div className="bg-chinodarkblue px-6 py-16 lg:py-24">
+            <div className="max-w-2xl mx-auto text-center">
+              <h1 className="font-ultra uppercase tracking-wide text-chinoyellow text-2xl lg:text-4xl">
+                Find Chino Valley near you
+              </h1>
+
+              <p className="font-lato text-white text-base lg:text-lg leading-relaxed mt-5">
+                Our store finder is provided by Destini. Loading it contacts
+                Destini and their mapping provider, and sets cookies from
+                destinilocators.com so the map and your search results work.
+              </p>
+
+              <button
+                type="button"
+                onClick={() => setLoadedByClick(true)}
+                className="font-din uppercase tracking-wider text-lg bg-chinoyellow text-chinodarkblue rounded-md py-4 px-10 mt-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-chinodarkblue"
+              >
+                Load store finder
+              </button>
+
+              <p className="font-lato text-white text-sm mt-6">
+                To load it automatically next time, allow marketing cookies in{' '}
+                <button
+                  type="button"
+                  onClick={openPreferences}
+                  className="underline text-chinoyellow focus:outline-none focus-visible:ring-2 focus-visible:ring-chinoyellow rounded-sm"
+                >
+                  cookie settings
+                </button>
+                .
+              </p>
+
+              <p className="font-lato text-white text-sm mt-8 pt-8 border-t border-white border-opacity-20">
+                Prefer not to? Call us on{' '}
+                <a href="tel:8003544503" className="underline text-chinoyellow">
+                  (800) 354-4503
+                </a>{' '}
+                or email{' '}
+                <a
+                  href="mailto:info@chinovalleyranchers.com"
+                  className="underline text-chinoyellow"
+                >
+                  info@chinovalleyranchers.com
+                </a>{' '}
+                and we&rsquo;ll help you find a store.
+              </p>
+            </div>
+          </div>
         )}
-
-        {/*
-          Destini's resize helper, which listens for postMessage from the
-          iframe and adjusts its height. Loaded after the iframe exists.
-        */}
-        <Script
-          id="destini-resize"
-          strategy="afterInteractive"
-          src="https://destinilocators.com/control/dscript_s.js"
-        />
       </div>
-
-      <p className="font-lato text-sm text-gray-600 text-center max-w-3xl mx-auto px-8 py-8">
-        Our store finder is provided by Destini. Using it may set cookies from
-        destinilocators.com so the map and your search results work.
-      </p>
 
       <Footer />
     </>

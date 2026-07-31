@@ -40,7 +40,7 @@ export const CONSENT_CATEGORIES = [
     label: "Marketing & embedded media",
     required: false,
     description:
-      "Google advertising tags and embedded YouTube videos. Turning this off means videos need one extra click to play.",
+      "Google advertising tags, embedded YouTube videos, and our Destini store finder. Turning this off means videos and the store finder need one extra click to load.",
   },
 ];
 
