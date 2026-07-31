@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-07-30T18:40:16.219Z",
+  "capturedAt": "2026-07-31T00:29:46.787Z",
   "phase": "post-remediation (Phases 1 & 2) \u2014 pre-consent state",
   "pages": [
     {
@@ -25,14 +25,41 @@
     },
     {
       "path": "/store-locator",
-      "totalTrackerRequests": 2,
+      "totalTrackerRequests": 116,
       "byHost": {
-        "destinilocators.com": 2
+        "destinilocators.com": 39,
+        "cdnjs.cloudflare.com": 2,
+        "js.arcgis.com": 36,
+        "netdna.bootstrapcdn.com": 2,
+        "cdn.icomoon.io": 2,
+        "www.google-analytics.com": 1,
+        "maxmind.destinilocators.com": 1,
+        "api.destinilocators.com": 4,
+        "www.arcgis.com": 1,
+        "basemaps.arcgis.com": 17,
+        "cdn.arcgis.com": 2,
+        "static.arcgis.com": 1,
+        "": 8
       },
-      "cookiesSet": [],
+      "cookiesSet": [
+        {
+          "name": "AWSALBTGCORS",
+          "domain": "destinilocators.com"
+        }
+      ],
       "sample": [
-        "https://destinilocators.com/chinovalleyranchers/site/install/",
-        "http://destinilocators.com/control/pscript.js"
+        "https://destinilocators.com/control/dscript_s.js",
+        "https://destinilocators.com/chinovalleyranchers/site/locator.php?MM=panel2&RFR=http%3A%2F%2Flocalhost",
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js",
+        "https://js.arcgis.com/3.34/esri/css/esri.css",
+        "https://js.arcgis.com/3.34/",
+        "https://destinilocators.com/templates/stlouis/site/style.css",
+        "https://destinilocators.com/templates/style.css",
+        "https://destinilocators.com/global/fonts/ss-standard.css",
+        "https://destinilocators.com/global/fonts/globalfonts.css?CB=202604212012",
+        "https://destinilocators.com/control/9.0.3/controlscripts.js?CB=202604212012",
+        "https://destinilocators.com/control/9.0.3/panel1LocServe.js?CB=202604212012"
       ]
     },
     {
@@ -113,5 +140,6 @@
       "sample": []
     }
   ],
-  "note": "Requests recorded on a fresh profile with no consent choice made. The only remaining third-party request is the Destini store locator, loaded as a functional third party with on-page disclosure."
+  "note": "Third-party requests recorded on a fresh profile with NO consent choice made, production build. 14 of 15 pages make zero third-party requests. All remaining requests are on /store-locator and originate from the Destini locator iframe, which is treated as a functional third party with on-page disclosure (pending client/counsel sign-off). NOTE: Destini loads its own Google Analytics inside its iframe, plus ArcGIS mapping and several CDNs. These are Destini's dependencies in Destini's frame, not CVR tags, but they load because the page embeds the locator. See docs/gtm-handoff.md.",
+  "methodology": "Playwright, chromium, fresh browser context per page, networkidle plus settle time. Hosts matched: google-analytics, googletagmanager, doubleclick, youtube, youtube-nocookie, recaptcha, destinilocators, googlesyndication, arcgis, cloudflare, bootstrapcdn, icomoon, facebook. First-party (localhost) excluded."
 }
