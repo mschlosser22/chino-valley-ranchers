@@ -33,6 +33,7 @@ export function ConsentGatedVideo({
   src,
   title = "YouTube video player",
   className = "",
+  id,
 }) {
   const { consent, ready, openPreferences } = useConsent();
   const [loadedByClick, setLoadedByClick] = useState(false);
@@ -40,9 +41,12 @@ export function ConsentGatedVideo({
   const url = toNoCookie(src);
   const allowed = ready && consent.marketing;
 
+  // `id` sits on the wrapper, not the iframe, so anything targeting it -- e.g.
+  // the ScrollMagic scene keyed to #trigger in FeedVideo -- still finds an
+  // element while the video is behind the consent placeholder.
   if (allowed || loadedByClick) {
     return (
-      <div className={`aspect-w-16 aspect-h-9 ${className}`}>
+      <div id={id} className={`aspect-w-16 aspect-h-9 ${className}`}>
         <iframe
           src={url}
           title={title}
@@ -55,7 +59,7 @@ export function ConsentGatedVideo({
   }
 
   return (
-    <div className={`aspect-w-16 aspect-h-9 ${className}`}>
+    <div id={id} className={`aspect-w-16 aspect-h-9 ${className}`}>
       <div className="w-full h-full bg-chinodarkblue flex flex-col items-center justify-center text-center px-6">
         <button
           type="button"

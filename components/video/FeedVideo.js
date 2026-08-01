@@ -59,7 +59,7 @@ export function FeedVideo(props) {
 
                     <div className="col-span-12 z-40 sm:px-4 lg:px-0">
                       <div className="border-8 border-white rounded">
-                        <ConsentGatedVideo src={props.video.src} />
+                        <ConsentGatedVideo id="trigger" src={props.video.src} />
                       </div>
                     </div>
 
