@@ -347,35 +347,47 @@ export function JammyLanding() {
               Available now at Trader Joe&rsquo;s.
             </p>
           </div>
+          {/* The source art has the bag sitting in a wide, mostly-transparent
+              canvas, which rendered it small. Asset is cropped tight to the
+              bag, so sizing is driven from here instead. */}
           <div
             style={{
               flex: "1 1 420px",
               minWidth: 300,
               maxWidth: 560,
               position: "relative",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
-            <img
-              className="jammy-reveal"
-              data-parallax="-0.06"
-              src={`${IMG}/jammy-bag.png`}
-              alt="The Jammy Egg bag"
-              style={{ width: "100%", height: "auto", display: "block" }}
-            />
-            <div
-              data-badge="1"
-              style={{
-                position: "absolute",
-                right: "2%",
-                bottom: "6%",
-                width: "clamp(140px, 20vw, 211px)",
-                aspectRatio: "211 / 196",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                opacity: 0,
-              }}
-            >
+            <div style={{ position: "relative", width: "min(100%, 500px)" }}>
+              <img
+                className="jammy-reveal"
+                data-parallax="-0.06"
+                src={`${IMG}/jammy-bag.png`}
+                alt="The Jammy Egg bag"
+                // No CSS drop-shadow: the artwork carries its own, and a
+                // filter traces the image's alpha edge, which made the crop
+                // boundary visible as a hard line.
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+              <div
+                data-badge="1"
+                style={{
+                  position: "absolute",
+                  // Sits just inside the artwork's right edge. The image
+                  // carries transparent margin, so a small inset still reads
+                  // as overlapping the bag itself.
+                  right: "-2%",
+                  bottom: "14%",
+                  width: "clamp(118px, 14vw, 172px)",
+                  aspectRatio: "211 / 196",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  opacity: 0,
+                }}
+              >
               <svg
                 viewBox="0 0 210.994 196.003"
                 style={{
@@ -409,6 +421,7 @@ export function JammyLanding() {
                 <br />
                 per bag
               </span>
+              </div>
             </div>
           </div>
         </div>
