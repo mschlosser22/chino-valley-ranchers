@@ -497,15 +497,34 @@ export function JammyLanding() {
         </div>
       </section>
 
-      {/* ═══ DIFFERENTIATORS ═══ */}
+      {/* ═══ DIFFERENTIATORS ═══
+          The orange carries down from "What is a jammy egg" and the wave is
+          the transition into the cream. The wave sits at the TOP of this
+          section so the cards below it always clear it -- anchoring it to the
+          bottom lets it ride up through the copy on short viewports. */}
       <section
         style={{
           position: "relative",
           background: C.cream,
-          padding: "32px 24px 120px",
+          paddingBottom: "clamp(64px, 8vw, 112px)",
           overflow: "hidden",
         }}
       >
+        {/* The orange carries down behind the heading and the top of the
+            illustrations; the wave crests between the heading and the card
+            copy, so the text below always lands on cream. */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: 0,
+            height: "clamp(150px, 17vw, 250px)",
+            background: C.orange,
+            zIndex: 0,
+          }}
+        />
         <img
           src={`${IMG}/differentiators-wave.png`}
           alt=""
@@ -514,11 +533,12 @@ export function JammyLanding() {
             position: "absolute",
             left: 0,
             right: 0,
-            bottom: -1,
+            top: "clamp(150px, 17vw, 250px)",
             width: "100%",
             height: "auto",
             display: "block",
             pointerEvents: "none",
+            transform: "translateY(-1px)",
             zIndex: 0,
           }}
         />
@@ -527,7 +547,8 @@ export function JammyLanding() {
           style={h2({
             position: "relative",
             zIndex: 1,
-            margin: "0 0 54px",
+            margin: "0 0 clamp(40px, 5vw, 64px)",
+            paddingTop: "clamp(56px, 7vw, 96px)",
             fontSize: "clamp(28px, 3.6vw, 38px)",
             lineHeight: 1.15,
             textAlign: "center",
