@@ -180,4 +180,293 @@
   padding-bottom: 2rem;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   JAMMY LANDING PAGE (/jammy)
+
+   Self-hosted so the page makes no third-party font request --
+   the consent work removed all pre-consent third-party traffic
+   and Google Fonts would reintroduce one.
+   Scoped under .jammy so nothing here touches the rest of the site.
+   ───────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Anton";
+  src: url("/fonts/jammy/anton-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/jammy/figtree-latin.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.jammy {
+  font-family: Figtree, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  color: #20261a;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+.jammy * {
+  box-sizing: border-box;
+}
+
+.jammy a {
+  color: #2e4322;
+  text-decoration: none;
+}
+
+.jammy a:hover {
+  color: #ea3213;
+}
+
+.jammy-display {
+  font-family: Anton, Impact, "Haettenschweiler", "Arial Narrow Bold",
+    sans-serif;
+  font-weight: 400;
+}
+
+/* Reveal-on-scroll: elements start hidden and are released by the
+   IntersectionObserver in useJammyInteractions. */
+.jammy-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.75s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.jammy-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes jammyKenBurns {
+  0% {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.14) translate3d(0, -1.2%, 0);
+  }
+}
+@keyframes jammyWalk {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+}
+@keyframes jammyStepA {
+  0%,
+  100% {
+    transform: rotate(9deg);
+  }
+  50% {
+    transform: rotate(-9deg);
+  }
+}
+@keyframes jammyStepB {
+  0%,
+  100% {
+    transform: rotate(-9deg);
+  }
+  50% {
+    transform: rotate(9deg);
+  }
+}
+@keyframes jammySax {
+  0%,
+  100% {
+    transform: rotate(-3.5deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+@keyframes jammyFootBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5.5%);
+  }
+}
+@keyframes jammyArmWave {
+  0%,
+  100% {
+    transform: rotate(-4.5deg);
+  }
+  50% {
+    transform: rotate(5.5deg);
+  }
+}
+@keyframes jammyTwinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-25deg);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1.12) rotate(6deg);
+  }
+  34% {
+    opacity: 0.85;
+    transform: scale(0.92) rotate(0deg);
+  }
+  52% {
+    opacity: 0;
+    transform: scale(0.3) rotate(20deg);
+  }
+}
+@keyframes jammyNote {
+  0% {
+    opacity: 0;
+    transform: translate(0, 6px) rotate(-6deg) scale(0.7);
+  }
+  12% {
+    opacity: 1;
+  }
+  55% {
+    transform: translate(10px, -26px) rotate(8deg) scale(1);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-4px, -52px) rotate(-10deg) scale(1.05);
+  }
+}
+@keyframes jammyFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-2deg);
+  }
+}
+@keyframes jammyWobble {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-5px) rotate(-0.5deg);
+  }
+  70% {
+    transform: translateY(3px) rotate(0.4deg);
+  }
+}
+@keyframes jammySpinIn {
+  0% {
+    transform: rotate(-24deg) scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-12deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* The hero wordmark: each letter falls and squashes into place like a
+   drip of yolk. Long keyframe list is the whole effect, so it lives here
+   rather than being approximated with a transition. */
+@keyframes jammyLetterDrip {
+  0% {
+    opacity: 0;
+    transform: translateY(-124%) scaleY(0.45) scaleX(1.12);
+  }
+  4% {
+    opacity: 0.55;
+    transform: translateY(-123.8%) scaleY(0.5) scaleX(1.105);
+  }
+  7.2% {
+    opacity: 1;
+    transform: translateY(-123.5%) scaleY(0.55) scaleX(1.09);
+  }
+  14.4% {
+    transform: translateY(-121.6%) scaleY(0.72) scaleX(1.05);
+  }
+  21.6% {
+    transform: translateY(-117.6%) scaleY(0.95) scaleX(1);
+  }
+  28.8% {
+    transform: translateY(-111%) scaleY(1.18) scaleX(0.94);
+  }
+  36% {
+    transform: translateY(-100.6%) scaleY(1.38) scaleX(0.89);
+  }
+  43.2% {
+    transform: translateY(-85.6%) scaleY(1.52) scaleX(0.86);
+  }
+  50.4% {
+    transform: translateY(-64.7%) scaleY(1.6) scaleX(0.85);
+  }
+  57.6% {
+    transform: translateY(-41.4%) scaleY(1.53) scaleX(0.865);
+  }
+  64.8% {
+    transform: translateY(-19.7%) scaleY(1.32) scaleX(0.905);
+  }
+  72% {
+    transform: translateY(0) scaleY(1.02) scaleX(1.015);
+  }
+  78% {
+    transform: translateY(0) scaleY(0.89) scaleX(1.07);
+  }
+  84% {
+    transform: translateY(0) scaleY(0.97) scaleX(1.02);
+  }
+  90% {
+    transform: translateY(0) scaleY(1.03) scaleX(0.985);
+  }
+  95% {
+    transform: translateY(0) scaleY(0.99) scaleX(1.005);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1) scaleX(1);
+  }
+}
+
+/* Golden-hour gallery collapses to two columns on narrow screens. */
+@media (max-width: 860px) {
+  .jammy-tiles {
+    grid-template-columns: 1fr 1fr !important;
+    height: auto !important;
+  }
+  .jammy-tiles > div {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* Everything here is decorative. Honour a reduced-motion preference by
+   holding each element at its resting state rather than animating. */
+@media (prefers-reduced-motion: reduce) {
+  .jammy *,
+  .jammy *::before,
+  .jammy *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+  .jammy-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .jammy [data-letter] {
+    opacity: 1 !important;
+  }
+}
+
 @tailwind utilities;
