@@ -949,7 +949,7 @@ export function JammyLanding() {
       <section
         style={{
           background: "#fff",
-          padding: "54px 24px 56px",
+          padding: "clamp(40px, 6vw, 54px) 24px clamp(16px, 4vw, 56px)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -1062,7 +1062,9 @@ export function JammyLanding() {
       </section>
 
       {/* ═══ FAQ ═══ */}
-      <section style={{ background: "#fff", padding: "100px 24px" }}>
+      <section
+        style={{ background: "#fff", padding: "clamp(48px, 8vw, 100px) 24px" }}
+      >
         <div
           style={{
             maxWidth: 860,
@@ -1104,14 +1106,18 @@ export function JammyLanding() {
             alignItems: "center",
             justifyContent: "center",
             gap: 24,
-            padding: "96px clamp(24px, 5vw, 72px)",
+            padding: "clamp(56px, 9vw, 96px) clamp(24px, 5vw, 72px)",
             textAlign: "center",
           }}
         >
           <h2
             className="jammy-reveal"
             style={h2({
-              fontSize: "clamp(30px, 4vw, 44px)",
+              // Floor raised from 30px: at mobile widths the old minimum left
+              // the headline small against a tall blue field. 8.5vw lets it
+              // fill the column and wrap to two lines instead of three.
+              fontSize: "clamp(38px, 8.5vw, 46px)",
+              lineHeight: 0.98,
               color: C.yellow,
               textShadow: "0 1px 0 rgba(46,67,34,0.12)",
             })}
