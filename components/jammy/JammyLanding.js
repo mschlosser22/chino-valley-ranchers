@@ -569,9 +569,10 @@ export function JammyLanding() {
           }}
         >
           {/* Smooth, Jammy Texture — sax-playing egg with music notes */}
+          {/* No hover lift here: these cards sit over the wave, and the lift's
+              drop shadow paints a hard rectangle across it. */}
           <article
             className="jammy-reveal"
-            data-lift="1"
             style={{
               flex: "1 1 300px",
               maxWidth: 340,
@@ -653,9 +654,10 @@ export function JammyLanding() {
           </article>
 
           {/* Easy and Ready — waving arm, sparkles */}
+          {/* No hover lift here: these cards sit over the wave, and the lift's
+              drop shadow paints a hard rectangle across it. */}
           <article
             className="jammy-reveal"
-            data-lift="1"
             style={{
               flex: "1 1 300px",
               maxWidth: 340,
@@ -752,9 +754,10 @@ export function JammyLanding() {
           </article>
 
           {/* Upgrades Any Dish — egg in ramen, bobbing feet */}
+          {/* No hover lift here: these cards sit over the wave, and the lift's
+              drop shadow paints a hard rectangle across it. */}
           <article
             className="jammy-reveal"
-            data-lift="1"
             style={{
               flex: "1 1 300px",
               maxWidth: 340,
