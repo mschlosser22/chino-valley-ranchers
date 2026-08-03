@@ -440,6 +440,38 @@
   }
 }
 
+/* 24g protein badge.
+   Positioned here rather than inline because the vertical anchor changes with
+   breakpoint. Only `top`/`right`/`width` are set -- `transform` is left alone
+   so the jammySpinIn entrance animation stays in control of it. */
+.jammy .jammy-badge {
+  right: -4%;
+  top: 46%;
+  transform-origin: 50% 50%;
+  width: clamp(132px, 16.5vw, 205px);
+  margin-top: -8%;
+}
+
+/* On phones the bag is narrower and taller in the column, so the badge rides
+   up to overlap the product name rather than the photography below it. */
+@media (max-width: 860px) {
+  .jammy .jammy-badge {
+    right: -2%;
+    top: 19%;
+    width: clamp(118px, 30vw, 150px);
+    margin-top: 0;
+  }
+}
+
+/* Only the very narrowest phones (~320px) push the badge a few pixels past the
+   viewport at that inset; pull it flush there rather than shrinking the
+   overlap everywhere else. */
+@media (max-width: 340px) {
+  .jammy .jammy-badge {
+    right: 0;
+  }
+}
+
 /* Golden-hour gallery collapses to two columns on narrow screens. */
 @media (max-width: 860px) {
   .jammy-tiles {

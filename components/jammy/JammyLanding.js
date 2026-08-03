@@ -375,14 +375,12 @@ export function JammyLanding() {
               />
               <div
                 data-badge="1"
+                // Vertical placement differs by breakpoint (centred on the bag
+                // for desktop, up near the top on mobile), so it lives in
+                // globals.css under .jammy-badge rather than inline.
+                className="jammy-badge"
                 style={{
                   position: "absolute",
-                  // Sits just inside the artwork's right edge. The image
-                  // carries transparent margin, so a small inset still reads
-                  // as overlapping the bag itself.
-                  right: "-4%",
-                  bottom: "16%",
-                  width: "clamp(132px, 16.5vw, 205px)",
                   aspectRatio: "211 / 196",
                   display: "flex",
                   alignItems: "center",
