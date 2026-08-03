@@ -361,9 +361,11 @@ export function JammyLanding() {
             }}
           >
             <div style={{ position: "relative", width: "min(100%, 500px)" }}>
+              {/* No parallax: the bag and its badge need to stay locked
+                  together, and drifting the bag against a pinned badge broke
+                  the composition on scroll. */}
               <img
                 className="jammy-reveal"
-                data-parallax="-0.06"
                 src={`${IMG}/jammy-bag.png`}
                 alt="The Jammy Egg bag"
                 // No CSS drop-shadow: the artwork carries its own, and a
@@ -378,9 +380,9 @@ export function JammyLanding() {
                   // Sits just inside the artwork's right edge. The image
                   // carries transparent margin, so a small inset still reads
                   // as overlapping the bag itself.
-                  right: "-2%",
-                  bottom: "14%",
-                  width: "clamp(118px, 14vw, 172px)",
+                  right: "-4%",
+                  bottom: "16%",
+                  width: "clamp(132px, 16.5vw, 205px)",
                   aspectRatio: "211 / 196",
                   display: "flex",
                   alignItems: "center",
@@ -403,23 +405,47 @@ export function JammyLanding() {
                   fill="#304423"
                 />
               </svg>
+              {/* "24G" carries the badge; the qualifiers step down beneath it,
+                  matching the roundel printed on the bag itself. */}
               <span
                 style={{
                   position: "relative",
                   fontFamily: DISPLAY,
-                  fontSize: "clamp(15px, 2.1vw, 22px)",
-                  lineHeight: 1.05,
-                  letterSpacing: ".5px",
+                  lineHeight: 1,
                   textTransform: "uppercase",
                   color: C.cream,
                   textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "0.12em",
                 }}
               >
-                24g
-                <br />
-                protein
-                <br />
-                per bag
+                <span
+                  style={{
+                    fontSize: "clamp(30px, 4.2vw, 46px)",
+                    letterSpacing: ".5px",
+                  }}
+                >
+                  24g
+                </span>
+                <span
+                  style={{
+                    fontSize: "clamp(13px, 1.55vw, 17px)",
+                    letterSpacing: ".8px",
+                  }}
+                >
+                  of protein
+                </span>
+                <span
+                  style={{
+                    fontSize: "clamp(10px, 1.15vw, 13px)",
+                    letterSpacing: "1px",
+                    opacity: 0.92,
+                  }}
+                >
+                  per bag
+                </span>
               </span>
               </div>
             </div>
