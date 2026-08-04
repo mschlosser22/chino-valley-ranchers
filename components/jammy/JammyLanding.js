@@ -622,7 +622,7 @@ export function JammyLanding() {
           >
             <div
               style={{
-                height: 212,
+                height: 256,
                 width: 300,
                 display: "flex",
                 alignItems: "center",
@@ -707,7 +707,7 @@ export function JammyLanding() {
           >
             <div
               style={{
-                height: 212,
+                height: 256,
                 width: 300,
                 display: "flex",
                 alignItems: "center",
@@ -807,7 +807,7 @@ export function JammyLanding() {
           >
             <div
               style={{
-                height: 212,
+                height: 256,
                 width: 300,
                 display: "flex",
                 alignItems: "center",
