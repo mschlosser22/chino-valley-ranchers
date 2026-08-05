@@ -440,6 +440,166 @@
   }
 }
 
+/* ─────────────────────────────────────────────────────────────
+   HOMEPAGE JAMMY PROMO BAND (components/jammy/JammyHomeCta)
+
+   Wide screens: photo is a full-bleed backdrop, copy sits left in the
+   empty blue where the composition leaves room.
+   Narrow screens: no room beside the egg, so the photo stacks above the
+   copy as a banner instead.
+   ───────────────────────────────────────────────────────────── */
+.jammy-cta {
+  font-family: Figtree, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+}
+
+.jammy-cta__media {
+  width: 100%;
+  height: 100%;
+}
+
+.jammy-cta__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Anchor right: the egg sits centre-right in the source frame, and pulling
+     it toward the right edge keeps it clear of the copy column. */
+  object-position: 100% 50%;
+}
+
+.jammy-cta__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.15rem;
+}
+
+.jammy-cta__heading {
+  margin: 0;
+  font-family: Anton, Impact, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 0.98;
+  color: #2f4421;
+  text-wrap: balance;
+}
+
+.jammy-cta__body {
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #20261a;
+  max-width: 34rem;
+}
+
+.jammy-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 2rem;
+  border-radius: 4px;
+  background: #2f4421;
+  color: #fcf6e9;
+  font-family: Anton, Impact, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.3, 1),
+    box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.jammy-cta__button:hover,
+.jammy-cta__button:focus-visible {
+  background: #3b5629;
+  color: #fcf6e9;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(20, 38, 10, 0.26);
+}
+
+.jammy-cta__button:focus-visible {
+  outline: 3px solid #2f4421;
+  outline-offset: 3px;
+}
+
+/* ── Stacked layout (phones) ── */
+@media (max-width: 767px) {
+  .jammy-cta__media {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+  /* Generous bottom padding: the following homepage section overlaps upward
+     with a negative margin, which was clipping the button. */
+  .jammy-cta__copy {
+    padding: 1.75rem 1.5rem 5rem;
+  }
+  .jammy-cta__heading {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+  .jammy-cta__body {
+    font-size: 1rem;
+  }
+}
+
+/* ── Overlay layout (tablet and up) ── */
+@media (min-width: 768px) {
+  .jammy-cta {
+    display: grid;
+  }
+  /* Photo and copy share one grid cell so the text sits over the image. */
+  .jammy-cta__media,
+  .jammy-cta__copy {
+    grid-area: 1 / 1;
+  }
+  .jammy-cta__media {
+    aspect-ratio: 1435 / 806;
+    max-height: 78vh;
+  }
+  .jammy-cta__copy {
+    position: relative;
+    justify-content: center;
+    width: min(42%, 30rem);
+    padding: 2rem clamp(1.5rem, 4vw, 4.5rem);
+  }
+  /* The photo's blue is even, but the spoon handle crosses the copy column at
+     some widths. A soft wash of that same blue keeps the text legible without
+     reading as a panel. */
+  .jammy-cta__copy::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(169, 212, 236, 0.97) 0%,
+      rgba(169, 212, 236, 0.92) 62%,
+      rgba(169, 212, 236, 0) 100%
+    );
+    pointer-events: none;
+  }
+  .jammy-cta__copy > * {
+    position: relative;
+  }
+  .jammy-cta__heading {
+    font-size: clamp(2.2rem, 4.4vw, 3.9rem);
+  }
+  .jammy-cta__body {
+    font-size: clamp(0.95rem, 1.35vw, 1.15rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jammy-cta__button {
+    transition: none;
+  }
+  .jammy-cta__button:hover,
+  .jammy-cta__button:focus-visible {
+    transform: none;
+  }
+}
+
 /* 24g protein badge.
    Positioned here rather than inline because the vertical anchor changes with
    breakpoint. Only `top`/`right`/`width` are set -- `transform` is left alone

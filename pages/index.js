@@ -17,7 +17,7 @@ import { recipesAndVideosBlock } from '../components/video/RecipesAndVideos'
 // import { CtaCommercial, ctaCommercialBlock } from '../components/cta/CtaCommercial'
 // import { CtaSpecialDelivery, ctaSpecialDelivery } from '../components/cta/CtaSpecialDelivery'
 import { CtaScratch, ctaScratchBlock } from '../components/cta/CtaScratch'
-import { youtubeBlockComet } from '../components/video/YouTubeComet'
+import { jammyHomeCtaBlock } from '../components/jammy/JammyHomeCta'
 import { ChrisCanCookBlock } from '../components/chriscancook/ChrisCanCook'
 
 export default function Products({ file, isPreview }) {
@@ -103,7 +103,7 @@ const PAGE_BLOCKS = {
   // ctaCommercial: ctaCommercialBlock,
   // ctaSpecialDelivery: ctaSpecialDeliveryBlock,
   // ctaScratch: ctaScratchBlock,
-  youtubeVideoComet: youtubeBlockComet,
+  jammyHomeCta: jammyHomeCtaBlock,
   chrisCanCook: ChrisCanCookBlock,
 }
 
