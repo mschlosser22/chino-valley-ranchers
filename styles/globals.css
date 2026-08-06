@@ -443,159 +443,184 @@
 /* ─────────────────────────────────────────────────────────────
    HOMEPAGE JAMMY PROMO BAND (components/jammy/JammyHomeCta)
 
-   Wide screens: photo is a full-bleed backdrop, copy sits left in the
-   empty blue where the composition leaves room.
-   Narrow screens: no room beside the egg, so the photo stacks above the
-   copy as a banner instead.
+   Values taken from the "CVR Home Page" design file. The photo is a
+   background-image rather than an <img> because the design zooms it past
+   cover (143.44% x 153.37%) to slide the spoon clear of the copy -- a
+   crop object-fit cannot express.
    ───────────────────────────────────────────────────────────── */
+.jammy-cta__container {
+  width: 100%;
+  background: #ffffff;
+  font-family: Lato, -apple-system, "Segoe UI", Roboto, sans-serif;
+  container-type: inline-size;
+  container-name: jammy;
+  position: relative;
+  z-index: 30;
+}
+
 .jammy-cta {
-  font-family: Figtree, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, sans-serif;
-}
-
-.jammy-cta__media {
+  position: relative;
   width: 100%;
-  height: 100%;
-}
-
-.jammy-cta__media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Anchor right: the egg sits centre-right in the source frame, and pulling
-     it toward the right edge keeps it clear of the copy column. */
-  object-position: 100% 50%;
-}
-
-.jammy-cta__copy {
+  overflow: hidden;
+  background: #bfdcf0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1.15rem;
 }
 
-.jammy-cta__heading {
+/* Stacked layout (phones): photo is a banner above the copy. */
+.jammy-cta__photo {
+  position: relative;
+  width: 100%;
+  height: min(62vw, 340px);
+  flex-shrink: 0;
+  background-image: url("/images/jammy/cta-messy.jpg");
+  background-position: 62% 62%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.jammy-cta__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+  padding: 14px 22px 46px;
+}
+
+.jammy-cta__head {
   margin: 0;
-  font-family: Anton, Impact, sans-serif;
+  font-family: Ultra, Georgia, serif;
   font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  line-height: 0.98;
+  font-size: clamp(26px, 8.8vw, 44px);
+  line-height: 1.02;
+  letter-spacing: 1px;
   color: #2f4421;
-  text-wrap: balance;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .jammy-cta__body {
   margin: 0;
+  max-width: 648px;
   font-weight: 500;
-  line-height: 1.45;
-  color: #20261a;
-  max-width: 34rem;
+  font-size: 16px;
+  line-height: 1.35;
+  letter-spacing: 0.6px;
+  color: #000000;
+  text-wrap: pretty;
 }
 
-.jammy-cta__button {
-  display: inline-flex;
+.jammy-cta__cta {
+  display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-height: 48px;
-  padding: 0 2rem;
-  border-radius: 4px;
+  border-radius: 6px;
   background: #2f4421;
   color: #fcf6e9;
-  font-family: Anton, Impact, sans-serif;
-  font-size: 1rem;
-  letter-spacing: 1.5px;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.3, 1),
-    box-shadow 0.25s ease, background 0.25s ease;
+  transition: background 240ms ease, transform 240ms ease;
 }
 
-.jammy-cta__button:hover,
-.jammy-cta__button:focus-visible {
-  background: #3b5629;
+.jammy-cta__cta:hover,
+.jammy-cta__cta:focus-visible {
+  background: #3d5a2b;
   color: #fcf6e9;
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(20, 38, 10, 0.26);
 }
 
-.jammy-cta__button:focus-visible {
+.jammy-cta__cta:focus-visible {
   outline: 3px solid #2f4421;
   outline-offset: 3px;
 }
 
-/* ── Stacked layout (phones) ── */
-@media (max-width: 767px) {
-  .jammy-cta__media {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-  }
-  /* Generous bottom padding: the following homepage section overlaps upward
-     with a negative margin, which was clipping the button. */
-  .jammy-cta__copy {
-    padding: 1.75rem 1.5rem 5rem;
-  }
-  .jammy-cta__heading {
-    font-size: clamp(2rem, 9vw, 2.75rem);
-  }
-  .jammy-cta__body {
-    font-size: 1rem;
-  }
+/* Torn edges: vector, so they stay crisp at any width. */
+.jammy-cta__tear {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 26px;
+  z-index: 3;
+  display: block;
 }
 
-/* ── Overlay layout (tablet and up) ── */
-@media (min-width: 768px) {
+.jammy-cta__tear--top {
+  top: -1px;
+}
+
+.jammy-cta__tear--bottom {
+  bottom: -1px;
+}
+
+/* Overlay layout. Container query, so the band behaves correctly wherever
+   it is placed rather than depending on viewport width. */
+@container jammy (min-width: 900px) {
   .jammy-cta {
-    display: grid;
-  }
-  /* Photo and copy share one grid cell so the text sits over the image. */
-  .jammy-cta__media,
-  .jammy-cta__copy {
-    grid-area: 1 / 1;
-  }
-  .jammy-cta__media {
     aspect-ratio: 1435 / 806;
-    max-height: 78vh;
+    display: block;
   }
-  .jammy-cta__copy {
-    position: relative;
-    justify-content: center;
-    width: min(42%, 30rem);
-    padding: 2rem clamp(1.5rem, 4vw, 4.5rem);
-  }
-  /* The photo's blue is even, but the spoon handle crosses the copy column at
-     some widths. A soft wash of that same blue keeps the text legible without
-     reading as a panel. */
-  .jammy-cta__copy::before {
-    content: "";
+  .jammy-cta__photo {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      90deg,
-      rgba(169, 212, 236, 0.97) 0%,
-      rgba(169, 212, 236, 0.92) 62%,
-      rgba(169, 212, 236, 0) 100%
-    );
-    pointer-events: none;
+    height: auto;
+    background-color: transparent;
+    background-position: 0.06% 88%;
+    background-size: 143.44% 153.37%;
   }
-  .jammy-cta__copy > * {
-    position: relative;
+  .jammy-cta__content {
+    position: static;
+    display: block;
+    padding: 0;
   }
-  .jammy-cta__heading {
-    font-size: clamp(2.2rem, 4.4vw, 3.9rem);
+  .jammy-cta__head {
+    position: absolute;
+    left: 2.578%;
+    top: 37.59%;
+    width: 45.157%;
+    margin: 0;
+    font-size: 4.4599cqw;
+    line-height: 4.4599cqw;
+    letter-spacing: 1.5px;
+    text-align: center;
   }
   .jammy-cta__body {
-    font-size: clamp(0.95rem, 1.35vw, 1.15rem);
+    position: absolute;
+    left: 4.878%;
+    top: 55.33%;
+    width: 45.157%;
+    max-width: none;
+    margin: 0;
+    font-size: 1.6725cqw;
+    line-height: 1.9512cqw;
+    letter-spacing: 1.5px;
+  }
+  .jammy-cta__cta {
+    position: absolute;
+    left: 4.878%;
+    top: 85.11%;
+    width: 13.449%;
+    min-width: 0;
+    height: 5.955%;
+    min-height: 0;
+    margin: 0;
+    border-radius: 6px;
+    font-size: 1.115cqw;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .jammy-cta__button {
+  .jammy-cta__cta {
     transition: none;
   }
-  .jammy-cta__button:hover,
-  .jammy-cta__button:focus-visible {
+  .jammy-cta__cta:hover,
+  .jammy-cta__cta:focus-visible {
     transform: none;
   }
 }
