@@ -541,7 +541,9 @@
   outline-offset: 3px;
 }
 
-/* Torn edges: vector, so they stay crisp at any width. */
+/* Torn edges. Each strip is masked to the shape of the rip and carries the
+   texture of the section it borders, so the tear reads as the blue band being
+   ripped away to reveal what is behind it. */
 .jammy-cta__tear {
   position: absolute;
   left: 0;
@@ -549,14 +551,27 @@
   height: 26px;
   z-index: 3;
   display: block;
+  pointer-events: none;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
+/* Above the band is the hero video, which has no flat colour to match, so the
+   top rip shows the dark neutral the video letterboxes to. */
 .jammy-cta__tear--top {
   top: -1px;
+  background: #151510;
 }
 
+/* Below is the dirt-textured feed section. */
 .jammy-cta__tear--bottom {
   bottom: -1px;
+  background-color: #f3efe6;
+  background-image: url("https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/dirt-bg.png");
+  background-size: cover;
+  background-position: center top;
 }
 
 /* Overlay layout. Container query, so the band behaves correctly wherever
