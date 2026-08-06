@@ -451,7 +451,12 @@
 .jammy-cta__container {
   width: 100%;
   /* No background: the tears are holes in the band, so anything painted here
-     would show through them as a pale gap. */
+     would show through them as a pale gap.
+
+     Pulled up by the height of the top tear so the rip sits over the hero
+     rather than over bare page canvas -- otherwise the hole reveals white,
+     since the hero ends exactly where this band begins. */
+  margin-top: -26px;
   font-family: Lato, -apple-system, "Segoe UI", Roboto, sans-serif;
   container-type: inline-size;
   container-name: jammy;
