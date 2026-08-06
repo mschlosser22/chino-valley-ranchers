@@ -26,23 +26,48 @@ const TEAR_TOP =
 const TEAR_BOTTOM =
   "M0,40 H1435 V24 L1435,24.0 L1422.6,23.9 L1416,21.1 L1402.6,30.1 L1382.3,31.5 L1368.4,10.7 L1344.6,21.3 L1331.3,16.7 L1322.6,16.9 L1298.3,20.1 L1277.2,25.7 L1258,25.4 L1233.3,24.1 L1217.6,33.6 L1194.7,19.6 L1184.8,19.8 L1172.3,29.9 L1148.7,15.6 L1125.4,19.6 L1111.9,23.9 L1092.8,10.7 L1083.5,15.9 L1065.5,30.1 L1051,22.6 L1038.3,23.8 L1010.6,24.8 L998.4,19.1 L976.7,33.2 L959.2,20.2 L948.6,11.5 L937.1,16.7 L909.1,23.4 L895.6,20.8 L873.8,12.4 L850.7,15.4 L836.7,17.0 L820.7,20.3 L803.7,21.3 L790.7,22.1 L777.7,25.2 L763.3,17.1 L743.9,18.6 L731,20.5 L713.9,20.1 L705.9,17.7 L691.2,18.3 L670.8,15.4 L647.9,25.6 L638.1,24.6 L627.8,32.7 L618.4,20.2 L592.6,20.6 L564.7,21.2 L556.7,33.1 L537.8,22.5 L525.4,32.3 L515.9,23.3 L499.9,18.7 L478.4,19.5 L471.6,20.6 L446.3,23.3 L432.8,20.5 L407.8,9.2 L398.7,25.8 L392.2,32.1 L385.1,17.3 L368.6,21.3 L347.9,17.6 L333.7,19.4 L306.6,21.3 L282.7,21.5 L257.8,24.0 L238.2,21.9 L229.4,17.0 L210.5,30.7 L184.5,19.3 L178.3,18.9 L150.7,16.1 L141.6,23.5 L114.2,23.7 L102.1,15.1 L80.9,21.5 L67.7,6.7 L47.5,15.3 L29.5,23.1 L16.7,24.0 L0,24.0 Z";
 
-/* Each tear path traces the torn-away sliver. As a mask it reveals only that
-   sliver of the strip beneath, so the strip shows the neighbouring texture in
-   exactly the shape of the rip. */
-function tearMask(path) {
-  const svg =
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1435 40" preserveAspectRatio="none">` +
-    `<path d="${path}" fill="#fff"/></svg>`;
-  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
-}
+/**
+ * One mask for the whole band: opaque everywhere except the torn slivers at top
+ * and bottom, which become true holes.
+ *
+ * Painting the tears as coloured strips means guessing what sits above and
+ * below, and the neighbours here are a photographic hero and a textured
+ * background -- neither is a flat colour to match. Cutting the shape out of the
+ * band instead lets whatever is actually there show through, so the seam is
+ * correct no matter what the adjacent sections change to.
+ *
+ * Each tear path traces the piece being removed; subtracting both from a
+ * full-height rect with evenodd gives the band silhouette.
+ */
+const BAND_MASK = (() => {
+  const H = 806; // matches the band's aspect-ratio box
+  // Both tear paths are authored in a 40-unit-tall box. The top one already
+  // sits at y=0; the bottom one needs every y shifted down so its 40-unit box
+  // lands on the band's lower edge. Rewriting the coordinates keeps the real
+  // ragged silhouette rather than approximating it with a straight line.
+  const shifted = TEAR_BOTTOM.replace(
+    /([ML])\s*([\d.]+)\s*,\s*([\d.]+)/g,
+    (_, cmd, x, y) => `${cmd}${x},${(parseFloat(y) + (H - 40)).toFixed(1)}`
+  )
+    .replace(/V\s*([\d.]+)/g, (_, y) => `V${(parseFloat(y) + (H - 40)).toFixed(1)}`)
+    .replace(/H\s*([\d.]+)/g, (_, x) => `H${x}`);
 
-const TEAR_TOP_MASK = tearMask(TEAR_TOP);
-const TEAR_BOTTOM_MASK = tearMask(TEAR_BOTTOM);
+  const svg =
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1435 ${H}" preserveAspectRatio="none">` +
+    `<path fill="#fff" fill-rule="evenodd" ` +
+    `d="M0,0 H1435 V${H} H0 Z ${TEAR_TOP} ${shifted}"/>` +
+    `</svg>`;
+  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+})();
 
 export function JammyHomeCta() {
   return (
     <div className="jammy-cta__container">
-      <section className="jammy-cta" aria-labelledby="jammy-cta-heading">
+      <section
+        className="jammy-cta"
+        aria-labelledby="jammy-cta-heading"
+        style={{ WebkitMaskImage: BAND_MASK, maskImage: BAND_MASK }}
+      >
         {/* Background image rather than <img>: the design zooms past cover to
             slide the spoon clear of the copy, which object-fit cannot express.
             Decorative, so the alt text lives on the section's heading instead. */}
@@ -64,26 +89,8 @@ export function JammyHomeCta() {
           </a>
         </div>
 
-        {/* Torn edges.
-            The design file fills these flat white because it places the band
-            between two white sections. On the real homepage the hero video is
-            above and a textured dirt background below, so white read as a stray
-            strip. Each tear now carries the texture of whatever it borders, via
-            the same Cloudinary-served background the neighbouring section uses,
-            so the tear looks like the band has been ripped away to reveal it. */}
-        <div
-          aria-hidden="true"
-          className="jammy-cta__tear jammy-cta__tear--top"
-          style={{ WebkitMaskImage: TEAR_TOP_MASK, maskImage: TEAR_TOP_MASK }}
-        ></div>
-        <div
-          aria-hidden="true"
-          className="jammy-cta__tear jammy-cta__tear--bottom"
-          style={{
-            WebkitMaskImage: TEAR_BOTTOM_MASK,
-            maskImage: TEAR_BOTTOM_MASK,
-          }}
-        ></div>
+        {/* Torn edges come from BAND_MASK on the section itself -- no overlay
+            elements, so nothing has to guess at the neighbours' colours. */}
       </section>
     </div>
   );

@@ -450,7 +450,8 @@
    ───────────────────────────────────────────────────────────── */
 .jammy-cta__container {
   width: 100%;
-  background: #ffffff;
+  /* No background: the tears are holes in the band, so anything painted here
+     would show through them as a pale gap. */
   font-family: Lato, -apple-system, "Segoe UI", Roboto, sans-serif;
   container-type: inline-size;
   container-name: jammy;
@@ -465,6 +466,14 @@
   background: #bfdcf0;
   display: flex;
   flex-direction: column;
+  /* BAND_MASK (set inline) cuts the torn edges out of the band itself, so the
+     rips are real holes and the neighbouring sections show through. */
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 /* Stacked layout (phones): photo is a banner above the copy. */
@@ -539,39 +548,6 @@
 .jammy-cta__cta:focus-visible {
   outline: 3px solid #2f4421;
   outline-offset: 3px;
-}
-
-/* Torn edges. Each strip is masked to the shape of the rip and carries the
-   texture of the section it borders, so the tear reads as the blue band being
-   ripped away to reveal what is behind it. */
-.jammy-cta__tear {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 26px;
-  z-index: 3;
-  display: block;
-  pointer-events: none;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-/* Above the band is the hero video, which has no flat colour to match, so the
-   top rip shows the dark neutral the video letterboxes to. */
-.jammy-cta__tear--top {
-  top: -1px;
-  background: #151510;
-}
-
-/* Below is the dirt-textured feed section. */
-.jammy-cta__tear--bottom {
-  bottom: -1px;
-  background-color: #f3efe6;
-  background-image: url("https://res.cloudinary.com/dmfgntgym/image/fetch/f_auto/q_auto:eco/https://www.chinovalleyranchers.com//images/dirt-bg.png");
-  background-size: cover;
-  background-position: center top;
 }
 
 /* Overlay layout. Container query, so the band behaves correctly wherever
