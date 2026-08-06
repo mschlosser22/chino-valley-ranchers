@@ -453,10 +453,11 @@
   /* No background: the tears are holes in the band, so anything painted here
      would show through them as a pale gap.
 
-     Pulled up by the height of the top tear so the rip sits over the hero
-     rather than over bare page canvas -- otherwise the hole reveals white,
-     since the hero ends exactly where this band begins. */
-  margin-top: -26px;
+     Pulled up so the rip sits over the hero rather than bare page canvas --
+     otherwise the holes reveal white, since the hero ends exactly where this
+     band begins. The tear's deepest notch reaches y=34.9 in the mask's 40-unit
+     box, which renders ~35px down, so 44px covers it with room to spare. */
+  margin-top: -44px;
   font-family: Lato, -apple-system, "Segoe UI", Roboto, sans-serif;
   container-type: inline-size;
   container-name: jammy;
