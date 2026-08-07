@@ -490,6 +490,7 @@
 /* Stacked layout (phones): photo is a banner above the copy. */
 .jammy-cta__photo {
   position: relative;
+  z-index: 2;
   width: 100%;
   height: min(62vw, 340px);
   flex-shrink: 0;
@@ -506,14 +507,19 @@
 /* Stacked layout only: the photo is a banner above the copy, so the copy needs
    the blue itself. On desktop the artwork covers the whole band and this is
    cleared, otherwise it would fill the artwork's torn edges. */
+/* Stacked layout only. The copy block carries the blue itself, and is pulled up
+   behind the photo's bottom tear -- that tear is transparent, so without the
+   overlap the page canvas shows through it as a white gap between the two.
+   z-index keeps the copy under the photo so the tear still reads. */
 .jammy-cta__content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  margin-top: -8%;
+  padding: calc(8% + 14px) 22px 46px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 18px;
-  padding: 14px 22px 46px;
   background: #bfdcf0;
 }
 
@@ -593,10 +599,21 @@
     background-position: center;
     background-size: 100% 100%;
   }
+  /* Clears the stacked layout's negative pull and its z-index: on desktop the
+     artwork covers the whole band and the copy is absolutely positioned over
+     it, so neither applies. */
   .jammy-cta__content {
     position: static;
     display: block;
     padding: 0;
+    margin-top: 0;
+    z-index: auto;
+  }
+  /* The photo must drop behind the copy here, or it covers the CTA and the
+     button stops being clickable. It only needs to sit above in the stacked
+     layout, where it overlaps the copy block's top edge. */
+  .jammy-cta__photo {
+    z-index: 0;
   }
   .jammy-cta__head {
     position: absolute;
