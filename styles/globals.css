@@ -563,13 +563,17 @@
     aspect-ratio: 1435 / 806;
     display: block;
   }
+  /* The design's 143.44% zoom existed to push the egg clear of the copy on the
+     older, tighter crop. This photograph already places the egg at ~49% with
+     open blue to its left, so plain cover keeps the whole egg and drip in frame
+     without magnifying it. */
   .jammy-cta__photo {
     position: absolute;
     inset: 0;
     height: auto;
     background-color: transparent;
-    background-position: 0.06% 88%;
-    background-size: 143.44% 153.37%;
+    background-position: center right;
+    background-size: cover;
   }
   .jammy-cta__content {
     position: static;
