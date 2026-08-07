@@ -460,6 +460,13 @@
      taller so a vw value alone under-covers; the 14px floor handles that. The
      bottom tear needs no equivalent because the section below starts flush. */
   margin-top: calc(-1 * max(20px, 1.9vw));
+  font-family: Lato, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* container-type is what makes the @container query below match. Losing it
+     collapses the band to its stacked mobile layout at every width. */
+  container-type: inline-size;
+  container-name: jammy;
+  position: relative;
+  z-index: 30;
 }
 
 /* Below the overlay breakpoint the photo is a fixed-height banner rather than
@@ -469,11 +476,6 @@
   .jammy-cta__container {
     margin-top: calc(-1 * max(34px, 3.6vw));
   }
-  font-family: Lato, -apple-system, "Segoe UI", Roboto, sans-serif;
-  container-type: inline-size;
-  container-name: jammy;
-  position: relative;
-  z-index: 30;
 }
 
 .jammy-cta {
