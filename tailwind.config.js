@@ -55,6 +55,15 @@ module.exports = {
       },
       backgroundImage: {
         'scratchBanner': "url('/images/scratchBanner.png')",
+      },
+      // HeroVideo needs a 400px floor on mobile. Tailwind 2 has no arbitrary
+      // values, so these are registered as named scale entries and used as
+      // min-h-hero / h-hero rather than min-h-[400px].
+      minHeight: {
+        hero: '400px',
+      },
+      height: {
+        hero: '400px',
       }
     },
   },

@@ -12,12 +12,18 @@ import { InlineWysiwyg } from "../../components/tinacms/InlineWYSIWYG";
 export function HeroVideo(props) {
   return (
     <header
-      className="relative overflow-hidden lg:overflow-visible z-0 w-full min-h-[400px] lg:min-h-screen flex items-center"
+      // min-h-hero / h-hero are 400px, defined in tailwind.config. They replace
+      // min-h-[400px] / h-[400px], which are Tailwind 3 syntax -- on this
+      // project's Tailwind 2 they generated no CSS at all, so the hero
+      // collapsed to ~77px on mobile and the video had no box to fill.
+      className="relative overflow-hidden lg:overflow-visible z-0 w-full min-h-hero lg:min-h-screen flex items-center"
       role="banner"
     >
-      <div className="absolute h-[400px] lg:h-screen w-full">
+      <div className="absolute h-hero lg:h-screen w-full">
         <video
-          className="w-full h-screen absolute top-0 left-0 object-cover"
+          // h-full rather than h-screen: the wrapper is 400px on mobile, so a
+          // viewport-height video overflowed it and was clipped.
+          className="w-full h-full absolute top-0 left-0 object-cover"
           src={`https://res.cloudinary.com/dmfgntgym/video/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.video.src}`}
           autoPlay
           loop
