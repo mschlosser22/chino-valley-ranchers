@@ -615,10 +615,12 @@
   .jammy-cta__photo {
     z-index: 0;
   }
+  /* Dropped from the design's 37.59% so the headline clears the spoon handle
+     and sits closer to the button rather than stranded above it. */
   .jammy-cta__head {
     position: absolute;
     left: 2.578%;
-    top: 37.59%;
+    top: 46%;
     width: 45.157%;
     margin: 0;
     font-size: 4.4599cqw;
@@ -626,10 +628,11 @@
     letter-spacing: 1.5px;
     text-align: center;
   }
+  /* Moved with the headline, keeping the same gap beneath it. */
   .jammy-cta__body {
     position: absolute;
     left: 4.878%;
-    top: 55.33%;
+    top: 63.5%;
     width: 45.157%;
     max-width: none;
     margin: 0;

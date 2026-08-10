@@ -40,7 +40,7 @@ export function JammyHomeCta() {
             salads, snacks, and everything in between.
           </p>
           <a href="/jammy" className="jammy-cta__cta">
-            Learn More
+            Explore Jammy
           </a>
         </div>
 
