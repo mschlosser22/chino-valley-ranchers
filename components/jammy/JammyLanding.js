@@ -5,17 +5,26 @@ import { JammyFaq } from "./JammyFaq";
 
 const IMG = "/images/jammy";
 
-/* Brand palette lifted from the design file. */
+/* Brand palette, verified against the CVR_JammyWebsite_r1 Figma file
+   (node 1:497). The design tokens name each colour:
+     Log Cabin #20261A · Mallard #2E4322 · Blizzard Blue #A3D2EE
+     Christi #67A818 · Pomegranate #F2580E · Gorse #FFEF5C
+     Kelp #3A3F31 · Alto #D9D9D9 · color/yellow/7 #151510
+   #EA3213 is sampled from the Playlists section, which uses an unbound fill.
+
+   There is no cream in the design -- that was mine. Figma uses pure #FFFFFF
+   both for the type on orange and for the ground beneath the wave. */
 const C = {
   ink: "#20261A",
   forest: "#2E4322",
-  cream: "#FCF6E9",
+  white: "#FFFFFF",
   sky: "#A3D2EE",
   green: "#67A818",
   orange: "#F2580E",
   red: "#EA3213",
   yellow: "#FFEF5C",
   body: "#3A3F31",
+  rule: "#D9D9D9",
   night: "#151510",
 };
 
@@ -413,7 +422,7 @@ export function JammyLanding() {
                   fontFamily: DISPLAY,
                   lineHeight: 1,
                   textTransform: "uppercase",
-                  color: C.cream,
+                  color: C.white,
                   textAlign: "center",
                   display: "flex",
                   flexDirection: "column",
@@ -477,7 +486,7 @@ export function JammyLanding() {
             style={h2({
               fontSize: "clamp(44px, 8vw, 96px)",
               lineHeight: 0.92,
-              color: C.cream,
+              color: C.white,
             })}
           >
             What is
@@ -544,7 +553,7 @@ export function JammyLanding() {
       <section
         style={{
           position: "relative",
-          background: C.cream,
+          background: C.white,
           paddingBottom: "clamp(64px, 8vw, 112px)",
           overflow: "hidden",
         }}
@@ -890,7 +899,7 @@ export function JammyLanding() {
         style={{
           position: "relative",
           padding: "clamp(64px, 8vw, 120px) 24px",
-          background: C.cream,
+          background: C.white,
           overflow: "hidden",
         }}
       >
@@ -1296,7 +1305,7 @@ export function JammyLanding() {
                 fontFamily: BODY,
                 fontSize: 18,
                 lineHeight: "27px",
-                color: C.cream,
+                color: C.white,
               }}
             >
               Whether you&rsquo;re cooking, cruising, hosting, or just hanging

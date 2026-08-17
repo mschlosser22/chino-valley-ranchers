@@ -568,7 +568,7 @@
   min-height: 48px;
   border-radius: 6px;
   background: #2f4421;
-  color: #fcf6e9;
+  color: #ffffff;
   font-weight: 700;
   font-size: 16px;
   letter-spacing: 1.6px;
@@ -580,7 +580,7 @@
 .jammy-cta__cta:hover,
 .jammy-cta__cta:focus-visible {
   background: #3d5a2b;
-  color: #fcf6e9;
+  color: #ffffff;
   transform: translateY(-2px);
 }
 

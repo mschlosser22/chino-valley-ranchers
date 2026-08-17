@@ -14,7 +14,7 @@ Status key: **TODO** · **IN PROGRESS** · **DONE** · **BLOCKED** · **NEEDS DE
 | # | Item | Blocked on |
 |---|---|---|
 | B1 | Fonts should be Proxima Nova and Cubano throughout (currently Anton + Figtree), including button text | **Licensed web font files.** Neither font is in the project and both are commercial. Either purchase web licences or confirm CVR's Adobe Fonts plan covers Proxima Nova — the site already loads a Typekit kit (`use.typekit.net/yyq5ssh.css`), so adding it there is the cheapest route. |
-| B2 | All colours must match the final Figma hex codes | **Figma file access.** Current values were taken from the exported HTML, which may not carry final values. The Figma plugin is installed but needs the file URL/key. |
+| ~~B2~~ | ~~All colours must match the final Figma hex codes~~ | **RESOLVED** — audited against `CVR_JammyWebsite_r1` node `1:497`. See below. |
 | B3 | "Available now at Trader Joe's" in bold Proxima Nova | Depends on B1 |
 | B4 | "What is a Jammy Egg?" in Cubano, on a curve, white `#FFFFFF` | Depends on B1. Also needs a decision — see D1 |
 | B5 | Format Versatility tile labels use Cubano, anchored top-left | Depends on B1 |
@@ -67,6 +67,33 @@ reads **"Toast"** and is a tile label. It was previously pinned to the ramen
 photo. Now paired with the toast image and anchored top-left per QA. The other
 three tile labels do not exist in the assets and need Cubano — see B5.
 
+## Colour audit (B2) — resolved
+
+Pulled the design tokens from Figma `CVR_JammyWebsite_r1`, node `1:497`. The
+file names every colour, so these are authoritative rather than sampled:
+
+| Token | Hex | Used for |
+|---|---|---|
+| Log Cabin | `#20261A` | body text |
+| Mallard | `#2E4322` | headings, buttons |
+| White | `#FFFFFF` | type on orange, ground under the wave |
+| Blizzard Blue | `#A3D2EE` | Overview, About CVR |
+| Christi | `#67A818` | Where to Buy bar |
+| Pomegranate | `#F2580E` | What is Jammy |
+| Gorse | `#FFEF5C` | About CVR headline |
+| Kelp | `#3A3F31` | card body copy |
+| Alto | `#D9D9D9` | FAQ rules |
+| color/yellow/7 | `#151510` | hero ground |
+| *(unbound fill)* | `#EA3213` | Playlists — sampled from the rendered section |
+
+**Nine of eleven already matched.** The one real error was a cream `#FCF6E9`
+that does not exist anywhere in the design — I had introduced it. Figma uses
+pure `#FFFFFF` both for the type on orange and for the ground beneath the wave,
+so replacing it also closed QA item 2.9.
+
+Verified by reading computed styles from the running page: 7/7 section
+backgrounds now match their Figma token exactly.
+
 ## Phase 2 — layout
 
 | # | Section | Item | Status |
@@ -79,7 +106,7 @@ three tile labels do not exist in the assets and need Cubano — see B5.
 | 2.6 | Product Features — mobile | Icons in two rows, background reverts to a solid colour block | TODO |
 | 2.7 | Format Versatility | Padding above and below the text block, matching the design | TODO |
 | 2.8 | Format Versatility — mobile | Four quadrant images full width, stacked | TODO |
-| 2.9 | Differentiators | Background under the orange wave should be white | TODO |
+| 2.9 | Differentiators | Background under the orange wave should be white | **DONE** (with B2) |
 | 2.10 | Playlists | Panel should be taller so the Jammy wordmark is not cropped | TODO |
 | 2.11 | Playlists — mobile | Illustration to the right-side corner, as in the design | TODO |
 
@@ -103,7 +130,7 @@ body style, so it needs its own QA pass.
 | # | Item | Status |
 |---|---|---|
 | 4.1 | Swap Anton → Cubano, Figtree → Proxima Nova throughout | BLOCKED (B1) |
-| 4.2 | Audit every colour against the final Figma hex values | BLOCKED (B2) |
+| 4.2 | Audit every colour against the final Figma hex values | **DONE** |
 | 4.3 | Items B3, B4, B5, B6 | BLOCKED |
 
 ---
