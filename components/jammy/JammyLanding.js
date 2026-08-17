@@ -903,7 +903,13 @@ export function JammyLanding() {
           overflow: "hidden",
         }}
       >
-        <div data-parallax="0.1" style={{ position: "absolute", inset: "-10% 0" }}>
+        {/* Photo backdrop on desktop; hidden on phones per QA 2.6, where the
+            section reverts to a solid block so the labels stay legible. */}
+        <div
+          data-parallax="0.1"
+          className="jammy-features-bg"
+          style={{ position: "absolute", inset: "-10% 0" }}
+        >
           <img
             src={`${IMG}/features-bg.jpg`}
             alt=""
@@ -935,24 +941,18 @@ export function JammyLanding() {
           >
             A shortcut with showmanship.
           </h2>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "22px 21px",
-              justifyContent: "center",
-            }}
-          >
+          {/* A fixed grid rather than flex-wrap: the design is two rows of
+              five, and wrapping cannot guarantee that. Collapses to two columns
+              on phones (QA 2.6). */}
+          <div className="jammy-features">
             {FEATURES.map((f) => (
               <div
                 key={f.label}
-                className="jammy-reveal"
+                className="jammy-reveal jammy-feature"
                 style={{
-                  width: 188,
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  gap: 18,
                 }}
               >
                 <img
@@ -966,8 +966,7 @@ export function JammyLanding() {
                     margin: 0,
                     fontFamily: BODY,
                     fontWeight: 700,
-                    fontSize: 24,
-                    lineHeight: 1.08,
+                    lineHeight: 1.2,
                     textAlign: "center",
                     color: C.forest,
                   }}
@@ -984,7 +983,9 @@ export function JammyLanding() {
       <section
         style={{
           background: "#fff",
-          padding: "clamp(40px, 6vw, 54px) 24px clamp(16px, 4vw, 56px)",
+          // Figma has 54px above the text block and 56px below the tiles
+          // (node 1:332). QA 2.7 asked for that padding to be restored.
+          padding: "clamp(36px, 5vw, 54px) 24px clamp(36px, 5vw, 56px)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -1237,7 +1238,9 @@ export function JammyLanding() {
         style={{
           position: "relative",
           background: C.red,
-          padding: "88px 24px 44px",
+          // QA 2.10: taller panel so the Jammy wordmark behind the content is
+          // not cropped. Figma's is 1920x432 (aspect 4.44).
+          padding: "clamp(64px, 8vw, 104px) 24px clamp(56px, 7vw, 88px)",
           overflow: "hidden",
         }}
       >
@@ -1248,7 +1251,10 @@ export function JammyLanding() {
           style={{
             position: "absolute",
             left: "-3.6%",
-            top: "-20%",
+            // Centred rather than pulled up: at -20% the wordmark's ascenders
+            // were clipped by the panel's top edge (QA 2.10).
+            top: "50%",
+            transform: "translateY(-50%)",
             width: "103.3%",
             pointerEvents: "none",
           }}
@@ -1323,7 +1329,10 @@ export function JammyLanding() {
             </a>
           </div>
           {/* Walking sax mascot: torso bobs, legs alternate, notes drift up */}
-          <div className="jammy-reveal" style={{ flex: "0 0 190px" }}>
+          <div
+            className="jammy-reveal jammy-sax"
+            style={{ flex: "0 0 190px" }}
+          >
             <div
               style={{
                 position: "relative",

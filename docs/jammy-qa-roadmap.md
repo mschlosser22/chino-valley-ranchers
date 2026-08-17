@@ -98,17 +98,34 @@ backgrounds now match their Figma token exactly.
 
 | # | Section | Item | Status |
 |---|---|---|---|
-| 2.1 | Homepage gateway | Button text should match other site buttons (DIN Condensed) | TODO |
-| 2.2 | Homepage gateway | Supporting copy line-spacing is tight — match body copy elsewhere on the site | TODO |
-| 2.3 | Homepage gateway | Extra bottom padding; keep "everything in between" clear of the spoon's shadow | TODO |
-| 2.4 | Overview | Protein badge should match the size and placement of the original design | TODO |
-| 2.5 | Product Features | Section feels dense — reduce supporting type size, less vertical margin between columns, more horizontal space between the two rows | TODO |
-| 2.6 | Product Features — mobile | Icons in two rows, background reverts to a solid colour block | TODO |
-| 2.7 | Format Versatility | Padding above and below the text block, matching the design | TODO |
-| 2.8 | Format Versatility — mobile | Four quadrant images full width, stacked | TODO |
-| 2.9 | Differentiators | Background under the orange wave should be white | **DONE** (with B2) |
-| 2.10 | Playlists | Panel should be taller so the Jammy wordmark is not cropped | TODO |
-| 2.11 | Playlists — mobile | Illustration to the right-side corner, as in the design | TODO |
+| 2.1 | Homepage gateway | Button text matches other site buttons (DIN Condensed) | **DONE** |
+| 2.2 | Homepage gateway | Supporting copy leading loosened to 1.52 | **DONE** |
+| 2.3 | Homepage gateway | Copy block lifted clear of the spoon's shadow | **DONE** |
+| 2.4 | Overview | Protein badge sized and placed from Figma geometry | **DONE** |
+| 2.5 | Product Features | Five-column grid, smaller labels, wider column gaps | **DONE** |
+| 2.6 | Product Features — mobile | Two columns on a solid block | **DONE** |
+| 2.7 | Format Versatility | Padding restored above and below the text block | **DONE** |
+| 2.8 | Format Versatility — mobile | Tiles full width, stacked | **DONE** |
+| 2.9 | Differentiators | Background under the orange wave is white | **DONE** (with B2) |
+| 2.10 | Playlists | Taller panel; wordmark no longer cropped | **DONE** |
+| 2.11 | Playlists — mobile | Mascot in the right-hand corner | **DONE** |
+
+**Phase 2 complete.** 12/12 automated checks pass, plus Phase 1's 11/11, the
+7/7 colour audit, and consent unchanged.
+
+Figma geometry used rather than estimates:
+- Protein badge — container 484x504, badge 211x196 at (273.5, 232), so 43.6%
+  of the container width with its left edge at 56.5% and top at 46%.
+- Format Versatility — 54px above the text block, 56px below the tiles.
+- Playlists panel — 1920x432 in the design (aspect 4.44); ours is now 3.63,
+  close enough that the wordmark reads with only 21px of symmetric bleed.
+
+Two places where the design was deliberately not followed:
+- Gateway body leading. Figma specifies 1.9512cqw against a 1.6725cqw size, a
+  ratio of ~1.17. QA asked for looser, so it is 2.55cqw (~1.5), matching the
+  rest of the site.
+- Gateway copy anchors. Lifted 5% from the design's values because the looser
+  leading pushed "everything in between" into the spoon's shadow.
 
 ## Phase 3 — artwork and animation
 

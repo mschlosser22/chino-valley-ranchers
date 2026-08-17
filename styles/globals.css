@@ -549,13 +549,15 @@
   text-align: center;
 }
 
+/* QA 2.2: the leading was tight against the rest of the site's body copy.
+   1.6 matches the ~28px/18px used elsewhere. */
 .jammy-cta__body {
   margin: 0;
   max-width: 648px;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 1.35;
-  letter-spacing: 0.6px;
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: 0.4px;
   color: #000000;
   text-wrap: pretty;
 }
@@ -569,8 +571,11 @@
   border-radius: 6px;
   background: #2f4421;
   color: #ffffff;
+  /* QA 2.1: match the other buttons on the site, which use DIN Condensed
+     (loaded site-wide from the Typekit kit in _document). */
+  font-family: din-condensed, "Arial Narrow", sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   letter-spacing: 1.6px;
   text-transform: uppercase;
   text-decoration: none;
@@ -634,7 +639,7 @@
   .jammy-cta__head {
     position: absolute;
     left: 2.578%;
-    top: 46%;
+    top: 41%;
     width: 45.157%;
     margin: 0;
     font-size: 4.4599cqw;
@@ -646,18 +651,23 @@
   .jammy-cta__body {
     position: absolute;
     left: 4.878%;
-    top: 63.5%;
+    top: 58.5%;
     width: 45.157%;
     max-width: none;
     margin: 0;
     font-size: 1.6725cqw;
-    line-height: 1.9512cqw;
+    /* QA 2.2: the design's 1.9512cqw is a ratio of ~1.17, which reads tight
+       against the rest of the site's body copy. 2.55cqw is ~1.5. */
+    line-height: 2.55cqw;
     letter-spacing: 1.5px;
   }
   .jammy-cta__cta {
     position: absolute;
     left: 4.878%;
-    top: 85.11%;
+    /* QA 2.3: lifted from the design's 85.11%. The looser leading pushed the
+       copy down into the spoon's shadow, where "everything in between" stopped
+       reading. 83% keeps it clear while leaving a gap under the body copy. */
+    top: 83%;
     width: 13.449%;
     min-width: 0;
     height: 5.955%;
@@ -682,18 +692,24 @@
    Positioned here rather than inline because the vertical anchor changes with
    breakpoint. Only `top`/`right`/`width` are set -- `transform` is left alone
    so the jammySpinIn entrance animation stays in control of it. */
+/* QA 2.4: size and placement taken from Figma rather than eyeballed. In the
+   design the bag container is 484x504 and the badge is 211x196 at (273.5, 232)
+   -- so 43.6% of the container width, its left edge at 56.5%, top at 46%.
+   Sizing in % of the container rather than vw keeps that ratio at every width. */
 .jammy .jammy-badge {
-  right: -4%;
+  left: 56.5%;
   top: 46%;
   transform-origin: 50% 50%;
-  width: clamp(132px, 16.5vw, 205px);
-  margin-top: -8%;
+  width: 43.6%;
 }
 
 /* On phones the bag is narrower and taller in the column, so the badge rides
    up to overlap the product name rather than the photography below it. */
 @media (max-width: 860px) {
   .jammy .jammy-badge {
+    /* Base rule anchors from the left for the desktop ratio; mobile anchors
+       right instead, so left has to be released. */
+    left: auto;
     right: -2%;
     top: 19%;
     width: clamp(118px, 30vw, 150px);
@@ -706,7 +722,60 @@
    overlap everywhere else. */
 @media (max-width: 340px) {
   .jammy .jammy-badge {
+    left: auto;
     right: 0;
+  }
+}
+
+/* ── Product Features grid ──
+   Two rows of five, matching the design. QA asked for smaller supporting type,
+   less vertical space between the rows and more horizontal space between the
+   columns, so the column gap is wide and the row gap comparatively tight. */
+.jammy .jammy-features {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: clamp(24px, 4vw, 64px);
+  row-gap: clamp(28px, 3vw, 40px);
+  justify-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.jammy .jammy-feature {
+  gap: 14px;
+  max-width: 170px;
+}
+
+/* Down from 24px per QA -- the section read as dense. */
+.jammy .jammy-feature h3 {
+  font-size: clamp(14px, 1.15vw, 17px);
+}
+
+@media (max-width: 860px) {
+  .jammy .jammy-features {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: clamp(16px, 6vw, 40px);
+    row-gap: 30px;
+  }
+  /* Solid block instead of the photo -- at phone width the crop is mostly
+     yolk and the dark labels stop reading against it. */
+  .jammy .jammy-features-bg {
+    display: none;
+  }
+}
+
+/* QA 2.11: on phones the sax mascot sits in the right-hand corner rather than
+   centred under the copy, matching the design. */
+@media (max-width: 860px) {
+  /* The parent row is justify-content: center, so align-self alone leaves the
+     mascot centred. Taking the full row width and pushing its own content
+     right is what actually moves it into the corner. */
+  .jammy .jammy-sax {
+    flex: 1 1 100% !important;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -10px;
+    margin-top: -8px;
   }
 }
 
@@ -720,12 +789,14 @@
 
 /* Golden-hour gallery collapses to two columns on narrow screens. */
 @media (max-width: 860px) {
+  /* QA 2.8: full width and stacked on phones, rather than two columns --
+     the tiles are the point of this section and two-up made them small. */
   .jammy-tiles {
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: 1fr !important;
     height: auto !important;
   }
   .jammy-tiles > div {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 16 / 10;
   }
 }
 
