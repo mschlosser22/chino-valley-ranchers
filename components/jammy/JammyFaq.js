@@ -104,8 +104,21 @@ function FaqItem({ item, isOpen, onToggle, index }) {
   );
 }
 
+/**
+ * Panels open and close independently -- opening one does not close the others,
+ * so a visitor can have several answers on screen at once. The first is open on
+ * load.
+ */
 export function JammyFaq({ items }) {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndexes, setOpenIndexes] = useState(() => new Set([0]));
+
+  const toggle = (i) =>
+    setOpenIndexes((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
 
   return (
     <div style={{ borderBottom: "1px solid #D9D9D9" }}>
@@ -114,8 +127,8 @@ export function JammyFaq({ items }) {
           key={item.question}
           item={item}
           index={i}
-          isOpen={openIndex === i}
-          onToggle={() => setOpenIndex(openIndex === i ? -1 : i)}
+          isOpen={openIndexes.has(i)}
+          onToggle={() => toggle(i)}
         />
       ))}
     </div>

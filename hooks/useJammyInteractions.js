@@ -70,9 +70,10 @@ export function useJammyInteractions(rootRef) {
           obs.observe(el);
           teardown.push(() => obs.disconnect());
         };
+        // The badge pops in square; only the sticker keeps its tilt.
         spinIn(
           "[data-badge]",
-          "jammySpinIn .7s cubic-bezier(.34,1.56,.64,1) forwards",
+          "jammyPopIn .7s cubic-bezier(.34,1.56,.64,1) forwards",
           0.3
         );
         spinIn(

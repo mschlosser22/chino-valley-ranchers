@@ -368,6 +368,7 @@
     transform: translateY(3px) rotate(0.4deg);
   }
 }
+/* Used by the "hard part, done easy" sticker, where the tilt is wanted. */
 @keyframes jammySpinIn {
   0% {
     transform: rotate(-24deg) scale(0.6);
@@ -375,6 +376,19 @@
   }
   100% {
     transform: rotate(-12deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* The protein badge gets the same pop without the tilt -- per QA it should sit
+   square, matching the roundel printed on the bag. */
+@keyframes jammyPopIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
     opacity: 1;
   }
 }
@@ -693,6 +707,14 @@
 @media (max-width: 340px) {
   .jammy .jammy-badge {
     right: 0;
+  }
+}
+
+/* The Spotify scannable code is pointless on the phone doing the scanning, and
+   it crowds the panel at narrow widths. The "Get Jammin'" button covers mobile. */
+@media (max-width: 860px) {
+  .jammy .jammy-spotify-code {
+    display: none;
   }
 }
 

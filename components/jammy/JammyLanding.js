@@ -232,13 +232,15 @@ export function JammyLanding() {
               fontSize: "clamp(17px, 2.1vw, 24px)",
               lineHeight: 1.4,
               textAlign: "center",
+              textWrap: "balance",
               color: "#fff",
               textShadow: "0 2px 12.9px rgba(0,0,0,0.5)",
             }}
           >
-            The only egg with a golden, jammy center
-            <br />
-            that can make any meal a moment.
+            {/* No hard break: it forced an awkward wrap on phones. text-wrap
+                balance keeps the two lines even on wide screens instead. */}
+            The only egg with a golden, jammy center that can make any meal a
+            moment.
           </p>
         </div>
       </section>
@@ -1026,25 +1028,31 @@ export function JammyLanding() {
             transition: "grid-template-columns .7s cubic-bezier(.2,.7,.25,1)",
           }}
         >
+          {/* Filenames do not match contents: grid-hand is the ramen bowl,
+              grid-ramen is the toast, grid-toast is the lunchbox. Left
+              unrenamed so the assets still match what NW delivered; alt text
+              and label pairing follow the actual photographs. QA also wants a
+              Cubano label top-left in every tile, but only the "Toast" one
+              exists and Cubano is unlicensed -- see roadmap B5. */}
           {[
             {
-              src: "grid-toast.jpg",
-              alt: "Soft-boiled egg on avocado toast",
-              sticker: false,
-            },
-            {
               src: "grid-hand.jpg",
-              alt: "Hand holding egg and avocado toast",
-              sticker: true,
-            },
-            {
-              src: "grid-picnic.jpg",
-              alt: "Friends sharing sandwiches at a picnic",
+              alt: "Jammy egg in a bowl of ramen",
               sticker: false,
             },
             {
               src: "grid-ramen.jpg",
-              alt: "Jammy egg in a bowl of ramen",
+              alt: "Hand holding avocado toast topped with a jammy egg",
+              sticker: true,
+            },
+            {
+              src: "grid-snack.jpg",
+              alt: "Halved soft-boiled eggs with cracked pepper in a bowl",
+              sticker: false,
+            },
+            {
+              src: "grid-toast.jpg",
+              alt: "Packed lunchbox with a halved jammy egg",
               sticker: false,
             },
           ].map((t) => (
@@ -1068,12 +1076,14 @@ export function JammyLanding() {
                 <img
                   data-sticker="1"
                   src={`${IMG}/svg/hard-part-sticker.svg`}
-                  alt="The hard part, done easy"
+                  alt="Toast"
                   style={{
                     position: "absolute",
-                    left: "16%",
-                    bottom: "12%",
-                    width: "44%",
+                    // Anchored top-left per QA, rather than the previous
+                    // bottom-left placement.
+                    left: "8%",
+                    top: "8%",
+                    width: "40%",
                     filter: "drop-shadow(0 6px 16px rgba(0,0,0,0.28))",
                     opacity: 0,
                     transform: "rotate(-24deg) scale(.6)",
@@ -1143,7 +1153,6 @@ export function JammyLanding() {
               fontSize: "clamp(38px, 8.5vw, 46px)",
               lineHeight: 0.98,
               color: C.yellow,
-              textShadow: "0 1px 0 rgba(46,67,34,0.12)",
             })}
           >
             Our history
@@ -1247,8 +1256,10 @@ export function JammyLanding() {
             justifyContent: "center",
           }}
         >
+          {/* Hidden on phones: a scannable code is no use on the device doing
+              the scanning, and the "Get Jammin'" button covers that case. */}
           <div
-            className="jammy-reveal"
+            className="jammy-reveal jammy-spotify-code"
             data-lift="1"
             style={{ flex: "0 0 auto" }}
           >
@@ -1293,7 +1304,9 @@ export function JammyLanding() {
               playlists&mdash;made for everyone in the Jam Fam.
             </p>
             <a
-              href="#"
+              href="https://open.spotify.com/user/31pasck3j4fhxzzrtogj353djbzy?si=Zv1LVkkYQcegY8hYt59WCQ&utm_source=copy-link"
+              target="_blank"
+              rel="noopener noreferrer"
               data-lift="1"
               style={{ ...pill(), alignSelf: "flex-start", marginTop: 8 }}
             >
