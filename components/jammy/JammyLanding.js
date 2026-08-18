@@ -652,10 +652,29 @@ export function JammyLanding() {
                   animation: "jammyFloat 6.5s ease-in-out infinite",
                 }}
               >
+                {/* QA 3.1: the SVG straight from Figma rather than the PNG.
+                    The orange seams were never in the artwork -- they came
+                    from the PNG export, where shapes that butt together
+                    leave a row of half-transparent pixels for the background
+                    to show through. Vector paths composite as shapes, so
+                    there is nothing to bleed. Gzips to 26KB against the
+                    PNG's 66KB, and stays sharp at any size. */}
+                {/* Inset to the PNG's ink extent (x 9.5-82%, y 0-89.5% of the
+                    old frame) so the artwork lands exactly where it did before.
+                    Keeping the outer box at 260/212 means the music notes below
+                    keep their measured positions -- they float in the padding
+                    the SVG's tight crop does not include. */}
                 <img
-                  src={`${IMG}/illo-texture-base.png`}
+                  src={`${IMG}/svg/illo-texture.svg`}
                   alt="Jammy egg mascot playing a saxophone"
-                  style={{ width: "100%", height: "100%", display: "block" }}
+                  style={{
+                    position: "absolute",
+                    left: "9.5%",
+                    top: 0,
+                    width: "72.5%",
+                    height: "89.5%",
+                    display: "block",
+                  }}
                 />
                 {[
                   { src: "note-3.png", left: 73.5, top: 17.9, w: 5.4, d: "0s" },
@@ -837,39 +856,29 @@ export function JammyLanding() {
                   animation: "jammyFloat 6.5s ease-in-out infinite 1s",
                 }}
               >
+                {/* QA 3.1: Figma's vector, inset to the PNG's ink extent
+                    (x 10.7-89.2%, y 12.7-89.5%) so the bowl sits exactly where
+                    it did and the shine overlays below keep their positions.
+                    Gzips to 54KB against 105KB of PNG.
+
+                    The feet are part of this artwork, so the two ramen-foot
+                    overlays that used to sit on top are gone -- QA 3.2 asked
+                    for them to stop moving, and now they simply are the
+                    illustration. */}
                 <img
-                  src={`${IMG}/illo-upgrades-base.png`}
+                  src={`${IMG}/svg/illo-upgrades.svg`}
                   alt="Jammy egg relaxing in a bowl of ramen"
-                  style={{ width: "100%", height: "100%", display: "block" }}
-                />
-                {/* QA 3.2: the feet stay put and the shine marks animate
-                    instead. Positions are unchanged -- only the animation is
-                    gone -- so the bowl still reads correctly. */}
-                <img
-                  src={`${IMG}/ramen-foot-a.png`}
-                  alt=""
-                  aria-hidden="true"
                   style={{
                     position: "absolute",
-                    left: "62.159%",
-                    top: "42.453%",
-                    width: "11.388%",
+                    left: "10.7%",
+                    top: "12.7%",
+                    width: "78.5%",
+                    height: "76.8%",
+                    display: "block",
                   }}
                 />
-                <img
-                  src={`${IMG}/ramen-foot-b.png`}
-                  alt=""
-                  aria-hidden="true"
-                  style={{
-                    position: "absolute",
-                    left: "52.432%",
-                    top: "47.484%",
-                    width: "9.253%",
-                  }}
-                />
-                {/* The four shine marks are baked into illo-upgrades-base and
-                    sit too close to the bowl outline to cut out safely, so
-                    these overlay them at the measured positions and pulse. */}
+                {/* The four shine marks are part of the artwork too, so these
+                    overlay them at the measured positions and pulse. */}
                 {[
                   { left: 81.85, top: 20.75, w: 6.88, d: "0s" },
                   { left: 23.96, top: 13.21, w: 6.88, d: "0.7s" },
