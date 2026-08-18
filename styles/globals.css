@@ -368,6 +368,25 @@
     transform: translateY(3px) rotate(0.4deg);
   }
 }
+/* Ramen shine marks (QA 3.2). These overlay sparkles that are baked into the
+   base illustration, so the animation only ever adds -- opacity never drops to
+   zero, which would look like the mark disappearing rather than twinkling. */
+@keyframes jammyShine {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.28) rotate(14deg);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(0.92) rotate(-6deg);
+  }
+}
+
 /* Used by the "hard part, done easy" sticker, where the tilt is wanted. */
 @keyframes jammySpinIn {
   0% {

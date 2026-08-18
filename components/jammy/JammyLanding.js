@@ -515,7 +515,11 @@ export function JammyLanding() {
               }}
             />
             <img
-              src={`${IMG}/jammy-egg-illo.png`}
+              // QA 3.4: the supplied PNG was 345x270 against a ~298px display
+              // size -- barely 1.2x, so it read soft on any retina screen. The
+              // artwork is vector in Figma, so this is the SVG export instead
+              // and stays crisp at any size.
+              src={`${IMG}/svg/jammy-egg-illo.svg`}
               alt="Soft-boiled jammy egg"
               style={{
                 position: "absolute",
@@ -838,6 +842,9 @@ export function JammyLanding() {
                   alt="Jammy egg relaxing in a bowl of ramen"
                   style={{ width: "100%", height: "100%", display: "block" }}
                 />
+                {/* QA 3.2: the feet stay put and the shine marks animate
+                    instead. Positions are unchanged -- only the animation is
+                    gone -- so the bowl still reads correctly. */}
                 <img
                   src={`${IMG}/ramen-foot-a.png`}
                   alt=""
@@ -847,7 +854,6 @@ export function JammyLanding() {
                     left: "62.159%",
                     top: "42.453%",
                     width: "11.388%",
-                    animation: "jammyFootBob 1.35s ease-in-out infinite",
                   }}
                 />
                 <img
@@ -859,9 +865,31 @@ export function JammyLanding() {
                     left: "52.432%",
                     top: "47.484%",
                     width: "9.253%",
-                    animation: "jammyFootBob 1.35s ease-in-out .68s infinite",
                   }}
                 />
+                {/* The four shine marks are baked into illo-upgrades-base and
+                    sit too close to the bowl outline to cut out safely, so
+                    these overlay them at the measured positions and pulse. */}
+                {[
+                  { left: 81.85, top: 20.75, w: 6.88, d: "0s" },
+                  { left: 23.96, top: 13.21, w: 6.88, d: "0.7s" },
+                  { left: 77.58, top: 69.5, w: 6.64, d: "1.3s" },
+                  { left: 15.66, top: 21.7, w: 4.51, d: "1.9s" },
+                ].map((s, i) => (
+                  <img
+                    key={i}
+                    src={`${IMG}/sparkle.png`}
+                    alt=""
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      left: `${s.left}%`,
+                      top: `${s.top}%`,
+                      width: `${s.w}%`,
+                      animation: `jammyShine 3.4s ease-in-out ${s.d} infinite`,
+                    }}
+                  />
+                ))}
               </div>
             </div>
             <h3

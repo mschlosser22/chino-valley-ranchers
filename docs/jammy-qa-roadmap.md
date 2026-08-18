@@ -134,10 +134,45 @@ Grouped because they share one root cause (see D3).
 | # | Section | Item | Status |
 |---|---|---|---|
 | 3.1 | Differentiators | Background orange showing through the vector shapes at colour joins | NEEDS DESIGN INPUT |
-| 3.2 | Differentiators | Ramen illustration: feet static, shine graphics animate instead | TODO |
+| 3.2 | Differentiators | Ramen illustration: feet static, shine graphics animate instead | **DONE** |
 | 3.3 | Playlists | Simplify animation to avoid visible cuts in the artwork (musical notes are fine) | NEEDS DESIGN INPUT |
-| 3.4 | What is Jammy | Egg illustration looks soft/fuzzy — re-export at higher resolution | TODO |
+| 3.4 | What is Jammy | Egg illustration looks soft/fuzzy — re-export at higher resolution | **DONE** |
 | 3.5 | Hero | Replace the letter-drip with a softer entrance, no per-letter warping | NEEDS DESIGN INPUT (D2) |
+
+**Both unblocked Phase 3 items are complete.** 5/5 new checks pass, alongside
+Phase 1's 11/11, Phase 2's 12/12, the 7/7 colour audit, and consent unchanged.
+
+### 3.2 — how the shine ended up as an overlay
+
+The four shine marks are **baked into `illo-upgrades-base.png`**, not separate
+layers. `ramen-foot-a/b.png` are the feet. Animating the shines therefore meant
+either cutting them out of the base image or overlaying them.
+
+Cutting them out was tested and rejected: sampling the alpha ring around each
+mark, only **one of four** is isolated. The other three touch the bowl outline,
+so a cut-out would take bowl artwork with it. This is D3 in miniature.
+
+So the feet simply lost `jammyFootBob` (they stay in place, as QA asked), and
+four `sparkle.png` overlays sit on the measured positions of the baked-in marks
+— 81.85%/20.75%, 23.96%/13.21%, 77.58%/69.5%, 15.66%/21.7% — driven by a new
+`jammyShine` keyframe. `sparkle.png` is the same `#2F4421` as the baked-in
+marks, so they register as one shape.
+
+The keyframe pulses scale and rotation but **never drops opacity below 1**.
+That constraint is the whole trick: fading an overlay out would reveal the
+baked-in mark underneath, which reads as the sparkle failing to disappear
+rather than twinkling. The animation can only ever add to what is already
+painted.
+
+### 3.4 — the egg is now vector
+
+`jammy-egg-illo.png` is 345x270 rendered at ~298px — 1.16x, so it softened on
+any retina screen. The artwork is vector in Figma (node `1:1445`), so it is now
+`svg/jammy-egg-illo.svg` (19.6KB, 23 paths) and is resolution-independent.
+
+Audited the other illustrations for the same fault; none share it. The
+`certified-jam` badge is 4.4x and the three differentiator illustrations are
+~3x, all comfortably above retina.
 
 ## Phase 4 — fonts and colours
 
