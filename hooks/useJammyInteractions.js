@@ -90,24 +90,28 @@ export function useJammyInteractions(rootRef) {
       teardown.push(() => clearTimeout(fallback));
     }
 
-    /* ── Hero lockup: letters drip into place, then hold a slow wobble ── */
+    /* ── Hero lockup: letters bounce into place, then hold a slow wobble ── */
     const lockup = root.querySelector("[data-lockup]");
     if (lockup && !reduceMotion) {
       const letters = Array.from(lockup.querySelectorAll("[data-letter]"));
-      letters.forEach((el) => {
-        el.style.transformOrigin = "50% 0%";
-      });
 
       let wobbleTimer;
+      let started = false;
       const run = () => {
+        // Both the image-load handler and the hard-start timer call this, and
+        // whichever loses the race must not restart an animation already
+        // playing -- that reads as the wordmark falling in twice.
+        if (started) return;
+        started = true;
+
         letters.forEach((el, i) => {
-          el.style.animation = `jammyLetterDrip 1.9s linear ${
-            260 + i * 150
+          el.style.animation = `jammyDripBounce 1.15s cubic-bezier(.3,0,.4,1) ${
+            260 + i * 70
           }ms both`;
         });
         wobbleTimer = setTimeout(() => {
           lockup.style.animation = "jammyWobble 7s ease-in-out infinite";
-        }, 260 + letters.length * 135 + 1700);
+        }, 260 + (letters.length - 1) * 70 + 1250);
       };
 
       // Wait for the letter images so the sequence doesn't start half-loaded.

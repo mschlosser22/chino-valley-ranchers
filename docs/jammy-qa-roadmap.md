@@ -28,7 +28,7 @@ Status key: **TODO** · **IN PROGRESS** · **DONE** · **BLOCKED** · **NEEDS DE
 |---|---|---|
 | D1 | "What is a Jammy Egg?" on a curve | CSS cannot set type on a curve well. Either an SVG `textPath`, or NW supplies it as artwork like the "Mind the drip" lockup. Artwork is more faithful — which do they want? |
 | D2 | Hero animation: "adjusting the way it appears at page load… maybe a soft bounce in? Open to exploration" | An invitation rather than a spec. Plan is to build one option and show it rather than iterate blind. |
-| D3 | Illustration seams (see items 8, 9, 18) | The illustrations are assembled from separate layers, so animating them reveals cut lines and lets background colour through at the joins. Can be reduced in code, but the durable fix is re-exported artwork with pieces merged. Worth asking NW before approximating. |
+| D3 | Illustration seams (see items 3.1, 3.3) | **DIAGNOSED — needs re-exported artwork.** Full spec below; hand it to whoever owns the Figma source. |
 
 ---
 
@@ -137,7 +137,7 @@ Grouped because they share one root cause (see D3).
 | 3.2 | Differentiators | Ramen illustration: feet static, shine graphics animate instead | **DONE** |
 | 3.3 | Playlists | Simplify animation to avoid visible cuts in the artwork (musical notes are fine) | NEEDS DESIGN INPUT |
 | 3.4 | What is Jammy | Egg illustration looks soft/fuzzy — re-export at higher resolution | **DONE** |
-| 3.5 | Hero | Replace the letter-drip with a softer entrance, no per-letter warping | NEEDS DESIGN INPUT (D2) |
+| 3.5 | Hero | Replace the letter-drip with a softer entrance, no per-letter warping | **DONE** (option shipped; CVR may still swap) |
 
 **Both unblocked Phase 3 items are complete.** 5/5 new checks pass, alongside
 Phase 1's 11/11, Phase 2's 12/12, the 7/7 colour audit, and consent unchanged.
@@ -163,6 +163,40 @@ That constraint is the whole trick: fading an overlay out would reveal the
 baked-in mark underneath, which reads as the sparkle failing to disappear
 rather than twinkling. The animation can only ever add to what is already
 painted.
+
+### 3.5 — new hero entrance
+
+`jammyLetterDrip` squashed and stretched each letter on the way down. CVR asked
+for the warping to go, so `jammyDripBounce` replaces it: each letter falls from
+above and settles with two decaying bounces, then the lockup holds the existing
+`jammyWobble` idle. Every keyframe is `translateY` only — verified in the
+browser, the transform matrix holds scale at exactly 1.0000 across the whole
+run, so the letterforms never distort.
+
+Two alternatives were designed alongside it and are **not** in the code:
+
+- **softRise** — the whole lockup rises as one group with a soft overshoot,
+  then wobble
+- **popSettle** — staggered scale-pop, clean stop, no idle loop
+
+Both live in the Claude Design project ("Mind the drip landing page") behind its
+`heroEntrance` picker, along with the original `classicDrip`, if CVR wants to
+compare all four before settling. Swapping is a one-line change here.
+
+### 3.1 / 3.3 — diagnosed, spec written
+
+Both were investigated at pixel level and neither is fixable in code. The cause
+in both cases is the same: shapes that butt against each other without
+overlapping, so the exporter leaves a row of semi-transparent pixels that the
+background shows through.
+
+The re-export spec — measured seam coordinates, per-illustration fixes, and
+export settings that keep our CSS positioning valid — is in
+**`docs/jammy-artwork-respec.md`**. That is the document to send.
+
+Worth flagging for the sax specifically: the torso artwork has a *hole* where
+the sax sits, so the sax cannot be animated at all until the torso is
+re-exported as a complete body. No amount of code changes that.
 
 ### 3.4 — the egg is now vector
 

@@ -412,64 +412,44 @@
   }
 }
 
-/* The hero wordmark: each letter falls and squashes into place like a
-   drip of yolk. Long keyframe list is the whole effect, so it lives here
-   rather than being approximated with a transition. */
-@keyframes jammyLetterDrip {
+/* The hero wordmark entrance (QA 3.5). Each letter falls from above and
+   settles with two decaying bounces.
+
+   This replaces jammyLetterDrip, which squashed and stretched each letter
+   on the way down. CVR asked for the warping to go -- it distorted the
+   letterforms of a wordmark -- so every keyframe here is translateY only.
+   The bounce carries the "drip" idea without touching the shapes.
+
+   Two other entrances were designed alongside this one (a soft group rise
+   and a scale-pop) and are recorded in docs/jammy-qa-roadmap.md. They can
+   be previewed in the Claude Design project via its heroEntrance picker
+   if CVR wants to compare before settling. */
+@keyframes jammyDripBounce {
   0% {
     opacity: 0;
-    transform: translateY(-124%) scaleY(0.45) scaleX(1.12);
+    transform: translateY(-130%);
   }
-  4% {
-    opacity: 0.55;
-    transform: translateY(-123.8%) scaleY(0.5) scaleX(1.105);
-  }
-  7.2% {
+  8% {
     opacity: 1;
-    transform: translateY(-123.5%) scaleY(0.55) scaleX(1.09);
   }
-  14.4% {
-    transform: translateY(-121.6%) scaleY(0.72) scaleX(1.05);
+  16% {
+    transform: translateY(-86%);
   }
-  21.6% {
-    transform: translateY(-117.6%) scaleY(0.95) scaleX(1);
+  38% {
+    transform: translateY(0);
   }
-  28.8% {
-    transform: translateY(-111%) scaleY(1.18) scaleX(0.94);
-  }
-  36% {
-    transform: translateY(-100.6%) scaleY(1.38) scaleX(0.89);
-  }
-  43.2% {
-    transform: translateY(-85.6%) scaleY(1.52) scaleX(0.86);
-  }
-  50.4% {
-    transform: translateY(-64.7%) scaleY(1.6) scaleX(0.85);
-  }
-  57.6% {
-    transform: translateY(-41.4%) scaleY(1.53) scaleX(0.865);
-  }
-  64.8% {
-    transform: translateY(-19.7%) scaleY(1.32) scaleX(0.905);
+  56% {
+    transform: translateY(-9%);
   }
   72% {
-    transform: translateY(0) scaleY(1.02) scaleX(1.015);
+    transform: translateY(0);
   }
-  78% {
-    transform: translateY(0) scaleY(0.89) scaleX(1.07);
-  }
-  84% {
-    transform: translateY(0) scaleY(0.97) scaleX(1.02);
-  }
-  90% {
-    transform: translateY(0) scaleY(1.03) scaleX(0.985);
-  }
-  95% {
-    transform: translateY(0) scaleY(0.99) scaleX(1.005);
+  85% {
+    transform: translateY(-2.5%);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scaleY(1) scaleX(1);
+    transform: translateY(0);
   }
 }
 
