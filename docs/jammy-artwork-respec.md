@@ -31,8 +31,11 @@ Vector paths composite as shapes, so there is no semi-transparent row for the
 background to bleed through. Both are also smaller over the wire — 26KB vs 66KB
 gzipped for the sax, 54KB vs 105KB for the ramen — and resolution-independent.
 
-The middle card ("Easy and Ready to Enjoy") still uses its PNG, because its arm
-animates and is baked into the vector. It has the same root cause as 3.3.
+The middle card ("Easy and Ready to Enjoy") stays on its PNG, by decision. Its
+fork arm cannot be separated from the body in vector — the arm's outline is part
+of the same closed contour — so converting it would cost the arm-wave animation.
+And inspected at 4x, that card has no visible seam to fix. Nothing is needed
+from the designer for it.
 
 The measured seam data below is retained only as a record of the PNG defect.
 

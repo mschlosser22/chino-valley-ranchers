@@ -198,8 +198,24 @@ PNGs they replace, and resolution-independent.
 The ramen feet are part of that artwork, so the `ramen-foot-a/b` overlays are
 gone — 3.2 asked them to stop moving and now they simply are the illustration.
 
-**The middle card ("Easy and Ready to Enjoy") is not converted.** Its arm
-animates and is baked into the vector, so it has the same root cause as 3.3.
+**The middle card ("Easy and Ready to Enjoy") stays on its PNG. Deliberate —
+do not "finish the job" by converting it.**
+
+Two reasons, both checked rather than assumed:
+
+1. *It cannot be converted without losing the arm wave.* The fork arm's dark
+   outline is part of the same closed contour as the body — only its interior
+   fills are separate paths. Three different splits were tried and each one
+   broke the artwork: removing the arm's fills leaves its outline stranded on
+   the body, and taking the outline with it cuts the body's silhouette open.
+2. *It does not have the defect anyway.* Inspected at 4x on the running page,
+   the arm join is clean — no seam, no orange bleeding through. The two cards
+   that were converted are the ones that actually showed seams.
+
+Converting it would trade a working animation for a fix to a problem this card
+does not have. There is a faint orange sliver visible inside the fork tines at
+high magnification, but that is thin-shape rendering, not a butt joint, and it
+is invisible at real size.
 
 ### 3.3 — needs the illustration re-drawn, not re-exported
 
