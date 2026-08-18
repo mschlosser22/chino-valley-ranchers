@@ -1,17 +1,42 @@
 # Jammy artwork re-export spec
 
-**For:** whoever owns the Jammy illustration source in Figma
-**Covers:** QA items 3.1 (differentiator seams) and 3.3 (Playlists character)
+**For:** whoever owns the Jammy illustration source
+**Covers:** QA item 3.3 (Playlists character). 3.1 is **resolved** — see below.
 
-Both items were investigated at pixel level — alpha-channel scan plus seam
-clustering on the shipped PNGs. Neither is fixable in code without visible
-trade-offs. Coordinates below are pixels in each source PNG at its shipped size.
+> **Update, Aug 18 2026 — read this first.**
+>
+> This spec originally asked for re-exported artwork for both 3.1 and 3.3. That
+> request was aimed at the wrong target, and 3.1 no longer needs anything.
+>
+> The seams and the sax "hole" were never defects in the source. The
+> illustrations live in Figma as **flat vector** and are clean. The layered PNGs
+> we animate (`illo-easy-arm`, `ramen-foot-a/b`, `pl-leg-*`, `pl-sax`) were cut
+> out of that flat artwork downstream, and the cutting is what introduced the
+> damage: pieces butt against each other with no overlap, and lifting the sax
+> out left a hole behind it.
+>
+> **3.1 is fixed** by serving Figma's vector directly instead of the PNG — done
+> in `ebb6f1b` for two of the three cards. No artwork request needed.
+>
+> **3.3 still needs new artwork**, but for a different reason than stated below.
+> See "3.3 — corrected diagnosis". The measured PNG detail is kept for
+> reference, since it accurately describes the files we currently ship.
 
 ---
 
-## 3.1 Differentiator illustrations — orange seams
+## 3.1 Differentiator illustrations — RESOLVED, no action needed
 
-**Verdict: needs re-exported artwork.**
+Fixed by swapping the PNGs for Figma's vector (nodes `1:1136` and `1:1243`).
+Vector paths composite as shapes, so there is no semi-transparent row for the
+background to bleed through. Both are also smaller over the wire — 26KB vs 66KB
+gzipped for the sax, 54KB vs 105KB for the ramen — and resolution-independent.
+
+The middle card ("Easy and Ready to Enjoy") still uses its PNG, because its arm
+animates and is baked into the vector. It has the same root cause as 3.3.
+
+The measured seam data below is retained only as a record of the PNG defect.
+
+### Original finding (PNG export artefact)
 
 **What it is:** anti-aliasing at butt joints. Wherever two filled vector shapes
 share an edge without overlapping, the exporter renders a 1–2px row of
@@ -57,10 +82,35 @@ doubles decode cost. Stopgap only.
 
 ---
 
-## 3.3 Playlists character — cut lines at animated joints
+## 3.3 — corrected diagnosis
 
-**Verdict: needs re-exported artwork for both joints.** The rest of the layers
-are fine, and the floating musical notes are fine as-is (CVR confirmed).
+**Verdict: still needs new artwork, but as a re-draw, not a re-export.**
+
+The Playlists character and the "Smooth, Jammy Texture" character are the same
+illustration. It exists as vector at Figma node `1:1136`, so I checked whether
+the sax and legs could simply be split out of the vector, giving the pieces real
+overlap and avoiding the cut-line problem entirely.
+
+**They cannot.** The dark-green line work is one `<path>` of 23 subpaths, and
+subpath #0 is a single closed contour spanning the whole figure — body, both
+legs, both feet and the entire saxophone as one connected shape, 189x191 units.
+The other 22 subpaths are interior detail that only reads correctly against it.
+
+So there is no seam to cut along. Separating the sax means cutting through a
+contour that was authored as one, which reproduces exactly the hole we already
+have. The current PNGs are a faithful record of that: they were cut from this
+same flat artwork.
+
+**What would actually fix it:** the illustration re-drawn with the movable parts
+as their own closed shapes — sax (with hands) on its own layer, each leg on its
+own layer, and the body drawn complete underneath, so the pieces overlap rather
+than butt. That is an illustration task, not an export setting.
+
+**What it costs if we do nothing:** the sax and legs cannot animate. Everything
+else in the section — the floating musical notes, which CVR confirmed they are
+happy with — is unaffected.
+
+### Original finding (measured against the shipped PNGs)
 
 Layer placement in the 480×440 torso frame: legs at y=262, left leg x=50–179,
 right leg x=195–343; sax at x=280–433, y=196–335.

@@ -133,7 +133,7 @@ Grouped because they share one root cause (see D3).
 
 | # | Section | Item | Status |
 |---|---|---|---|
-| 3.1 | Differentiators | Background orange showing through the vector shapes at colour joins | NEEDS DESIGN INPUT |
+| 3.1 | Differentiators | Background orange showing through the vector shapes at colour joins | **DONE** (2 of 3 cards; middle card tracked with 3.3) |
 | 3.2 | Differentiators | Ramen illustration: feet static, shine graphics animate instead | **DONE** |
 | 3.3 | Playlists | Simplify animation to avoid visible cuts in the artwork (musical notes are fine) | NEEDS DESIGN INPUT |
 | 3.4 | What is Jammy | Egg illustration looks soft/fuzzy — re-export at higher resolution | **DONE** |
@@ -183,20 +183,44 @@ Both live in the Claude Design project ("Mind the drip landing page") behind its
 `heroEntrance` picker, along with the original `classicDrip`, if CVR wants to
 compare all four before settling. Swapping is a one-line change here.
 
-### 3.1 / 3.3 — diagnosed, spec written
+### 3.1 — fixed from Figma, no designer needed
 
-Both were investigated at pixel level and neither is fixable in code. The cause
-in both cases is the same: shapes that butt against each other without
-overlapping, so the exporter leaves a row of semi-transparent pixels that the
-background shows through.
+The seams were never in the artwork. They came from the PNG export: two filled
+shapes that butt together leave a row of half-transparent pixels between them,
+and against the orange section background that composites into a visible seam.
 
-The re-export spec — measured seam coordinates, per-illustration fixes, and
-export settings that keep our CSS positioning valid — is in
-**`docs/jammy-artwork-respec.md`**. That is the document to send.
+The illustrations are still **flat vector** in Figma (nodes `1:1136`, `1:1243`),
+so the fix was to serve the SVG instead of the PNG. Each is inset to the PNG's
+measured ink extent so the artwork lands where it did and the music-note and
+shine overlays keep their positions. Both are also *smaller* gzipped than the
+PNGs they replace, and resolution-independent.
 
-Worth flagging for the sax specifically: the torso artwork has a *hole* where
-the sax sits, so the sax cannot be animated at all until the torso is
-re-exported as a complete body. No amount of code changes that.
+The ramen feet are part of that artwork, so the `ramen-foot-a/b` overlays are
+gone — 3.2 asked them to stop moving and now they simply are the illustration.
+
+**The middle card ("Easy and Ready to Enjoy") is not converted.** Its arm
+animates and is baked into the vector, so it has the same root cause as 3.3.
+
+### 3.3 — needs the illustration re-drawn, not re-exported
+
+Important correction to what we believed earlier. The layered PNGs we animate
+were **cut out of the flat Figma artwork by Claude Design**, which is where the
+damage came from: the pieces butt with no overlap, and lifting the sax out left
+a hole in the torso behind it. There is no unflattened source to go back to.
+
+I checked whether the sax and legs could be split out of the vector instead,
+which would let us give the pieces real overlap. They cannot. The dark-green
+line work is one path of 23 subpaths, and subpath #0 is a **single closed
+contour spanning the whole figure** — body, both legs, both feet and the whole
+saxophone as one connected shape. Cutting it reproduces the same hole.
+
+The durable fix is the illustration re-drawn with the movable parts as their own
+closed shapes and the body complete underneath. That is illustration work.
+
+If we do nothing, the cost is narrow: the sax and legs cannot animate. The
+floating musical notes, which CVR is happy with, are unaffected.
+
+Full detail in **`docs/jammy-artwork-respec.md`** — that is the document to send.
 
 ### 3.4 — the egg is now vector
 
