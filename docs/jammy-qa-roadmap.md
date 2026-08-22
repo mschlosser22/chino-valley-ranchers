@@ -13,7 +13,7 @@ Status key: **TODO** · **IN PROGRESS** · **DONE** · **BLOCKED** · **NEEDS DE
 
 | # | Item | Blocked on |
 |---|---|---|
-| B1 | Fonts should be Proxima Nova and Cubano throughout (currently Anton + Figtree), including button text | **Licensed web font files.** Neither font is in the project and both are commercial. Either purchase web licences or confirm CVR's Adobe Fonts plan covers Proxima Nova — the site already loads a Typekit kit (`use.typekit.net/yyq5ssh.css`), so adding it there is the cheapest route. |
+| B1 | Fonts should be Proxima Nova and Cubano throughout (currently Anton + Figtree), including button text | **Adobe Fonts web project.** No purchase needed — see below. Waiting on Alex (Big Chief) to add both fonts to an Adobe web project and send the kit ID. |
 | ~~B2~~ | ~~All colours must match the final Figma hex codes~~ | **RESOLVED** — audited against `CVR_JammyWebsite_r1` node `1:497`. See below. |
 | B3 | "Available now at Trader Joe's" in bold Proxima Nova | Depends on B1 |
 | B4 | "What is a Jammy Egg?" in Cubano, on a curve, white `#FFFFFF` | Depends on B1. Also needs a decision — see D1 |
@@ -247,6 +247,32 @@ any retina screen. The artwork is vector in Figma (node `1:1445`), so it is now
 Audited the other illustrations for the same fault; none share it. The
 `certified-jam` badge is 4.4x and the three differentiator illustrations are
 ~3x, all comfortably above retina.
+
+## B1 — the font route, verified
+
+**Both fonts are on Adobe Fonts, so no licence purchase is needed.** Checked
+against a nonsense control (`made-tommy` returns "Not Found" at 77KB; all three
+real families return ~370-400KB pages), and both carry web-use licensing:
+
+- Proxima Nova — https://fonts.adobe.com/fonts/proxima-nova
+- Cubano — https://fonts.adobe.com/fonts/cubano
+
+**There is already a live Adobe web project on this domain.** Kit `yyq5ssh`
+serves `din-condensed` to the site today (last published 2021-05-08) — it is
+what the Jammy homepage CTA button uses. If that kit is on Alex's account,
+adding the two families to it is a five-minute job and needs no new project.
+
+Weights needed: Proxima Nova Regular + Bold, Cubano Regular. Nothing else —
+extra weights are free but cost page speed.
+
+Once we have the kit ID, our side is: load the kit, swap the font stacks, and
+re-run the check suites. Roughly half a day, and it unblocks 4.1, B3, B4, B5
+and B6 together.
+
+Fallback if the Adobe account turns out not to permit web projects (some
+single-app Creative Cloud plans restrict this): buy web licences directly from
+the foundries — Proxima Nova from Mark Simonson, Cubano from Dharma Type. Only
+worth pricing if the free route fails.
 
 ## Phase 4 — fonts and colours
 
