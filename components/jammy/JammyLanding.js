@@ -28,8 +28,8 @@ const C = {
   night: "#151510",
 };
 
-const DISPLAY = "Anton, Impact, sans-serif";
-const BODY = "Figtree, sans-serif";
+const DISPLAY = "cubano, Anton, Impact, sans-serif";
+const BODY = "proxima-nova, Figtree, sans-serif";
 
 /* The wordmark is 12 separate letter images so each can drip in
    independently. Percentages are positions within the lockup box. */

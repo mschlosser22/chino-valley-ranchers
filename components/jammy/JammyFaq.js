@@ -46,7 +46,7 @@ function FaqItem({ item, isOpen, onToggle, index }) {
             border: 0,
             cursor: "pointer",
             textAlign: "left",
-            fontFamily: "Figtree, sans-serif",
+            fontFamily: "proxima-nova, Figtree, sans-serif",
             fontWeight: 700,
             fontSize: "clamp(19px, 2.2vw, 24px)",
             lineHeight: 1.35,
@@ -58,7 +58,7 @@ function FaqItem({ item, isOpen, onToggle, index }) {
             aria-hidden="true"
             style={{
               flex: "0 0 auto",
-              fontFamily: "Figtree, sans-serif",
+              fontFamily: "proxima-nova, Figtree, sans-serif",
               fontWeight: 700,
               fontSize: 26,
               lineHeight: 1,
@@ -90,7 +90,7 @@ function FaqItem({ item, isOpen, onToggle, index }) {
             style={{
               margin: 0,
               padding: "0 4px 26px",
-              fontFamily: "Figtree, sans-serif",
+              fontFamily: "proxima-nova, Figtree, sans-serif",
               fontSize: 18,
               lineHeight: "28.8px",
               color: "#3A3F31",

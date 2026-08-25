@@ -13,12 +13,12 @@ Status key: **TODO** · **IN PROGRESS** · **DONE** · **BLOCKED** · **NEEDS DE
 
 | # | Item | Blocked on |
 |---|---|---|
-| B1 | Fonts should be Proxima Nova and Cubano throughout (currently Anton + Figtree), including button text | **Adobe Fonts web project.** No purchase needed — see below. Waiting on Alex (Big Chief) to add both fonts to an Adobe web project and send the kit ID. |
+| ~~B1~~ | ~~Fonts should be Proxima Nova and Cubano throughout~~ | **RESOLVED** — kit `gqk7pcv` created on the client's own Adobe account and wired up. |
 | ~~B2~~ | ~~All colours must match the final Figma hex codes~~ | **RESOLVED** — audited against `CVR_JammyWebsite_r1` node `1:497`. See below. |
-| B3 | "Available now at Trader Joe's" in bold Proxima Nova | Depends on B1 |
-| B4 | "What is a Jammy Egg?" in Cubano, on a curve, white `#FFFFFF` | Depends on B1. Also needs a decision — see D1 |
-| B5 | Format Versatility tile labels use Cubano, anchored top-left | Depends on B1 |
-| B6 | About CVR headline font correction | Depends on B1 |
+| B3 | "Available now at Trader Joe's" in bold Proxima Nova | **UNBLOCKED** — B1 resolved. Ready to build. |
+| B4 | "What is a Jammy Egg?" in Cubano, on a curve, white `#FFFFFF` | Font side unblocked. Still needs the D1 decision on how to set type on a curve. |
+| B5 | Format Versatility tile labels use Cubano, anchored top-left | **UNBLOCKED** — B1 resolved. Three of four labels do not exist as assets and can now be set in Cubano. |
+| B6 | About CVR headline font correction | **UNBLOCKED** — B1 resolved. Ready to build. |
 
 ---
 
@@ -281,9 +281,10 @@ body style, so it needs its own QA pass.
 
 | # | Item | Status |
 |---|---|---|
-| 4.1 | Swap Anton → Cubano, Figtree → Proxima Nova throughout | BLOCKED (B1) |
+| 4.1 | Swap Anton → Cubano, Figtree → Proxima Nova throughout | **DONE** |
 | 4.2 | Audit every colour against the final Figma hex values | **DONE** |
-| 4.3 | Items B3, B4, B5, B6 | BLOCKED |
+| 4.3 | Items B3, B5, B6 | **UNBLOCKED** — ready to build |
+| 4.4 | Item B4 (curved headline) | Needs the D1 decision, not fonts |
 
 ---
 

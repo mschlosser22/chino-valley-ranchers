@@ -65,7 +65,13 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Ultra"
             rel="stylesheet"
           />
-          <link rel="stylesheet" href="https://use.typekit.net/yyq5ssh.css" />
+          {/* Adobe Fonts. This kit carries proxima-nova (400/700), cubano (400)
+              and din-condensed (400/300). It replaces kit yyq5ssh, which served
+              din-condensed alone from an account we do not control -- if that
+              subscription had ever lapsed the site would have lost the face
+              silently. Both weights of din-condensed are reproduced here, so
+              the swap is invisible outside the Jammy page. */}
+          <link rel="stylesheet" href="https://use.typekit.net/gqk7pcv.css" />
           {/* Styled Components CSS */}
           {this.props.styles}
         </Head>

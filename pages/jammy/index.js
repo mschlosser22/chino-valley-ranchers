@@ -29,22 +29,12 @@ export default function JammyPage() {
         />
         <link rel="icon" href="/favicon.ico" />
 
-        {/* Preload the two self-hosted faces so the wordmark and body copy
-            do not flash a fallback on first paint. */}
-        <link
-          rel="preload"
-          as="font"
-          type="font/woff2"
-          href="/fonts/jammy/anton-latin.woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          as="font"
-          type="font/woff2"
-          href="/fonts/jammy/figtree-latin.woff2"
-          crossOrigin="anonymous"
-        />
+        {/* Cubano and Proxima Nova now come from the Adobe kit loaded in
+            _document.tsx. Preconnect so the kit's CSS and font files start
+            resolving during head parse rather than after it -- Adobe serves the
+            CSS from use.typekit.net and the faces from p.typekit.net. */}
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
 
         <meta property="og:title" content="The Jammy Egg | Chino Valley Ranchers" />
         <meta
