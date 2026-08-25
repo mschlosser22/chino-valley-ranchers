@@ -115,7 +115,12 @@ backgrounds now match their Figma token exactly.
 
 Figma geometry used rather than estimates:
 - Protein badge — container 484x504, badge 211x196 at (273.5, 232), so 43.6%
-  of the container width with its left edge at 56.5% and top at 46%.
+  of the container width and top at 46%. The design's 56.5% left was later
+  corrected to 68%: Figma scales the bag artwork to 1982px inside that 484px
+  frame and crops it, so only a narrow slice of the bag shows and the badge
+  clears the product copy. We render the bag at full width, where the same
+  percentage put the badge on top of "The ready-to-eat, soft-boiled egg...".
+  Size and vertical placement are unchanged.
 - Format Versatility — 54px above the text block, 56px below the tiles.
 - Playlists panel — 1920x432 in the design (aspect 4.44); ours is now 3.63,
   close enough that the wordmark reads with only 21px of symmetric bleed.

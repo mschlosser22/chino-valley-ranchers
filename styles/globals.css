@@ -686,8 +686,14 @@
    design the bag container is 484x504 and the badge is 211x196 at (273.5, 232)
    -- so 43.6% of the container width, its left edge at 56.5%, top at 46%.
    Sizing in % of the container rather than vw keeps that ratio at every width. */
+/* The badge overlaps the bag's right edge rather than sitting over it. The
+   Figma geometry (56.5% left) assumes the bag artwork is scaled up and cropped
+   inside its frame the way the design file has it; ours renders the bag at full
+   width, so the same percentage lands the badge on top of the product copy.
+   Shifted right to clear "The ready-to-eat, soft-boiled egg..." while keeping
+   the overlap with the bag silhouette that the design has. */
 .jammy .jammy-badge {
-  left: 56.5%;
+  left: 68%;
   top: 46%;
   transform-origin: 50% 50%;
   width: 43.6%;
