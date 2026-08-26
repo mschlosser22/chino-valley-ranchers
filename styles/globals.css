@@ -625,11 +625,16 @@
     z-index: 0;
   }
   /* Dropped from the design's 37.59% so the headline clears the spoon handle
-     and sits closer to the button rather than stranded above it. */
+     and sits closer to the button rather than stranded above it.
+
+     44% rather than 41%: the handle descends left to right across the copy
+     column, and its lower edge reaches 43.5% of the band at the right end of
+     the headline's span. At 41% the first line ran into it, which is what
+     showed as the spoon cutting through "MESSY LOOKS". */
   .jammy-cta__head {
     position: absolute;
     left: 2.578%;
-    top: 41%;
+    top: 44%;
     width: 45.157%;
     margin: 0;
     font-size: 4.4599cqw;
@@ -641,7 +646,7 @@
   .jammy-cta__body {
     position: absolute;
     left: 4.878%;
-    top: 58.5%;
+    top: 61%;
     width: 45.157%;
     max-width: none;
     margin: 0;
@@ -664,7 +669,11 @@
     min-height: 0;
     margin: 0;
     border-radius: 6px;
-    font-size: 1.115cqw;
+    /* Was 1.115cqw (~16px at a 1440 band), which read small next to the rest of
+       the site. 1.3cqw is ~18.7px, matching the 18px DIN Condensed links in the
+       footer. The site's primary buttons are 36px, but that will not sit in
+       this band's 43.6px-tall button box. */
+    font-size: 1.3cqw;
   }
 }
 
