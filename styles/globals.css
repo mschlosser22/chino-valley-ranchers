@@ -627,14 +627,14 @@
   /* Dropped from the design's 37.59% so the headline clears the spoon handle
      and sits closer to the button rather than stranded above it.
 
-     44% rather than 41%: the handle descends left to right across the copy
-     column, and its lower edge reaches 43.5% of the band at the right end of
-     the headline's span. At 41% the first line ran into it, which is what
-     showed as the spoon cutting through "MESSY LOOKS". */
+     46.5% rather than the design's 37.59%: the handle descends left to right
+     across the copy column, and its lower edge reaches 43.5% of the band at the
+     right end of the headline's span. 44% cleared it by a hair; 46.5% leaves
+     visible air between the type and the spoon. */
   .jammy-cta__head {
     position: absolute;
     left: 2.578%;
-    top: 44%;
+    top: 46.5%;
     width: 45.157%;
     margin: 0;
     font-size: 4.4599cqw;
@@ -642,27 +642,30 @@
     letter-spacing: 1.5px;
     text-align: center;
   }
-  /* Moved with the headline, keeping the same gap beneath it. */
+  /* 66.5% leaves a 2.5% gap under the headline. Previously 61%, which put the
+     body's box marginally above the headline's -- no visible separation. */
   .jammy-cta__body {
     position: absolute;
     left: 4.878%;
-    top: 61%;
+    top: 66.5%;
     width: 45.157%;
     max-width: none;
     margin: 0;
     font-size: 1.6725cqw;
     /* QA 2.2: the design's 1.9512cqw is a ratio of ~1.17, which reads tight
-       against the rest of the site's body copy. 2.55cqw is ~1.5. */
-    line-height: 2.55cqw;
+       against the rest of the site's body copy. 2.45cqw is ~1.46 -- trimmed
+       from 2.55 to buy back the vertical room the new gaps needed, still well
+       clear of the design's value. */
+    line-height: 2.45cqw;
     letter-spacing: 1.5px;
   }
   .jammy-cta__cta {
     position: absolute;
     left: 4.878%;
-    /* QA 2.3: lifted from the design's 85.11%. The looser leading pushed the
-       copy down into the spoon's shadow, where "everything in between" stopped
-       reading. 83% keeps it clear while leaving a gap under the body copy. */
-    top: 83%;
+    /* 88%: moved down with the rest of the block, with a little more air under
+       the body copy than the 87% first tried. Ends at 94%, still clear of the
+       torn bottom edge. */
+    top: 88%;
     width: 13.449%;
     min-width: 0;
     height: 5.955%;
