@@ -627,14 +627,13 @@
   /* Dropped from the design's 37.59% so the headline clears the spoon handle
      and sits closer to the button rather than stranded above it.
 
-     46.5% rather than the design's 37.59%: the handle descends left to right
+     48% rather than the design's 37.59%: the handle descends left to right
      across the copy column, and its lower edge reaches 43.5% of the band at the
-     right end of the headline's span. 44% cleared it by a hair; 46.5% leaves
-     visible air between the type and the spoon. */
+     right end of the headline's span, so this clears it by 4.5%. */
   .jammy-cta__head {
     position: absolute;
     left: 2.578%;
-    top: 46.5%;
+    top: 48%;
     width: 45.157%;
     margin: 0;
     font-size: 4.4599cqw;
@@ -642,12 +641,12 @@
     letter-spacing: 1.5px;
     text-align: center;
   }
-  /* 66.5% leaves a 2.5% gap under the headline. Previously 61%, which put the
-     body's box marginally above the headline's -- no visible separation. */
+  /* 68% leaves a 2.5% gap under the headline. Before these adjustments the
+     body's box actually started above the headline's -- no separation at all. */
   .jammy-cta__body {
     position: absolute;
     left: 4.878%;
-    top: 66.5%;
+    top: 68%;
     width: 45.157%;
     max-width: none;
     margin: 0;
@@ -662,10 +661,10 @@
   .jammy-cta__cta {
     position: absolute;
     left: 4.878%;
-    /* 88%: moved down with the rest of the block, with a little more air under
-       the body copy than the 87% first tried. Ends at 94%, still clear of the
-       torn bottom edge. */
-    top: 88%;
+    /* 89.5%: moved down with the rest of the block, keeping ~2% under the body
+       copy. Ends at 95.5%; the torn fringe does not bite into the button's
+       x-span until 97.2%, so this stays clear of it. */
+    top: 89.5%;
     width: 13.449%;
     min-width: 0;
     height: 5.955%;
