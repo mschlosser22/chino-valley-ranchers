@@ -21,19 +21,50 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-export async function getServerSideProps({params}) {
-  // Fetch data from external API
-  const res = await fetch(`http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/items/news_two?filter[slug][_eq]=${params.slug}`);
-  const articles = await res.json();
-  console.log('ARTICLES', articles)
+const NEWS_API =
+  "http://cvr-env.eba-i8pyhtve.us-east-1.elasticbeanstalk.com/items/news_two";
 
-  return { props: { article: articles.data[0] } }
+export async function getServerSideProps({ params }) {
+  // This route is the site's catch-all, so it receives every URL that no other
+  // page claims -- typos, old links, crawlers guessing at paths, and requests
+  // that differ only in capitalisation. Anything that is not a real post has to
+  // leave here as a 404.
+  //
+  // It previously handed `articles.data[0]` straight to the component. When the
+  // lookup found nothing that value was undefined, the component threw reading
+  // `article.title`, and Next served a 500. Google recorded 12 of those. A 404
+  // tells a crawler to stop asking; a 500 tells it to come back and retry, and
+  // repeated 5xx on a domain makes Google crawl the whole site more cautiously.
+  try {
+    const apiRes = await fetch(
+      `${NEWS_API}?filter[slug][_eq]=${encodeURIComponent(params.slug)}`
+    );
+
+    // A non-2xx from the content API means we cannot say whether this slug is
+    // real. Treat it as not found rather than crashing -- a wrong 404 is
+    // recoverable on the next crawl, a 500 is not.
+    if (!apiRes.ok) {
+      return { notFound: true };
+    }
+
+    const articles = await apiRes.json();
+    const article = articles && articles.data && articles.data[0];
+
+    if (!article) {
+      return { notFound: true };
+    }
+
+    return { props: { article } };
+  } catch (err) {
+    // Network failure reaching the content API. The endpoint is plain HTTP with
+    // no HTTPS and is a single point of failure for every post, so this path is
+    // reachable in practice.
+    console.error(`[slug] lookup failed for "${params.slug}":`, err.message);
+    return { notFound: true };
+  }
 }
 
 export default function NewsArticle({ article }) {
-
-  console.log('ARTICLE', article);
-
   return (
     <>
       <div className={`relative`}>
