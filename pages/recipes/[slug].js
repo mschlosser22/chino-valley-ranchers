@@ -1,13 +1,14 @@
+import { useEffect } from "react";
+
 import Head from "next/head";
 import { getGithubPreviewProps, parseJson } from "next-tinacms-github";
-import { useForm, usePlugin, useCMS, usePlugins } from "tinacms";
+import { useForm, usePlugin, useCMS } from "tinacms";
 import { InlineForm, InlineBlocks } from "react-tinacms-inline";
 import {
   useGithubJsonForm,
   useGithubToolbarPlugins,
   createGithubDeleteAction,
 } from "react-tinacms-github";
-import { HtmlFieldPlugin } from "react-tinacms-editor";
 
 import { Nav } from "../../components/Nav";
 import { Footer } from "../../components/footer/Footer";
@@ -36,7 +37,19 @@ export default function RecipesArticle({ file, isPreview }) {
 
   const deleteAction = createGithubDeleteAction();
 
-  usePlugins([HtmlFieldPlugin]);
+  /* react-tinacms-editor loads CodeMirror, which touches `document` on
+     import and broke SSR for this route. It is only needed inside the CMS,
+     so it is registered in the browser once editing is enabled. */
+  useEffect(() => {
+    if (!cms.enabled) return;
+    let cancelled = false;
+    import("react-tinacms-editor").then(({ HtmlFieldPlugin }) => {
+      if (!cancelled) cms.plugins.add(HtmlFieldPlugin);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [cms.enabled]);
 
   const formConfig = {
     id: "../../content/recipes/index.json",
