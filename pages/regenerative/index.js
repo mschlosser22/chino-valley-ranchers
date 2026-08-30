@@ -1,48 +1,44 @@
-import Head from 'next/head'
-import { Nav } from '../../components/Nav'
-import { Footer } from '../../components/footer/Footer';
-import { RegenerativeHero } from '../../components/regenerative/Hero';
-import { heroBlock } from '../../components/hero/Hero'
-import { beingHumaneBlock } from '../../components/being-humane/BeingHumane'
-import { henParadiseBlock } from '../../components/being-humane/HenParadise'
-import { qualityFeedBlock } from '../../components/being-humane/QualityFeed'
-import { eggTermDefBlock } from '../../components/being-humane/EggTermDef'
-import { contentSingleColumnBlock } from '../../components/content/ContentSingleColumn'
-import { WhatIs } from '../../components/regenerative/WhatIs';
-import { Content } from '../../components/regenerative/Content';
-import { ImageFull } from '../../components/regenerative/ImageFull';
-import { ImageGrid } from '../../components/regenerative/ImageGrid';
-import { Certified } from '../../components/regenerative/Certified';
-import { EggsOpen } from '../../components/regenerative/EggsOpen';
-import { Logos } from '../../components/regenerative/Logos';
+import Head from "next/head";
 
-export default function Products() {
+import { Nav } from "../../components/Nav";
+import { Footer } from "../../components/footer/Footer";
+import { RegenerativeLanding } from "../../components/regenerative/RegenerativeLanding";
 
+/**
+ * The Regenerative landing page.
+ *
+ * Rebuilt from the CVR-Regen-LP-R1-v2 design. The design handoff was a fixed
+ * 2075px canvas of flattened images with every headline and paragraph baked
+ * into JPEGs; this is the same layout rebuilt as live text so it reflows on a
+ * phone, can be selected and copied, and is visible to search engines. Only
+ * the multi-colour script lockups ship as artwork, because they use Nexa Rust
+ * Script with a layered shadow that CSS cannot reproduce.
+ *
+ * Uses the site's own Nav and Footer rather than the header and footer bands
+ * drawn in the design.
+ */
+export default function RegenerativePage() {
   return (
     <>
-    <div className={`relative`}>
-      <Head>
-        <title>{'Regenerative | Chino Valley Ranchers'}</title>
-        <meta name="description" content={"Chino Valley Ranchers"}></meta>
-        <meta name="keywords" content={"chino valley ranchers,cvr,omelette,eggs,breakfast ideas,recipes" }></meta>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <div className="relative">
+        <Head>
+          <title>Regenerative | Chino Valley Ranchers</title>
+          <meta
+            name="description"
+            content="Chino Valley Ranchers is Regenerative Organic Certified. Our organic regenerative eggs come from hens raised on family farms using practices that build healthier soil and a better future."
+          />
+          <meta
+            name="keywords"
+            content="regenerative eggs, regenerative organic certified, organic eggs, pasture raised eggs, chino valley ranchers, regenerative agriculture"
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <Nav />
+        <Nav />
 
-      <div>
-        <RegenerativeHero />
-        <WhatIs />
-        <Content />
-        <ImageFull />
-        <ImageGrid />
-        <Certified />
-        <EggsOpen />
-        <Logos />
+        <RegenerativeLanding />
       </div>
-
-    </div>
-    <Footer />
+      <Footer />
     </>
-  )
+  );
 }
