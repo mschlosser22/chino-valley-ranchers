@@ -1,8 +1,8 @@
+import { useEffect } from "react"
 import { useCMS, usePlugins } from "tinacms"
 import { useRouter } from "next/router"
 import slugify from "slugify"
 import { FORM_ERROR } from "final-form"
-import { HtmlFieldPlugin } from "react-tinacms-editor"
 import { DateFieldPlugin } from 'react-tinacms-date'
 
 import { JsonFile } from 'next-tinacms-json'
@@ -15,8 +15,22 @@ const useCreateNewsArticle = () => {
 
   const github = cms.api.github
 
+  /* react-tinacms-editor loads CodeMirror, which touches `document` when it is
+     required. Importing it here ran that during SSR and broke the pages that
+     use this hook. It is only needed inside the CMS, so it is registered in
+     the browser once editing is enabled. */
+  useEffect(() => {
+    if (!cms.enabled) return
+    let cancelled = false
+    import("react-tinacms-editor").then(({ HtmlFieldPlugin }) => {
+      if (!cancelled) cms.plugins.add(HtmlFieldPlugin)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [cms.enabled])
+
   usePlugins([
-      HtmlFieldPlugin,
       DateFieldPlugin,
     {
       __type: "content-creator",

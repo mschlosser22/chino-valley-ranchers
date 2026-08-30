@@ -7,8 +7,8 @@ import {
   TinacmsGithubProvider
 } from 'react-tinacms-github'
 import { NextGithubMediaStore } from 'next-tinacms-github'
-import { MarkdownFieldPlugin } from 'react-tinacms-editor'
 import Script from "next/script"
+import { useEffect } from 'react'
 
 
 function MyApp({ Component, pageProps }) {
@@ -42,7 +42,26 @@ function MyApp({ Component, pageProps }) {
     toolbar: pageProps.preview,
   })
 
-  cms.plugins.add(MarkdownFieldPlugin)
+  /**
+   * react-tinacms-editor pulls in CodeMirror, which touches `document` the
+   * moment it is required. Importing it at the top of this file ran that on
+   * the server for every request, so every route on the site failed SSR with
+   * "ReferenceError: document is not defined".
+   *
+   * The plugin is only ever used inside the CMS, so it is loaded lazily in the
+   * browser and only when editing is enabled -- the same pattern
+   * components/tinacms/InlineWYSIWYG.js already uses.
+   */
+  useEffect(() => {
+    if (!pageProps.preview) return
+    let cancelled = false
+    import('react-tinacms-editor').then(({ MarkdownFieldPlugin }) => {
+      if (!cancelled) cms.plugins.add(MarkdownFieldPlugin)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [pageProps.preview])
 
   return (
     <>
