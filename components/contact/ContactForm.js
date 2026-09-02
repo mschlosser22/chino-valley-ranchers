@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { BlocksControls } from "react-tinacms-inline";
 
-// Forminit (formerly Getform.io) form endpoint. Set NEXT_PUBLIC_FORMINIT_FORM_ID
-// to the Form ID from the Pro account; falls back to the legacy Getform id,
-// which Forminit still honours on the new domain.
-const FORM_ID =
-  process.env.NEXT_PUBLIC_FORMINIT_FORM_ID ||
-  "51bccb03-3af0-4a69-bc96-f636c4b96cb1";
-const FORM_ACTION = `https://forminit.com/f/${FORM_ID}`;
+// Forminit form endpoint. NEXT_PUBLIC_FORMINIT_FORM_ID must point at the form
+// in CVR's own Forminit account. There is deliberately no fallback: the old
+// Getform id belongs to a different account that CVR cannot sign into, so
+// falling back to it would post enquiries into an inbox nobody here can read.
+const FORM_ID = process.env.NEXT_PUBLIC_FORMINIT_FORM_ID;
+const FORM_ACTION = FORM_ID ? `https://forminit.com/f/${FORM_ID}` : null;
 
 export function ContactForm(props) {
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
@@ -17,6 +16,12 @@ export function ContactForm(props) {
     if (status === "sending") return;
 
     const form = event.target;
+
+    if (!FORM_ACTION) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
 
     try {
@@ -67,7 +72,7 @@ export function ContactForm(props) {
             <div className="col-span-12 pb-12 grid grid-cols-12 px-8 lg:px-0">
               {/* Form */}
               <form
-                action={FORM_ACTION}
+                action={FORM_ACTION || undefined}
                 method="POST"
                 onSubmit={handleSubmit}
                 className="col-span-12 grid grid-cols-1 gap-y-6"
