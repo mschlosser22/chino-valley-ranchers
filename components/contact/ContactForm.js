@@ -9,7 +9,7 @@ const FORM_ID = process.env.NEXT_PUBLIC_FORMINIT_FORM_ID;
 const FORM_ACTION = FORM_ID ? `https://forminit.com/f/${FORM_ID}` : null;
 
 export function ContactForm(props) {
-  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | throttled | error
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,7 +33,21 @@ export function ContactForm(props) {
         headers: { Accept: "application/json" },
       });
 
-      if (!response.ok) throw new Error(`Forminit responded ${response.status}`);
+      // Forminit throttles public forms to one submission every 5 seconds and
+      // answers 429. Treat that as its own state so a visitor who double-taps
+      // Submit is told to wait rather than shown a generic failure.
+      if (response.status === 429) {
+        setStatus("throttled");
+        return;
+      }
+
+      // A 2xx alone is not proof the submission was stored, so check the
+      // payload as well before telling the visitor it went through.
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || !result || result.success !== true) {
+        throw new Error(`Forminit rejected the submission (${response.status})`);
+      }
 
       form.reset();
       setStatus("sent");
@@ -177,6 +191,15 @@ export function ContactForm(props) {
                       className="mt-6 text-chinoblue font-din text-xl"
                     >
                       Thanks for reaching out — we&apos;ll be in touch soon.
+                    </p>
+                  )}
+                  {status === "throttled" && (
+                    <p
+                      role="alert"
+                      className="mt-6 text-chinored font-din text-xl"
+                    >
+                      Just a moment — please wait a few seconds and submit
+                      again.
                     </p>
                   )}
                   {status === "error" && (
