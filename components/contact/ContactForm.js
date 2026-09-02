@@ -1,11 +1,41 @@
-import {
-  InlineTextarea,
-  InlineImage,
-  BlocksControls,
-} from "react-tinacms-inline";
+import { useState } from "react";
+import { BlocksControls } from "react-tinacms-inline";
+
+// Forminit (formerly Getform.io) form endpoint. Set NEXT_PUBLIC_FORMINIT_FORM_ID
+// to the Form ID from the Pro account; falls back to the legacy Getform id,
+// which Forminit still honours on the new domain.
+const FORM_ID =
+  process.env.NEXT_PUBLIC_FORMINIT_FORM_ID ||
+  "51bccb03-3af0-4a69-bc96-f636c4b96cb1";
+const FORM_ACTION = `https://forminit.com/f/${FORM_ID}`;
 
 export function ContactForm(props) {
-  //console.log(props)
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (status === "sending") return;
+
+    const form = event.target;
+    setStatus("sending");
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch(FORM_ACTION, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) throw new Error(`Forminit responded ${response.status}`);
+
+      form.reset();
+      setStatus("sent");
+    } catch (err) {
+      setStatus("error");
+    }
+  };
 
   return (
     <>
@@ -37,14 +67,19 @@ export function ContactForm(props) {
             <div className="col-span-12 pb-12 grid grid-cols-12 px-8 lg:px-0">
               {/* Form */}
               <form
-                action="https://getform.io/f/51bccb03-3af0-4a69-bc96-f636c4b96cb1"
+                action={FORM_ACTION}
                 method="POST"
+                onSubmit={handleSubmit}
                 className="col-span-12 grid grid-cols-1 gap-y-6"
               >
+                {/* Honeypot: hidden from humans, harvested by bots. */}
                 <input
-                  type="hidden"
-                  id="captchaResponse"
-                  name="g-recaptcha-response"
+                  type="text"
+                  name="_gotcha"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
                 />
 
                 <div className="col-span-1">
@@ -57,8 +92,9 @@ export function ContactForm(props) {
                   <div className="mt-1">
                     <input
                       type="text"
-                      name="name"
+                      name="fi-sender-fullName"
                       id="name"
+                      required
                       autoComplete="name"
                       className="py-3 px-4 block w-full shadow-sm focus:ring-chinoblue focus:border-chinoblue border-gray-300 rounded-md"
                     />
@@ -75,8 +111,9 @@ export function ContactForm(props) {
                   <div className="mt-1">
                     <input
                       type="email"
-                      name="email"
+                      name="fi-sender-email"
                       id="email"
+                      required
                       autoComplete="email"
                       className="py-3 px-4 block w-full shadow-sm focus:ring-chinoblue focus:border-chinoblue border-gray-300 rounded-md"
                     />
@@ -93,7 +130,7 @@ export function ContactForm(props) {
                   <div className="mt-1">
                     <input
                       type="text"
-                      name="subject"
+                      name="fi-text-subject"
                       id="subject"
                       autoComplete="subject"
                       className="py-3 px-4 block w-full shadow-sm focus:ring-chinoblue focus:border-chinoblue border-gray-300 rounded-md"
@@ -111,8 +148,9 @@ export function ContactForm(props) {
                   <div className="mt-1">
                     <textarea
                       id="message"
-                      name="message"
+                      name="fi-text-message"
                       rows={10}
+                      required
                       className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
                       defaultValue={""}
                     />
@@ -122,10 +160,35 @@ export function ContactForm(props) {
                 <div className="col-span-1 text-center mt-12 mb-24">
                   <button
                     type="submit"
-                    className="px-5 py-2 bg-chinored text-white uppercase font-din font-bold text-xl lg:text-4xl rounded-lg tracking-wide cursor-pointer"
+                    disabled={status === "sending"}
+                    className="px-5 py-2 bg-chinored text-white uppercase font-din font-bold text-xl lg:text-4xl rounded-lg tracking-wide cursor-pointer disabled:opacity-60"
                   >
-                    Submit
+                    {status === "sending" ? "Sending…" : "Submit"}
                   </button>
+
+                  {status === "sent" && (
+                    <p
+                      role="status"
+                      className="mt-6 text-chinoblue font-din text-xl"
+                    >
+                      Thanks for reaching out — we&apos;ll be in touch soon.
+                    </p>
+                  )}
+                  {status === "error" && (
+                    <p
+                      role="alert"
+                      className="mt-6 text-chinored font-din text-xl"
+                    >
+                      Something went wrong. Please try again, or email us at{" "}
+                      <a
+                        className="underline"
+                        href="mailto:info@chinovalleyranchers.com"
+                      >
+                        info@chinovalleyranchers.com
+                      </a>
+                      .
+                    </p>
+                  )}
                 </div>
               </form>
             </div>
