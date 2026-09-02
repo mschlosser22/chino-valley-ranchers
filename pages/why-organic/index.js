@@ -13,7 +13,6 @@ import { organicMattersBlock } from '../../components/why-organic/OrganicMatters
 import { ourCommitmentBlock } from '../../components/why-organic/OurCommitment'
 import { studiesBlock } from '../../components/why-organic/Studies'
 
-import { HtmlFieldPlugin } from "react-tinacms-editor"
 
 export default function Products({ file, isPreview}) {
 
