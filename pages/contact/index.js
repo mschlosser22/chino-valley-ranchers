@@ -68,6 +68,16 @@ export default function Products({ file, isPreview}) {
         <meta name="description" content={file.data.meta && file.data.meta.description ? file.data.meta.description : 'Chino Valley Ranchers'}></meta>
         <meta name="keywords" content={file.data.meta && file.data.meta.keywords ? file.data.meta.keywords : 'Chino Valley Ranchers'}></meta>
         <link rel="icon" href="/favicon.ico" />
+        {/*
+          reCAPTCHA v3 was loaded here on every page view, transmitting to
+          Google before the visitor chose anything.
+
+          It has been removed rather than deferred: nothing in the codebase ever
+          called grecaptcha.execute(), so the hidden g-recaptcha-response field
+          in ContactForm always submitted empty. The script was providing no
+          spam protection while creating the exposure. Re-adding it means wiring
+          execute() on submit -- see docs/gtm-handoff.md.
+        */}
       </Head>
 
       <Nav />

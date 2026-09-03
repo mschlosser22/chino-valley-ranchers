@@ -1,4 +1,5 @@
 import { BlocksControls } from "react-tinacms-inline";
+import { ConsentGatedVideo } from "./ConsentGatedVideo";
 
 export function Youtube(props) {
   return (
@@ -16,15 +17,7 @@ export function Youtube(props) {
           className="bg-cover w-full"
         >
           <div className="p-8">
-            <div className="aspect-w-16 aspect-h-9">
-              <iframe
-                src={props.video}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+            <ConsentGatedVideo src={props.video} />
           </div>
         </div>
       </div>

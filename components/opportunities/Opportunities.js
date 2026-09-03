@@ -12,6 +12,7 @@ import { scale } from "tailwindcss/defaultTheme";
 
 import ReactMarkdown from "react-markdown";
 import { InlineWysiwyg } from "../../components/tinacms/InlineWYSIWYG";
+import { ConsentGatedVideo } from "../video/ConsentGatedVideo";
 
 export function Opportunities(props) {
   return (
@@ -123,17 +124,9 @@ export function Opportunities(props) {
                   className="bg-cover w-full"
                 >
                   <div className="p-8">
-                    <div className="aspect-w-16 aspect-h-9">
-                      {props.video &&
-                      <iframe
-                        src={props.video.src}
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-}
-                    </div>
+                    {props.video &&
+                      <ConsentGatedVideo src={props.video.src} />
+                    }
                   </div>
                 </div>
               </div>
