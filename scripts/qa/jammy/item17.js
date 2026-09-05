@@ -21,11 +21,13 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
             jamFf:jam?getComputedStyle(jam).fontFamily.split(',')[0]:null,
             slFf:sl?getComputedStyle(sl).fontFamily.split(',')[0]:null};
   });
-  // The Figma binds Cubano-Regular to both Our Story and Get Jammin', and
-  // ProximaNova-Bold to Store Locator. QA's "Our Story should be Proxima
-  // Nova" contradicts that; the design wins and NW has been asked to confirm.
-  ck('Our Story matches the Figma (Cubano)', d.ff==='cubano', d.ff);
-  ck('the two pill buttons match each other', d.ff===d.jamFf, `${d.ff} vs ${d.jamFf}`);
+  // QA: "Our Story button text should be Proxima Nova." The Figma binds
+  // Cubano-Regular to this node, but QA is the later record and overrides the
+  // design file. Knock-on: Get Jammin' is also Cubano-Regular in the design,
+  // so the two pills no longer match -- a consequence of the instruction,
+  // raised with NW rather than silently reconciled.
+  ck('Our Story is Proxima Nova (QA over Figma)', d.ff==='proxima-nova', d.ff);
+  ck('rendered bold', +d.fw>=700, d.fw);
   ck('keeps the pill size', d.fs==='15px', d.fs);
   ck('keeps its uppercase treatment', d.tt==='uppercase', d.tt);
   ck('keeps the forest ground', d.bg==='rgb(46, 67, 34)', d.bg);

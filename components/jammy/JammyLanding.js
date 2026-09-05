@@ -1254,29 +1254,24 @@ export function JammyLanding() {
             A ready-when-you-are breakthrough born from the idea that good food
             should be easier, exciting, and a lot more fun.
           </p>
-          {/* QA (About CVR) says "Our Story button text should be Proxima
-              Nova", but the Figma disagrees and the Figma wins here.
+          {/* QA (About CVR): "Our Story button text should be Proxima Nova."
+              The Figma binds Cubano-Regular to this node, but QA is the later
+              record and overrides the design file where they disagree.
 
-              Reading the font bound to each text node in CVR_JammyWebsite_r1
-              (canvas.fig -> zstd -> the kiwi data block):
-
-                Our Story      Cubano-Regular
-                Get Jammin'    Cubano-Regular
-                Store Locator  ProximaNova-Bold
-
-              So both pills are Cubano in the design and they match each other.
-              Setting this one in Proxima Nova was tried and reverted: it made
-              the two pill buttons on the page disagree, which is what the
-              client spotted. Store Locator is genuinely Proxima Nova and
-              already renders that way.
-
-              Flagged for NW rather than silently ignored -- see
-              docs/qa-evidence/AUDIT.md. */}
+              Note the knock-on: Get Jammin' is also Cubano-Regular in the
+              design, so this button no longer matches it. That is a real
+              consequence of the instruction, not an oversight -- raised with
+              NW in docs/qa-evidence/AUDIT.md. */}
           <a
             href="/our-family"
             data-lift="1"
             className="jammy-reveal"
-            style={{ ...pill(), padding: "0 38px" }}
+            style={{
+              ...pill(),
+              padding: "0 38px",
+              fontFamily: BODY,
+              fontWeight: 700,
+            }}
           >
             Our Story
           </a>

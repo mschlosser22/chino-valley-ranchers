@@ -3,7 +3,9 @@
 Against *CVR Jammy Website – Dev QA* (revised, 3 Sept 2026).
 Branch `feature/jammy-v2`. Every row below has a screenshot in `shots/`.
 
-**18 of 19 line items complete; one raised with NW rather than actioned.** 123 automated assertions pass across
+**19 of 19 line items complete.** Where the QA document and the Figma
+disagree, **QA wins** — that is the client's ruling and it is applied
+throughout. 123 automated assertions pass across
 fourteen suites. Production build succeeds; `/jammy` prerenders static at
 8.15 kB. Consent posture unchanged: zero third-party trackers and zero
 non-consent cookies before consent, across four pages.
@@ -72,58 +74,86 @@ non-consent cookies before consent, across four pages.
 
 | # | QA asked for | What was done | Shot |
 |---|---|---|---|
-| 19 | "Our Story button text should be Proxima Nova" | **Left in Cubano — the QA note contradicts the Figma.** See below. | `item-19.png` |
+| 19 | "Our Story button text should be Proxima Nova" | proxima-nova 700, keeping the pill's size, uppercase and forest ground. Overrides the Figma, which binds Cubano-Regular to this node. | `item-19.png` |
 
 ---
 
-## Open question for NW — the Our Story button
+## Three-way reconciliation: page vs Figma vs QA
 
-QA says *"Our Story button text should be Proxima Nova."* The Figma says
-otherwise, and the design file is the more specific record, so the button has
-been left as designed.
+The design file was decoded so the comparison could be made against the
+source rather than against screenshots. A `.fig` is a "fig-kiwi" container:
+magic, version, then length-prefixed blocks — the schema block is zlib, the
+document block is **ZSTD**. `strings` on the raw file returns nothing, which
+is not evidence that it is unreadable. `scripts/qa/jammy/decode-fig.sh`
+does it in two steps; `docs/qa-evidence/figma-fonts.json` is the extracted
+inventory of 79 design strings and their bound fonts.
 
-Reading the font bound to each text node in `CVR_JammyWebsite_r1.fig`
-(`canvas.fig` → zstd → the kiwi data block):
+52 rendered text nodes were compared against it. **Seven disagreements**, and
+under QA-trumps-Figma all seven resolve in favour of what the page renders:
 
-| Design node | Bound font |
-|---|---|
-| Our Story | `Cubano-Regular` |
-| Get Jammin' | `Cubano-Regular` |
-| Store Locator | `ProximaNova-Bold` |
+| Element | Page | Figma | Ruling |
+|---|---|---|---|
+| Smooth, Jammy Texture | Proxima Nova | `Figtree-Bold` | QA global row replaces Figtree. Page correct. |
+| Easy and Ready to Enjoy | Proxima Nova | `Figtree-Bold` | Same. Page correct. |
+| Upgrades Any Dish | Proxima Nova | `Figtree-Bold` | Same. Page correct. |
+| Upgrade any dish | Proxima Nova | `Figtree-Bold` | Same. Page correct. |
+| Salad *(tile label)* | Cubano | — | No such node in the design; matcher false-positived on the body line "bowls, salads, snacks…". QA names Cubano. Page correct. |
+| Snack *(tile label)* | Cubano | — | Same false positive. Page correct. |
+| Our Story | Proxima Nova | `Cubano-Regular` | **QA overrides the design.** Page correct. |
 
-Both pill buttons are Cubano in the design and match each other. The QA change
-was applied first and then reverted: it made the two pills on the page
-disagree, which the client noticed immediately. Store Locator is genuinely
-Proxima Nova and already renders that way.
+The QA global row is the reason four of these exist: *"Fonts should be Proxima
+Nova and Cubano throughout (currently design uses Fig Tree and Impact)."* The
+design file still carries Figtree on the card headings; QA supersedes it.
 
-The wider type audit against the same source came back clean — headings in
-Cubano, body and card headings in Proxima Nova. `Figtree-Bold` appears on the
-card headings in the design, but the doc's global row explicitly replaces
-Figtree with Proxima Nova, so that is stale in the file rather than a target.
+Copy shows the same pattern. The Figma hero line reads *"…that **can make** any
+meal a moment"*; QA specifies *"…that **makes** any meal a moment."* The page
+follows QA, and the superseded wording is asserted absent.
 
-**Needs a decision:** should Our Story be Proxima Nova (following the note, and
-breaking the match with Get Jammin'), or stay Cubano (following the design)? If
-the note is right, Get Jammin' probably wants the same treatment so the two
-still agree.
+**One consequence to flag to NW.** Both pill buttons are `Cubano-Regular` in
+the design and match each other. Applying QA's Our Story instruction makes them
+differ, because no QA row asks the same of Get Jammin' — its only row is about
+the link destination and is struck through. This is followed as instructed; if
+the two are meant to stay matched, Get Jammin' needs the same change.
 
-## Corrections made during this work
+### Colour
+
+Every opaque section background resolves to a named Figma token:
+
+| Section | Hex | Token |
+|---|---|---|
+| Hero | `#151510` | color/yellow/7 |
+| Where to Buy | `#67A818` | Christi |
+| Overview | `#A3D2EE` | Blizzard Blue |
+| What is Jammy | `#F2580E` | Pomegranate |
+| Differentiators / Features / Versatility / FAQ | `#FFFFFF` | White |
+| About CVR | `#A3D2EE` | Blizzard Blue |
+| Playlists | `#EA3213` | (unbound fill, sampled) |
+
+Product Features takes Blizzard Blue on mobile only, per QA's "solid color
+background block".
+
+## Corrections made during this work## Corrections made during this work
 
 Three things were got wrong and then fixed. They are recorded because each
 came from the same habit — answering a question adjacent to the one asked.
 
-**The "Our Story" row was missed entirely.** The About CVR cell contains a
+**The "Our Story" row was missed, then fixed wrongly, then fixed again.** The About CVR cell contains a
 struck-through line ("remove drop shadow") followed by an unstruck one ("Our
 Story button text should be Proxima Nova"). The strikethrough was read as
 covering the whole cell. The client caught it. Two other cells have the same
 struck/unstruck shape — Format Versatility padding and the protein callout
 scale — and both were re-checked and are correct.
 
-Then the fix itself was wrong, and the client caught that too: applying it
-made the two pill buttons disagree. The Figma had the answer and was not
-consulted until asked. An earlier attempt to read it had been abandoned after
+The client then spotted that the change made the two pill buttons disagree,
+and the Figma was consulted — showing both as Cubano. The button was reverted
+on that basis, which was the wrong call: the client's ruling is that QA
+trumps the Figma, so the instruction stands and the mismatch is a consequence
+to raise, not a reason to override. It is now Proxima Nova.
+
+The Figma should have been read far earlier. An attempt was abandoned when
 `strings` on the compressed canvas returned nothing — which proved only that
-the data was compressed, not that it was unreadable. It is zstd inside the
-kiwi container and decodes in two steps.
+the data was compressed. It is ZSTD inside the kiwi container and decodes in
+two steps.
 
 **The salad photograph was called a blocker and was not.** It had been in
 `ref/FIN Deliverables/assets/photography` throughout. The subject is a lunchbox
@@ -154,6 +184,12 @@ reviewed frame by frame across a full walk cycle.
 
     npm run dev
     PW=/path/to/playwright/node_modules ./scripts/qa/jammy/run-all.sh
+
+    # three-way audit tooling
+    ./scripts/qa/jammy/decode-fig.sh "ref/FIN Deliverables/CVR_JammyWebsite_r1.fig" out
+    node scripts/qa/jammy/liveaudit.js    # every rendered text node + its font
+    node scripts/qa/jammy/colours.js      # section backgrounds vs Figma tokens
+    node scripts/qa/jammy/copyaudit.js    # QA-quoted copy, verbatim
 
 | Check | Result |
 |---|---|
