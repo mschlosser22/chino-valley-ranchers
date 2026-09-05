@@ -46,23 +46,16 @@ musical notes, which CVR is happy with, are unaffected.
 
 ---
 
-## BLOCKER 3 — "What is a Jammy Egg?" on a curve (QA "What is Jammy", B4)
+## ~~BLOCKER 3 — "What is a Jammy Egg?" on a curve~~ RESOLVED
 
-**QA row:** "'What is a Jammy Egg?' should be in Cubano and **on a curve
-consistent with the original design**. Should be set in white (#FFFFFF)."
+The lockup was exported from the Figma and is now in
+`ref/FIN Deliverables/assets/what is jammy/`. Shipped as artwork.
 
-**Status:** needs a decision, not an asset.
+Worth recording what the SVG textPath attempt got wrong. It was not only the
+arc depth: the design sets the whole question on **one deep arc**, and the
+approximation had it as two stacked lines each on a shallow curve. The
+structure was wrong, not just the curvature -- which is why comparing against
+the real export mattered rather than iterating on the approximation.
 
-The font half is unblocked — Cubano is in the Adobe kit. What is undecided is
-how the curve is produced:
-
-- **SVG `textPath`** — stays live text, selectable and indexable, but matching
-  the design's exact curve takes iteration and it will never be pixel-identical
-- **Supplied as artwork** — faithful to the design, but becomes an image of
-  words, so the wording only reaches search and screen readers through alt text
-
-`ref/FIN Deliverables/assets/graphics/` does not contain this lockup. The
-closest is `HL-MindTheDrip.svg`, which is the hero wordmark.
-
-**Ask:** which approach CVR wants. If artwork, we need the lockup exported as
-SVG with transparency.
+The wording lives in the img alt, so the heading is still announced by screen
+readers and visible to search.
