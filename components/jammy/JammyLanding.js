@@ -1296,7 +1296,12 @@ export function JammyLanding() {
           overflow: "hidden",
         }}
       >
+        {/* QA: "Remove Jammy wordmark in the background" on mobile. Hidden
+            rather than removed -- it is the panel's backdrop on desktop, and
+            only on phones does the crop leave it as disconnected shapes
+            behind the copy. */}
         <img
+          className="jammy-playlists-wordmark"
           src={`${IMG}/svg/playlists-blob.svg`}
           alt=""
           aria-hidden="true"

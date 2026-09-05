@@ -798,6 +798,16 @@
   }
 }
 
+/* QA: "Remove Jammy wordmark in the background" -- phones only. At this width
+   the panel crops the wordmark to a few disconnected letter shapes sitting
+   behind the copy, which reads as artefacts rather than as branding. Desktop
+   keeps it. */
+@media (max-width: 860px) {
+  .jammy .jammy-playlists-wordmark {
+    display: none;
+  }
+}
+
 /* QA 2.11: on phones the sax mascot sits in the right-hand corner rather than
    centred under the copy, matching the design. */
 @media (max-width: 860px) {
