@@ -298,34 +298,6 @@
     transform: translateY(-5.5%);
   }
 }
-@keyframes jammyArmWave {
-  0%,
-  100% {
-    transform: rotate(-4.5deg);
-  }
-  50% {
-    transform: rotate(5.5deg);
-  }
-}
-@keyframes jammyTwinkle {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.3) rotate(-25deg);
-  }
-  18% {
-    opacity: 1;
-    transform: scale(1.12) rotate(6deg);
-  }
-  34% {
-    opacity: 0.85;
-    transform: scale(0.92) rotate(0deg);
-  }
-  52% {
-    opacity: 0;
-    transform: scale(0.3) rotate(20deg);
-  }
-}
 @keyframes jammyNote {
   0% {
     opacity: 0;

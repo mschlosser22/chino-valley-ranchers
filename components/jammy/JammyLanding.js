@@ -703,44 +703,49 @@ export function JammyLanding() {
                   animation: "jammyFloat 6.5s ease-in-out infinite .5s",
                 }}
               >
+                {/* QA 3.1: Figma's vector in place of the two-PNG stack.
+                    The arm used to be its own PNG laid over the body so it
+                    could wave, and that seam is what QA saw: both layers
+                    carry semi-transparent edge pixels (2.6% of the arm box,
+                    1.1% of the body), so the orange behind them showed
+                    through the outlines and between the fork tines.
+
+                    The vector is one flat drawing -- 32 paths, no named arm
+                    group -- so the wave goes away with it. That is the right
+                    trade here: QA asked for no visible cuts, and this is the
+                    same illustration the designer drew. The float on the
+                    wrapper still gives the card motion.
+
+                    The supplied file carried Illustrator's padding, so its
+                    viewBox is cropped to the ink -- the same shape the other
+                    two illustrations already have. It is then inset to the
+                    PNG ink's old extent (x 9.8-90.2%, y 3.8-89.6%) so the
+                    egg renders at exactly the size it did before. Letting it
+                    fill the frame instead was tried and rejected: the fixed
+                    256px row then maps to ink alone rather than ink plus
+                    padding, which drew this egg 17% larger than its two
+                    neighbours.
+
+                    Gzips to 6.6KB against 69KB of PNG. */}
                 <img
-                  src={`${IMG}/illo-easy-body.png`}
+                  src={`${IMG}/svg/illo-easy.svg`}
                   alt="Jammy egg mascot running with a fork"
-                  style={{ width: "100%", height: "100%", display: "block" }}
-                />
-                <img
-                  src={`${IMG}/illo-easy-arm.png`}
-                  alt=""
-                  aria-hidden="true"
                   style={{
                     position: "absolute",
-                    left: "73.171%",
-                    top: 0,
-                    width: "26.829%",
-                    transformOrigin: "7.79% 58.65%",
-                    animation: "jammyArmWave 1.9s ease-in-out infinite",
+                    left: "9.76%",
+                    top: "3.77%",
+                    width: "80.48%",
+                    height: "85.86%",
+                    display: "block",
                   }}
                 />
-                {[
-                  { left: 87, top: 4, w: 6.5, d: "0s" },
-                  { left: 78.5, top: 15, w: 4.5, d: ".45s" },
-                  { left: 89.5, top: 25, w: 5, d: ".95s" },
-                ].map((s, i) => (
-                  <img
-                    key={i}
-                    src={`${IMG}/sparkle.png`}
-                    alt=""
-                    aria-hidden="true"
-                    style={{
-                      position: "absolute",
-                      left: `${s.left}%`,
-                      top: `${s.top}%`,
-                      width: `${s.w}%`,
-                      opacity: 0,
-                      animation: `jammyTwinkle 2.6s ease-in-out ${s.d} infinite`,
-                    }}
-                  />
-                ))}
+                {/* The three twinkles that used to sit beside the fork are
+                    gone. They were ours, not the designer's -- there are no
+                    sparkle shapes in this artwork, and the motion lines by
+                    the feet are its own speed cue. They also sat in the
+                    padding the cropped viewBox no longer includes, so
+                    keeping them would have meant clipping them against the
+                    frame edge. */}
               </div>
             </div>
             <h3
