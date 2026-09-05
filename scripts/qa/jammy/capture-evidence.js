@@ -93,9 +93,9 @@ const FRAME={
       clip.width=Math.min(clip.width, vp.width-clip.x);
       clip.height=Math.min(clip.height, vp.height-clip.y);
       if(clip.width<10||clip.height<10) throw new Error('degenerate clip');
-      await p.screenshot({path:path.join(OUT,`item-${it.id}.png`),clip});
+      await p.screenshot({path:path.join(OUT,`item-${it.id}.jpg`),clip});
       ok++;
-      console.log(`  item-${it.id}.png  ${mobile?'[mobile]':'       '} ${it.area}`);
+      console.log(`  item-${it.id}.jpg  ${mobile?'[mobile]':'       '} ${it.area}`);
     }catch(e){
       fail.push(`${it.id}: ${e.message.split('\n')[0]}`);
       console.log(`  item-${it.id}  FAILED  ${e.message.split('\n')[0]}`);
