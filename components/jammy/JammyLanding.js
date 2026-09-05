@@ -491,7 +491,20 @@ export function JammyLanding() {
           >
             A jammy egg is soft-boiled to golden perfection&mdash;fully cooked,
             peeled, and ready to add to your favorite meal or snack. No timing.
-            No guesswork. Just that rich, jammy center, every time.
+            No guesswork. Just that rich, jammy center,{" "}
+            {/* QA: "'every time.' in the body copy should be underlined."
+                The period is inside the quoted string, so it is underlined
+                too. text-underline-offset keeps the rule off the descender
+                in "every" at this size. */}
+            <span
+              style={{
+                textDecoration: "underline",
+                textDecorationThickness: "0.06em",
+                textUnderlineOffset: "0.14em",
+              }}
+            >
+              every time.
+            </span>
           </p>
         </div>
       </section>
