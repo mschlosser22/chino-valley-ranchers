@@ -1399,49 +1399,32 @@ export function JammyLanding() {
                 animation: "jammyWalk 1.1s ease-in-out infinite",
               }}
             >
+              {/* QA: "we want to avoid seeing all the areas where the
+                  illustration was 'cut' to be able to achieve these
+                  illustrations. Please adjust/simplify animation to avoid any
+                  cuts to the artwork (musical notes are fine)."
+
+                  This was four layered PNGs -- torso, two legs, sax -- cut out
+                  of flat artwork. The torso carried a rectangular hole where
+                  the sax had been lifted away: its right edge runs dead
+                  straight at x=343 from y=196 to y=220, which is a scalpel
+                  cut, not something drawn. The sax covered the hole at rest
+                  and jammySax rotated it clear, so the cut showed on every
+                  cycle.
+
+                  Same fix as the differentiators cards: one clean vector, and
+                  the per-part animation goes with it. illo-texture.svg is this
+                  same illustration -- 55 paths, already in the tree, already
+                  rendering seamlessly on the "Smooth, Jammy Texture" card.
+
+                  The walk bob stays because it moves the whole body and cannot
+                  expose a seam. The notes stay because QA said they are fine.
+                  What is lost is the leg stride and the sax tilt; both needed
+                  parts that only exist as cuts. */}
               <img
-                src={`${IMG}/playlists-art-torso.png`}
+                src={`${IMG}/svg/illo-texture.svg`}
                 alt="Jammy egg mascot playing a saxophone"
                 style={{ width: "100%", height: "100%", display: "block" }}
-              />
-              <img
-                src={`${IMG}/pl-leg-left.png`}
-                alt=""
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  left: "10.417%",
-                  top: "59.545%",
-                  width: "26.875%",
-                  transformOrigin: "90.7% 0%",
-                  animation: "jammyStepA 1.1s ease-in-out infinite",
-                }}
-              />
-              <img
-                src={`${IMG}/pl-leg-right.png`}
-                alt=""
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  left: "40.625%",
-                  top: "59.545%",
-                  width: "30.833%",
-                  transformOrigin: "12.16% 0%",
-                  animation: "jammyStepB 1.1s ease-in-out infinite",
-                }}
-              />
-              <img
-                src={`${IMG}/pl-sax.png`}
-                alt=""
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  left: "58.333%",
-                  top: "44.545%",
-                  width: "31.875%",
-                  transformOrigin: "7.84% 6.47%",
-                  animation: "jammySax 2.2s ease-in-out infinite",
-                }}
               />
               {[
                 { src: "pl-note-3.png", left: 78.958, top: 19.545, w: 7.5, d: "0s" },

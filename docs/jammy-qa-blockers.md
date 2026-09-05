@@ -18,31 +18,33 @@ not looking at the same part of the picture, and the new photo appeared darker.
 Sampling the same *relative* region shows it is lighter, exactly as QA said:
 `[170 214 237]` against the deployed `[164 210 235]`.
 
-## BLOCKER 2 — Playlists illustration animation (QA "Playlists", 3.3)
+## ~~BLOCKER 2 — Playlists illustration animation~~ RESOLVED
 
-**QA row:** "Similar to other illustration animations, we want to avoid seeing
-all the areas where the illustration was 'cut' to be able to achieve these
-illustrations. Please adjust/simplify animation to avoid any cuts to the
-artwork (musical notes are fine)."
+Not a blocker after all, and it should not have been called one.
 
-**Status:** needs re-drawn artwork. Confirmed twice.
+The Playlists mascot was four layered PNGs -- torso, two legs, sax -- cut out
+of flat artwork. The torso carried a rectangular hole where the sax had been
+lifted away: its right edge runs dead straight at x=343 from y=196 to y=220,
+which is a scalpel cut, not something drawn. `jammySax` rotated the sax clear
+of that hole on every cycle, so the panel red showed through the body.
 
-The layered PNGs we animate were cut out of flat artwork downstream, which is
-where the seams come from: the pieces butt with no overlap, and lifting the sax
-out left a hole in the torso behind it.
+I had concluded this needed re-drawn artwork because `JammyEgg-jazz.svg` is a
+flat single-layer export -- 55 paths, one unnamed group -- so the sax and legs
+cannot be animated independently. That much was true. What I missed is that
+independent animation was never required: QA asked to "adjust/simplify
+animation to avoid any cuts", and the differentiators cards had already solved
+exactly this by dropping to one clean vector and keeping only whole-body
+motion.
 
-`ref/FIN Deliverables/assets/graphics/JammyEgg-jazz.svg` is the clean vector
-source, but it is a **flat single-layer export** — 55 paths, one group, no named
-layers. The legs and sax still cannot be moved independently without cutting
-through artwork that was drawn as one shape.
+The fix was to do the same here, using `illo-texture.svg` -- the same
+illustration, already in the tree, already rendering seamlessly on the
+"Smooth, Jammy Texture" card. The walk bob stays (it moves the whole body and
+cannot expose a seam) and the notes stay (QA said they are fine). The leg
+stride and sax tilt are gone, which is the trade QA asked for.
 
-**Ask:** the illustration re-drawn with the movable parts as their own closed
-shapes — sax with hands on its own layer, each leg on its own layer, and the
-body drawn complete underneath so the pieces overlap rather than butt. Full
-spec in `docs/jammy-artwork-respec.md`.
-
-**Cost of doing nothing:** the sax and legs cannot animate. The floating
-musical notes, which CVR is happy with, are unaffected.
+**Lesson:** I answered "can the parts move independently?" when the question
+was "can this animate without showing cuts?". The blocker was real for the
+question I asked and imaginary for the one that mattered.
 
 ---
 
