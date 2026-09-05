@@ -109,11 +109,25 @@ Copy shows the same pattern. The Figma hero line reads *"…that **can make** an
 meal a moment"*; QA specifies *"…that **makes** any meal a moment."* The page
 follows QA, and the superseded wording is asserted absent.
 
-**One consequence to flag to NW.** Both pill buttons are `Cubano-Regular` in
-the design and match each other. Applying QA's Our Story instruction makes them
-differ, because no QA row asks the same of Get Jammin' — its only row is about
-the link destination and is struck through. This is followed as instructed; if
-the two are meant to stay matched, Get Jammin' needs the same change.
+**Resolved: all three pill buttons take Proxima Nova.** Applying QA's Our Story
+instruction alone made the two Jammy pills differ, since the design has both as
+`Cubano-Regular`. The client's call was to bring Get Jammin' across too, which
+is also the consistent reading of the global row's unstruck tail — *"includes
+button text"*. Set on the shared `pill()` helper rather than per-button, so
+they cannot drift apart again.
+
+| Button | Was | Now | Design |
+|---|---|---|---|
+| Our Story | Cubano | Proxima Nova 700 | `Cubano-Regular` (overridden) |
+| Get Jammin' | Cubano | Proxima Nova 700 | `Cubano-Regular` (overridden) |
+| Store Locator | Proxima Nova 800 | Proxima Nova 700 | `ProximaNova-Bold` (now matched) |
+
+Store Locator was asking for weight 800, which the Adobe kit does not carry —
+the browser was synthesising it. The design binds `ProximaNova-Bold`, which is
+700, so it now renders the real weight.
+
+"Explore Jammy" on the homepage stays DIN Condensed: QA item 1 asks that button
+to match *the site's* other buttons, which is a different instruction.
 
 ### Colour
 

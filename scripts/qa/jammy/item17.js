@@ -21,20 +21,20 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
             jamFf:jam?getComputedStyle(jam).fontFamily.split(',')[0]:null,
             slFf:sl?getComputedStyle(sl).fontFamily.split(',')[0]:null};
   });
-  // QA: "Our Story button text should be Proxima Nova." The Figma binds
-  // Cubano-Regular to this node, but QA is the later record and overrides the
-  // design file. Knock-on: Get Jammin' is also Cubano-Regular in the design,
-  // so the two pills no longer match -- a consequence of the instruction,
-  // raised with NW rather than silently reconciled.
+  // QA's global row keeps an unstruck tail, "includes button text", and the
+  // About CVR row names Our Story specifically. Applied to pill() so every
+  // pill button takes Proxima Nova and they stay matched. Overrides the
+  // Figma, which binds Cubano-Regular to Our Story and Get Jammin'.
   ck('Our Story is Proxima Nova (QA over Figma)', d.ff==='proxima-nova', d.ff);
   ck('rendered bold', +d.fw>=700, d.fw);
   ck('keeps the pill size', d.fs==='15px', d.fs);
   ck('keeps its uppercase treatment', d.tt==='uppercase', d.tt);
   ck('keeps the forest ground', d.bg==='rgb(46, 67, 34)', d.bg);
   ck('still links to /our-family', d.href==='/our-family', d.href);
-  ck('Get Jammin stays Cubano (its QA row is about the link, not the font)',
-     d.jamFf==='cubano', d.jamFf);
-  ck('Store Locator unchanged', d.slFf==='proxima-nova', d.slFf);
+  ck('Get Jammin is Proxima Nova too, so the pills match',
+     d.jamFf==='proxima-nova', d.jamFf);
+  ck('Store Locator also Proxima Nova (all three pills agree)',
+     d.slFf==='proxima-nova', d.slFf);
   await b.close();
   const f=R.filter(x=>!x).length;
   console.log(`\n${R.length-f}/${R.length} passed`);

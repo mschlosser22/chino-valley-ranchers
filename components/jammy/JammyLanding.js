@@ -100,6 +100,17 @@ const FAQS = [
   },
 ];
 
+/* QA (global): "Fonts should be Proxima Nova and Cubano throughout" -- the
+   struck-through row keeps an unstruck tail, "includes button text". Read with
+   the About CVR row ("Our Story button text should be Proxima Nova"), that
+   puts the pill buttons in the body face.
+
+   This overrides the Figma, which binds Cubano-Regular to both Our Story and
+   Get Jammin'. QA is the later record and the client has ruled it wins.
+
+   Set here rather than per-button so the pills stay matched: an earlier pass
+   changed only Our Story and the two visibly disagreed. Store Locator is
+   ProximaNova-Bold in the design, so all three now agree. */
 const pill = (bg = C.forest) => ({
   display: "inline-flex",
   alignItems: "center",
@@ -109,7 +120,8 @@ const pill = (bg = C.forest) => ({
   borderRadius: 999,
   background: bg,
   color: "#fff",
-  fontFamily: DISPLAY,
+  fontFamily: BODY,
+  fontWeight: 700,
   fontSize: 15,
   letterSpacing: "1.5px",
   textTransform: "uppercase",
@@ -270,11 +282,12 @@ export function JammyLanding() {
             href="/store-locator"
             data-lift="1"
             style={{
+              // Face and weight come from pill(). This asked for 800, which
+              // the kit does not carry -- the browser was synthesising it.
+              // The Figma binds ProximaNova-Bold here, which is 700.
               ...pill(),
               height: 46,
               padding: "0 30px",
-              fontFamily: BODY,
-              fontWeight: 800,
             }}
           >
             Store Locator
@@ -1255,23 +1268,12 @@ export function JammyLanding() {
             should be easier, exciting, and a lot more fun.
           </p>
           {/* QA (About CVR): "Our Story button text should be Proxima Nova."
-              The Figma binds Cubano-Regular to this node, but QA is the later
-              record and overrides the design file where they disagree.
-
-              Note the knock-on: Get Jammin' is also Cubano-Regular in the
-              design, so this button no longer matches it. That is a real
-              consequence of the instruction, not an oversight -- raised with
-              NW in docs/qa-evidence/AUDIT.md. */}
+              Comes from pill() now, so every pill button matches. */}
           <a
             href="/our-family"
             data-lift="1"
             className="jammy-reveal"
-            style={{
-              ...pill(),
-              padding: "0 38px",
-              fontFamily: BODY,
-              fontWeight: 700,
-            }}
+            style={{ ...pill(), padding: "0 38px" }}
           >
             Our Story
           </a>
