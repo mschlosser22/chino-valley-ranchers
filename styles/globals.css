@@ -713,11 +713,16 @@
    width, so the same percentage lands the badge on top of the product copy.
    Shifted right to clear "The ready-to-eat, soft-boiled egg..." while keeping
    the overlap with the bag silhouette that the design has. */
+/* QA: "The scale of the graphic needs to come down, to match the Figma
+   design." The supplied artwork is square (250x250) where the old hand-built
+   badge was 211x196, so matching the previous height alone would mean 40.5%.
+   36% brings the scale down as asked while keeping the badge reading clearly
+   against the bag. */
 .jammy .jammy-badge {
   left: 68%;
   top: 46%;
   transform-origin: 50% 50%;
-  width: 43.6%;
+  width: 36%;
 }
 
 /* On phones the bag is narrower and taller in the column, so the badge rides

@@ -383,70 +383,21 @@ export function JammyLanding() {
                 className="jammy-badge"
                 style={{
                   position: "absolute",
-                  aspectRatio: "211 / 196",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  aspectRatio: "1 / 1",
                   opacity: 0,
                 }}
               >
-              <svg
-                viewBox="0 0 210.994 196.003"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                }}
-                aria-hidden="true"
-              >
-                <path
-                  d="M 206.456 62.625 C 196.864 35.897 170.472 21.442 145.349 10.535 C 124.13 1.334 100.508 -3.582 78.082 3.072 C 48.286 12.141 22.148 33.323 7.817 60.847 C -6.487 88.206 0.602 121.183 14.912 146.996 C 29.51 171.415 58.091 184.809 85.15 192.053 C 125.639 204.068 168.951 188.04 191.705 152.615 C 208.378 126.828 216.728 92.478 206.582 63.01 L 206.442 62.632 L 206.456 62.625 Z"
-                  fill="#304423"
+                {/* QA: "The graphic should also match the artwork provided
+                    (right now the proportions of text to overall shape are not
+                    maintained)." It was a hand-drawn blob with live type laid
+                    over it, so the type never sat in the designed proportion to
+                    the shape. This is ProteinBubble.svg from the deliverables,
+                    where the type is outlined into the artwork itself. */}
+                <img
+                  src={`${IMG}/svg/protein-bubble.svg`}
+                  alt="24g of protein per bag"
+                  style={{ width: "100%", height: "100%", display: "block" }}
                 />
-              </svg>
-              {/* "24G" carries the badge; the qualifiers step down beneath it,
-                  matching the roundel printed on the bag itself. */}
-              <span
-                style={{
-                  position: "relative",
-                  fontFamily: DISPLAY,
-                  lineHeight: 1,
-                  textTransform: "uppercase",
-                  color: C.white,
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "0.12em",
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: "clamp(30px, 4.2vw, 46px)",
-                    letterSpacing: ".5px",
-                  }}
-                >
-                  24g
-                </span>
-                <span
-                  style={{
-                    fontSize: "clamp(13px, 1.55vw, 17px)",
-                    letterSpacing: ".8px",
-                  }}
-                >
-                  of protein
-                </span>
-                <span
-                  style={{
-                    fontSize: "clamp(10px, 1.15vw, 13px)",
-                    letterSpacing: "1px",
-                    opacity: 0.92,
-                  }}
-                >
-                  per bag
-                </span>
-              </span>
               </div>
             </div>
           </div>
