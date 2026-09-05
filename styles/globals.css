@@ -735,6 +735,10 @@
   margin: 0 auto;
 }
 
+.jammy .jammy-features-section {
+  background: #ffffff;
+}
+
 .jammy .jammy-feature {
   gap: 14px;
   max-width: 170px;
@@ -745,16 +749,52 @@
   font-size: clamp(14px, 1.15vw, 17px);
 }
 
+/* QA: "icons should be in two rows with the background reverting to a solid
+   color background block."
+
+   Two rows of five, which at 390px leaves about 60px a column. The labels do
+   not fit that: "ingredient" alone measures ~61px at 11px type. So the row
+   scrolls horizontally rather than shrinking the type into illegibility --
+   the five-across rhythm QA asked for is preserved, the labels stay readable,
+   and the overflow is signalled by the last tile sitting half-cut at the edge
+   plus scroll-snap. */
 @media (max-width: 860px) {
   .jammy .jammy-features {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: clamp(16px, 6vw, 40px);
-    row-gap: 30px;
+    grid-template-columns: repeat(5, minmax(104px, 1fr));
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: row;
+    column-gap: 14px;
+    row-gap: 26px;
+    max-width: none;
+    /* Bleed to the section edges so the cut-off tile reads as "more this
+       way" rather than as a layout mistake. */
+    margin: 0 -24px;
+    padding: 0 24px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  /* Solid block instead of the photo -- at phone width the crop is mostly
-     yolk and the dark labels stop reading against it. */
+  .jammy .jammy-features::-webkit-scrollbar {
+    display: none;
+  }
+  .jammy .jammy-feature {
+    max-width: none;
+    scroll-snap-align: start;
+  }
+  .jammy .jammy-feature h3 {
+    font-size: 13px;
+  }
+
+  /* QA: the photo backdrop gives way to a solid block. Previously this only
+     hid the photo, which left plain white -- "reverting to a solid color
+     background block" wants an actual block, so the section takes the brand
+     sky the design uses behind this content. */
   .jammy .jammy-features-bg {
     display: none;
+  }
+  .jammy .jammy-features-section {
+    background: #a3d2ee;
   }
 }
 

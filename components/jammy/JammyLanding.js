@@ -898,15 +898,21 @@ export function JammyLanding() {
 
       {/* ═══ PRODUCT FEATURES ═══ */}
       <section
+        className="jammy-features-section"
         style={{
           position: "relative",
           padding: "clamp(64px, 8vw, 120px) 24px",
-          background: C.white,
+          // Background lives in globals.css, not here: an inline style wins
+          // over the media query that swaps in the solid block on phones.
           overflow: "hidden",
         }}
       >
-        {/* Photo backdrop on desktop; hidden on phones per QA 2.6, where the
-            section reverts to a solid block so the labels stay legible. */}
+        {/* Photo backdrop on desktop. On phones QA asks for "the background
+            reverting to a solid color background block", so the photo is
+            hidden and the section takes Blizzard Blue -- a real design token
+            (#A3D2EE, used for Overview and About CVR) rather than an invented
+            colour, and it reads as a block against the white sections either
+            side. Forest labels measure 6.7:1 on it. */}
         <div
           data-parallax="0.1"
           className="jammy-features-bg"
@@ -944,8 +950,10 @@ export function JammyLanding() {
             A shortcut with showmanship.
           </h2>
           {/* A fixed grid rather than flex-wrap: the design is two rows of
-              five, and wrapping cannot guarantee that. Collapses to two columns
-              on phones (QA 2.6). */}
+              five, and wrapping cannot guarantee that. Stays two rows of five
+              on phones per the revised QA, scrolling sideways -- see the
+              media query in globals.css for why it scrolls rather than
+              shrinking. */}
           <div className="jammy-features">
             {FEATURES.map((f) => (
               <div
