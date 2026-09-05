@@ -842,3 +842,49 @@
 }
 
 @tailwind utilities;
+
+/* "What is a jammy egg?" set on a curve (QA). CSS has no way to run type
+   along a path, so this is an SVG textPath. The heading stays live text --
+   the visually-hidden span carries it for screen readers and search, and the
+   SVG is aria-hidden so it is not announced twice. */
+.jammy-curve {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.jammy-curve svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.jammy-curve text {
+  font-family: cubano, Anton, Impact, sans-serif;
+  font-size: 86px;
+  letter-spacing: 2px;
+  fill: #ffffff;
+}
+
+/* Visually hidden, still read aloud and still indexed. */
+.jammy-curve__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The arc reads as a wobble at phone widths, where the type is small and the
+   line is short. Tightening the size keeps both lines on one arc each. */
+@media (max-width: 620px) {
+  .jammy-curve text {
+    font-size: 96px;
+    letter-spacing: 1px;
+  }
+}

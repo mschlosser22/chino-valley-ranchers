@@ -423,16 +423,35 @@ export function JammyLanding() {
             textAlign: "center",
           }}
         >
+          {/* QA: "'What is a Jammy Egg?' should be in Cubano and on a curve
+              consistent with the original design. Should be set in white."
+
+              CSS cannot set type on a curve, so this is an SVG textPath. The
+              words stay live text -- selectable, translatable and readable by
+              search -- which an image of the lockup would not be. The <h2>
+              wrapper keeps the heading in the document outline; the SVG is
+              hidden from assistive tech so the text is not announced twice. */}
           <h2
-            className="jammy-reveal"
-            style={h2({
-              fontSize: "clamp(44px, 8vw, 96px)",
-              lineHeight: 0.92,
-              color: C.white,
-            })}
+            className="jammy-reveal jammy-curve"
+            style={h2({ color: C.white, margin: 0 })}
           >
-            What is
-            <br />a jammy egg?
+            <span className="jammy-curve__sr">What is a jammy egg?</span>
+            <svg viewBox="0 0 900 250" aria-hidden="true" focusable="false">
+              <defs>
+                <path id="jammyCurveTop" d="M 60,118 Q 450,56 840,118" fill="none" />
+                <path id="jammyCurveBot" d="M 40,230 Q 450,148 860,230" fill="none" />
+              </defs>
+              <text>
+                <textPath href="#jammyCurveTop" startOffset="50%" textAnchor="middle">
+                  WHAT IS
+                </textPath>
+              </text>
+              <text>
+                <textPath href="#jammyCurveBot" startOffset="50%" textAnchor="middle">
+                  A JAMMY EGG?
+                </textPath>
+              </text>
+            </svg>
           </h2>
           <div
             className="jammy-reveal"
