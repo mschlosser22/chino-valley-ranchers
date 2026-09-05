@@ -39,7 +39,7 @@ export default function JammyPage() {
         <meta property="og:title" content="The Jammy Egg | Chino Valley Ranchers" />
         <meta
           property="og:description"
-          content="The only egg with a golden, jammy center that can make any meal a moment."
+          content="The only egg with a golden, jammy center that makes any meal a moment."
         />
         <meta property="og:type" content="website" />
       </Head>

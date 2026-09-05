@@ -236,7 +236,7 @@ export function JammyLanding() {
           >
             {/* No hard break: it forced an awkward wrap on phones. text-wrap
                 balance keeps the two lines even on wide screens instead. */}
-            The only egg with a golden, jammy center that can make any meal a
+            The only egg with a golden, jammy center that makes any meal a
             moment.
           </p>
         </div>
