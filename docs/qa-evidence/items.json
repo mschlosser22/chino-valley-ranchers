@@ -1,0 +1,157 @@
+[
+ {
+  "id": "01",
+  "area": "Homepage Gateway",
+  "qa": "Button text should be consistent with other buttons (Din Condensed?)",
+  "page": "/",
+  "target": ".jammy-home-cta a, .jammy-cta__cta",
+  "state": "outstanding"
+ },
+ {
+  "id": "02",
+  "area": "Homepage Gateway",
+  "qa": "Provide a little extra bottom padding on the section if photo allows for it; ensure the \"everything in between\" text isn't showing up in the shadow of the spoon.",
+  "page": "/",
+  "target": "band",
+  "state": "outstanding"
+ },
+ {
+  "id": "03",
+  "area": "Global",
+  "qa": "Remove drop shadow from the hover state of buttons. Just the scale animation is sufficient for the hover state.",
+  "page": "/jammy",
+  "target": "hover",
+  "state": "clean"
+ },
+ {
+  "id": "04",
+  "area": "Hero",
+  "qa": "Please just apply a soft bounce-in animation to the whole of the artwork (no separate animation for each individual letter).",
+  "page": "/jammy",
+  "target": "[data-lockup]",
+  "state": "outstanding"
+ },
+ {
+  "id": "05",
+  "area": "Hero",
+  "qa": "Update supporting text to \"The only egg with a golden, jammy center that makes any meal a moment.\"",
+  "page": "/jammy",
+  "target": "herocopy",
+  "state": "clean"
+ },
+ {
+  "id": "06",
+  "area": "Hero",
+  "qa": "Hero image has been edited slightly. Please update with this asset.",
+  "page": "/jammy",
+  "target": "heroimg",
+  "state": "clean"
+ },
+ {
+  "id": "07",
+  "area": "Overview",
+  "qa": "\"Available now at Trader Joe's.\" should be in bold Proxima Nova",
+  "page": "/jammy",
+  "target": "tj",
+  "state": "outstanding"
+ },
+ {
+  "id": "08",
+  "area": "Overview",
+  "qa": "The protein callout graphic should match the size and placement of the original design. Remove the tilt. Ensure the graphic is consistent with the assets provided.",
+  "page": "/jammy",
+  "target": "[data-badge]",
+  "state": "outstanding"
+ },
+ {
+  "id": "09",
+  "area": "What is Jammy",
+  "qa": "\"What is a Jammy Egg?\" should be in Cubano and on a curve consistent with the original design. Should be set in white (#FFFFFF)",
+  "page": "/jammy",
+  "target": ".jammy-curve",
+  "state": "outstanding"
+ },
+ {
+  "id": "10",
+  "area": "What is Jammy",
+  "qa": "\"every time.\" in the body copy should be underlined",
+  "page": "/jammy",
+  "target": "everytime",
+  "state": "clean"
+ },
+ {
+  "id": "11",
+  "area": "Differentiators",
+  "qa": "Need to ensure background tones are not showing through where the different artwork colors meet",
+  "page": "/jammy",
+  "target": "diffcards",
+  "state": "outstanding"
+ },
+ {
+  "id": "12",
+  "area": "Differentiators",
+  "qa": "Need the animated shine graphics to not sit on top of static shine graphics",
+  "page": "/jammy",
+  "target": "ramencard",
+  "state": "clean"
+ },
+ {
+  "id": "13",
+  "area": "Format Versatility",
+  "qa": "Ramen and Toast sections need to be swapped. Also, text within each container should use the Cubano text anchored in the top left corner.",
+  "page": "/jammy",
+  "target": ".jammy-tiles",
+  "state": "outstanding"
+ },
+ {
+  "id": "14",
+  "area": "Format Versatility",
+  "qa": "The order from left to right should be salad, toast, snack, ramen. The image used in the salad block has been updated.",
+  "page": "/jammy",
+  "target": ".jammy-tiles",
+  "state": "clean"
+ },
+ {
+  "id": "15",
+  "area": "Playlists",
+  "qa": "Please adjust/simplify animation to avoid any cuts to the artwork (musical notes are fine)",
+  "page": "/jammy",
+  "target": ".jammy-sax",
+  "state": "outstanding"
+ },
+ {
+  "id": "16",
+  "area": "Differentiators",
+  "qa": "The headline \"An egg in a class of its own.\" doesn't appear to have any kind of padding on it on the left or right side.",
+  "page": "/jammy",
+  "target": "diffhead",
+  "state": "clean",
+  "viewport": "mobile"
+ },
+ {
+  "id": "17",
+  "area": "Product Features - Mobile",
+  "qa": "Design does not match the mobile design provided - icons should be in two rows with the background reverting to a solid color background block.",
+  "page": "/jammy",
+  "target": ".jammy-features",
+  "state": "outstanding",
+  "viewport": "mobile"
+ },
+ {
+  "id": "18",
+  "area": "Playlist - Mobile",
+  "qa": "Remove Jammy wordmark in the background",
+  "page": "/jammy",
+  "target": "playlists",
+  "state": "clean",
+  "viewport": "mobile"
+ },
+ {
+  "id": "19",
+  "area": "About CVR",
+  "qa": "Our Story button text should be Proxima Nova",
+  "page": "/jammy",
+  "target": "ourstory",
+  "state": "outstanding"
+ }
+]
