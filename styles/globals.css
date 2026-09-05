@@ -181,3 +181,675 @@
 }
 
 @tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   JAMMY LANDING PAGE (/jammy)
+
+   Self-hosted so the page makes no third-party font request --
+   the consent work removed all pre-consent third-party traffic
+   and Google Fonts would reintroduce one.
+   Scoped under .jammy so nothing here touches the rest of the site.
+   ───────────────────────────────────────────────────────────── */
+
+/* QA 4.1: Cubano for display, Proxima Nova for body, both from the Adobe kit
+   loaded in _document.tsx. Anton and Figtree were the stand-ins used while the
+   licences were pending; their self-hosted @font-face rules are gone, but the
+   families stay in the stacks below as the fallback between the kit loading and
+   any future kit outage. Figtree is a variable face and Proxima Nova is not, so
+   weights 500/600 now resolve to 400 and 800 to 700 -- see the roadmap. */
+
+.jammy {
+  font-family: proxima-nova, Figtree, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: #20261a;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+.jammy * {
+  box-sizing: border-box;
+}
+
+.jammy a {
+  color: #2e4322;
+  text-decoration: none;
+}
+
+.jammy a:hover {
+  color: #ea3213;
+}
+
+.jammy-display {
+  font-family: cubano, Anton, Impact, "Haettenschweiler", "Arial Narrow Bold",
+    sans-serif;
+  font-weight: 400;
+}
+
+/* Reveal-on-scroll: elements start hidden and are released by the
+   IntersectionObserver in useJammyInteractions. */
+.jammy-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.75s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+/* Once revealed, drop back to a short transition. The 0.75s used for the
+   entrance is far too slow for a hover -- buttons that carry both
+   .jammy-reveal and data-lift took three quarters of a second to respond. */
+.jammy-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.75s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 240ms ease;
+}
+
+@keyframes jammyKenBurns {
+  0% {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.14) translate3d(0, -1.2%, 0);
+  }
+}
+@keyframes jammyWalk {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+}
+@keyframes jammyFootBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5.5%);
+  }
+}
+@keyframes jammyNote {
+  0% {
+    opacity: 0;
+    transform: translate(0, 6px) rotate(-6deg) scale(0.7);
+  }
+  12% {
+    opacity: 1;
+  }
+  55% {
+    transform: translate(10px, -26px) rotate(8deg) scale(1);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-4px, -52px) rotate(-10deg) scale(1.05);
+  }
+}
+@keyframes jammyFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-2deg);
+  }
+}
+@keyframes jammyWobble {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-5px) rotate(-0.5deg);
+  }
+  70% {
+    transform: translateY(3px) rotate(0.4deg);
+  }
+}
+/* Ramen shine marks (QA 3.2). These overlay sparkles that are baked into the
+   base illustration, so the animation only ever adds -- opacity never drops to
+   zero, which would look like the mark disappearing rather than twinkling. */
+@keyframes jammyShine {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.28) rotate(14deg);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(0.92) rotate(-6deg);
+  }
+}
+
+/* Used by the "hard part, done easy" sticker, where the tilt is wanted. */
+@keyframes jammySpinIn {
+  0% {
+    transform: rotate(-24deg) scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(-12deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* The protein badge gets the same pop without the tilt -- per QA it should sit
+   square, matching the roundel printed on the bag. */
+@keyframes jammyPopIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* The hero wordmark entrance (QA 3.5). Each letter falls from above and
+   settles with two decaying bounces.
+
+   This replaces jammyLetterDrip, which squashed and stretched each letter
+   on the way down. CVR asked for the warping to go -- it distorted the
+   letterforms of a wordmark -- so every keyframe here is translateY only.
+   The bounce carries the "drip" idea without touching the shapes.
+
+   Two other entrances were designed alongside this one (a soft group rise
+   and a scale-pop) and are recorded in docs/jammy-qa-roadmap.md. They can
+   be previewed in the Claude Design project via its heroEntrance picker
+   if CVR wants to compare before settling. */
+@keyframes jammyDripBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-130%);
+  }
+  8% {
+    opacity: 1;
+  }
+  16% {
+    transform: translateY(-86%);
+  }
+  38% {
+    transform: translateY(0);
+  }
+  56% {
+    transform: translateY(-9%);
+  }
+  72% {
+    transform: translateY(0);
+  }
+  85% {
+    transform: translateY(-2.5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HOMEPAGE JAMMY PROMO BAND (components/jammy/JammyHomeCta)
+
+   Values taken from the "CVR Home Page" design file. The photo is a
+   background-image rather than an <img> because the design zooms it past
+   cover (143.44% x 153.37%) to slide the spoon clear of the copy -- a
+   crop object-fit cannot express.
+   ───────────────────────────────────────────────────────────── */
+.jammy-cta__container {
+  width: 100%;
+  /* No background: the artwork's torn edges are transparent, so anything
+     painted here would show through them.
+
+     Pulled up so the top tear overlaps the hero -- without it the page canvas
+     shows through the tear's transparent notches as a white gap. The tear is
+     transparent for its first ~36px of the artwork's 1017 height, which scales
+     with the band, but on narrow screens the stacked photo is proportionally
+     taller so a vw value alone under-covers; the 14px floor handles that. The
+     bottom tear needs no equivalent because the section below starts flush. */
+  margin-top: calc(-1 * max(20px, 1.9vw));
+  font-family: Lato, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* container-type is what makes the @container query below match. Losing it
+     collapses the band to its stacked mobile layout at every width. */
+  container-type: inline-size;
+  container-name: jammy;
+  position: relative;
+  z-index: 30;
+}
+
+/* Below the overlay breakpoint the photo is a fixed-height banner rather than
+   a full-width band, so the tear's transparent zone is a larger share of it and
+   the vw-based pull under-covers. Scale the overlap to the banner instead. */
+@media (max-width: 899px) {
+  .jammy-cta__container {
+    margin-top: calc(-1 * max(34px, 3.6vw));
+  }
+}
+
+.jammy-cta {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* No background colour: it would fill the artwork's torn edges. */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stacked layout (phones): photo is a banner above the copy. */
+.jammy-cta__photo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: min(62vw, 340px);
+  flex-shrink: 0;
+  background-image: image-set(
+    url("/images/jammy/cta-messy-sm.webp") 1x,
+    url("/images/jammy/cta-messy.webp") 2x
+  );
+  background-image: url("/images/jammy/cta-messy-sm.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Stacked layout only: the photo is a banner above the copy, so the copy needs
+   the blue itself. On desktop the artwork covers the whole band and this is
+   cleared, otherwise it would fill the artwork's torn edges. */
+/* Stacked layout only. The copy block carries the blue itself, and is pulled up
+   behind the photo's bottom tear -- that tear is transparent, so without the
+   overlap the page canvas shows through it as a white gap between the two.
+   z-index keeps the copy under the photo so the tear still reads. */
+.jammy-cta__content {
+  position: relative;
+  z-index: 1;
+  margin-top: -8%;
+  padding: calc(8% + 14px) 22px 46px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+  background: #bfdcf0;
+}
+
+.jammy-cta__head {
+  margin: 0;
+  font-family: Ultra, Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(26px, 8.8vw, 44px);
+  line-height: 1.02;
+  letter-spacing: 1px;
+  color: #2f4421;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* QA 2.2: the leading was tight against the rest of the site's body copy.
+   1.6 matches the ~28px/18px used elsewhere. */
+.jammy-cta__body {
+  margin: 0;
+  max-width: 648px;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: 0.4px;
+  color: #000000;
+  text-wrap: pretty;
+}
+
+.jammy-cta__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  border-radius: 6px;
+  background: #2f4421;
+  color: #ffffff;
+  /* QA 2.1: match the other buttons on the site, which use DIN Condensed
+     (loaded site-wide from the Typekit kit in _document). */
+  font-family: din-condensed, "Arial Narrow", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 240ms ease, transform 240ms ease;
+}
+
+/* QA: no drop shadow on button hover -- the scale alone is the whole
+   effect. This button never had a shadow, but it lifted; scaling keeps it
+   consistent with the rest of the page's buttons. */
+.jammy-cta__cta:hover,
+.jammy-cta__cta:focus-visible {
+  background: #3d5a2b;
+  color: #ffffff;
+  transform: scale(1.04);
+}
+
+.jammy-cta__cta:focus-visible {
+  outline: 3px solid #2f4421;
+  outline-offset: 3px;
+}
+
+/* Overlay layout. Container query, so the band behaves correctly wherever
+   it is placed rather than depending on viewport width. */
+@container jammy (min-width: 900px) {
+  /* Matches the artwork's own ratio so its torn edges show in full rather than
+     being cropped by the band's box. */
+  .jammy-cta {
+    aspect-ratio: 2000 / 1017;
+    display: block;
+  }
+  /* 100% 100% rather than cover: the torn edges live in the artwork's alpha,
+     and cover would crop them off. The band's aspect-ratio matches the image,
+     so nothing is distorted. */
+  .jammy-cta__photo {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    background-color: transparent;
+    background-image: image-set(
+      url("/images/jammy/cta-messy.webp") 1x
+    );
+    background-image: url("/images/jammy/cta-messy.webp");
+    background-position: center;
+    background-size: 100% 100%;
+  }
+  /* Clears the stacked layout's negative pull and its z-index: on desktop the
+     artwork covers the whole band and the copy is absolutely positioned over
+     it, so neither applies. */
+  .jammy-cta__content {
+    position: static;
+    display: block;
+    padding: 0;
+    margin-top: 0;
+    z-index: auto;
+  }
+  /* The photo must drop behind the copy here, or it covers the CTA and the
+     button stops being clickable. It only needs to sit above in the stacked
+     layout, where it overlaps the copy block's top edge. */
+  .jammy-cta__photo {
+    z-index: 0;
+  }
+  /* Dropped from the design's 37.59% so the headline clears the spoon handle
+     and sits closer to the button rather than stranded above it.
+
+     48% rather than the design's 37.59%: the handle descends left to right
+     across the copy column, and its lower edge reaches 43.5% of the band at the
+     right end of the headline's span, so this clears it by 4.5%. */
+  .jammy-cta__head {
+    position: absolute;
+    left: 2.578%;
+    top: 48%;
+    width: 45.157%;
+    margin: 0;
+    font-size: 4.4599cqw;
+    line-height: 4.4599cqw;
+    letter-spacing: 1.5px;
+    text-align: center;
+  }
+  /* 68% leaves a 2.5% gap under the headline. Before these adjustments the
+     body's box actually started above the headline's -- no separation at all. */
+  .jammy-cta__body {
+    position: absolute;
+    left: 4.878%;
+    top: 68%;
+    width: 45.157%;
+    max-width: none;
+    margin: 0;
+    font-size: 1.6725cqw;
+    /* QA 2.2: the design's 1.9512cqw is a ratio of ~1.17, which reads tight
+       against the rest of the site's body copy. 2.45cqw is ~1.46 -- trimmed
+       from 2.55 to buy back the vertical room the new gaps needed, still well
+       clear of the design's value. */
+    line-height: 2.45cqw;
+    letter-spacing: 1.5px;
+  }
+  .jammy-cta__cta {
+    position: absolute;
+    left: 4.878%;
+    /* 89.5%: moved down with the rest of the block, keeping ~2% under the body
+       copy. Ends at 95.5%; the torn fringe does not bite into the button's
+       x-span until 97.2%, so this stays clear of it. */
+    top: 89.5%;
+    width: 13.449%;
+    min-width: 0;
+    height: 5.955%;
+    min-height: 0;
+    margin: 0;
+    border-radius: 6px;
+    /* Was 1.115cqw (~16px at a 1440 band), which read small next to the rest of
+       the site. 1.3cqw is ~18.7px, matching the 18px DIN Condensed links in the
+       footer. The site's primary buttons are 36px, but that will not sit in
+       this band's 43.6px-tall button box. */
+    font-size: 1.3cqw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jammy-cta__cta {
+    transition: none;
+  }
+  .jammy-cta__cta:hover,
+  .jammy-cta__cta:focus-visible {
+    transform: none;
+  }
+}
+
+/* 24g protein badge.
+   Positioned here rather than inline because the vertical anchor changes with
+   breakpoint. Only `top`/`right`/`width` are set -- `transform` is left alone
+   so the jammySpinIn entrance animation stays in control of it. */
+/* QA 2.4: size and placement taken from Figma rather than eyeballed. In the
+   design the bag container is 484x504 and the badge is 211x196 at (273.5, 232)
+   -- so 43.6% of the container width, its left edge at 56.5%, top at 46%.
+   Sizing in % of the container rather than vw keeps that ratio at every width. */
+/* The badge overlaps the bag's right edge rather than sitting over it. The
+   Figma geometry (56.5% left) assumes the bag artwork is scaled up and cropped
+   inside its frame the way the design file has it; ours renders the bag at full
+   width, so the same percentage lands the badge on top of the product copy.
+   Shifted right to clear "The ready-to-eat, soft-boiled egg..." while keeping
+   the overlap with the bag silhouette that the design has. */
+/* QA: "The scale of the graphic needs to come down, to match the Figma
+   design." The supplied artwork is square (250x250) where the old hand-built
+   badge was 211x196, so matching the previous height alone would mean 40.5%.
+   36% brings the scale down as asked while keeping the badge reading clearly
+   against the bag. */
+.jammy .jammy-badge {
+  left: 68%;
+  top: 46%;
+  transform-origin: 50% 50%;
+  width: 36%;
+}
+
+/* On phones the bag is narrower and taller in the column, so the badge rides
+   up to overlap the product name rather than the photography below it. */
+@media (max-width: 860px) {
+  .jammy .jammy-badge {
+    /* Base rule anchors from the left for the desktop ratio; mobile anchors
+       right instead, so left has to be released. */
+    left: auto;
+    right: -2%;
+    top: 19%;
+    width: clamp(118px, 30vw, 150px);
+    margin-top: 0;
+  }
+}
+
+/* Only the very narrowest phones (~320px) push the badge a few pixels past the
+   viewport at that inset; pull it flush there rather than shrinking the
+   overlap everywhere else. */
+@media (max-width: 340px) {
+  .jammy .jammy-badge {
+    left: auto;
+    right: 0;
+  }
+}
+
+/* ── Product Features grid ──
+   Two rows of five, matching the design. QA asked for smaller supporting type,
+   less vertical space between the rows and more horizontal space between the
+   columns, so the column gap is wide and the row gap comparatively tight. */
+.jammy .jammy-features {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: clamp(24px, 4vw, 64px);
+  row-gap: clamp(28px, 3vw, 40px);
+  justify-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.jammy .jammy-features-section {
+  background: #ffffff;
+}
+
+.jammy .jammy-feature {
+  gap: 14px;
+  max-width: 170px;
+}
+
+/* Down from 24px per QA -- the section read as dense. */
+.jammy .jammy-feature h3 {
+  font-size: clamp(14px, 1.15vw, 17px);
+}
+
+/* QA: "icons should be in two rows with the background reverting to a solid
+   color background block."
+
+   Two rows of five, which at 390px leaves about 60px a column. The labels do
+   not fit that: "ingredient" alone measures ~61px at 11px type. So the row
+   scrolls horizontally rather than shrinking the type into illegibility --
+   the five-across rhythm QA asked for is preserved, the labels stay readable,
+   and the overflow is signalled by the last tile sitting half-cut at the edge
+   plus scroll-snap. */
+@media (max-width: 860px) {
+  .jammy .jammy-features {
+    grid-template-columns: repeat(5, minmax(104px, 1fr));
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: row;
+    column-gap: 14px;
+    row-gap: 26px;
+    max-width: none;
+    /* Bleed to the section edges so the cut-off tile reads as "more this
+       way" rather than as a layout mistake. */
+    margin: 0 -24px;
+    padding: 0 24px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .jammy .jammy-features::-webkit-scrollbar {
+    display: none;
+  }
+  .jammy .jammy-feature {
+    max-width: none;
+    scroll-snap-align: start;
+  }
+  .jammy .jammy-feature h3 {
+    font-size: 13px;
+  }
+
+  /* QA: the photo backdrop gives way to a solid block. Previously this only
+     hid the photo, which left plain white -- "reverting to a solid color
+     background block" wants an actual block, so the section takes the brand
+     sky the design uses behind this content. */
+  .jammy .jammy-features-bg {
+    display: none;
+  }
+  .jammy .jammy-features-section {
+    background: #a3d2ee;
+  }
+}
+
+/* QA: "Remove Jammy wordmark in the background" -- phones only. At this width
+   the panel crops the wordmark to a few disconnected letter shapes sitting
+   behind the copy, which reads as artefacts rather than as branding. Desktop
+   keeps it. */
+@media (max-width: 860px) {
+  .jammy .jammy-playlists-wordmark {
+    display: none;
+  }
+}
+
+/* QA 2.11: on phones the sax mascot sits in the right-hand corner rather than
+   centred under the copy, matching the design. */
+@media (max-width: 860px) {
+  /* The parent row is justify-content: center, so align-self alone leaves the
+     mascot centred. Taking the full row width and pushing its own content
+     right is what actually moves it into the corner. */
+  .jammy .jammy-sax {
+    flex: 1 1 100% !important;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -10px;
+    margin-top: -8px;
+  }
+}
+
+/* The Spotify scannable code is pointless on the phone doing the scanning, and
+   it crowds the panel at narrow widths. The "Get Jammin'" button covers mobile. */
+@media (max-width: 860px) {
+  .jammy .jammy-spotify-code {
+    display: none;
+  }
+}
+
+/* Golden-hour gallery collapses to two columns on narrow screens. */
+@media (max-width: 860px) {
+  /* QA 2.8: full width and stacked on phones, rather than two columns --
+     the tiles are the point of this section and two-up made them small. */
+  .jammy-tiles {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+  .jammy-tiles > div {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* Everything here is decorative. Honour a reduced-motion preference by
+   holding each element at its resting state rather than animating. */
+@media (prefers-reduced-motion: reduce) {
+  .jammy *,
+  .jammy *::before,
+  .jammy *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+  .jammy-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .jammy [data-lockup-art] {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
+
+@tailwind utilities;
+
+/* "What is a jammy egg?" -- the curved lockup exported from the Figma. The
+   wording lives in the img alt, so the heading is still announced and indexed
+   even though the type is artwork. */
+.jammy-curve {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.jammy-curve img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
