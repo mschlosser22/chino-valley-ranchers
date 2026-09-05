@@ -560,7 +560,13 @@ export function JammyLanding() {
             position: "relative",
             zIndex: 1,
             margin: "0 0 clamp(40px, 5vw, 64px)",
-            paddingTop: "clamp(56px, 7vw, 96px)",
+            // QA: "The headline 'An egg in a class of its own.' doesn't
+            // appear to have any kind of padding on it on the left or right
+            // side. It is running right up along the edges of the page."
+            // The section itself cannot take the 24px the other sections use
+            // -- the orange band and the wave under this heading are full
+            // bleed -- so the padding goes on the heading.
+            padding: "clamp(56px, 7vw, 96px) 24px 0",
             fontSize: "clamp(28px, 3.6vw, 38px)",
             lineHeight: 1.15,
             textAlign: "center",
@@ -574,6 +580,10 @@ export function JammyLanding() {
             zIndex: 1,
             maxWidth: 1180,
             margin: "0 auto",
+            // Same 24px gutter as the heading and the rest of the page. The
+            // cards are flex-basis 300px, so on a 360px phone they were
+            // landing 10px from the edge.
+            padding: "0 24px",
             display: "flex",
             flexWrap: "wrap",
             gap: 26,
