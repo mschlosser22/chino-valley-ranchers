@@ -300,3 +300,55 @@ body style, so it needs its own QA pass.
 - Every phase ends with the existing check suite: CTA hit-testing across
   breakpoints, the Jammy page render checks, and the pre-consent tracking
   verification, so the compliance work stays intact.
+
+
+## Revised QA (Sept) — final state
+
+Everything in the revised *CVR Jammy Website – Dev QA* is built and verified
+except one item, which needs artwork we do not have.
+
+| Item | Status |
+|---|---|
+| Button text in DIN Condensed | Done |
+| Gateway padding + replacement spoon image | Done |
+| Remove hover drop shadow | Done |
+| Hero: bounce the whole artwork, no per-letter warp | Done |
+| Hero supporting copy | Done |
+| Hero image update | Done |
+| "Available now at Trader Joe's." bold Proxima Nova | Done |
+| Protein callout: scale, placement, no tilt | Done |
+| "What is a Jammy Egg?" Cubano on a curve, white | Done |
+| "every time." underlined | Done |
+| Differentiators: no background bleed through artwork | Done |
+| Format Versatility: order, Cubano labels, salad asset | Done |
+| Product Features — mobile: two rows, solid block | Done |
+| Differentiators — mobile: side margins | Done |
+| Playlists — mobile: remove wordmark | Done |
+| **Playlists: simplify animation to hide the cuts** | **Blocked** — see blockers doc |
+
+111 assertions across twelve suites in `scripts/qa/jammy/`, all passing at the
+breakpoints each item concerns.
+
+### The one blocker
+
+The Playlists illustration animates by moving layered PNGs that were cut out of
+flat artwork, so the seams QA can see are in the source, not the CSS. The clean
+vector in the deliverables is a single flat layer -- 55 paths, one unnamed
+group -- so it cannot be animated either. It needs re-drawing with the movable
+parts as their own closed shapes and the body complete underneath. Spec in
+`docs/jammy-artwork-respec.md`.
+
+The floating musical notes, which CVR is happy with, are unaffected.
+
+### Two corrections worth carrying forward
+
+The salad photograph was called a blocker and was not: it had been in
+`ref/FIN Deliverables/assets/photography` all along. The subject is a lunchbox
+and the in-repo copy was named `grid-toast.jpg`, and both were allowed to
+override what was actually in the picture. Check the pixels before declaring an
+asset missing.
+
+QA item 2.6 was read as "two columns" when it says two **rows**, and "reverting
+to a solid color background block" was implemented as hiding the photo, which
+left plain white rather than a block. Both are fixed; both came from paraphrasing
+the row instead of quoting it.
