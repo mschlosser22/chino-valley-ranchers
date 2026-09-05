@@ -1040,29 +1040,30 @@ export function JammyLanding() {
             transition: "grid-template-columns .7s cubic-bezier(.2,.7,.25,1)",
           }}
         >
-          {/* Filenames do not match contents: grid-hand is the ramen bowl,
-              grid-ramen is the toast, grid-toast is the lunchbox. Left
-              unrenamed so the assets still match what NW delivered; alt text
-              and label pairing follow the actual photographs.
+          {/* Two filenames still do not match their contents: grid-hand is
+              the ramen bowl and grid-ramen is the toast. Left unrenamed so
+              they still match what NW delivered; alt text and labels follow
+              the actual photographs.
 
               QA: "The order from left to right should be salad, toast, snack,
-              ramen." Toast, snack and ramen are in place. The salad slot still
-              holds the lunchbox photo -- the replacement salad image QA links
-              to is on a Dropbox URL we cannot reach, so the label is left off
-              that tile rather than captioning the lunchbox as a salad. See
-              docs/jammy-qa-blockers.md.
+              ramen," and "the image used in the salad block has been updated."
+
+              grid-salad.jpg is that update. The subject is a lunchbox, which
+              is what the old grid-toast.jpg was named for and why it read as
+              the wrong photo at first -- but the box holds leaves, radish, cucumber,
+              carrot and a jammy egg, so it is the salad. The deliverable is a
+              retouched pass over the same frame (mean pixel difference 7.9
+              against the old file, identical crop).
 
               QA: "text within each container should use the Cubano text
               anchored in the top left corner." Now live Cubano rather than
               svg/hard-part-sticker.svg, which was the only label that existed
-              and was not Cubano anyway -- it is a rounded brush script. Live
-              type also means the remaining label appears the moment the salad
-              photo lands. */}
+              and was not Cubano anyway -- it is a rounded brush script. */}
           {[
             {
-              src: "grid-toast.jpg",
-              alt: "Packed lunchbox with a halved jammy egg",
-              label: null,
+              src: "grid-salad.jpg",
+              alt: "Lunchbox salad with leaves, radish, carrot and a halved jammy egg",
+              label: "Salad",
             },
             {
               src: "grid-ramen.jpg",
