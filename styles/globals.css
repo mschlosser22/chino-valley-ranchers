@@ -830,8 +830,9 @@
     opacity: 1 !important;
     transform: none !important;
   }
-  .jammy [data-letter] {
+  .jammy [data-lockup-art] {
     opacity: 1 !important;
+    animation: none !important;
   }
 }
 

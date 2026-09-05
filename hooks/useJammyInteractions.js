@@ -90,43 +90,39 @@ export function useJammyInteractions(rootRef) {
       teardown.push(() => clearTimeout(fallback));
     }
 
-    /* ── Hero lockup: letters bounce into place, then hold a slow wobble ── */
+    /* ── Hero lockup: the whole wordmark bounces in, then holds a wobble ──
+       QA asked for the per-letter animation to go: "We do not want the
+       letters to animate in separately. There is a warping quality that is
+       not desirable. Please just apply a soft bounce-in animation to the
+       whole of the artwork (no separate animation for each individual
+       letter)." The wordmark is now one SVG, so this animates that. */
     const lockup = root.querySelector("[data-lockup]");
     if (lockup && !reduceMotion) {
-      const letters = Array.from(lockup.querySelectorAll("[data-letter]"));
+      const art = lockup.querySelector("[data-lockup-art]");
 
       let wobbleTimer;
       let started = false;
       const run = () => {
-        // Both the image-load handler and the hard-start timer call this, and
-        // whichever loses the race must not restart an animation already
-        // playing -- that reads as the wordmark falling in twice.
+        // Both the load handler and the hard-start timer call this; whichever
+        // loses the race must not restart an animation already playing.
         if (started) return;
         started = true;
 
-        letters.forEach((el, i) => {
-          el.style.animation = `jammyDripBounce 1.15s cubic-bezier(.3,0,.4,1) ${
-            260 + i * 70
-          }ms both`;
-        });
+        if (art) {
+          art.style.animation =
+            "jammyDripBounce 1.15s cubic-bezier(.3,0,.4,1) 260ms both";
+        }
         wobbleTimer = setTimeout(() => {
           lockup.style.animation = "jammyWobble 7s ease-in-out infinite";
-        }, 260 + (letters.length - 1) * 70 + 1250);
+        }, 260 + 1250);
       };
 
-      // Wait for the letter images so the sequence doesn't start half-loaded.
-      const pending = letters.filter((el) => !el.complete);
-      if (!pending.length) {
+      // Wait for the artwork so the bounce doesn't start on a blank frame.
+      if (!art || art.complete) {
         run();
       } else {
-        let left = pending.length;
-        const done = () => {
-          if (--left <= 0) run();
-        };
-        pending.forEach((el) => {
-          el.addEventListener("load", done);
-          el.addEventListener("error", done);
-        });
+        art.addEventListener("load", run);
+        art.addEventListener("error", run);
         const hardStart = setTimeout(run, 2500);
         teardown.push(() => clearTimeout(hardStart));
       }

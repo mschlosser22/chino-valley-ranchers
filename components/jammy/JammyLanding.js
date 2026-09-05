@@ -33,20 +33,6 @@ const BODY = "proxima-nova, Figtree, sans-serif";
 
 /* The wordmark is 12 separate letter images so each can drip in
    independently. Percentages are positions within the lockup box. */
-const LOCKUP = [
-  { src: "01-M.png", left: 18.0685, top: 7.9787, width: 19.9377 },
-  { src: "02-i.png", left: 39.0447, top: 0, width: 4.9844 },
-  { src: "03-n.png", left: 45.7944, top: 7.4468, width: 14.6417 },
-  { src: "04-d.png", left: 61.3707, top: 8.2447, width: 18.0685 },
-  { src: "05-t.png", left: 0, top: 47.8723, width: 11.7342 },
-  { src: "06-h.png", left: 12.7726, top: 48.6702, width: 14.7456 },
-  { src: "07-e.png", left: 28.0374, top: 52.9255, width: 12.8764 },
-  { src: "08-d.png", left: 45.6906, top: 41.7553, width: 12.6687 },
-  { src: "09-r.png", left: 59.8131, top: 55.0532, width: 12.9803 },
-  { src: "10-i.png", left: 74.0395, top: 56.6489, width: 4.9844 },
-  { src: "11-p.png", left: 80.4777, top: 52.9255, width: 13.2918 },
-  { src: "12-dot.png", left: 94.9117, top: 70.7447, width: 5.0883 },
-];
 
 const FEATURES = [
   { icon: "icon-c2.png", w: 46, h: 46, label: "Creamy, golden yolk texture" },
@@ -209,27 +195,29 @@ export function JammyLanding() {
               width: "100%",
               maxWidth: 660,
               margin: 0,
-              aspectRatio: "963 / 376",
+              aspectRatio: "700 / 280.1",
               filter: "drop-shadow(0px 4px 23.9px rgba(0,0,0,0.26))",
             }}
           >
-            {LOCKUP.map((l, i) => (
-              <img
-                key={l.src}
-                data-letter={i}
-                src={`${IMG}/lockup/${l.src}`}
-                alt=""
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  left: `${l.left}%`,
-                  top: `${l.top}%`,
-                  width: `${l.width}%`,
-                  opacity: 0,
-                  willChange: "transform, opacity",
-                }}
-              />
-            ))}
+            {/* QA: "We do not want the letters to animate in separately.
+                There is a warping quality that is not desirable. Please just
+                apply a soft bounce-in animation to the whole of the artwork."
+
+                So this is the supplied wordmark as one vector rather than the
+                twelve letter PNGs it was built from. It also stays crisp at
+                any size, which the PNGs did not. */}
+            <img
+              data-lockup-art="1"
+              src={`${IMG}/svg/mind-the-drip.svg`}
+              alt=""
+              aria-hidden="true"
+              style={{
+                width: "100%",
+                height: "100%",
+                opacity: 0,
+                willChange: "transform, opacity",
+              }}
+            />
           </h1>
           <p
             className="jammy-reveal"
