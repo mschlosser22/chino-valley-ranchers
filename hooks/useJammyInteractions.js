@@ -199,15 +199,16 @@ export function useJammyInteractions(rootRef) {
       teardown.push(() => grid.removeEventListener("mouseleave", reset));
     }
 
-    /* ── Hover lift on buttons and cards ──────────────────────── */
+    /* ── Hover on buttons and cards ────────────────────────────
+       QA: "Remove drop shadow from the hover state of buttons. Just the
+       scale animation is sufficient." So this scales rather than lifting,
+       and paints no shadow. */
     q("[data-lift]").forEach((el) => {
       const enter = () => {
-        el.style.transform = "translateY(-3px)";
-        el.style.boxShadow = "0 10px 26px rgba(0,0,0,0.22)";
+        el.style.transform = "scale(1.04)";
       };
       const leave = () => {
         el.style.transform = "none";
-        el.style.boxShadow = "none";
       };
       el.addEventListener("mouseenter", enter);
       el.addEventListener("mouseleave", leave);

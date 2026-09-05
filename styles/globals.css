@@ -235,9 +235,14 @@
     transform 0.75s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 
+/* Once revealed, drop back to a short transition. The 0.75s used for the
+   entrance is far too slow for a hover -- buttons that carry both
+   .jammy-reveal and data-lift took three quarters of a second to respond. */
 .jammy-reveal.is-visible {
   opacity: 1;
   transform: none;
+  transition: opacity 0.75s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 240ms ease;
 }
 
 @keyframes jammyKenBurns {
@@ -574,11 +579,14 @@
   transition: background 240ms ease, transform 240ms ease;
 }
 
+/* QA: no drop shadow on button hover -- the scale alone is the whole
+   effect. This button never had a shadow, but it lifted; scaling keeps it
+   consistent with the rest of the page's buttons. */
 .jammy-cta__cta:hover,
 .jammy-cta__cta:focus-visible {
   background: #3d5a2b;
   color: #ffffff;
-  transform: translateY(-2px);
+  transform: scale(1.04);
 }
 
 .jammy-cta__cta:focus-visible {
