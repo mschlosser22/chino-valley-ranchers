@@ -1043,35 +1043,51 @@ export function JammyLanding() {
           {/* Filenames do not match contents: grid-hand is the ramen bowl,
               grid-ramen is the toast, grid-toast is the lunchbox. Left
               unrenamed so the assets still match what NW delivered; alt text
-              and label pairing follow the actual photographs. QA also wants a
-              Cubano label top-left in every tile, but only the "Toast" one
-              exists and Cubano is unlicensed -- see roadmap B5. */}
+              and label pairing follow the actual photographs.
+
+              QA: "The order from left to right should be salad, toast, snack,
+              ramen." Toast, snack and ramen are in place. The salad slot still
+              holds the lunchbox photo -- the replacement salad image QA links
+              to is on a Dropbox URL we cannot reach, so the label is left off
+              that tile rather than captioning the lunchbox as a salad. See
+              docs/jammy-qa-blockers.md.
+
+              QA: "text within each container should use the Cubano text
+              anchored in the top left corner." Now live Cubano rather than
+              svg/hard-part-sticker.svg, which was the only label that existed
+              and was not Cubano anyway -- it is a rounded brush script. Live
+              type also means the remaining label appears the moment the salad
+              photo lands. */}
           {[
             {
-              src: "grid-hand.jpg",
-              alt: "Jammy egg in a bowl of ramen",
-              sticker: false,
+              src: "grid-toast.jpg",
+              alt: "Packed lunchbox with a halved jammy egg",
+              label: null,
             },
             {
               src: "grid-ramen.jpg",
               alt: "Hand holding avocado toast topped with a jammy egg",
-              sticker: true,
+              label: "Toast",
             },
             {
               src: "grid-snack.jpg",
               alt: "Halved soft-boiled eggs with cracked pepper in a bowl",
-              sticker: false,
+              label: "Snack",
             },
             {
-              src: "grid-toast.jpg",
-              alt: "Packed lunchbox with a halved jammy egg",
-              sticker: false,
+              src: "grid-hand.jpg",
+              alt: "Jammy egg in a bowl of ramen",
+              label: "Ramen",
             },
           ].map((t) => (
             <div
               key={t.src}
               data-tile="1"
-              style={{ position: "relative", overflow: "hidden" }}
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                containerType: "inline-size",
+              }}
             >
               <img
                 src={`${IMG}/${t.src}`}
@@ -1084,23 +1100,38 @@ export function JammyLanding() {
                   transition: "transform .8s cubic-bezier(.2,.7,.3,1)",
                 }}
               />
-              {t.sticker && (
-                <img
+              {t.label && (
+                <span
                   data-sticker="1"
-                  src={`${IMG}/svg/hard-part-sticker.svg`}
-                  alt="Toast"
                   style={{
                     position: "absolute",
                     // Anchored top-left per QA, rather than the previous
                     // bottom-left placement.
                     left: "8%",
                     top: "8%",
-                    width: "40%",
-                    filter: "drop-shadow(0 6px 16px rgba(0,0,0,0.28))",
+                    fontFamily: DISPLAY,
+                    // The narrow tiles are a quarter the width of the wide
+                    // one, so a single size would either swamp them or vanish
+                    // in the wide one. cqw ties it to the tile, not the page.
+                    fontSize: "clamp(19px, 11cqw, 44px)",
+                    lineHeight: 1,
+                    color: C.yellow,
+                    // The brand yellow is light and three of these photos are
+                    // bright -- Toast measured 1.4:1 against its plate, Snack
+                    // 1.7:1 against egg white. A thin forest outline in the
+                    // brand's own dark green carries the label over whatever
+                    // is behind it; the soft shadow underneath keeps it
+                    // sitting on the photo rather than floating flat.
+                    WebkitTextStroke: `0.055em ${C.forest}`,
+                    paintOrder: "stroke fill",
+                    textShadow: "0 4px 14px rgba(0,0,0,0.4)",
+                    pointerEvents: "none",
                     opacity: 0,
                     transform: "rotate(-24deg) scale(.6)",
                   }}
-                />
+                >
+                  {t.label}
+                </span>
               )}
             </div>
           ))}

@@ -59,3 +59,30 @@ the real export mattered rather than iterating on the approximation.
 
 The wording lives in the img alt, so the heading is still announced by screen
 readers and visible to search.
+
+---
+
+## BLOCKER 4 — Format Versatility: the salad photograph
+
+**QA row:** "The order from left to right should be salad, toast, snack,
+ramen. The image used in the salad block has been updated. Replace with
+this new asset."
+
+**Status:** needs the asset. The link in the QA document points at a Dropbox
+URL we cannot reach, and there is no salad photograph anywhere in
+`ref/FIN Deliverables/assets/photography/` -- all ten images there were
+checked. The closest is `kankan-wrEwiAIOBBk-unsplash.jpg`, which is toast
+with greens on it, and is already used as the Toast tile.
+
+**What is built:** toast, snack and ramen are in their QA positions with
+Cubano labels. The first tile still holds `grid-toast.jpg`, the packed
+lunchbox, and is deliberately left **unlabelled** -- captioning a lunchbox
+"Salad" would be worse than no label while we wait.
+
+**Ask:** the salad photograph, any web-ready size at or above 1200px on the
+short edge.
+
+**Cost of doing nothing:** one of four tiles shows the wrong subject and is
+the only one without a label. Everything else in the section is finished, so
+this is a one-line change when the file arrives -- drop it in as
+`grid-salad.jpg` and set that tile's label to "Salad".

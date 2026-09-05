@@ -52,10 +52,14 @@ export function useJammyInteractions(rootRef) {
         reveals.forEach((el) => io.observe(el));
         teardown.push(() => io.disconnect());
 
-        // Protein badge and "hard part" sticker spin in once on entry.
+        // Protein badge and the tile labels spin in once on entry.
+        // Observes every match, not just the first: there are three tile
+        // labels now that they are set in live Cubano rather than the one
+        // "Toast" artwork, and querySelector would have left the other two
+        // stuck at opacity 0.
         const spinIn = (sel, anim, threshold) => {
-          const el = root.querySelector(sel);
-          if (!el) return;
+          const els = root.querySelectorAll(sel);
+          if (!els.length) return;
           const obs = new IntersectionObserver(
             (entries) => {
               entries.forEach((e) => {
@@ -67,10 +71,10 @@ export function useJammyInteractions(rootRef) {
             },
             { threshold }
           );
-          obs.observe(el);
+          els.forEach((el) => obs.observe(el));
           teardown.push(() => obs.disconnect());
         };
-        // The badge pops in square; only the sticker keeps its tilt.
+        // The badge pops in square; the tile labels keep their tilt.
         spinIn(
           "[data-badge]",
           "jammyPopIn .7s cubic-bezier(.34,1.56,.64,1) forwards",
