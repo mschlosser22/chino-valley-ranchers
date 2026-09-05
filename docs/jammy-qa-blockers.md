@@ -6,41 +6,17 @@ unblock.
 
 ---
 
-## BLOCKER 1 — Homepage gateway: replacement spoon image
+## ~~BLOCKER 1 — Homepage gateway: replacement spoon image~~ RESOLVED
 
-**QA row:** "We lightened the shadow of the spoon on the image that is
-interfering with text. Replace with **new asset here**." (the words "new asset
-here" are a link in the QA PDF)
+The asset arrived as `ref/FIN Deliverables/assets/new hero/`. The band has been
+rebuilt around it.
 
-**What we need:** that linked file.
-
-**Why we cannot proceed on what we have.** The `ref/FIN Deliverables` folder
-contains two candidates, and neither matches the description:
-
-| Asset | Shadow band mean RGB |
-|---|---|
-| Currently deployed (`cta-messy.webp`) | `[166 211 235]` |
-| `AdobeStock_1683560974_alt.png` | `[164 207 230]` |
-| `AdobeStock_1683560974_revised-recolor2-ex.png` | `[160 203 227]` |
-
-Both candidates are **darker** than what is already live, not lighter, and they
-differ from each other by a mean of 1.38 — they are effectively the same image.
-
-There is also a format mismatch. The deployed band is a **composite** at
-2000x1017 (spoon photo, torn top and bottom edges, and the area the copy sits
-on). The deliverables are **raw photography** at 7306x5421. Swapping one for
-the other is not a drop-in; it would mean rebuilding the band composite, which
-risks diverging from what NW approved.
-
-**Ask:** the finished band asset from the QA document's link, ideally as the
-composite at the same dimensions as `cta-messy.webp`. If only the retouched
-photograph exists, say so and we will rebuild the composite around it.
-
-**Not blocked by this:** the padding half of that QA row is already done — the
-headline clears the spoon by 4.5%, with a 2.5% gap above the body copy and 2.2%
-above the button.
-
----
+Worth recording why the earlier measurement was misleading. I compared a fixed
+pixel band (y400-500) across two images with different aspect ratios -- the
+deployed composite is 1.97:1, the raw photo 1.35:1 -- so the two samples were
+not looking at the same part of the picture, and the new photo appeared darker.
+Sampling the same *relative* region shows it is lighter, exactly as QA said:
+`[170 214 237]` against the deployed `[164 210 235]`.
 
 ## BLOCKER 2 — Playlists illustration animation (QA "Playlists", 3.3)
 
