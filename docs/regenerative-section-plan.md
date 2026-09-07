@@ -97,3 +97,32 @@ single-colour shapes, so nothing is lost. Hidden below `sm` where they crowd
 the carton and the design offers no mobile frame.
 
 "WHAT IS REGENERATIVE?" belongs to section 2.
+
+
+## Section 2 — What is Regenerative? + video (done)
+
+21/21 checks at 1440px and 390px (`scripts/qa/regen/sec2test.js`).
+
+Measured against the design and matching to within 0.1%:
+
+| | Design | Live |
+|---|---|---|
+| Heading width | 73.7% | 73.8% |
+| Video frame width | 54.3% | 54.4% |
+| Frame aspect | 1.644 | 1.644 |
+
+The two script annotations ship as artwork, not live type. Each is one lockup
+of Nexa Rust script plus a hand-drawn arrow, and the arrow has to hold its
+exact relationship to the words — setting the text live and positioning an
+arrow beside it would drift at every breakpoint. Neither is a separate layer
+in the .fig, so both are lifted from the render by colour with rebuilt alpha
+(orange `#F8A010`, teal `#00608B`). Hidden below `sm`, where they would cover
+the video.
+
+The play control is a real `<button>` with an aria-label, not a picture of
+one.
+
+**Known stand-in:** the design's video frame is a rough painted edge drawn
+into the composite rather than kept as its own layer. It is a flat teal border
+for now. Separating that artwork cleanly is possible but wants the mask layers
+checked first — noted rather than quietly approximated.
