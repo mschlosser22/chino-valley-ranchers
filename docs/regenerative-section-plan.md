@@ -1,0 +1,55 @@
+# Regenerative rebuild — section plan
+
+Design: `CVR Regen Page.fig`, canvas 2115x8509. Visual reference is the
+matching full-page render (`CVR-Regen-LP-R1-v2-clean.png`, 2075x8469 — same
+design, 20px bleed trimmed).
+
+Working top-down, one section at a time.
+
+## Where the page stands
+
+The live page is **1.51x too short relative to its width** against the design —
+aspect 2.71 vs 4.08. That is not padding drift; sections are missing outright
+and several are flattened to a plain band where the design has layered artwork.
+
+| # | Design section | Component today | Gap |
+|---|---|---|---|
+| 1 | Hero — WELCOME TO Regenerative | `Hero` (13 lines) | Script wordmark, cattle photo, torn base, carton overlap |
+| 2 | WHAT IS REGENERATIVE? + video | `WhatIs` (13 lines) | Video frame, hen cut-outs, script annotations, arrows |
+| 3 | Regenerative AGRICULTURE | `Content` (36 lines) | Grass bg, torn card, carton + burst, red wood sign |
+| 4 | THE NEXT Generation | `ImageFull` (12 lines) | Hen cut-out on sky, torn card |
+| 5 | Photo Row | `ImageGrid` (8 lines) | Closest to design already |
+| 6 | HIGHEST STANDARDS | `Certified` (20 lines) | Burlap bg, hen cut-out, script annotation |
+| 7 | WHAT MAKES Regenerative DIFFERENT? | **missing** | Soil cross-section, four callouts, curved arrows |
+| 8 | BETTER FOR THE LAND / HENS / YOU | **missing** | Three underlined green lines |
+| 9 | Pre-footer — pasture raised | `EggsOpen` (21 lines) | Type scale and layout |
+| 10 | Footer | site `Footer` | — |
+
+`Logos` renders a certification strip that is **not in this design**. Flagged
+rather than removed until we know whether it was added deliberately after the
+comp.
+
+## Recurring design devices
+
+These repeat down the page and are worth building once:
+
+- **Torn-paper edges** — top and bottom of most bands. The .fig carries them as
+  alpha PNGs plus separate masks, so they can be real cut edges rather than CSS
+  approximations.
+- **Script annotations** — "Hear Chris talk about regenerative", "You want
+  more?", "Get em here!", "We're certified!" — Nexa Rust Script B Shadow 2,
+  each paired with a hand-drawn curved arrow.
+- **Cut-out hens** — several poses, full alpha, overlapping band edges.
+- **Textures** — burlap, wood, grass as section grounds.
+
+## Type
+
+Ultra (headings), DIN Condensed 700, Lato 500/700 (body), Rockwell,
+Nexa Rust Script B Shadow 2 (annotations). All load today except
+`lato` 700 and `nexa-rust-script-shad-2` — see
+`docs/regenerative-design-source.md`.
+
+## Fixed before starting
+
+`EggsOpen` nested `<h3>` inside `<p>`, which broke hydration and forced the
+whole route to client-render. Present on main; fixed on this branch.
