@@ -10,9 +10,20 @@
    far-right column, cross-faded into the photo before the lettering starts.
    That keeps the headline as live text rather than baking it into a JPEG,
    which is what the previous version of this component effectively did. */
+import { TornEdge } from './TornEdge';
+
 export function EggsOpen() {
   return (
-    <section
+    <>
+      {/* The pre-footer photograph tears up over the white band above. */}
+      <TornEdge
+        fill={{
+          backgroundImage: "url(/images/regen/prefooter-bg.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "left top",
+        }}
+      />
+      <section
       className="relative"
       style={{
         backgroundImage: "url(/images/regen/prefooter-bg.jpg)",
@@ -78,5 +89,6 @@ export function EggsOpen() {
         </div>
       </div>
     </section>
+    </>
   );
 }

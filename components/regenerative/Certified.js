@@ -10,9 +10,20 @@
    This component previously passed `backgroundImage` as a prop on a <div>,
    which React rejects as an unknown DOM attribute -- it was the last console
    warning on the page. The burlap is a real background here. */
+import { TornEdge } from './TornEdge';
+
 export function Certified() {
   return (
-    <section
+    <>
+      {/* The burlap tears over the photo row above it, as drawn. */}
+      <TornEdge
+        fill={{
+          backgroundImage: "url(/images/regen/burlap.jpg)",
+          backgroundSize: "620px auto",
+          backgroundRepeat: "repeat",
+        }}
+      />
+      <section
       className="relative"
       style={{
         backgroundImage: "url(/images/regen/burlap.jpg)",
@@ -95,5 +106,6 @@ export function Certified() {
         </div>
       </div>
     </section>
+    </>
   );
 }

@@ -1,3 +1,5 @@
+import { TornEdge } from './TornEdge';
+
 /* Sections 7 and 8 of the CVR Regen Page design, built together because the
    three "BETTER FOR..." lines sit inside the same white band as the soil
    diagram and share its centre line.
@@ -61,7 +63,10 @@ const BETTER = [
 
 export function Differences() {
   return (
-    <section className="relative bg-white">
+    <>
+      {/* The white band tears up over the burlap above it. */}
+      <TornEdge />
+      <section className="relative bg-white">
       <div className="mx-auto" style={{ maxWidth: 1600, padding: "4% 3% 5%" }}>
         <h2 className="m-0 text-center">
           <span
@@ -205,5 +210,6 @@ export function Differences() {
         </div>
       </div>
     </section>
+    </>
   );
 }
