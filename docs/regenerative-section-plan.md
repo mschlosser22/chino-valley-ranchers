@@ -126,3 +126,32 @@ one.
 into the composite rather than kept as its own layer. It is a flat teal border
 for now. Separating that artwork cleanly is possible but wants the mask layers
 checked first — noted rather than quietly approximated.
+
+
+## Section 3 — Regenerative AGRICULTURE (done)
+
+23/23 checks at 1440px and 390px (`scripts/qa/regen/sec3test.js`).
+
+| | Design | Live |
+|---|---|---|
+| Torn card width | 62.7% | 62.7% |
+| Red sign width | 24.2% | 24.2% |
+| Sign aspect | 1.39 | 1.39 |
+
+The heading is two faces on two lines as drawn — Nexa Rust script for
+"Regenerative", DIN Condensed for "AGRICULTURE".
+
+The PURCHASE sign is a real `<a href="/products">` and its wording lives in the
+image's alt text, so it is operable and announced rather than being a picture
+of a button.
+
+**Grass crop.** The source photograph is a landscape with sky and hills in the
+top 41%; the design uses only the grass. Two attempts at detecting the horizon
+failed before one worked — testing for blue-dominant pixels found no sky at all
+because the haze is warm, and testing per-pixel green dominance still left a
+warm band. Requiring the *row mean* to be green-dominant cut it correctly.
+
+**Extraction note.** The "Get 'em here!" annotation sits over grass, and sunlit
+grass is close enough to the brand orange that a plain colour-distance mask
+pulled in half the field. It needed a tighter test — high red, low blue, and a
+wide red-to-blue gap — plus a median filter.
