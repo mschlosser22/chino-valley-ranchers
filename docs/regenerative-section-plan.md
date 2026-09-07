@@ -183,9 +183,9 @@ hens, which disguised the gap. Checking `getBoundingClientRect` against the
 viewport showed `visible: false` and settled it — the fix was to the capture,
 not the page.
 
-**Found, not yet fixed:** `Certified.js` (section 6) passes `backgroundImage`
-as a prop on a `<div>`, which React rejects as an invalid DOM attribute. It is
-the one console warning left on the page and goes when that section is rebuilt.
+**Fixed in section 6:** `Certified.js` passed `backgroundImage` as a prop on a
+`<div>`, which React rejects as an invalid DOM attribute. **The page now has
+zero console errors**, down from 11 when this branch started.
 
 
 ## Section 5 — Photo Row (done)
@@ -211,3 +211,28 @@ shows one barn filling the column.
 **One real bug caught by the checks:** the stacked column sized to its own
 content and stood 19px taller than the other three, breaking the row's bottom
 edge. It needed an explicit height.
+
+
+## Section 6 — HIGHEST STANDARDS (done)
+
+21/21 checks at 1440px and 390px (`scripts/qa/regen/sec6test.js`).
+
+| | Design | Live |
+|---|---|---|
+| Heading | 63.0% | 63.0% |
+| ROC mark | 25.9% | 25.9% |
+| Annotation | 11.6% | 11.6% |
+
+The ROC mark carries its name in alt text — it is a certification claim, so it
+has to be readable by a screen reader rather than decorative.
+
+**Burlap took two passes.** Colour-matching alone was not enough: the source
+weave carries about 40% more contrast than the design's, so the first attempt
+matched per-channel mean and standard deviation to the design's sampled values
+(226,185,148 / 26,49,61). That fixed the tone but the texture still read as
+coarse sacking, because `background-size: cover` scales the weave up with the
+viewport. It now tiles at a fixed 620px, which holds the thread at roughly the
+drawn scale, and the tile is cross-faded at its edges so the repeat does not
+show. The body copy sits quietly on it now, which it did not before.
+
+**Console errors: 11 -> 0** across the whole branch.
