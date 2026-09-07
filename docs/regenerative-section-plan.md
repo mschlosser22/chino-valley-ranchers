@@ -155,3 +155,34 @@ warm band. Requiring the *row mean* to be green-dominant cut it correctly.
 grass is close enough to the brand orange that a plain colour-distance mask
 pulled in half the field. It needed a tighter test — high red, low blue, and a
 wide red-to-blue gap — plus a median filter.
+
+
+## Section 4 — THE NEXT Generation (done)
+
+22/22 checks at 1440px and 390px (`scripts/qa/regen/sec4test.js`).
+
+| | Design | Live |
+|---|---|---|
+| Torn card width | 52.5% | 52.4% |
+| "THE NEXT" | 20.9% | 20.9% |
+| "Generation" | 28.0% | 28.0% |
+
+Colours sampled from the render rather than reused from another section: teal
+`#005A82`, orange `#F0A014` — both a shade different from the hero's.
+
+**The hen is a real cut-out.** The .fig ships the photograph
+(`5825610d112b`) and its alpha mask (`a48b3dd8c54c`) as separate layers, so
+they are composited rather than the shape being approximated. Matching them
+took an aspect-ratio check — 0.89 against the mask's 0.90 — because neither
+carries a filename.
+
+**A false alarm worth recording.** The hen looked absent from two comparison
+captures. It was rendering correctly the whole time; the capture clipped at
+the section's scroll position, and the pasture background contains its own
+hens, which disguised the gap. Checking `getBoundingClientRect` against the
+viewport showed `visible: false` and settled it — the fix was to the capture,
+not the page.
+
+**Found, not yet fixed:** `Certified.js` (section 6) passes `backgroundImage`
+as a prop on a `<div>`, which React rejects as an invalid DOM attribute. It is
+the one console warning left on the page and goes when that section is rebuilt.
