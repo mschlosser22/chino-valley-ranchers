@@ -12,12 +12,17 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     const m=await p.evaluate(async()=>{
       await document.fonts.ready;
       const h1=document.querySelector('h1'); const sec=h1.closest('section');
-      const rg=document.createRange(); rg.selectNodeContents(h1);
+      // The script wordmark is the second span inside the h1: the h1 now
+      // spans the whole lockup ("Welcome to Regenerative") so the page's
+      // only top-level heading describes the page rather than reading
+      // "Regenerative" alone.
+      const mark=[...h1.querySelectorAll('span')].pop();
+      const rg=document.createRange(); rg.selectNodeContents(mark);
       const ink=rg.getBoundingClientRect();
       const hens=[...sec.querySelectorAll('img[src*="hen-"]')];
       const edge=sec.querySelector('img[src*="torn-edge"]');
       const cart=sec.querySelector('img[src*="carton"]');
-      return {ff:getComputedStyle(h1).fontFamily.split(',')[0].replace(/"/g,''),
+      return {ff:getComputedStyle(mark).fontFamily.split(',')[0].replace(/"/g,''),
               pct:+(ink.width/innerWidth*100).toFixed(1),
               hens:hens.length,
               henVisible:hens.filter(h=>h.getBoundingClientRect().width>0).length,

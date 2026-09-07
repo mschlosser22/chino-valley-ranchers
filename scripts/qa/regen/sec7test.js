@@ -45,7 +45,10 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       ck('"DIFFERENT?" at design width', Math.abs(m.diff-28.1)<1.5, `${m.diff}% vs 28.1%`);
       ck('soil diagram at design width', Math.abs(m.soilPct-51.6)<1.5, `${m.soilPct}% vs 51.6%`);
       ck('four arrows visible', m.arrowsVisible===4, `${m.arrowsVisible}`);
-      ck('eight callout titles (pinned + stacked)', m.titles===8, `${m.titles}`);
+        // Four, not eight: the callouts used to be rendered twice -- one
+      // absolutely positioned set and one stacked set, each hidden at the
+      // other breakpoint -- so a screen reader announced every topic twice.
+      ck('four callout titles, rendered once', m.titles===4, `${m.titles}`);
     } else {
       ck('arrows hidden on phones', m.arrowsVisible===0, `${m.arrowsVisible}`);
     }

@@ -74,7 +74,7 @@ export function Differences() {
             }}
           >
             What makes
-          </span>
+          </span>{" "}
           <span
             className="block"
             style={{
@@ -86,7 +86,7 @@ export function Differences() {
             }}
           >
             Regenerative
-          </span>
+          </span>{" "}
           <span
             className="block uppercase"
             style={{
@@ -129,14 +129,19 @@ export function Differences() {
           {/* Callouts pinned to the four corners, each with its arrow. Hidden
               below lg, where they stack under the diagram instead. */}
           {CALLOUTS.map((c) => (
+            /* One set of callouts, not two. They used to be rendered twice --
+               absolutely positioned for desktop, stacked for narrow viewports
+               -- with each copy hidden at the other breakpoint. display:none
+               hides them visually but the markup remains, so a screen reader
+               announced all four topics twice over.
+
+               Now each is rendered once. `regen-callout` is static in normal
+               flow by default and only becomes absolutely positioned at lg,
+               where the arrows can point at something. */
             <div
               key={c.key}
-              className="absolute hidden lg:block text-center"
-              style={{
-                [c.side]: "2%",
-                top: c.top,
-                width: "19%",
-              }}
+              className="regen-callout"
+              style={{ [c.side]: "2%", top: c.top }}
             >
               <h3
                 className="m-0"
@@ -166,46 +171,13 @@ export function Differences() {
                 src={`/images/regen/${c.arrow.src}.png`}
                 alt=""
                 aria-hidden="true"
-                className="absolute"
+                className="regen-callout__arrow"
                 style={{
                   left: c.arrow.left,
                   top: c.arrow.top,
                   width: c.arrow.width,
                 }}
               />
-            </div>
-          ))}
-        </div>
-
-        {/* Stacked callouts for narrow viewports, where the arrows cannot
-            point at anything useful. */}
-        <div className="lg:hidden" style={{ marginTop: "6%" }}>
-          {CALLOUTS.map((c) => (
-            <div key={c.key} style={{ marginTop: "6%" }}>
-              <h3
-                className="m-0"
-                style={{
-                  fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
-                  fontWeight: 700,
-                  color: "#00608B",
-                  fontSize: 20,
-                  lineHeight: 1.15,
-                }}
-              >
-                {c.title}
-              </h3>
-              <p
-                className="m-0"
-                style={{
-                  fontFamily: "'Lato', system-ui, sans-serif",
-                  color: "#2B2B2B",
-                  fontSize: 15,
-                  lineHeight: 1.55,
-                  marginTop: "0.4em",
-                }}
-              >
-                {c.body}
-              </p>
             </div>
           ))}
         </div>

@@ -50,7 +50,7 @@ export function ImageFull() {
                 }}
               >
                 The Next
-              </span>
+              </span>{" "}
               <span
                 className="block"
                 style={{

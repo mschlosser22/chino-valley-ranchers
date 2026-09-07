@@ -24,32 +24,39 @@ export function RegenerativeHero() {
 
       <div className="relative" style={{ paddingTop: "8%", paddingBottom: "20%" }}>
         <div className="text-center px-6">
-          {/* Teal ribbon. Sized from the design: the ribbon is a little over
-              a third of the wordmark's width and sits behind its ascenders. */}
-          <span
-            className="inline-block text-white font-ultra uppercase leading-none"
-            style={{
-              background: "#006088",
-              padding: "0.42em 1.15em 0.34em",
-              fontSize: "clamp(18px, 2.55vw, 46px)",
-              letterSpacing: "0.06em",
-              transform: "translateY(0.35em)",
-            }}
-          >
-            Welcome to
-          </span>
+          {/* One h1 spanning the whole lockup rather than an h1 around
+              "Regenerative" alone with the ribbon as a loose span beside it.
+              The page's only h1 read just "Regenerative", which says little
+              about the page on its own or in a screen-reader outline. The two
+              display styles are spans inside it, so nothing moves. */}
+          <h1 className="m-0">
+            {/* Teal ribbon. Sized from the design: a little over a third of
+                the wordmark's width, sitting behind its ascenders. */}
+            <span
+              className="inline-block text-white font-ultra uppercase leading-none"
+              style={{
+                background: "#006088",
+                padding: "0.42em 1.15em 0.34em",
+                fontSize: "clamp(18px, 2.55vw, 46px)",
+                letterSpacing: "0.06em",
+                transform: "translateY(0.35em)",
+              }}
+            >
+              Welcome to
+            </span>{" "}
 
-          <h1
-            className="m-0 leading-none"
-            style={{
-              fontFamily: "nexa-rust-script-shad-2, cursive",
-              color: "#F8A010",
-              // 68% of canvas width in the design; clamped so it does not
-              // outgrow the photo on very wide screens.
-              fontSize: "clamp(56px, 12.98vw, 224px)",
-            }}
-          >
-            Regenerative
+            <span
+              className="block leading-none"
+              style={{
+                fontFamily: "nexa-rust-script-shad-2, cursive",
+                color: "#F8A010",
+                // 68% of canvas width in the design; clamped so it does not
+                // outgrow the photo on very wide screens.
+                fontSize: "clamp(56px, 12.98vw, 224px)",
+              }}
+            >
+              Regenerative
+            </span>
           </h1>
 
           <p

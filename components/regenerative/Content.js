@@ -45,7 +45,7 @@ export function Content() {
                 }}
               >
                 Regenerative
-              </span>
+              </span>{" "}
               <span
                 className="block uppercase"
                 style={{

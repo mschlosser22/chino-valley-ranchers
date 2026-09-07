@@ -181,3 +181,30 @@
 }
 
 @tailwind utilities;
+
+/* ── Regenerative: the four soil callouts ──────────────────────────────
+   Rendered once, positioned differently by breakpoint. They were
+   previously duplicated -- one absolutely positioned set for desktop and
+   one stacked set for phones, each hidden at the other size -- which meant
+   a screen reader announced all four topics twice. */
+.regen-callout {
+  text-align: left;
+  margin-top: 8%;
+}
+.regen-callout__arrow {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .regen-callout {
+    position: absolute;
+    width: 19%;
+    margin-top: 0;
+    text-align: center;
+  }
+  /* The arrows only make sense once the callouts sit around the diagram. */
+  .regen-callout__arrow {
+    display: block;
+    position: absolute;
+  }
+}
