@@ -236,3 +236,34 @@ drawn scale, and the tile is cross-faded at its edges so the repeat does not
 show. The body copy sits quietly on it now, which it did not before.
 
 **Console errors: 11 -> 0** across the whole branch.
+
+
+## Sections 7 and 8 — WHAT MAKES Regenerative DIFFERENT? / BETTER FOR... (done)
+
+27/27 checks at 1440px and 390px (`scripts/qa/regen/sec7test.js`).
+
+**Neither section existed on the page before.** They are built as one component
+because the three "BETTER FOR..." lines sit inside the same white band as the
+soil diagram and share its centre line.
+
+| | Design | Live |
+|---|---|---|
+| "WHAT MAKES" | 31.1% | 31.2% |
+| "Regenerative" | 45.3% | 45.3% |
+| "DIFFERENT?" | 28.1% | 28.1% |
+| Soil diagram | 51.6% | 51.6% |
+
+The callouts are pinned to the four corners rather than laid out in a grid.
+The design points a hand-drawn arrow from each one at the part of the soil it
+describes, so equal columns would leave the arrows pointing at nothing. Below
+`lg` they stack under the diagram and the arrows are dropped, since they cannot
+point at anything useful once the layout reflows.
+
+The soil diagram carries a 94-character alt describing what the cross-section
+shows — hens above ground, roots and soil life below. It is the only place on
+the page where that information exists.
+
+**Finding the arrows.** Masking for brand orange returned six clusters, not
+four: two of them are the hens standing in the artwork itself, which are close
+enough in hue to pass the filter. Cropping each arrow from its own quadrant
+using the cluster bounds was what separated them.
