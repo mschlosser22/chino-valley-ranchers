@@ -79,10 +79,21 @@ Two mistakes worth recording:
   pixels rather than transparency. The alpha had to be rebuilt from luminance
   before the tear would cut.
 
-**Still open on this section:**
+**Both open items closed.** 17/17 checks pass at 1440px and 390px
+(`scripts/qa/regen/sec1test.js`).
 
-- The tear reads as nearly straight at 1440px. It varies 40px over a 165px
-  strip (7.8% of width against the design's 9.0%), so the asset is right but
-  the rendered proportion is still shallow.
-- Three teal hen silhouettes below the carton are not placed yet.
-- "WHAT IS REGENERATIVE?" belongs to section 2.
+*Tear depth.* Measured across the design's unoccluded left and right thirds,
+the edge varies ~13% of canvas width — but looking at the crop, that figure is
+the sharp rise at the two outer corners, not the tear's texture. Across the
+body it is ~3.3%. The paper asset carries only 1.79%, so the edge is now built
+from the deeper mask layer (`cbefd9444fce`, 3.32%) tinted to the paper colour.
+Chasing the 13% number would have produced a tear the design does not have.
+
+*Hens.* Placed at the design's own positions — 15.4% / 66.3% / 78.0% from the
+left, each ~9.8% of canvas width. Only the standing pose exists as an asset in
+the .fig; the two pecking poses are not separate layers, so they are lifted
+from the render by their teal (#00608B) with rebuilt alpha. They are flat
+single-colour shapes, so nothing is lost. Hidden below `sm` where they crowd
+the carton and the design offers no mobile frame.
+
+"WHAT IS REGENERATIVE?" belongs to section 2.

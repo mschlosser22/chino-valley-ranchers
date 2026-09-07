@@ -81,7 +81,7 @@ export function RegenerativeHero() {
         alt=""
         aria-hidden="true"
         className="relative block w-full"
-        style={{ marginTop: "-7.8%", zIndex: 1 }}
+        style={{ marginTop: "-3.3%", zIndex: 1 }}
       />
 
       {/* Paper ground. The carton is a child of it and carries a higher
@@ -94,6 +94,34 @@ export function RegenerativeHero() {
           className="relative block mx-auto"
           style={{ width: "min(52%, 660px)", marginTop: "-9%" }}
         />
+
+        {/* Three teal hen silhouettes on the paper. Positions and widths are
+            the design's own, measured off the render: 15.4% / 66.3% / 78.0%
+            from the left, each about 9.8% of the canvas wide.
+
+            Only the standing hen exists as an asset in the .fig; the two
+            pecking poses are not separate layers, so they are lifted from the
+            render by their teal (#00608B) and given rebuilt alpha. They are
+            flat single-colour shapes, so nothing is lost doing it that way.
+
+            Hidden below sm: at phone width they crowd the carton, and the
+            design has no mobile frame to follow. */}
+        <div className="relative hidden sm:block" style={{ height: 0 }}>
+          {[
+            { src: "hen-standing", left: "15.4%", w: "9.8%", top: "-7.2em" },
+            { src: "hen-peck-a", left: "66.3%", w: "9.7%", top: "-5.6em" },
+            { src: "hen-peck-b", left: "78.0%", w: "9.9%", top: "-6.4em" },
+          ].map((h) => (
+            <img
+              key={h.src}
+              src={`/images/regen/${h.src}.png`}
+              alt=""
+              aria-hidden="true"
+              className="absolute"
+              style={{ left: h.left, width: h.w, top: h.top }}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
