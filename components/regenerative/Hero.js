@@ -1,14 +1,100 @@
+/* Section 1 of the CVR Regen Page design.
+
+   Geometry is measured off the design render (2075x8469), not eyeballed:
+   the script wordmark spans 68% of the canvas width and is centred, and the
+   hero photo runs from under the nav to a torn paper edge whose tear varies
+   between y701 and y887 -- so the tear is a real alpha PNG from the .fig
+   rather than a CSS approximation, which cannot reproduce an irregular edge.
+
+   The wordmark is live type. nexa-rust-script-shad-2 is in the client's
+   Adobe kit gqk7pcv and carries its own offset shadow, so the design's
+   lettering needs no artwork. */
 export function RegenerativeHero() {
   return (
-    <>
-        <div className="relative">
-            <div className="w-full text-center absolute top-1/4">
-                <h1 className="text-3xl lg:text-7xl text-white font-ultra uppercase tracking-wide hero-video">Welcome to Regenerative</h1>
-                <h2 className="text-xl lg:text-5xl tracking-wider uppercase text-chinotan mt-2">organic regenerative eggs</h2>
-            </div>
+    <section className="relative overflow-hidden bg-[#006088]">
+      {/* Cattle on pasture. object-position keeps the herd in frame as the
+          viewport narrows; the design crops them right of centre. */}
+      <img
+        src="/images/regen/hero-cattle.jpg"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: "60% 40%" }}
+      />
 
-            <img src="/images/regen-hero.jpg" alt="Regenerative Hero" className="w-full" />
+      <div className="relative" style={{ paddingTop: "8%", paddingBottom: "20%" }}>
+        <div className="text-center px-6">
+          {/* Teal ribbon. Sized from the design: the ribbon is a little over
+              a third of the wordmark's width and sits behind its ascenders. */}
+          <span
+            className="inline-block text-white font-ultra uppercase leading-none"
+            style={{
+              background: "#006088",
+              padding: "0.42em 1.15em 0.34em",
+              fontSize: "clamp(18px, 2.55vw, 46px)",
+              letterSpacing: "0.06em",
+              transform: "translateY(0.35em)",
+            }}
+          >
+            Welcome to
+          </span>
+
+          <h1
+            className="m-0 leading-none"
+            style={{
+              fontFamily: "nexa-rust-script-shad-2, cursive",
+              color: "#F8A010",
+              // 68% of canvas width in the design; clamped so it does not
+              // outgrow the photo on very wide screens.
+              fontSize: "clamp(56px, 13.45vw, 232px)",
+            }}
+          >
+            Regenerative
+          </h1>
+
+          <p
+            className="m-0 text-white uppercase"
+            style={{
+              fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
+              fontWeight: 700,
+              fontSize: "clamp(14px, 1.9vw, 34px)",
+              letterSpacing: "0.09em",
+              marginTop: "-0.35em",
+            }}
+          >
+            Organic Regenerative Eggs
+          </p>
         </div>
-    </>
+      </div>
+
+      {/* The torn paper edge is a real alpha cut from the .fig, not a CSS
+          shape: in the design the tear wanders between y701 and y887 across
+          the width, which no border-radius or clip-path reproduces.
+
+          It overlaps the photo by its own height so the tear reads as paper
+          laid over the pasture rather than two bands butted together. */}
+      {/* Pulled up over the photo by its own height so the tear cuts INTO
+          the pasture. Left in flow (not absolute) so the paper below starts
+          exactly where the strip ends and no seam can open between them. */}
+      <img
+        src="/images/regen/torn-edge.png"
+        alt=""
+        aria-hidden="true"
+        className="relative block w-full"
+        style={{ marginTop: "-7.8%", zIndex: 1 }}
+      />
+
+      {/* Paper ground. The carton is a child of it and carries a higher
+          z-index than the torn strip above, so it lies ON the paper and the
+          photo rather than being sliced by the tear. */}
+      <div className="relative" style={{ background: "#EFEAE0", zIndex: 2 }}>
+        <img
+          src="/images/regen/carton.png"
+          alt="A carton of Chino Valley Ranchers organic regenerative eggs"
+          className="relative block mx-auto"
+          style={{ width: "min(52%, 660px)", marginTop: "-9%" }}
+        />
+      </div>
+    </section>
   );
 }

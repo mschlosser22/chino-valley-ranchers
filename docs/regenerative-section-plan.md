@@ -53,3 +53,36 @@ Nexa Rust Script B Shadow 2 (annotations). All load today except
 
 `EggsOpen` nested `<h3>` inside `<p>`, which broke hydration and forced the
 whole route to client-render. Present on main; fixed on this branch.
+
+
+## Section 1 — Hero (in progress)
+
+**Done:** cattle photo, teal ribbon, script wordmark, DIN sub-line, torn edge,
+carton overlap, paper ground.
+
+Measured rather than eyeballed:
+
+- Wordmark spans **68.0%** of the viewport — the design's exact figure.
+- `nexa-rust-script-shad-2` is in the client's Adobe kit and carries its own
+  offset shadow, so the wordmark is **live type**, not artwork. An earlier
+  check said it was unavailable; that was wrong — the check ran on a page that
+  never requested the face.
+- Palette sampled from the render: teal `#006088`, orange `#F8A010`,
+  red `#B01010`, paper `#EFEAE0`.
+
+Two mistakes worth recording:
+
+- The first "torn edge" asset picked was a **shadow layer**, not the paper —
+  max alpha 215, dark olive, 0% opaque. Caught by inspecting the alpha channel
+  rather than trusting the filename-free ID.
+- The real paper asset ships **fully opaque**, with the tear drawn as light
+  pixels rather than transparency. The alpha had to be rebuilt from luminance
+  before the tear would cut.
+
+**Still open on this section:**
+
+- The tear reads as nearly straight at 1440px. It varies 40px over a 165px
+  strip (7.8% of width against the design's 9.0%), so the asset is right but
+  the rendered proportion is still shallow.
+- Three teal hen silhouettes below the carton are not placed yet.
+- "WHAT IS REGENERATIVE?" belongs to section 2.
