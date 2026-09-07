@@ -17,7 +17,7 @@ export function WhatIs() {
           className="text-center m-0 uppercase"
           style={{
             fontFamily: "'Ultra', Rockwell, Georgia, serif",
-            color: "#B01010",
+            color: "#B01014",
             fontSize: "clamp(26px, 4.69vw, 81px)",
             lineHeight: 1.05,
             letterSpacing: "0.01em",
@@ -40,7 +40,7 @@ export function WhatIs() {
               // The design's frame is a rough painted edge. A flat teal border
               // is the honest stand-in until that artwork is separated out --
               // it is drawn as part of the composite, not its own layer.
-              border: "0.9vw solid #00608B",
+              border: "0.9vw solid #006088",
               maxWidth: "100%",
             }}
           >
@@ -72,7 +72,7 @@ export function WhatIs() {
                   marginLeft: "18%",
                   borderTop: "0.9vw solid transparent",
                   borderBottom: "0.9vw solid transparent",
-                  borderLeft: "1.5vw solid #F8A010",
+                  borderLeft: "1.5vw solid #F8A014",
                 }}
               />
             </button>
@@ -82,8 +82,7 @@ export function WhatIs() {
               upper right, its arrow curving down to the play button. */}
           <img
             src="/images/regen/ann-hear.png"
-            alt=""
-            aria-hidden="true"
+            alt="Hear Chris talk about regenerative"
             className="absolute hidden sm:block"
             style={{ left: "48%", top: "6%", width: "46%" }}
           />
@@ -92,8 +91,7 @@ export function WhatIs() {
               running down toward the next section. */}
           <img
             src="/images/regen/ann-more.png"
-            alt=""
-            aria-hidden="true"
+            alt="You want more?"
             className="absolute hidden sm:block"
             style={{ left: "88%", top: "56%", width: "12%" }}
           />

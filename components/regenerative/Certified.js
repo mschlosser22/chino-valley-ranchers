@@ -32,7 +32,7 @@ export function Certified() {
           className="m-0 text-center uppercase"
           style={{
             fontFamily: "'Ultra', Rockwell, Georgia, serif",
-            color: "#B01010",
+            color: "#B01014",
             fontSize: "clamp(28px, 4.67vw, 81px)",
             lineHeight: 1.05,
             letterSpacing: "0.01em",
@@ -87,8 +87,7 @@ export function Certified() {
             />
             <img
               src="/images/regen/ann-certified.png"
-              alt=""
-              aria-hidden="true"
+              alt="We&rsquo;re certified!"
               className="absolute hidden sm:block"
               style={{ left: "-6%", bottom: "6%", width: "27.2%" }}
             />

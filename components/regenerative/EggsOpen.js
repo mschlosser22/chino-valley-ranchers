@@ -37,7 +37,7 @@ export function EggsOpen() {
             className="m-0 uppercase text-center"
             style={{
               fontFamily: "'Ultra', Rockwell, Georgia, serif",
-              color: "#F0A014",
+              color: "#F8A014",
               fontSize: "clamp(18px, 2.62vw, 45px)",
               lineHeight: 1.24,
               letterSpacing: "0.01em",
@@ -56,7 +56,7 @@ export function EggsOpen() {
               lineHeight: 1.35,
               marginTop: "1.1em",
               paddingBottom: "0.9em",
-              borderBottom: "2px solid #F0A014",
+              borderBottom: "2px solid #F8A014",
             }}
           >
             Sustainable and regenerative farming practices.

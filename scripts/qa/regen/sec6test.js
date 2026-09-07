@@ -35,7 +35,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     });
     console.log(`\n  --- ${label} (${w}px) ---`);
     ck('heading in Ultra', m.ff==='Ultra', m.ff);
-    ck('heading in design red', m.colour==='rgb(176, 16, 16)', m.colour);
+    ck('heading in design red', m.colour==='rgb(176, 16, 20)', m.colour);
     if(w===1440){
       ck('heading at design width', Math.abs(m.headPct-63.0)<1.5, `${m.headPct}% vs 63.0%`);
       ck('ROC mark at design width', Math.abs(m.rocPct-25.9)<1.5, `${m.rocPct}% vs 25.9%`);

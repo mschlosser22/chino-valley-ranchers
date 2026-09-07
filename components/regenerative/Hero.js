@@ -49,10 +49,10 @@ export function RegenerativeHero() {
               className="block leading-none"
               style={{
                 fontFamily: "nexa-rust-script-shad-2, cursive",
-                color: "#F8A010",
+                color: "#F8A014",
                 // 68% of canvas width in the design; clamped so it does not
                 // outgrow the photo on very wide screens.
-                fontSize: "clamp(56px, 12.98vw, 224px)",
+                fontSize: "clamp(58px, 13.43vw, 232px)",
               }}
             >
               Regenerative
@@ -108,7 +108,7 @@ export function RegenerativeHero() {
 
             Only the standing hen exists as an asset in the .fig; the two
             pecking poses are not separate layers, so they are lifted from the
-            render by their teal (#00608B) and given rebuilt alpha. They are
+            render by their teal (#006088) and given rebuilt alpha. They are
             flat single-colour shapes, so nothing is lost doing it that way.
 
             Hidden below sm: at phone width they crowd the carton, and the

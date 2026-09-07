@@ -32,7 +32,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     });
     console.log(`\n  --- ${label} (${w}px) ---`);
     ck('heading in Ultra', m.ff==='Ultra', m.ff);
-    ck('heading in design orange', m.colour==='rgb(240, 160, 20)', m.colour);
+    ck('heading in design orange', m.colour==='rgb(248, 160, 20)', m.colour);
     ck('heading is live text, not baked artwork', m.isLiveText);
     ck('heading centred as drawn', m.align==='center', m.align);
     if(w===1440){

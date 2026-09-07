@@ -39,7 +39,7 @@ export function Content() {
                 className="block"
                 style={{
                   fontFamily: "nexa-rust-script-shad-2, cursive",
-                  color: "#7BAE4B",
+                  color: "#7CA854",
                   fontSize: "clamp(28px, 3.6vw, 62px)",
                   lineHeight: 1,
                 }}
@@ -51,7 +51,7 @@ export function Content() {
                 style={{
                   fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
                   fontWeight: 700,
-                  color: "#00608B",
+                  color: "#006088",
                   fontSize: "clamp(24px, 3.2vw, 56px)",
                   letterSpacing: "0.02em",
                   lineHeight: 1,
@@ -119,8 +119,7 @@ export function Content() {
           {/* "Get 'em here!" with its arrow curving up to the sign. */}
           <img
             src="/images/regen/ann-getem.png"
-            alt=""
-            aria-hidden="true"
+            alt="Get &lsquo;em here!"
             className="absolute hidden sm:block"
             style={{ left: "86%", top: "62%", width: "10.3%" }}
           />

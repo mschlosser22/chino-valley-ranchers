@@ -32,7 +32,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     });
     console.log(`\n  --- ${label} (${w}px) ---`);
     ck('heading in Ultra', m.ff==='Ultra', m.ff);
-    ck('heading in design red', m.colour==='rgb(176, 16, 16)', m.colour);
+    ck('heading in design red', m.colour==='rgb(176, 16, 20)', m.colour);
     if(w===1440){
       ck('heading at design width', Math.abs(m.headPct-73.7)<1.5, `${m.headPct}% vs 73.7%`);
       ck('video frame at design width', Math.abs(m.framePct-54.3)<1.5, `${m.framePct}% vs 54.3%`);

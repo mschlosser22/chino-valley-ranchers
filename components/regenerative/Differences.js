@@ -54,9 +54,9 @@ const CALLOUTS = [
 ];
 
 const BETTER = [
-  { text: "Better for the land.", colour: "#7BAE4B" },
-  { text: "Better for our hens.", colour: "#00608B" },
-  { text: "Better eggs for you.", colour: "#7BAE4B" },
+  { text: "Better for the land.", colour: "#7CA854" },
+  { text: "Better for our hens.", colour: "#006088" },
+  { text: "Better eggs for you.", colour: "#7CA854" },
 ];
 
 export function Differences() {
@@ -68,7 +68,7 @@ export function Differences() {
             className="block uppercase"
             style={{
               fontFamily: "'Ultra', Rockwell, Georgia, serif",
-              color: "#7BAE4B",
+              color: "#7CA854",
               fontSize: "clamp(26px, 3.71vw, 64px)",
               lineHeight: 1.05,
             }}
@@ -79,8 +79,8 @@ export function Differences() {
             className="block"
             style={{
               fontFamily: "nexa-rust-script-shad-2, cursive",
-              color: "#00608B",
-              fontSize: "clamp(48px, 8.65vw, 150px)",
+              color: "#006088",
+              fontSize: "clamp(50px, 8.95vw, 155px)",
               lineHeight: 1,
               marginTop: "-0.1em",
             }}
@@ -91,7 +91,7 @@ export function Differences() {
             className="block uppercase"
             style={{
               fontFamily: "'Ultra', Rockwell, Georgia, serif",
-              color: "#7BAE4B",
+              color: "#7CA854",
               fontSize: "clamp(26px, 3.71vw, 64px)",
               lineHeight: 1.05,
               marginTop: "-0.05em",
@@ -148,7 +148,7 @@ export function Differences() {
                 style={{
                   fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
                   fontWeight: 700,
-                  color: "#00608B",
+                  color: "#006088",
                   fontSize: "clamp(15px, 1.62vw, 28px)",
                   lineHeight: 1.15,
                 }}

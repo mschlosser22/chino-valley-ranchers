@@ -36,8 +36,8 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     console.log(`\n  --- ${label} (${w}px) ---`);
     ck('"THE NEXT" in DIN Condensed', m.din==='din-condensed', m.din);
     ck('"Generation" in the script face', m.script==='nexa-rust-script-shad-2', m.script);
-    ck('teal sampled from the design', m.tealCol==='rgb(0, 90, 130)', m.tealCol);
-    ck('orange sampled from the design', m.orangeCol==='rgb(240, 160, 20)', m.orangeCol);
+    ck('teal sampled from the design', m.tealCol==='rgb(0, 96, 136)', m.tealCol);
+    ck('orange sampled from the design', m.orangeCol==='rgb(248, 160, 20)', m.orangeCol);
     if(w===1440){
       ck('card at design width', Math.abs(m.cardPct-52.5)<1.5, `${m.cardPct}% vs 52.5%`);
       ck('"THE NEXT" at design width', Math.abs(m.nextPct-20.9)<1.5, `${m.nextPct}% vs 20.9%`);

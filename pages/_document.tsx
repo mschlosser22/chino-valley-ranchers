@@ -65,7 +65,22 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Ultra"
             rel="stylesheet"
           />
-          <link rel="stylesheet" href="https://use.typekit.net/yyq5ssh.css" />
+          {/* Adobe kit on the client's own account. It carries
+              nexa-rust-script-shad-2, rockwell, din-condensed, cubano and
+              proxima-nova.
+
+              This replaces kit yyq5ssh, which serves din-condensed alone from
+              an account we do not control. The Regenerative design leans on
+              Nexa Rust Script for four headings; against yyq5ssh those were
+              silently falling back to a plain serif, which is what a font
+              audit of the rendered page turned up -- document.fonts.check()
+              reports true for a face it cannot load, so the only reliable
+              test is measuring rendered glyph widths.
+
+              The same swap is on feature/jammy-v2 (PR #59). Whichever lands
+              first carries it; the other will conflict on this line and
+              should keep gqk7pcv. */}
+          <link rel="stylesheet" href="https://use.typekit.net/gqk7pcv.css" />
           {/* Styled Components CSS */}
           {this.props.styles}
         </Head>

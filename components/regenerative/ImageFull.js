@@ -7,7 +7,7 @@
      Generation   28.0% of canvas
      hen divider   4.1% of canvas
 
-   Colours sampled from the render: teal #005A82, orange #F0A014.
+   Colours sampled from the render: teal #006088, orange #F8A014.
 
    The hen is a real cut-out: the .fig ships the photograph and its mask as
    separate layers, so the two are composited rather than the shape being
@@ -43,7 +43,7 @@ export function ImageFull() {
                 style={{
                   fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
                   fontWeight: 700,
-                  color: "#005A82",
+                  color: "#006088",
                   fontSize: "clamp(30px, 6.25vw, 108px)",
                   letterSpacing: "0.02em",
                   lineHeight: 1,
@@ -55,7 +55,7 @@ export function ImageFull() {
                 className="block"
                 style={{
                   fontFamily: "nexa-rust-script-shad-2, cursive",
-                  color: "#F0A014",
+                  color: "#F8A014",
                   fontSize: "clamp(34px, 6.39vw, 111px)",
                   lineHeight: 1,
                   marginTop: "-0.14em",
