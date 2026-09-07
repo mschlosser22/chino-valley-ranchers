@@ -186,3 +186,28 @@ not the page.
 **Found, not yet fixed:** `Certified.js` (section 6) passes `backgroundImage`
 as a prop on a `<div>`, which React rejects as an invalid DOM attribute. It is
 the one console warning left on the page and goes when that section is rebuilt.
+
+
+## Section 5 — Photo Row (done)
+
+18/18 checks at 1440px and 390px (`scripts/qa/regen/sec5test.js`).
+
+Columns are deliberately unequal, measured by finding the white gutters in the
+design: **25.2 / 13.3 / 14.4 / 47.1**. Equal quarters would read as a different
+composition, so they are explicit grid fractions.
+
+It was a single flat JPEG before — one image, one alt text, no way to reflow.
+Now five photographs with distinct alt text.
+
+**Column two is two photographs stacked**, not one. That is only visible by
+cropping the design and looking: the split uses the same gutter width as the
+column separators, so at a glance it reads as a single tall photo. Column three
+is a tight head-and-comb crop, not the same frame as column two.
+
+**Barn framing.** The source is a mirrored pair — the same barn photographed
+once and flipped — so it is cropped to its left half to match the design, which
+shows one barn filling the column.
+
+**One real bug caught by the checks:** the stacked column sized to its own
+content and stood 19px taller than the other three, breaking the row's bottom
+edge. It needed an explicit height.
