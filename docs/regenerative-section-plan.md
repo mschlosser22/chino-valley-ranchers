@@ -267,3 +267,46 @@ the page where that information exists.
 four: two of them are the hens standing in the artwork itself, which are close
 enough in hue to pass the filter. Cropping each arrow from its own quadrant
 using the cluster bounds was what separated them.
+
+
+## Section 9 — Pre-footer (done)
+
+24/24 checks (`scripts/qa/regen/sec9test.js`). Band aspect 3.33 against the
+design's 3.34; the headline breaks in three lines as drawn.
+
+The headline is **live text**. The design bakes it into the composite and the
+component this replaces effectively did too, so the background had to be
+rebuilt without it — the right half is a per-row colour ramp sampled from the
+clean far-right column, blended with a heavily blurred copy of the real texture
+and cross-faded into the photograph before the lettering starts.
+
+Three attempts. Tiling a slice of the render repeated the carton, not the
+pasture. A colour ramp fixed the subject but left hard vertical seams.
+Feathering removed the seams but started the ramp *after* the type began, so
+"OU" and "AR" ghosted through. Moving the crossover to x780–930, ahead of the
+type at x950, worked.
+
+## Where the page stands
+
+**All ten sections built. 173/173 checks pass** at 1440px and 390px.
+
+| | Before | Now | Design |
+|---|---|---|---|
+| Page aspect | 2.71 | 4.50 | 4.08 |
+| Console errors | 11 | 0 | — |
+
+The page was **1.51x too short** relative to its width when this branch
+started, with two sections missing outright. It now runs slightly *longer* than
+the design (1.10x), which is expected: text reflows at a real viewport width
+rather than sitting in a fixed 2075px canvas.
+
+Assets are 4.4MB, down from 6.9MB. The four photographic cut-outs moved from
+PNG to WebP — PNG is the wrong format for a photograph with alpha, and
+quantizing `soil-block` actually made it *larger* (1.5MB -> 2.3MB) before the
+format change fixed it properly. The remaining PNGs are flat-colour artwork,
+where PNG is correct.
+
+**Still open:** `Logos` renders a certification strip that is not in this
+design. It is 68px tall, so it is not what makes the page longer — but it is
+still unaccounted for, and wants a decision from the client rather than a
+guess.

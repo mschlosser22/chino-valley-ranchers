@@ -93,7 +93,7 @@ export function Content() {
             style={{ left: "48%", top: "-9%", width: "9%" }}
           />
           <img
-            src="/images/regen/carton.png"
+            src="/images/regen/carton.webp"
             alt=""
             aria-hidden="true"
             className="absolute hidden sm:block"

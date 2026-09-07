@@ -79,7 +79,7 @@ export function Certified() {
               has to keep its exact relationship to the words. */}
           <div className="relative">
             <img
-              src="/images/regen/hen-standing-photo.png"
+              src="/images/regen/hen-standing-photo.webp"
               alt=""
               aria-hidden="true"
               className="block"

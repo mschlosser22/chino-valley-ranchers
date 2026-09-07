@@ -107,7 +107,7 @@ export function ImageFull() {
           {/* Hen cut-out, overlapping the card's left edge. Absolute so it can
               overhang without pushing the card around. */}
           <img
-            src="/images/regen/hen-large.png"
+            src="/images/regen/hen-large.webp"
             alt=""
             aria-hidden="true"
             className="absolute"

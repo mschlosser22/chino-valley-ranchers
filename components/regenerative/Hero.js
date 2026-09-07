@@ -46,7 +46,7 @@ export function RegenerativeHero() {
               color: "#F8A010",
               // 68% of canvas width in the design; clamped so it does not
               // outgrow the photo on very wide screens.
-              fontSize: "clamp(56px, 13.45vw, 232px)",
+              fontSize: "clamp(56px, 12.98vw, 224px)",
             }}
           >
             Regenerative
@@ -89,7 +89,7 @@ export function RegenerativeHero() {
           photo rather than being sliced by the tear. */}
       <div className="relative" style={{ background: "#EFEAE0", zIndex: 2 }}>
         <img
-          src="/images/regen/carton.png"
+          src="/images/regen/carton.webp"
           alt="A carton of Chino Valley Ranchers organic regenerative eggs"
           className="relative block mx-auto"
           style={{ width: "min(52%, 660px)", marginTop: "-9%" }}

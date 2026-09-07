@@ -80,7 +80,7 @@ export function Differences() {
             style={{
               fontFamily: "nexa-rust-script-shad-2, cursive",
               color: "#00608B",
-              fontSize: "clamp(48px, 8.96vw, 155px)",
+              fontSize: "clamp(48px, 8.65vw, 150px)",
               lineHeight: 1,
               marginTop: "-0.1em",
             }}
@@ -120,7 +120,7 @@ export function Differences() {
 
         <div className="relative" style={{ marginTop: "1%" }}>
           <img
-            src="/images/regen/soil-block.png"
+            src="/images/regen/soil-block.webp"
             alt="A cross-section of pasture showing hens above ground and deep roots, worms and soil life below"
             className="block mx-auto"
             style={{ width: "54.9%" }}
