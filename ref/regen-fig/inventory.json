@@ -1,0 +1,632 @@
+[
+ {
+  "id": "0787b2fa3a60fa28820dcc8980f45149978da299",
+  "w": 990,
+  "h": 4096,
+  "mode": "RGBA",
+  "bytes": 494202,
+  "hasAlpha": false,
+  "ratio": 0.242
+ },
+ {
+  "id": "0a0c98322147781941c73655014a1d745c1627d2",
+  "w": 2075,
+  "h": 570,
+  "mode": "RGBA",
+  "bytes": 138194,
+  "hasAlpha": true,
+  "ratio": 3.64
+ },
+ {
+  "id": "0fd8e83ed590d2410a37e0f28b8041118ea90cfc",
+  "w": 691,
+  "h": 365,
+  "mode": "RGBA",
+  "bytes": 511684,
+  "hasAlpha": false,
+  "ratio": 1.893
+ },
+ {
+  "id": "12ee9e2eda570bb9054b777d76b0a532cf5e7cf8",
+  "w": 1114,
+  "h": 37,
+  "mode": "RGBA",
+  "bytes": 32940,
+  "hasAlpha": true,
+  "ratio": 30.108
+ },
+ {
+  "id": "1794ac656202d7e8209d341b3f0adf6d0c06b118",
+  "w": 371,
+  "h": 490,
+  "mode": "RGBA",
+  "bytes": 18378,
+  "hasAlpha": true,
+  "ratio": 0.757
+ },
+ {
+  "id": "201d323806103d9301ae009e0b45df111d3eda3e",
+  "w": 1462,
+  "h": 1879,
+  "mode": "RGBA",
+  "bytes": 277374,
+  "hasAlpha": false,
+  "ratio": 0.778
+ },
+ {
+  "id": "27c441ada3206a9e8d4e50f5425001cb95cbfe69",
+  "w": 1153,
+  "h": 4096,
+  "mode": "RGBA",
+  "bytes": 330902,
+  "hasAlpha": false,
+  "ratio": 0.281
+ },
+ {
+  "id": "2c30f0ac9373a6a95bb210db94d15fd374a26a2f",
+  "w": 974,
+  "h": 443,
+  "mode": "RGB",
+  "bytes": 92913,
+  "hasAlpha": false,
+  "ratio": 2.199
+ },
+ {
+  "id": "32e403c9b41ebf7469ce15f7ae1a5612760ea134",
+  "w": 2075,
+  "h": 1671,
+  "mode": "RGBA",
+  "bytes": 257304,
+  "hasAlpha": false,
+  "ratio": 1.242
+ },
+ {
+  "id": "37f603e4f9520d914c3c6c78765caa2623bb29c7",
+  "w": 371,
+  "h": 490,
+  "mode": "RGBA",
+  "bytes": 18365,
+  "hasAlpha": true,
+  "ratio": 0.757
+ },
+ {
+  "id": "386e434428a6d9a2992cb5191c936fb2f5e58ff4",
+  "w": 2376,
+  "h": 1363,
+  "mode": "RGBA",
+  "bytes": 2106644,
+  "hasAlpha": true,
+  "ratio": 1.743
+ },
+ {
+  "id": "4cf995235d5f8dc60f8c335a1e3048abdfa3e15c",
+  "w": 323,
+  "h": 415,
+  "mode": "RGBA",
+  "bytes": 15180,
+  "hasAlpha": true,
+  "ratio": 0.778
+ },
+ {
+  "id": "4db198459b4de567bdba09fe56cfe6af96b8b69e",
+  "w": 2398,
+  "h": 1266,
+  "mode": "RGBA",
+  "bytes": 66567,
+  "hasAlpha": true,
+  "ratio": 1.894
+ },
+ {
+  "id": "567db20120d13f825153c9fe7473f6142e283db5",
+  "w": 264,
+  "h": 175,
+  "mode": "RGBA",
+  "bytes": 28389,
+  "hasAlpha": true,
+  "ratio": 1.509
+ },
+ {
+  "id": "5717085508005812ec40a1513dde8a4f7e06aa6a",
+  "w": 167,
+  "h": 167,
+  "mode": "RGBA",
+  "bytes": 11500,
+  "hasAlpha": true,
+  "ratio": 1.0
+ },
+ {
+  "id": "581b192c3a73f747873773076e7ecfa2f3c1fb45",
+  "w": 1204,
+  "h": 677,
+  "mode": "RGBA",
+  "bytes": 1027713,
+  "hasAlpha": false,
+  "ratio": 1.778
+ },
+ {
+  "id": "5825610d112baf691ddc669dcbdc226f899cbaae",
+  "w": 994,
+  "h": 1116,
+  "mode": "RGBA",
+  "bytes": 1168577,
+  "hasAlpha": true,
+  "ratio": 0.891
+ },
+ {
+  "id": "5ced87bc937dd8c23fd8a6f8c261eebd13be675e",
+  "w": 2344,
+  "h": 937,
+  "mode": "RGBA",
+  "bytes": 84821,
+  "hasAlpha": true,
+  "ratio": 2.502
+ },
+ {
+  "id": "5fc05d72b31044e35fcc4fa034ee6a4818ebf8bb",
+  "w": 541,
+  "h": 596,
+  "mode": "RGBA",
+  "bytes": 389767,
+  "hasAlpha": true,
+  "ratio": 0.908
+ },
+ {
+  "id": "6062c62208dd8bebd6f1f94092447c496901b26b",
+  "w": 1068,
+  "h": 601,
+  "mode": "RGBA",
+  "bytes": 1300743,
+  "hasAlpha": true,
+  "ratio": 1.777
+ },
+ {
+  "id": "6139c9cafe460edae86e58a0995a60555f38f4bf",
+  "w": 2344,
+  "h": 877,
+  "mode": "RGBA",
+  "bytes": 79590,
+  "hasAlpha": true,
+  "ratio": 2.673
+ },
+ {
+  "id": "64d8836157917b4c74cbb57114a6750d2d6f6676",
+  "w": 1579,
+  "h": 4096,
+  "mode": "RGBA",
+  "bytes": 1125252,
+  "hasAlpha": true,
+  "ratio": 0.385
+ },
+ {
+  "id": "6989c19794b65b612112099f5dcc4981e1fe67a9",
+  "w": 260,
+  "h": 171,
+  "mode": "RGBA",
+  "bytes": 43418,
+  "hasAlpha": true,
+  "ratio": 1.52
+ },
+ {
+  "id": "6fcb67b6779d70e2a04fb4b2892a3ab7f670a828",
+  "w": 2094,
+  "h": 3401,
+  "mode": "RGBA",
+  "bytes": 169495,
+  "hasAlpha": false,
+  "ratio": 0.616
+ },
+ {
+  "id": "70c0d0ffc7e8d9e5368d7680853e07c2347151df",
+  "w": 2383,
+  "h": 890,
+  "mode": "RGBA",
+  "bytes": 97430,
+  "hasAlpha": true,
+  "ratio": 2.678
+ },
+ {
+  "id": "7409126341c4bfacb0f90461cf5ce8b4f32ba79e",
+  "w": 1411,
+  "h": 285,
+  "mode": "RGBA",
+  "bytes": 68583,
+  "hasAlpha": true,
+  "ratio": 4.951
+ },
+ {
+  "id": "745a71fa49f1a9faec1ee096e2c14ce34fd1ebcf",
+  "w": 1306,
+  "h": 734,
+  "mode": "RGBA",
+  "bytes": 1918453,
+  "hasAlpha": true,
+  "ratio": 1.779
+ },
+ {
+  "id": "803d2d460deb4e7671c0267c3080a26d7e3e3249",
+  "w": 206,
+  "h": 226,
+  "mode": "RGBA",
+  "bytes": 9857,
+  "hasAlpha": true,
+  "ratio": 0.912
+ },
+ {
+  "id": "84fa971fe047b5656a5aceefbf1d39dc6a594522",
+  "w": 1704,
+  "h": 1885,
+  "mode": "RGBA",
+  "bytes": 4102752,
+  "hasAlpha": true,
+  "ratio": 0.904
+ },
+ {
+  "id": "897005b5d3dbbb2445c6982bfd1d53cf6b68bba5",
+  "w": 371,
+  "h": 490,
+  "mode": "RGBA",
+  "bytes": 18230,
+  "hasAlpha": true,
+  "ratio": 0.757
+ },
+ {
+  "id": "8b930533df620cffd7e8cf8ae7d72ea5e3e8a40e",
+  "w": 965,
+  "h": 491,
+  "mode": "RGBA",
+  "bytes": 707038,
+  "hasAlpha": true,
+  "ratio": 1.965
+ },
+ {
+  "id": "8daea7686284ce259f39a6453f9e7ec15a006651",
+  "w": 1288,
+  "h": 754,
+  "mode": "RGBA",
+  "bytes": 897808,
+  "hasAlpha": true,
+  "ratio": 1.708
+ },
+ {
+  "id": "9de505d70e43370e165cdaadedb53cee449afea0",
+  "w": 2094,
+  "h": 2058,
+  "mode": "RGBA",
+  "bytes": 4486769,
+  "hasAlpha": true,
+  "ratio": 1.017
+ },
+ {
+  "id": "a063c1177e346a58e32dac1e3a3e6c184793d447",
+  "w": 33,
+  "h": 32,
+  "mode": "RGBA",
+  "bytes": 2439,
+  "hasAlpha": false,
+  "ratio": 1.031
+ },
+ {
+  "id": "a1f0bcc3a28cb5941d8239c8c439fc48b1f0e477",
+  "w": 1526,
+  "h": 1702,
+  "mode": "RGBA",
+  "bytes": 253275,
+  "hasAlpha": false,
+  "ratio": 0.897
+ },
+ {
+  "id": "a23c9eb6b7f2a78f33c4c9f1e1a310596c371c20",
+  "w": 1248,
+  "h": 429,
+  "mode": "RGBA",
+  "bytes": 136993,
+  "hasAlpha": true,
+  "ratio": 2.909
+ },
+ {
+  "id": "a2698576d60f80e07e66babdb790d5aa16f8c43d",
+  "w": 379,
+  "h": 258,
+  "mode": "RGBA",
+  "bytes": 171728,
+  "hasAlpha": true,
+  "ratio": 1.469
+ },
+ {
+  "id": "a2df09f5881145a68d776856068808228b6a7980",
+  "w": 29,
+  "h": 679,
+  "mode": "RGBA",
+  "bytes": 21781,
+  "hasAlpha": true,
+  "ratio": 0.043
+ },
+ {
+  "id": "a48b3dd8c54ce633f19b5e9ccc125e18d3f44eb4",
+  "w": 1021,
+  "h": 1140,
+  "mode": "RGBA",
+  "bytes": 124683,
+  "hasAlpha": true,
+  "ratio": 0.896
+ },
+ {
+  "id": "a74805db78bcd13d614129337cac9dff7413fa3d",
+  "w": 32,
+  "h": 31,
+  "mode": "RGBA",
+  "bytes": 1386,
+  "hasAlpha": false,
+  "ratio": 1.032
+ },
+ {
+  "id": "a75c8299bdaf7836513e953808052e9aeb015794",
+  "w": 814,
+  "h": 458,
+  "mode": "RGBA",
+  "bytes": 765547,
+  "hasAlpha": true,
+  "ratio": 1.777
+ },
+ {
+  "id": "ad645b568bd760df9af43c1b0d0aa5ed49a9c311",
+  "w": 370,
+  "h": 490,
+  "mode": "RGBA",
+  "bytes": 18447,
+  "hasAlpha": true,
+  "ratio": 0.755
+ },
+ {
+  "id": "afa37e33e2db7dde8dc4c64ec3c255890a3e0c46",
+  "w": 353,
+  "h": 72,
+  "mode": "RGBA",
+  "bytes": 25475,
+  "hasAlpha": true,
+  "ratio": 4.903
+ },
+ {
+  "id": "b288329f3bc1136860341245fa014ab3b1d51780",
+  "w": 1120,
+  "h": 27,
+  "mode": "RGBA",
+  "bytes": 17950,
+  "hasAlpha": true,
+  "ratio": 41.481
+ },
+ {
+  "id": "bf9a0c958bcbfa38f27374a0d37bb00214019505",
+  "w": 1513,
+  "h": 1029,
+  "mode": "P",
+  "bytes": 496066,
+  "hasAlpha": true,
+  "ratio": 1.47
+ },
+ {
+  "id": "c06328ad0d843c43497b01bdc572f4cf6f377783",
+  "w": 2376,
+  "h": 1336,
+  "mode": "RGBA",
+  "bytes": 5728943,
+  "hasAlpha": true,
+  "ratio": 1.778
+ },
+ {
+  "id": "c3eff35852e88cb017838f9871e8999936595906",
+  "w": 2164,
+  "h": 1443,
+  "mode": "RGBA",
+  "bytes": 7101918,
+  "hasAlpha": true,
+  "ratio": 1.5
+ },
+ {
+  "id": "c43db598f608cfe198d073032dc1a73fa3e91456",
+  "w": 2814,
+  "h": 1446,
+  "mode": "RGBA",
+  "bytes": 4610140,
+  "hasAlpha": false,
+  "ratio": 1.946
+ },
+ {
+  "id": "c8763f7ac965e44b153e4641cb12107696ffb1c7",
+  "w": 2075,
+  "h": 1363,
+  "mode": "RGBA",
+  "bytes": 2088021,
+  "hasAlpha": true,
+  "ratio": 1.522
+ },
+ {
+  "id": "cb8795aa21962da0e8221913af467a0d96ed60db",
+  "w": 3349,
+  "h": 1885,
+  "mode": "RGBA",
+  "bytes": 8686359,
+  "hasAlpha": true,
+  "ratio": 1.777
+ },
+ {
+  "id": "cbefd9444fce155a0d70b47ef5e0edfb188a730e",
+  "w": 2437,
+  "h": 912,
+  "mode": "RGBA",
+  "bytes": 108644,
+  "hasAlpha": true,
+  "ratio": 2.672
+ },
+ {
+  "id": "cce4d4e05e590957054c1e6631a079b64f7e792b",
+  "w": 35,
+  "h": 31,
+  "mode": "RGBA",
+  "bytes": 2043,
+  "hasAlpha": false,
+  "ratio": 1.129
+ },
+ {
+  "id": "d011d15ab40d737268730a15a624fbcaae6104b1",
+  "w": 25,
+  "h": 21,
+  "mode": "RGBA",
+  "bytes": 602,
+  "hasAlpha": true,
+  "ratio": 1.19
+ },
+ {
+  "id": "d1029e1c8b96e5e5a9a5de8cce85aa62e7bee611",
+  "w": 2127,
+  "h": 614,
+  "mode": "RGBA",
+  "bytes": 42488,
+  "hasAlpha": false,
+  "ratio": 3.464
+ },
+ {
+  "id": "d3fc9c1e5610abbd08384050318644032c7fd1b1",
+  "w": 271,
+  "h": 270,
+  "mode": "RGBA",
+  "bytes": 23404,
+  "hasAlpha": false,
+  "ratio": 1.004
+ },
+ {
+  "id": "d88b2b3d21c1673d0773a3c0c0507f4b11be743b",
+  "w": 1344,
+  "h": 683,
+  "mode": "RGBA",
+  "bytes": 520559,
+  "hasAlpha": true,
+  "ratio": 1.968
+ },
+ {
+  "id": "da62a1f4c507596cfb91528d7c086fd585767eef",
+  "w": 492,
+  "h": 262,
+  "mode": "RGBA",
+  "bytes": 187952,
+  "hasAlpha": true,
+  "ratio": 1.878
+ },
+ {
+  "id": "e70a3b13af54d0b9e7d8f0adde8eac9203ddd40f",
+  "w": 1224,
+  "h": 405,
+  "mode": "RGBA",
+  "bytes": 37128,
+  "hasAlpha": true,
+  "ratio": 3.022
+ },
+ {
+  "id": "e78f3ee12aca1062ca5a6f1f55dce27cee2d36d3",
+  "w": 4096,
+  "h": 2725,
+  "mode": "RGBA",
+  "bytes": 21550128,
+  "hasAlpha": false,
+  "ratio": 1.503
+ },
+ {
+  "id": "e86ae8637b6951a77549d8b19b6ca145b9706576",
+  "w": 921,
+  "h": 604,
+  "mode": "RGBA",
+  "bytes": 66077,
+  "hasAlpha": false,
+  "ratio": 1.525
+ },
+ {
+  "id": "e932c7dc203db41e755096c58c57e1b22620b103",
+  "w": 2078,
+  "h": 221,
+  "mode": "RGBA",
+  "bytes": 154004,
+  "hasAlpha": true,
+  "ratio": 9.403
+ },
+ {
+  "id": "e975c794cd8222addd973a30da5cc8ff440933a8",
+  "w": 264,
+  "h": 175,
+  "mode": "RGBA",
+  "bytes": 30143,
+  "hasAlpha": true,
+  "ratio": 1.509
+ },
+ {
+  "id": "edb27eeb97d374439b43a92035217a6b90f04ef2",
+  "w": 2340,
+  "h": 1262,
+  "mode": "RGBA",
+  "bytes": 91809,
+  "hasAlpha": true,
+  "ratio": 1.854
+ },
+ {
+  "id": "ee67bd7f70c7ddd4ed1e82484112fb3bc329196a",
+  "w": 296,
+  "h": 391,
+  "mode": "RGBA",
+  "bytes": 13667,
+  "hasAlpha": true,
+  "ratio": 0.757
+ },
+ {
+  "id": "f3a27ee912f31bb3e54f7ef7b4fe56cdffa06004",
+  "w": 504,
+  "h": 248,
+  "mode": "RGBA",
+  "bytes": 32401,
+  "hasAlpha": true,
+  "ratio": 2.032
+ },
+ {
+  "id": "f3d244bb202a7ced184136fe92e652d8ecf6672e",
+  "w": 4096,
+  "h": 3259,
+  "mode": "RGBA",
+  "bytes": 19059204,
+  "hasAlpha": true,
+  "ratio": 1.257
+ },
+ {
+  "id": "f70398d15e218efa94ff012bfa162ef66897ea17",
+  "w": 487,
+  "h": 222,
+  "mode": "RGB",
+  "bytes": 177297,
+  "hasAlpha": false,
+  "ratio": 2.194
+ },
+ {
+  "id": "f881b08fe24691b601d50644df7941e0b8a097c3",
+  "w": 1023,
+  "h": 550,
+  "mode": "RGBA",
+  "bytes": 754529,
+  "hasAlpha": true,
+  "ratio": 1.86
+ },
+ {
+  "id": "fb9e590b0cfea58e13a6fd3b32d699d71965adfe",
+  "w": 265,
+  "h": 68,
+  "mode": "RGBA",
+  "bytes": 21053,
+  "hasAlpha": true,
+  "ratio": 3.897
+ },
+ {
+  "id": "fd50babb0c6f408e6c551cee18c9778877a4429f",
+  "w": 29,
+  "h": 679,
+  "mode": "RGBA",
+  "bytes": 21568,
+  "hasAlpha": true,
+  "ratio": 0.043
+ }
+]

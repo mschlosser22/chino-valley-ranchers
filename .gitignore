@@ -33,3 +33,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Client design deliverables: large binaries kept out of git.
+# The Regenerative .fig is ~92MB and its extracted images ~91MB.
+ref/regen-fig/images/
