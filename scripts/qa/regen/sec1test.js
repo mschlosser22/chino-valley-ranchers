@@ -12,20 +12,21 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     const m=await p.evaluate(async()=>{
       await document.fonts.ready;
       const h1=document.querySelector('h1'); const sec=h1.closest('section');
-      // The script wordmark is the second span inside the h1: the h1 now
-      // spans the whole lockup ("Welcome to Regenerative") so the page's
-      // only top-level heading describes the page rather than reading
-      // "Regenerative" alone.
-      const mark=[...h1.querySelectorAll('span')].pop();
-      const rg=document.createRange(); rg.selectNodeContents(mark);
-      const ink=rg.getBoundingClientRect();
+      // The wordmark is a placed image in the Figma (node 6:2), not live
+      // type -- the texture speckle, white outline and shadow are baked in.
+      // Measure the artwork, and check the faces on the two text elements
+      // that really are type.
+      const mark=h1.querySelector('img[src*="hero-wordmark"]');
+      const ink=mark.getBoundingClientRect();
+      const welcome=[...h1.querySelectorAll('span')].find(s=>
+        /welcome to/i.test(s.textContent) && !s.className.includes('sr-only'));
       const hens=[...sec.querySelectorAll('img[src*="hen-"]')];
       // The hero tear is a masked div now, matching how the rest of the
       // site builds page tears (see components/slider/EggSlider.js).
       const edge=[...sec.querySelectorAll('div')].find(d=>
         /regen\/torn-edge/.test(getComputedStyle(d).webkitMaskImage||getComputedStyle(d).maskImage||''));
       const cart=sec.querySelector('img[src*="carton"]');
-      return {ff:getComputedStyle(mark).fontFamily.split(',')[0].replace(/"/g,''),
+      return {ff:getComputedStyle(welcome).fontFamily.split(',')[0].replace(/"/g,''),
               pct:+(ink.width/innerWidth*100).toFixed(1),
               hens:hens.length,
               henVisible:hens.filter(h=>h.getBoundingClientRect().width>0).length,
@@ -35,8 +36,8 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
     console.log(`\n  --- ${label} (${w}px) ---`);
-    ck('wordmark in the script face', m.ff==='nexa-rust-script-shad-2', m.ff);
-    if(w===1440) ck('wordmark at the design width', Math.abs(m.pct-68)<1.5, `${m.pct}% vs 68%`);
+    ck('"WELCOME TO" in Rockwell, as the node specifies', m.ff==='rockwell', m.ff);
+    if(w===1440) ck('wordmark artwork at the node width', Math.abs(m.pct-68)<1.0, `${m.pct}% vs 68%`);
     ck('three hen silhouettes in the markup', m.hens===3, `${m.hens}`);
     ck('hen artwork loads', m.henLoaded);
     if(w===1440) ck('hens visible on desktop', m.henVisible===3, `${m.henVisible}`);

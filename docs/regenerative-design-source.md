@@ -4,7 +4,29 @@ Built from `CVR Regen Page.fig` (exported 2026-09-07). This supersedes both the
 PSD and the earlier `feature/regenerative-landing-page` branch — see the end of
 this file for why that branch is not being continued.
 
-## Reading the .fig
+## The live Figma is the reference
+
+    https://www.figma.com/design/muIeDVJN5mgz3Ep0hualTF/CVR-Regen-Page
+
+Read it through the Figma MCP server (`get_metadata` for the node tree,
+`get_design_context` for a node's real properties, `download_assets` for its
+source images). **Work from the node data, not from a render.**
+
+That distinction is not academic. Everything below was measured off a
+flattened PNG export and turned out to be wrong:
+
+| Read from the render | What the node tree says |
+|---|---|
+| "Regenerative" is live Nexa Rust Script | Node 6:2 is a **placed image** — the texture speckle, white outline and shadow are baked in and cannot be reproduced with `text-stroke` |
+| "WELCOME TO" is Ultra | **Rockwell Bold**, 58.1px, `letter-spacing: 10px`, rotated −1.78° |
+| The sub-line is DIN Condensed | **Rockwell Regular**, 44.8px, `scaleX(0.95)` |
+| The ribbon is a clipped rectangle | A **vector** with an irregular outline (node 5:33) |
+| The sub-line band is a flat dark panel | `opacity: 0.4` with **`mix-blend-multiply`** — it darkens the photograph rather than covering it |
+
+Node widths against the 2075px artboard: ribbon 28.9%, "WELCOME TO" 24.2%,
+sub-band 35.8%, sub-line 34.4%, wordmark 68.0%.
+
+## Reading the .fig offline
 
 The file is a zip: `canvas.fig`, `thumbnail.png`, `meta.json`, and 70 embedded
 images. `canvas.fig` is a fig-kiwi container whose document block is **ZSTD**,

@@ -25,74 +25,102 @@ export function RegenerativeHero() {
       />
 
       <div className="relative" style={{ paddingTop: "8%", paddingBottom: "20%" }}>
-        <div className="text-center px-6">
-          {/* One h1 spanning the whole lockup rather than an h1 around
-              "Regenerative" alone with the ribbon as a loose span beside it.
-              The page's only h1 read just "Regenerative", which says little
-              about the page on its own or in a screen-reader outline. The two
-              display styles are spans inside it, so nothing moves. */}
-          <h1 className="m-0">
-            {/* Ribbon, not a plain rectangle. Measured off the design: it is
-                28.5% of the canvas wide, tilts -1.74 degrees, and its ends
-                are notched -- 19px tall at the tip against 118px in the body.
-                The notch is a clip-path; the tilt a rotation. */}
-            <span
-              className="inline-block"
-              style={{
-                transform: "rotate(-1.74deg) translateY(0.3em)",
-                background: "#006088",
-                clipPath:
-                  "polygon(0 0, 100% 0, 100% 100%, 96% 100%, 92.5% 62%, 89% 100%, 11% 100%, 7.5% 62%, 4% 100%, 0 100%)",
-                padding: "0.42em 2.05em 0.62em",
-              }}
-            >
-              <span
-                className="block text-white font-ultra uppercase leading-none"
-                style={{
-                  fontSize: "clamp(18px, 2.55vw, 46px)",
-                  letterSpacing: "0.06em",
-                }}
-              >
-                Welcome to
-              </span>
-            </span>
+        {/* The headline, built from the Figma node tree rather than
+            inferred from a flattened render (file muIeDVJN5mgz3Ep0hualTF,
+            frame 5:32 "HEadline", 1428.19 x 388.63 inside a 2075 artboard).
 
-            <span
-              className="block leading-none"
-              style={{
-                fontFamily: "nexa-rust-script-shad-2, cursive",
-                color: "#F8A014",
-                fontSize: "clamp(58px, 13.43vw, 232px)",
-                // The design outlines the script in white and drops a soft
-                // shadow behind it. paint-order puts the stroke under the
-                // fill so the letterforms keep their weight.
-                WebkitTextStroke: "0.055em #FFFFFF",
-                paintOrder: "stroke fill",
-                filter: "drop-shadow(0.035em 0.05em 0 rgba(0,0,0,0.22))",
-              }}
-            >
-              Regenerative
-            </span>
-          </h1>
+            Three things the render could not tell me and the node data did:
 
-          {/* The sub-line sits on a dark translucent band in the design, so
-              it reads against whatever the photograph is doing behind it. */}
-          <p className="m-0" style={{ marginTop: "-0.5em" }}>
+            "Regenerative" is not live type. Node 6:2 is a placed image, which
+            is where the texture speckle, the white outline and the shadow
+            come from -- none of them reproducible with text-stroke.
+
+            "WELCOME TO" and the sub-line are Rockwell, not Ultra and DIN
+            Condensed. Rockwell is in the client's kit.
+
+            The ribbon is a vector with a genuinely irregular outline, not a
+            clipped rectangle, and the sub-line's band is opacity 0.4 with
+            mix-blend-multiply -- so it darkens the photograph rather than
+            laying a flat panel over it.
+
+            Percentages below are each node's width against the 2075 artboard. */}
+        <h1
+          className="relative mx-auto m-0"
+          style={{ width: "68.8%", containerType: "inline-size" }}
+        >
+          {/* The wordmark is artwork, so the accessible name lives here.
+              Without it the page has no h1 text at all. */}
+          <span className="sr-only">Welcome to Regenerative — organic regenerative eggs</span>
+          {/* ribbon: node 5:33, 42.0% of the frame, offset 26.5% from its left */}
+          <img
+            src="/images/regen/hero-ribbon.svg"
+            alt=""
+            aria-hidden="true"
+            className="absolute"
+            style={{ left: "26.5%", top: "0.5%", width: "42.0%" }}
+          />
+
+          {/* "WELCOME TO": node 5:35, Rockwell Bold, rotated -1.78deg */}
+          <div
+            className="absolute flex items-center justify-center"
+            style={{ left: "30.2%", top: "9.5%", width: "35.1%", height: "19.2%" }}
+          >
             <span
-              className="inline-block text-white uppercase"
+              className="whitespace-nowrap uppercase text-white"
               style={{
-                fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
+                fontFamily: "rockwell, Rockwell, Georgia, serif",
                 fontWeight: 700,
-                fontSize: "clamp(14px, 1.9vw, 34px)",
-                letterSpacing: "0.1em",
-                background: "rgba(24, 26, 20, 0.45)",
-                padding: "0.22em 0.7em 0.16em",
+                fontSize: "clamp(11px, 2.8cqw, 58px)",
+                letterSpacing: "0.17em",
+                lineHeight: 1,
+                transform: "rotate(-1.78deg)",
+              }}
+            >
+              Welcome to
+            </span>
+          </div>
+
+          {/* the wordmark itself: node 6:2, 98.8% of the frame */}
+          <img
+            src="/images/regen/hero-wordmark.webp"
+            alt=""
+            aria-hidden="true"
+            className="relative block"
+            style={{ width: "98.8%", marginLeft: "0.6%" }}
+          />
+
+          {/* sub-line band: node 5:34, opacity .4 multiply over the photo */}
+          <div
+            className="absolute"
+            style={{
+              left: "28.1%",
+              top: "66.7%",
+              width: "52.0%",
+              height: "18.0%",
+              background: "#000000",
+              opacity: 0.4,
+              mixBlendMode: "multiply",
+            }}
+          />
+          {/* sub-line: node 5:38, Rockwell Regular, scaled 95% horizontally */}
+          <div
+            className="absolute flex items-center justify-center"
+            style={{ left: "29.1%", top: "70.2%", width: "50.0%" }}
+          >
+            <span
+              className="whitespace-nowrap uppercase text-white"
+              style={{
+                fontFamily: "rockwell, Rockwell, Georgia, serif",
+                fontSize: "clamp(9px, 2.16cqw, 45px)",
+                letterSpacing: "0.053em",
+                lineHeight: 1,
+                transform: "scaleX(0.95)",
               }}
             >
               Organic Regenerative Eggs
             </span>
-          </p>
-        </div>
+          </div>
+        </h1>
       </div>
 
       {/* The tear between the photo and the paper below, using the same

@@ -5,35 +5,41 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
   const p=await b.newContext({viewport:{width:1440,height:900},deviceScaleFactor:2}).then(c=>c.newPage());
   await p.goto('http://localhost:7500/regenerative',{waitUntil:'networkidle',timeout:60000});
   await p.waitForTimeout(2200);
+  // Targets read from the Figma node tree (file muIeDVJN5mgz3Ep0hualTF,
+  // frame 5:32) rather than measured off a flattened render.
   const m=await p.evaluate(async()=>{
     await document.fonts.ready;
     const h1=document.querySelector('h1');
-    const spans=[...h1.querySelectorAll('span')];
-    const ribbon=spans[0];
-    const script=spans.find(s=>/nexa/.test(getComputedStyle(s).fontFamily));
-    const sub=[...document.querySelectorAll('p span')].find(s=>/organic regenerative eggs/i.test(s.textContent));
-    const cs=getComputedStyle(ribbon), sc=getComputedStyle(script), sb=getComputedStyle(sub);
-    const ink=el=>{const r=document.createRange();r.selectNodeContents(el);return r.getBoundingClientRect().width;};
-    const m=cs.transform.match(/matrix\(([^)]+)\)/);
-    const deg=m?Math.atan2(parseFloat(m[1].split(',')[1]),parseFloat(m[1].split(',')[0]))*180/Math.PI:0;
-    return {ribbonPct:+(ribbon.getBoundingClientRect().width/innerWidth*100).toFixed(1),
-            tilt:+deg.toFixed(2), notch:cs.clipPath!=='none', ribbonBg:cs.backgroundColor,
-            scriptPct:+(ink(script)/innerWidth*100).toFixed(1),
-            scriptFace:sc.fontFamily.split(',')[0].replace(/["']/g,''),
-            strokeW:parseFloat(sc.webkitTextStrokeWidth),
-            strokeCol:sc.webkitTextStrokeColor, shadow:sc.filter!=='none',
-            subBand:sb.backgroundColor, subFace:sb.fontFamily.split(',')[0].replace(/["']/g,'')};
+    const wordmark=h1.querySelector('img[src*="hero-wordmark"]');
+    const ribbon=h1.querySelector('img[src*="hero-ribbon"]');
+    const welcome=[...h1.querySelectorAll('span')].find(s=>
+      /welcome to/i.test(s.textContent) && !s.className.includes('sr-only'));
+    const sub=[...document.querySelectorAll('span')].find(s=>
+      /organic regenerative eggs/i.test(s.textContent) && !s.className.includes('sr-only'));
+    const band=[...h1.querySelectorAll('div')].find(d=>
+      getComputedStyle(d).mixBlendMode==='multiply');
+    const sr=h1.querySelector('.sr-only');
+    const srcs=sr?getComputedStyle(sr):null;
+    const pct=el=>+(el.getBoundingClientRect().width/innerWidth*100).toFixed(1);
+    return {wordmarkPct:pct(wordmark), wordmarkOK:wordmark.complete&&wordmark.naturalWidth>0,
+            ribbonPct:pct(ribbon), ribbonOK:ribbon.complete&&ribbon.naturalWidth>0,
+            welcomeFace:welcome?getComputedStyle(welcome).fontFamily.split(',')[0].replace(/["']/g,''):null,
+            subFace:sub?getComputedStyle(sub).fontFamily.split(',')[0].replace(/["']/g,''):null,
+            bandBlend:band?getComputedStyle(band).mixBlendMode:null,
+            bandOpacity:band?+getComputedStyle(band).opacity:null,
+            srHidden:srcs?(srcs.position==='absolute'&&parseFloat(srcs.width)<=1):false,
+            h1HasName:(h1.textContent||'').trim().length>10};
   });
-  ck('ribbon at design width', Math.abs(m.ribbonPct-28.5)<1.5, `${m.ribbonPct}% vs 28.5%`);
-  ck('ribbon tilted as drawn', Math.abs(m.tilt-(-1.74))<0.4, `${m.tilt} deg vs -1.74`);
-  ck('ribbon ends are notched', m.notch);
-  ck('ribbon in design teal', m.ribbonBg==='rgb(0, 96, 136)', m.ribbonBg);
-  ck('script at design width', Math.abs(m.scriptPct-68.0)<1.5, `${m.scriptPct}% vs 68.0%`);
-  ck('script in the real face', m.scriptFace==='nexa-rust-script-shad-2', m.scriptFace);
-  ck('script has a white outline', m.strokeW>2 && /255, 255, 255/.test(m.strokeCol), `${m.strokeW}px`);
-  ck('script has a drop shadow', m.shadow);
-  ck('sub-line sits on a dark band', /rgba\(24, 26, 20/.test(m.subBand), m.subBand);
-  ck('sub-line in DIN Condensed', m.subFace==='din-condensed', m.subFace);
+  ck('wordmark at the node width', Math.abs(m.wordmarkPct-68.0)<1.0, `${m.wordmarkPct}% vs 68.0%`);
+  ck('wordmark artwork loads', m.wordmarkOK);
+  ck('ribbon at the node width', Math.abs(m.ribbonPct-28.9)<1.0, `${m.ribbonPct}% vs 28.9%`);
+  ck('ribbon vector loads', m.ribbonOK);
+  ck('"WELCOME TO" in Rockwell', m.welcomeFace==='rockwell', m.welcomeFace);
+  ck('sub-line in Rockwell', m.subFace==='rockwell', m.subFace);
+  ck('sub-line band multiplies over the photo', m.bandBlend==='multiply', m.bandBlend);
+  ck('band at the node opacity', Math.abs(m.bandOpacity-0.4)<0.05, `${m.bandOpacity} vs 0.4`);
+  ck('h1 carries an accessible name', m.h1HasName);
+  ck('that name is visually hidden', m.srHidden);
   await b.close();
   const f=R.filter(x=>!x).length;
   console.log(`\n${R.length-f}/${R.length} passed`);
