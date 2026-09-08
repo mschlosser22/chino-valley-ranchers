@@ -43,7 +43,27 @@ export function RegenerativeHero() {
           Design Y positions, as % of the 2075 artboard width:
             ribbon      13.8    WELCOME TO  15.5    wordmark  15.9
             sub band    26.2    sub text    26.8    carton    28.5 */}
-      <div className="relative w-full" style={{ aspectRatio: "2075 / 945" }}>
+      {/* The nav is fixed and translucent, so it sits OVER this band rather
+          than above it -- that is how the rest of the site treats heroes.
+
+          The design accounts for the same thing: its artboard includes a 73px
+          nav bar and the ribbon starts 215px below it, so the gap the eye
+          sees is 215px of the 945px band, 22.75%.
+
+          So the outer box is the band plus the nav's height, and an inner
+          box inset by that height is what every node positions against.
+          Padding alone does not work: absolutely-positioned children resolve
+          against their ancestor's PADDING box, so they ignored it entirely.
+
+          Without this the nav ate 64px of the gap and the lockup read as
+          crowded -- the measurement said 22.58% and still looked wrong,
+          because it was measuring into the strip the nav covers. */}
+      <div
+        className="relative w-full"
+        style={{ height: "calc(100vw * 945 / 2075 + 4rem)" }}
+      >
+        {/* The photograph fills the whole box, nav strip included -- the
+            translucent bar is meant to sit over it. */}
         <img
           src="/images/regen/hero-cattle.jpg"
           alt=""
@@ -51,6 +71,10 @@ export function RegenerativeHero() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "60% 42%" }}
         />
+
+        {/* Everything from here down positions against the band below the
+            nav, which is the band the design drew. */}
+        <div className="absolute inset-x-0 bottom-0" style={{ top: "4rem" }}>
 
         <h1 className="m-0">
           {/* The wordmark is artwork, so the accessible name lives here.
@@ -132,7 +156,7 @@ export function RegenerativeHero() {
             </span>
           </div>
         </h1>
-
+        </div>
       </div>
 
       {/* The carton and hens overhang the tear, so they cannot live inside
@@ -147,6 +171,8 @@ export function RegenerativeHero() {
         className="relative w-full"
         style={{ height: 0, zIndex: 4, pointerEvents: "none" }}
       >
+        {/* Same band as the stage: the aspect box sits above this overlay's
+            baseline, so its percentages match the ones inside the stage. */}
         <div
           className="absolute w-full"
           style={{ aspectRatio: "2075 / 945", bottom: 0 }}

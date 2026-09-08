@@ -9,7 +9,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     await document.fonts.ready;
     const vw=innerWidth, pct=v=>+(v/vw*100).toFixed(1);
     const h1=document.querySelector('h1'), sec=h1.closest('section');
-    const top=sec.getBoundingClientRect().top;
+    // Measure against the band BELOW the fixed nav -- that is the band the
+    // design drew. The outer box is taller by the nav's height because the
+    // nav is translucent and sits over the photograph.
+    const navH=(document.querySelector('nav')||{getBoundingClientRect:()=>({height:0})})
+      .getBoundingClientRect().height;
+    const top=sec.getBoundingClientRect().top+navH;
     const y=el=>pct(el.getBoundingClientRect().top-top);
     const q=s=>sec.querySelector(s);
     const welcome=[...h1.querySelectorAll('span')].find(s=>/welcome to/i.test(s.textContent)&&!s.className.includes('sr-only'));
@@ -18,7 +23,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     return {ribbon:y(q('img[src*="hero-ribbon"]')), welcome:y(welcome),
             wordmark:y(q('img[src*="hero-wordmark"]')), band:y(band), sub:y(sub),
             carton:y(q('img[src*="carton"]')), hen:y(q('img[src*="hen-standing"]')),
-            stageH:pct(sec.firstElementChild.getBoundingClientRect().height)};
+            stageH:pct(sec.firstElementChild.getBoundingClientRect().height-navH)};
   });
   // Targets are node Y positions as a share of the 2075 artboard WIDTH.
   // A percentage `top` resolves against container HEIGHT, so the component
