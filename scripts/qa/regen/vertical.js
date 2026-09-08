@@ -23,12 +23,17 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
   // Targets are node Y positions as a share of the 2075 artboard WIDTH.
   // A percentage `top` resolves against container HEIGHT, so the component
   // scales each by 2075/1326; these assert the rendered result, not the input.
-  const want={ribbon:13.8, welcome:15.5, wordmark:15.9, band:26.2, sub:26.8, carton:28.5, hen:45.0};
+  // Node Y as a share of artboard width, minus the design's 73px nav bar
+  // (3.52% of width) -- our nav is a separate element outside this section.
+  const want={ribbon:10.28, welcome:11.98, wordmark:12.38, band:22.68,
+              sub:23.28, carton:24.98, hen:41.48};
   for(const [k,v] of Object.entries(want)){
     const match=100-Math.abs(m[k]-v)/v*100;
     ck(`${k} at its node position`, match>=98, `${m[k]}% vs ${v}%  (${match.toFixed(1)}% match)`);
   }
-  ck('stage carries the photo aspect', Math.abs(m.stageH-63.9)<1.0, `${m.stageH}% vs 63.9%`);
+  // The stage is the photo band alone: design nav bottom (y73) to the paper
+  // edge (y1018) = 945px = 45.6% of artboard width.
+  ck('stage matches the photo band', Math.abs(m.stageH-45.6)<1.0, `${m.stageH}% vs 45.6%`);
   await b.close();
   const f=R.filter(x=>!x).length;
   console.log(`\n${R.length-f}/${R.length} passed`);

@@ -19,23 +19,31 @@ export function RegenerativeHero() {
           percentage of the artboard WIDTH so the whole composition scales
           together.
 
-          The stage carries the photo's own aspect ratio -- node 5:9 is
-          2376 x 1336 cropped to the 2075 artboard, so the visible band is
-          2075 x 1326, or 63.9% of width. Building this with padding instead
+          The stage is the photo band alone: from the bottom of the design's
+          nav bar (y73) to where the paper begins (y1018, measured left and
+          right of the carton where nothing occludes it). That is 945px, or
+          45.6% of artboard width.
+
+          Two corrections got here. Running the stage to the photo node's full
+          1326 put the tear 10 points too low and left the carton and hens
+          floating on grass rather than straddling the paper edge. Then the
+          design's nav is part of its artboard while ours is a separate
+          element, so each node Y also loses that 73px offset before being
+          converted. Building this with padding instead
           left every element 6-9 points too high and the photo 13.5 points
           too short: padding sizes to content, and the design's vertical
           positions are absolute.
 
           A percentage `top` resolves against the container's HEIGHT, not
           its width, so every design Y (expressed as a share of the 2075
-          artboard width) is multiplied by 2075/1326 = 1.5649 to become a
+          artboard width) is multiplied by 2075/945 = 2.1958 to become a
           top percentage on this stage. Getting that wrong is what left the
           whole lockup sitting high.
 
           Design Y positions, as % of the 2075 artboard width:
             ribbon      13.8    WELCOME TO  15.5    wordmark  15.9
             sub band    26.2    sub text    26.8    carton    28.5 */}
-      <div className="relative w-full" style={{ aspectRatio: "2075 / 1326" }}>
+      <div className="relative w-full" style={{ aspectRatio: "2075 / 945", zIndex: 3 }}>
         <img
           src="/images/regen/hero-cattle.jpg"
           alt=""
@@ -57,7 +65,7 @@ export function RegenerativeHero() {
             alt=""
             aria-hidden="true"
             className="absolute"
-            style={{ left: "33.2%", top: "21.60%", width: "28.9%" }}
+            style={{ left: "33.2%", top: "22.58%", width: "28.9%" }}
           />
 
           {/* "WELCOME TO": node 5:35, Rockwell Bold 58.115px on a 2075
@@ -65,7 +73,7 @@ export function RegenerativeHero() {
               -1.78deg. */}
           <div
             className="absolute flex items-center justify-center"
-            style={{ left: "35.6%", top: "24.26%", width: "24.2%", height: "5.63%" }}
+            style={{ left: "35.6%", top: "26.31%", width: "24.2%", height: "7.90%" }}
           >
             <span
               className="whitespace-nowrap uppercase text-white"
@@ -88,7 +96,7 @@ export function RegenerativeHero() {
             alt=""
             aria-hidden="true"
             className="absolute"
-            style={{ left: "15.2%", top: "24.88%", width: "68.0%" }}
+            style={{ left: "15.2%", top: "27.19%", width: "68.0%" }}
           />
 
           {/* sub-line band: node 5:34 -- opacity .4, multiply over the photo */}
@@ -96,9 +104,9 @@ export function RegenerativeHero() {
             className="absolute"
             style={{
               left: "34.1%",
-              top: "41.00%",
+              top: "49.80%",
               width: "35.8%",
-              height: "5.32%",
+              height: "7.47%",
               background: "#000000",
               opacity: 0.4,
               mixBlendMode: "multiply",
@@ -108,7 +116,7 @@ export function RegenerativeHero() {
               artboard, tracking 2.3642px, scaled 95% horizontally. */}
           <div
             className="absolute flex items-center justify-center"
-            style={{ left: "34.8%", top: "41.94%", width: "34.4%", height: "3.44%" }}
+            style={{ left: "34.8%", top: "51.12%", width: "34.4%", height: "4.83%" }}
           >
             <span
               className="whitespace-nowrap uppercase text-white"
@@ -135,9 +143,9 @@ export function RegenerativeHero() {
             render by their teal and given rebuilt alpha. They are flat
             single-colour shapes, so nothing is lost. */}
         {[
-          { src: "hen-standing", left: "15.4%", top: "70.42%", w: "9.9%" },
-          { src: "hen-peck-a", left: "66.3%", top: "72.45%", w: "9.8%" },
-          { src: "hen-peck-b", left: "78.0%", top: "71.51%", w: "10.0%" },
+          { src: "hen-standing", left: "15.4%", top: "91.08%", w: "9.9%" },
+          { src: "hen-peck-a", left: "66.3%", top: "93.94%", w: "9.8%" },
+          { src: "hen-peck-b", left: "78.0%", top: "92.62%", w: "10.0%" },
         ].map((h) => (
           <img
             key={h.src}
@@ -156,18 +164,25 @@ export function RegenerativeHero() {
           src="/images/regen/carton.webp"
           alt="A carton of Chino Valley Ranchers organic regenerative eggs"
           className="absolute"
-          style={{ left: "27.0%", top: "44.60%", width: "49.3%", zIndex: 3 }}
+          style={{ left: "27.0%", top: "54.85%", width: "49.3%", zIndex: 3 }}
         />
       </div>
 
       {/* The tear between the photo and the paper below, using the same
-          treatment as the rest of the site -- see TornEdge. */}
+          treatment as the rest of the site -- see TornEdge.
+
+          The stage above carries a higher z-index than this and the paper
+          band: the carton and hens overhang the stage's bottom edge on
+          purpose, and without that the paper painted over their lower half. */}
       <TornEdge tone="paper" fill={{ background: "#EFEAE0" }} />
 
-      {/* Paper ground. The carton and the hens live on the stage above,
-          positioned from their node coordinates, so this is just the band
-          they sit on. */}
-      <div style={{ background: "#EFEAE0", height: "8vw" }} />
+      {/* Paper run-out. The carton and hens are positioned on the stage
+          above and overhang its bottom edge, so this band only has to be
+          deep enough to carry them: the carton ends at 55.0% of artboard
+          width and the hens at 55.8%, against a tear at 49.8%. 6.3% of width
+          clears both and takes the paper to where section 2's heading
+          begins. */}
+      <div style={{ background: "#EFEAE0", height: "6.3vw" }} />
     </section>
   );
 }
