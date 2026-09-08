@@ -32,46 +32,65 @@ export function RegenerativeHero() {
               about the page on its own or in a screen-reader outline. The two
               display styles are spans inside it, so nothing moves. */}
           <h1 className="m-0">
-            {/* Teal ribbon. Sized from the design: a little over a third of
-                the wordmark's width, sitting behind its ascenders. */}
+            {/* Ribbon, not a plain rectangle. Measured off the design: it is
+                28.5% of the canvas wide, tilts -1.74 degrees, and its ends
+                are notched -- 19px tall at the tip against 118px in the body.
+                The notch is a clip-path; the tilt a rotation. */}
             <span
-              className="inline-block text-white font-ultra uppercase leading-none"
+              className="inline-block"
               style={{
+                transform: "rotate(-1.74deg) translateY(0.3em)",
                 background: "#006088",
-                padding: "0.42em 1.15em 0.34em",
-                fontSize: "clamp(18px, 2.55vw, 46px)",
-                letterSpacing: "0.06em",
-                transform: "translateY(0.35em)",
+                clipPath:
+                  "polygon(0 0, 100% 0, 100% 100%, 96% 100%, 92.5% 62%, 89% 100%, 11% 100%, 7.5% 62%, 4% 100%, 0 100%)",
+                padding: "0.42em 2.05em 0.62em",
               }}
             >
-              Welcome to
-            </span>{" "}
+              <span
+                className="block text-white font-ultra uppercase leading-none"
+                style={{
+                  fontSize: "clamp(18px, 2.55vw, 46px)",
+                  letterSpacing: "0.06em",
+                }}
+              >
+                Welcome to
+              </span>
+            </span>
 
             <span
               className="block leading-none"
               style={{
                 fontFamily: "nexa-rust-script-shad-2, cursive",
                 color: "#F8A014",
-                // 68% of canvas width in the design; clamped so it does not
-                // outgrow the photo on very wide screens.
                 fontSize: "clamp(58px, 13.43vw, 232px)",
+                // The design outlines the script in white and drops a soft
+                // shadow behind it. paint-order puts the stroke under the
+                // fill so the letterforms keep their weight.
+                WebkitTextStroke: "0.055em #FFFFFF",
+                paintOrder: "stroke fill",
+                filter: "drop-shadow(0.035em 0.05em 0 rgba(0,0,0,0.22))",
               }}
             >
               Regenerative
             </span>
           </h1>
 
-          <p
-            className="m-0 text-white uppercase"
-            style={{
-              fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
-              fontWeight: 700,
-              fontSize: "clamp(14px, 1.9vw, 34px)",
-              letterSpacing: "0.09em",
-              marginTop: "-0.35em",
-            }}
-          >
-            Organic Regenerative Eggs
+          {/* The sub-line sits on a dark translucent band in the design, so
+              it reads against whatever the photograph is doing behind it. */}
+          <p className="m-0" style={{ marginTop: "-0.5em" }}>
+            <span
+              className="inline-block text-white uppercase"
+              style={{
+                fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
+                fontWeight: 700,
+                fontSize: "clamp(14px, 1.9vw, 34px)",
+                letterSpacing: "0.1em",
+                background: "rgba(24, 26, 20, 0.45)",
+                padding: "0.22em 0.7em 0.16em",
+              }}
+            >
+              Organic Regenerative Eggs
+            </span>
           </p>
         </div>
       </div>
