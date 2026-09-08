@@ -208,3 +208,33 @@
     position: absolute;
   }
 }
+
+/* ── Regenerative: two-column bands on phones ──────────────────────────
+   Both of these keep a two-column grid from the design. At 390px that
+   leaves roughly 175px a column, which squeezes the body copy into a
+   narrow ribbon and runs the pre-footer type over the carton photograph.
+   They stack below md and take the full width. */
+.regen-standards-grid {
+  grid-template-columns: 1fr;
+}
+.regen-prefooter-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .regen-standards-grid {
+    grid-template-columns: 1.05fr 1fr;
+  }
+  .regen-prefooter-grid {
+    grid-template-columns: 46% 54%;
+  }
+}
+
+/* The pre-footer photograph is composed for a two-column band. Once it
+   stacks, the type needs the darker right-hand side of the frame behind it
+   rather than the carton. */
+@media (min-width: 768px) {
+  .regen-prefooter-section {
+    background-position: left center !important;
+  }
+}

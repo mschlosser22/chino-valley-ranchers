@@ -53,9 +53,8 @@ export function Certified() {
         </h2>
 
         <div
-          className="relative grid"
+          className="regen-standards-grid relative grid"
           style={{
-            gridTemplateColumns: "1.05fr 1fr",
             gap: "3%",
             marginTop: "3.5%",
             alignItems: "start",

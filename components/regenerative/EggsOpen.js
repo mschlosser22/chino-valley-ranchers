@@ -24,24 +24,28 @@ export function EggsOpen() {
         }}
       />
       <section
-      className="relative"
+      className="regen-prefooter-section relative"
       style={{
         backgroundImage: "url(/images/regen/prefooter-bg.jpg)",
         backgroundSize: "cover",
-        backgroundPosition: "left center",
+        // On phones the carton half of the photograph would sit directly
+        // under the type; shifting the focal point right puts the type on
+        // the darker pasture instead, where it reads.
+        backgroundPosition: "right center",
       }}
     >
       <div
-        className="mx-auto grid"
+        className="regen-prefooter-grid mx-auto grid"
         style={{
           maxWidth: 1700,
-          gridTemplateColumns: "46% 54%",
           alignItems: "center",
           minHeight: "clamp(280px, 30vw, 622px)",
         }}
       >
-        {/* Left column is the carton, which lives in the background image. */}
-        <div aria-hidden="true" />
+        {/* Left column is a spacer for the carton, which lives in the
+            background image. Hidden once the grid stacks -- an empty cell
+            above the type would just push it down. */}
+        <div aria-hidden="true" className="hidden md:block" />
 
         <div className="mx-auto" style={{ padding: "4% 3%", maxWidth: "86%" }}>
           <h2
