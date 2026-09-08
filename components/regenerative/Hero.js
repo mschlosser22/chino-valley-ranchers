@@ -199,16 +199,21 @@ export function RegenerativeHero() {
             />
           ))}
 
-          {/* carton: measured off the design crop rather than the node box.
-              Node 5:105's frame includes transparent margin, so its raw
-              coordinate put the carton 21 points high. What the design
-              actually shows is the package's top-left corner landing ON the
-              torn edge -- corner at 28.9% across, 76.25% down the band. */}
+          {/* carton: derived from its navy label, which is the one feature
+              that can be located unambiguously in both the design and the
+              asset. The label spans 35.2% of the carton's width and sits
+              361px wide in the design, so the package is 1025px = 49.4% of
+              the artboard, with its top at 53.9% of the band.
+
+              Reading the corner off a scaled crop instead put it at 76.25%,
+              which ran the carton 135px past the section and into the
+              heading below. Measuring a feature present in both images is
+              reliable in a way that eyeballing a crop is not. */}
           <img
             src="/images/regen/carton.webp"
             alt="A carton of Chino Valley Ranchers organic regenerative eggs"
             className="absolute"
-            style={{ left: "28.9%", top: "76.25%", width: "49.3%" }}
+            style={{ left: "27.9%", top: "53.9%", width: "49.4%" }}
           />
         </div>
       </div>
@@ -237,7 +242,10 @@ export function RegenerativeHero() {
           begins. */}
       <div
         style={{
-          height: "6.3vw",
+          // The carton ends at 112.3% of the band and the hens at 115.2%,
+          // so the run-out has to clear both. 8.4% of the band = 3.8vw at
+          // this aspect; 6.3vw was cutting the carton off mid-package.
+          height: "8.2vw",
           background: "#E9E5DE",
         backgroundImage: "url(/images/regen/paper-texture.jpg)",
         backgroundSize: "360px 360px",

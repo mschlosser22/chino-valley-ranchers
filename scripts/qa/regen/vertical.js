@@ -57,7 +57,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
   // carries transparent margin, so its raw coordinate put the carton 21
   // points high. The design shows the package's top-left corner landing ON
   // the torn edge.
-  ck('carton corner on the tear', Math.abs(m.cartonRaw-76.25)<1.0, `${m.cartonRaw}% vs 76.25%`);
+  // Derived from the carton's navy label, the one feature locatable in both
+  // the design and the asset: the label is 35.2% of the carton's width and
+  // 361px wide in the design, so the package is 49.4% of the artboard with
+  // its top at 53.9% of the band.
+  ck('carton at its measured position', Math.abs(m.cartonRaw-53.9)<1.0, `${m.cartonRaw}% vs 53.9%`);
   ck('hens on the paper', Math.abs(m.henRaw-91.37)<1.0, `${m.henRaw}% vs 91.37%`);
   ck('stage matches the photo band', Math.abs(m.stageH-45.6)<1.0, `${m.stageH}% vs 45.6%`);
   await b.close();
