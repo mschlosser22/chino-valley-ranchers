@@ -14,64 +14,66 @@ import { TornEdge } from './TornEdge';
 export function RegenerativeHero() {
   return (
     <section className="relative overflow-hidden bg-[#006088]">
-      {/* Cattle on pasture. object-position keeps the herd in frame as the
-          viewport narrows; the design crops them right of centre. */}
-      <img
-        src="/images/regen/hero-cattle.jpg"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ objectPosition: "60% 40%" }}
-      />
+      {/* Everything in this band is positioned from the Figma node tree
+          (file muIeDVJN5mgz3Ep0hualTF, artboard 5:5 = 2075 x 8469), as a
+          percentage of the artboard WIDTH so the whole composition scales
+          together.
 
-      <div className="relative" style={{ paddingTop: "8%", paddingBottom: "20%" }}>
-        {/* The headline, built from the Figma node tree rather than
-            inferred from a flattened render (file muIeDVJN5mgz3Ep0hualTF,
-            frame 5:32 "HEadline", 1428.19 x 388.63 inside a 2075 artboard).
+          The stage carries the photo's own aspect ratio -- node 5:9 is
+          2376 x 1336 cropped to the 2075 artboard, so the visible band is
+          2075 x 1326, or 63.9% of width. Building this with padding instead
+          left every element 6-9 points too high and the photo 13.5 points
+          too short: padding sizes to content, and the design's vertical
+          positions are absolute.
 
-            Three things the render could not tell me and the node data did:
+          A percentage `top` resolves against the container's HEIGHT, not
+          its width, so every design Y (expressed as a share of the 2075
+          artboard width) is multiplied by 2075/1326 = 1.5649 to become a
+          top percentage on this stage. Getting that wrong is what left the
+          whole lockup sitting high.
 
-            "Regenerative" is not live type. Node 6:2 is a placed image, which
-            is where the texture speckle, the white outline and the shadow
-            come from -- none of them reproducible with text-stroke.
+          Design Y positions, as % of the 2075 artboard width:
+            ribbon      13.8    WELCOME TO  15.5    wordmark  15.9
+            sub band    26.2    sub text    26.8    carton    28.5 */}
+      <div className="relative w-full" style={{ aspectRatio: "2075 / 1326" }}>
+        <img
+          src="/images/regen/hero-cattle.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "60% 42%" }}
+        />
 
-            "WELCOME TO" and the sub-line are Rockwell, not Ultra and DIN
-            Condensed. Rockwell is in the client's kit.
-
-            The ribbon is a vector with a genuinely irregular outline, not a
-            clipped rectangle, and the sub-line's band is opacity 0.4 with
-            mix-blend-multiply -- so it darkens the photograph rather than
-            laying a flat panel over it.
-
-            Percentages below are each node's width against the 2075 artboard. */}
-        <h1
-          className="relative mx-auto m-0"
-          style={{ width: "68.8%", containerType: "inline-size" }}
-        >
+        <h1 className="m-0">
           {/* The wordmark is artwork, so the accessible name lives here.
               Without it the page has no h1 text at all. */}
-          <span className="sr-only">Welcome to Regenerative — organic regenerative eggs</span>
-          {/* ribbon: node 5:33, 42.0% of the frame, offset 26.5% from its left */}
+          <span className="sr-only">
+            Welcome to Regenerative &mdash; organic regenerative eggs
+          </span>
+
+          {/* ribbon: node 5:33 -- x 33.2%, y 13.8%, w 28.9% of the artboard */}
           <img
             src="/images/regen/hero-ribbon.svg"
             alt=""
             aria-hidden="true"
             className="absolute"
-            style={{ left: "26.5%", top: "0.5%", width: "42.0%" }}
+            style={{ left: "33.2%", top: "21.60%", width: "28.9%" }}
           />
 
-          {/* "WELCOME TO": node 5:35, Rockwell Bold, rotated -1.78deg */}
+          {/* "WELCOME TO": node 5:35, Rockwell Bold 58.115px on a 2075
+              artboard = 2.80% of width, tracking 10px = 0.172em, tilted
+              -1.78deg. */}
           <div
             className="absolute flex items-center justify-center"
-            style={{ left: "30.2%", top: "9.5%", width: "35.1%", height: "19.2%" }}
+            style={{ left: "35.6%", top: "24.26%", width: "24.2%", height: "5.63%" }}
           >
             <span
               className="whitespace-nowrap uppercase text-white"
               style={{
                 fontFamily: "rockwell, Rockwell, Georgia, serif",
                 fontWeight: 700,
-                fontSize: "clamp(11px, 2.8cqw, 58px)",
-                letterSpacing: "0.17em",
+                fontSize: "2.80vw",
+                letterSpacing: "0.172em",
                 lineHeight: 1,
                 transform: "rotate(-1.78deg)",
               }}
@@ -80,38 +82,39 @@ export function RegenerativeHero() {
             </span>
           </div>
 
-          {/* the wordmark itself: node 6:2, 98.8% of the frame */}
+          {/* the wordmark: node 6:2 -- x 15.2%, y 15.9%, w 68.0% */}
           <img
             src="/images/regen/hero-wordmark.webp"
             alt=""
             aria-hidden="true"
-            className="relative block"
-            style={{ width: "98.8%", marginLeft: "0.6%" }}
+            className="absolute"
+            style={{ left: "15.2%", top: "24.88%", width: "68.0%" }}
           />
 
-          {/* sub-line band: node 5:34, opacity .4 multiply over the photo */}
+          {/* sub-line band: node 5:34 -- opacity .4, multiply over the photo */}
           <div
             className="absolute"
             style={{
-              left: "28.1%",
-              top: "66.7%",
-              width: "52.0%",
-              height: "18.0%",
+              left: "34.1%",
+              top: "41.00%",
+              width: "35.8%",
+              height: "5.32%",
               background: "#000000",
               opacity: 0.4,
               mixBlendMode: "multiply",
             }}
           />
-          {/* sub-line: node 5:38, Rockwell Regular, scaled 95% horizontally */}
+          {/* sub-line: node 5:38, Rockwell Regular 44.831px = 2.16% of the
+              artboard, tracking 2.3642px, scaled 95% horizontally. */}
           <div
             className="absolute flex items-center justify-center"
-            style={{ left: "29.1%", top: "70.2%", width: "50.0%" }}
+            style={{ left: "34.8%", top: "41.94%", width: "34.4%", height: "3.44%" }}
           >
             <span
               className="whitespace-nowrap uppercase text-white"
               style={{
                 fontFamily: "rockwell, Rockwell, Georgia, serif",
-                fontSize: "clamp(9px, 2.16cqw, 45px)",
+                fontSize: "2.16vw",
                 letterSpacing: "0.053em",
                 lineHeight: 1,
                 transform: "scaleX(0.95)",
@@ -121,62 +124,50 @@ export function RegenerativeHero() {
             </span>
           </div>
         </h1>
+
+        {/* Three teal hen silhouettes: nodes 5:89, 5:91 and 5:90, at
+            x 15.4% / 66.3% / 78.0% and y 45.0% / 46.3% / 45.7%, each about
+            10% of the artboard wide. They sit on the paper below the tear,
+            so they belong to the stage rather than the band.
+
+            Only the standing hen exists as an asset in the file; the two
+            pecking poses are not separate layers, so they are lifted from the
+            render by their teal and given rebuilt alpha. They are flat
+            single-colour shapes, so nothing is lost. */}
+        {[
+          { src: "hen-standing", left: "15.4%", top: "70.42%", w: "9.9%" },
+          { src: "hen-peck-a", left: "66.3%", top: "72.45%", w: "9.8%" },
+          { src: "hen-peck-b", left: "78.0%", top: "71.51%", w: "10.0%" },
+        ].map((h) => (
+          <img
+            key={h.src}
+            src={`/images/regen/${h.src}.png`}
+            alt=""
+            aria-hidden="true"
+            className="absolute hidden sm:block"
+            style={{ left: h.left, top: h.top, width: h.w, zIndex: 2 }}
+          />
+        ))}
+
+        {/* carton: node 5:105 -- x 27.0%, y 28.5%, w 49.3% of the artboard.
+            It straddles the tear, so it sits on the stage rather than in the
+            paper band below, and carries the highest z-index in the band. */}
+        <img
+          src="/images/regen/carton.webp"
+          alt="A carton of Chino Valley Ranchers organic regenerative eggs"
+          className="absolute"
+          style={{ left: "27.0%", top: "44.60%", width: "49.3%", zIndex: 3 }}
+        />
       </div>
 
       {/* The tear between the photo and the paper below, using the same
           treatment as the rest of the site -- see TornEdge. */}
       <TornEdge tone="paper" fill={{ background: "#EFEAE0" }} />
 
-      {/* Paper ground. The carton is pulled up out of it so that roughly half
-          of it sits above the tear, as drawn -- 54% of its height in the
-          design. The lift lives on the carton alone, not on this container:
-          moving the container up instead dragged the paper over the tear and
-          hid it, which is what made the boundary read as a straight line. */}
-      {/* display:flow-root contains the carton's negative margin without
-          clipping it. Without containment the margin collapses through this
-          container and drags the paper up over the tear, hiding it;
-          overflow:hidden contains it too but cuts the carton's top off. */}
-      <div
-        className="relative"
-        style={{ background: "#EFEAE0", zIndex: 2, display: "flow-root" }}
-      >
-        <div style={{ marginTop: "-15.4%" }}>
-          <img
-            src="/images/regen/carton.webp"
-            alt="A carton of Chino Valley Ranchers organic regenerative eggs"
-            className="relative block mx-auto"
-            style={{ width: "min(52%, 660px)" }}
-          />
-        </div>
-
-        {/* Three teal hen silhouettes on the paper. Positions and widths are
-            the design's own, measured off the render: 15.4% / 66.3% / 78.0%
-            from the left, each about 9.8% of the canvas wide.
-
-            Only the standing hen exists as an asset in the .fig; the two
-            pecking poses are not separate layers, so they are lifted from the
-            render by their teal (#006088) and given rebuilt alpha. They are
-            flat single-colour shapes, so nothing is lost doing it that way.
-
-            Hidden below sm: at phone width they crowd the carton, and the
-            design has no mobile frame to follow. */}
-        <div className="relative hidden sm:block" style={{ height: 0 }}>
-          {[
-            { src: "hen-standing", left: "15.4%", w: "9.8%", top: "-7.2em" },
-            { src: "hen-peck-a", left: "66.3%", w: "9.7%", top: "-5.6em" },
-            { src: "hen-peck-b", left: "78.0%", w: "9.9%", top: "-6.4em" },
-          ].map((h) => (
-            <img
-              key={h.src}
-              src={`/images/regen/${h.src}.png`}
-              alt=""
-              aria-hidden="true"
-              className="absolute"
-              style={{ left: h.left, width: h.w, top: h.top }}
-            />
-          ))}
-        </div>
-      </div>
+      {/* Paper ground. The carton and the hens live on the stage above,
+          positioned from their node coordinates, so this is just the band
+          they sit on. */}
+      <div style={{ background: "#EFEAE0", height: "8vw" }} />
     </section>
   );
 }
