@@ -18,8 +18,8 @@ export function WhatIs() {
       className="relative"
       style={{
         background: "#E9E5DE",
-        backgroundImage: "url(/images/regen/paper-texture.jpg)",
-        backgroundSize: "360px 360px",
+        backgroundImage: "url(/images/regen/paper-texture.png)",
+        backgroundSize: "400px 400px",
         backgroundRepeat: "repeat",
       }}
     >

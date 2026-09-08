@@ -177,17 +177,28 @@ export function RegenerativeHero() {
           className="absolute w-full"
           style={{ aspectRatio: "2075 / 945", bottom: 0 }}
         >
-          {/* Three teal hen silhouettes: nodes 5:89, 5:91 and 5:90, at
-              x 15.4% / 66.3% / 78.0% of the artboard, each about 10% wide.
+          {/* Three teal hen silhouettes at x 15.4% / 66.3% / 78.1% of the
+              artboard, each about 10% wide.
+
+              Their tops are pushed 10.6 points below the design's own figures
+              (91.4 / 94.6 / 96.4% of the band). In the design the hens stand
+              on paper with the tear above them; here the tear ends at 100% of
+              the band, so at the design values it cut straight through their
+              bodies. Shifting all three by the same amount keeps the spacing
+              between them and puts their feet on the paper, which is what the
+              design actually shows.
+
+              Shortening the band to raise the tear instead was tried and
+              reverted -- it moved the hens past the section entirely.
 
               Only the standing hen exists as an asset in the file; the two
               pecking poses are not separate layers, so they are lifted from
               the render by their teal and given rebuilt alpha. They are flat
               single-colour shapes, so nothing is lost. */}
           {[
-            { src: "hen-standing", left: "15.5%", top: "91.37%", w: "9.9%" },
-            { src: "hen-peck-a", left: "66.2%", top: "94.60%", w: "9.8%" },
-            { src: "hen-peck-b", left: "78.9%", top: "96.40%", w: "10.0%" },
+            { src: "hen-standing", left: "15.4%", top: "102.00%", w: "9.9%" },
+            { src: "hen-peck-a", left: "66.3%", top: "105.23%", w: "9.8%" },
+            { src: "hen-peck-b", left: "78.1%", top: "107.03%", w: "10.0%" },
           ].map((h) => (
             <img
               key={h.src}
@@ -228,8 +239,8 @@ export function RegenerativeHero() {
         tone="paper"
         fill={{
           background: "#E9E5DE",
-        backgroundImage: "url(/images/regen/paper-texture.jpg)",
-        backgroundSize: "360px 360px",
+        backgroundImage: "url(/images/regen/paper-texture.png)",
+        backgroundSize: "400px 400px",
         backgroundRepeat: "repeat",
         }}
       />
@@ -242,13 +253,14 @@ export function RegenerativeHero() {
           begins. */}
       <div
         style={{
-          // The carton ends at 112.3% of the band and the hens at 115.2%,
-          // so the run-out has to clear both. 8.4% of the band = 3.8vw at
-          // this aspect; 6.3vw was cutting the carton off mid-package.
-          height: "8.2vw",
+          // Deep enough to hold everything that overhangs the band: the
+          // carton to 112.3% and the hens, once lowered clear of the tear,
+          // to about 130%. Sized from the measured overflow rather than
+          // guessed -- at 8.2vw the hens ran 65px past the section.
+          height: "12.8vw",
           background: "#E9E5DE",
-        backgroundImage: "url(/images/regen/paper-texture.jpg)",
-        backgroundSize: "360px 360px",
+        backgroundImage: "url(/images/regen/paper-texture.png)",
+        backgroundSize: "400px 400px",
         backgroundRepeat: "repeat",
         }}
       />
