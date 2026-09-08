@@ -1,3 +1,5 @@
+import { TornEdge } from './TornEdge';
+
 /* Section 1 of the CVR Regen Page design.
 
    Geometry is measured off the design render (2075x8469), not eyeballed:
@@ -74,33 +76,31 @@ export function RegenerativeHero() {
         </div>
       </div>
 
-      {/* The torn paper edge is a real alpha cut from the .fig, not a CSS
-          shape: in the design the tear wanders between y701 and y887 across
-          the width, which no border-radius or clip-path reproduces.
+      {/* The tear between the photo and the paper below, using the same
+          treatment as the rest of the site -- see TornEdge. */}
+      <TornEdge tone="paper" fill={{ background: "#EFEAE0" }} />
 
-          It overlaps the photo by its own height so the tear reads as paper
-          laid over the pasture rather than two bands butted together. */}
-      {/* Pulled up over the photo by its own height so the tear cuts INTO
-          the pasture. Left in flow (not absolute) so the paper below starts
-          exactly where the strip ends and no seam can open between them. */}
-      <img
-        src="/images/regen/torn-edge.png"
-        alt=""
-        aria-hidden="true"
-        className="relative block w-full"
-        style={{ marginTop: "-3.3%", zIndex: 1 }}
-      />
-
-      {/* Paper ground. The carton is a child of it and carries a higher
-          z-index than the torn strip above, so it lies ON the paper and the
-          photo rather than being sliced by the tear. */}
-      <div className="relative" style={{ background: "#EFEAE0", zIndex: 2 }}>
-        <img
-          src="/images/regen/carton.webp"
-          alt="A carton of Chino Valley Ranchers organic regenerative eggs"
-          className="relative block mx-auto"
-          style={{ width: "min(52%, 660px)", marginTop: "-9%" }}
-        />
+      {/* Paper ground. The carton is pulled up out of it so that roughly half
+          of it sits above the tear, as drawn -- 54% of its height in the
+          design. The lift lives on the carton alone, not on this container:
+          moving the container up instead dragged the paper over the tear and
+          hid it, which is what made the boundary read as a straight line. */}
+      {/* display:flow-root contains the carton's negative margin without
+          clipping it. Without containment the margin collapses through this
+          container and drags the paper up over the tear, hiding it;
+          overflow:hidden contains it too but cuts the carton's top off. */}
+      <div
+        className="relative"
+        style={{ background: "#EFEAE0", zIndex: 2, display: "flow-root" }}
+      >
+        <div style={{ marginTop: "-15.4%" }}>
+          <img
+            src="/images/regen/carton.webp"
+            alt="A carton of Chino Valley Ranchers organic regenerative eggs"
+            className="relative block mx-auto"
+            style={{ width: "min(52%, 660px)" }}
+          />
+        </div>
 
         {/* Three teal hen silhouettes on the paper. Positions and widths are
             the design's own, measured off the render: 15.4% / 66.3% / 78.0%

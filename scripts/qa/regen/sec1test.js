@@ -20,14 +20,17 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       const rg=document.createRange(); rg.selectNodeContents(mark);
       const ink=rg.getBoundingClientRect();
       const hens=[...sec.querySelectorAll('img[src*="hen-"]')];
-      const edge=sec.querySelector('img[src*="torn-edge"]');
+      // The hero tear is a masked div now, matching how the rest of the
+      // site builds page tears (see components/slider/EggSlider.js).
+      const edge=[...sec.querySelectorAll('div')].find(d=>
+        /regen\/torn-edge/.test(getComputedStyle(d).webkitMaskImage||getComputedStyle(d).maskImage||''));
       const cart=sec.querySelector('img[src*="carton"]');
       return {ff:getComputedStyle(mark).fontFamily.split(',')[0].replace(/"/g,''),
               pct:+(ink.width/innerWidth*100).toFixed(1),
               hens:hens.length,
               henVisible:hens.filter(h=>h.getBoundingClientRect().width>0).length,
               henLoaded:hens.every(h=>h.complete&&h.naturalWidth>0),
-              edgeOK:edge&&edge.complete&&edge.naturalWidth>0,
+              edgeOK:!!edge&&edge.getBoundingClientRect().height>10,
               cartOK:cart&&cart.complete&&cart.naturalWidth>0,
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });

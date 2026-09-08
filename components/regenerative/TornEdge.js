@@ -13,25 +13,31 @@
    rather than sitting in a gap between the two. */
 const TONES = {
   white: "edge-white-top.png",
-  paper: "edge-paper-top.png",
-  burlap: "edge-white-top.png",
+  paper: "torn-edge.png",
 };
 
-export function TornEdge({ tone = "white", flip = false, overlap = "3.7%", fill }) {
-  // A mask-based edge rather than a picture of one. The strip is filled with
-  // whatever the band below is made of -- a flat colour or the same tiled
-  // texture at the same scale -- and the tear is punched through it with the
-  // artwork's own alpha. Painting the texture into the PNG instead produced a
-  // visible seam where its tiling did not line up with the section's.
+export function TornEdge({ tone = "white", flip = false, overlap = "2.5%", fill }) {
+  // Follows the pattern the rest of the site already uses for page tears --
+  // see components/slider/EggSlider.js: a fixed-height block with the tear as
+  // a cover background, rather than an <img> scaled to the viewport.
+  //
+  // The mask is the site's own bg-paper-edge-border artwork, recoloured per
+  // band. Building strips from the .fig masks instead produced two problems:
+  // they carry a step in their right-hand 11% that read as a notch, and
+  // mirroring them to full width halved the tear's depth relative to the
+  // viewport so it rendered nearly flat.
   const mask = `url(/images/regen/${TONES[tone] || TONES.white})`;
   return (
     <div
       aria-hidden="true"
-      className="relative w-full"
+      className="relative w-full block"
       style={{
-        height: "3.7vw",
-        marginTop: flip ? 0 : `-${overlap}`,
-        marginBottom: flip ? `-${overlap}` : 0,
+        height: "clamp(38px, 4.4vw, 95px)",
+        // Pulled up by its own height so the tear cuts INTO the section above.
+        // Sitting flush below it instead put paper over paper, and the tear
+        // was invisible -- the boundary read as a straight line.
+        marginTop: flip ? 0 : `calc(-1 * clamp(38px, 4.4vw, 95px))`,
+        marginBottom: flip ? `-${overlap}` : "-1px",
         transform: flip ? "scaleY(-1)" : "none",
         zIndex: 1,
         pointerEvents: "none",
