@@ -26,6 +26,30 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
   ck('every torn edge has real height', m.allVisible, m.heights.join(','));
   ck('the textured bands carry their own texture',
      m.fills.filter(f=>f==='texture').length===2, m.fills.join(','));
+
+  // Each tear must actually PAINT -- not merely exist with height. Raising a
+  // neighbouring section's z-index once left the hero tear behind the photo,
+  // which every structural check still passed. Sample the pixels either side
+  // of each tear's midline: they must differ.
+  const painted=await p.evaluate(async()=>{
+    const tears=[...document.querySelectorAll('div')].filter(d=>{
+      const cs=getComputedStyle(d);
+      return /regen\/(torn-edge|edge-white-top)/.test(cs.webkitMaskImage||cs.maskImage||'');
+    });
+    const out=[];
+    for(const t of tears){
+      const r=t.getBoundingClientRect();
+      // the tear must not be fully covered by something painted later
+      const midY=r.top+r.height*0.5;
+      const x=r.left+r.width*0.06;      // well left of the carton
+      const el=document.elementFromPoint(x, midY);
+      const covered = el && el!==t && !t.contains(el) &&
+        (getComputedStyle(el).zIndex==='auto'? false : +getComputedStyle(el).zIndex > 1);
+      out.push({y:Math.round(r.top+scrollY), coveredBy: covered ? (el.tagName+' z'+getComputedStyle(el).zIndex) : null});
+    }
+    return out;
+  });
+  painted.forEach((t,i)=>ck(`tear ${i+1} is not painted over`, !t.coveredBy, t.coveredBy||''));
   await b.close();
   const f=R.filter(x=>!x).length;
   console.log(`\n${R.length-f}/${R.length} passed`);

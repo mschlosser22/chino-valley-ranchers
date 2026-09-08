@@ -43,7 +43,7 @@ export function RegenerativeHero() {
           Design Y positions, as % of the 2075 artboard width:
             ribbon      13.8    WELCOME TO  15.5    wordmark  15.9
             sub band    26.2    sub text    26.8    carton    28.5 */}
-      <div className="relative w-full" style={{ aspectRatio: "2075 / 945", zIndex: 3 }}>
+      <div className="relative w-full" style={{ aspectRatio: "2075 / 945" }}>
         <img
           src="/images/regen/hero-cattle.jpg"
           alt=""
@@ -133,39 +133,54 @@ export function RegenerativeHero() {
           </div>
         </h1>
 
-        {/* Three teal hen silhouettes: nodes 5:89, 5:91 and 5:90, at
-            x 15.4% / 66.3% / 78.0% and y 45.0% / 46.3% / 45.7%, each about
-            10% of the artboard wide. They sit on the paper below the tear,
-            so they belong to the stage rather than the band.
+      </div>
 
-            Only the standing hen exists as an asset in the file; the two
-            pecking poses are not separate layers, so they are lifted from the
-            render by their teal and given rebuilt alpha. They are flat
-            single-colour shapes, so nothing is lost. */}
-        {[
-          { src: "hen-standing", left: "15.4%", top: "91.08%", w: "9.9%" },
-          { src: "hen-peck-a", left: "66.3%", top: "93.94%", w: "9.8%" },
-          { src: "hen-peck-b", left: "78.0%", top: "92.62%", w: "10.0%" },
-        ].map((h) => (
+      {/* The carton and hens overhang the tear, so they cannot live inside
+          the stage: raising the stage to clear the paper would raise the
+          photo with it and hide the tear entirely.
+
+          They sit in their own zero-height overlay instead, pinned to the top
+          of the band and given the stage's aspect ratio so their percentages
+          still resolve against the same box. Only these two elements paint
+          above the tear and the paper. */}
+      <div
+        className="relative w-full"
+        style={{ height: 0, zIndex: 4, pointerEvents: "none" }}
+      >
+        <div
+          className="absolute w-full"
+          style={{ aspectRatio: "2075 / 945", bottom: 0 }}
+        >
+          {/* Three teal hen silhouettes: nodes 5:89, 5:91 and 5:90, at
+              x 15.4% / 66.3% / 78.0% of the artboard, each about 10% wide.
+
+              Only the standing hen exists as an asset in the file; the two
+              pecking poses are not separate layers, so they are lifted from
+              the render by their teal and given rebuilt alpha. They are flat
+              single-colour shapes, so nothing is lost. */}
+          {[
+            { src: "hen-standing", left: "15.4%", top: "91.08%", w: "9.9%" },
+            { src: "hen-peck-a", left: "66.3%", top: "93.94%", w: "9.8%" },
+            { src: "hen-peck-b", left: "78.0%", top: "92.62%", w: "10.0%" },
+          ].map((h) => (
+            <img
+              key={h.src}
+              src={`/images/regen/${h.src}.png`}
+              alt=""
+              aria-hidden="true"
+              className="absolute hidden sm:block"
+              style={{ left: h.left, top: h.top, width: h.w }}
+            />
+          ))}
+
+          {/* carton: node 5:105 -- x 27.0%, w 49.3% of the artboard */}
           <img
-            key={h.src}
-            src={`/images/regen/${h.src}.png`}
-            alt=""
-            aria-hidden="true"
-            className="absolute hidden sm:block"
-            style={{ left: h.left, top: h.top, width: h.w, zIndex: 2 }}
+            src="/images/regen/carton.webp"
+            alt="A carton of Chino Valley Ranchers organic regenerative eggs"
+            className="absolute"
+            style={{ left: "27.0%", top: "54.85%", width: "49.3%" }}
           />
-        ))}
-
-        {/* carton: node 5:105 -- x 27.0%, y 28.5%, w 49.3% of the artboard.
-            It straddles the tear, so it sits on the stage rather than in the
-            paper band below, and carries the highest z-index in the band. */}
-        <img
-          src="/images/regen/carton.webp"
-          alt="A carton of Chino Valley Ranchers organic regenerative eggs"
-          className="absolute"
-          style={{ left: "27.0%", top: "54.85%", width: "49.3%", zIndex: 3 }}
-        />
+        </div>
       </div>
 
       {/* The tear between the photo and the paper below, using the same

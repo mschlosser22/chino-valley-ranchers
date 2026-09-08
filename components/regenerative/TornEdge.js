@@ -30,6 +30,8 @@ export function TornEdge({ tone = "white", flip = false, overlap = "2.5%", fill 
   return (
     <div
       aria-hidden="true"
+      // `relative` matters: z-index only applies to a positioned element,
+      // and without it the section above paints over the tear.
       className="relative w-full block"
       style={{
         height: "clamp(38px, 4.4vw, 95px)",
