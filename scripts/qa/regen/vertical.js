@@ -16,6 +16,9 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       .getBoundingClientRect().height;
     const top=sec.getBoundingClientRect().top+navH;
     const y=el=>pct(el.getBoundingClientRect().top-top);
+    const stageBox=sec.firstElementChild.getBoundingClientRect();
+    const pct2=el=>+((el.getBoundingClientRect().top-stageBox.top-navH)
+                      /(stageBox.height-navH)*100).toFixed(2);
     const q=s=>sec.querySelector(s);
     const welcome=[...h1.querySelectorAll('span')].find(s=>/welcome to/i.test(s.textContent)&&!s.className.includes('sr-only'));
     const band=[...h1.querySelectorAll('div')].find(d=>getComputedStyle(d).mixBlendMode==='multiply');
@@ -23,21 +26,39 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     return {ribbon:y(q('img[src*="hero-ribbon"]')), welcome:y(welcome),
             wordmark:y(q('img[src*="hero-wordmark"]')), band:y(band), sub:y(sub),
             carton:y(q('img[src*="carton"]')), hen:y(q('img[src*="hen-standing"]')),
-            stageH:pct(sec.firstElementChild.getBoundingClientRect().height-navH)};
+            stageH:pct(sec.firstElementChild.getBoundingClientRect().height-navH),
+            // carton and hens are placed against the full stage box, which
+            // begins at the nav's bottom edge -- the same origin as `top`.
+            cartonRaw:pct2(q('img[src*="carton"]')),
+            henRaw:pct2(q('img[src*="hen-standing"]'))};
   });
   // Targets are node Y positions as a share of the 2075 artboard WIDTH.
   // A percentage `top` resolves against container HEIGHT, so the component
   // scales each by 2075/1326; these assert the rendered result, not the input.
   // Node Y as a share of artboard width, minus the design's 73px nav bar
   // (3.52% of width) -- our nav is a separate element outside this section.
+  // Ribbon through sub-line come from node coordinates. The carton and hens
+  // are measured off the design render instead: node 5:105's frame carries
+  // transparent margin, so its raw coordinate put the carton 21 points high.
+  // What the design shows is the package's top-left corner landing ON the
+  // torn edge.
+  // Ribbon through sub-line sit inside the nav-excluded band. The carton and
+  // hens sit in the overlay, whose box is the full 945px stage, so their
+  // design percentages (76.25 / 91.37 of the band) convert by 592/656.
   const want={ribbon:10.28, welcome:11.98, wordmark:12.38, band:22.68,
-              sub:23.28, carton:24.98, hen:41.48};
+              sub:23.28};
   for(const [k,v] of Object.entries(want)){
     const match=100-Math.abs(m[k]-v)/v*100;
     ck(`${k} at its node position`, match>=98, `${m[k]}% vs ${v}%  (${match.toFixed(1)}% match)`);
   }
   // The stage is the photo band alone: design nav bottom (y73) to the paper
   // edge (y1018) = 945px = 45.6% of artboard width.
+  // Carton and hens are measured off the design render: node 5:105's frame
+  // carries transparent margin, so its raw coordinate put the carton 21
+  // points high. The design shows the package's top-left corner landing ON
+  // the torn edge.
+  ck('carton corner on the tear', Math.abs(m.cartonRaw-76.25)<1.0, `${m.cartonRaw}% vs 76.25%`);
+  ck('hens on the paper', Math.abs(m.henRaw-91.37)<1.0, `${m.henRaw}% vs 91.37%`);
   ck('stage matches the photo band', Math.abs(m.stageH-45.6)<1.0, `${m.stageH}% vs 45.6%`);
   await b.close();
   const f=R.filter(x=>!x).length;

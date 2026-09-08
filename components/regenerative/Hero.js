@@ -185,9 +185,9 @@ export function RegenerativeHero() {
               the render by their teal and given rebuilt alpha. They are flat
               single-colour shapes, so nothing is lost. */}
           {[
-            { src: "hen-standing", left: "15.4%", top: "91.08%", w: "9.9%" },
-            { src: "hen-peck-a", left: "66.3%", top: "93.94%", w: "9.8%" },
-            { src: "hen-peck-b", left: "78.0%", top: "92.62%", w: "10.0%" },
+            { src: "hen-standing", left: "15.5%", top: "91.37%", w: "9.9%" },
+            { src: "hen-peck-a", left: "66.2%", top: "94.60%", w: "9.8%" },
+            { src: "hen-peck-b", left: "78.9%", top: "96.40%", w: "10.0%" },
           ].map((h) => (
             <img
               key={h.src}
@@ -199,12 +199,16 @@ export function RegenerativeHero() {
             />
           ))}
 
-          {/* carton: node 5:105 -- x 27.0%, w 49.3% of the artboard */}
+          {/* carton: measured off the design crop rather than the node box.
+              Node 5:105's frame includes transparent margin, so its raw
+              coordinate put the carton 21 points high. What the design
+              actually shows is the package's top-left corner landing ON the
+              torn edge -- corner at 28.9% across, 76.25% down the band. */}
           <img
             src="/images/regen/carton.webp"
             alt="A carton of Chino Valley Ranchers organic regenerative eggs"
             className="absolute"
-            style={{ left: "27.0%", top: "54.85%", width: "49.3%" }}
+            style={{ left: "28.9%", top: "76.25%", width: "49.3%" }}
           />
         </div>
       </div>
@@ -215,7 +219,15 @@ export function RegenerativeHero() {
           The stage above carries a higher z-index than this and the paper
           band: the carton and hens overhang the stage's bottom edge on
           purpose, and without that the paper painted over their lower half. */}
-      <TornEdge tone="paper" fill={{ background: "#EFEAE0" }} />
+      <TornEdge
+        tone="paper"
+        fill={{
+          background: "#E9E5DE",
+        backgroundImage: "url(/images/regen/paper-texture.jpg)",
+        backgroundSize: "360px 360px",
+        backgroundRepeat: "repeat",
+        }}
+      />
 
       {/* Paper run-out. The carton and hens are positioned on the stage
           above and overhang its bottom edge, so this band only has to be
@@ -223,7 +235,15 @@ export function RegenerativeHero() {
           width and the hens at 55.8%, against a tear at 49.8%. 6.3% of width
           clears both and takes the paper to where section 2's heading
           begins. */}
-      <div style={{ background: "#EFEAE0", height: "6.3vw" }} />
+      <div
+        style={{
+          height: "6.3vw",
+          background: "#E9E5DE",
+        backgroundImage: "url(/images/regen/paper-texture.jpg)",
+        backgroundSize: "360px 360px",
+        backgroundRepeat: "repeat",
+        }}
+      />
     </section>
   );
 }

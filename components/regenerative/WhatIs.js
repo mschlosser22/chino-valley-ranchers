@@ -10,8 +10,19 @@
    has to keep its exact relationship to the words -- setting the text live
    and positioning an arrow separately would drift at every breakpoint. */
 export function WhatIs() {
+  // The design's paper is a linen texture, not a flat fill -- sampled at
+  // #E9E5DE with real grain. A flat colour read as plastic against the
+  // photographs either side.
   return (
-    <section className="relative" style={{ background: "#EFEAE0" }}>
+    <section
+      className="relative"
+      style={{
+        background: "#E9E5DE",
+        backgroundImage: "url(/images/regen/paper-texture.jpg)",
+        backgroundSize: "360px 360px",
+        backgroundRepeat: "repeat",
+      }}
+    >
       <div className="mx-auto" style={{ maxWidth: 1600, padding: "0 7% 6%", overflow: "hidden" }}>
         <h2
           className="text-center m-0 uppercase"
