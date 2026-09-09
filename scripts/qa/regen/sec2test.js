@@ -38,6 +38,18 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
                 return {gap:+(r.left-fr.right).toFixed(1),
                         clear:r.left>=fr.right,
                         onPaper:r.left>fr.right&&r.top<fr.bottom};})(),
+              // Lockup HEIGHT as a share of the frame. Position was right and
+              // size was wrong: the assets carried longer arrow tails than the
+              // design, so sizing them by width made them ~48% of the frame
+              // against the design's 27.9%/41.4%, dropping both arrows far too
+              // low and running the yellow one into the play button. Every
+              // left/top/width check passed throughout.
+              lockH:(()=>{const o={};
+                for(const [k,sel] of [['hear','ann-hear'],['more','ann-more']]){
+                  const el=s.querySelector(`img[src*="${sel}"]`); if(!el) continue;
+                  const r=el.getBoundingClientRect();
+                  if(r.height>0) o[k]=+(r.height/fr.height*100).toFixed(2);}
+                return o;})(),
               btn:!!btn, btnLabel:btn&&btn.getAttribute('aria-label'),
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
@@ -56,6 +68,14 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       // artboard. Measured from the stroke artwork, which is exact, rather
       // than off a scaled screenshot.
       ck('video frame at design width', Math.abs(m.framePct-53.7)<1.5, `${m.framePct}% vs 53.7%`);
+      // Design lockups: hear 517x195 -> 27.94% of the 698px frame; more
+      // 166x289 -> 41.40%. Sized from the .fig node tree.
+      if (m.lockH.hear !== undefined)
+        ck('"Hear Chris" lockup at design height', Math.abs(m.lockH.hear-27.94)<2.5,
+           `${m.lockH.hear}% vs 27.94%`);
+      if (m.lockH.more !== undefined)
+        ck('"You want more?" lockup at design height', Math.abs(m.lockH.more-41.40)<2.5,
+           `${m.lockH.more}% vs 41.40%`);
       ck('frame aspect matches', Math.abs(m.aspect-1.644)<0.02, `${m.aspect}`);
       ck('both annotations visible', m.annVisible===2, `${m.annVisible}`);
       if (m.moreOutside && m.moreOutside !== 'hidden') {

@@ -116,7 +116,7 @@ export function WhatIs() {
               src="/images/regen/ann-hear.png"
               alt="Hear Chris talk about regenerative"
               className="absolute hidden sm:block"
-              style={{ left: "48.93%", top: "20.78%", width: "46.91%", zIndex: 3 }}
+              style={{ left: "48.98%", top: "23.35%", width: "45.55%", zIndex: 3 }}
             />
           </div>
 
@@ -132,7 +132,7 @@ export function WhatIs() {
             src="/images/regen/ann-more.png"
             alt="You want more?"
             className="absolute hidden sm:block"
-            style={{ left: "100.23%", top: "71.65%", width: "14.67%", zIndex: 4 }}
+            style={{ left: "100.23%", top: "72.21%", width: "14.63%", zIndex: 4 }}
           />
         </div>
       </div>
