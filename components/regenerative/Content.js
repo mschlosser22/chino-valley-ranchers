@@ -98,6 +98,10 @@ export function Content() {
              using a screen reader's element list or a hit test. */
           style={{ left: "16.82%", top: "40.49%", width: "33.30%", zIndex: 3 }}
         >
+          {/* The script face carries a left side bearing that puts its glyphs
+              4.5px right of the other two at 1440 -- the boxes were already
+              flush, the ink was not. Pulled back by that bearing so all three
+              share one optical left edge. */}
           <span
             className="block"
             style={{
@@ -105,6 +109,7 @@ export function Content() {
               color: "#7DA856",
               fontSize: "5.976cqw",
               lineHeight: 0.831,
+              marginLeft: "-0.0523em",
             }}
           >
             Regenerative
@@ -128,7 +133,11 @@ export function Content() {
         <p
           className="absolute m-0"
           style={{
-            left: "18.70%", top: "56.34%", width: "40.67%", zIndex: 3,
+            /* Flush with the heading. The design's text nodes sit at x349,
+               x384 and x388, but those are frame boxes with side bearings --
+               the rendered glyphs share one left edge, which is what the
+               client's reference shows. */
+            left: "16.82%", top: "56.34%", width: "42.55%", zIndex: 3,
             fontFamily: "'Lato', system-ui, sans-serif",
             color: "#000000",
             fontSize: "1.574cqw",

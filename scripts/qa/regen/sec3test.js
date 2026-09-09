@@ -56,6 +56,18 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
                 return {script:+(parseFloat(getComputedStyle(sp[0]).fontSize)/k).toFixed(1),
                         ultra:+(parseFloat(getComputedStyle(sp[1]).fontSize)/k).toFixed(1),
                         body:+(parseFloat(getComputedStyle(s.querySelector('p')).fontSize)/k).toFixed(1)};})(),
+              // The two Ultra/Lato blocks must share a left edge exactly. The
+              // script block cannot be compared the same way: neither Range
+              // nor element boxes see a font's side bearing, so its box is
+              // deliberately offset by -0.0523em to put the GLYPHS flush --
+              // verified by sampling rendered pixels (0.5px spread), which is
+              // the only way to see this. The DOM check guards the two blocks
+              // it can actually measure, plus the compensation still applied.
+              leftEdges:(()=>{const sp=h.querySelectorAll('span');
+                const L=el=>el.getBoundingClientRect().left;
+                return +(Math.abs(L(sp[1])-L(s.querySelector('p')))).toFixed(1);})(),
+              scriptBearing:(()=>{const sp=h.querySelectorAll('span');
+                return getComputedStyle(sp[0]).marginLeft;})(),
               bodyPx:parseFloat(getComputedStyle(s.querySelector('p')).fontSize),
               copyGround:(()=>{const el=s.querySelector('p');
                 const bg=getComputedStyle(el).backgroundColor;
@@ -77,6 +89,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     }
     if(m.stageAbove!==null && w<768)
       ck('stacked content stays inside its section', m.stageAbove<=1, `${m.stageAbove}px above`);
+    if(w>=768){
+      ck('AGRICULTURE and body share a left edge', m.leftEdges<=1, `${m.leftEdges}px apart`);
+      ck('script heading keeps its bearing compensation',
+         parseFloat(m.scriptBearing)<0, m.scriptBearing);
+    }
     ck('body copy is readable', m.bodyPx>=13, `${m.bodyPx}px`);
     if(w<768) ck('copy has a ground behind it on phones', m.copyGround);
     if(w===1440){
