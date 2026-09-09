@@ -14,7 +14,9 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       const h=[...document.querySelectorAll('h2')].find(e=>/agriculture/i.test(e.textContent));
       const s=h.closest('section');
       const spans=[...h.querySelectorAll('span')];
-      const card=h.parentElement.getBoundingClientRect();
+      // The card is its own artwork now, not the heading's padded parent --
+      // that parent is the full-width absolute wrapper, which measured 100%.
+      const card=s.querySelector('img[src*="card-agri"]').getBoundingClientRect();
       const signLink=s.querySelector('a[href="/products"]');
       const sign=s.querySelector('img[src*="sign-purchase"]');
       const sr=sign.getBoundingClientRect();
@@ -29,16 +31,29 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               burst:!!s.querySelector('img[src*="burst"]'),
               carton:!!s.querySelector('img[src*="carton"]'),
               ann:!!s.querySelector('img[src*="ann-getem"]'),
+              // Mobile readability. The section is laid out from the design's
+              // absolute coordinates, which at 390px gave a 237px band and
+              // 4.5px body type -- and every width check still passed. Also
+              // check the copy has a ground behind it: stacked over bare grass
+              // it was unreadable.
+              bodyPx:parseFloat(getComputedStyle(s.querySelector('p')).fontSize),
+              copyGround:(()=>{const el=s.querySelector('p');
+                const bg=getComputedStyle(el).backgroundColor;
+                return bg && bg!=='rgba(0, 0, 0, 0)' && bg!=='transparent';})(),
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
     console.log(`\n  --- ${label} (${w}px) ---`);
     ck('"Regenerative" in the script face', m.script==='nexa-rust-script-shad-2', m.script);
     ck('"AGRICULTURE" in DIN Condensed', m.din==='din-condensed', m.din);
     if(w===1440){
-      ck('card at design width', Math.abs(m.cardPct-62.7)<1.5, `${m.cardPct}% vs 62.7%`);
+      // 64.77%: the design's own card (Layer 2 copy 8, 1344 of the 2075
+      // artboard). The old 62.7% was measured off a screenshot.
+      ck('card at design width', Math.abs(m.cardPct-64.77)<1.5, `${m.cardPct}% vs 64.77%`);
       ck('sign at design width', Math.abs(m.signPct-24.2)<1.5, `${m.signPct}% vs 24.2%`);
       ck('sign aspect matches', Math.abs(m.signAspect-1.39)<0.05, `${m.signAspect}`);
     }
+    ck('body copy is readable', m.bodyPx>=13, `${m.bodyPx}px`);
+    if(w<768) ck('copy has a ground behind it on phones', m.copyGround);
     ck('sign is a real link to /products', m.isLink);
     ck('sign carries its wording as alt text', /purchase our organic/i.test(m.signAlt||''), m.signAlt);
     ck('grass ground loads', m.grassOK);
