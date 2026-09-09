@@ -81,7 +81,7 @@ export function ImageFull() {
                  the card centre -- because they are unpositioned line boxes,
                  not rendered bounds. Measured off the design render the
                  heading, script line and body all share one centre. */
-              left: "50.83%", top: "37.27%", width: "30%", zIndex: 3,
+              left: "50.83%", top: "38.60%", width: "30%", zIndex: 3,
               whiteSpace: "nowrap",
               fontFamily: "'Ultra', Rockwell, Georgia, serif",
               color: "#00608B",
@@ -95,7 +95,7 @@ export function ImageFull() {
           <span
             className="absolute block text-center"
             style={{
-              left: "47.03%", top: "45.34%", width: "37.61%", zIndex: 3,
+              left: "47.03%", top: "46.10%", width: "37.61%", zIndex: 3,
               whiteSpace: "nowrap",
               fontFamily: "nexa-rust-script-shad-2, cursive",
               color: "#F9A115",

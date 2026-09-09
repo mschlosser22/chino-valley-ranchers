@@ -51,6 +51,27 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               henOverhang:+(sr.top-hb.top).toFixed(1),
               // What matters is that the section does not clip it away.
               secClips: getComputedStyle(s).overflow==='hidden',
+              // Nothing may spill past the card's torn edges. Measured on INK
+              // (Range boxes) rather than element boxes, and against the card
+              // artwork rather than the section -- "THE NEXT" sat 10.3px above
+              // the card's top while every existing check passed, because none
+              // of them compared content to the card at all.
+              cardFit:(()=>{const c=s.querySelector('img[src*="card-next"]');
+                if(!c) return null;
+                const cr=c.getBoundingClientRect();
+                const ink=el=>{const rg=document.createRange();rg.selectNodeContents(el);
+                  return rg.getBoundingClientRect();};
+                const parts=[...h.querySelectorAll('span')].map(ink);
+                parts.push(ink(s.querySelector('p')));
+                const gl=s.querySelector('img[src*="hen-divider"]');
+                if(gl) parts.push(gl.getBoundingClientRect());
+                let worst=Infinity, which='';
+                for(const r of parts){
+                  const insets=[r.top-cr.top, cr.bottom-r.bottom, r.left-cr.left, cr.right-r.right];
+                  const m=Math.min(...insets);
+                  if(m<worst){worst=m;}
+                }
+                return +worst.toFixed(1);})(),
               // Each heading line must set on ONE line and sit on the design's
               // own centre. At the design's literal box width (21.25%) the
               // rendered face wrapped "THE NEXT" onto two lines, which then
@@ -104,6 +125,8 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       ck('section above does not clip its overhang', !m.tearBacking.prevClips);
     }
     ck('section does not clip the overhanging comb', !m.secClips);
+    if(m.cardFit!==null && w>=768)
+      ck('nothing spills past the card edges', m.cardFit>0, `closest edge ${m.cardFit}px`);
     if(w>=768){
       ck('"THE NEXT" sets on one line', m.headLines[0].lines===1, `${m.headLines[0].lines} lines`);
       ck('"Generation" sets on one line', m.headLines[1].lines===1, `${m.headLines[1].lines} lines`);
