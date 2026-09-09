@@ -49,6 +49,13 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               stageAbove:(()=>{const st=s.querySelector('.regen-agri-stage');
                 if(!st) return null;
                 return +(secr.top-st.getBoundingClientRect().top).toFixed(1);})(),
+              // Type against the design's own spec, scaled from the 2075
+              // artboard: Nexa Rust 124px, Ultra 68.77px, Lato 32.66px.
+              typePx:(()=>{const sp=h.querySelectorAll('span');
+                const k=innerWidth/2075;
+                return {script:+(parseFloat(getComputedStyle(sp[0]).fontSize)/k).toFixed(1),
+                        ultra:+(parseFloat(getComputedStyle(sp[1]).fontSize)/k).toFixed(1),
+                        body:+(parseFloat(getComputedStyle(s.querySelector('p')).fontSize)/k).toFixed(1)};})(),
               bodyPx:parseFloat(getComputedStyle(s.querySelector('p')).fontSize),
               copyGround:(()=>{const el=s.querySelector('p');
                 const bg=getComputedStyle(el).backgroundColor;
@@ -57,7 +64,10 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     });
     console.log(`\n  --- ${label} (${w}px) ---`);
     ck('"Regenerative" in the script face', m.script==='nexa-rust-script-shad-2', m.script);
-    ck('"AGRICULTURE" in DIN Condensed', m.din==='din-condensed', m.din);
+    // The design sets this in Ultra, not DIN Condensed -- 68.77px, 5.47px
+    // tracking, #00608B, read from the text node. The old expectation was my
+    // own guess from the flattened render.
+    ck('"AGRICULTURE" in Ultra', m.din==='Ultra', m.din);
     if(w===1440){
       // 64.77%: the design's own card (Layer 2 copy 8, 1344 of the 2075
       // artboard). The old 62.7% was measured off a screenshot.
@@ -69,6 +79,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       ck('stacked content stays inside its section', m.stageAbove<=1, `${m.stageAbove}px above`);
     ck('body copy is readable', m.bodyPx>=13, `${m.bodyPx}px`);
     if(w<768) ck('copy has a ground behind it on phones', m.copyGround);
+    if(w===1440){
+      ck('script heading at design size', Math.abs(m.typePx.script-124)<4, `${m.typePx.script}px vs 124px`);
+      ck('Ultra heading at design size', Math.abs(m.typePx.ultra-68.77)<3, `${m.typePx.ultra}px vs 68.8px`);
+      ck('body copy at design size', Math.abs(m.typePx.body-32.66)<2, `${m.typePx.body}px vs 32.7px`);
+    }
     ck('sign is a real link to /products', m.isLink);
     ck('sign carries its wording as alt text', /purchase our organic/i.test(m.signAlt||''), m.signAlt);
     ck('grass ground loads', m.grassOK);

@@ -102,23 +102,23 @@ export function Content() {
             className="block"
             style={{
               fontFamily: "nexa-rust-script-shad-2, cursive",
-              color: "#7CA854",
-              fontSize: "3.33cqw",
-              lineHeight: 1,
+              color: "#7DA856",
+              fontSize: "5.976cqw",
+              lineHeight: 0.831,
             }}
           >
             Regenerative
           </span>
+          {/* The design sets this in Ultra, not DIN Condensed -- 68.77px on a
+              2075 artboard, 5.47px tracking, #00608B. */}
           <span
             className="block uppercase"
             style={{
-              fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
-              fontWeight: 700,
-              color: "#006088",
-              fontSize: "3.20cqw",
-              letterSpacing: "0.02em",
-              lineHeight: 1,
-              marginTop: "-0.06em",
+              fontFamily: "'Ultra', Rockwell, Georgia, serif",
+              color: "#00608B",
+              fontSize: "3.314cqw",
+              letterSpacing: "0.0795em",
+              lineHeight: 1.121,
             }}
           >
             Agriculture
@@ -130,9 +130,10 @@ export function Content() {
           style={{
             left: "18.70%", top: "56.34%", width: "40.67%", zIndex: 3,
             fontFamily: "'Lato', system-ui, sans-serif",
-            color: "#2B2B2B",
-            fontSize: "1.16cqw",
-            lineHeight: 1.62,
+            color: "#000000",
+            fontSize: "1.574cqw",
+            letterSpacing: "0.0199em",
+            lineHeight: 1.5,
           }}
         >
           is a collection of practices that focus on regenerative soil health
