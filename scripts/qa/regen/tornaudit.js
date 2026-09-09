@@ -13,7 +13,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     // the rest of the site builds them (components/slider/EggSlider.js).
     const masked=[...document.querySelectorAll('div')].filter(d=>{
       const cs=getComputedStyle(d);
-      return /regen\/(torn-edge|edge-white-top)/.test(cs.webkitMaskImage||cs.maskImage||'');
+      return /regen\/(torn-edge|edge-white-top|tear-grass)/.test(cs.webkitMaskImage||cs.maskImage||'');
     });
     return {masked:masked.length,
             heights:masked.map(d=>Math.round(d.getBoundingClientRect().height)),
@@ -22,13 +22,14 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
             // no masked strip should be a zero-height no-op
             allVisible:masked.every(d=>d.getBoundingClientRect().height>10)};
   });
-  ck('four torn edges on the page', m.masked===4, `${m.masked}`);
+  ck('five torn edges on the page', m.masked===5, `${m.masked}`);
   ck('every torn edge has real height', m.allVisible, m.heights.join(','));
   // Three of the four now carry a texture: the hero tear takes the paper
-  // linen, and the burlap and pre-footer tears take their own grounds. Only
+  // linen, the burlap and pre-footer tears take their own grounds, and the
+  // section 2->3 seam paints the paper through the tear over the grass. Only
   // the burlap->white tear is a flat fill, because white paper is flat.
   ck('the textured bands carry their own texture',
-     m.fills.filter(f=>f==='texture').length===3, m.fills.join(','));
+     m.fills.filter(f=>f==='texture').length===4, m.fills.join(','));
 
   // Each tear must actually PAINT -- not merely exist with height. Raising a
   // neighbouring section's z-index once left the hero tear behind the photo,
@@ -37,7 +38,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
   const painted=await p.evaluate(async()=>{
     const tears=[...document.querySelectorAll('div')].filter(d=>{
       const cs=getComputedStyle(d);
-      return /regen\/(torn-edge|edge-white-top)/.test(cs.webkitMaskImage||cs.maskImage||'');
+      return /regen\/(torn-edge|edge-white-top|tear-grass)/.test(cs.webkitMaskImage||cs.maskImage||'');
     });
     const out=[];
     for(const t of tears){

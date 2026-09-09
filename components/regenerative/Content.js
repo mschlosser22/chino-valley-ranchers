@@ -10,12 +10,45 @@
    "Regenerative", DIN Condensed for "AGRICULTURE". */
 export function Content() {
   return (
-    <section className="relative overflow-hidden">
+    <section
+      className="relative overflow-hidden"
+      /* min-height is the design's own band: 1262 of the 2075 artboard.
+         Without it the section collapsed to its content -- 469px against a
+         design 876px at 1440 -- which is the vertical compression the geometry
+         decode flagged for this section (60% of design). */
+      style={{ minHeight: "60.82vw" }}
+    >
       <img
         src="/images/regen/grass.jpg"
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* The seam with the paper band above is a torn edge, not a straight cut.
+          The design has no separate tear layer here: the rip lives in the alpha
+          of its full-width plane (Layer 52), whose first opaque row wanders
+          between 46 and 83 of 1363. The grass photo itself is not in the .fig
+          -- it comes from the client's photography -- so that alpha is
+          extracted as a mask and the paper is painted through it, which puts
+          the tear over the grass exactly where the design has it. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0"
+        style={{
+          height: "4.19vw",
+          background: "#E9E5DE",
+          backgroundImage: "url(/images/regen/paper-texture.png)",
+          backgroundSize: "12.34vw 12.34vw",
+          WebkitMaskImage: "url(/images/regen/tear-grass.png)",
+          maskImage: "url(/images/regen/tear-grass.png)",
+          WebkitMaskSize: "100% 100%",
+          maskSize: "100% 100%",
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
       />
 
       <div
