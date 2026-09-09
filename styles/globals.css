@@ -234,12 +234,13 @@
 .regen-agri-stage {
   position: absolute;
   inset: 0;
-  /* The design leaves a 238px gap between the tear and the card at 1440; the
-     client asked for about half. Shifting the whole stage keeps the design's
-     internal spacing exactly, rather than renumbering seven elements. Scoped
-     to the absolute layout: on phones the stage is a stacked block, where the
-     same transform pulled the content 117px above its own section. */
-  transform: translateY(-13.58%);
+  /* The design leaves a 238px gap between the tear and the card at 1440. The
+     client halved it twice, so the stage is lifted 20.38% of the band and the
+     gap lands at ~60px. Shifting the whole stage keeps the design's internal
+     spacing exactly, rather than renumbering seven elements. Scoped to the
+     absolute layout: on phones the stage is a stacked block, where the same
+     transform pulled the content 117px above its own section. */
+  transform: translateY(-20.38%);
 }
 
 /* Section 3 is laid out from the design's absolute coordinates, which is right
