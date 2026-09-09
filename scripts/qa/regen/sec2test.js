@@ -17,7 +17,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       const ink=rg.getBoundingClientRect();
       const still=s.querySelector('img[src*="video-still"]');
       const fr=still.parentElement.getBoundingClientRect();
-      const anns=[...s.querySelectorAll('img[src*="ann-"]')];
+      // Annotations are live type (div[aria-hidden]) plus a vector arrow
+      // image. They were composited PNGs until the exports were found to clip
+      // their own glyphs at the canvas edge.
+      const anns=[...s.querySelectorAll('div[aria-hidden="true"]')].filter(d=>/Hear Chris|You/.test(d.textContent));
+      const arrows=[...s.querySelectorAll('img[src*="arrow-"]')];
       const btn=s.querySelector('button');
       return {ff:getComputedStyle(h).fontFamily.split(',')[0].replace(/["']/g,''),
               colour:getComputedStyle(h).color,
@@ -25,14 +29,14 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               framePct:+(fr.width/innerWidth*100).toFixed(1),
               aspect:+(fr.width/fr.height).toFixed(3),
               stillOK:still.complete&&still.naturalWidth>0,
-              anns:anns.length, annOK:anns.every(a=>a.complete&&a.naturalWidth>0),
+              anns:anns.length, annOK:arrows.length===2&&arrows.every(a=>a.complete&&a.naturalWidth>0),
               annVisible:anns.filter(a=>a.getBoundingClientRect().width>0).length,
               // "You want more?" sits on the paper OUTSIDE the frame in the
               // design, with a small gap past the right edge. Assert the
               // relationship, not a coordinate -- it was wrong three ways
               // (clipped inside, then straddling, then hidden behind the
               // border) and each wrong version still passed a width check.
-              moreOutside:(()=>{const m=s.querySelector('img[src*="ann-more"]');
+              moreOutside:(()=>{const m=anns.find(d=>/^You/.test(d.textContent.trim()));
                 if(!m) return null; const r=m.getBoundingClientRect();
                 if(r.width===0) return 'hidden';
                 // Measure against the VISIBLE brush stroke, not the frame box.
@@ -53,11 +57,14 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               // against the design's 27.9%/41.4%, dropping both arrows far too
               // low and running the yellow one into the play button. Every
               // left/top/width check passed throughout.
+              // Unrotated layout height. getBoundingClientRect() returns the
+              // AXIS-ALIGNED box of a rotated element, which for a -12.17deg
+              // lockup is far taller than the type itself -- 28% against a
+              // real 12.6%. offsetHeight ignores the transform.
               lockH:(()=>{const o={};
-                for(const [k,sel] of [['hear','ann-hear'],['more','ann-more']]){
-                  const el=s.querySelector(`img[src*="${sel}"]`); if(!el) continue;
-                  const r=el.getBoundingClientRect();
-                  if(r.height>0) o[k]=+(r.height/fr.height*100).toFixed(2);}
+                for(const [k,rx] of [['hear',/Hear Chris/],['more',/^You/]]){
+                  const el=anns.find(d=>rx.test(d.textContent.trim())); if(!el) continue;
+                  if(el.offsetHeight>0) o[k]=+(el.offsetHeight/fr.height*100).toFixed(2);}
                 return o;})(),
               // Play ring geometry, and whether the annotation lands on it.
               // It had been `inset-0 m-auto`, i.e. centred, which ignores the
@@ -67,7 +74,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               // (text ends y1565, ring starts y1600).
               play:(()=>{const el=s.querySelector('button'); if(!el) return null;
                 const r=el.getBoundingClientRect();
-                const h=s.querySelector('img[src*="ann-hear"]');
+                const h=anns.find(d=>/Hear Chris/.test(d.textContent));
                 const hr=h&&h.getBoundingClientRect();
                 return {left:+((r.left-fr.left)/fr.width*100).toFixed(2),
                         top:+((r.top-fr.top)/fr.height*100).toFixed(2),
@@ -103,14 +110,15 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
         ck('play ring at design size', Math.abs(m.play.w-8.05)<1.2, `${m.play.w}% vs 8.05%`);
         ck('annotation clear of the play ring', !m.play.hits, m.play.hits ? 'overlapping' : 'clear');
       }
-      // Design lockups: hear 517x195 -> 27.94% of the 698px frame; more
-      // 166x289 -> 41.40%. Sized from the .fig node tree.
+      // Text block heights against the design's TEXT node boxes (88 and 132
+      // on the 698px frame = 12.61% and 18.91%). The old lockup checks folded
+      // text and arrow into one box; they are separate elements now.
       if (m.lockH.hear !== undefined)
-        ck('"Hear Chris" lockup at design height', Math.abs(m.lockH.hear-27.94)<2.5,
-           `${m.lockH.hear}% vs 27.94%`);
+        ck('"Hear Chris" text at design height', Math.abs(m.lockH.hear-12.61)<4,
+           `${m.lockH.hear}% vs 12.61%`);
       if (m.lockH.more !== undefined)
-        ck('"You want more?" lockup at design height', Math.abs(m.lockH.more-41.40)<2.5,
-           `${m.lockH.more}% vs 41.40%`);
+        ck('"You want more?" text at design height', Math.abs(m.lockH.more-18.91)<5,
+           `${m.lockH.more}% vs 18.91%`);
       ck('frame aspect matches', Math.abs(m.aspect-1.644)<0.02, `${m.aspect}`);
       ck('both annotations visible', m.annVisible===2, `${m.annVisible}`);
       if (m.moreOutside && m.moreOutside !== 'hidden') {

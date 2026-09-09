@@ -224,6 +224,14 @@
 /* The design's video frame is 53.7% of a 2075px desktop artboard. Carried
    down to a phone that leaves a small box adrift in empty paper, so it takes
    the full column below the breakpoint and the design ratio above it. */
+/* The section-2 annotations are set in cqw so their type scales with the video
+   block, matching the design where 40px Ultra is a fixed share of the 1135px
+   frame. Without a container context cqw silently falls back and the type is
+   the wrong size at every breakpoint. */
+[data-regen-video-wrap] {
+  container-type: inline-size;
+}
+
 .regen-video {
   width: 100%;
   margin-top: 6%;

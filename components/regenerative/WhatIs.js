@@ -51,6 +51,10 @@ export function WhatIs() {
              desktop figure is the frame stroke's own 1114px on the 2075px
              artboard, read from the design file rather than a screenshot. */
           className="relative mx-auto regen-video"
+          /* containerType so the annotation type can be sized in cqw and track
+             the video block rather than the viewport -- the design's 40px type
+             is a fixed share of the 1135px frame. */
+          data-regen-video-wrap
         >
           <div className="relative" style={{ aspectRatio: "1.644", maxWidth: "100%" }}>
             {/* The still is inset behind the strokes, as in the design
@@ -133,34 +137,63 @@ export function WhatIs() {
               />
             </button>
 
-            {/* "Hear Chris talk" sits over the still, inside the frame: text at
-                x1025.9 y1477 plus its arrow (x1172..1315, y1543..1672), which
-                is 48.98% / 23.35% / 45.55% of the frame box. */}
-            <img
-              src="/images/regen/ann-hear.png"
-              alt="Hear Chris talk about regenerative"
+            {/* "Hear Chris talk" -- live type, not a bitmap.
+
+                The exported PNG clipped its own glyphs at the canvas edge, so
+                the text is set from the design's type spec instead: Ultra 40px
+                / 44px line height / 2px tracking, centred, rotated -12.17deg,
+                #F9A115. Ultra is already loaded for the headings. Geometry from
+                the .fig: text box x1026 y1477 517x88, arrow (Shape 4 copy 4)
+                x1172 y1543 143x129, both against the 1135x698 frame. */}
+            <div
               className="absolute hidden sm:block"
-              style={{ left: "48.98%", top: "23.35%", width: "45.55%", zIndex: 3 }}
+              aria-hidden="true"
+              style={{
+                left: "48.98%", top: "23.35%", whiteSpace: "nowrap",
+                transform: "rotate(-12.17deg)", transformOrigin: "top left",
+                fontFamily: "'Ultra', Rockwell, Georgia, serif",
+                fontSize: "3.53cqw", lineHeight: 1.1, letterSpacing: "0.05em",
+                color: "#F9A115", textAlign: "center", zIndex: 3,
+                pointerEvents: "none",
+              }}
+            >
+              Hear Chris talk<br />about regenerative
+            </div>
+            <img
+              src="/images/regen/arrow-hear.png"
+              alt=""
+              aria-hidden="true"
+              className="absolute hidden sm:block"
+              style={{ left: "61.85%", top: "32.81%", width: "12.60%", zIndex: 3, pointerEvents: "none" }}
             />
           </div>
 
-          {/* "You want more?" sits entirely on the paper, clear of the frame.
-              Geometry read from the .fig node tree, not a screenshot: the
-              Video Frame is at x470 w1135 on the 2075 artboard. The text NODE
-              starts at x1607.6, 2.6px past the frame's right edge, but that box
-              is padding around rotated glyphs -- the "Y" itself begins well
-              inside it. Measured off the client's own crop, the visible gap
-              between the painted stroke and the first glyph is ~41 design px,
-              3.6% of the frame, so the lockup sits at 103.6%. Using the node
-              box put the "Y" against the stroke. Its arrow (Shape 4 copy 2,
-              x1629..1726 y1946..2107) makes the lockup 14.63% wide and
-              41.4% tall. A sibling of the frame rather than a child, because
-              nested inside the frame's bounds clipped the arrow. */}
-          <img
-            src="/images/regen/ann-more.png"
-            alt="You want more?"
+          {/* "You want more?" -- live type for the same reason: the export
+              clipped the Y, w and m against its left edge. Same spec (Ultra
+              40/44, 2px tracking, -12.17deg) in #006088. It sits on the paper
+              clear of the frame; the gap is measured to the painted stroke, not
+              to the frame box, because the stroke is ragged and bulges widest
+              exactly where this sits. */}
+          <div
             className="absolute hidden sm:block"
-            style={{ left: "103.6%", top: "72.21%", width: "14.63%", zIndex: 4 }}
+            aria-hidden="true"
+            style={{
+              left: "103.6%", top: "72.21%", whiteSpace: "nowrap",
+              transform: "rotate(-12.17deg)", transformOrigin: "top left",
+              fontFamily: "'Ultra', Rockwell, Georgia, serif",
+              fontSize: "3.53cqw", lineHeight: 1.1, letterSpacing: "0.05em",
+              color: "#006088", textAlign: "center", zIndex: 4,
+              pointerEvents: "none",
+            }}
+          >
+            You<br />want<br />more?
+          </div>
+          <img
+            src="/images/regen/arrow-more.png"
+            alt=""
+            aria-hidden="true"
+            className="absolute hidden sm:block"
+            style={{ left: "105.5%", top: "90.54%", width: "8.55%", zIndex: 4, pointerEvents: "none" }}
           />
         </div>
       </div>
