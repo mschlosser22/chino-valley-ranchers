@@ -44,6 +44,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     console.log(`\n  --- ${label} (${w}px) ---`);
     ck('heading in Ultra', m.ff==='Ultra', m.ff);
     ck('heading in design red', m.colour==='rgb(176, 16, 20)', m.colour);
+    // Runs at EVERY breakpoint. The geometry block below is gated to 1440, so
+    // the phone had no width assertion of any kind -- which is how the video
+    // shipped at the desktop 53.7% ratio on a 390px screen, a small box adrift
+    // in empty paper. Below 768px it takes the full column.
+    if (w < 768)
+      ck('video fills the phone column', m.framePct > 80, `${m.framePct}% of viewport`);
     if(w===1440){
       ck('heading at design width', Math.abs(m.headPct-73.7)<1.5, `${m.headPct}% vs 73.7%`);
       // 53.7%: the design's own top frame stroke is 1114px wide on the 2075px

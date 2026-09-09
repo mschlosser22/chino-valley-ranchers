@@ -45,13 +45,12 @@ export function WhatIs() {
         {/* The frame, the still and both annotations share one positioning
             context so the annotations stay pinned to the video as it scales. */}
         <div
-          className="relative mx-auto"
-          /* The design's frame stroke is 1114px on the 2075px artboard =
-             53.69% of the section. The column carries 7% padding a side, so
-             that is 62.4% of what is left. Taken from the stroke artwork's own
-             pixel size, not off a screenshot -- measuring a scaled crop is
-             what produced a 79.5% reading and a far too large box. */
-          style={{ width: "min(62.4%, 985px)", marginTop: "4%" }}
+          /* Width lives in .regen-video: the design's 53.69% of the artboard
+             (62.4% of this padded column) above 768px, full width below, where
+             the desktop ratio leaves the video marooned in empty paper. The
+             desktop figure is the frame stroke's own 1114px on the 2075px
+             artboard, read from the design file rather than a screenshot. */
+          className="relative mx-auto regen-video"
         >
           <div className="relative" style={{ aspectRatio: "1.644", maxWidth: "100%" }}>
             <img
