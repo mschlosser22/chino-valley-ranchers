@@ -23,7 +23,11 @@ export function WhatIs() {
         backgroundRepeat: "repeat",
       }}
     >
-      <div className="mx-auto" style={{ maxWidth: 1600, padding: "0 7% 6%", overflow: "hidden" }}>
+      {/* overflow:hidden keeps the paper ground from scrolling the page
+          sideways, but it also clips whatever overhangs -- the "You want more?"
+          arrow hangs below the video frame by design. 8% bottom padding clears
+          its tail; at 6% the tip was cut off by 8px. */}
+      <div className="mx-auto" style={{ maxWidth: 1600, padding: "0 7% 8%", overflow: "hidden" }}>
         <h2
           className="text-center m-0 uppercase"
           style={{
@@ -106,26 +110,30 @@ export function WhatIs() {
               />
             </button>
 
-            {/* "Hear Chris talk" sits over the still, inside the frame. */}
+            {/* "Hear Chris talk" sits over the still, inside the frame: text at
+                x1025.9 y1477 plus its arrow (x1172..1315, y1543..1672), which
+                is 48.98% / 23.35% / 45.55% of the frame box. */}
             <img
               src="/images/regen/ann-hear.png"
               alt="Hear Chris talk about regenerative"
               className="absolute hidden sm:block"
-              style={{ left: "42.3%", top: "6.5%", width: "38.7%", zIndex: 3 }}
+              style={{ left: "48.93%", top: "20.78%", width: "46.91%", zIndex: 3 }}
             />
           </div>
 
-          {/* "You want more?" sits entirely on the paper, clear of the frame:
-              in the design it starts a small gap past the right edge (15px of
-              a 105px-wide block, so ~14% of its own width) and its arrow curves
-              down toward the grass band below. It is deliberately a sibling of
-              the frame rather than a child -- nested inside, the frame's bounds
-              clipped the arrow. */}
+          {/* "You want more?" sits entirely on the paper, clear of the frame.
+              Geometry read from the .fig node tree, not a screenshot: the
+              Video Frame is at x470 w1135 on the 2075 artboard, and the text
+              starts at x1607.6 -- 2.6px past the frame's right edge, i.e.
+              100.23% of the frame's width. Combined with its arrow (Shape 4
+              copy 2, x1629..1726 y1946..2107) the lockup is 14.63% wide and
+              41.4% tall. A sibling of the frame rather than a child, because
+              nested inside the frame's bounds clipped the arrow. */}
           <img
             src="/images/regen/ann-more.png"
             alt="You want more?"
             className="absolute hidden sm:block"
-            style={{ left: "100%", marginLeft: "1.5%", top: "44%", width: "10.8%", zIndex: 4 }}
+            style={{ left: "100.23%", top: "71.65%", width: "14.67%", zIndex: 4 }}
           />
         </div>
       </div>

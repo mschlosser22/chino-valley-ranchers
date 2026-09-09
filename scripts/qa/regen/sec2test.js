@@ -53,8 +53,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       ck('frame aspect matches', Math.abs(m.aspect-1.644)<0.02, `${m.aspect}`);
       ck('both annotations visible', m.annVisible===2, `${m.annVisible}`);
       if (m.moreOutside && m.moreOutside !== 'hidden') {
+        // The design's own gap is 2.6px at artboard scale (text x1607.6 vs
+        // frame right x1605.0), which lands near 1.5px at a 1440 viewport.
+        // The bound only has to catch the annotation drifting back INSIDE the
+        // frame -- an earlier `> 2` threshold failed the design's own value.
         ck('"You want more?" clear of the frame',
-           m.moreOutside.clear && m.moreOutside.gap > 2 && m.moreOutside.gap < 60,
+           m.moreOutside.clear && m.moreOutside.gap > 0 && m.moreOutside.gap < 60,
            `${m.moreOutside.gap}px past the right edge`);
       }
     } else {
