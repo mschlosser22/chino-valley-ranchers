@@ -72,6 +72,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
                   if(m<worst){worst=m;}
                 }
                 return +worst.toFixed(1);})(),
+              cardH: Math.round((s.querySelector('img[src*="card-next"]')||{getBoundingClientRect:()=>({height:0})}).getBoundingClientRect().height),
               // Each heading line must set on ONE line and sit on the design's
               // own centre. At the design's literal box width (21.25%) the
               // rendered face wrapped "THE NEXT" onto two lines, which then
@@ -126,7 +127,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     }
     ck('section does not clip the overhanging comb', !m.secClips);
     if(m.cardFit!==null && w>=768)
-      ck('nothing spills past the card edges', m.cardFit>0, `closest edge ${m.cardFit}px`);
+      // Not merely >0: the card's top edge is a TEAR that bites 4.91% of the
+      // card's height under the heading, so type has to clear the deepest
+      // point, not the average. A 2.3px inset passed a >0 check and still read
+      // as touching the border. 2.5% of the card height is the working margin.
+      ck('content clears the card edges', m.cardFit > m.cardH*0.025,
+         `closest edge ${m.cardFit}px, need >${(m.cardH*0.025).toFixed(1)}px`);
     if(w>=768){
       ck('"THE NEXT" sets on one line', m.headLines[0].lines===1, `${m.headLines[0].lines} lines`);
       ck('"Generation" sets on one line', m.headLines[1].lines===1, `${m.headLines[1].lines} lines`);

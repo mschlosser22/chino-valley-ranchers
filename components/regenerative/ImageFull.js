@@ -81,7 +81,7 @@ export function ImageFull() {
                  the card centre -- because they are unpositioned line boxes,
                  not rendered bounds. Measured off the design render the
                  heading, script line and body all share one centre. */
-              left: "50.83%", top: "38.60%", width: "30%", zIndex: 3,
+              left: "50.83%", top: "40.36%", width: "30%", zIndex: 3,
               whiteSpace: "nowrap",
               fontFamily: "'Ultra', Rockwell, Georgia, serif",
               color: "#00608B",
@@ -95,7 +95,7 @@ export function ImageFull() {
           <span
             className="absolute block text-center"
             style={{
-              left: "47.03%", top: "46.10%", width: "37.61%", zIndex: 3,
+              left: "47.03%", top: "46.89%", width: "37.61%", zIndex: 3,
               whiteSpace: "nowrap",
               fontFamily: "nexa-rust-script-shad-2, cursive",
               color: "#F9A115",
@@ -109,25 +109,30 @@ export function ImageFull() {
         </h2>
 
         {/* Rule + hen + rule, at the design's own coordinates. */}
-        <span aria-hidden="true" className="absolute" style={{ left: "53.07%", top: "57.01%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
+        <span aria-hidden="true" className="absolute" style={{ left: "53.07%", top: "59.28%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
         <img
           src="/images/regen/hen-divider.png"
           alt=""
           aria-hidden="true"
           className="absolute"
-          style={{ left: "63.67%", top: "53.19%", width: "4.34%", zIndex: 3 }}
+          style={{ left: "63.67%", top: "55.41%", width: "4.34%", zIndex: 3 }}
         />
-        <span aria-hidden="true" className="absolute" style={{ left: "69.26%", top: "57.01%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
+        <span aria-hidden="true" className="absolute" style={{ left: "69.26%", top: "59.28%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
 
         <p
           className="absolute m-0 text-center"
           style={{
-            left: "49.88%", top: "60.16%", width: "31.90%", zIndex: 3,
+            left: "49.88%", top: "62.38%", width: "31.90%", zIndex: 3,
             fontFamily: "'Lato', system-ui, sans-serif",
             color: "#000000",
             fontSize: "1.574cqw",
             letterSpacing: "0.0199em",
-            lineHeight: 1.5,
+            /* 1.42 rather than the design's 1.5: at 1.5 the seven lines are
+               50.6% of the card's height, which leaves the divider group
+               crowding "Generation" above and the copy 2% from the bottom
+               edge. The tighter leading buys the margin without touching the
+               type size. */
+            lineHeight: 1.42,
           }}
         >
           We believe regenerative agriculture is one of many promising
