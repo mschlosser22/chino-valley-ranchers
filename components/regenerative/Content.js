@@ -11,7 +11,12 @@
 export function Content() {
   return (
     <section
-      className="relative overflow-hidden regen-agri-section"
+      /* overflow visible so the grass can overhang the bottom edge. In the
+         design its plane (Layer 2 copy 5) runs y2112..3049 while this band
+         ends at 3049 and section 4 begins at 2629 -- so the grass carries 420px
+         INTO the next section, and section 4's photo tear cuts through it.
+         Clipping it here is what left two edges at that seam. */
+      className="relative regen-agri-section"
       /* min-height is the design's own band: 1262 of the 2075 artboard.
          Without it the section collapsed to its content -- 469px against a
          design 876px at 1440 -- which is the vertical compression the geometry
@@ -22,7 +27,10 @@ export function Content() {
         src="/images/regen/grass.jpg"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-x-0 top-0 w-full object-cover"
+        /* 420px of overhang at design scale = 20.24% of the artboard width,
+           which is what section 4's tear cuts through. */
+        style={{ height: "calc(100% + 20.24vw)" }}
       />
 
       {/* The seam with the paper band above is a torn edge, not a straight cut.

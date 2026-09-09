@@ -49,22 +49,26 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               photoTorn: hen.complete && hen.naturalWidth>0,
               henCount: s.querySelectorAll('img[src*="hen"]').length,
               gapBelowPhoto:+(sr.bottom-hb.bottom).toFixed(1),
-              // The photo's top rows are transparent by design. Without grass
-              // behind them the page's white shows through the rip -- the
-              // white border the client reported. The grass must be present,
-              // reach the section's top edge, and sit BELOW the photo so the
-              // rooster's comb (which falls inside the torn band) reads in
-              // front of it rather than behind.
-              tearBacking:(()=>{const g=s.querySelector('img[src*="grass"]');
-                // Absent is a FAILURE, not a skip: returning null here made the
-                // check disappear when the grass was deleted, which is exactly
-                // the defect it exists to catch.
-                if(!g) return {present:false,atTop:false,behindPhoto:false};
+              // The photo's top rows are transparent by design, so something
+              // must paint behind them or the page's white shows through the
+              // rip. That backing is section 3's grass, which overhangs into
+              // this band exactly as the design does (its plane runs y2112..3049
+              // while this band starts at 2629). Checking for a grass element
+              // INSIDE this section was wrong -- there is none, and there
+              // should not be: a second image here produced a second tear.
+              tearBacking:(()=>{const prev=s.previousElementSibling;
+                if(!prev) return {overhangs:false,px:0,prevClips:true};
+                const g=prev.querySelector('img[src*="grass"]');
+                if(!g) return {overhangs:false,px:0,prevClips:true};
                 const gr=g.getBoundingClientRect();
-                const ph=s.querySelector('img[src*="hens-next"]');
-                return {present:gr.height>0,
-                        atTop:gr.top<=sr.top+1,
-                        behindPhoto:+getComputedStyle(g).zIndex < +getComputedStyle(ph).zIndex};})(),
+                const clips=getComputedStyle(prev).overflow==='hidden';
+                // getBoundingClientRect reports the UNCLIPPED box, so an image
+                // hidden by overflow still measures as overhanging. What paints
+                // is the box minus any clip, which is what the eye sees.
+                const painted = clips ? Math.min(gr.bottom, prev.getBoundingClientRect().bottom) : gr.bottom;
+                return {overhangs: painted > sr.top + 1,
+                        px:+(painted-sr.top).toFixed(1),
+                        prevClips: clips};})(),
               sectionRatio:+(sr.height/innerWidth).toFixed(3),
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
@@ -77,10 +81,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     // cut-out that was drawing the same bird twice.
     ck('no duplicate hen', m.henCount===2, `${m.henCount} hen images`);
     ck('photo leaves no gap at the bottom', m.gapBelowPhoto<=1, `${m.gapBelowPhoto}px`);
-    if(m.tearBacking){
-      ck('grass backs the tear (no white border)',
-         m.tearBacking.present && m.tearBacking.atTop);
-      ck('comb reads in front of the grass', m.tearBacking.behindPhoto);
+    if(w>=768){
+      // The overhang is what fills the rip; without it the seam goes white.
+      ck('grass overhangs into the tear (no white border)',
+         m.tearBacking.overhangs, `${m.tearBacking.px}px past the seam`);
+      ck('section above does not clip its overhang', !m.tearBacking.prevClips);
     }
     ck('rooster is not clipped by the section edge', !m.henClipped, `hen top ${m.henTopVsSection}px inside`);
     if(w>=768) ck('band at design height', Math.abs(m.sectionRatio-0.657)<0.02, `${m.sectionRatio} vs 0.657`);

@@ -19,26 +19,6 @@ export function ImageFull() {
       /* The design's band: 1363 of the 2075 artboard. */
       style={{ minHeight: "65.69vw", containerType: "inline-size" }}
     >
-      {/* Grass behind the tear. The photo's top rows are transparent by design
-          and the sections abut exactly at the seam, so those rows were showing
-          the page's white -- the design has grass running right up to the rip
-          with no gap. It sits BELOW the photo (z-index 0 against 1) so the
-          rooster's comb, which falls inside the torn band, reads in front of
-          the grass rather than behind it. */}
-      <img
-        src="/images/regen/grass.jpg"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 w-full"
-        style={{
-          height: "8vw",
-          objectFit: "cover",
-          objectPosition: "bottom",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      />
-
       {/* One photograph, torn at the top in its own alpha -- exactly the
           design's "Background" layer cropped to this band. It already contains
           the foreground hen with its head crossing the rip, so there is no
