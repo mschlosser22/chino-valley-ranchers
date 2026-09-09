@@ -105,12 +105,16 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     }
     ck('section does not clip the overhanging comb', !m.secClips);
     if(w>=768){
-      // Design centres: THE NEXT 69.90%, Generation 69.23%.
       ck('"THE NEXT" sets on one line', m.headLines[0].lines===1, `${m.headLines[0].lines} lines`);
       ck('"Generation" sets on one line', m.headLines[1].lines===1, `${m.headLines[1].lines} lines`);
-      ck('heading lines on the design centre',
-         Math.abs(m.headLines[0].centre-69.90)<1 && Math.abs(m.headLines[1].centre-69.23)<1,
-         `${m.headLines[0].centre}% / ${m.headLines[1].centre}%`);
+      // Centred on the CARD (34.80% + 62.07%/2 = 65.835%), not on the .fig's
+      // text-node boxes. Those boxes are unpositioned line boxes -- the two
+      // rules sit -72 and +264 either side of the card centre -- so centring
+      // on them put the whole block 114px right of where the design renders
+      // it. Measured off the design render, all three lines share one centre.
+      ck('heading lines centred on the card',
+         Math.abs(m.headLines[0].centre-65.835)<1.5 && Math.abs(m.headLines[1].centre-65.835)<1.5,
+         `${m.headLines[0].centre}% / ${m.headLines[1].centre}% vs 65.84%`);
     }
     if(w>=768)
       ck('comb overhangs into the grass above', m.henOverhang>10, `${m.henOverhang}px above the seam`);

@@ -75,7 +75,13 @@ export function ImageFull() {
                  21.25% "THE NEXT" wrapped onto two lines and collided with
                  "Generation". Centred on the design's box rather than boxed by
                  it: same centre (69.90%), room to set on one line. */
-              left: "54.90%", top: "37.27%", width: "30%", zIndex: 3,
+              /* Centred on the CARD (34.80% + 62.07%/2 = 65.835%), not on the
+                 text node's own box. The .fig's boxes for this block are
+                 inconsistent -- its two rules sit -72 and +264 either side of
+                 the card centre -- because they are unpositioned line boxes,
+                 not rendered bounds. Measured off the design render the
+                 heading, script line and body all share one centre. */
+              left: "50.83%", top: "37.27%", width: "30%", zIndex: 3,
               whiteSpace: "nowrap",
               fontFamily: "'Ultra', Rockwell, Georgia, serif",
               color: "#00608B",
@@ -89,7 +95,7 @@ export function ImageFull() {
           <span
             className="absolute block text-center"
             style={{
-              left: "50.42%", top: "45.34%", width: "37.61%", zIndex: 3,
+              left: "47.03%", top: "45.34%", width: "37.61%", zIndex: 3,
               whiteSpace: "nowrap",
               fontFamily: "nexa-rust-script-shad-2, cursive",
               color: "#F9A115",
@@ -103,20 +109,20 @@ export function ImageFull() {
         </h2>
 
         {/* Rule + hen + rule, at the design's own coordinates. */}
-        <span aria-hidden="true" className="absolute" style={{ left: "57.83%", top: "57.01%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
+        <span aria-hidden="true" className="absolute" style={{ left: "53.07%", top: "57.01%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
         <img
           src="/images/regen/hen-divider.png"
           alt=""
           aria-hidden="true"
           className="absolute"
-          style={{ left: "68.43%", top: "53.19%", width: "4.34%", zIndex: 3 }}
+          style={{ left: "63.67%", top: "53.19%", width: "4.34%", zIndex: 3 }}
         />
-        <span aria-hidden="true" className="absolute" style={{ left: "74.02%", top: "57.01%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
+        <span aria-hidden="true" className="absolute" style={{ left: "69.26%", top: "57.01%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
 
         <p
           className="absolute m-0 text-center"
           style={{
-            left: "53.83%", top: "60.16%", width: "31.90%", zIndex: 3,
+            left: "49.88%", top: "60.16%", width: "31.90%", zIndex: 3,
             fontFamily: "'Lato', system-ui, sans-serif",
             color: "#000000",
             fontSize: "1.574cqw",
