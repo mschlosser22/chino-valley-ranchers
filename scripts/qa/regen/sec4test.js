@@ -49,6 +49,22 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               photoTorn: hen.complete && hen.naturalWidth>0,
               henCount: s.querySelectorAll('img[src*="hen"]').length,
               gapBelowPhoto:+(sr.bottom-hb.bottom).toFixed(1),
+              // The photo's top rows are transparent by design. Without grass
+              // behind them the page's white shows through the rip -- the
+              // white border the client reported. The grass must be present,
+              // reach the section's top edge, and sit BELOW the photo so the
+              // rooster's comb (which falls inside the torn band) reads in
+              // front of it rather than behind.
+              tearBacking:(()=>{const g=s.querySelector('img[src*="grass"]');
+                // Absent is a FAILURE, not a skip: returning null here made the
+                // check disappear when the grass was deleted, which is exactly
+                // the defect it exists to catch.
+                if(!g) return {present:false,atTop:false,behindPhoto:false};
+                const gr=g.getBoundingClientRect();
+                const ph=s.querySelector('img[src*="hens-next"]');
+                return {present:gr.height>0,
+                        atTop:gr.top<=sr.top+1,
+                        behindPhoto:+getComputedStyle(g).zIndex < +getComputedStyle(ph).zIndex};})(),
               sectionRatio:+(sr.height/innerWidth).toFixed(3),
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
@@ -61,6 +77,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     // cut-out that was drawing the same bird twice.
     ck('no duplicate hen', m.henCount===2, `${m.henCount} hen images`);
     ck('photo leaves no gap at the bottom', m.gapBelowPhoto<=1, `${m.gapBelowPhoto}px`);
+    if(m.tearBacking){
+      ck('grass backs the tear (no white border)',
+         m.tearBacking.present && m.tearBacking.atTop);
+      ck('comb reads in front of the grass', m.tearBacking.behindPhoto);
+    }
     ck('rooster is not clipped by the section edge', !m.henClipped, `hen top ${m.henTopVsSection}px inside`);
     if(w>=768) ck('band at design height', Math.abs(m.sectionRatio-0.657)<0.02, `${m.sectionRatio} vs 0.657`);
     ck('"Generation" in the script face', m.script==='nexa-rust-script-shad-2', m.script);
