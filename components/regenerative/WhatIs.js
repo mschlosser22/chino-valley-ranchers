@@ -53,10 +53,16 @@ export function WhatIs() {
           className="relative mx-auto regen-video"
         >
           <div className="relative" style={{ aspectRatio: "1.644", maxWidth: "100%" }}>
+            {/* The still is inset behind the strokes, as in the design
+                (Rectangle 8: x484 y1325 1108x672 inside the 1135x698 frame).
+                Filling the frame edge-to-edge leaves slivers of photo showing
+                past the brush strokes, since the strokes are ragged and sit
+                inside the box rather than straddling it. */}
             <img
               src="/images/regen/video-still.jpg"
               alt="Chris talking about regenerative farming"
-              className="w-full h-full object-cover block"
+              className="absolute object-cover block"
+              style={{ left: "1.23%", top: "1.58%", width: "97.62%", height: "96.28%" }}
             />
 
             {/* The frame is four brush strokes lifted from the design file, not
@@ -65,11 +71,18 @@ export function WhatIs() {
                 a UI chrome box against hand-drawn artwork either side. Each
                 strip is stretched along its own axis only, so the grain of the
                 stroke never squashes. */}
+            {/* Each stroke's own box, from the design (Layers 43/44/44 copy/45
+                against the 1135x698 frame). They sit ENTIRELY INSIDE the frame:
+                the right stroke ends at x1605, which is the frame's own right
+                edge. They had been anchored to the edges with translate(±45%),
+                which pushed each one half its width outside -- 7.4px past the
+                frame at 1440 -- and the "You want more?" text, correctly placed
+                3px past the frame edge, landed on top of the overhang. */}
             {[
-              { src: "frame-top",    style: { left: 0, right: 0, top: 0,    height: "5.5%", transform: "translateY(-45%)" } },
-              { src: "frame-bottom", style: { left: 0, right: 0, bottom: 0, height: "4.0%", transform: "translateY(45%)" } },
-              { src: "frame-left",   style: { top: 0, bottom: 0, left: 0,   width: "2.4%",  transform: "translateX(-45%)" } },
-              { src: "frame-right",  style: { top: 0, bottom: 0, right: 0,  width: "2.4%",  transform: "translateX(45%)" } },
+              { src: "frame-top",    left: "0.44%",  top: "0.00%",  width: "98.68%", height: "3.87%" },
+              { src: "frame-bottom", left: "0.18%",  top: "94.70%", width: "98.15%", height: "5.30%" },
+              { src: "frame-left",   left: "0.00%",  top: "1.86%",  width: "2.56%",  height: "97.28%" },
+              { src: "frame-right",  left: "97.44%", top: "1.86%",  width: "2.56%",  height: "97.28%" },
             ].map((e) => (
               <img
                 key={e.src}
@@ -77,7 +90,8 @@ export function WhatIs() {
                 alt=""
                 aria-hidden="true"
                 className="absolute"
-                style={{ ...e.style, width: e.style.width || "auto", height: e.style.height || "auto", maxWidth: "none", zIndex: 2, pointerEvents: "none" }}
+                style={{ left: e.left, top: e.top, width: e.width, height: e.height,
+                         maxWidth: "none", zIndex: 2, pointerEvents: "none" }}
               />
             ))}
 

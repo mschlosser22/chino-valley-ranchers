@@ -35,8 +35,17 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               moreOutside:(()=>{const m=s.querySelector('img[src*="ann-more"]');
                 if(!m) return null; const r=m.getBoundingClientRect();
                 if(r.width===0) return 'hidden';
+                // Measure against the VISIBLE brush stroke, not the frame box.
+                // The old check used fr.right and passed at +1.6px while the
+                // stroke -- then translated half its width outside the box --
+                // reached 7.4px further and sat under the text. What the eye
+                // sees is the stroke; the box is invisible.
+                const rs=s.querySelector('img[src*="frame-right"]');
+                const sr=rs&&rs.getBoundingClientRect();
                 return {gap:+(r.left-fr.right).toFixed(1),
                         clear:r.left>=fr.right,
+                        strokeGap: sr? +(r.left-sr.right).toFixed(1) : null,
+                        clearsStroke: sr? r.left>=sr.right : null,
                         onPaper:r.left>fr.right&&r.top<fr.bottom};})(),
               // Lockup HEIGHT as a share of the frame. Position was right and
               // size was wrong: the assets carried longer arrow tails than the
@@ -109,6 +118,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
         ck('"You want more?" clear of the frame',
            m.moreOutside.clear && m.moreOutside.gap > 0 && m.moreOutside.gap < 60,
            `${m.moreOutside.gap}px past the right edge`);
+        // The one that matters visually: it must not touch the painted border.
+        if (m.moreOutside.clearsStroke !== null)
+          ck('"You want more?" clear of the painted border',
+             m.moreOutside.clearsStroke,
+             `${m.moreOutside.strokeGap}px past the stroke`);
       }
     } else {
       ck('annotations hidden on phones', m.annVisible===0, `${m.annVisible}`);
