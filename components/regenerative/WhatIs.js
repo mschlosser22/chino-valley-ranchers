@@ -19,7 +19,7 @@ export function WhatIs() {
       style={{
         background: "#E9E5DE",
         backgroundImage: "url(/images/regen/paper-texture.png)",
-        backgroundSize: "400px 400px",
+        backgroundSize: "12.34vw 12.34vw",
         backgroundRepeat: "repeat",
       }}
     >
@@ -42,24 +42,41 @@ export function WhatIs() {
             context so the annotations stay pinned to the video as it scales. */}
         <div
           className="relative mx-auto"
-          style={{ width: "min(63.2%, 985px)", marginTop: "4%" }}
+          /* The design's frame stroke is 1114px on the 2075px artboard =
+             53.69% of the section. The column carries 7% padding a side, so
+             that is 62.4% of what is left. Taken from the stroke artwork's own
+             pixel size, not off a screenshot -- measuring a scaled crop is
+             what produced a 79.5% reading and a far too large box. */
+          style={{ width: "min(62.4%, 985px)", marginTop: "4%" }}
         >
-          <div
-            className="relative"
-            style={{
-              aspectRatio: "1.644",
-              // The design's frame is a rough painted edge. A flat teal border
-              // is the honest stand-in until that artwork is separated out --
-              // it is drawn as part of the composite, not its own layer.
-              border: "0.9vw solid #006088",
-              maxWidth: "100%",
-            }}
-          >
+          <div className="relative" style={{ aspectRatio: "1.644", maxWidth: "100%" }}>
             <img
               src="/images/regen/video-still.jpg"
               alt="Chris talking about regenerative farming"
               className="w-full h-full object-cover block"
             />
+
+            {/* The frame is four brush strokes lifted from the design file, not
+                a CSS border. The design's edge is a rough painted stroke with
+                broken texture and a ragged profile -- a flat rectangle read as
+                a UI chrome box against hand-drawn artwork either side. Each
+                strip is stretched along its own axis only, so the grain of the
+                stroke never squashes. */}
+            {[
+              { src: "frame-top",    style: { left: 0, right: 0, top: 0,    height: "5.5%", transform: "translateY(-45%)" } },
+              { src: "frame-bottom", style: { left: 0, right: 0, bottom: 0, height: "4.0%", transform: "translateY(45%)" } },
+              { src: "frame-left",   style: { top: 0, bottom: 0, left: 0,   width: "2.4%",  transform: "translateX(-45%)" } },
+              { src: "frame-right",  style: { top: 0, bottom: 0, right: 0,  width: "2.4%",  transform: "translateX(45%)" } },
+            ].map((e) => (
+              <img
+                key={e.src}
+                src={`/images/regen/${e.src}.png`}
+                alt=""
+                aria-hidden="true"
+                className="absolute"
+                style={{ ...e.style, width: e.style.width || "auto", height: e.style.height || "auto", maxWidth: "none", zIndex: 2, pointerEvents: "none" }}
+              />
+            ))}
 
             {/* Play button: a real control, not a picture of one. */}
             <button
@@ -73,6 +90,7 @@ export function WhatIs() {
                 background: "rgba(255,255,255,0.16)",
                 border: "0.35vw solid #FFFFFF",
                 cursor: "pointer",
+                zIndex: 3,
               }}
             >
               <span
@@ -87,25 +105,22 @@ export function WhatIs() {
                 }}
               />
             </button>
+
+            {/* Both annotations sit INSIDE the frame in the design, measured
+                against the frame box rather than the outer column. */}
+            <img
+              src="/images/regen/ann-hear.png"
+              alt="Hear Chris talk about regenerative"
+              className="absolute hidden sm:block"
+              style={{ left: "42.3%", top: "6.5%", width: "38.7%", zIndex: 3 }}
+            />
+            <img
+              src="/images/regen/ann-more.png"
+              alt="You want more?"
+              className="absolute hidden sm:block"
+              style={{ left: "77.0%", top: "56.8%", width: "10.8%", zIndex: 3 }}
+            />
           </div>
-
-          {/* "Hear Chris talk about regenerative" — sits over the still's
-              upper right, its arrow curving down to the play button. */}
-          <img
-            src="/images/regen/ann-hear.png"
-            alt="Hear Chris talk about regenerative"
-            className="absolute hidden sm:block"
-            style={{ left: "48%", top: "6%", width: "46%" }}
-          />
-
-          {/* "You want more?" — outside the frame to the right, its arrow
-              running down toward the next section. */}
-          <img
-            src="/images/regen/ann-more.png"
-            alt="You want more?"
-            className="absolute hidden sm:block"
-            style={{ left: "88%", top: "56%", width: "12%" }}
-          />
         </div>
       </div>
     </section>

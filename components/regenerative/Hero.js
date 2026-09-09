@@ -240,7 +240,7 @@ export function RegenerativeHero() {
         fill={{
           background: "#E9E5DE",
         backgroundImage: "url(/images/regen/paper-texture.png)",
-        backgroundSize: "400px 400px",
+        backgroundSize: "12.34vw 12.34vw",
         backgroundRepeat: "repeat",
         }}
       />
@@ -260,7 +260,7 @@ export function RegenerativeHero() {
           height: "12.8vw",
           background: "#E9E5DE",
         backgroundImage: "url(/images/regen/paper-texture.png)",
-        backgroundSize: "400px 400px",
+        backgroundSize: "12.34vw 12.34vw",
         backgroundRepeat: "repeat",
         }}
       />
