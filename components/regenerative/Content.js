@@ -56,6 +56,11 @@ export function Content() {
           a padded flow layout, which pinned the card to the top of the section
           and sized it to its text -- the design puts it 34% down the band at a
           fixed 64.77% x 54.12%. */}
+      {/* The whole block shifts up as one unit rather than each element being
+          renumbered, so the design's internal spacing is preserved exactly.
+          The design leaves a 238px gap between the tear and the card at 1440;
+          the client asked for about half that, so the stage moves up 13.58
+          points of the band -- half the gap as a share of section height. */}
       <div className="regen-agri-stage" style={{ zIndex: 2 }}>
 
         {/* The card is the design's own artwork (1344x683, torn alpha edges).

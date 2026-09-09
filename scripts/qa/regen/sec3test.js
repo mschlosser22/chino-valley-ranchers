@@ -17,6 +17,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       // The card is its own artwork now, not the heading's padded parent --
       // that parent is the full-width absolute wrapper, which measured 100%.
       const card=s.querySelector('img[src*="card-agri"]').getBoundingClientRect();
+      const secr=s.getBoundingClientRect();
       const signLink=s.querySelector('a[href="/products"]');
       const sign=s.querySelector('img[src*="sign-purchase"]');
       const sr=sign.getBoundingClientRect();
@@ -36,6 +37,18 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               // 4.5px body type -- and every width check still passed. Also
               // check the copy has a ground behind it: stacked over bare grass
               // it was unreadable.
+              // The stage carries a translateY on desktop to halve the gap
+              // below the tear. Applied unscoped it also moved the phone's
+              // stacked layout 117px above its own section -- content outside
+              // its section, which no width or font check would notice.
+              // On desktop the stage is deliberately lifted to halve the gap
+              // under the tear, and it overhangs the section's top edge -- the
+              // grass behind it is what shows, which is correct. On phones the
+              // stage IS the content, so lifting it puts copy over the section
+              // above. Only the phone case is a fault.
+              stageAbove:(()=>{const st=s.querySelector('.regen-agri-stage');
+                if(!st) return null;
+                return +(secr.top-st.getBoundingClientRect().top).toFixed(1);})(),
               bodyPx:parseFloat(getComputedStyle(s.querySelector('p')).fontSize),
               copyGround:(()=>{const el=s.querySelector('p');
                 const bg=getComputedStyle(el).backgroundColor;
@@ -52,6 +65,8 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       ck('sign at design width', Math.abs(m.signPct-24.2)<1.5, `${m.signPct}% vs 24.2%`);
       ck('sign aspect matches', Math.abs(m.signAspect-1.39)<0.05, `${m.signAspect}`);
     }
+    if(m.stageAbove!==null && w<768)
+      ck('stacked content stays inside its section', m.stageAbove<=1, `${m.stageAbove}px above`);
     ck('body copy is readable', m.bodyPx>=13, `${m.bodyPx}px`);
     if(w<768) ck('copy has a ground behind it on phones', m.copyGround);
     ck('sign is a real link to /products', m.isLink);
