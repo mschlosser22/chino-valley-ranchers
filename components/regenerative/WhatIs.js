@@ -106,21 +106,27 @@ export function WhatIs() {
               />
             </button>
 
-            {/* Both annotations sit INSIDE the frame in the design, measured
-                against the frame box rather than the outer column. */}
+            {/* "Hear Chris talk" sits over the still, inside the frame. */}
             <img
               src="/images/regen/ann-hear.png"
               alt="Hear Chris talk about regenerative"
               className="absolute hidden sm:block"
               style={{ left: "42.3%", top: "6.5%", width: "38.7%", zIndex: 3 }}
             />
-            <img
-              src="/images/regen/ann-more.png"
-              alt="You want more?"
-              className="absolute hidden sm:block"
-              style={{ left: "77.0%", top: "56.8%", width: "10.8%", zIndex: 3 }}
-            />
           </div>
+
+          {/* "You want more?" sits entirely on the paper, clear of the frame:
+              in the design it starts a small gap past the right edge (15px of
+              a 105px-wide block, so ~14% of its own width) and its arrow curves
+              down toward the grass band below. It is deliberately a sibling of
+              the frame rather than a child -- nested inside, the frame's bounds
+              clipped the arrow. */}
+          <img
+            src="/images/regen/ann-more.png"
+            alt="You want more?"
+            className="absolute hidden sm:block"
+            style={{ left: "100%", marginLeft: "1.5%", top: "44%", width: "10.8%", zIndex: 4 }}
+          />
         </div>
       </div>
     </section>

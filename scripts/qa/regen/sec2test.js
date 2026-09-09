@@ -27,6 +27,17 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               stillOK:still.complete&&still.naturalWidth>0,
               anns:anns.length, annOK:anns.every(a=>a.complete&&a.naturalWidth>0),
               annVisible:anns.filter(a=>a.getBoundingClientRect().width>0).length,
+              // "You want more?" sits on the paper OUTSIDE the frame in the
+              // design, with a small gap past the right edge. Assert the
+              // relationship, not a coordinate -- it was wrong three ways
+              // (clipped inside, then straddling, then hidden behind the
+              // border) and each wrong version still passed a width check.
+              moreOutside:(()=>{const m=s.querySelector('img[src*="ann-more"]');
+                if(!m) return null; const r=m.getBoundingClientRect();
+                if(r.width===0) return 'hidden';
+                return {gap:+(r.left-fr.right).toFixed(1),
+                        clear:r.left>=fr.right,
+                        onPaper:r.left>fr.right&&r.top<fr.bottom};})(),
               btn:!!btn, btnLabel:btn&&btn.getAttribute('aria-label'),
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
@@ -41,6 +52,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       ck('video frame at design width', Math.abs(m.framePct-53.7)<1.5, `${m.framePct}% vs 53.7%`);
       ck('frame aspect matches', Math.abs(m.aspect-1.644)<0.02, `${m.aspect}`);
       ck('both annotations visible', m.annVisible===2, `${m.annVisible}`);
+      if (m.moreOutside && m.moreOutside !== 'hidden') {
+        ck('"You want more?" clear of the frame',
+           m.moreOutside.clear && m.moreOutside.gap > 2 && m.moreOutside.gap < 60,
+           `${m.moreOutside.gap}px past the right edge`);
+      }
     } else {
       ck('annotations hidden on phones', m.annVisible===0, `${m.annVisible}`);
     }
