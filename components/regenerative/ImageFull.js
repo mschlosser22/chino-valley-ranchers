@@ -19,38 +19,24 @@ export function ImageFull() {
       /* The design's band: 1363 of the 2075 artboard. */
       style={{ minHeight: "65.69vw", containerType: "inline-size" }}
     >
-      {/* The seam is a torn edge in the PHOTO, not a paper strip laid over it.
-          In the design Layer 53 sits inside "Clipping - Mask group" under
-          "Chicken BG", so its ragged alpha masks the chicken photograph and
-          the grass band above shows through the rip. Masking the image
-          reproduces that; painting a paper band across the top did not. */}
+      {/* One photograph, torn at the top in its own alpha -- exactly the
+          design's "Background" layer cropped to this band. It already contains
+          the foreground hen with its head crossing the rip, so there is no
+          separate cut-out to composite: drawing hen-next.webp over this was
+          duplicating the bird that is already in the picture. */}
       <img
-        src="/images/regen/pasture.jpg"
+        src="/images/regen/hens-next.webp"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{
-          WebkitMaskImage: "url(/images/regen/tear-next.png)",
-          maskImage: "url(/images/regen/tear-next.png)",
-          WebkitMaskSize: "100% 100%",
-          maskSize: "100% 100%",
-          WebkitMaskRepeat: "no-repeat",
-          maskRepeat: "no-repeat",
-        }}
+        /* Pinned to the top so its torn edge lands on the seam, and at least
+           the band's height so it never leaves a gap at the bottom. The crop
+           is 2094x1192 against a 2075x1363 band, so it is scaled up slightly
+           rather than letterboxed. */
+        className="absolute inset-x-0 top-0 w-full"
+        style={{ minHeight: "100%", objectFit: "cover", objectPosition: "top" }}
       />
 
       <div className="regen-next-stage" style={{ zIndex: 2 }}>
-        {/* Hen cut-out. In the design it sits 24.43% down the band, entirely
-            inside it -- it was previously placed high enough to be clipped by
-            the section's top edge, which cut the rooster's head off. */}
-        <img
-          src="/images/regen/hen-next.webp"
-          alt=""
-          aria-hidden="true"
-          className="absolute"
-          style={{ left: "10.80%", top: "24.43%", width: "47.90%", zIndex: 2 }}
-        />
-
         {/* Torn card, from the design's own artwork (Layer 2 copy 9). */}
         <img
           src="/images/regen/card-next.png"

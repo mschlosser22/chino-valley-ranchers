@@ -270,7 +270,6 @@
   .regen-next-stage p  { padding: 0 7% 8%; font-size: 3.9vw !important; }
   .regen-next-stage h2 span:first-child { font-size: 7.4vw !important; }
   .regen-next-stage h2 span:last-child  { font-size: 8.6vw !important; }
-  .regen-next-stage img[src*="hen-next"] { width: 78% !important; margin: 0 auto 4%; display: block; }
   .regen-next-stage img[src*="hen-divider"] { width: 12% !important; margin: 3% auto; display: block; }
   .regen-next-stage span[aria-hidden] { display: none; }
 }
