@@ -14,106 +14,109 @@
    approximated. */
 export function ImageFull() {
   return (
-    <section className="relative overflow-hidden">
+    <section
+      className="relative overflow-hidden regen-next-section"
+      /* The design's band: 1363 of the 2075 artboard. */
+      style={{ minHeight: "65.69vw", containerType: "inline-size" }}
+    >
+      {/* The seam is a torn edge in the PHOTO, not a paper strip laid over it.
+          In the design Layer 53 sits inside "Clipping - Mask group" under
+          "Chicken BG", so its ragged alpha masks the chicken photograph and
+          the grass band above shows through the rip. Masking the image
+          reproduces that; painting a paper band across the top did not. */}
       <img
         src="/images/regen/pasture.jpg"
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
+        style={{
+          WebkitMaskImage: "url(/images/regen/tear-next.png)",
+          maskImage: "url(/images/regen/tear-next.png)",
+          WebkitMaskSize: "100% 100%",
+          maskSize: "100% 100%",
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+        }}
       />
 
-      <div
-        className="relative mx-auto"
-        style={{ maxWidth: 1600, padding: "5% 4% 5%" }}
-      >
-        <div className="relative flex justify-end">
-          {/* Torn card, right-aligned as in the design. */}
-          <div
-            className="relative"
+      <div className="regen-next-stage" style={{ zIndex: 2 }}>
+        {/* Hen cut-out. In the design it sits 24.43% down the band, entirely
+            inside it -- it was previously placed high enough to be clipped by
+            the section's top edge, which cut the rooster's head off. */}
+        <img
+          src="/images/regen/hen-next.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute"
+          style={{ left: "10.80%", top: "24.43%", width: "47.90%", zIndex: 2 }}
+        />
+
+        {/* Torn card, from the design's own artwork (Layer 2 copy 9). */}
+        <img
+          src="/images/regen/card-next.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute"
+          style={{ left: "34.80%", top: "37.93%", width: "62.07%", zIndex: 1 }}
+        />
+
+        <h2 className="absolute m-0" style={{ left: "53.83%", top: "37.27%", width: "31.90%", zIndex: 3 }}>
+          {/* Ultra, not DIN Condensed -- read from the text node. */}
+          <span
+            className="block uppercase text-center"
             style={{
-              width: "57%",
-              backgroundImage: "url(/images/regen/card-torn.png)",
-              backgroundSize: "100% 100%",
-              padding: "4.5% 5% 5%",
+              fontFamily: "'Ultra', Rockwell, Georgia, serif",
+              color: "#00608B",
+              fontSize: "3.314cqw",
+              letterSpacing: "0.0824em",
+              lineHeight: 1.121,
             }}
           >
-            <h2 className="m-0 text-center">
-              <span
-                className="block uppercase"
-                style={{
-                  fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
-                  fontWeight: 700,
-                  color: "#006088",
-                  fontSize: "clamp(30px, 6.25vw, 108px)",
-                  letterSpacing: "0.02em",
-                  lineHeight: 1,
-                }}
-              >
-                The Next
-              </span>{" "}
-              <span
-                className="block"
-                style={{
-                  fontFamily: "nexa-rust-script-shad-2, cursive",
-                  color: "#F8A014",
-                  fontSize: "clamp(34px, 6.39vw, 111px)",
-                  lineHeight: 1,
-                  marginTop: "-0.14em",
-                }}
-              >
-                Generation
-              </span>
-            </h2>
+            The Next
+          </span>
+          <span
+            className="block text-center"
+            style={{
+              fontFamily: "nexa-rust-script-shad-2, cursive",
+              color: "#F9A115",
+              fontSize: "5.590cqw",
+              lineHeight: 0.964,
+              letterSpacing: "0.0135em",
+              marginTop: "-0.06em",
+            }}
+          >
+            Generation
+          </span>
+        </h2>
 
-            {/* Rule + hen + rule, as drawn. The rules are borders on the
-                flex children so they always meet the hen exactly. */}
-            <div
-              className="flex items-center justify-center"
-              style={{ gap: "3%", margin: "3% 0 4%" }}
-            >
-              <span
-                className="block"
-                style={{ flex: 1, height: 2, background: "#2B2B2B", maxWidth: "28%" }}
-              />
-              <img
-                src="/images/regen/hen-divider.png"
-                alt=""
-                aria-hidden="true"
-                style={{ width: "7.5%" }}
-              />
-              <span
-                className="block"
-                style={{ flex: 1, height: 2, background: "#2B2B2B", maxWidth: "28%" }}
-              />
-            </div>
+        {/* Rule + hen + rule, at the design's own coordinates. */}
+        <span aria-hidden="true" className="absolute" style={{ left: "57.83%", top: "57.01%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
+        <img
+          src="/images/regen/hen-divider.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute"
+          style={{ left: "68.43%", top: "53.19%", width: "4.34%", zIndex: 3 }}
+        />
+        <span aria-hidden="true" className="absolute" style={{ left: "74.02%", top: "57.01%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
 
-            <p
-              className="m-0 text-center"
-              style={{
-                fontFamily: "'Lato', system-ui, sans-serif",
-                color: "#2B2B2B",
-                fontSize: "clamp(14px, 1.42vw, 25px)",
-                lineHeight: 1.6,
-              }}
-            >
-              We believe regenerative agriculture is one of many promising
-              approaches shaping the future of farming. By working in harmony
-              with the land and incorporating thoughtful farming practices, it
-              offers another opportunity to support the well-being of our birds
-              while contributing to a healthier agricultural system.
-            </p>
-          </div>
-
-          {/* Hen cut-out, overlapping the card's left edge. Absolute so it can
-              overhang without pushing the card around. */}
-          <img
-            src="/images/regen/hen-large.webp"
-            alt=""
-            aria-hidden="true"
-            className="absolute"
-            style={{ left: "2%", bottom: "-5%", width: "46%", zIndex: 1 }}
-          />
-        </div>
+        <p
+          className="absolute m-0 text-center"
+          style={{
+            left: "53.83%", top: "60.16%", width: "31.90%", zIndex: 3,
+            fontFamily: "'Lato', system-ui, sans-serif",
+            color: "#000000",
+            fontSize: "1.574cqw",
+            letterSpacing: "0.0199em",
+            lineHeight: 1.5,
+          }}
+        >
+          We believe regenerative agriculture is one of many promising
+          approaches shaping the future of farming. By working in harmony
+          with the land and incorporating thoughtful farming practices, it
+          offers another opportunity to support the well-being of our birds
+          while contributing to a healthier agricultural system.
+        </p>
       </div>
     </section>
   );

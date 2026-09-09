@@ -243,6 +243,38 @@
   transform: translateY(-20.38%);
 }
 
+/* Section 4's stage: the design's absolute coordinates on desktop, a stacked
+   block on phones, same split as section 3. */
+.regen-next-stage {
+  position: absolute;
+  inset: 0;
+}
+
+@media (max-width: 767px) {
+  .regen-next-section { min-height: 0 !important; }
+  .regen-next-stage {
+    position: relative;
+    display: block;
+    padding: 8% 7% 10%;
+    z-index: 2;
+  }
+  .regen-next-stage > * {
+    position: relative !important;
+    left: auto !important; top: auto !important; width: auto !important;
+    max-width: 100%;
+  }
+  .regen-next-stage img[src*="card-next"] { display: none; }
+  .regen-next-stage h2,
+  .regen-next-stage p { background: #F4F2EE; margin: 0; }
+  .regen-next-stage h2 { padding: 7% 7% 2%; }
+  .regen-next-stage p  { padding: 0 7% 8%; font-size: 3.9vw !important; }
+  .regen-next-stage h2 span:first-child { font-size: 7.4vw !important; }
+  .regen-next-stage h2 span:last-child  { font-size: 8.6vw !important; }
+  .regen-next-stage img[src*="hen-next"] { width: 78% !important; margin: 0 auto 4%; display: block; }
+  .regen-next-stage img[src*="hen-divider"] { width: 12% !important; margin: 3% auto; display: block; }
+  .regen-next-stage span[aria-hidden] { display: none; }
+}
+
 /* Section 3 is laid out from the design's absolute coordinates, which is right
    at desktop but collapses on a phone: the band's own aspect gives a 237px-tall
    section and cqw type lands at 4.5px. Below 768px it becomes an ordinary

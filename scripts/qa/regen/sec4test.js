@@ -17,8 +17,13 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       const s=h.closest('section');
       const sp=[...h.querySelectorAll('span')];
       const mk=el=>{const rg=document.createRange();rg.selectNodeContents(el);return rg.getBoundingClientRect().width;};
-      const card=h.parentElement.getBoundingClientRect();
-      const hen=s.querySelector('img[src*="hen-large"]');
+      // The card is its own artwork now, and the hen is the design's own
+      // cut-out at design resolution -- h.parentElement is the full-width
+      // absolute stage, and hen-large.webp was replaced by hen-next.webp.
+      const sr=s.getBoundingClientRect();
+      const cardEl=s.querySelector('img[src*="card-next"]');
+      const card=cardEl.getBoundingClientRect();
+      const hen=s.querySelector('img[src*="hen-next"]');
       const hb=hen.getBoundingClientRect();
       return {din:getComputedStyle(sp[0]).fontFamily.split(',')[0].replace(/["']/g,''),
               script:getComputedStyle(sp[1]).fontFamily.split(',')[0].replace(/["']/g,''),
@@ -31,17 +36,37 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               henOverlaps: hb.right>card.left,
               divider:!!s.querySelector('img[src*="hen-divider"]'),
               pasture:!!s.querySelector('img[src*="pasture"]'),
+              // The rooster's head must not be cut by the section's own top
+              // edge: in the design the hen sits 24.43% down the band, and
+              // the tear is a mask on the PHOTO, not a paper strip over it.
+              henTopVsSection:+(hb.top-sr.top).toFixed(1),
+              henClipped: hb.top < sr.top - 1,
+              photoMasked:(()=>{const im=s.querySelector('img[src*="pasture"]');
+                if(!im) return false;
+                const cs=getComputedStyle(im);
+                return /tear-next/.test(cs.webkitMaskImage||cs.maskImage||'');})(),
+              sectionRatio:+(sr.height/innerWidth).toFixed(3),
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
     console.log(`\n  --- ${label} (${w}px) ---`);
-    ck('"THE NEXT" in DIN Condensed', m.din==='din-condensed', m.din);
+    // The design sets this in Ultra, not DIN Condensed -- read from the text
+    // node, same correction as section 3's AGRICULTURE.
+    ck('"THE NEXT" in Ultra', m.din==='Ultra', m.din);
+    ck('the seam is a tear in the photo', m.photoMasked);
+    ck('rooster is not clipped by the section edge', !m.henClipped, `hen top ${m.henTopVsSection}px inside`);
+    if(w>=768) ck('band at design height', Math.abs(m.sectionRatio-0.657)<0.02, `${m.sectionRatio} vs 0.657`);
     ck('"Generation" in the script face', m.script==='nexa-rust-script-shad-2', m.script);
-    ck('teal sampled from the design', m.tealCol==='rgb(0, 96, 136)', m.tealCol);
-    ck('orange sampled from the design', m.orangeCol==='rgb(248, 160, 20)', m.orangeCol);
+    // Colours from the .fig fillPaints: #00608B and #F9A115.
+    ck('teal from the design', m.tealCol==='rgb(0, 96, 139)', m.tealCol);
+    ck('orange from the design', m.orangeCol==='rgb(249, 161, 21)', m.orangeCol);
     if(w===1440){
-      ck('card at design width', Math.abs(m.cardPct-52.5)<1.5, `${m.cardPct}% vs 52.5%`);
-      ck('"THE NEXT" at design width', Math.abs(m.nextPct-20.9)<1.5, `${m.nextPct}% vs 20.9%`);
-      ck('"Generation" at design width', Math.abs(m.genPct-28.0)<1.5, `${m.genPct}% vs 28.0%`);
+      // From the .fig, not a screenshot: card (Layer 2 copy 9) 1288 of 2075
+      // = 62.07%; THE NEXT 441 = 21.25%; Generation 573 = 27.61%. The word
+      // widths are ink measurements, so they sit a little under the design's
+      // text-node boxes, which carry side bearings.
+      ck('card at design width', Math.abs(m.cardPct-62.07)<1.5, `${m.cardPct}% vs 62.07%`);
+      ck('"THE NEXT" at design width', Math.abs(m.nextPct-21.25)<2, `${m.nextPct}% vs 21.25%`);
+      ck('"Generation" at design width', Math.abs(m.genPct-27.61)<3, `${m.genPct}% vs 27.61%`);
       ck('hen overlaps the card', m.henOverlaps);
     }
     ck('hen cut-out loads', m.henOK);
