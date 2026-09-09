@@ -15,9 +15,14 @@
 export function ImageFull() {
   return (
     <section
-      className="relative overflow-hidden regen-next-section"
+      /* overflow visible and above section 3 in the stack: the rooster's comb
+         reaches 13px past the grass in the design (its top is y3036 against a
+         grass bottom of y3049), so the head paints OVER the grass. With
+         overflow:hidden the section clipped its own photo flat at the seam no
+         matter what z-index it carried. */
+      className="relative regen-next-section"
       /* The design's band: 1363 of the 2075 artboard. */
-      style={{ minHeight: "65.69vw", containerType: "inline-size" }}
+      style={{ minHeight: "65.69vw", containerType: "inline-size", zIndex: 1 }}
     >
       {/* One photograph, torn at the top in its own alpha -- exactly the
           design's "Background" layer cropped to this band. It already contains
@@ -32,8 +37,19 @@ export function ImageFull() {
            the band's height so it never leaves a gap at the bottom. The crop
            is 2094x1192 against a 2075x1363 band, so it is scaled up slightly
            rather than letterboxed. */
-        className="absolute inset-x-0 top-0 w-full"
-        style={{ minHeight: "100%", objectFit: "cover", objectPosition: "top", zIndex: 1 }}
+        /* Lifted so the comb clears the tear. The asset's rip runs rows 0..71
+           and the comb starts at row 59, so only ~10px of head sits above the
+           deepest part of the tear at 1440 -- pulling the photo up by the
+           tear's own depth lets that show over section 3's grass instead of
+           being cut flat at the seam. */
+        className="absolute inset-x-0 w-full"
+        style={{
+          top: "-6%",
+          minHeight: "106%",
+          objectFit: "cover",
+          objectPosition: "top",
+          zIndex: 1,
+        }}
       />
 
       <div className="regen-next-stage" style={{ zIndex: 2 }}>

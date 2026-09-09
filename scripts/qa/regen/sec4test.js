@@ -42,8 +42,15 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               // The rooster's head must not be cut by the section's own top
               // edge: in the design the hen sits 24.43% down the band, and
               // the tear is a mask on the PHOTO, not a paper strip over it.
+              // The photo now deliberately overhangs the section's top so the
+              // comb can paint over section 3's grass -- in the design the
+              // comb's top is y3036 against a grass bottom of y3049, a 13px
+              // overlap. So a NEGATIVE offset here is correct and the old
+              // "must not sit above the section" check was backwards.
               henTopVsSection:+(hb.top-sr.top).toFixed(1),
-              henClipped: hb.top < sr.top - 1,
+              henOverhang:+(sr.top-hb.top).toFixed(1),
+              // What matters is that the section does not clip it away.
+              secClips: getComputedStyle(s).overflow==='hidden',
               // The tear is baked into the photo's alpha, not applied as a
               // CSS mask, so check the asset carries transparency at its top.
               photoTorn: hen.complete && hen.naturalWidth>0,
@@ -87,7 +94,9 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
          m.tearBacking.overhangs, `${m.tearBacking.px}px past the seam`);
       ck('section above does not clip its overhang', !m.tearBacking.prevClips);
     }
-    ck('rooster is not clipped by the section edge', !m.henClipped, `hen top ${m.henTopVsSection}px inside`);
+    ck('section does not clip the overhanging comb', !m.secClips);
+    if(w>=768)
+      ck('comb overhangs into the grass above', m.henOverhang>10, `${m.henOverhang}px above the seam`);
     if(w>=768) ck('band at design height', Math.abs(m.sectionRatio-0.657)<0.02, `${m.sectionRatio} vs 0.657`);
     ck('"Generation" in the script face', m.script==='nexa-rust-script-shad-2', m.script);
     // Colours from the .fig fillPaints: #00608B and #F9A115.
