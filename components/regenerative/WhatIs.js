@@ -146,17 +146,21 @@ export function WhatIs() {
 
           {/* "You want more?" sits entirely on the paper, clear of the frame.
               Geometry read from the .fig node tree, not a screenshot: the
-              Video Frame is at x470 w1135 on the 2075 artboard, and the text
-              starts at x1607.6 -- 2.6px past the frame's right edge, i.e.
-              100.23% of the frame's width. Combined with its arrow (Shape 4
-              copy 2, x1629..1726 y1946..2107) the lockup is 14.63% wide and
+              Video Frame is at x470 w1135 on the 2075 artboard. The text NODE
+              starts at x1607.6, 2.6px past the frame's right edge, but that box
+              is padding around rotated glyphs -- the "Y" itself begins well
+              inside it. Measured off the client's own crop, the visible gap
+              between the painted stroke and the first glyph is ~41 design px,
+              3.6% of the frame, so the lockup sits at 103.6%. Using the node
+              box put the "Y" against the stroke. Its arrow (Shape 4 copy 2,
+              x1629..1726 y1946..2107) makes the lockup 14.63% wide and
               41.4% tall. A sibling of the frame rather than a child, because
               nested inside the frame's bounds clipped the arrow. */}
           <img
             src="/images/regen/ann-more.png"
             alt="You want more?"
             className="absolute hidden sm:block"
-            style={{ left: "100.23%", top: "72.21%", width: "14.63%", zIndex: 4 }}
+            style={{ left: "103.6%", top: "72.21%", width: "14.63%", zIndex: 4 }}
           />
         </div>
       </div>
