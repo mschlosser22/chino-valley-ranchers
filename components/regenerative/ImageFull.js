@@ -62,11 +62,21 @@ export function ImageFull() {
           style={{ left: "34.80%", top: "37.93%", width: "62.07%", zIndex: 1 }}
         />
 
-        <h2 className="absolute m-0" style={{ left: "53.83%", top: "37.27%", width: "31.90%", zIndex: 3 }}>
-          {/* Ultra, not DIN Condensed -- read from the text node. */}
+        {/* Each line carries its own position from the .fig -- THE NEXT at
+            x1230 w441, Generation at x1150 w573 -- rather than sharing one box.
+            Sharing the body copy's left edge put the whole lockup 57px right of
+            the card's centre and pushed the heading over the card's top edge. */}
+        <h2 className="m-0">
           <span
-            className="block uppercase text-center"
+            className="absolute block uppercase text-center"
             style={{
+              /* The design's box is 441px wide (21.25%), but that is the text
+                 node's own measure -- the rendered face needs more, and at
+                 21.25% "THE NEXT" wrapped onto two lines and collided with
+                 "Generation". Centred on the design's box rather than boxed by
+                 it: same centre (69.90%), room to set on one line. */
+              left: "54.90%", top: "37.27%", width: "30%", zIndex: 3,
+              whiteSpace: "nowrap",
               fontFamily: "'Ultra', Rockwell, Georgia, serif",
               color: "#00608B",
               fontSize: "3.314cqw",
@@ -77,14 +87,15 @@ export function ImageFull() {
             The Next
           </span>
           <span
-            className="block text-center"
+            className="absolute block text-center"
             style={{
+              left: "50.42%", top: "45.34%", width: "37.61%", zIndex: 3,
+              whiteSpace: "nowrap",
               fontFamily: "nexa-rust-script-shad-2, cursive",
               color: "#F9A115",
               fontSize: "5.590cqw",
               lineHeight: 0.964,
               letterSpacing: "0.0135em",
-              marginTop: "-0.06em",
             }}
           >
             Generation

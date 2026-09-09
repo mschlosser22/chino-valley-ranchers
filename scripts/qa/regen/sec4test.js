@@ -51,6 +51,15 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               henOverhang:+(sr.top-hb.top).toFixed(1),
               // What matters is that the section does not clip it away.
               secClips: getComputedStyle(s).overflow==='hidden',
+              // Each heading line must set on ONE line and sit on the design's
+              // own centre. At the design's literal box width (21.25%) the
+              // rendered face wrapped "THE NEXT" onto two lines, which then
+              // collided with "Generation".
+              headLines:(()=>{const sp=[...h.querySelectorAll('span')];
+                return sp.map(e=>{const r=e.getBoundingClientRect();
+                  const fs=parseFloat(getComputedStyle(e).fontSize);
+                  return {lines:Math.round(r.height/(fs*1.12)),
+                          centre:+((r.left+r.width/2-sr.left)/sr.width*100).toFixed(2)};});})(),
               // The tear is baked into the photo's alpha, not applied as a
               // CSS mask, so check the asset carries transparency at its top.
               photoTorn: hen.complete && hen.naturalWidth>0,
@@ -95,6 +104,14 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       ck('section above does not clip its overhang', !m.tearBacking.prevClips);
     }
     ck('section does not clip the overhanging comb', !m.secClips);
+    if(w>=768){
+      // Design centres: THE NEXT 69.90%, Generation 69.23%.
+      ck('"THE NEXT" sets on one line', m.headLines[0].lines===1, `${m.headLines[0].lines} lines`);
+      ck('"Generation" sets on one line', m.headLines[1].lines===1, `${m.headLines[1].lines} lines`);
+      ck('heading lines on the design centre',
+         Math.abs(m.headLines[0].centre-69.90)<1 && Math.abs(m.headLines[1].centre-69.23)<1,
+         `${m.headLines[0].centre}% / ${m.headLines[1].centre}%`);
+    }
     if(w>=768)
       ck('comb overhangs into the grass above', m.henOverhang>10, `${m.henOverhang}px above the seam`);
     if(w>=768) ck('band at design height', Math.abs(m.sectionRatio-0.657)<0.02, `${m.sectionRatio} vs 0.657`);
