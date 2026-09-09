@@ -81,13 +81,23 @@ export function WhatIs() {
               />
             ))}
 
-            {/* Play button: a real control, not a picture of one. */}
+            {/* Play button: a real control, not a picture of one.
+
+                Placed from the design (Layer 77: x994 y1600 167x167 on the
+                1135x698 frame). It had been `inset-0 m-auto`, which centres it
+                and ignores the design entirely -- that put it at 43.5%/39.31%
+                and 13% wide against the design's 47.90%/58.55% at 8.05%, so it
+                sat high and oversized and the "Hear Chris" text landed on top
+                of it. In the design the two do not touch: the text ends at
+                y1565 and the ring starts at y1600. */}
             <button
               type="button"
               aria-label="Play the video about regenerative farming"
-              className="absolute inset-0 m-auto flex items-center justify-center"
+              className="absolute flex items-center justify-center"
               style={{
-                width: "13%",
+                left: "47.90%",
+                top: "58.55%",
+                width: "8.05%",
                 aspectRatio: "1",
                 borderRadius: "9999px",
                 background: "rgba(255,255,255,0.16)",

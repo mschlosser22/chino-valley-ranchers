@@ -50,6 +50,21 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
                   const r=el.getBoundingClientRect();
                   if(r.height>0) o[k]=+(r.height/fr.height*100).toFixed(2);}
                 return o;})(),
+              // Play ring geometry, and whether the annotation lands on it.
+              // It had been `inset-0 m-auto`, i.e. centred, which ignores the
+              // design entirely: 43.5%/39.31% at 13% wide against the design's
+              // 47.90%/58.55% at 8.05%. Sitting high and oversized, it collided
+              // with the "Hear Chris" text -- in the design the two never touch
+              // (text ends y1565, ring starts y1600).
+              play:(()=>{const el=s.querySelector('button'); if(!el) return null;
+                const r=el.getBoundingClientRect();
+                const h=s.querySelector('img[src*="ann-hear"]');
+                const hr=h&&h.getBoundingClientRect();
+                return {left:+((r.left-fr.left)/fr.width*100).toFixed(2),
+                        top:+((r.top-fr.top)/fr.height*100).toFixed(2),
+                        w:+(r.width/fr.width*100).toFixed(2),
+                        hits: hr && hr.width>0 ? !(hr.right<r.left||hr.left>r.right||
+                                                   hr.bottom<r.top||hr.top>r.bottom) : false};})(),
               btn:!!btn, btnLabel:btn&&btn.getAttribute('aria-label'),
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
@@ -68,6 +83,14 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       // artboard. Measured from the stroke artwork, which is exact, rather
       // than off a scaled screenshot.
       ck('video frame at design width', Math.abs(m.framePct-53.7)<1.5, `${m.framePct}% vs 53.7%`);
+      // Layer 77: x994 y1600 167x167 on the 1135x698 frame.
+      if (m.play) {
+        ck('play ring at design position',
+           Math.abs(m.play.left-47.90)<1.5 && Math.abs(m.play.top-58.55)<2,
+           `${m.play.left}%/${m.play.top}% vs 47.90%/58.55%`);
+        ck('play ring at design size', Math.abs(m.play.w-8.05)<1.2, `${m.play.w}% vs 8.05%`);
+        ck('annotation clear of the play ring', !m.play.hits, m.play.hits ? 'overlapping' : 'clear');
+      }
       // Design lockups: hear 517x195 -> 27.94% of the 698px frame; more
       // 166x289 -> 41.40%. Sized from the .fig node tree.
       if (m.lockH.hear !== undefined)
