@@ -14,15 +14,66 @@
 
    It was a single flat JPEG before, which meant no alt text per photo and no
    way for the row to reflow on a phone. */
-const BAND = "clamp(120px, 13.5vw, 280px)";
+/* The frame (Layer 59, 2075x570) carries its tears at rows 49 and 492, so the
+   photographs occupy only the 77.7% between them. The section is the frame's
+   full 27.47vw; the photo band is that clear middle, and the frame is placed
+   so its torn strips land on the band's top and bottom edges rather than
+   across the pictures. */
+const FRAME = 27.47;                 // vw, Layer 59's 570 of the 2075 artboard
+const CLEAR = 0.7772;                // share of the frame between its tears
+const BAND = `clamp(150px, ${(FRAME * CLEAR).toFixed(2)}vw, 443px)`;
+const TEAR_TOP = FRAME * 49 / 570;    // vw, depth of the frame's top tear
+const TEAR_BOT = FRAME * 78 / 570;    // vw, depth of its bottom tear
 const GAP = 5;
 
 export function ImageGrid() {
   return (
-    <section className="relative bg-white">
+    /* The section is the frame's full height; the grid is inset by each tear's
+       depth so the torn strips land on the photographs' top and bottom edges.
+       Sizing the section to the grid instead left the frame hanging 54px below
+       it, with the next section's burlap showing through the pictures. */
+    /* No background colour: the frame is 95% transparent, and bg-white filled
+       its torn rows with white so the row read as floating in a white gap. In
+       the design those rows show the grass above and the burlap below through
+       the tear, which is what the neighbouring sections supply once nothing
+       paints over them. */
+    <section
+      className="relative"
+      /* Pulled up by the top tear's depth so the frame's transparent rows sit
+         over the grass above rather than the page's white -- the same overlap
+         the grass/photo seam needs in sections 3 and 4. */
+      /* zIndex so the frame's bottom tear paints OVER the next section's
+         burlap: without it the burlap starts at the section boundary and
+         covers the photographs' lower edge instead of tearing away from it. */
+      style={{
+        height: `${FRAME}vw`,
+        minHeight: 150,
+        marginTop: `-${TEAR_TOP.toFixed(2)}vw`,
+        zIndex: 1,
+      }}
+    >
+      {/* The design frames this row in torn white paper: Layer 59 is a
+          2075x570 plane that is 95% transparent, carrying a ragged top edge
+          (rows 1..49) and bottom edge (rows 492..568) in pure white. It is
+          drawn OVER the photographs, so the row reads as a strip of pictures
+          torn out of the page rather than a hard-edged band. */}
+      <img
+        src="/images/regen/row-frame.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-x-0 w-full"
+        /* Sized to the SECTION, not to vw: below the phone breakpoint the
+           section hits its 150px floor while a vw height keeps shrinking, and
+           the two come apart. */
+        style={{ top: 0, height: "100%", zIndex: 2, pointerEvents: "none" }}
+      />
       <div
-        className="grid"
+        className="grid absolute inset-x-0"
         style={{
+          /* percentages of the section so the insets track the frame at every
+             width, including where the section is on its minimum height */
+          top: `${(100 * 49 / 570).toFixed(2)}%`,
+          bottom: `${(100 * 78 / 570).toFixed(2)}%`,
           // Deliberately unequal, measured off the design by finding the white
           // gutters between the photos: 25.2 / 13.3 / 14.4 / 47.1. Equal
           // columns would read as a different composition.
