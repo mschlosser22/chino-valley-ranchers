@@ -60,10 +60,14 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
         // With the burlap on top -- it comes later in the DOM -- the seam went
         // flat, and every DOM check still passed because the elements were all
         // present and correctly placed.
+        // The burlap section is masked by the design's own torn shape ("Bg
+        // shape", 2340x1262, its alpha carrying both tears) rather than
+        // tiling a texture under a separate TornEdge strip. Two elements meant
+        // two edges meeting somewhere, which is what produced the extra lines.
         burlapTornEdge:(()=>{const nx=row.nextElementSibling;
           if(!nx) return false;
           const cs=getComputedStyle(nx);
-          return /torn-edge|edge-white-top/.test(cs.webkitMaskImage||cs.maskImage||'');})(),
+          return /burlap-shape/.test(cs.webkitMaskImage||cs.maskImage||'');})(),
         frameOverBurlap:(()=>{const f=row.querySelector('img[src*="row-frame"]');
           const nx=row.nextElementSibling;
           if(!f||!nx) return null;
@@ -115,7 +119,7 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
     // shallow to read at this scale -- 76px of wander in a 570px asset is 13%
     // of its height against TornEdge's 44% -- so it rendered as a ripple, not
     // the deep curve the rest of the page has.
-    ck('burlap tears over the row', m.burlapTornEdge, m.burlapTornEdge ? '' : 'no TornEdge');
+    ck('burlap is masked by the design\'s torn shape', m.burlapTornEdge, m.burlapTornEdge ? '' : 'not masked');
 
     ck('every photograph has alt text', m.allAlt);
     ck('no horizontal overflow', !m.overflow);

@@ -15,29 +15,26 @@ import { TornEdge } from './TornEdge';
 export function Certified() {
   return (
     <>
-      {/* The burlap tears over the photo row, using the same TornEdge every
-          other seam on this page uses. The frame's own bottom tear is too
-          shallow to read at this scale -- 76px of wander in a 570px asset is
-          13% of its height, against this component's 44% -- so it wanders as a
-          ripple rather than the deep curve the rest of the page has. The frame
-          no longer reserves a bottom band (see ImageGrid), so the two tears do
-          not stack. */}
-      <TornEdge
-        fill={{
-          backgroundImage: "url(/images/regen/burlap.jpg)",
-          backgroundSize: "620px auto",
-          backgroundRepeat: "repeat",
-        }}
-      />
+      {/* The design does NOT tile a texture and lay a TornEdge over it. Its
+          burlap is "Bg shape" -- a single 2340x1262 image whose alpha carries
+          both tears, top and bottom -- with the weave masked through it. One
+          shape, one pair of edges.
+
+          Building it as texture + TornEdge is what produced the extra lines at
+          this seam: the strip and the section tiled the weave from their own
+          origins, and the strip's own bottom met the section's top, so every
+          arrangement left a join somewhere. Masking the section itself removes
+          the join entirely, because there is only one element. */}
       <section
-      className="relative"
-      /* Pulled up so the burlap sits BEHIND the photo row's bottom tear, as it
-         does in the design: its plane starts at y4275, 155px above where the
-         photographs end at y4430, and the frame's transparent rows reveal it.
-         Starting at the section boundary instead left those rows showing the
-         page's white -- the band at this seam. 78/570 of the frame is its
-         bottom tear's depth; the frame is 27.47vw. */
+      className="relative regen-burlap"
+      /* Pulled up by the shape's top tear so the rip falls over the photo row
+         rather than below it. */
       style={{
+        /* The mask is stretched to the section's own height, so its tear falls
+           6.8% (86 of 1262) down from the section's top. Pulling up by that
+           much puts the rip on the photographs' bottom edge rather than below
+           it. Measured against the rendered height, not the frame's. */
+        marginTop: "-3.59vw",
         backgroundImage: "url(/images/regen/burlap.jpg)",
         // Tiled, not covered. At `cover` the weave scales up with the
         // viewport and reads as coarse sacking that the body copy has to
@@ -45,6 +42,19 @@ export function Certified() {
         // the thread at roughly the drawn scale.
         backgroundSize: "620px auto",
         backgroundRepeat: "repeat",
+        WebkitMaskImage: "url(/images/regen/burlap-shape.png)",
+        maskImage: "url(/images/regen/burlap-shape.png)",
+        /* The shape is 2340 wide at x-1 on the 2075 artboard, so it overhangs
+           the page by 12.7% on the right. Rendered at 100% its straight right
+           edge fell inside the viewport and cut the burlap off. Scaled to
+           112.77% and offset left, that edge stays off-screen where the design
+           has it. */
+        WebkitMaskSize: "112.77% 100%",
+        maskSize: "112.77% 100%",
+        WebkitMaskPosition: "-0.05% 0",
+        maskPosition: "-0.05% 0",
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
       }}
     >
       <div
