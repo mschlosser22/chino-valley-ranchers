@@ -15,17 +15,22 @@ import { TornEdge } from './TornEdge';
 export function Certified() {
   return (
     <>
-      {/* The burlap tears over the photo row above it, as drawn. */}
-      <TornEdge
-        fill={{
-          backgroundImage: "url(/images/regen/burlap.jpg)",
-          backgroundSize: "620px auto",
-          backgroundRepeat: "repeat",
-        }}
-      />
+      {/* No TornEdge here. The design has ONE tear at this seam -- the photo
+          row's own frame (Layer 59), whose transparent bottom rows the burlap
+          shows through. Its burlap plane starts at y4275, 155px above where
+          the photographs end, so it is already behind that tear. A TornEdge
+          added a second tear in the same 63px and its white painted over the
+          burlap, which is the white line at the seam. */}
       <section
       className="relative"
+      /* Pulled up so the burlap sits BEHIND the photo row's bottom tear, as it
+         does in the design: its plane starts at y4275, 155px above where the
+         photographs end at y4430, and the frame's transparent rows reveal it.
+         Starting at the section boundary instead left those rows showing the
+         page's white -- the band at this seam. 78/570 of the frame is its
+         bottom tear's depth; the frame is 27.47vw. */
       style={{
+        marginTop: `-${(27.47 * 78 / 570).toFixed(2)}vw`,
         backgroundImage: "url(/images/regen/burlap.jpg)",
         // Tiled, not covered. At `cover` the weave scales up with the
         // viewport and reads as coarse sacking that the body copy has to
@@ -37,7 +42,11 @@ export function Certified() {
     >
       <div
         className="relative mx-auto"
-        style={{ maxWidth: 1500, padding: "5% 5% 6%" }}
+        /* Extra top padding to clear the photo row's tear, which now overlaps
+           this section by 3.76vw so the burlap shows through it. Without it the
+           heading sat 72px from the section's top and read as crowding the
+           seam. */
+        style={{ maxWidth: 1500, padding: "9% 5% 6%" }}
       >
         <h2
           className="m-0 text-center uppercase"

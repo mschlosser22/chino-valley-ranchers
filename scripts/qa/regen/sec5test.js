@@ -55,6 +55,16 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
         // every structural check passed, because the elements were all
         // present and correctly placed.
         rowStacking: getComputedStyle(row).zIndex,
+        // The burlap must sit BEHIND the frame's bottom tear, not start below
+        // it: its design plane begins 155px above where the photographs end.
+        // If the next section starts at the row's bottom edge instead, the
+        // frame's transparent rows show the page's white -- a band that every
+        // structural check passed, because nothing compared the two.
+        burlapBehindTear:(()=>{const nx=row.nextElementSibling;
+          if(!nx) return null;
+          const sec = nx.tagName==='SECTION' ? nx : nx.nextElementSibling;
+          if(!sec) return null;
+          return Math.round(rr.bottom - sec.getBoundingClientRect().top);})(),
         // The hen close-up was a pre-cropped 882x870 square dropped into a
         // portrait slot, so `cover` cut the comb off and filled the frame with
         // head. The design's own source is 1306x734 -- a wide frame with room
@@ -82,6 +92,9 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
     ck('all three windows use one photograph', m.windowsShareShot);
     ck('no grid gap over the frame gutters', m.gridGap === '0px' || m.gridGap === 'normal', `${m.gridGap}`);
     ck('row does not sit above the next section', m.rowStacking === 'auto', `z-index ${m.rowStacking}`);
+    if (m.burlapBehindTear !== null)
+      ck('burlap sits behind the frame\'s bottom tear',
+         m.burlapBehindTear > 10, `${m.burlapBehindTear}px overlap`);
 
     ck('every photograph has alt text', m.allAlt);
     ck('no horizontal overflow', !m.overflow);
