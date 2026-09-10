@@ -24,6 +24,9 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
       return {
         ratio: +(rr.height / innerWidth).toFixed(3),
         frame: !!frame,
+        // The frame must be the design's full 570 rows: both rules present.
+        // At 492 or 480 its bottom rule is gone and the verticals run loose.
+        frameWhole: frame ? frame.naturalHeight === 570 : false,
         frameCoversSection: fr ? Math.abs(fr.height - rr.height) < 2 : false,
         // the grid must sit INSIDE the frame so the tears land on the photos'
         // edges rather than across the pictures
@@ -100,13 +103,15 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
     // the row hits its 150px floor, which is deliberate.
     if (w >= 768) ck('row at design height', Math.abs(m.ratio - 0.275) < 0.02, `${m.ratio} vs 0.275`);
     ck('torn frame present', m.frame);
+    ck('frame is the design\'s full grid', m.frameWhole, m.frameWhole ? '570 rows' : 'cropped');
     ck('frame spans the section', m.frameCoversSection);
     if (m.gridInsetTop !== null) {
       ck('photos sit inside the top tear', m.gridInsetTop > 4, `${m.gridInsetTop}px`);
-      // No bottom inset any more: the frame is cropped to its top 492 rows and
-      // the burlap's TornEdge draws this seam, so the photographs run to the
-      // section's bottom edge and it tears over them.
-      ck('photos run to the section bottom', m.gridInsetBottom <= 1, `${m.gridInsetBottom}px`);
+      // The photographs sit BETWEEN the frame's two rules (rows 49 and 493 of
+      // its 570). Cropping the frame to remove its bottom rule left the three
+      // vertical bars running to the cut edge with nothing terminating them --
+      // the loose white lines through the pictures.
+      ck('photos sit inside the bottom rule', m.gridInsetBottom > 4, `${m.gridInsetBottom}px`);
     }
     ck('the section above shows through the tear', m.overlapsAbove > 4, `${m.overlapsAbove}px overlap`);
     ck('two standalone photographs', m.photos === 2, `${m.photos}`);

@@ -88,18 +88,13 @@ export function ImageGrid() {
         /* Sized to the SECTION, not to vw: below the phone breakpoint the
            section hits its 150px floor while a vw height keeps shrinking, and
            the two come apart. */
-        /* Only the frame's TOP tear is used -- the burlap's TornEdge draws the
-           bottom seam -- so the image is cropped to its top 492 of 570 rows
-           rather than scaled up. Scaling it up left the surplus, and its gutter
-           bars, hanging 63px below the row. */
-        style={{
-          top: 0,
-          height: "100%",
-          objectFit: "cover",
-          objectPosition: "top",
-          zIndex: 2,
-          pointerEvents: "none",
-        }}
+        /* The frame is used WHOLE. It is a hand-painted grid: a rule top and
+           bottom, three verticals, and a short rule splitting the stacked pair.
+           The verticals overshoot the rules slightly, which is the drawn
+           character -- but cropping the asset removed the BOTTOM rule and left
+           those overshoots running to the cut edge with nothing terminating
+           them, which read as loose white lines through the photographs. */
+        style={{ top: 0, height: "100%", zIndex: 2, pointerEvents: "none" }}
       />
       <div
         className="grid absolute inset-x-0"
@@ -107,11 +102,8 @@ export function ImageGrid() {
           /* percentages of the section so the insets track the frame at every
              width, including where the section is on its minimum height */
           top: `${(100 * 49 / 570).toFixed(2)}%`,
-          /* No bottom inset: the burlap's TornEdge draws this seam, so the
-             photographs run to the section's bottom edge and it tears over
-             them. Reserving the frame's own bottom band here put two tears in
-             the same place. */
-          bottom: 0,
+          /* Between the frame's two rules: rows 49 and 493 of its 570. */
+          bottom: `${(100 * 77 / 570).toFixed(2)}%`,
           // Deliberately unequal, measured off the design by finding the white
           // gutters between the photos: 25.2 / 13.3 / 14.4 / 47.1. Equal
           // columns would read as a different composition.
