@@ -77,6 +77,17 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               // own centre. At the design's literal box width (21.25%) the
               // rendered face wrapped "THE NEXT" onto two lines, which then
               // collided with "Generation".
+              // "Generation" must be 1.31x the width of "THE NEXT" -- measured
+              // off the design, where the script line is visibly wider and its
+              // G rises into the blue. The .fig's own 116/68.77 size ratio
+              // gives only 1.14x, because Ultra sets much wider per point, so
+              // the sizes alone are not enough to reproduce the lockup.
+              headRatio:(()=>{const sp=[...h.querySelectorAll('span')];
+                const ink=el=>{const rg=document.createRange();rg.selectNodeContents(el);
+                  return rg.getBoundingClientRect();};
+                const a=ink(sp[0]), g=ink(sp[1]);
+                return {w:+(g.width/a.width).toFixed(2),
+                        overlap:Math.round(a.bottom-g.top)};})(),
               headLines:(()=>{const sp=[...h.querySelectorAll('span')];
                 return sp.map(e=>{const r=e.getBoundingClientRect();
                   const fs=parseFloat(getComputedStyle(e).fontSize);
@@ -134,6 +145,9 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       ck('content clears the card edges', m.cardFit > m.cardH*0.025,
          `closest edge ${m.cardFit}px, need >${(m.cardH*0.025).toFixed(1)}px`);
     if(w>=768){
+      ck('script line is wider than the display line',
+         Math.abs(m.headRatio.w-1.31)<0.08, `${m.headRatio.w}x vs 1.31x`);
+      ck('the two lines interlock', m.headRatio.overlap>0, `${m.headRatio.overlap}px overlap`);
       ck('"THE NEXT" sets on one line', m.headLines[0].lines===1, `${m.headLines[0].lines} lines`);
       ck('"Generation" sets on one line', m.headLines[1].lines===1, `${m.headLines[1].lines} lines`);
       // Centred on the CARD (34.80% + 62.07%/2 = 65.835%), not on the .fig's
@@ -158,8 +172,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       // widths are ink measurements, so they sit a little under the design's
       // text-node boxes, which carry side bearings.
       ck('card at design width', Math.abs(m.cardPct-62.07)<1.5, `${m.cardPct}% vs 62.07%`);
-      ck('"THE NEXT" at design width', Math.abs(m.nextPct-21.25)<2, `${m.nextPct}% vs 21.25%`);
-      ck('"Generation" at design width', Math.abs(m.genPct-27.61)<3, `${m.genPct}% vs 27.61%`);
+      ck('"THE NEXT" at design width', Math.abs(m.nextPct-19.54)<2, `${m.nextPct}% vs 19.54%`);
+      // 25.39% = the design's 27.61% scaled by 0.9195. The block is scaled to
+      // fit inside the card's torn edges with a real margin: at full size its
+      // span is 89% of the card height against a tear that bites 4.9% at the
+      // top and 4.1% at the bottom, which left the type sitting in the tear.
+      ck('"Generation" at design width', Math.abs(m.genPct-25.39)<3, `${m.genPct}% vs 25.39%`);
       ck('hen overlaps the card', m.henOverlaps);
     }
     ck('hen cut-out loads', m.henOK);

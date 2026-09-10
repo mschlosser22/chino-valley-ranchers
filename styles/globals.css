@@ -243,6 +243,28 @@
   transform: translateY(-20.38%);
 }
 
+/* Section 4's card type is sized in cqw so it holds the design's proportions
+   against the card. Between the phone breakpoint and desktop that lands the
+   body at 11px, which is not readable -- a floor keeps it sane without
+   changing the desktop proportions. */
+@media (min-width: 768px) and (max-width: 1100px) {
+  .regen-next-stage p {
+    font-size: max(1.447cqw, 15px) !important;
+    /* the floor makes the copy taller, so it needs more of the card's width
+       or it runs past the torn edges */
+    left: 42% !important;
+    width: 48% !important;
+    line-height: 1.34;
+  }
+  .regen-next-stage h2 span:first-child { font-size: max(3.047cqw, 24px) !important; }
+  .regen-next-stage h2 span:last-child  { font-size: max(5.140cqw, 36px) !important; }
+  .regen-next-stage h2 span:first-child { top: 41% !important; }
+  .regen-next-stage h2 span:last-child  { top: 46% !important; }
+  .regen-next-stage img[src*="hen-divider"] { top: 54% !important; }
+  .regen-next-stage span[aria-hidden] { top: 57.5% !important; }
+  .regen-next-stage p { top: 60% !important; }
+}
+
 /* Section 4's stage: the design's absolute coordinates on desktop, a stacked
    block on phones, same split as section 3. */
 .regen-next-stage {

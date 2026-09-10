@@ -81,11 +81,11 @@ export function ImageFull() {
                  the card centre -- because they are unpositioned line boxes,
                  not rendered bounds. Measured off the design render the
                  heading, script line and body all share one centre. */
-              left: "50.83%", top: "40.36%", width: "30%", zIndex: 3,
+              left: "50.83%", top: "43.36%", width: "30%", zIndex: 3,
               whiteSpace: "nowrap",
               fontFamily: "'Ultra', Rockwell, Georgia, serif",
               color: "#00608B",
-              fontSize: "3.314cqw",
+              fontSize: "3.047cqw",
               letterSpacing: "0.0824em",
               lineHeight: 1.121,
             }}
@@ -95,11 +95,15 @@ export function ImageFull() {
           <span
             className="absolute block text-center"
             style={{
-              left: "47.03%", top: "46.89%", width: "37.61%", zIndex: 3,
+              left: "47.03%", top: "49.36%", width: "37.61%", zIndex: 3,
               whiteSpace: "nowrap",
               fontFamily: "nexa-rust-script-shad-2, cursive",
               color: "#F9A115",
-              fontSize: "5.590cqw",
+              /* Sized so "Generation" is 1.31x the width of "THE NEXT", which is
+                 the proportion in the design -- at the .fig's literal 116/68.77
+                 ratio the rendered faces give only 1.14x, because Ultra sets
+                 much wider per point than the script. */
+              fontSize: "5.906cqw",
               lineHeight: 0.964,
               letterSpacing: "0.0135em",
             }}
@@ -109,23 +113,23 @@ export function ImageFull() {
         </h2>
 
         {/* Rule + hen + rule, at the design's own coordinates. */}
-        <span aria-hidden="true" className="absolute" style={{ left: "53.07%", top: "59.28%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
+        <span aria-hidden="true" className="absolute" style={{ left: "53.07%", top: "60.75%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
         <img
           src="/images/regen/hen-divider.png"
           alt=""
           aria-hidden="true"
           className="absolute"
-          style={{ left: "63.67%", top: "55.41%", width: "4.34%", zIndex: 3 }}
+          style={{ left: "63.67%", top: "57.19%", width: "4.34%", zIndex: 3 }}
         />
-        <span aria-hidden="true" className="absolute" style={{ left: "69.26%", top: "59.28%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
+        <span aria-hidden="true" className="absolute" style={{ left: "69.26%", top: "60.75%", width: "9.06%", height: 2, background: "#2B2B2B", zIndex: 3 }} />
 
         <p
           className="absolute m-0 text-center"
           style={{
-            left: "49.88%", top: "62.38%", width: "31.90%", zIndex: 3,
+            left: "49.88%", top: "63.60%", width: "31.90%", zIndex: 3,
             fontFamily: "'Lato', system-ui, sans-serif",
             color: "#000000",
-            fontSize: "1.574cqw",
+            fontSize: "1.447cqw",
             letterSpacing: "0.0199em",
             /* 1.42 rather than the design's 1.5: at 1.5 the seven lines are
                50.6% of the card's height, which leaves the divider group
