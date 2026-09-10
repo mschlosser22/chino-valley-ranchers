@@ -22,18 +22,14 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
             // no masked strip should be a zero-height no-op
             allVisible:masked.every(d=>d.getBoundingClientRect().height>10)};
   });
-  // Four, not five: the burlap's TornEdge is gone. That seam is drawn by the
-  // photo row's own frame (Layer 59), whose transparent bottom rows the burlap
-  // shows through -- the design has one tear there, and a TornEdge on top of it
-  // put two in the same 63px with the frame's white over the burlap.
-  ck('four torn edges on the page', m.masked===4, `${m.masked}`);
+  ck('five torn edges on the page', m.masked===5, `${m.masked}`);
   ck('every torn edge has real height', m.allVisible, m.heights.join(','));
   // Three of the four now carry a texture: the hero tear takes the paper
   // linen, the burlap and pre-footer tears take their own grounds, and the
   // section 2->3 seam paints the paper through the tear over the grass. Only
   // the burlap->white tear is a flat fill, because white paper is flat.
   ck('the textured bands carry their own texture',
-     m.fills.filter(f=>f==='texture').length===3, m.fills.join(','));
+     m.fills.filter(f=>f==='texture').length===4, m.fills.join(','));
 
   // Each tear must actually PAINT -- not merely exist with height. Raising a
   // neighbouring section's z-index once left the hero tear behind the photo,

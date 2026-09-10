@@ -64,6 +64,10 @@ export function ImageGrid() {
         height: `${FRAME}vw`,
         minHeight: 150,
         marginTop: `-${TEAR_TOP.toFixed(2)}vw`,
+        /* Clip the frame's overhang: it is rendered 115.85% tall so its top
+           tear lands correctly, and the surplus below carries its bottom tear.
+           Unclipped that showed as a second rip under the burlap's TornEdge. */
+        overflow: "hidden",
         /* No z-index on the section: lifting the whole row above the next
            section meant its frame's transparent bottom rows showed the page's
            white instead of the burlap tearing in behind them. The frame and
@@ -84,10 +88,18 @@ export function ImageGrid() {
         /* Sized to the SECTION, not to vw: below the phone breakpoint the
            section hits its 150px floor while a vw height keeps shrinking, and
            the two come apart. */
-        /* z-index 2 within the row, and the row itself stays unlifted so its
-           TOP tear still shows the grass above. The burlap section below is at
-           z-index 0, so this frame's bottom tear paints over it. */
-        style={{ top: 0, height: "100%", zIndex: 2, pointerEvents: "none" }}
+        /* Only the frame's TOP tear is used -- the burlap's TornEdge draws the
+           bottom seam -- so the image is cropped to its top 492 of 570 rows
+           rather than scaled up. Scaling it up left the surplus, and its gutter
+           bars, hanging 63px below the row. */
+        style={{
+          top: 0,
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "top",
+          zIndex: 2,
+          pointerEvents: "none",
+        }}
       />
       <div
         className="grid absolute inset-x-0"
@@ -95,7 +107,11 @@ export function ImageGrid() {
           /* percentages of the section so the insets track the frame at every
              width, including where the section is on its minimum height */
           top: `${(100 * 49 / 570).toFixed(2)}%`,
-          bottom: `${(100 * 78 / 570).toFixed(2)}%`,
+          /* No bottom inset: the burlap's TornEdge draws this seam, so the
+             photographs run to the section's bottom edge and it tears over
+             them. Reserving the frame's own bottom band here put two tears in
+             the same place. */
+          bottom: 0,
           // Deliberately unequal, measured off the design by finding the white
           // gutters between the photos: 25.2 / 13.3 / 14.4 / 47.1. Equal
           // columns would read as a different composition.

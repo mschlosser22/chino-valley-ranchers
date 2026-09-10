@@ -15,12 +15,20 @@ import { TornEdge } from './TornEdge';
 export function Certified() {
   return (
     <>
-      {/* No TornEdge here. The design has ONE tear at this seam -- the photo
-          row's own frame (Layer 59), whose transparent bottom rows the burlap
-          shows through. Its burlap plane starts at y4275, 155px above where
-          the photographs end, so it is already behind that tear. A TornEdge
-          added a second tear in the same 63px and its white painted over the
-          burlap, which is the white line at the seam. */}
+      {/* The burlap tears over the photo row, using the same TornEdge every
+          other seam on this page uses. The frame's own bottom tear is too
+          shallow to read at this scale -- 76px of wander in a 570px asset is
+          13% of its height, against this component's 44% -- so it wanders as a
+          ripple rather than the deep curve the rest of the page has. The frame
+          no longer reserves a bottom band (see ImageGrid), so the two tears do
+          not stack. */}
+      <TornEdge
+        fill={{
+          backgroundImage: "url(/images/regen/burlap.jpg)",
+          backgroundSize: "620px auto",
+          backgroundRepeat: "repeat",
+        }}
+      />
       <section
       className="relative"
       /* Pulled up so the burlap sits BEHIND the photo row's bottom tear, as it
@@ -30,12 +38,6 @@ export function Certified() {
          page's white -- the band at this seam. 78/570 of the frame is its
          bottom tear's depth; the frame is 27.47vw. */
       style={{
-        marginTop: `-${(27.47 * 78 / 570).toFixed(2)}vw`,
-        /* Behind the photo row's frame, so the frame's torn bottom edge paints
-           over this burlap and bites down into it. Without this the burlap --
-           later in the DOM -- covered the tear and the seam read as a straight
-           line. */
-        zIndex: 0,
         backgroundImage: "url(/images/regen/burlap.jpg)",
         // Tiled, not covered. At `cover` the weave scales up with the
         // viewport and reads as coarse sacking that the body copy has to

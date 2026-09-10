@@ -60,6 +60,10 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
         // With the burlap on top -- it comes later in the DOM -- the seam went
         // flat, and every DOM check still passed because the elements were all
         // present and correctly placed.
+        burlapTornEdge:(()=>{const nx=row.nextElementSibling;
+          if(!nx) return false;
+          const cs=getComputedStyle(nx);
+          return /torn-edge|edge-white-top/.test(cs.webkitMaskImage||cs.maskImage||'');})(),
         frameOverBurlap:(()=>{const f=row.querySelector('img[src*="row-frame"]');
           const nx=row.nextElementSibling;
           if(!f||!nx) return null;
@@ -95,7 +99,10 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
     ck('frame spans the section', m.frameCoversSection);
     if (m.gridInsetTop !== null) {
       ck('photos sit inside the top tear', m.gridInsetTop > 4, `${m.gridInsetTop}px`);
-      ck('photos sit inside the bottom tear', m.gridInsetBottom > 4, `${m.gridInsetBottom}px`);
+      // No bottom inset any more: the frame is cropped to its top 492 rows and
+      // the burlap's TornEdge draws this seam, so the photographs run to the
+      // section's bottom edge and it tears over them.
+      ck('photos run to the section bottom', m.gridInsetBottom <= 1, `${m.gridInsetBottom}px`);
     }
     ck('the section above shows through the tear', m.overlapsAbove > 4, `${m.overlapsAbove}px overlap`);
     ck('two standalone photographs', m.photos === 2, `${m.photos}`);
@@ -103,12 +110,12 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
     ck('all three windows use one photograph', m.windowsShareShot);
     ck('no grid gap over the frame gutters', m.gridGap === '0px' || m.gridGap === 'normal', `${m.gridGap}`);
     ck('row does not sit above the next section', m.rowStacking === 'auto', `z-index ${m.rowStacking}`);
-    if (m.frameOverBurlap)
-      ck('frame paints over the burlap so the tear reads',
-         m.frameOverBurlap.ok, `frame z${m.frameOverBurlap.frame} vs burlap z${m.frameOverBurlap.next}`);
-    if (m.burlapBehindTear !== null)
-      ck('burlap sits behind the frame\'s bottom tear',
-         m.burlapBehindTear > 10, `${m.burlapBehindTear}px overlap`);
+    // The bottom seam is drawn by the burlap's own TornEdge, the same component
+    // every other seam on this page uses. The frame's own bottom tear is too
+    // shallow to read at this scale -- 76px of wander in a 570px asset is 13%
+    // of its height against TornEdge's 44% -- so it rendered as a ripple, not
+    // the deep curve the rest of the page has.
+    ck('burlap tears over the row', m.burlapTornEdge, m.burlapTornEdge ? '' : 'no TornEdge');
 
     ck('every photograph has alt text', m.allAlt);
     ck('no horizontal overflow', !m.overflow);
