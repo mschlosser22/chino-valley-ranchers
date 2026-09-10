@@ -49,6 +49,12 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
         // stood proud of the row
         gridGap: (()=>{const g=row.querySelector('.grid');
           return g ? getComputedStyle(g).gap : null;})(),
+        // The frame's bottom rows are transparent, so the next section's
+        // burlap has to show through them. A z-index on the ROW lifted it
+        // above that section and the band rendered white instead -- which
+        // every structural check passed, because the elements were all
+        // present and correctly placed.
+        rowStacking: getComputedStyle(row).zIndex,
         // The hen close-up was a pre-cropped 882x870 square dropped into a
         // portrait slot, so `cover` cut the comb off and filled the frame with
         // head. The design's own source is 1306x734 -- a wide frame with room
@@ -75,6 +81,7 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
     ck('three windows onto the shared shot', m.sharedWindows === 3, `${m.sharedWindows}`);
     ck('all three windows use one photograph', m.windowsShareShot);
     ck('no grid gap over the frame gutters', m.gridGap === '0px' || m.gridGap === 'normal', `${m.gridGap}`);
+    ck('row does not sit above the next section', m.rowStacking === 'auto', `z-index ${m.rowStacking}`);
 
     ck('every photograph has alt text', m.allAlt);
     ck('no horizontal overflow', !m.overflow);

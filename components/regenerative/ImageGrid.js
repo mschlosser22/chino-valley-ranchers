@@ -64,7 +64,11 @@ export function ImageGrid() {
         height: `${FRAME}vw`,
         minHeight: 150,
         marginTop: `-${TEAR_TOP.toFixed(2)}vw`,
-        zIndex: 1,
+        /* No z-index on the section: lifting the whole row above the next
+           section meant its frame's transparent bottom rows showed the page's
+           white instead of the burlap tearing in behind them. The frame and
+           the photographs carry their own z-index within the row, which is
+           enough to keep the burlap off the pictures. */
       }}
     >
       {/* The design frames this row in torn white paper: Layer 59 is a
