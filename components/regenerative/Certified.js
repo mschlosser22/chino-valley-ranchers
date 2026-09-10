@@ -31,6 +31,11 @@ export function Certified() {
          bottom tear's depth; the frame is 27.47vw. */
       style={{
         marginTop: `-${(27.47 * 78 / 570).toFixed(2)}vw`,
+        /* Behind the photo row's frame, so the frame's torn bottom edge paints
+           over this burlap and bites down into it. Without this the burlap --
+           later in the DOM -- covered the tear and the seam read as a straight
+           line. */
+        zIndex: 0,
         backgroundImage: "url(/images/regen/burlap.jpg)",
         // Tiled, not covered. At `cover` the weave scales up with the
         // viewport and reads as coarse sacking that the body copy has to

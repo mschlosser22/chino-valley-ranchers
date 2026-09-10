@@ -84,6 +84,9 @@ export function ImageGrid() {
         /* Sized to the SECTION, not to vw: below the phone breakpoint the
            section hits its 150px floor while a vw height keeps shrinking, and
            the two come apart. */
+        /* z-index 2 within the row, and the row itself stays unlifted so its
+           TOP tear still shows the grass above. The burlap section below is at
+           z-index 0, so this frame's bottom tear paints over it. */
         style={{ top: 0, height: "100%", zIndex: 2, pointerEvents: "none" }}
       />
       <div

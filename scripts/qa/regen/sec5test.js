@@ -55,6 +55,17 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
         // every structural check passed, because the elements were all
         // present and correctly placed.
         rowStacking: getComputedStyle(row).zIndex,
+        // The frame's torn bottom edge is white above the rip and transparent
+        // below it, so it has to paint OVER the burlap for the tear to read.
+        // With the burlap on top -- it comes later in the DOM -- the seam went
+        // flat, and every DOM check still passed because the elements were all
+        // present and correctly placed.
+        frameOverBurlap:(()=>{const f=row.querySelector('img[src*="row-frame"]');
+          const nx=row.nextElementSibling;
+          if(!f||!nx) return null;
+          const fz=parseInt(getComputedStyle(f).zIndex,10);
+          const nz=getComputedStyle(nx).zIndex;
+          return {frame:fz, next:nz, ok: !isNaN(fz) && nz!=='auto' && fz > parseInt(nz,10)};})(),
         // The burlap must sit BEHIND the frame's bottom tear, not start below
         // it: its design plane begins 155px above where the photographs end.
         // If the next section starts at the row's bottom edge instead, the
@@ -92,6 +103,9 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
     ck('all three windows use one photograph', m.windowsShareShot);
     ck('no grid gap over the frame gutters', m.gridGap === '0px' || m.gridGap === 'normal', `${m.gridGap}`);
     ck('row does not sit above the next section', m.rowStacking === 'auto', `z-index ${m.rowStacking}`);
+    if (m.frameOverBurlap)
+      ck('frame paints over the burlap so the tear reads',
+         m.frameOverBurlap.ok, `frame z${m.frameOverBurlap.frame} vs burlap z${m.frameOverBurlap.next}`);
     if (m.burlapBehindTear !== null)
       ck('burlap sits behind the frame\'s bottom tear',
          m.burlapBehindTear > 10, `${m.burlapBehindTear}px overlap`);
