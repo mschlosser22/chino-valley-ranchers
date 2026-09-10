@@ -33,17 +33,30 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
         // torn rows or the page's white shows through
         overlapsAbove: Math.round(prev.getBoundingClientRect().bottom - rr.top),
         aboveGrass: !!prevGrass,
+        // Two <img> photographs (barn, woodland) plus three windows onto ONE
+        // shared shot -- the design masks three rectangles over a single
+        // 1306x734 photo inside a 569x443 clipping frame, which is why its
+        // bird reads at one scale. Three separate images made the head smaller
+        // than the body.
         photos: row.querySelectorAll('img[src*="row-"]:not([src*="row-frame"])').length,
+        sharedWindows: row.querySelectorAll('[role="img"]').length,
+        // every window must use the same photograph at a scale that keeps the
+        // bird consistent -- they differ only because the boxes differ
+        windowsShareShot:(()=>{const w=[...row.querySelectorAll('[role="img"]')];
+          if(w.length!==3) return false;
+          return w.every(d=>/row-hen-c/.test(getComputedStyle(d).backgroundImage));})(),
+        // the frame draws its own gutters; a grid gap on top of them is what
+        // stood proud of the row
+        gridGap: (()=>{const g=row.querySelector('.grid');
+          return g ? getComputedStyle(g).gap : null;})(),
         // The hen close-up was a pre-cropped 882x870 square dropped into a
         // portrait slot, so `cover` cut the comb off and filled the frame with
         // head. The design's own source is 1306x734 -- a wide frame with room
         // around the bird. A source narrower than 1.5:1 here means someone has
         // swapped a tight crop back in.
-        henSource:(()=>{const im=row.querySelector('img[src*="row-hen-c"]');
-          if(!im||!im.naturalWidth) return null;
-          return {aspect:+(im.naturalWidth/im.naturalHeight).toFixed(3),
-                  w:im.naturalWidth, h:im.naturalHeight};})(),
-        allAlt: [...row.querySelectorAll('img[src*="row-"]:not([src*="row-frame"])')].every(im => (im.getAttribute('alt') || '').length > 3),
+        henSource:null,
+        allAlt: [...row.querySelectorAll('img[src*="row-"]:not([src*="row-frame"])')].every(im => (im.getAttribute('alt') || '').length > 3)
+             && [...row.querySelectorAll('[role="img"]')].every(d => (d.getAttribute('aria-label') || '').length > 3),
         overflow: document.documentElement.scrollWidth > innerWidth + 1,
       };
     });
@@ -58,10 +71,11 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
       ck('photos sit inside the bottom tear', m.gridInsetBottom > 4, `${m.gridInsetBottom}px`);
     }
     ck('the section above shows through the tear', m.overlapsAbove > 4, `${m.overlapsAbove}px overlap`);
-    ck('four photographs', m.photos === 5, `${m.photos}`);
-    if (m.henSource)
-      ck('hen close-up uses the full frame, not a tight crop',
-         m.henSource.aspect > 1.5, `${m.henSource.w}x${m.henSource.h}, aspect ${m.henSource.aspect}`);
+    ck('two standalone photographs', m.photos === 2, `${m.photos}`);
+    ck('three windows onto the shared shot', m.sharedWindows === 3, `${m.sharedWindows}`);
+    ck('all three windows use one photograph', m.windowsShareShot);
+    ck('no grid gap over the frame gutters', m.gridGap === '0px' || m.gridGap === 'normal', `${m.gridGap}`);
+
     ck('every photograph has alt text', m.allAlt);
     ck('no horizontal overflow', !m.overflow);
     await p.context().close();

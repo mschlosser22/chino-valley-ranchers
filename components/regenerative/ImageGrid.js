@@ -26,6 +26,21 @@ const TEAR_TOP = FRAME * 49 / 570;    // vw, depth of the frame's top tear
 const TEAR_BOT = FRAME * 78 / 570;    // vw, depth of its bottom tear
 const GAP = 5;
 
+/* One photograph behind the middle three windows, exactly as the design's
+   clipping frame does it. Each window needs its own background-size and
+   position because the boxes differ in size: a percentage position aligns the
+   same fraction of the image with the same fraction of the box, so the values
+   are offset/(imageSize - boxSize), not a pixel offset. Sizes are the photo's
+   1306px width over each box's design width, which keeps the bird at ONE scale
+   across all three -- fitting a separate image per window is what made its head
+   smaller than its body. */
+const SHOT = (size, x, y) => ({
+  backgroundImage: "url(/images/regen/row-hen-c.jpg)",
+  backgroundSize: `${size} auto`,
+  backgroundPosition: `${x} ${y}`,
+  backgroundRepeat: "no-repeat",
+});
+
 export function ImageGrid() {
   return (
     /* The section is the frame's full height; the grid is inset by each tear's
@@ -77,8 +92,18 @@ export function ImageGrid() {
           // Deliberately unequal, measured off the design by finding the white
           // gutters between the photos: 25.2 / 13.3 / 14.4 / 47.1. Equal
           // columns would read as a different composition.
-          gridTemplateColumns: "25.2fr 13.3fr 14.4fr 47.1fr",
-          gap: GAP,
+          /* Three columns, not four: the middle one holds all three windows
+             onto the shared photograph. Fractions are the design's own --
+             barn 695, shared column 569, woodland 974 of the 2246-wide row. */
+          /* Four columns, aligned to the frame's own gutter bars (x520-524,
+             799-801, 1096-1097 of its 2075 width). Collapsing the middle two
+             into one put those bars through the middle of the photographs. */
+          gridTemplateColumns: "25.060fr 0.193fr 13.253fr 0.096fr 14.217fr 0.048fr 47.133fr",
+          /* No gap: the frame carries the gutters itself, as full-height bars
+             at x520-524, 799-801 and 1096-1097 of its 2075 width. A grid gap
+             on top of those drew a second set, which is the white lines
+             standing proud of the row. */
+          gap: 0,
         }}
       >
         <img
@@ -88,44 +113,43 @@ export function ImageGrid() {
           style={{ height: BAND, objectFit: "cover", objectPosition: "50% 62%" }}
         />
 
-        {/* Column two is two photographs stacked, not one -- the design splits
-            it with the same gutter that separates the columns. */}
+        {/* Columns two and three are THREE WINDOWS ONTO ONE PHOTOGRAPH, not
+            three images. In the design they are three masks (Rectangle 10 copy
+            7, copy 3 and copy 6) inside a single 569x443 clipping frame over
+            one 1306x734 shot, which is why the bird reads at a consistent
+            scale across them. Fitting a separate image to each window is what
+            made the head smaller than the body.
+
+            Each window carries the same background-size and a shifted
+            background-position, so the photograph is continuous behind them. */}
+        <div />
+
         <div
           className="grid"
-          style={{
-            // Explicit height: without it the stacked pair sized to its own
-            // content and stood 19px taller than the other three columns,
-            // breaking the row's bottom edge.
-            height: BAND,
-            gridTemplateRows: "1fr 1fr",
-            gap: GAP,
-          }}
+          style={{ height: BAND, gridTemplateRows: "50.11fr 1.36fr 48.53fr", gap: 0 }}
         >
-          <img
-            src="/images/regen/row-hen-a.jpg"
-            alt="Hens ranging among trees"
-            className="block w-full h-full"
-            style={{ objectFit: "cover" }}
+          <div
+            role="img"
+            aria-label="Hens ranging among trees"
+            style={SHOT("481.92%", "24.06%", "34.96%")}
           />
-          <img
-            src="/images/regen/row-hen-b.jpg"
-            alt="A hen's plumage in close detail"
-            className="block w-full h-full"
-            style={{ objectFit: "cover" }}
+          <div />
+          <div
+            role="img"
+            aria-label="A hen's plumage in close detail"
+            style={SHOT("481.92%", "24.06%", "78.42%")}
           />
         </div>
 
-        <img
-          src="/images/regen/row-hen-c.jpg"
-          alt="Close-up of a hen's head and comb"
-          className="block w-full"
-          /* The source is now the design's own 1306x734 frame rather than a
-             pre-cropped square. In a portrait slot `cover` crops the sides
-             hard, so the position keeps the subject hen's head -- which sits
-             at roughly 53% across and 35% down the photograph -- inside the
-             frame with its comb intact. */
-          style={{ height: BAND, objectFit: "cover", objectPosition: "53% 35%" }}
+        <div />
+
+        <div
+          role="img"
+          aria-label="Close-up of a hen's head and comb"
+          style={{ height: BAND, ...SHOT("447.26%", "51.87%", "61.51%") }}
         />
+
+        <div />
 
         <img
           src="/images/regen/row-woodland.jpg"
