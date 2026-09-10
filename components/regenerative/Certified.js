@@ -31,10 +31,11 @@ export function Certified() {
          rather than below it. */
       style={{
         /* The mask is stretched to the section's own height, so its tear falls
-           6.8% (86 of 1262) down from the section's top. Pulling up by that
-           much puts the rip on the photographs' bottom edge rather than below
-           it. Measured against the rendered height, not the frame's. */
-        marginTop: "-3.59vw",
+           6.8% (86 of 1262) down from the section's top -- 52px at 1440. That
+           alone left the rip sitting just under the photographs with a white
+           gap between. -6.93vw (100px at 1440) closes it, with the burlap
+           tearing up over the photo row's bottom rule as the design has it. */
+        marginTop: "-6.93vw",
         backgroundImage: "url(/images/regen/burlap.jpg)",
         // Tiled, not covered. At `cover` the weave scales up with the
         // viewport and reads as coarse sacking that the body copy has to
