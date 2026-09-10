@@ -119,7 +119,12 @@ export function ImageGrid() {
           src="/images/regen/row-hen-c.jpg"
           alt="Close-up of a hen's head and comb"
           className="block w-full"
-          style={{ height: BAND, objectFit: "cover", objectPosition: "50% 40%" }}
+          /* The source is now the design's own 1306x734 frame rather than a
+             pre-cropped square. In a portrait slot `cover` crops the sides
+             hard, so the position keeps the subject hen's head -- which sits
+             at roughly 53% across and 35% down the photograph -- inside the
+             frame with its comb intact. */
+          style={{ height: BAND, objectFit: "cover", objectPosition: "53% 35%" }}
         />
 
         <img

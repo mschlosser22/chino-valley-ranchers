@@ -34,6 +34,15 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
         overlapsAbove: Math.round(prev.getBoundingClientRect().bottom - rr.top),
         aboveGrass: !!prevGrass,
         photos: row.querySelectorAll('img[src*="row-"]:not([src*="row-frame"])').length,
+        // The hen close-up was a pre-cropped 882x870 square dropped into a
+        // portrait slot, so `cover` cut the comb off and filled the frame with
+        // head. The design's own source is 1306x734 -- a wide frame with room
+        // around the bird. A source narrower than 1.5:1 here means someone has
+        // swapped a tight crop back in.
+        henSource:(()=>{const im=row.querySelector('img[src*="row-hen-c"]');
+          if(!im||!im.naturalWidth) return null;
+          return {aspect:+(im.naturalWidth/im.naturalHeight).toFixed(3),
+                  w:im.naturalWidth, h:im.naturalHeight};})(),
         allAlt: [...row.querySelectorAll('img[src*="row-"]:not([src*="row-frame"])')].every(im => (im.getAttribute('alt') || '').length > 3),
         overflow: document.documentElement.scrollWidth > innerWidth + 1,
       };
@@ -50,6 +59,9 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
     }
     ck('the section above shows through the tear', m.overlapsAbove > 4, `${m.overlapsAbove}px overlap`);
     ck('four photographs', m.photos === 5, `${m.photos}`);
+    if (m.henSource)
+      ck('hen close-up uses the full frame, not a tight crop',
+         m.henSource.aspect > 1.5, `${m.henSource.w}x${m.henSource.h}, aspect ${m.henSource.aspect}`);
     ck('every photograph has alt text', m.allAlt);
     ck('no horizontal overflow', !m.overflow);
     await p.context().close();
