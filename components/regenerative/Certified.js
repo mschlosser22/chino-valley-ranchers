@@ -36,6 +36,10 @@ export function Certified() {
            gap between. -6.93vw (100px at 1440) closes it, with the burlap
            tearing up over the photo row's bottom rule as the design has it. */
         marginTop: "-6.93vw",
+        /* Above the photo row's frame, whose bottom rule is at z-index 2 and
+           was showing through the burlap as a hard horizontal line. The burlap
+           tears over that rule in the design, so it has to paint after it. */
+        zIndex: 3,
         backgroundImage: "url(/images/regen/burlap.jpg)",
         // Tiled, not covered. At `cover` the weave scales up with the
         // viewport and reads as coarse sacking that the body copy has to
