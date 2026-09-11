@@ -36,7 +36,10 @@ yarn-error.log*
 
 # Client design deliverables: large binaries kept out of git.
 # The Regenerative .fig is ~92MB and its extracted images ~91MB.
-ref/regen-fig/images/
+# Client deliverables: the .fig, PSDs, full-res photography and the FIN
+# Deliverables drop -- ~175MB and not ours to redistribute. Kept on disk as
+# the source of truth for the regen build, never in the repo.
+ref/
 
 # Playwright MCP session output
 .playwright-mcp/

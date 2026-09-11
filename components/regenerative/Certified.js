@@ -38,9 +38,11 @@ export function Certified() {
         /* The design's band is 1443 of the 2075 artboard, but its lower fifth
            holds the NEXT section's heading ("WHAT MAKES" at 85.79% of the band),
            which this build renders in its own section. Reserving the full
-           69.54vw here left 331px of empty burlap -- 33% of the section against
-           the design's ~16%. 58vw keeps the burlap tall enough to carry the
-           content and its tail without the dead space. */
+           69.54vw left 331px of empty burlap. 58vw is the shortest that keeps
+           the content clear of the shape's bottom tear, which is deep -- it
+           wanders from row 997 to 1261 of 1262. 52vw and 46.82vw both ran that
+           tear through the ROC mark and the hen. The white space below it
+           belongs to the next section's padding, not to this one. */
         minHeight: "58vw",
         marginTop: "-6.93vw",
         /* Above the photo row's frame, whose bottom rule is at z-index 2 and

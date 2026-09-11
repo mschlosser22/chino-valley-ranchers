@@ -64,10 +64,31 @@ const BETTER = [
 export function Differences() {
   return (
     <>
-      {/* The white band tears up over the burlap above it. */}
+      {/* The white band tears up over the burlap above it.
+
+          The whole block -- tear and section together -- is pulled up 11.1vw.
+          The burlap section's BOX is 160px taller than its own painted edge at
+          1440: its mask's bottom tear runs from row 997 of 1262, so the last
+          fifth of the element is transparent by design. That empty tail stacks
+          under this section and read as ~200px of dead white above the
+          heading. Trimming the burlap's min-height instead ran its tear
+          through the ROC mark and the hen, so the tail stays and this block
+          sits on top of it.
+
+          Desktop only. The lift is a share of the VIEWPORT while the tail it
+          covers is a share of the burlap section's own height, and below
+          1100px the two diverge: at 1440 the heading cleared section 6's
+          content by 82px, at 768 by 11, and at 390 it overlapped the hen by
+          3. The lift is in globals.css so it can be gated at 1100px. */}
+      <div className="regen-diff-lift" style={{ position: "relative", zIndex: 2 }}>
       <TornEdge />
       <section className="relative bg-white">
-      <div className="mx-auto" style={{ maxWidth: 1600, padding: "4% 3% 5%" }}>
+      {/* Top padding is measured to the TEAR, not to the section's top edge:
+          with the block lifted, the section box now starts inside the burlap's
+          transparent tail, so the visible white above the heading begins where
+          the burlap stops painting. 3.3% lands the heading's ink ~40px below
+          that tear, which is what the client asked for. */}
+      <div className="mx-auto" style={{ maxWidth: 1600, padding: "3.3% 3% 5%" }}>
         <h2 className="m-0 text-center">
           <span
             className="block uppercase"
@@ -210,6 +231,7 @@ export function Differences() {
         </div>
       </div>
     </section>
+    </div>
     </>
   );
 }
