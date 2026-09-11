@@ -88,9 +88,13 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     if(m.annPoints && w>=768){
       ck('annotation sits beside the ROC mark',
          m.annPoints.gap > -40 && m.annPoints.gap < 80, `${m.annPoints.gap}px from the logo`);
-      ck('arrow tip lands on the wordmark\'s final "e"',
-         Math.abs(m.annPoints.tipOffX) < 18 && Math.abs(m.annPoints.tipOffY) < 22,
-         `tip is ${m.annPoints.tipOffX}px, ${m.annPoints.tipOffY}px from it`);
+      // The design clears the letter rather than touching it: its "e" is at
+      // (919,5016) and the arrow's tip at (962,5039), which is +30,+16 css px
+      // at a 1440 viewport. An earlier version of this check asserted the tip
+      // was ON the letter, which is closer than the design draws it.
+      ck('arrow tip sits where the design puts it',
+         Math.abs(m.annPoints.tipOffX-30) < 14 && Math.abs(m.annPoints.tipOffY-16) < 14,
+         `tip is +${m.annPoints.tipOffX},+${m.annPoints.tipOffY} vs +30,+16`);
     }
     if(w===1440){
       ck('heading sets on one line', m.head.lines===1, `${m.head.lines} lines`);

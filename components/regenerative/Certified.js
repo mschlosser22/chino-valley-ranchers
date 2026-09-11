@@ -172,12 +172,13 @@ export function Certified() {
                  wording below -- the lockup spans x915..1167, y5039..5285, so
                  it overhangs this column's left edge by 18.47% of its width.
                  At left:-6% the tip curved up into empty burlap instead. */
-              /* Positioned so the arrow's tip lands on the final "e" of
-                 "Regenerative" -- at 98.2% across and 21% down the ROC mark's
-                 own artwork, measured from its alpha. Aiming at the mark's
-                 bounding box instead put the tip past its right edge and above
-                 the first line. */
-              style={{ left: "-23.79%", top: "59.44%", width: "38.32%" }}
+              /* The arrow points AT the wordmark's final "e" without touching
+                 it. In the design the mark's "e" is at (919, 5016) and the
+                 arrow's tip at (962, 5039) -- 43 and 23 design px clear, which
+                 is 30 and 16 css px at 1440. Landing the tip on the letter
+                 itself, as the previous placement did, is closer than the
+                 design draws it. */
+              style={{ left: "-17.02%", top: "67.26%", width: "38.32%" }}
             />
           </div>
         </div>
