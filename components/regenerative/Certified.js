@@ -47,13 +47,19 @@ export function Certified() {
            was showing through the burlap as a hard horizontal line. The burlap
            tears over that rule in the design, so it has to paint after it. */
         zIndex: 3,
-        /* A white wash over the weave. The design's ground reads at mean
-           luminance 193 against this texture's 176, which is what lets its body
-           copy sit on the burlap and stay legible; at full strength the weave
-           competes with the type. Layered rather than baked into the asset so
-           the same file still serves the tear strip. */
+        /* The design does not lay the burlap on at full strength. Its
+           "highest standards color bg" is at 10.2% opacity with MULTIPLY blend
+           over "Bg shape", a pale cream ground (rgb 239,214,188) -- so the
+           weave is a faint tint, not a texture the copy has to fight.
+           Simulating that composite gives luminance 214; a full-strength tile
+           renders 176, which is why the body copy was unreadable here and fine
+           in the Figma.
+
+           Built the same way: the cream is the base layer and the burlap sits
+           over it at 10.2%. */
+        backgroundColor: "#EFD6BC",
         backgroundImage:
-          "linear-gradient(rgba(255,252,246,0.42), rgba(255,252,246,0.42)), " +
+          "linear-gradient(rgba(239,214,188,0.898), rgba(239,214,188,0.898)), " +
           "url(/images/regen/burlap.jpg)",
         // Tiled, not covered. At `cover` the weave scales up with the
         // viewport and reads as coarse sacking that the body copy has to

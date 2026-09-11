@@ -15,8 +15,12 @@ const lum=c=>{const [r,g,b]=c.map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow(
       const t=e.textContent.trim(); const r=e.getBoundingClientRect();
       return t.length>60 && r.width>80 && r.height>20;
     }).map(e=>{const r=e.getBoundingClientRect();
+      // Sample BESIDE the paragraph, not across it. x was r.left+4, which lands
+      // on the glyphs themselves, so a dark-on-light block measured its own
+      // text colour against itself and reported ~1:1 -- a false failure that
+      // would have sent someone lightening a ground that was already fine.
       return {t:e.textContent.trim().slice(0,34), colour:getComputedStyle(e).color,
-              x:Math.round(r.left+4), y:Math.round(r.top+window.scrollY+r.height/2)};}));
+              x:Math.round(r.right+20), y:Math.round(r.top+window.scrollY+r.height/2)};}));
   for(const t of targets){
     await p.evaluate(y=>scrollTo(0,y-400), t.y);
     await p.waitForTimeout(180);
