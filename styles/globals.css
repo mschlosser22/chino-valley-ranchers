@@ -381,7 +381,10 @@
 
 @media (min-width: 768px) {
   .regen-standards-grid {
-    grid-template-columns: 1.05fr 1fr;
+    /* Equal halves. The design's heading spans x379..1694 and the two columns
+       below divide that span evenly; 1.05fr made the copy wider than the hen
+       and the block read as lopsided under a centred heading. */
+    grid-template-columns: 1fr 1fr;
   }
   .regen-prefooter-grid {
     grid-template-columns: 46% 54%;

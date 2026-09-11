@@ -35,6 +35,13 @@ export function Certified() {
            alone left the rip sitting just under the photographs with a white
            gap between. -6.93vw (100px at 1440) closes it, with the burlap
            tearing up over the photo row's bottom rule as the design has it. */
+        /* The design's band is 1443 of the 2075 artboard, but its lower fifth
+           holds the NEXT section's heading ("WHAT MAKES" at 85.79% of the band),
+           which this build renders in its own section. Reserving the full
+           69.54vw here left 331px of empty burlap -- 33% of the section against
+           the design's ~16%. 58vw keeps the burlap tall enough to carry the
+           content and its tail without the dead space. */
+        minHeight: "58vw",
         marginTop: "-6.93vw",
         /* Above the photo row's frame, whose bottom rule is at z-index 2 and
            was showing through the burlap as a hard horizontal line. The burlap
@@ -43,9 +50,13 @@ export function Certified() {
         backgroundImage: "url(/images/regen/burlap.jpg)",
         // Tiled, not covered. At `cover` the weave scales up with the
         // viewport and reads as coarse sacking that the body copy has to
-        // fight; the design keeps it fine and quiet. A fixed tile width holds
-        // the thread at roughly the drawn scale.
-        backgroundSize: "620px auto",
+        // fight. 69.4vw sizes the tile so its thread matches the design's:
+        // measured by autocorrelation, the design's weave has a 9px period at a
+        // 1440 viewport, and this 1600px source needs a 1440px tile to render
+        // the same 9px. Sizing the tile to the design's IMAGE span (104vw) was
+        // 50% too coarse -- the image spanning the band says nothing about its
+        // thread. In vw so the weave holds its proportion at every width.
+        backgroundSize: "69.4vw auto",
         backgroundRepeat: "repeat",
         WebkitMaskImage: "url(/images/regen/burlap-shape.png)",
         maskImage: "url(/images/regen/burlap-shape.png)",
@@ -68,7 +79,10 @@ export function Certified() {
            this section by 3.76vw so the burlap shows through it. Without it the
            heading sat 72px from the section's top and read as crowding the
            seam. */
-        style={{ maxWidth: 1500, padding: "9% 5% 6%" }}
+        /* 18.27% a side is the design's own margin -- its heading spans
+           x379..1694 of the 2075 artboard -- so the heading and the two columns
+           below line up on the same edges. */
+        style={{ maxWidth: 1500, padding: "9% 18.27% 6%" }}
       >
         <h2
           className="m-0 text-center uppercase"
@@ -111,7 +125,10 @@ export function Certified() {
               src="/images/regen/roc-logo.png"
               alt="Regenerative Organic Certified"
               className="block"
-              style={{ width: "57.9%", marginTop: "9%" }}
+              /* 89.1% of the column. The column narrowed when the two halves
+                 were equalised, and a width relative to it has to grow to keep
+                 the mark at the design's 569 of the 2075 artboard. */
+              style={{ width: "89.1%", marginTop: "9%" }}
             />
           </div>
 
@@ -130,7 +147,8 @@ export function Certified() {
               src="/images/regen/ann-certified.png"
               alt="We&rsquo;re certified!"
               className="absolute hidden sm:block"
-              style={{ left: "-6%", bottom: "6%", width: "27.2%" }}
+              /* 39.5% of the column = the design's 252 of the artboard. */
+              style={{ left: "-6%", bottom: "6%", width: "39.5%" }}
             />
           </div>
         </div>
