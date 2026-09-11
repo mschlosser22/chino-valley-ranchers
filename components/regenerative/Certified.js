@@ -172,7 +172,12 @@ export function Certified() {
                  wording below -- the lockup spans x915..1167, y5039..5285, so
                  it overhangs this column's left edge by 18.47% of its width.
                  At left:-6% the tip curved up into empty burlap instead. */
-              style={{ left: "-18.47%", top: "52.95%", width: "38.32%" }}
+              /* Positioned so the arrow's tip lands on the final "e" of
+                 "Regenerative" -- at 98.2% across and 21% down the ROC mark's
+                 own artwork, measured from its alpha. Aiming at the mark's
+                 bounding box instead put the tip past its right edge and above
+                 the first line. */
+              style={{ left: "-23.79%", top: "59.44%", width: "38.32%" }}
             />
           </div>
         </div>

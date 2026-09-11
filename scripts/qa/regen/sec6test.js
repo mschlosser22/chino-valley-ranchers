@@ -58,10 +58,15 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
                 // box instead passed both the correct placement and the one
                 // the client reported, where the tip curved up into empty
                 // burlap well above the logo.
+                // The tip must land on the final "e" of "Regenerative" -- at
+                // 98.2% across and 21% down the mark's own artwork, measured
+                // from its alpha. Aiming at the mark's bounding box put the tip
+                // past its right edge and above the first line.
                 const tipX=a.left+a.width*0.132, tipY=a.top+a.height*0.004;
+                const tgtX=r.left+r.width*0.982, tgtY=r.top+r.height*0.21;
                 return {gap:Math.round(a.left-r.right),
-                        tipAboveMark:Math.round(r.top-tipY),
-                        tipRightOfMark:Math.round(tipX-r.right),
+                        tipOffX:Math.round(tipX-tgtX),
+                        tipOffY:Math.round(tipY-tgtY),
                         overlapsVertically: a.top < r.bottom && a.bottom > r.top};})(),
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
@@ -83,11 +88,9 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     if(m.annPoints && w>=768){
       ck('annotation sits beside the ROC mark',
          m.annPoints.gap > -40 && m.annPoints.gap < 80, `${m.annPoints.gap}px from the logo`);
-      // The tip must be level with the mark, not floating above it. In the
-      // design the arrow spans y5039..5153 inside the logo's y4970..5188.
-      ck('arrow tip is level with the mark',
-         m.annPoints.tipAboveMark < 20,
-         `tip ${m.annPoints.tipAboveMark}px above the logo's top`);
+      ck('arrow tip lands on the wordmark\'s final "e"',
+         Math.abs(m.annPoints.tipOffX) < 18 && Math.abs(m.annPoints.tipOffY) < 22,
+         `tip is ${m.annPoints.tipOffX}px, ${m.annPoints.tipOffY}px from it`);
     }
     if(w===1440){
       ck('heading sets on one line', m.head.lines===1, `${m.head.lines} lines`);
