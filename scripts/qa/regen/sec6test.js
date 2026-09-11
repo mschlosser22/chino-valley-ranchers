@@ -31,6 +31,20 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               rocOK:roc.complete&&roc.naturalWidth>0,
               henOK:hen.complete&&hen.naturalWidth>0,
               tiled:/repeat/.test(cs.backgroundRepeat)&&!/cover/.test(cs.backgroundSize),
+              // The heading sets on ONE line and its ink spans the two columns.
+              // It wrapped to two at 4.67vw without nowrap, which the design
+              // never does.
+              head:(()=>{const rg=document.createRange(); rg.selectNodeContents(h);
+                const ink=rg.getBoundingClientRect();
+                const fs=parseFloat(getComputedStyle(h).fontSize);
+                const grid=s.querySelector('.regen-standards-grid');
+                const gw=grid?grid.getBoundingClientRect().width:0;
+                return {lines:Math.round(ink.height/(fs*1.05)),
+                        inkW:Math.round(ink.width), gridW:Math.round(gw)};})(),
+              // The copy sits directly on the burlap, so the ground carries a
+              // wash to keep it legible -- the design's ground reads at mean
+              // luminance 193 against this texture's raw 176.
+              wash:/linear-gradient/.test(cs.backgroundImage),
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
     console.log(`\n  --- ${label} (${w}px) ---`);
@@ -47,6 +61,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     ck('ROC mark loads', m.rocOK);
     ck('hen cut-out loads', m.henOK);
     ck('burlap tiles rather than scaling', m.tiled);
+    ck('ground carries a wash so the copy reads', m.wash);
+    if(w===1440){
+      ck('heading sets on one line', m.head.lines===1, `${m.head.lines} lines`);
+      ck('heading spans the two columns',
+         Math.abs(m.head.inkW-m.head.gridW)<40, `${m.head.inkW}px vs ${m.head.gridW}px`);
+    }
     ck('no console errors on the page', errs.length===0, errs.slice(0,2).join(' | '));
     ck('no broken regen assets', bad.length===0, bad.join(','));
     ck('no horizontal overflow', !m.overflow);

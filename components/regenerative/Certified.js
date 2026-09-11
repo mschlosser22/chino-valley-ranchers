@@ -47,17 +47,24 @@ export function Certified() {
            was showing through the burlap as a hard horizontal line. The burlap
            tears over that rule in the design, so it has to paint after it. */
         zIndex: 3,
-        backgroundImage: "url(/images/regen/burlap.jpg)",
+        /* A white wash over the weave. The design's ground reads at mean
+           luminance 193 against this texture's 176, which is what lets its body
+           copy sit on the burlap and stay legible; at full strength the weave
+           competes with the type. Layered rather than baked into the asset so
+           the same file still serves the tear strip. */
+        backgroundImage:
+          "linear-gradient(rgba(255,252,246,0.42), rgba(255,252,246,0.42)), " +
+          "url(/images/regen/burlap.jpg)",
         // Tiled, not covered. At `cover` the weave scales up with the
         // viewport and reads as coarse sacking that the body copy has to
-        // fight. 69.4vw sizes the tile so its thread matches the design's:
-        // measured by autocorrelation, the design's weave has a 9px period at a
-        // 1440 viewport, and this 1600px source needs a 1440px tile to render
-        // the same 9px. Sizing the tile to the design's IMAGE span (104vw) was
-        // 50% too coarse -- the image spanning the band says nothing about its
-        // thread. In vw so the weave holds its proportion at every width.
-        backgroundSize: "69.4vw auto",
-        backgroundRepeat: "repeat",
+        // fight. 104.1vw sizes the tile so its thread matches the design's:
+        // autocorrelating a row of each render gives 9px for the design at a
+        // 1440 viewport against 6px at 69.4vw, so the tile scales by 9/6. I had
+        // rejected this figure once on the strength of a screenshot -- a tile
+        // wider than the viewport shows only part of one repeat, which reads as
+        // blotchy until the type sits on it. The measurement was right.
+        backgroundSize: "100% 100%, 104.1vw auto",
+        backgroundRepeat: "no-repeat, repeat",
         WebkitMaskImage: "url(/images/regen/burlap-shape.png)",
         maskImage: "url(/images/regen/burlap-shape.png)",
         /* The shape is 2340 wide at x-1 on the 2075 artboard, so it overhangs
@@ -89,9 +96,15 @@ export function Certified() {
           style={{
             fontFamily: "'Ultra', Rockwell, Georgia, serif",
             color: "#B01014",
-            fontSize: "clamp(28px, 4.67vw, 81px)",
+            /* Sized so its INK spans the two columns' full width on one line.
+               The design's heading is 1315 of the 2075 artboard -- the same
+               63.37% the columns occupy -- and never wraps. 4.67vw wrapped
+               because nowrap was not set; with it, 4.70vw lands the ink at
+               914px against the grid's 914px. */
+            fontSize: "clamp(20px, 4.70vw, 81px)",
             lineHeight: 1.05,
             letterSpacing: "0.01em",
+            whiteSpace: "nowrap",
           }}
         >
           Highest Standards
