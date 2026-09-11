@@ -166,8 +166,13 @@ export function Certified() {
               src="/images/regen/ann-certified.png"
               alt="We&rsquo;re certified!"
               className="absolute hidden sm:block"
-              /* 39.5% of the column = the design's 252 of the artboard. */
-              style={{ left: "-6%", bottom: "6%", width: "39.5%" }}
+              /* Placed so the arrow's tip points AT the ROC mark. In the
+                 design the arrow sits 29px right of the logo and vertically
+                 within it (x958..1035 against the logo's x360..929), with the
+                 wording below -- the lockup spans x915..1167, y5039..5285, so
+                 it overhangs this column's left edge by 18.47% of its width.
+                 At left:-6% the tip curved up into empty burlap instead. */
+              style={{ left: "-18.47%", top: "52.95%", width: "38.32%" }}
             />
           </div>
         </div>

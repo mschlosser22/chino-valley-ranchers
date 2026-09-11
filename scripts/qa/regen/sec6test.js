@@ -45,6 +45,24 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               // wash to keep it legible -- the design's ground reads at mean
               // luminance 193 against this texture's raw 176.
               wash:/linear-gradient/.test(cs.backgroundImage),
+              // The annotation's arrow curves up-LEFT, so its lockup has to sit
+              // just right of the ROC mark and overlap it vertically for the
+              // tip to point at the logo. At left:-6% of its column the arrow
+              // curved up into empty burlap instead.
+              annPoints:(()=>{const roc=s.querySelector('img[src*="roc-logo"]');
+                const ann=s.querySelector('img[src*="ann-certified"]');
+                if(!roc||!ann) return null;
+                const r=roc.getBoundingClientRect(), a=ann.getBoundingClientRect();
+                // The arrow's TIP is what has to point at the mark: it sits at
+                // 13.2% across and 0.4% down the asset. Checking the lockup's
+                // box instead passed both the correct placement and the one
+                // the client reported, where the tip curved up into empty
+                // burlap well above the logo.
+                const tipX=a.left+a.width*0.132, tipY=a.top+a.height*0.004;
+                return {gap:Math.round(a.left-r.right),
+                        tipAboveMark:Math.round(r.top-tipY),
+                        tipRightOfMark:Math.round(tipX-r.right),
+                        overlapsVertically: a.top < r.bottom && a.bottom > r.top};})(),
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
     console.log(`\n  --- ${label} (${w}px) ---`);
@@ -62,6 +80,15 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     ck('hen cut-out loads', m.henOK);
     ck('burlap tiles rather than scaling', m.tiled);
     ck('ground carries a wash so the copy reads', m.wash);
+    if(m.annPoints && w>=768){
+      ck('annotation sits beside the ROC mark',
+         m.annPoints.gap > -40 && m.annPoints.gap < 80, `${m.annPoints.gap}px from the logo`);
+      // The tip must be level with the mark, not floating above it. In the
+      // design the arrow spans y5039..5153 inside the logo's y4970..5188.
+      ck('arrow tip is level with the mark',
+         m.annPoints.tipAboveMark < 20,
+         `tip ${m.annPoints.tipAboveMark}px above the logo's top`);
+    }
     if(w===1440){
       ck('heading sets on one line', m.head.lines===1, `${m.head.lines} lines`);
       ck('heading spans the two columns',
