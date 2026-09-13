@@ -23,8 +23,10 @@ const CALLOUTS = [
     body:
       "We build soil health through cover crops, compost, and rotational grazing—improving water retention, sequestering carbon, and creating a strong foundation for life.",
     side: "left",
-    top: "17%",
-    arrow: { src: "arr-soil", left: "83%", top: "88%", width: "26%" },
+    offset: "5.98%",
+    width: "20.96%",
+    top: "13.02%",
+    arrow: { src: "arr-soil", left: "3.57%", top: "44.61%", width: "7.80%" },
   },
   {
     key: "animals",
@@ -32,8 +34,17 @@ const CALLOUTS = [
     body:
       "Our hens play an essential role in a balanced ecosystem—fertilizing the land naturally, controlling pests, and helping plants thrive.",
     side: "right",
-    top: "15%",
-    arrow: { src: "arr-animals", left: "-30%", top: "96%", width: "30%" },
+    offset: "5.59%",
+    width: "18.31%",
+    top: "10.98%",
+    /* 31.90%, not the design's 28.09%. The design's arrow does cross its text
+       NODE (Shape 4 copy 8 ends x1608, the text box starts x1579) but not its
+       ink: that box is 247px tall for four short lines, so the arrow passes
+       through its empty lower half. Our copy sets wider and the glyphs reach
+       down to 30.75% of the stage, so at the design's y the arrow ran straight
+       through "pests, and helping". This clears the ink's bottom by ~8px and
+       keeps the tip pointing at the same part of the pasture. */
+    arrow: { src: "arr-animals", left: "81.16%", top: "31.90%", width: "10.91%" },
   },
   {
     key: "roots",
@@ -41,8 +52,10 @@ const CALLOUTS = [
     body:
       "Keeping living roots in the ground year-round feeds microorganisms, increases biodiversity, and supports long-term soil vitality.",
     side: "left",
-    top: "64%",
-    arrow: { src: "arr-roots", left: "83%", top: "-52%", width: "26%" },
+    offset: "5.98%",
+    width: "20.49%",
+    top: "82.99%",
+    arrow: { src: "arr-roots", left: "3.57%", top: "65.89%", width: "7.80%" },
   },
   {
     key: "farming",
@@ -50,8 +63,13 @@ const CALLOUTS = [
     body:
       "Regenerative farming isn’t just about today—it’s about leaving the land better for future generations and the food they will depend on.",
     side: "right",
-    top: "56%",
-    arrow: { src: "arr-farming", left: "-26%", top: "-46%", width: "24%" },
+    /* 2.96%, not the design's 6.27%: moved ~50px right at the client's
+       request so this block clears the soil face and lines up with the
+       "Animals" block above it. */
+    offset: "2.96%",
+    width: "14.74%",
+    top: "72.79%",
+    arrow: { src: "arr-farming", left: "100.26%", top: "55.98%", width: "6.41%" },
   },
 ];
 
@@ -127,9 +145,18 @@ export function Differences() {
           </span>
         </h2>
 
-        {/* Intro sits over the diagram's top edge in the design. */}
+        {/* The intro sits ON the diagram's sky, not above it. In the design
+            the artwork (Farm-minified 1) starts at y5671 while this text runs
+            y5850..6214 -- the sky begins 179px higher and the paragraph
+            overlaps its upper half. It had been in plain flow below a diagram
+            that started lower down, so the sky never reached it and the copy
+            sat on bare white.
+
+            position/z-index rather than order: the artwork is pulled up
+            underneath by a negative margin, so this needs its own stacking
+            context to stay on top of it. */}
         <p
-          className="mx-auto text-center"
+          className="mx-auto text-center relative"
           style={{
             fontFamily: "'Lato', system-ui, sans-serif",
             color: "#2B2B2B",
@@ -137,6 +164,7 @@ export function Differences() {
             lineHeight: 1.62,
             maxWidth: "42%",
             margin: "2.5% auto 0",
+            zIndex: 1,
           }}
         >
           We go beyond organic. Our Regenerative practices work with nature to
@@ -144,16 +172,52 @@ export function Differences() {
           generations to come.
         </p>
 
-        <div className="relative" style={{ marginTop: "1%" }}>
-          <img
-            src="/images/regen/soil-block.webp"
-            alt="A cross-section of pasture showing hens above ground and deep roots, worms and soil life below"
-            className="block mx-auto"
-            style={{ width: "54.9%" }}
-          />
+        {/* The diagram is pulled up so its sky runs behind the intro copy.
 
-          {/* Callouts pinned to the four corners, each with its arrow. Hidden
-              below lg, where they stack under the diagram instead. */}
+            Width is the design's own artwork node: Farm-minified 1 is 1513 of
+            the 2075 artboard = 72.92%. The 54.9% it had been was measured off
+            a screenshot and is why the sky read as a small picture below the
+            text rather than the ground the section sits on. The asset's aspect
+            (1500x1020 = 1.4706) matches that node's 1513x1029 = 1.4704, so it
+            is the right artwork at the wrong size.
+
+            The lift is in globals.css so it can be dropped below lg, where the
+            callouts stack in flow under the diagram and an overlap would run
+            the copy over the soil. */}
+        <div className="regen-soil relative">
+          <div className="regen-soil__stage">
+            <img
+              src="/images/regen/soil-block.webp"
+              alt="A cross-section of pasture showing hens above ground and deep roots, worms and soil life below"
+              className="regen-soil__art"
+            />
+
+            {/* The arrows are positioned against the DIAGRAM, not against their
+                callout. The design draws them as four independent vectors over
+                the artwork (Shape 4 copy 5-8) and their whole job is to point at
+                a part of the soil, so their anchor has to be the thing they
+                point at. Nested in the callouts they were percentages of a box
+                whose width changed with the copy -- when the diagram went from
+                54.9% to its design 72.92% every one of them came adrift. */}
+            {CALLOUTS.map((c) => (
+              <img
+                key={c.key}
+                src={`/images/regen/${c.arrow.src}.png`}
+                alt=""
+                aria-hidden="true"
+                className="regen-callout__arrow"
+                style={{
+                  left: c.arrow.left,
+                  top: c.arrow.top,
+                  width: c.arrow.width,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Callouts pinned to the four corners. Hidden below lg, where
+              they stack under the diagram instead; their arrows live with the
+              artwork above, since that is what they point at. */}
           {CALLOUTS.map((c) => (
             /* One set of callouts, not two. They used to be rendered twice --
                absolutely positioned for desktop, stacked for narrow viewports
@@ -166,8 +230,15 @@ export function Differences() {
                where the arrows can point at something. */
             <div
               key={c.key}
-              className="regen-callout"
-              style={{ [c.side]: "2%", top: c.top }}
+              className={`regen-callout regen-callout--${c.side}`}
+              /* Placed from the design's own text nodes rather than a flat 2%
+                 inset. The design anchors these to the SECTION, outside the
+                 artwork's box -- "Our hens play" runs x1579..1959 while the
+                 art ends at x1728 -- so they overlap only the sky's soft
+                 transparent edge, never the soil. At 2% with the diagram
+                 widened to its design 72.92% the right-hand pair sat on the
+                 barn and the soil face. */
+              style={{ "--x": c.offset, "--w": c.width, "--y": c.top }}
             >
               <h3
                 className="m-0"
@@ -193,19 +264,9 @@ export function Differences() {
               >
                 {c.body}
               </p>
-              <img
-                src={`/images/regen/${c.arrow.src}.png`}
-                alt=""
-                aria-hidden="true"
-                className="regen-callout__arrow"
-                style={{
-                  left: c.arrow.left,
-                  top: c.arrow.top,
-                  width: c.arrow.width,
-                }}
-              />
             </div>
           ))}
+
         </div>
 
         {/* Section 8: three underlined lines, centred under the diagram. */}

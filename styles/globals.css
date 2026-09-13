@@ -196,11 +196,22 @@
 }
 
 @media (min-width: 1024px) {
+  /* Custom properties rather than inline left/width: below this breakpoint the
+     callouts are in normal flow and must take the full column, so the design's
+     narrow measure can only apply where they are actually positioned. Inline
+     styles would have applied at every width. */
   .regen-callout {
     position: absolute;
-    width: 19%;
+    width: var(--w);
+    top: var(--y);
     margin-top: 0;
     text-align: center;
+  }
+  .regen-callout--left {
+    left: var(--x);
+  }
+  .regen-callout--right {
+    right: var(--x);
   }
   /* The arrows only make sense once the callouts sit around the diagram. */
   .regen-callout__arrow {
@@ -240,6 +251,53 @@
 @media (min-width: 1100px) {
   .regen-diff-lift {
     margin-top: -15.5vw;
+  }
+}
+
+/* The soil diagram's sky runs behind section 7's intro copy.
+
+   In the design the artwork (Farm-minified 1) is at y5671 while the intro text
+   runs y5850..6214 -- the sky starts 179px above the paragraph and the copy
+   overlaps its upper half. The build had the diagram in plain flow below the
+   text at 54.9% wide, so the sky never reached the paragraph and the copy sat
+   on bare white.
+
+   Two values, both from the design's own nodes: 72.92% is 1513 of the 2075
+   artboard, and the lift is the 179px overlap as a share of that artboard.
+
+   Stacked layouts only get the width. Below lg the callouts fall into normal
+   flow beneath the diagram, so lifting it would pull the soil up over the
+   intro copy instead of the sky sitting behind it. */
+.regen-soil {
+  margin-top: 1%;
+}
+/* The stage IS the artwork's box, so the arrows' design percentages resolve
+   against the thing they point at. Sizing them against the outer wrapper
+   instead would need a percentage multiplied by a ratio, which CSS cannot
+   express -- and hard-coding the product would silently break the moment the
+   artwork's width changed again. */
+.regen-soil__stage {
+  position: relative;
+  width: 54.9%;
+  margin-inline: auto;
+}
+.regen-soil__art {
+  display: block;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .regen-soil {
+    /* 179 of 2075 = 8.63% of the artboard width. */
+    margin-top: -8.63%;
+  }
+  .regen-soil__stage {
+    /* 77.57%, not 72.92%. The design's artwork is 1513 of the 2075 ARTBOARD
+       = 72.92% of the section, but this stage's percentage resolves against
+       the wrapper, which the section's 3% side padding has already narrowed
+       to 94%. 72.92% of that is 68.55% of the section -- measurably short of
+       the design, and the reason the check below asserts the width against
+       the section rather than against this box. */
+    width: 77.57%;
   }
 }
 
