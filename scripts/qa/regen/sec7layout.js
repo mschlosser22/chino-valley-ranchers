@@ -48,10 +48,51 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
                 inSection: ink.left>=sec.left-1 && ink.right<=sec.right+1,
                 rightGap: Math.round(sec.right-ink.right)};
       });
+      // Sample the artwork behind each callout's text. Soil reads dark and
+      // brown; sky and bare paper read pale. The "Farming" block sat with its
+      // heading and first lines on the dirt through three different x
+      // positions -- the design's own offset put it there, because the design's
+      // block is 340 artwork-rows tall and runs past the artwork's bottom edge
+      // while ours is 230 and sat inside the soil's widest band.
+      const onSoil = (()=>{
+        const img=s.querySelector('.regen-soil__art');
+        const st2=s.querySelector('.regen-soil__stage').getBoundingClientRect();
+        const cv=document.createElement('canvas');
+        cv.width=img.naturalWidth; cv.height=img.naturalHeight;
+        const ctx=cv.getContext('2d'); ctx.drawImage(img,0,0);
+        const d=ctx.getImageData(0,0,cv.width,cv.height).data;
+        return [...s.querySelectorAll('.regen-callout')].map(c=>{
+          // The HEADING's band, not the whole block. The block is mostly
+          // paper even when its top lines are on the dirt, so a whole-block
+          // average washed the defect out: at the position the client
+          // rejected it read 8% against a 12% threshold I had invented, and
+          // passed. Sampled here the two states are 4.2% and 0.0%, so the
+          // check asserts zero rather than a fitted bound.
+          const rg=document.createRange(); rg.selectNodeContents(c.querySelector('h3'));
+          const b=rg.getBoundingClientRect();
+          let dark=0, n=0;
+          for(let gy=0; gy<8; gy++) for(let gx=0; gx<24; gx++){
+            const px=b.left+b.width*(gx+0.5)/24, py=b.top+b.height*(gy+0.5)/8;
+            const ix=Math.round((px-st2.left)/st2.width*cv.width);
+            const iy=Math.round((py-st2.top)/st2.height*cv.height);
+            if(ix<0||iy<0||ix>=cv.width||iy>=cv.height) { n++; continue; }
+            const o=(iy*cv.width+ix)*4;
+            const al=d[o+3];
+            n++;
+            if(al>120){
+              const r=d[o],g=d[o+1],bl=d[o+2];
+              // Soil: dark and warm. Sky: bright, and blue-dominant.
+              if((r+g+bl)/3 < 140 && r >= bl) dark++;
+            }
+          }
+          return {t:c.querySelector('h3').textContent.trim(),
+                  darkPct:+(dark/n*100).toFixed(1)};
+        });
+      })();
       const arrowInk = arrows.filter(a=>a.getBoundingClientRect().width>0)
         .map(a=>({src:a.getAttribute('src').split('/').pop(),
                   w:a.naturalWidth, h:a.naturalHeight}));
-      return {arrowInk,
+      return {arrowInk, onSoil,
               artW:+(stage.width/sec.width*100).toFixed(2),
               artLoaded:art.complete&&art.naturalWidth>0,
               // Positive = the sky reaches up past the paragraph's last line.
@@ -84,6 +125,16 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
         ck(`"${it.t}" stacks in flow`, it.pos==='static', it.pos);
       }
       ck(`"${it.t}" stays inside the section`, it.inSection);
+    }
+    // No callout may sit on the SOIL. The soil is the dark, saturated lower
+    // half of the artwork; the sky above it is pale and the callouts are
+    // meant to overlap that. So this samples the pixels actually behind each
+    // block's glyphs and fails on dark ones -- a box test against the
+    // artwork cannot tell sky from soil, and the design's own blocks overlap
+    // the artwork's box freely.
+    if (w>=1024) for (const c of m.onSoil) {
+      ck(`"${c.t}" does not sit on the soil`, c.darkPct === 0,
+         c.darkPct ? `${c.darkPct}% of the heading's ground is soil` : 'over sky/paper');
     }
     // arr-animals shipped as a bare arc: its export had cropped the head off,
     // and nothing noticed, because loading and placing an asset says nothing

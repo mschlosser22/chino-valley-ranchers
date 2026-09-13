@@ -25,7 +25,11 @@ const CALLOUTS = [
     side: "left",
     offset: "5.98%",
     width: "20.96%",
-    top: "13.02%",
+    /* 19.32%, not the design's 13.02%. The design leaves 29px between this
+       block and its arrow (text ends y6101, arrow starts y6130 = 2.8% of the
+       artwork); our copy sets shorter than the design's node, which left a
+       65px gap instead. This restores the design's own spacing. */
+    top: "19.32%",
     arrow: { src: "arr-soil", left: "3.57%", top: "44.61%", width: "7.80%" },
   },
   {
@@ -52,7 +56,11 @@ const CALLOUTS = [
     body:
       "Keeping living roots in the ground year-round feeds microorganisms, increases biodiversity, and supports long-term soil vitality.",
     side: "left",
-    offset: "5.98%",
+    /* 2.28%, not the design's 5.98%: moved ~50px left at the client's
+       request. Note these offsets resolve against the WRAPPER, which the
+       section's 3% side padding has already inset -- 5.98% here rendered
+       124px from the section's edge, not 86px. */
+    offset: "2.28%",
     width: "20.49%",
     top: "82.99%",
     arrow: { src: "arr-roots", left: "3.57%", top: "65.89%", width: "7.80%" },
@@ -63,12 +71,29 @@ const CALLOUTS = [
     body:
       "Regenerative farming isn’t just about today—it’s about leaving the land better for future generations and the food they will depend on.",
     side: "right",
-    /* 2.96%, not the design's 6.27%: moved ~50px right at the client's
-       request so this block clears the soil face and lines up with the
-       "Animals" block above it. */
-    offset: "2.96%",
+    /* 4.5%, which lands this block's ink at 78.92% of the section -- the
+       design's own 78.99% (its text runs x1639..1945 of the 2075 artboard).
+
+       Neither the raw design offset nor a flat nudge works here, because
+       these offsets resolve against the WRAPPER, which the section's 3% side
+       padding has already inset. Setting the design's 6.27% literally put the
+       ink at 77.26%, five points left of where the design has it, sitting on
+       the soil face: the artwork's opaque edge across these rows reaches
+       82.23% of the section (measured from its alpha, not its box). 2.96%
+       cleared the soil but pushed the block away from its arrow. */
+    offset: "4.5%",
     width: "14.74%",
-    top: "72.79%",
+    /* 83.33%, not the design's 72.79%. The design's own text also sits over
+       the soil's bounding box here -- the artwork is opaque out to 94.2% of
+       its width across these rows while the text starts at 78.99% -- but the
+       design's block is 340 artwork-rows tall and runs 62 rows PAST the
+       artwork's bottom edge, so its lower half has nothing to collide with.
+       Our copy is more compact (230 rows) and sat wholly inside the soil's
+       widest band, which put the heading and first lines on the dirt.
+       Row 850 of 1020 is the first position where the soil has narrowed
+       enough for this block's left edge to clear it, measured from the
+       artwork's alpha. */
+    top: "83.33%",
     arrow: { src: "arr-farming", left: "100.26%", top: "55.98%", width: "6.41%" },
   },
 ];
