@@ -479,3 +479,29 @@
     background-position: left center !important;
   }
 }
+
+/* The pre-footer's photograph carries its own torn top edge, so the section
+   has to sit ON the white band above rather than below it -- otherwise the
+   rip's transparent part shows the page's own white and the seam reads as a
+   straight line again. 2.7vw is the tear's own depth (56 of the asset's 2075
+   width), so the section rises by exactly as much as it is torn away. */
+.regen-prefooter-section {
+  /* The section rises by exactly the tear's RENDERED depth, so the torn rows
+     land on the white band above and nothing of the rip is left inside the
+     section where it would be invisible against its own photograph.
+
+     The asset's rip is 56px of a 2075x622 image, and the background is sized
+     with `cover`, so the rendered depth is 56 x max(width/2075, height/622).
+     A flat 2.7vw matches only while WIDTH drives that scale: below about
+     1035px the section's min-height takes over, the tear stays 25px, and the
+     lift kept shrinking -- at 390px it was 10.5px against a 25px tear, and
+     the seam read as a straight line again. max() of the two terms is the
+     same rule CSS's own `cover` applies. */
+  margin-top: calc(-56 * max(100vw / 2075, clamp(280px, 30vw, 622px) / 622));
+  position: relative;
+  /* Above section 7's lift wrapper, which is z-index 2. At 1 the white band
+     painted straight over this section's torn rows and the seam went back to
+     a hard line -- the tear was rendering correctly the whole time, just
+     underneath. */
+  z-index: 3;
+}

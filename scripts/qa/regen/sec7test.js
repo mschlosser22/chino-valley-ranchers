@@ -43,7 +43,15 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       ck('"WHAT MAKES" at design width', Math.abs(m.what-31.1)<1.5, `${m.what}% vs 31.1%`);
       ck('"Regenerative" at design width', Math.abs(m.regen-45.3)<1.5, `${m.regen}% vs 45.3%`);
       ck('"DIFFERENT?" at design width', Math.abs(m.diff-28.1)<1.5, `${m.diff}% vs 28.1%`);
-      ck('soil diagram at design width', Math.abs(m.soilPct-51.6)<1.5, `${m.soilPct}% vs 51.6%`);
+      // 72.92%, not the 51.6% this asserted before: that figure was measured
+      // off a flattened render and is the visible SOIL BLOCK, excluding the
+      // sky's transparent margin. The design's artwork node (Farm-minified 1)
+      // is 1513 of the 2075 artboard, and its 1513x1029 aspect (1.4704)
+      // matches the asset's 1500x1020 (1.4706) exactly, which the 51.6%
+      // reading cannot -- at that width the node would be 728px tall, not
+      // 1029. The sky has to reach its full width to sit behind the intro
+      // copy, which is what the client asked for.
+      ck('soil diagram at design width', Math.abs(m.soilPct-72.92)<1.5, `${m.soilPct}% vs 72.92%`);
       ck('four arrows visible', m.arrowsVisible===4, `${m.arrowsVisible}`);
         // Four, not eight: the callouts used to be rendered twice -- one
       // absolutely positioned set and one stacked set, each hidden at the

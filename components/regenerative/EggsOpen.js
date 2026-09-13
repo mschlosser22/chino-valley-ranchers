@@ -10,23 +10,25 @@
    far-right column, cross-faded into the photo before the lettering starts.
    That keeps the headline as live text rather than baking it into a JPEG,
    which is what the previous version of this component effectively did. */
-import { TornEdge } from './TornEdge';
 
 export function EggsOpen() {
   return (
     <>
-      {/* The pre-footer photograph tears up over the white band above. */}
-      <TornEdge
-        fill={{
-          backgroundImage: "url(/images/regen/prefooter-bg.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "left top",
-        }}
-      />
+      {/* The tear is cut into the PHOTOGRAPH's own alpha, not painted as a
+          strip over it -- the same treatment as sections 4-6, which is what
+          made those seams read.
+
+          A TornEdge strip could not work here. It masks a box of its own and
+          squashes the rip to fit: at the 63px height it rendered, the mask's
+          42-of-95-row wander came out ~28px, and against this dark photograph
+          on white paper that read as a straight cut. The photo was also a
+          JPEG, so it had no alpha to tear with. prefooter-bg.webp is the same
+          photograph with the mask's rip profile cut into its top edge at a
+          56px depth, soft-edged by 1.5px so it does not alias. */}
       <section
       className="regen-prefooter-section relative"
       style={{
-        backgroundImage: "url(/images/regen/prefooter-bg.jpg)",
+        backgroundImage: "url(/images/regen/prefooter-bg.webp)",
         backgroundSize: "cover",
         // On phones the carton half of the photograph would sit directly
         // under the type; shifting the focal point right puts the type on

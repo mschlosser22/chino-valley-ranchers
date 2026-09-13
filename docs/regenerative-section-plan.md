@@ -251,7 +251,14 @@ soil diagram and share its centre line.
 | "WHAT MAKES" | 31.1% | 31.2% |
 | "Regenerative" | 45.3% | 45.3% |
 | "DIFFERENT?" | 28.1% | 28.1% |
-| Soil diagram | 51.6% | 51.6% |
+| Soil diagram | 72.9% | 72.9% |
+
+The soil diagram's 51.6% in an earlier version of this table was measured off
+a flattened render and is the visible soil block, excluding the sky's
+transparent margin. The design's artwork node (`Farm-minified 1`) is 1513 of
+the 2075 artboard — 72.9% — and its 1513x1029 aspect matches the asset's
+1500x1020 exactly, which 51.6% cannot. The sky needs that full width to sit
+behind the intro copy, as the design draws it.
 
 The callouts are pinned to the four corners rather than laid out in a grid.
 The design points a hand-drawn arrow from each one at the part of the soil it

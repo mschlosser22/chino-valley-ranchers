@@ -22,17 +22,18 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
             // no masked strip should be a zero-height no-op
             allVisible:masked.every(d=>d.getBoundingClientRect().height>10)};
   });
-  // Four TornEdge strips: the burlap seam is no longer one of them. That
-  // section is masked by the design's own torn shape instead, which carries
-  // both its edges in a single element.
-  ck('four torn edges on the page', m.masked===4, `${m.masked}`);
+  // Three TornEdge strips remain. Two seams no longer use one: the burlap is
+  // masked by the design's own torn shape, and the pre-footer's tear is cut
+  // into that photograph's alpha. Both moved for the same reason -- a strip
+  // masks a box of its own and squashes the rip to fit it, which is what made
+  // those two seams read as straight cuts.
+  ck('three torn edges on the page', m.masked===3, `${m.masked}`);
   ck('every torn edge has real height', m.allVisible, m.heights.join(','));
-  // Three of the four now carry a texture: the hero tear takes the paper
-  // linen, the burlap and pre-footer tears take their own grounds, and the
-  // section 2->3 seam paints the paper through the tear over the grass. Only
-  // the burlap->white tear is a flat fill, because white paper is flat.
+  // Two of the three carry a texture: the hero tear takes the paper linen and
+  // the section 2->3 seam paints paper through the tear over the grass. The
+  // burlap->white tear is a flat fill, because white paper is flat.
   ck('the textured bands carry their own texture',
-     m.fills.filter(f=>f==='texture').length===3, m.fills.join(','));
+     m.fills.filter(f=>f==='texture').length===2, m.fills.join(','));
 
   // Each tear must actually PAINT -- not merely exist with height. Raising a
   // neighbouring section's z-index once left the hero tear behind the photo,
