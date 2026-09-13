@@ -48,7 +48,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
                 inSection: ink.left>=sec.left-1 && ink.right<=sec.right+1,
                 rightGap: Math.round(sec.right-ink.right)};
       });
-      return {artW:+(stage.width/sec.width*100).toFixed(2),
+      const arrowInk = arrows.filter(a=>a.getBoundingClientRect().width>0)
+        .map(a=>({src:a.getAttribute('src').split('/').pop(),
+                  w:a.naturalWidth, h:a.naturalHeight}));
+      return {arrowInk,
+              artW:+(stage.width/sec.width*100).toFixed(2),
               artLoaded:art.complete&&art.naturalWidth>0,
               // Positive = the sky reaches up past the paragraph's last line.
               skyOverlap: Math.round(ir.bottom-stage.top),
@@ -80,6 +84,24 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
         ck(`"${it.t}" stacks in flow`, it.pos==='static', it.pos);
       }
       ck(`"${it.t}" stays inside the section`, it.inSection);
+    }
+    // arr-animals shipped as a bare arc: its export had cropped the head off,
+    // and nothing noticed, because loading and placing an asset says nothing
+    // about what is DRAWN in it.
+    //
+    // This asserts the asset's dimensions, not a cleverer statistic. Three
+    // attempts at inferring "has an arrowhead" from the bitmap -- stroke
+    // thickness ratio, local ink density, and branching cross-sections --
+    // each passed the headless arc, because a curve's own bend reproduces
+    // every signal a head produces. The one unambiguous fact is that the
+    // repaired artwork is 271x79 where the cropped one was 225x79: the head
+    // is 46px of ink that the broken export did not contain. If this asset is
+    // ever re-exported, re-measure and update the expectation here rather
+    // than widening it.
+    if (w>=1024) {
+      const an = m.arrowInk.find(a=>/arr-animals/.test(a.src));
+      if (an) ck('the animals arrow includes its head',
+                 an.w===271 && an.h===79, `${an.w}x${an.h}, expected 271x79`);
     }
     ck('no broken regen assets', bad.length===0, bad.join(','));
     ck('no horizontal overflow', !m.overflow);

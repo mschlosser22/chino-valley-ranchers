@@ -37,14 +37,14 @@ const CALLOUTS = [
     offset: "5.59%",
     width: "18.31%",
     top: "10.98%",
-    /* 31.90%, not the design's 28.09%. The design's arrow does cross its text
-       NODE (Shape 4 copy 8 ends x1608, the text box starts x1579) but not its
-       ink: that box is 247px tall for four short lines, so the arrow passes
-       through its empty lower half. Our copy sets wider and the glyphs reach
-       down to 30.75% of the stage, so at the design's y the arrow ran straight
-       through "pests, and helping". This clears the ink's bottom by ~8px and
-       keeps the tip pointing at the same part of the pasture. */
-    arrow: { src: "arr-animals", left: "81.16%", top: "31.90%", width: "10.91%" },
+    /* Placed against this callout's own copy rather than the design's raw
+       node, at the client's direction: left of the paragraph and centred on
+       it. The design's y (28.09%) ran the arrow through "pests, and helping"
+       -- its arrow crosses the text NODE but not the ink, since that box is
+       247px tall for four short lines, while our copy sets wider and fills
+       it. 20.58% centres the arrow on the paragraph's ink (mid 22.92%) and
+       71.42% ends it 1.6% clear of the glyphs' left edge. */
+    arrow: { src: "arr-animals", left: "71.42%", top: "20.58%", width: "10.91%" },
   },
   {
     key: "roots",
