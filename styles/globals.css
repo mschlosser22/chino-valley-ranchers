@@ -232,6 +232,128 @@
   grid-template-columns: 1fr;
 }
 
+/* Section 6 is 58vw tall, which is its design ratio and correct across most
+   of the range. At exactly 768px that is 445px, and it is also where the
+   .regen-standards-grid switches to two columns and the ROC mark takes its
+   design size -- so the content grows just as the box stops growing, and the
+   burlap's bottom tear cut 14px off the logo. (The tear is not the box edge:
+   the mask's rip starts at row 997 of 1262, about 21% above it.)
+
+   A floor over the tight end of the range. Measured against the tear rather
+   than the box: the logo clears by 275px at 767 and 32px at 900, and was the
+   only width in the range that failed. */
+@media (min-width: 768px) and (max-width: 860px) {
+  .regen-burlap {
+    min-height: 64vw !important;
+  }
+}
+
+/* ── Section 7 on phones ───────────────────────────────────────────────
+   The section is built from the design's desktop proportions, and every one
+   of them is a percentage of the viewport, so they all collapse together on a
+   phone. Measured at 390px before this block: the three heading lines
+   overlapped each other by 5px (they carry negative margins tuned for a
+   155px display size), the intro was a 154px ribbon at 13px type because its
+   max-width is the design's 42%, the diagram rendered 201px wide, and the
+   wrapper's 3% side padding came to 12px, so the copy ran almost to the
+   screen edge.
+
+   Below 1024px the section is laid out for a narrow screen instead: a real
+   gutter, one readable measure for the running text, a diagram that fills the
+   column, and the callouts as a plain stack with space between them.
+
+   1023px, not 767px, because .regen-callout only becomes absolutely
+   positioned around the diagram at 1024px -- that is where the arrows can
+   point at something. Between 768 and 1023 the callouts were already stacked
+   but still carried the desktop type scale, which put 12px copy on a
+   768px-wide line and left the diagram at 52% of the screen. The two
+   breakpoints have to agree. */
+@media (max-width: 1023px) {
+  /* A gutter that does not shrink with the viewport. 3% of 390px is 12px;
+     this is the same 20px at every phone size. */
+  .regen-diff-wrap {
+    padding: 8% 20px 12% !important;
+  }
+
+  /* The heading's three lines are sized in vw and pulled together with
+     negative em margins, which is right at the design's proportions and
+     overlapping at a phone's. Each line gets its own size and the negative
+     margins come off. */
+  .regen-diff-wrap h2 span {
+    margin-top: 0 !important;
+    display: block;
+  }
+  .regen-diff-wrap h2 span:nth-child(1) { font-size: 7.6vw !important; line-height: 1.1; }
+  .regen-diff-wrap h2 span:nth-child(2) { font-size: 15vw !important; line-height: 0.95; }
+  .regen-diff-wrap h2 span:nth-child(3) { font-size: 7.6vw !important; line-height: 1.1; }
+
+  /* The intro takes the column, not the design's 42%. */
+  .regen-diff-wrap > p {
+    max-width: 100% !important;
+    font-size: 16px !important;
+    line-height: 1.55;
+    margin-top: 6% !important;
+  }
+
+  /* The diagram fills the column. At 51.6% it was a 201px thumbnail on a
+     390px screen, and the detail it exists to show -- roots, worms, the soil
+     profile -- was illegible. */
+  .regen-soil {
+    margin-top: 8% !important;
+  }
+  .regen-soil__stage {
+    width: 100% !important;
+  }
+
+  /* The callouts stack. They need separation from each other, and their type
+     needs to be the same size as the intro's -- they are the section's real
+     content, not captions. */
+  .regen-callout {
+    margin-top: 10%;
+    text-align: left;
+  }
+  .regen-callout h3 {
+    font-size: 20px !important;
+  }
+  .regen-callout p {
+    font-size: 16px !important;
+    line-height: 1.55;
+    margin-top: 0.4em !important;
+  }
+
+  /* The three "BETTER FOR..." lines are the section's payoff, and at the
+     desktop ratio they landed at 15px -- smaller than the body copy above
+     them. They lead now. The underline rules are sized against the text, so
+     they follow it. */
+  .regen-diff-better p {
+    font-size: 22px !important;
+  }
+}
+
+/* The callouts' type is sized in vw so it holds the design's proportions
+   against the diagram, which is right at 1440 (17px) and too small at the
+   narrow end of the desktop range: 12px at 1024, 14px at 1200. A floor keeps
+   the copy readable without changing anything at the design's own width --
+   the same treatment section 4's card already has. */
+@media (min-width: 1024px) and (max-width: 1330px) {
+  .regen-callout p {
+    font-size: max(1.16vw, 15px) !important;
+    line-height: 1.5;
+  }
+  .regen-callout h3 {
+    font-size: max(1.62vw, 19px) !important;
+  }
+  /* The floor makes the blocks taller, and "Healthy Soil" -- the longest of
+     the four -- then reached its own arrow: its copy runs to 51.2% of the
+     diagram at 1024 against an arrow starting at 44.6%. The arrow drops below
+     it here. Same fix as the "Animals" arrow at 1440, and for the same
+     reason: these arrows are placed against the design's text nodes, which
+     are shorter than the copy this build actually sets. */
+  .regen-soil__stage img[src*="arr-soil"] {
+    top: 53.5% !important;
+  }
+}
+
 /* Section 7 sits on top of section 6's dead tail.
 
    The burlap band's BOX runs about 160px past its own painted tear at 1440 --

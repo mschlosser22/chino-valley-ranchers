@@ -52,7 +52,14 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
           let tan=0;
           for (let x=0;x<img.width;x++){
             const i=(y*img.width+x)*4;
-            if (d[i]-d[i+2] > 18 && d[i] > 170) tan++;
+            // r >= g as well as r > b. Burlap is warm (239,214,188) so red
+            // leads both. The green heading's antialiasing against white
+            // gives (177,203,153): r-b is 24, which passed a red-vs-blue test
+            // alone, and 44% of that row cleared the threshold -- so the
+            // check located the "tear" at the heading's own letters, 193px
+            // BELOW the ink it was measuring against, and reported a negative
+            // gap on a correct layout.
+            if (d[i]-d[i+2] > 18 && d[i] > 170 && d[i] >= d[i+1]) tan++;
           }
           if (tan/img.width > 0.25) lowest = y;
         }

@@ -14,7 +14,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
 // box-based check reproduces the defect instead of catching it.
 (async()=>{
   const b=await chromium.launch();
-  for(const [w,label] of [[1440,'desktop'],[1100,'narrow desktop'],[390,'mobile']]){
+  for(const [w,label] of [[1440,'desktop'],[1100,'narrow desktop'],[768,'tablet'],[390,'mobile'],[360,'small phone']]){
     const p=await b.newContext({viewport:{width:w,height:1000},deviceScaleFactor:1}).then(c=>c.newPage());
     const bad=[];
     p.on('response',r=>{if(r.status()>=400&&/images\/regen/.test(r.url()))bad.push(r.url().split('/').pop())});
@@ -92,7 +92,24 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       const arrowInk = arrows.filter(a=>a.getBoundingClientRect().width>0)
         .map(a=>({src:a.getAttribute('src').split('/').pop(),
                   w:a.naturalWidth, h:a.naturalHeight}));
-      return {arrowInk, onSoil,
+      const narrow=(()=>{
+        const spans=[...h.querySelectorAll('span')];
+        const introEl=[...s.querySelectorAll('p')].find(p=>!p.closest('.regen-callout')&&!p.closest('.regen-diff-better'));
+        const stageEl=s.querySelector('.regen-soil__stage');
+        const c0=s.querySelector('.regen-callout');
+        if(!introEl||!stageEl||!c0) return null;
+        const B=e=>e.getBoundingClientRect();
+        let minGap=Infinity;
+        for(let i=1;i<spans.length;i++)
+          minGap=Math.min(minGap, B(spans[i]).top-B(spans[i-1]).bottom);
+        return {headOverlap: minGap<0?Math.round(minGap):0,
+                introFs:Math.round(parseFloat(getComputedStyle(introEl).fontSize)),
+                introW:Math.round(B(introEl).width),
+                calloutFs:Math.round(parseFloat(getComputedStyle(c0.querySelector('p')).fontSize)),
+                stagePct:+(B(stageEl).width/innerWidth*100).toFixed(0),
+                gutter:Math.round(B(c0).left)};
+      })();
+      return {arrowInk, onSoil, narrow, innerW:innerWidth,
               artW:+(stage.width/sec.width*100).toFixed(2),
               artLoaded:art.complete&&art.naturalWidth>0,
               // Positive = the sky reaches up past the paragraph's last line.
@@ -101,6 +118,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               items,
               overflow:document.documentElement.scrollWidth>innerWidth+1};
     });
+    const innerW=m.innerW;
     console.log(`\n  --- ${label} (${w}px) ---`);
     ck('soil diagram loads', m.artLoaded);
     if(w>=1024){
@@ -153,6 +171,24 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       const an = m.arrowInk.find(a=>/arr-animals/.test(a.src));
       if (an) ck('the animals arrow includes its head',
                  an.w===271 && an.h===79, `${an.w}x${an.h}, expected 271x79`);
+    }
+    // Narrow screens get a layout built for them rather than the design's
+    // desktop proportions scaled down. Before this, at 390px: the heading's
+    // three lines overlapped by 5px (their negative margins are tuned for a
+    // 155px display size), the intro was a 154px ribbon at 13px because its
+    // max-width is the design's 42%, the diagram rendered 201px wide, and the
+    // wrapper's 3% side padding came to 12px.
+    if(w<1024 && m.narrow){
+      ck('heading lines do not overlap', m.narrow.headOverlap===0,
+         `${m.narrow.headOverlap}px overlap`);
+      ck('body copy is readable', m.narrow.introFs>=15 && m.narrow.calloutFs>=15,
+         `intro ${m.narrow.introFs}px, callouts ${m.narrow.calloutFs}px`);
+      ck('running text has a usable measure', m.narrow.introW > innerW*0.7,
+         `${m.narrow.introW}px of ${innerW}`);
+      ck('the diagram fills the column', m.narrow.stagePct>80, `${m.narrow.stagePct}%`);
+      // A percentage gutter vanishes on a phone: the wrapper's 3% is 12px at
+      // 390. This one holds at every size.
+      ck('content keeps a real gutter', m.narrow.gutter>=16, `${m.narrow.gutter}px`);
     }
     ck('no broken regen assets', bad.length===0, bad.join(','));
     ck('no horizontal overflow', !m.overflow);

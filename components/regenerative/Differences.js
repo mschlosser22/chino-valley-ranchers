@@ -131,7 +131,7 @@ export function Differences() {
           transparent tail, so the visible white above the heading begins where
           the burlap stops painting. 3.3% lands the heading's ink ~40px below
           that tear, which is what the client asked for. */}
-      <div className="mx-auto" style={{ maxWidth: 1600, padding: "3.3% 3% 5%" }}>
+      <div className="mx-auto regen-diff-wrap" style={{ maxWidth: 1600, padding: "3.3% 3% 5%" }}>
         <h2 className="m-0 text-center">
           <span
             className="block uppercase"
@@ -295,7 +295,7 @@ export function Differences() {
         </div>
 
         {/* Section 8: three underlined lines, centred under the diagram. */}
-        <div className="text-center" style={{ marginTop: "4%" }}>
+        <div className="text-center regen-diff-better" style={{ marginTop: "4%" }}>
           {BETTER.map((l) => (
             <p
               key={l.text}
