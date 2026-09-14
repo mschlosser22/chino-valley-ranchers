@@ -56,13 +56,24 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
 
     // Now the pixels. Crop from above the section's box top, since the tear
     // sits in the lifted region.
+    // Scroll the seam to the middle of the viewport and shoot the VIEWPORT,
+    // not the full page. A fullPage screenshot composites the sticky nav
+    // wherever the page happens to be scrolled, and its flat bottom edge sat
+    // right on the seam at 1100px -- reporting 20/20/20/20, the exact
+    // signature of the defect, on a tear that is perfectly ragged. Which
+    // viewport this hits depends on the page's length, so it moved when an
+    // unrelated section was removed.
+    await p.evaluate(y => scrollTo(0, y), g.top - Math.round(1000 * 0.45));
+    await p.waitForTimeout(350);
+    const vy = await p.evaluate(() =>
+      document.querySelector('.regen-prefooter-section').getBoundingClientRect().top);
     // The window must clear the tear's deepest trough, not just its peaks.
     // At |marginTop| + 40 it cut the troughs off and capped every reading at
     // ~24px: at 2560 that failed a seam whose real wander is 68px. The rip is
     // 56/622 of the section's height, so take twice that plus the lift.
-    const cropTop = g.top - Math.ceil(Math.abs(g.marginTop)) - 12;
+    const cropTop = Math.round(vy) - Math.ceil(Math.abs(g.marginTop)) - 12;
     const height = Math.ceil(Math.abs(g.marginTop)) + Math.ceil(56 / 622 * g.height * 2) + 24;
-    const buf = await p.screenshot({clip:{x:0,y:cropTop,width:w,height},fullPage:true});
+    const buf = await p.screenshot({clip:{x:0,y:cropTop,width:w,height}});
     const wander = await p.evaluate(({b64,w,height}) => new Promise(res=>{
       const img=new Image();
       img.onload=()=>{

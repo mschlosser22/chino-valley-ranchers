@@ -25,9 +25,11 @@ and several are flattened to a plain band where the design has layered artwork.
 | 9 | Pre-footer — pasture raised | `EggsOpen` (21 lines) | Type scale and layout |
 | 10 | Footer | site `Footer` | — |
 
-`Logos` renders a certification strip that is **not in this design**. Flagged
-rather than removed until we know whether it was added deliberately after the
-comp.
+`Logos` rendered a certification strip that was **not in this design**. It was
+flagged rather than removed until the client could confirm; on 2026-09-13 they
+confirmed it should go, and the component and its usage were deleted. The four
+mark images stay in `public/images/` — removing a section is easily reversed,
+deleting shared assets is not.
 
 ## Recurring design devices
 
@@ -313,7 +315,8 @@ quantizing `soil-block` actually made it *larger* (1.5MB -> 2.3MB) before the
 format change fixed it properly. The remaining PNGs are flat-colour artwork,
 where PNG is correct.
 
-**Still open:** `Logos` renders a certification strip that is not in this
-design. It is 68px tall, so it is not what makes the page longer — but it is
-still unaccounted for, and wants a decision from the client rather than a
-guess.
+**Resolved 2026-09-13:** `Logos` rendered a certification strip that is not in
+this design. The client confirmed it should be removed, so the component and
+its usage are gone. The pre-footer now meets the site footer directly, which
+it does cleanly — that seam is a straight edge in the design too, and only the
+pre-footer's *top* is torn.
