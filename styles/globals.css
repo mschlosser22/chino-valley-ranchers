@@ -421,7 +421,13 @@
   }
   /* The paper ground has to sit behind the heading AND the copy -- they are
      siblings, so it goes on both with the padding split, rather than on a
-     wrapper that does not exist. Body text on bare grass was unreadable. */
+     wrapper that does not exist. Body text on bare grass was unreadable.
+
+     The two grounds must also MEET. Any margin between the elements shows as
+     a stripe of grass through the middle of what should read as one block:
+     the copy's own 0.9em top margin opened a 14px band. The space between
+     heading and copy is padding on the two adjoining edges instead, so the
+     backgrounds stay flush. */
   .regen-agri-stage h2 {
     background: #F4F2EE;
     padding: 7% 7% 2%;
@@ -429,7 +435,7 @@
   }
   .regen-agri-stage p {
     background: #F4F2EE;
-    padding: 0 7% 8%;
+    padding: 4% 7% 8%;
     margin: 0;
   }
   /* !important because the sizes are inline styles on the elements -- they
@@ -437,7 +443,10 @@
      a phone. */
   .regen-agri-stage h2 span:first-child { font-size: 8.2vw !important; }
   .regen-agri-stage h2 span:last-child  { font-size: 7.4vw !important; }
-  .regen-agri-stage p { font-size: 3.9vw !important; margin-top: 0.9em; }
+  /* margin-top:0 -- the breathing room above the copy is this rule's own
+     padding-top, so the paper ground stays continuous. A margin here would
+     put grass between the two halves of the block. */
+  .regen-agri-stage p { font-size: 3.9vw !important; margin-top: 0 !important; }
   .regen-agri-stage img[src*="carton"] { width: 62% !important; margin: 6% auto 0; display: block; }
   .regen-agri-stage a[href="/products"] { display: block; width: 74% !important; margin: 6% auto 0; }
   .regen-agri-stage img[src*="ann-getem"] { width: 28% !important; margin: 3% 0 0 auto; display: block; }

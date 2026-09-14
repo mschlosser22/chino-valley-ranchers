@@ -69,6 +69,19 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               scriptBearing:(()=>{const sp=h.querySelectorAll('span');
                 return getComputedStyle(sp[0]).marginLeft;})(),
               bodyPx:parseFloat(getComputedStyle(s.querySelector('p')).fontSize),
+              // On phones the heading and copy are one block of paper. They
+              // are siblings with no wrapper, so the ground is painted on
+              // both -- and any MARGIN between them shows as a stripe of
+              // grass through the middle of it. The copy's 0.9em top margin
+              // did exactly that. Asserting the ground exists on each element
+              // passed the defect; what matters is that the two grounds meet.
+              oneBlock:(()=>{const el=s.querySelector('p');
+                const hr=h.getBoundingClientRect(), pr=el.getBoundingClientRect();
+                const hs=getComputedStyle(h), ps=getComputedStyle(el);
+                return {gap:Math.round(pr.top-hr.bottom),
+                        sameGround: hs.backgroundColor===ps.backgroundColor,
+                        flush: Math.round(hr.left)===Math.round(pr.left) &&
+                               Math.round(hr.right)===Math.round(pr.right)};})(),
               copyGround:(()=>{const el=s.querySelector('p');
                 const bg=getComputedStyle(el).backgroundColor;
                 return bg && bg!=='rgba(0, 0, 0, 0)' && bg!=='transparent';})(),
@@ -96,6 +109,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     }
     ck('body copy is readable', m.bodyPx>=13, `${m.bodyPx}px`);
     if(w<768) ck('copy has a ground behind it on phones', m.copyGround);
+    if(w<768){
+      ck('heading and copy read as one block', m.oneBlock.gap===0,
+         `${m.oneBlock.gap}px of grass between them`);
+      ck('both halves share one ground colour', m.oneBlock.sameGround);
+      ck('the block has straight sides', m.oneBlock.flush);
+    }
     if(w===1440){
       ck('script heading at design size', Math.abs(m.typePx.script-124)<4, `${m.typePx.script}px vs 124px`);
       ck('Ultra heading at design size', Math.abs(m.typePx.ultra-68.77)<3, `${m.typePx.ultra}px vs 68.8px`);
