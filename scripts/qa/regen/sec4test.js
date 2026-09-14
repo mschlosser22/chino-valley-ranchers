@@ -35,6 +35,19 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               cardPct:+(card.width/innerWidth*100).toFixed(1),
               nextPct:+(mk(sp[0])/innerWidth*100).toFixed(1),
               genPct:+(mk(sp[1])/innerWidth*100).toFixed(1),
+              block:(()=>{const par=s.querySelector('p');
+                const d=s.querySelector('img[src*="hen-divider"]');
+                if(!par||!d) return null;
+                const hr=h.getBoundingClientRect(), pr=par.getBoundingClientRect(),
+                      dr=d.getBoundingClientRect();
+                const bg=el=>getComputedStyle(el).backgroundColor;
+                return {gapAbove:Math.round(dr.top-hr.bottom),
+                        gapBelow:Math.round(pr.top-dr.bottom),
+                        edgesMatch:Math.round(dr.left)===Math.round(hr.left) &&
+                                   Math.round(dr.right)===Math.round(hr.right),
+                        dl:Math.round(dr.left), dr:Math.round(dr.right),
+                        hl:Math.round(hr.left), hr:Math.round(hr.right),
+                        sameGround: bg(h)===bg(par) && bg(h)===bg(d)};})(),
               henOK:hen.complete&&hen.naturalWidth>0,
               henOverlaps: hb.right>card.left,
               divider:!!s.querySelector('img[src*="hen-divider"]'),
@@ -179,6 +192,26 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       // top and 4.1% at the bottom, which left the type sitting in the tear.
       ck('"Generation" at design width', Math.abs(m.genPct-25.39)<3, `${m.genPct}% vs 25.39%`);
       ck('hen overlaps the card', m.henOverlaps);
+    }
+    // On phones the heading, the hen divider and the copy are one block of
+    // paper. All three are siblings with no wrapper, so the ground is painted
+    // on each -- and the block is only continuous if they all span the same
+    // width and meet with no margin between them.
+    //
+    // The divider is an <img>: `width` sizes its artwork, so its ground could
+    // only ever be as wide as the element. An earlier version kept it at 12%
+    // and tried to spread the ground with a box-shadow, unclipped by
+    // `clip-path: inset(0 -100vw)` -- but clip-path clips what the element
+    // paints, shadows included, and the ground still measured 10% of the
+    // viewport with the photograph showing either side of it.
+    if(w<768 && m.block){
+      ck('heading, divider and copy form one block',
+         m.block.gapAbove===0 && m.block.gapBelow===0,
+         `${m.block.gapAbove}px above the divider, ${m.block.gapBelow}px below`);
+      ck('the divider carries the full-width ground',
+         m.block.edgesMatch,
+         `divider spans ${m.block.dl}-${m.block.dr}, block spans ${m.block.hl}-${m.block.hr}`);
+      ck('all three share one ground colour', m.block.sameGround);
     }
     ck('hen cut-out loads', m.henOK);
     ck('hen divider present', m.divider);

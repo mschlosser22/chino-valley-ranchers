@@ -376,16 +376,24 @@
   .regen-next-stage p  { padding: 0 7% 8%; font-size: 3.9vw !important; }
   .regen-next-stage h2 span:first-child { font-size: 7.4vw !important; }
   .regen-next-stage h2 span:last-child  { font-size: 8.6vw !important; }
-  /* The divider sat on a transparent strip between the heading's ground and
-     the copy's, which read as a gap in the card. Give it the same ground. */
+  /* The divider sits between the heading's ground and the copy's, so it needs
+     the same ground across the FULL width or it reads as a notch in the block.
+
+     It is an <img>, so `width` sizes the artwork itself and the ground can
+     only be as wide as the element. An earlier version kept width:12% and
+     tried to spread the ground sideways with a box-shadow, unclipping it with
+     `clip-path: inset(0 -100vw)` -- but clip-path clips everything the
+     element paints, shadows included, so the ground still measured 10% of the
+     viewport. The element takes the full width now and the artwork is sized
+     by max-width instead, which is what `width` was really being asked to do. */
   .regen-next-stage img[src*="hen-divider"] {
-    width: 12% !important;
-    margin: 0 auto;
-    padding: 3% 0;
+    width: 100% !important;
+    max-width: 12%;
+    box-sizing: content-box;
+    padding: 3% 44%;
+    margin: 0;
     display: block;
     background: #F4F2EE;
-    box-shadow: -100vw 0 0 #F4F2EE, 100vw 0 0 #F4F2EE;
-    clip-path: inset(0 -100vw);
   }
   .regen-next-stage span[aria-hidden] { display: none; }
 }
