@@ -476,7 +476,9 @@
    rather than the carton. */
 @media (min-width: 768px) {
   .regen-prefooter-section {
-    background-position: left center !important;
+    /* `top`, not `center`: see EggsOpen.js. Centring crops the surplus height
+       half off the top above 2075px, which shears the torn edge flat. */
+    background-position: left top !important;
   }
 }
 

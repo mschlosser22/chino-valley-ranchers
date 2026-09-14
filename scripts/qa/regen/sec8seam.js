@@ -16,7 +16,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
 //    photograph and reports zero wander whatever the seam looks like.
 (async()=>{
   const b=await chromium.launch();
-  for(const [w,label] of [[1440,'desktop'],[1100,'narrow desktop'],[768,'tablet'],[390,'mobile']]){
+  // 2200 and 2560 matter specifically: above 2075px the section's min-height
+  // clamps at 622 while the width keeps growing, so `cover` scales by width
+  // and crops the surplus height. That is the only regime where a vertical
+  // `center` anchor can shear the tear flat, and nothing below 2075 exercises it.
+  for(const [w,label] of [[2560,'ultrawide'],[2200,'wide'],[1440,'desktop'],[1100,'narrow desktop'],[768,'tablet'],[390,'mobile']]){
     const p=await b.newContext({viewport:{width:w,height:1000},deviceScaleFactor:2}).then(c=>c.newPage());
     const bad=[];
     p.on('response',r=>{if(r.status()>=400&&/images\/regen/.test(r.url()))bad.push(r.url().split('/').pop())});
@@ -31,6 +35,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       const cs=getComputedStyle(s);
       const prev=s.previousElementSibling;
       return {top:Math.round(s.getBoundingClientRect().top+scrollY),
+              height:Math.round(s.getBoundingClientRect().height),
               bg:cs.backgroundImage,
               z:cs.zIndex,
               prevZ:prev?getComputedStyle(prev).zIndex:null,
@@ -51,8 +56,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
 
     // Now the pixels. Crop from above the section's box top, since the tear
     // sits in the lifted region.
+    // The window must clear the tear's deepest trough, not just its peaks.
+    // At |marginTop| + 40 it cut the troughs off and capped every reading at
+    // ~24px: at 2560 that failed a seam whose real wander is 68px. The rip is
+    // 56/622 of the section's height, so take twice that plus the lift.
     const cropTop = g.top - Math.ceil(Math.abs(g.marginTop)) - 12;
-    const height = Math.ceil(Math.abs(g.marginTop)) + 40;
+    const height = Math.ceil(Math.abs(g.marginTop)) + Math.ceil(56 / 622 * g.height * 2) + 24;
     const buf = await p.screenshot({clip:{x:0,y:cropTop,width:w,height},fullPage:true});
     const wander = await p.evaluate(({b64,w,height}) => new Promise(res=>{
       const img=new Image();
@@ -82,19 +91,35 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
           firsts.push(f);
         }
         const lo=Math.min(...firsts), hi=Math.max(...firsts);
-        res({wanderCss:(hi-lo)/2});
+        const q=firsts.length>>2;
+        const quarterMins=[0,1,2,3].map(i=>Math.min(...firsts.slice(i*q,(i+1)*q))/2);
+        res({wanderCss:(hi-lo)/2, quarterMins});
       };
       img.onerror=()=>res(null);
       img.src='data:image/png;base64,'+b64;
     }), {b64: buf.toString('base64'), w, height});
 
+    // A uniform minimum across the width means the tear's peaks are being
+    // clipped by a straight edge -- the section's own top. Overall wander
+    // does NOT catch this: at 2200 the rip still measured 27-42px per quarter
+    // while every quarter's minimum sat at exactly row 65, which is the flat
+    // border the client reported.
+    if (wander && wander.quarterMins) {
+      const mins = wander.quarterMins;
+      const spread = Math.max(...mins) - Math.min(...mins);
+      ck('the tear is not clipped flat by the section edge',
+         spread > 1.5, `quarter minima ${mins.map(v=>v.toFixed(0)).join('/')} (spread ${spread.toFixed(1)}px)`);
+    }
     if (wander) {
-      // The asset's rip is 56px of a 2075-wide image, so it scales with the
-      // viewport. Require most of it to survive rendering.
-      const expected = 56 * w / 2075;
+      // The asset's rip wanders 56 rows of a 622-tall image. What reaches the
+      // screen is that fraction of the section's own height, NOT a fraction of
+      // the viewport width: above 2075px the height clamps at 622 while the
+      // width keeps growing, so scaling by width overstated the expectation
+      // (69px against a correctly-rendered 24px) and failed a good page.
+      const expected = 56 / 622 * g.height;
       ck('the seam is torn, not a straight cut',
          wander.wanderCss > expected * 0.45,
-         `${wander.wanderCss.toFixed(0)}px of wander (asset would give ~${expected.toFixed(0)})`);
+         `${wander.wanderCss.toFixed(0)}px of wander (this section's height gives ~${expected.toFixed(0)})`);
     } else {
       ck('the seam could be measured', false);
     }
