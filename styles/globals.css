@@ -272,7 +272,11 @@
   /* A gutter that does not shrink with the viewport. 3% of 390px is 12px;
      this is the same 20px at every phone size. */
   .regen-diff-wrap {
-    padding: 8% 20px 12% !important;
+    /* The top value is small because the lift above already places this
+       section against section 6's tear; 8% here stacked on top of it and left
+       ~80px of white where ~40 was wanted. The side gutter is px, not a
+       percentage, so it does not shrink with the viewport. */
+    padding: 10px 20px 12% !important;
   }
 
   /* The heading's three lines are sized in vw and pulled together with
@@ -308,9 +312,13 @@
   /* The callouts stack. They need separation from each other, and their type
      needs to be the same size as the intro's -- they are the section's real
      content, not captions. */
+  /* Centred on narrow screens. The base rule left-aligns them, which is
+     right at desktop where each sits beside the diagram it points at; in a
+     single stacked column that reads as ragged against the centred heading
+     and intro above it. */
   .regen-callout {
     margin-top: 10%;
-    text-align: left;
+    text-align: center;
   }
   .regen-callout h3 {
     font-size: 20px !important;
@@ -373,6 +381,47 @@
 @media (min-width: 1100px) {
   .regen-diff-lift {
     margin-top: -15.5vw;
+  }
+}
+
+/* Narrow screens need the same lift, for the same reason: section 6's mask
+   leaves a transparent tail below its visible tear, and without a lift that
+   tail reads as dead white above this heading -- 124px at 360, 185px at 1023,
+   against the ~40px the client asked for.
+
+   Two values because section 6's own layout switches at 768 (its grid goes to
+   two columns and its min-height floor applies), which changes how much tail
+   it leaves. Measured from the tear rather than the box at each width, then
+   expressed as the vw that lands the heading ~40px below it.
+
+   An earlier note here said an ungated -15.5vw overlapped the hen at 390.
+   That was measured before section 6 gained its 768-860 height floor and
+   before this section had a mobile layout; the clearances are re-verified
+   below and at every width in between. */
+@media (max-width: 767px) {
+  .regen-diff-lift {
+    /* Section 6's transparent tail is a constant 19.1% of its own height at
+       every width -- its mask's rip runs rows 997-1262 of 1262 -- and that
+       height is 58vw here, so the tail is 11.08vw. The lift covers it and the
+       tear's own depth, leaving the heading ~40px below the tear.
+
+       The hen does not occupy this space. Its cut-out box runs to 97% of the
+       section, which is why a box-based clearance check reads a collision,
+       but the tear crops it: scanning the rendered pixels at 390, the burlap
+       and hen stop at one row and the heading's first ink is 109px below it,
+       with nothing painted in between. */
+    margin-top: calc(-11.08vw - 61px);
+  }
+}
+@media (min-width: 768px) and (max-width: 860px) {
+  /* Section 6 takes its 64vw floor over this range, so its tail is 12.22vw. */
+  .regen-diff-lift {
+    margin-top: calc(-12.22vw - 0px);
+  }
+}
+@media (min-width: 861px) and (max-width: 1099px) {
+  .regen-diff-lift {
+    margin-top: calc(-11.08vw - 5px);
   }
 }
 

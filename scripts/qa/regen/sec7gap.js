@@ -76,18 +76,48 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       // The client asked for "about 40 pixels" at desktop. Narrower screens
       // keep the ungated stack and run larger, which is correct -- the lift
       // only applies from 1100px.
-      if (w>=1100)
-        ck('heading ink sits ~40px below the visible tear', gap>=15 && gap<=90,
-           `${gap}px below the tear`);
-      else
-        ck('heading ink is below the visible tear', gap>0, `${gap}px below the tear`);
+      // Every width, not just desktop. This used to assert only `gap > 0`
+      // below 1100px, on the grounds that narrow screens kept an unlifted
+      // stack -- so when the client reported ~105px of dead white at 390 the
+      // suite was green. Narrow screens have their own lift now and hold the
+      // same ~40px target.
+      ck('heading ink sits ~40px below the visible tear', gap>=15 && gap<=70,
+         `${gap}px below the tear`);
     }
     // The lift must never pull the white band over section 6's own artwork.
     // At an ungated -15.5vw this failed at 390 (-3px) while every desktop
     // measurement was green.
-    if (m.artBottom!==null)
-      ck('heading clears section 6 artwork', m.inkTop > m.artBottom,
-         `${m.inkTop-m.artBottom}px below the lowest of the ROC mark, annotation and hen`);
+    if (tearY !== null && m.inkTop - tearY > 6) {
+      // The band between the tear and the heading must be EMPTY. Box-based
+      // clearance is useless here: section 6's hen runs to 97% of the
+      // section's height on a phone, so comparing boxes reports a collision
+      // at every narrow width even though the tear crops the hen well above
+      // the heading. That false reading nearly had me revert a correct fix.
+      // This samples the rendered pixels instead.
+      const band = await p.screenshot({clip:{x:0, y:Math.ceil(tearY)+2, width:w,
+                                             height:Math.max(1,Math.floor(m.inkTop-tearY)-4)},
+                                       fullPage:true});
+      const painted = await p.evaluate(({b64}) => new Promise(res => {
+        const img=new Image();
+        img.onload=()=>{
+          const cv=document.createElement('canvas');
+          cv.width=img.width; cv.height=img.height;
+          cv.getContext('2d').drawImage(img,0,0);
+          const d=cv.getContext('2d').getImageData(0,0,cv.width,cv.height).data;
+          let n=0,t=0;
+          for(let y=0;y<cv.height;y++) for(let x=0;x<cv.width;x+=3){
+            const o=(y*cv.width+x)*4; t++;
+            if(Math.min(d[o],d[o+1],d[o+2])<232) n++;
+          }
+          res(t? n/t*100 : 0);
+        };
+        img.onerror=()=>res(null);
+        img.src='data:image/png;base64,'+b64;
+      }), {b64: band.toString('base64')});
+      if (painted !== null)
+        ck('nothing from section 6 hangs into the gap', painted < 1.5,
+           `${painted.toFixed(1)}% of the band is painted`);
+    }
     await p.close();
   }
   await b.close();
