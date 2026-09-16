@@ -77,8 +77,15 @@ const FRAME={
   };
   await load(dJ,'/jammy'); await load(dH,'/'); await load(mJ,'/jammy');
 
+  // Optional id filter: `node capture-evidence.js 01` re-shoots one item.
+  // Without it every shot is rewritten, which silently restates the evidence
+  // for items the current change never touched.
+  const only=process.argv.slice(2).filter(a=>/^\d+$/.test(a)).map(a=>a.padStart(2,'0'));
+  const todo = only.length ? items.filter(it=>only.includes(String(it.id))) : items;
+  if(only.length) console.log(`  (only: ${only.join(', ')})`);
+
   let ok=0, fail=[];
-  for(const it of items){
+  for(const it of todo){
     const mobile = it.viewport==='mobile';
     const p = mobile ? mJ : (it.page==='/' ? dH : dJ);
     try{

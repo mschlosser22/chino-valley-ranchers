@@ -505,20 +505,30 @@
 }
 
 .jammy-cta__cta {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-height: 48px;
-  border-radius: 6px;
+  /* QA 2.1: match the page's other CTA buttons. All three of them -- "Find a
+     Store Near You", "Learn More About Our Family Farms" and "More Recipes"
+     -- render at 36px / 0.9px tracking / 700 in DIN Condensed, from the
+     Tailwind utilities `text-xl lg:text-4xl tracking-wide rounded-lg px-5
+     py-2`. The face was already right here; the treatment was not, and at
+     20px with 1.6px of tracking this button read small and loose beside them.
+     These values mirror the text-xl step. There is deliberately no
+     lg: step here: from 900px up the overlay below takes over and sizes the
+     button in container units, which is what keeps it inside the band. */
+  padding: 8px 20px;
+  border-radius: 8px;
   background: #2f4421;
   color: #ffffff;
-  /* QA 2.1: match the other buttons on the site, which use DIN Condensed
-     (loaded site-wide from the Typekit kit in _document). */
   font-family: din-condensed, "Arial Narrow", sans-serif;
   font-weight: 700;
   font-size: 20px;
-  letter-spacing: 1.6px;
+  /* Tailwind's text-xl / text-4xl carry their own line-height (1.75rem and
+     2.5rem). Without matching them this button inherited a 1.5 body value and
+     stood 70px tall against the other CTAs' 58px at the same type size. */
+  line-height: 1.75rem;
+  letter-spacing: 0.025em;
   text-transform: uppercase;
   text-decoration: none;
   transition: background 240ms ease, transform 240ms ease;
@@ -620,17 +630,38 @@
        copy. Ends at 95.5%; the torn fringe does not bite into the button's
        x-span until 97.2%, so this stays clear of it. */
     top: 89.5%;
-    width: 13.449%;
+    /* Width and height come from the type now, not from the overlay's own
+       box. The button previously held a fixed 5.955% height (~46px) and was
+       sized to fit it at ~18.7px, which is why it read small beside the
+       page's other CTAs -- those are 36px. Letting it size to its content is
+       what allows the shared 36px treatment here.
+
+       Anchored from the BOTTOM, not the top, and the type scales with the
+       band. This overlay is laid out in container units, so a fixed 36px
+       button is a growing share of the band as the viewport narrows -- 8.6%
+       at 1280, 10.75% at 1024 -- which pushed it past the 97.2% where the
+       artwork's torn fringe bites, and then, once anchored to the bottom,
+       up over the last line of the body copy.
+
+       2.5cqw is 36px at a 1440 band: the same size the page's other CTAs
+       take, at the width the design is drawn for. Below that it scales with
+       everything else in the overlay rather than crowding it. */
+    /* Anchored below the copy, which ends at a stable 87.3% of the band at
+       every width. A bottom anchor held the fringe clearance but let the
+       button drift up into that copy as the band shrank (-1px at 1024); a
+       fixed top anchor plus a height that no longer scales did the reverse.
+       88.4% sits just under the copy and, with the type scaling as below,
+       ends at 95-96% -- clear of the 97.2% where the torn fringe bites. */
+    top: 88.4%;
+    bottom: auto;
+    font-size: 2.5cqw;
+    line-height: 1.111;
+    width: auto;
     min-width: 0;
-    height: 5.955%;
+    height: auto;
     min-height: 0;
     margin: 0;
-    border-radius: 6px;
-    /* Was 1.115cqw (~16px at a 1440 band), which read small next to the rest of
-       the site. 1.3cqw is ~18.7px, matching the 18px DIN Condensed links in the
-       footer. The site's primary buttons are 36px, but that will not sit in
-       this band's 43.6px-tall button box. */
-    font-size: 1.3cqw;
+    border-radius: 8px;
   }
 }
 
