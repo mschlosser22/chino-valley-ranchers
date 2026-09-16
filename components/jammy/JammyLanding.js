@@ -208,7 +208,6 @@ export function JammyLanding() {
               maxWidth: 660,
               margin: 0,
               aspectRatio: "700 / 280.1",
-              filter: "drop-shadow(0px 4px 23.9px rgba(0,0,0,0.26))",
             }}
           >
             {/* QA: "We do not want the letters to animate in separately.
@@ -227,7 +226,15 @@ export function JammyLanding() {
                 width: "100%",
                 height: "100%",
                 opacity: 0,
-                willChange: "transform, opacity",
+                /* The drop-shadow belongs on the artwork, not the <h1>. On the
+                   parent it wrapped the element being animated, so its 23.9px
+                   blur was re-rendered over the moving wordmark every frame --
+                   a genuine repaint, which is what made the drop-in glitch (5
+                   frames over 20ms, worst 24.8). Here it moves WITH the layer
+                   and is composited rather than repainted. */
+                filter: "drop-shadow(0px 4px 23.9px rgba(0,0,0,0.26))",
+                willChange: "transform, opacity, filter",
+                transform: "translateZ(0)",
               }}
             />
           </h1>

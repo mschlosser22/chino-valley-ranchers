@@ -113,12 +113,17 @@ export function useJammyInteractions(rootRef) {
         started = true;
 
         if (art) {
+          // `linear` here on purpose: the keyframes carry their own
+          // per-segment animation-timing-function (fall accelerates, rebound
+          // decelerates). A curve on the shorthand is applied between every
+          // pair of keyframes and would fight them, which is what made the
+          // drop-in stutter.
           art.style.animation =
-            "jammyDripBounce 1.15s cubic-bezier(.3,0,.4,1) 260ms both";
+            "jammyDripBounce 1.25s linear 260ms both";
         }
         wobbleTimer = setTimeout(() => {
           lockup.style.animation = "jammyWobble 7s ease-in-out infinite";
-        }, 260 + 1250);
+        }, 260 + 1300);
       };
 
       // Wait for the artwork so the bounce doesn't start on a blank frame.

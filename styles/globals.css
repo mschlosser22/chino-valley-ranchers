@@ -367,28 +367,50 @@
    and a scale-pop) and are recorded in docs/jammy-qa-roadmap.md. They can
    be previewed in the Claude Design project via its heroEntrance picker
    if CVR wants to compare before settling. */
+/* A bounce is not one easing curve -- it is a fall, an impact, and a series
+   of rebounds, each with its own. The animation carried a single
+   cubic-bezier(.3,0,.4,1) on the whole thing, which CSS applies BETWEEN EVERY
+   PAIR of keyframes: the wordmark eased out and back in at each one, so it
+   slowed mid-drop and snapped forward again. Sampled in the browser, velocity
+   swung hardest at 213ms and 589ms -- exactly the old 16% and 56% keyframes.
+   That stutter is what QA saw.
+
+   Each segment now carries the easing its phase actually needs: ease-in while
+   falling (gravity accelerates), ease-out while rising (gravity decelerates),
+   and the keyframe times come from the physics -- a fall from height h takes
+   time proportional to sqrt(h), with rebounds at 30%, 10% and 2.8%. */
 @keyframes jammyDripBounce {
   0% {
     opacity: 0;
     transform: translateY(-130%);
+    animation-timing-function: cubic-bezier(0.55, 0.06, 0.78, 0.35);
   }
   8% {
     opacity: 1;
   }
-  16% {
-    transform: translateY(-86%);
-  }
-  38% {
+  32.6% {
     transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.22, 0.65, 0.45, 0.94);
   }
-  56% {
-    transform: translateY(-9%);
+  50.5% {
+    transform: translateY(-30%);
+    animation-timing-function: cubic-bezier(0.55, 0.06, 0.78, 0.35);
   }
-  72% {
+  68.4% {
     transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.22, 0.65, 0.45, 0.94);
   }
-  85% {
-    transform: translateY(-2.5%);
+  78.8% {
+    transform: translateY(-10%);
+    animation-timing-function: cubic-bezier(0.55, 0.06, 0.78, 0.35);
+  }
+  89.1% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.22, 0.65, 0.45, 0.94);
+  }
+  94.5% {
+    transform: translateY(-2.8%);
+    animation-timing-function: cubic-bezier(0.55, 0.06, 0.78, 0.35);
   }
   100% {
     opacity: 1;
