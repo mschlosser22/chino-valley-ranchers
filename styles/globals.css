@@ -770,6 +770,21 @@
   max-width: 170px;
 }
 
+/* Every icon sits in a box of the same height, so every label starts on the
+   same line. The icons are sized from each asset's own viewBox, and
+   icon-consistent.svg is natively 63x58 against the other nine's 46-47 -- so
+   its label sat 12px below the rest of its row (72px from the cell top
+   against 60px). These icons are edge-to-edge ink, so rendered size is
+   visual size: the box is the tallest of the others (47px, from
+   icon-shelf-life) and the artwork is contained within it, which brings the
+   target icon down to the same optical weight as its neighbours. */
+.jammy .jammy-feature > img {
+  height: 47px !important;
+  width: auto !important;
+  max-width: 63px;
+  object-fit: contain;
+}
+
 /* Down from 24px per QA -- the section read as dense. */
 .jammy .jammy-feature h3 {
   font-size: clamp(14px, 1.15vw, 17px);
