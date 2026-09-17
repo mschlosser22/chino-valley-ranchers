@@ -1024,8 +1024,14 @@ export function JammyLanding() {
         style={{
           background: "#fff",
           // Figma has 54px above the text block and 56px below the tiles
-          // (node 1:332). QA 2.7 asked for that padding to be restored.
-          padding: "clamp(36px, 5vw, 54px) 24px clamp(36px, 5vw, 56px)",
+          // (node 1:332), and QA 2.7 asked for that to be restored -- but a
+          // later round asked for more room above the headline, which was
+          // reading as crowded: this section follows the features band's hard
+          // photographic edge, and 54px of padding put the heading's INK just
+          // 49px below it. 100px lands the ink at ~95px, between that and the
+          // 116px the features section gives its own heading. The bottom stays
+          // at Figma's 56px.
+          padding: "clamp(56px, 7vw, 100px) 24px clamp(36px, 5vw, 56px)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
