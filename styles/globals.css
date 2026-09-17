@@ -765,6 +765,44 @@
   background: #ffffff;
 }
 
+/* A soft white scrim over the photograph, under the content.
+
+   The forest labels sit directly on the backdrop, and the client's re-edited
+   yolk is a deeper orange -- which dropped three of them below WCAG AA where
+   they cross it: "Packed with nutrients" 3.97:1, "Easy and ready to eat"
+   3.95:1, "Enjoy any time of day" 4.12:1, against the previous artwork's
+   4.75-5.00:1. The photo is the asset the client supplied, so the fix belongs
+   on the label's ground rather than on the image.
+
+   A flat wash would grey the whole band; this is strongest across the middle,
+   where the yolk actually falls, and clears to nothing at the edges so the
+   egg whites either side keep their brightness. */
+.jammy .jammy-features-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.26) 34%,
+    rgba(255, 255, 255, 0.34) 62%,
+    rgba(255, 255, 255, 0.12) 86%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  /* Above the photo (z-index 1), below the content (z-index 2). A first
+     attempt put this at 0 and lifted every child to 1 -- which included the
+     photo wrapper, so the photograph painted back over the scrim and the
+     contrast numbers did not move at all. */
+  z-index: 2;
+}
+
+/* The content clears the scrim; the photo wrapper deliberately does not. */
+.jammy .jammy-features-section > *:not(.jammy-features-bg) {
+  position: relative;
+  z-index: 3;
+}
+
 .jammy .jammy-feature {
   gap: 14px;
   max-width: 170px;
