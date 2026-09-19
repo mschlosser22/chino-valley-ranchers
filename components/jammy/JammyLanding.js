@@ -74,31 +74,37 @@ const FAQS = [
       "The Jammy Egg is a soft-boiled egg. It has a rich, golden yolk. It comes fully cooked, peeled, and ready to eat. Jammy is made from real, natural family-farmed eggs from Chino Valley Ranchers.",
   },
   {
-    question: "How is Jammy different from a hard-boiled egg?",
+    question: "Is the egg fully cooked?",
     answer:
-      "A hard-boiled egg is cooked all the way through, so the yolk is firm and chalky. Jammy is cooked to six minutes — delicately firm on the outside, rich and creamy in the center.",
+      "Yes. The Jammy Egg is fully cooked and ready to enjoy. No boiling, peeling, or timing required.",
   },
   {
-    question: "Why is the yolk so golden?",
+    question: "How is Jammy different from a hard-boiled egg?",
     answer:
-      "It comes from the hens, not from us. Our family farms have raised hens to a higher standard for more than 75 years, and that care shows up in the color and the flavor of the yolk.",
+      "A hard-boiled egg has a fully firm yolk. The Jammy Egg has a softer, creamier center, similar to a 6-minute soft-boiled egg. The soft, jammy texture of the yolk is a key difference.",
   },
   {
     question: "How is The Jammy Egg packaged and stored?",
     answer:
-      "Each egg is individually wrapped inside a resealable bag, so you can grab one at a time. Keep the bag refrigerated and enjoy by the date on the pack.",
+      "Each bag includes four individually wrapped and sealed Jammy Eggs. Keep the bag refrigerated and enjoy by the date printed on the package.",
   },
   {
     question: "How do I use The Jammy Egg?",
     answer:
-      "However you want. Smash it on toast, drop it into ramen, halve it over a salad or a grain bowl, or eat it straight from the wrapper with a pinch of salt.",
+      "You can eat it on its own with salt, pepper, or your favorite toppings. Or add it to foods like toast, ramen, salads, sandwiches, grain bowls, and more.",
   },
   {
     question: "Do I eat it hot or cold?",
     answer:
-      "Either. It's ready to eat straight from the fridge, and it warms beautifully in a hot bowl of soup or ramen.",
+      "The Jammy Egg is ready to eat cold, straight from the fridge. It can also be eaten warm. Just add it to boiling water for 30 seconds.",
+  },
+  {
+    question: "How are Jammy Eggs raised and produced?",
+    answer:
+      "Jammy Eggs come from cage-free hens raised with care. Our farms are American Humane Certified\u2122, following rigorous standards designed to support the health, safety, and well-being of our hens. We also use a premium feed recipe developed by Chino Valley Ranchers, helping create the deep golden yolk color Jammy is known for.",
   },
 ];
+
 
 /* QA (global): "Fonts should be Proxima Nova and Cubano throughout" -- the
    struck-through row keeps an unstruck tail, "includes button text". Read with
