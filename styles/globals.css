@@ -841,41 +841,27 @@
   font-size: clamp(14px, 1.15vw, 17px);
 }
 
-/* QA: "icons should be in two rows with the background reverting to a solid
-   color background block."
+/* Two COLUMNS on phones, five rows deep.
 
-   Two rows of five, which at 390px leaves about 60px a column. The labels do
-   not fit that: "ingredient" alone measures ~61px at 11px type. So the row
-   scrolls horizontally rather than shrinking the type into illegibility --
-   the five-across rhythm QA asked for is preserved, the labels stay readable,
-   and the overflow is signalled by the last tile sitting half-cut at the edge
-   plus scroll-snap. */
+   An earlier reading of "icons should be in two rows" built this as five
+   columns by two rows, which at 390px leaves about 60px a column -- too
+   narrow for the labels ("ingredient" alone measures ~61px at 11px type) --
+   so it scrolled sideways with the fifth tile cut off at the edge. QA
+   clarified: "its supposed to be 2 columns instead of 2 rows on mobile."
+
+   Two columns give ~170px each at 390px, so the labels fit at full size, all
+   ten are visible without scrolling, and the horizontal-scroll apparatus that
+   only existed to make five columns fit is gone with it. */
 @media (max-width: 860px) {
   .jammy .jammy-features {
-    grid-template-columns: repeat(5, minmax(104px, 1fr));
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
     grid-auto-flow: row;
-    column-gap: 14px;
-    row-gap: 26px;
-    max-width: none;
-    /* Bleed to the section edges so the cut-off tile reads as "more this
-       way" rather than as a layout mistake. */
-    margin: 0 -24px;
-    padding: 0 24px;
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .jammy .jammy-features::-webkit-scrollbar {
-    display: none;
+    column-gap: 16px;
+    row-gap: 34px;
+    max-width: 460px;
   }
   .jammy .jammy-feature {
     max-width: none;
-    scroll-snap-align: start;
-  }
-  .jammy .jammy-feature h3 {
-    font-size: 13px;
   }
 
   /* QA: the photo backdrop gives way to a solid block, and a later round

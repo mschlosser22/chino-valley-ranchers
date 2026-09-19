@@ -25,7 +25,19 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
             bg:getComputedStyle(sec).backgroundColor,
             photo:getComputedStyle(document.querySelector('.jammy-features-bg')).display,
             scrollable:g.scrollWidth>g.clientWidth+2,
-            twoRows:r6.top>r1.bottom-4,
+            rowCount:(()=>{
+              const cells=[...g.querySelectorAll('.jammy-feature')];
+              return new Set(cells.map(c=>Math.round(c.getBoundingClientRect().top))).size;
+            })(),
+            perRow:(()=>{
+              const cells=[...g.querySelectorAll('.jammy-feature')];
+              const tops=[...new Set(cells.map(c=>Math.round(c.getBoundingClientRect().top)))].sort((a,b)=>a-b);
+              return tops.map(t=>cells.filter(c=>Math.round(c.getBoundingClientRect().top)===t).length);
+            })(),
+            allInView:[...g.querySelectorAll('.jammy-feature')].every(c=>{
+              const r=c.getBoundingClientRect();
+              return r.left>=-1 && r.right<=window.innerWidth+1;
+            }),
             labelContrast:(()=>{
               const h=document.querySelector('.jammy-feature h3');
               if(!h) return null;
@@ -42,8 +54,14 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
             pageOverflow:document.documentElement.scrollWidth>window.innerWidth+1};
   });
   console.log('  --- mobile (390px) ---');
-  ck('five columns', m.cols===5, `${m.cols}`);
-  ck('two rows (item 6 starts row 2)', m.twoRows);
+  // TWO COLUMNS, five rows deep. This asserted five columns by two rows,
+  // from an earlier reading of "icons should be in two rows"; QA clarified
+  // "its supposed to be 2 columns instead of 2 rows on mobile". The five-
+  // column version could not fit its labels at 390px and scrolled sideways
+  // with the fifth tile cut off, which is what prompted the correction.
+  ck('two columns', m.cols===2, `${m.cols}`);
+  ck('all ten features in five rows', m.rowCount===5 && m.perRow.every(n=>n===2),
+     `${m.rowCount} rows, ${JSON.stringify(m.perRow)}`);
   // #e48ee4, named by QA: "reverting to a solid fuschia (#e48ee4) background
   // block". This asserted rgb(163,210,238) -- the brand sky, chosen when the
   // note only said "solid color".
@@ -54,7 +72,10 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
   ck('labels clear WCAG AA on it', m.labelContrast>=4.5,
      `${m.labelContrast}:1`);
   ck('photo backdrop hidden', m.photo==='none');
-  ck('row scrolls sideways', m.scrollable);
+  // No sideways scroll now: two columns fit, so every feature is reachable
+  // without swiping and none is cut off at the edge.
+  ck('grid does not scroll sideways', !m.scrollable);
+  ck('every feature is fully in view', m.allInView);
   ck('no label overflows its cell', m.maxOverflow<=1, `${m.maxOverflow}px`);
   ck('page itself does not scroll sideways', !m.pageOverflow);
   await p.close();
