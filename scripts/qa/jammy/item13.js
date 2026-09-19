@@ -26,13 +26,33 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
             photo:getComputedStyle(document.querySelector('.jammy-features-bg')).display,
             scrollable:g.scrollWidth>g.clientWidth+2,
             twoRows:r6.top>r1.bottom-4,
+            labelContrast:(()=>{
+              const h=document.querySelector('.jammy-feature h3');
+              if(!h) return null;
+              const parse=c=>c.match(/\d+/g).map(Number);
+              const lum=([r,g,b])=>{const f=v=>{v/=255;
+                return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)};
+                return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b);};
+              const fg=parse(getComputedStyle(h).color);
+              const bg=parse(getComputedStyle(document.querySelector('.jammy-features-section')).backgroundColor);
+              const L1=lum(fg), L2=lum(bg);
+              return +(((Math.max(L1,L2)+0.05)/(Math.min(L1,L2)+0.05))).toFixed(2);
+            })(),
             maxOverflow:Math.max(...ov),
             pageOverflow:document.documentElement.scrollWidth>window.innerWidth+1};
   });
   console.log('  --- mobile (390px) ---');
   ck('five columns', m.cols===5, `${m.cols}`);
   ck('two rows (item 6 starts row 2)', m.twoRows);
-  ck('solid colour block, not white', m.bg==='rgb(163, 210, 238)', m.bg);
+  // #e48ee4, named by QA: "reverting to a solid fuschia (#e48ee4) background
+  // block". This asserted rgb(163,210,238) -- the brand sky, chosen when the
+  // note only said "solid color".
+  ck('solid fuchsia block, not white', m.bg==='rgb(228, 142, 228)', m.bg);
+  // The forest labels measure 4.78:1 on that fuchsia, which clears WCAG AA.
+  // Worth pinning: the colour is fixed by the client, so if the label colour
+  // ever changes this is where it would stop passing.
+  ck('labels clear WCAG AA on it', m.labelContrast>=4.5,
+     `${m.labelContrast}:1`);
   ck('photo backdrop hidden', m.photo==='none');
   ck('row scrolls sideways', m.scrollable);
   ck('no label overflows its cell', m.maxOverflow<=1, `${m.maxOverflow}px`);

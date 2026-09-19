@@ -878,15 +878,23 @@
     font-size: 13px;
   }
 
-  /* QA: the photo backdrop gives way to a solid block. Previously this only
-     hid the photo, which left plain white -- "reverting to a solid color
-     background block" wants an actual block, so the section takes the brand
-     sky the design uses behind this content. */
+  /* QA: the photo backdrop gives way to a solid block, and a later round
+     named the colour -- "reverting to a solid fuschia (#e48ee4) background
+     block". It had been #a3d2ee, the brand sky, chosen when the note only
+     said "solid color".
+
+     The forest labels measure 4.78:1 on this fuchsia, so they clear WCAG AA
+     without needing the scrim the photographic desktop backdrop requires. */
   .jammy .jammy-features-bg {
     display: none;
   }
   .jammy .jammy-features-section {
-    background: #a3d2ee;
+    background: #e48ee4;
+  }
+  /* The scrim exists to lift the labels off the photograph; with the photo
+     hidden it would only wash out the flat colour. */
+  .jammy .jammy-features-section::before {
+    display: none;
   }
 }
 
