@@ -1165,17 +1165,19 @@ export function JammyLanding() {
                     // color/white/solid variable (decoded from
                     // CVR_JammyWebsite_r1.fig).
                     color: "#FFFFFF",
-                    // The outline stays, and is load-bearing: two of these
-                    // four photographs are near-white where the label sits.
-                    // Measured against the actual pixels behind each label,
-                    // white alone gives Snack 1.00:1 (its ground is pure
-                    // white) and Toast 1.46:1 -- invisible. The forest outline
-                    // reads 10.8:1 and 7.4:1 on those same grounds, so it is
-                    // what carries the word; the soft shadow underneath keeps
-                    // it sitting on the photo rather than floating flat.
-                    WebkitTextStroke: `0.055em ${C.forest}`,
-                    paintOrder: "stroke fill",
-                    textShadow: "0 4px 14px rgba(0,0,0,0.4)",
+                    // No outline -- QA asked for plain white, and the Figma's
+                    // "White" style is an unstroked fill.
+                    //
+                    // The shadow stays and does the work the stroke used to.
+                    // Two of these photographs are near-white where the label
+                    // sits: measured against the actual pixels, white on
+                    // Snack is 1.00:1 (its ground IS white) and Toast 1.46:1,
+                    // so an unaided white word would not read at all. This is
+                    // a drop shadow rather than a stroke: tight and dark
+                    // enough to separate the glyph edges on the pale tiles,
+                    // and still just a soft shadow on the dark ones.
+                    textShadow:
+                      "0 1px 2px rgba(20,28,16,0.55), 0 2px 10px rgba(20,28,16,0.45), 0 6px 22px rgba(0,0,0,0.35)",
                     pointerEvents: "none",
                     opacity: 0,
                     transform: "rotate(-24deg) scale(.6)",

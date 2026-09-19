@@ -20,6 +20,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               ff:cs?cs.fontFamily.split(',')[0]:null,
               color:cs?cs.color:null,
               stroke:cs?cs.webkitTextStrokeColor:null,
+              shadow:cs?cs.textShadow:null,
               strokeW:cs?cs.webkitTextStrokeWidth:null,
               op:cs?+cs.opacity:null,
               left:cs?cs.left:null, top:cs?cs.top:null,
@@ -41,14 +42,18 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
   // "White" bound to Cubano/Regular plus a color/white/solid variable
   // (decoded from CVR_JammyWebsite_r1.fig).
   ck('labels are white', d.every(x=>x.color==='rgb(255, 255, 255)'), d[0].color);
-  // The forest outline is load-bearing and must survive the colour change.
-  // Two of these four photographs are near-white where the label sits:
-  // measured against the actual pixels, white alone gives Snack 1.00:1 (its
-  // ground IS white) and Toast 1.46:1. The outline reads 10.8:1 and 7.4:1 on
-  // those grounds, so it is what makes the word legible at all.
-  ck('labels keep their forest outline',
-     d.every(x=>x.stroke==='rgb(46, 67, 34)' && parseFloat(x.strokeW)>0),
+  // No outline: QA asked for plain white, and the Figma's "White" style is an
+  // unstroked fill. An earlier pass had a forest stroke here for contrast.
+  ck('labels carry no outline',
+     d.every(x=>parseFloat(x.strokeW)===0 || x.stroke===x.color),
      `${d[0].stroke} ${d[0].strokeW}`);
+  // Contrast then rests entirely on the shadow, and two of these four
+  // photographs are near-white where the label sits -- Snack's ground IS
+  // white (1.00:1 unaided), Toast 1.46:1. So the shadow is not decorative
+  // here and a future "tidy-up" that drops it would make those labels
+  // vanish.
+  ck('labels keep a shadow to separate them from the photo',
+     d.every(x=>x.shadow && x.shadow!=='none'), d[0].shadow);
   ck('labels anchored top-left', d.every(x=>x.left!=='auto'&&x.top!=='auto'), `${d[0].left}/${d[0].top}`);
   ck('all four labels animated in', d.every(x=>x.op===1), d.map(x=>x.op).join(','));
   ck('sticker svg no longer used', await p.evaluate(()=>!document.querySelector('img[src*="hard-part-sticker"]')));
