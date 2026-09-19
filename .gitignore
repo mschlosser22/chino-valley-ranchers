@@ -36,3 +36,8 @@ yarn-error.log*
 
 # Playwright MCP scratch output
 .playwright-mcp/
+
+# Client deliverables: the .fig, PSDs, full-res photography and the FIN
+# Deliverables drop -- ~175MB and not ours to redistribute. Kept on disk as
+# the source of truth for the build, never in the repo.
+ref/
