@@ -723,15 +723,28 @@
   width: 36%;
 }
 
-/* On phones the bag is narrower and taller in the column, so the badge rides
-   up to overlap the product name rather than the photography below it. */
+/* On phones the badge keeps the desktop's vertical placement.
+
+   QA: "Ensure the protein callout sits lower toward the bottom half of the
+   bag, similar to its position in desktop." It had been top: 19%, which put
+   its centre 32-34% down the bag against desktop's 62% -- the upper third
+   rather than the lower half.
+
+   The earlier note here said the bag is "narrower and taller in the column" on
+   phones, which is what justified moving the badge up. Measured, that is not
+   so: the bag renders at the same 0.888 aspect at 390, 768 and 1440, only
+   scaled. So the desktop 46% carries over directly and lands the badge's
+   centre at the same 62%.
+
+   Horizontal anchoring stays as it was -- right-aligned, which the narrow
+   column needs -- and only the vertical changes. */
 @media (max-width: 860px) {
   .jammy .jammy-badge {
     /* Base rule anchors from the left for the desktop ratio; mobile anchors
        right instead, so left has to be released. */
     left: auto;
     right: -2%;
-    top: 19%;
+    top: 46%;
     width: clamp(118px, 30vw, 150px);
     margin-top: 0;
   }
