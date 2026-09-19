@@ -19,6 +19,8 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               tag:lab?lab.tagName:null,
               ff:cs?cs.fontFamily.split(',')[0]:null,
               color:cs?cs.color:null,
+              stroke:cs?cs.webkitTextStrokeColor:null,
+              strokeW:cs?cs.webkitTextStrokeWidth:null,
               op:cs?+cs.opacity:null,
               left:cs?cs.left:null, top:cs?cs.top:null,
               fs:cs?cs.fontSize:null};
@@ -34,7 +36,19 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
      d.map(x=>x.label).join(',')==='Salad,Toast,Snack,Ramen', d.map(x=>x.label).join(','));
   ck('labels are live text, not an image', d.every(x=>x.tag==='SPAN'));
   ck('labels set in Cubano', d.every(x=>x.ff==='cubano'), d[0].ff);
-  ck('labels are brand yellow', d.every(x=>x.color==='rgb(255, 239, 92)'), d[0].color);
+  // White, not the brand yellow this asserted before: a later QA round asked
+  // for "the Cubano text in white", and the Figma carries a text style named
+  // "White" bound to Cubano/Regular plus a color/white/solid variable
+  // (decoded from CVR_JammyWebsite_r1.fig).
+  ck('labels are white', d.every(x=>x.color==='rgb(255, 255, 255)'), d[0].color);
+  // The forest outline is load-bearing and must survive the colour change.
+  // Two of these four photographs are near-white where the label sits:
+  // measured against the actual pixels, white alone gives Snack 1.00:1 (its
+  // ground IS white) and Toast 1.46:1. The outline reads 10.8:1 and 7.4:1 on
+  // those grounds, so it is what makes the word legible at all.
+  ck('labels keep their forest outline',
+     d.every(x=>x.stroke==='rgb(46, 67, 34)' && parseFloat(x.strokeW)>0),
+     `${d[0].stroke} ${d[0].strokeW}`);
   ck('labels anchored top-left', d.every(x=>x.left!=='auto'&&x.top!=='auto'), `${d[0].left}/${d[0].top}`);
   ck('all four labels animated in', d.every(x=>x.op===1), d.map(x=>x.op).join(','));
   ck('sticker svg no longer used', await p.evaluate(()=>!document.querySelector('img[src*="hard-part-sticker"]')));

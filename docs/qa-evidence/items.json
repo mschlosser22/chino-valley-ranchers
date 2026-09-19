@@ -98,10 +98,10 @@
  {
   "id": "13",
   "area": "Format Versatility",
-  "qa": "Ramen and Toast sections need to be swapped. Also, text within each container should use the Cubano text anchored in the top left corner.",
+  "qa": "Ramen and Toast sections need to be swapped. Also, text within each container should use the Cubano text in white anchored in the top left corner.",
   "page": "/jammy",
   "target": ".jammy-tiles",
-  "state": "outstanding"
+  "state": "clean"
  },
  {
   "id": "14",

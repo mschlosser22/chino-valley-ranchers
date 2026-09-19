@@ -1160,13 +1160,19 @@ export function JammyLanding() {
                     // in the wide one. cqw ties it to the tile, not the page.
                     fontSize: "clamp(19px, 11cqw, 44px)",
                     lineHeight: 1,
-                    color: C.yellow,
-                    // The brand yellow is light and three of these photos are
-                    // bright -- Toast measured 1.4:1 against its plate, Snack
-                    // 1.7:1 against egg white. A thin forest outline in the
-                    // brand's own dark green carries the label over whatever
-                    // is behind it; the soft shadow underneath keeps it
-                    // sitting on the photo rather than floating flat.
+                    // White per QA and the Figma, which carries a text style
+                    // literally named "White" bound to Cubano/Regular plus a
+                    // color/white/solid variable (decoded from
+                    // CVR_JammyWebsite_r1.fig).
+                    color: "#FFFFFF",
+                    // The outline stays, and is load-bearing: two of these
+                    // four photographs are near-white where the label sits.
+                    // Measured against the actual pixels behind each label,
+                    // white alone gives Snack 1.00:1 (its ground is pure
+                    // white) and Toast 1.46:1 -- invisible. The forest outline
+                    // reads 10.8:1 and 7.4:1 on those same grounds, so it is
+                    // what carries the word; the soft shadow underneath keeps
+                    // it sitting on the photo rather than floating flat.
                     WebkitTextStroke: `0.055em ${C.forest}`,
                     paintOrder: "stroke fill",
                     textShadow: "0 4px 14px rgba(0,0,0,0.4)",
