@@ -1402,7 +1402,9 @@ export function JammyLanding() {
                 color: "#fff",
               })}
             >
-              Your next jam is on us
+              {/* Client-directed, superseding the copy doc's "Your next jam is
+                  on us." -- flagged at review on 2026-09-19. */}
+              Good food needs a good groove.
             </h2>
             <p
               style={{
