@@ -12,10 +12,17 @@ import { InlineWysiwyg } from "../../components/tinacms/InlineWYSIWYG";
 export function HeroVideo(props) {
   return (
     <header
-      className="relative overflow-hidden lg:overflow-visible z-0 w-full min-h-[400px] lg:min-h-screen flex items-center"
+      /* h-screen, not min-h-[400px]: this project is on Tailwind 2.2.19, which
+         has no arbitrary-value support, so `min-h-[400px]` and `h-[400px]`
+         compiled to nothing at all. The header collapsed to its headline --
+         77px on a phone -- and `overflow-hidden` clipped the 844px video down
+         to a sliver under the nav. The video was always there and playing; it
+         had no box to show in. */
+      className="relative overflow-hidden lg:overflow-visible z-0 w-full h-screen flex items-center"
       role="banner"
     >
-      <div className="absolute h-[400px] lg:h-screen w-full">
+      {/* Same reason: h-[400px] resolved to 0px on this Tailwind version. */}
+      <div className="absolute inset-0 h-full w-full">
         <video
           className="w-full h-screen absolute top-0 left-0 object-cover"
           src={`https://res.cloudinary.com/dmfgntgym/video/fetch/q_auto:eco/https://www.chinovalleyranchers.com/${props.video.src}`}
