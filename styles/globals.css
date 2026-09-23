@@ -510,7 +510,11 @@
   letter-spacing: 1px;
   color: #2f4421;
   text-transform: uppercase;
-  text-align: center;
+  /* Left, not centred, so the M of "Messy" and the G of "Good" sit on the
+     same edge as the paragraph and the button. Centred, the two lines each
+     floated to their own indent: 16px off the copy at 390, 78px at 600 and
+     162px at 768. */
+  text-align: left;
 }
 
 /* QA 2.2: the leading was tight against the rest of the site's body copy.
@@ -619,14 +623,22 @@
      right end of the headline's span, so this clears it by 4.5%. */
   .jammy-cta__head {
     position: absolute;
-    left: 2.578%;
+    /* 4.878%, matching the body and the button. It was 2.578%, which was
+       invisible while this was centred -- the text floated inside a wider box
+       and happened to land near the copy's edge. Left-aligned, that 2.3-point
+       difference put the M and G 24-45px left of the paragraph. */
+    left: 4.878%;
     top: 45%;
     width: 45.157%;
     margin: 0;
     font-size: 4.4599cqw;
     line-height: 4.4599cqw;
     letter-spacing: 1.5px;
-    text-align: center;
+    /* Left here too. Centred it happened to land within 0-3px of the body's
+       edge at desktop widths -- close enough to look deliberate, but it was
+       the headline box's width doing it, not alignment, so it drifted with
+       the viewport. */
+    text-align: left;
   }
   /* 68% leaves a 2.5% gap under the headline. Before these adjustments the
      body's box actually started above the headline's -- no separation at all. */
