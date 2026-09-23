@@ -620,7 +620,7 @@
   .jammy-cta__head {
     position: absolute;
     left: 2.578%;
-    top: 48%;
+    top: 45%;
     width: 45.157%;
     margin: 0;
     font-size: 4.4599cqw;
@@ -633,7 +633,7 @@
   .jammy-cta__body {
     position: absolute;
     left: 4.878%;
-    top: 68%;
+    top: 65%;
     width: 45.157%;
     max-width: none;
     margin: 0;
@@ -668,15 +668,34 @@
        2.5cqw is 36px at a 1440 band: the same size the page's other CTAs
        take, at the width the design is drawn for. Below that it scales with
        everything else in the overlay rather than crowding it. */
-    /* Anchored below the copy, which ends at a stable 87.3% of the band at
+    /* The whole overlay block -- headline, body and this button -- sits 3
+       points higher than it did (48/68/88.4 -> 45/65/85.4), which is what
+       gives the band more blue under the button: QA asked for "a little extra
+       bottom padding ... more blue space". The band's height cannot simply
+       grow, because it is locked to the artwork's 2000/1017 aspect so the
+       torn edges show in full; moving the content up is what frees the room.
+       All three move together, so their spacing relative to each other is
+       unchanged.
+
+       Anchored below the copy, which ends at a stable 87.3% of the band at
        every width. A bottom anchor held the fringe clearance but let the
        button drift up into that copy as the band shrank (-1px at 1024); a
        fixed top anchor plus a height that no longer scales did the reverse.
        88.4% sits just under the copy and, with the type scaling as below,
        ends at 95-96% -- clear of the 97.2% where the torn fringe bites. */
-    top: 88.4%;
+    top: 85.4%;
     bottom: auto;
-    font-size: 2.5cqw;
+    /* Capped at 36px, the size the page's other CTAs take ("Find a Store Near
+       You", "More Recipes", "Learn More About Our Family Farms" are all a flat
+       36px). 2.5cqw alone matched them at exactly 1440 and grew past them
+       above it -- 37.8px on a 1512 laptop, 43.2px at 1728, 48px at 1920 --
+       which is what the business saw: "the 'EXPLORE JAMMY' button text looks
+       slightly bigger."
+
+       The cqw term is kept as the LOWER bound rather than replaced by a flat
+       36px: below 1440 the band shrinks and a fixed 36px button runs into the
+       artwork's torn fringe, which is why it was scaled in the first place. */
+    font-size: min(2.5cqw, 36px);
     line-height: 1.111;
     width: auto;
     min-width: 0;
