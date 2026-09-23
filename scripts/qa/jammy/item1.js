@@ -11,7 +11,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
 // treatment, and the Jammy button has to sit in that set.
 (async()=>{
   const b=await chromium.launch();
-  for (const [w,label] of [[1440,'design width'],[1024,'narrow desktop'],[390,'phone']]) {
+  for (const [w,label] of [[1920,'wide desktop'],[1440,'design width'],[1024,'narrow desktop'],[390,'phone']]) {
     const p=await b.newContext({viewport:{width:w,height:1000}}).then(c=>c.newPage());
     await p.goto('http://localhost:7500/',{waitUntil:'networkidle',timeout:60000});
     await p.getByRole('region',{name:/cookie consent/i}).getByRole('button',{name:/reject all/i}).click().catch(()=>{});
@@ -47,6 +47,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       return {jammy:d(jammy), ref:d(ref),
               faceRenders: Math.abs(withFace-fallback)>0.5,
               gapUnderCopy: body?Math.round(r.top-body.getBoundingClientRect().bottom):null,
+              blueBelow: band?Math.round(br.bottom-r.bottom):null,
               endsPct:+(((r.bottom-br.top)/br.height)*100).toFixed(1),
               overlaid:getComputedStyle(jammy).position==='absolute'};
     });
@@ -64,15 +65,28 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
        `${m.jammy.lsPerEm}em vs ${m.ref.lsPerEm}em`);
     ck('same corner radius', m.jammy.radius===m.ref.radius, `${m.jammy.radius} vs ${m.ref.radius}`);
 
-    if(w===1440)
-      // At the width the design is drawn for, the sizes must actually match.
-      // Below this the band's overlay scales its type in container units so
-      // the button stays inside the artwork, which is why this is not
-      // asserted at every breakpoint.
-      ck('same size at the design width', m.jammy.fs===m.ref.fs, `${m.jammy.fs}px vs ${m.ref.fs}px`);
+    // From the design width up the sizes must MATCH, not merely be close.
+    // The overlay sizes this button in container units, which matched the
+    // other CTAs at exactly 1440 and grew past them above it -- 37.8px on a
+    // 1512 laptop, 43.2px at 1728, 48px at 1920. QA: "the 'EXPLORE JAMMY'
+    // button text looks slightly bigger than the 'FIND A STORE NEAR YOU' font
+    // size." It is capped at 36px now; below 1440 it still scales down so it
+    // clears the artwork's torn fringe.
+    if(w>=1440)
+      ck('same size as the other CTAs', m.jammy.fs===m.ref.fs, `${m.jammy.fs}px vs ${m.ref.fs}px`);
     else
       ck('type is not smaller than the reference', m.jammy.fs>=m.ref.fs-11,
          `${m.jammy.fs}px vs ${m.ref.fs}px`);
+
+    if(m.overlaid && m.blueBelow!==null){
+      // QA: "a little extra bottom padding on the section ... more blue
+      // space." The button sat 16-29px off the band's bottom edge on desktop;
+      // the whole overlay block moved up 3 points to roughly double that. The
+      // band's own height cannot grow -- it is locked to the artwork's
+      // 2000/1017 aspect so the torn edges show in full.
+      ck('blue space below the button', m.blueBelow>=30,
+         `${m.blueBelow}px below the button`);
+    }
 
     if(m.overlaid){
       // Making the type bigger grew the button, and it has to stay inside the
