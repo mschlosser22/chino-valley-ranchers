@@ -51,11 +51,16 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
             sm:   await read('/images/jammy/cta-messy-sm.webp')};
   });
 
-  for (const [tag,exp] of [['full',{w:2000,h:1017}],['sm',{w:1200,h:610}]]) {
+  for (const [tag,exp] of [['full',{w:2000,h:1212}],['sm',{w:1200,h:727}]]) {
     const a=m[tag];
     console.log(`\n  --- cta-messy${tag==='sm'?'-sm':''}.webp ---`);
     if(!a){ ck(`${tag}: decodes`, false); continue; }
-    ck(`${tag}: banner dimensions unchanged`, a.w===exp.w && a.h===exp.h, `${a.w}x${a.h}`);
+    // 2000x1212 / 1200x727, not the previous 2000x1017 / 1200x610: the banner
+    // was re-cut taller (aspect 1.9666 -> 1.65) to take in more of the source
+    // frame below the spoon, which is what gives the button room at the bottom
+    // of the band. The CSS aspect-ratio moved with it; if these two ever
+    // disagree the torn edges get cropped.
+    ck(`${tag}: banner at its shipped size`, a.w===exp.w && a.h===exp.h, `${a.w}x${a.h}`);
     // The torn edges live in the alpha. A re-encode that drops it (saving as
     // RGB, or an encoder without -alpha_q) squares off the band silently.
     ck(`${tag}: keeps its transparency`, a.clear>0, `${a.clear} transparent px`);

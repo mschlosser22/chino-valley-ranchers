@@ -48,6 +48,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               faceRenders: Math.abs(withFace-fallback)>0.5,
               gapUnderCopy: body?Math.round(r.top-body.getBoundingClientRect().bottom):null,
               blueBelow: band?Math.round(br.bottom-r.bottom):null,
+              bandH: band?Math.round(br.height):null,
               endsPct:+(((r.bottom-br.top)/br.height)*100).toFixed(1),
               overlaid:getComputedStyle(jammy).position==='absolute'};
     });
@@ -79,13 +80,25 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
          `${m.jammy.fs}px vs ${m.ref.fs}px`);
 
     if(m.overlaid && m.blueBelow!==null){
-      // QA: "a little extra bottom padding on the section ... more blue
-      // space." The button sat 16-29px off the band's bottom edge on desktop;
-      // the whole overlay block moved up 3 points to roughly double that. The
-      // band's own height cannot grow -- it is locked to the artwork's
-      // 2000/1017 aspect so the torn edges show in full.
-      ck('blue space below the button', m.blueBelow>=30,
-         `${m.blueBelow}px below the button`);
+      // QA, twice: "a little extra bottom padding on the section ... more
+      // blue space." Two things bought it -- the banner re-cut taller
+      // (2000x1212 against the old 2000x1017), and then the overlay block
+      // tightened internally: the headline up to the spoon's clearance line
+      // and the two internal gaps down from 5.3/4.2 points to 3.0/2.5.
+      //
+      // Measured as a SHARE of the band, not a flat pixel count. The band
+      // scales with the viewport, so one flat bound cannot hold: 46px is
+      // right at 1024 and a regression at 1920. A flat >=40 was the bug here
+      // -- it passed the pre-fix layout at every width (71px at 1440, 114px
+      // at 1920), so this check could not have caught a revert.
+      //
+      // The button ends at 84.5-88.1% of the band across 1024-2560, so the
+      // blue below it is 11.9-15.5%. >=11% sits just under the narrowest of
+      // those; the pre-fix layout measured 7.4-9.8% and fails it at every
+      // width.
+      const bluePct = m.blueBelow/m.bandH*100;
+      ck('blue space below the button', bluePct>=11,
+         `${m.blueBelow}px = ${bluePct.toFixed(1)}% of the ${m.bandH}px band`);
     }
 
     if(m.overlaid){
