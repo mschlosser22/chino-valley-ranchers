@@ -293,6 +293,13 @@ export function JammyLanding() {
           </span>
           <a
             href="/store-locator"
+            /* QA: "take a user to a new window versus taking them out of the
+               landing page." The store locator is a detour, not the next step
+               of this page, so the launch page stays open behind it.
+               rel is not optional with a _blank target: without noopener the
+               new tab gets a window.opener handle back into this document. */
+            target="_blank"
+            rel="noopener noreferrer"
             data-lift="1"
             style={{
               // Face and weight come from pill(). This asked for 800, which
