@@ -810,37 +810,30 @@
   background: #ffffff;
 }
 
-/* A soft white scrim over the photograph, under the content.
+/* No scrim over the photograph.
 
-   The forest labels sit directly on the backdrop, and the client's re-edited
-   yolk is a deeper orange -- which dropped three of them below WCAG AA where
-   they cross it: "Packed with nutrients" 3.97:1, "Easy and ready to eat"
-   3.95:1, "Enjoy any time of day" 4.12:1, against the previous artwork's
-   4.75-5.00:1. The photo is the asset the client supplied, so the fix belongs
-   on the label's ground rather than on the image.
+   QA: "The background image appears to have some kind of lowered opacity
+   overlay on it. Please remove."
 
-   A flat wash would grey the whole band; this is strongest across the middle,
-   where the yolk actually falls, and clears to nothing at the edges so the
-   egg whites either side keep their brightness. */
-.jammy .jammy-features-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.26) 34%,
-    rgba(255, 255, 255, 0.34) 62%,
-    rgba(255, 255, 255, 0.12) 86%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  /* Above the photo (z-index 1), below the content (z-index 2). A first
-     attempt put this at 0 and lifted every child to 1 -- which included the
-     photo wrapper, so the photograph painted back over the scrim and the
-     contrast numbers did not move at all. */
-  z-index: 2;
-}
+   There WAS a soft white gradient here, and it was not decorative -- it was
+   lifting the forest labels off the client's re-edited yolk, which is a
+   deeper orange than the artwork the section was built against. Removing it
+   costs contrast on the four labels that cross the yolk directly:
+
+     Enjoy any time of day   5.55:1 -> 4.27:1
+     Good source of protein  5.70:1 -> 4.46:1
+     Consistent every time   4.84:1 -> 4.12:1
+     Extended shelf life     5.01:1 -> 4.34:1
+
+   All four now sit under the 4.5:1 WCAG AA minimum for normal-size text
+   (measured off rendered pixels at 1440, not computed values). The other six
+   labels fall on egg white or board and are unaffected.
+
+   Flagged to the business rather than worked around: the fix would be either
+   darkening the label colour from #2E4322 (#1A2612 gets the worst case to
+   6.02:1) or a lighter treatment behind the type, both of which are design
+   changes nobody has asked for. Mobile is unaffected -- it hides the photo
+   for a solid #e48ee4 block where the labels measure 4.78:1. */
 
 /* The content clears the scrim; the photo wrapper deliberately does not. */
 .jammy .jammy-features-section > *:not(.jammy-features-bg) {
@@ -908,11 +901,6 @@
   }
   .jammy .jammy-features-section {
     background: #e48ee4;
-  }
-  /* The scrim exists to lift the labels off the photograph; with the photo
-     hidden it would only wash out the flat colour. */
-  .jammy .jammy-features-section::before {
-    display: none;
   }
 }
 
