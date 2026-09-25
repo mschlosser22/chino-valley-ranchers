@@ -1173,8 +1173,16 @@ export function JammyLanding() {
                     position: "absolute",
                     // Anchored top-left per QA, rather than the previous
                     // bottom-left placement.
-                    left: "8%",
-                    top: "8%",
+                    //
+                    // A FIXED offset, not a percentage. QA: "it should sit in
+                    // the top left corner with equal padding on the left and
+                    // top." 8%/8% could never do that: the percentages resolve
+                    // against different axes, so on the wide tile the label sat
+                    // 53px from the left and 35px from the top, and on the
+                    // narrow ones 15px and 41px. One value in px is equal by
+                    // construction, at every tile width.
+                    left: 22,
+                    top: 22,
                     fontFamily: DISPLAY,
                     // The narrow tiles are a quarter the width of the wide
                     // one, so a single size would either swamp them or vanish
@@ -1186,22 +1194,22 @@ export function JammyLanding() {
                     // color/white/solid variable (decoded from
                     // CVR_JammyWebsite_r1.fig).
                     color: "#FFFFFF",
-                    // No outline -- QA asked for plain white, and the Figma's
-                    // "White" style is an unstroked fill.
+                    // No outline and no shadow -- QA asked for plain white,
+                    // and the Figma's "White" style is an unstroked fill.
                     //
-                    // The shadow stays and does the work the stroke used to.
-                    // Two of these photographs are near-white where the label
-                    // sits: measured against the actual pixels, white on
-                    // Snack is 1.00:1 (its ground IS white) and Toast 1.46:1,
-                    // so an unaided white word would not read at all. This is
-                    // a drop shadow rather than a stroke: tight and dark
-                    // enough to separate the glyph edges on the pale tiles,
-                    // and still just a soft shadow on the dark ones.
-                    textShadow:
-                      "0 1px 2px rgba(20,28,16,0.55), 0 2px 10px rgba(20,28,16,0.45), 0 6px 22px rgba(0,0,0,0.35)",
+                    // QA: "Remove the drop shadow from the text. If
+                    // readability is a concern, add a slight gradient overlay
+                    // at the top of the images, do not put drop shadows on
+                    // text." Readability is a real concern here: two of these
+                    // photographs are near-white where the label sits, so an
+                    // unaided white word would not read at all. The gradient
+                    // named above is the tile's ::before, added in
+                    // globals.css, which is what carries that job now.
                     pointerEvents: "none",
                     opacity: 0,
-                    transform: "rotate(-24deg) scale(.6)",
+                    // No rotation in the resting state either; jammyPopIn
+                    // takes it from here and settles square.
+                    transform: "scale(.6)",
                   }}
                 >
                   {t.label}

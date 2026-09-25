@@ -73,8 +73,27 @@ export function useJammyInteractions(rootRef) {
           );
           els.forEach((el) => obs.observe(el));
           teardown.push(() => obs.disconnect());
+          // Safety net, matching the one the reveals already have. An element
+          // that never intersects keeps its inline resting transform and
+          // opacity 0 forever -- at 768px the outer two tile labels sit
+          // outside the observer's threshold and stayed scaled down and, when
+          // the animation still carried a rotation, visibly tilted. Clearing
+          // both here lands them in their final state without the entrance.
+          const t = setTimeout(() => {
+            els.forEach((el) => {
+              if (!el.style.animation) {
+                el.style.opacity = "1";
+                el.style.transform = "none";
+              }
+            });
+          }, 4000);
+          teardown.push(() => clearTimeout(t));
         };
-        // The badge pops in square; the tile labels keep their tilt.
+        // Both pop in square now. QA on the tile labels: "Please ensure that
+        // the text is not tilted, it should sit in the top left corner with
+        // equal padding on the left and top." jammySpinIn settles at
+        // rotate(-12deg), which is what was tilting them; jammyPopIn is the
+        // same entrance without the rotation.
         spinIn(
           "[data-badge]",
           "jammyPopIn .7s cubic-bezier(.34,1.56,.64,1) forwards",
@@ -82,7 +101,7 @@ export function useJammyInteractions(rootRef) {
         );
         spinIn(
           "[data-sticker]",
-          "jammySpinIn .8s cubic-bezier(.34,1.56,.64,1) .25s forwards",
+          "jammyPopIn .8s cubic-bezier(.34,1.56,.64,1) .25s forwards",
           0.25
         );
       } else {

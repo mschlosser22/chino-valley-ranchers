@@ -47,13 +47,18 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
   ck('labels carry no outline',
      d.every(x=>parseFloat(x.strokeW)===0 || x.stroke===x.color),
      `${d[0].stroke} ${d[0].strokeW}`);
-  // Contrast then rests entirely on the shadow, and two of these four
-  // photographs are near-white where the label sits -- Snack's ground IS
-  // white (1.00:1 unaided), Toast 1.46:1. So the shadow is not decorative
-  // here and a future "tidy-up" that drops it would make those labels
-  // vanish.
-  ck('labels keep a shadow to separate them from the photo',
-     d.every(x=>x.shadow && x.shadow!=='none'), d[0].shadow);
+  // This used to assert the OPPOSITE -- that the labels keep a text shadow,
+  // because contrast rested entirely on it and two of these photographs are
+  // near-white where the label sits (Snack's ground IS white, 1.00:1
+  // unaided; Toast 1.46:1).
+  //
+  // QA has since reversed it: "Remove the drop shadow from the text. If
+  // readability is a concern, add a slight gradient overlay at the top of
+  // the images, do not put drop shadows on text." The contrast job moved to
+  // the tile's ::before gradient, so the requirement here inverts with it.
+  // item25 owns the gradient and measures the resulting contrast per tile.
+  ck('labels carry no drop shadow',
+     d.every(x=>x.shadow==='none'), d[0].shadow);
   ck('labels anchored top-left', d.every(x=>x.left!=='auto'&&x.top!=='auto'), `${d[0].left}/${d[0].top}`);
   ck('all four labels animated in', d.every(x=>x.op===1), d.map(x=>x.op).join(','));
   ck('sticker svg no longer used', await p.evaluate(()=>!document.querySelector('img[src*="hard-part-sticker"]')));

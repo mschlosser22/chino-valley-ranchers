@@ -937,6 +937,52 @@
   }
 }
 
+/* Readability gradient at the top of each golden-hour tile.
+
+   QA: "Remove the drop shadow from the text. If readability is a concern,
+   add a slight gradient overlay at the top of the images, do not put drop
+   shadows on text."
+
+   Readability is a concern, and measurably so. The white label sits on bare
+   photograph, and two of these frames are near-white exactly where it falls:
+   before this, Snack measured 1.00:1 (its ground IS white) and Toast 1.46:1
+   against the 4.5:1 WCAG AA minimum. The shadow was carrying that; with it
+   gone the gradient has to.
+
+   Confined to the top third and eased through three stops rather than a
+   straight linear fade -- a two-stop gradient over the same distance reads
+   as a visible grey band across the middle of the photograph. It sits above
+   the <img> and below the label, and is pointer-transparent so it does not
+   eat the tile's hover. */
+.jammy [data-tile]::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  /* Tall enough to cover the label and then fade well below it. The label
+     ink runs from the 22px top inset to roughly 60px down, so a gradient
+     that starts fading immediately is already thin where the glyphs sit --
+     an early version did exactly that and left Toast at 3.40:1 and Snack at
+     3.27:1 even though the gradient was rendering correctly.
+
+     Hence the hold: full strength to 22%, easing out from there. */
+  height: 46%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 26, 14, 0.72) 0%,
+    rgba(18, 26, 14, 0.72) 22%,
+    rgba(18, 26, 14, 0.46) 52%,
+    rgba(18, 26, 14, 0.18) 78%,
+    rgba(18, 26, 14, 0) 100%
+  );
+}
+
+/* The label clears the gradient. */
+.jammy [data-tile] [data-sticker] {
+  z-index: 2;
+}
+
 /* Golden-hour gallery collapses to two columns on narrow screens. */
 @media (max-width: 860px) {
   /* QA 2.8: full width and stacked on phones, rather than two columns --
