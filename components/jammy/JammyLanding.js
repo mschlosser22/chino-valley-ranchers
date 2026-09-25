@@ -54,8 +54,16 @@ const FEATURES = [
   { icon: "icon-flavor.png", w: 46, h: 46, label: "Craveable flavor" },
   { icon: "icon-nutrients.png", w: 46, h: 46, label: "Packed with nutrients" },
   {
+    // QA: "The 'Easy and ready to eat' icon is missing parts of the graphic."
+    // The old file carried only the hand -- the three motion lines above it
+    // were absent entirely. Replaced from the supplied Icon-Easy.svg, which
+    // has all four paths, cropped to its own ink box so it is not padded by
+    // the 75x75 Illustrator canvas.
+    // 35 rather than 34: the art's true aspect is 0.7559, so at h:46 it wants
+    // 34.8 wide. objectFit is "contain", so the old 34 did not distort it --
+    // it just letterboxed, leaving the icon fractionally under its box.
     icon: "svg/icon-easy-ready.svg",
-    w: 34,
+    w: 35,
     h: 46,
     label: "Easy and ready to eat",
   },
