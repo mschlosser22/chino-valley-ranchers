@@ -12,6 +12,9 @@
       }
     },
     {
+      "_template": "jammyHomeCta"
+    },
+    {
       "_template": "feedVideo",
       "classes": "",
       "heading": "It all starts with our feed",

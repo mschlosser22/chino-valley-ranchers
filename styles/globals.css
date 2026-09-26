@@ -581,7 +581,12 @@
   /* Matches the artwork's own ratio so its torn edges show in full rather than
      being cropped by the band's box. */
   .jammy-cta {
-    aspect-ratio: 2000 / 1017;
+    /* Matches the artwork exactly. The banner was re-cut taller -- 2000x1212
+       against the old 2000x1017 -- to take in more of the source frame below
+       the spoon, which is what gives the button room to breathe at the bottom
+       of the band. If the artwork is ever recut, this has to move with it or
+       the torn edges get cropped. */
+    aspect-ratio: 2000 / 1212;
     display: block;
   }
   /* 100% 100% rather than cover: the torn edges live in the artwork's alpha,
@@ -628,7 +633,7 @@
        and happened to land near the copy's edge. Left-aligned, that 2.3-point
        difference put the M and G 24-45px left of the paragraph. */
     left: 4.878%;
-    top: 45%;
+    top: 44.5%;
     width: 45.157%;
     margin: 0;
     font-size: 4.4599cqw;
@@ -645,7 +650,7 @@
   .jammy-cta__body {
     position: absolute;
     left: 4.878%;
-    top: 65%;
+    top: 62.2%;
     width: 45.157%;
     max-width: none;
     margin: 0;
@@ -660,10 +665,6 @@
   .jammy-cta__cta {
     position: absolute;
     left: 4.878%;
-    /* 89.5%: moved down with the rest of the block, keeping ~2% under the body
-       copy. Ends at 95.5%; the torn fringe does not bite into the button's
-       x-span until 97.2%, so this stays clear of it. */
-    top: 89.5%;
     /* Width and height come from the type now, not from the overlay's own
        box. The button previously held a fixed 5.955% height (~46px) and was
        sized to fit it at ~18.7px, which is why it read small beside the
@@ -680,22 +681,22 @@
        2.5cqw is 36px at a 1440 band: the same size the page's other CTAs
        take, at the width the design is drawn for. Below that it scales with
        everything else in the overlay rather than crowding it. */
-    /* The whole overlay block -- headline, body and this button -- sits 3
-       points higher than it did (48/68/88.4 -> 45/65/85.4), which is what
-       gives the band more blue under the button: QA asked for "a little extra
-       bottom padding ... more blue space". The band's height cannot simply
-       grow, because it is locked to the artwork's 2000/1017 aspect so the
-       torn edges show in full; moving the content up is what frees the room.
-       All three move together, so their spacing relative to each other is
-       unchanged.
+    /* The business asked twice for more blue under this button. The band's
+       height cannot simply grow -- it is locked to the artwork's aspect so the
+       torn edges show in full -- and the artwork cannot be re-cut any taller
+       either: the 2000x1212 crop already ends at the source photograph's
+       bottom edge. The only room left is inside the overlay, so the block was
+       tightened rather than moved: the headline went up to the spoon's
+       clearance line (44.5%) and the two internal gaps came down from 5.3 and
+       4.2 points to 3.0 and 2.5.
 
-       Anchored below the copy, which ends at a stable 87.3% of the band at
-       every width. A bottom anchor held the fringe clearance but let the
-       button drift up into that copy as the band shrank (-1px at 1024); a
-       fixed top anchor plus a height that no longer scales did the reverse.
-       88.4% sits just under the copy and, with the type scaling as below,
-       ends at 95-96% -- clear of the 97.2% where the torn fringe bites. */
-    top: 85.4%;
+       Anchored below the copy. A bottom anchor held the fringe clearance but
+       let the button drift up into that copy as the band shrank (-1px at
+       1024); a fixed top anchor plus a height that no longer scales did the
+       reverse. 80.9% sits just under the copy and, with the type scaling as
+       below, ends at 85-88% -- well clear of the 96.04% where the bottom tear
+       first enters the copy column. */
+    top: 80.9%;
     bottom: auto;
     /* Capped at 36px, the size the page's other CTAs take ("Find a Store Near
        You", "More Recipes", "Learn More About Our Family Farms" are all a flat
@@ -809,37 +810,30 @@
   background: #ffffff;
 }
 
-/* A soft white scrim over the photograph, under the content.
+/* No scrim over the photograph.
 
-   The forest labels sit directly on the backdrop, and the client's re-edited
-   yolk is a deeper orange -- which dropped three of them below WCAG AA where
-   they cross it: "Packed with nutrients" 3.97:1, "Easy and ready to eat"
-   3.95:1, "Enjoy any time of day" 4.12:1, against the previous artwork's
-   4.75-5.00:1. The photo is the asset the client supplied, so the fix belongs
-   on the label's ground rather than on the image.
+   QA: "The background image appears to have some kind of lowered opacity
+   overlay on it. Please remove."
 
-   A flat wash would grey the whole band; this is strongest across the middle,
-   where the yolk actually falls, and clears to nothing at the edges so the
-   egg whites either side keep their brightness. */
-.jammy .jammy-features-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.26) 34%,
-    rgba(255, 255, 255, 0.34) 62%,
-    rgba(255, 255, 255, 0.12) 86%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  /* Above the photo (z-index 1), below the content (z-index 2). A first
-     attempt put this at 0 and lifted every child to 1 -- which included the
-     photo wrapper, so the photograph painted back over the scrim and the
-     contrast numbers did not move at all. */
-  z-index: 2;
-}
+   There WAS a soft white gradient here, and it was not decorative -- it was
+   lifting the forest labels off the client's re-edited yolk, which is a
+   deeper orange than the artwork the section was built against. Removing it
+   costs contrast on the four labels that cross the yolk directly:
+
+     Enjoy any time of day   5.55:1 -> 4.27:1
+     Good source of protein  5.70:1 -> 4.46:1
+     Consistent every time   4.84:1 -> 4.12:1
+     Extended shelf life     5.01:1 -> 4.34:1
+
+   All four now sit under the 4.5:1 WCAG AA minimum for normal-size text
+   (measured off rendered pixels at 1440, not computed values). The other six
+   labels fall on egg white or board and are unaffected.
+
+   Flagged to the business rather than worked around: the fix would be either
+   darkening the label colour from #2E4322 (#1A2612 gets the worst case to
+   6.02:1) or a lighter treatment behind the type, both of which are design
+   changes nobody has asked for. Mobile is unaffected -- it hides the photo
+   for a solid #e48ee4 block where the labels measure 4.78:1. */
 
 /* The content clears the scrim; the photo wrapper deliberately does not. */
 .jammy .jammy-features-section > *:not(.jammy-features-bg) {
@@ -908,11 +902,6 @@
   .jammy .jammy-features-section {
     background: #e48ee4;
   }
-  /* The scrim exists to lift the labels off the photograph; with the photo
-     hidden it would only wash out the flat colour. */
-  .jammy .jammy-features-section::before {
-    display: none;
-  }
 }
 
 /* QA: "Remove Jammy wordmark in the background" -- phones only. At this width
@@ -946,6 +935,52 @@
   .jammy .jammy-spotify-code {
     display: none;
   }
+}
+
+/* Readability gradient at the top of each golden-hour tile.
+
+   QA: "Remove the drop shadow from the text. If readability is a concern,
+   add a slight gradient overlay at the top of the images, do not put drop
+   shadows on text."
+
+   Readability is a concern, and measurably so. The white label sits on bare
+   photograph, and two of these frames are near-white exactly where it falls:
+   before this, Snack measured 1.00:1 (its ground IS white) and Toast 1.46:1
+   against the 4.5:1 WCAG AA minimum. The shadow was carrying that; with it
+   gone the gradient has to.
+
+   Confined to the top third and eased through three stops rather than a
+   straight linear fade -- a two-stop gradient over the same distance reads
+   as a visible grey band across the middle of the photograph. It sits above
+   the <img> and below the label, and is pointer-transparent so it does not
+   eat the tile's hover. */
+.jammy [data-tile]::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  /* Tall enough to cover the label and then fade well below it. The label
+     ink runs from the 22px top inset to roughly 60px down, so a gradient
+     that starts fading immediately is already thin where the glyphs sit --
+     an early version did exactly that and left Toast at 3.40:1 and Snack at
+     3.27:1 even though the gradient was rendering correctly.
+
+     Hence the hold: full strength to 22%, easing out from there. */
+  height: 46%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 26, 14, 0.72) 0%,
+    rgba(18, 26, 14, 0.72) 22%,
+    rgba(18, 26, 14, 0.46) 52%,
+    rgba(18, 26, 14, 0.18) 78%,
+    rgba(18, 26, 14, 0) 100%
+  );
+}
+
+/* The label clears the gradient. */
+.jammy [data-tile] [data-sticker] {
+  z-index: 2;
 }
 
 /* Golden-hour gallery collapses to two columns on narrow screens. */
