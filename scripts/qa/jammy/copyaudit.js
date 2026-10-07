@@ -17,8 +17,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
      /The only egg with a golden, jammy center that makes any meal a moment\./.test(txt));
   ck('the design\'s superseded "can make" wording is gone',
      !/that can make any meal a moment/.test(txt));
-  ck('Trader Joe\'s line present and sentence case',
-     /Available now at Trader Joe’s\.|Available now at Trader Joe's\./.test(txt));
+  // Inverted: the business asked for this line to come off the page. It used
+  // to assert the line was present and in sentence case (it had been set in
+  // Cubano and uppercased). Now it guards the removal, so the copy cannot
+  // reappear from a stale branch or a revert of the component.
+  ck('Trader Joe\'s line is gone',
+     !/Available now at Trader Joe/.test(txt));
   ck('"every time." present in body copy', /jammy center, every time\./.test(txt));
   ck('all four tile labels present', ['Salad','Toast','Snack','Ramen'].every(l=>txt.includes(l)));
   await b.close();

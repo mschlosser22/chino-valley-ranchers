@@ -8,7 +8,7 @@ behaviour QA asked for, at the breakpoints the item concerns.
 | `jv2.js` | Phase 1+2 regression net (fonts, tile order, SVG illustrations, hero) |
 | `item3.js` | Hover states -- no drop shadow, scale only |
 | `item5.js` | Hero supporting copy and og:description |
-| `item7.js` | "Available now at Trader Joe's." in bold Proxima Nova |
+| `item7.js` | "Available now at Trader Joe's." is gone from the page (was: that line in bold Proxima Nova) |
 | `item8.js` | Protein callout artwork, size and placement |
 | `item9b.js` | "What is a jammy egg?" curved lockup |
 | `item10.js` | Differentiators -- no background bleed through the artwork |

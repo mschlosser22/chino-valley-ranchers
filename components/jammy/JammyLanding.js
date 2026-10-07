@@ -372,23 +372,6 @@ export function JammyLanding() {
               soft-boiled egg into your favorite foods. Jammy is the low lift
               for your high standards.
             </p>
-            {/* QA: "'Available now at Trader Joe's.' should be in bold
-                Proxima Nova". It was set in Cubano and uppercased; the copy
-                deck has it in sentence case, so the transform goes too. */}
-            <p
-              className="jammy-reveal"
-              style={{
-                margin: 0,
-                fontFamily: BODY,
-                fontWeight: 700,
-                fontSize: "clamp(19px, 2.1vw, 24px)",
-                lineHeight: 1.25,
-                letterSpacing: "normal",
-                color: C.forest,
-              }}
-            >
-              Available now at Trader Joe&rsquo;s.
-            </p>
           </div>
           {/* The source art has the bag sitting in a wide, mostly-transparent
               canvas, which rendered it small. Asset is cropped tight to the
