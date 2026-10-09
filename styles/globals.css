@@ -829,3 +829,34 @@
     padding-top: 69vw !important;
   }
 }
+
+/* ── Pre-footer type (review item WI-6) ────────────────────────────────
+   The headline closes the page, but below 1024 it fell to 18-20px -- smaller
+   than section 7's 22px "BETTER FOR..." lines just above it (0.82x at 390),
+   so the page's last statement read as a footnote. It now leads them by at
+   least 1.15x: 26px on tablets, and on phones the same 26px floor as the
+   page's other slab headings (WI-1), growing to 29px.
+
+   The claims were 14px on phones against 16px body copy elsewhere, and
+   wrapped to orphans ("practices." alone, 0.26 of the widest line at 360).
+   They take body size and a balanced wrap, and the column uses the full
+   width less a 20px gutter rather than 86% of it. */
+@media (max-width: 1023px) {
+  .regen-prefooter-title {
+    font-size: 26px !important;
+    letter-spacing: 0.03em !important;
+  }
+}
+@media (max-width: 767px) {
+  .regen-prefooter-title {
+    font-size: clamp(26px, 6.8vw, 29px) !important;
+  }
+  .regen-prefooter-grid > div:last-child {
+    max-width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .regen-prefooter-section p {
+    font-size: clamp(16px, 4.4vw, 18px) !important;
+  }
+}

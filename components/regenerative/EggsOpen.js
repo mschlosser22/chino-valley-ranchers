@@ -47,13 +47,14 @@ export function EggsOpen() {
 
         <div className="mx-auto" style={{ padding: "4% 3%", maxWidth: "86%" }}>
           <h2
-            className="m-0 uppercase text-center"
+            className="m-0 uppercase text-center regen-prefooter-title"
             style={{
               fontFamily: "'Ultra', Rockwell, Georgia, serif",
               color: "#F8A014",
               fontSize: "clamp(18px, 2.62vw, 45px)",
               lineHeight: 1.24,
               letterSpacing: "0.01em",
+              textWrap: "balance",
             }}
           >
             Our regenerative eggs are pasture raised on family farms
@@ -67,6 +68,7 @@ export function EggsOpen() {
               color: "#FFFFFF",
               fontSize: "clamp(14px, 1.95vw, 34px)",
               lineHeight: 1.35,
+              textWrap: "balance",
               marginTop: "1.1em",
               paddingBottom: "0.9em",
               borderBottom: "2px solid #F8A014",
@@ -83,6 +85,7 @@ export function EggsOpen() {
               color: "#FFFFFF",
               fontSize: "clamp(14px, 1.95vw, 34px)",
               lineHeight: 1.35,
+              textWrap: "balance",
               marginTop: "0.9em",
             }}
           >
