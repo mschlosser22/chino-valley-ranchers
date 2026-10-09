@@ -84,10 +84,19 @@ one of them.
 
 - Sections 7 and 8 heights were never reconciled against the `.fig` geometry
   decode. Flagged during the original build, never resolved.
-- There are **no QA suites** for this page. `scripts/qa/regen/` holds only the
-  raw Figma decode artifacts (`doc.bin`, `schema.json`) — no assertions. All
-  85 commits of the rebuild are unguarded. The Jammy page has 25 suites for
-  comparison.
+- QA coverage: `scripts/qa/regen/` holds 26 scripts, including eight section
+  suites run by `run-all.sh` -- **246/246 passing** on this branch at
+  `782c129`. (An earlier draft of this brief said there were no suites; that
+  was read off a different branch where the directory was untracked.) Note
+  there is no `sec8test.js` -- the pre-footer has only `sec8seam.js`.
+
+## Design source -- desktop only
+
+The Figma is a single 2075px desktop artboard (a PSD import). **There is no
+mobile frame.** Mobile cannot be checked pixel-for-pixel against the Figma; it
+has to be judged on how faithfully it carries the desktop design's intent onto
+a small screen. Decisions the desktop artboard cannot answer -- e.g. whether a
+card hidden on phones should come back -- are client/designer questions.
 
 ## Ground rules for any change here
 
