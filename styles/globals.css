@@ -378,9 +378,14 @@
     margin-top: 0 !important;
     display: block;
   }
-  .regen-diff-wrap h2 span:nth-child(1) { font-size: 7.6vw !important; line-height: 1.1; }
-  .regen-diff-wrap h2 span:nth-child(2) { font-size: 15vw !important; line-height: 0.95; }
-  .regen-diff-wrap h2 span:nth-child(3) { font-size: 7.6vw !important; line-height: 1.1; }
+  /* Capped (review item WI-10). As plain 7.6vw / 15vw / 7.6vw the script
+     reached 153px at 1023 and then fell to the desktop's 92px at 1024 -- a
+     60px jump across one pixel of viewport. The script's cap is the desktop
+     size at 1024, so the two layouts meet; the slab lines start at the 26px
+     tier the page's other phone headings share (WI-1, WI-6). */
+  .regen-diff-wrap h2 span:nth-child(1) { font-size: clamp(26px, 6.6vw, 38px) !important; line-height: 1.1; }
+  .regen-diff-wrap h2 span:nth-child(2) { font-size: clamp(46px, 11.5vw, 92px) !important; line-height: 0.95; }
+  .regen-diff-wrap h2 span:nth-child(3) { font-size: clamp(26px, 6.6vw, 38px) !important; line-height: 1.1; }
 
   /* The intro takes the column, not the design's 42%. */
   .regen-diff-wrap > p {
