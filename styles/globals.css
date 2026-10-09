@@ -663,7 +663,15 @@
    against the card. Between the phone breakpoint and desktop that lands the
    body at 11px, which is not readable -- a floor keeps it sane without
    changing the desktop proportions. */
-@media (min-width: 768px) and (max-width: 1100px) {
+/* Narrowed to 1036 and rebalanced (review item WI-12). With "THE NEXT" on a
+   24px floor while "Generation" kept scaling, the script's 1.31x lead fell
+   to 1.12-1.14x, the content packed into the top of the card (17.7px above
+   it, 119.4px below at 1024) and the hen divider sat on the paragraph. A
+   lower floor restores the ratio, and every element moves down by a share
+   of how far the card has grown past 768 -- (100cqw - 768px) x 0.17 -- so
+   the block re-centres as the card gets taller. Above 1036 the design's own
+   coordinates already balance. */
+@media (min-width: 768px) and (max-width: 1036px) {
   .regen-next-stage p {
     font-size: max(1.447cqw, 15px) !important;
     /* the floor makes the copy taller, so it needs more of the card's width
@@ -672,13 +680,19 @@
     width: 48% !important;
     line-height: 1.34;
   }
-  .regen-next-stage h2 span:first-child { font-size: max(3.047cqw, 24px) !important; }
+  .regen-next-stage h2 span:first-child { font-size: max(2.65cqw, 20px) !important; }
   .regen-next-stage h2 span:last-child  { font-size: max(5.140cqw, 36px) !important; }
   .regen-next-stage h2 span:first-child { top: 41% !important; }
   .regen-next-stage h2 span:last-child  { top: 46% !important; }
   .regen-next-stage img[src*="hen-divider"] { top: 54% !important; }
   .regen-next-stage span[aria-hidden] { top: 57.5% !important; }
-  .regen-next-stage p { top: 60% !important; }
+  .regen-next-stage p { top: 61% !important; }
+  .regen-next-stage h2 span,
+  .regen-next-stage img[src*="hen-divider"],
+  .regen-next-stage span[aria-hidden],
+  .regen-next-stage p {
+    margin-top: calc((100cqw - 768px) * 0.17);
+  }
 }
 
 /* Section 4's stage: the design's absolute coordinates on desktop, a stacked
