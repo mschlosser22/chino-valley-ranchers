@@ -104,7 +104,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
           minGap=Math.min(minGap, B(spans[i]).top-B(spans[i-1]).bottom);
         return {headOverlap: minGap<0?Math.round(minGap):0,
                 introFs:Math.round(parseFloat(getComputedStyle(introEl).fontSize)),
-                introW:Math.round(B(introEl).width),
+                // Characters per line, from the widest rendered line and the
+                // paragraph's average glyph width.
+                introCpl:(()=>{const rg=document.createRange(); rg.selectNodeContents(introEl);
+                  const rows={}; for(const q of rg.getClientRects()){const k=Math.round(q.top); rows[k]=(rows[k]||0)+q.width;}
+                  const ws=Object.values(rows), sum=ws.reduce((a,b)=>a+b,0);
+                  return Math.round(Math.max(...ws)*introEl.textContent.trim().length/sum);})(),
                 calloutFs:Math.round(parseFloat(getComputedStyle(c0.querySelector('p')).fontSize)),
                 stagePct:+(B(stageEl).width/innerWidth*100).toFixed(0),
                 gutter:Math.round(B(c0).left)};
@@ -183,8 +188,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
          `${m.narrow.headOverlap}px overlap`);
       ck('body copy is readable', m.narrow.introFs>=15 && m.narrow.calloutFs>=15,
          `intro ${m.narrow.introFs}px, callouts ${m.narrow.calloutFs}px`);
-      ck('running text has a usable measure', m.narrow.introW > innerW*0.7,
-         `${m.narrow.introW}px of ${innerW}`);
+      // A readable MEASURE, 35-75 characters a line. This used to assert the
+      // intro was wider than 70% of the viewport -- right when it was a 154px
+      // ribbon on phones, but it rewarded the opposite failure on tablets,
+      // where a full-width intro ran ~135 characters a line (review WI-11).
+      ck('running text has a usable measure', m.narrow.introCpl>=35 && m.narrow.introCpl<=75,
+         `${m.narrow.introCpl} characters a line`);
       ck('the diagram fills the column', m.narrow.stagePct>80, `${m.narrow.stagePct}%`);
       // A percentage gutter vanishes on a phone: the wrapper's 3% is 12px at
       // 390. This one holds at every size.

@@ -367,7 +367,9 @@
        section against section 6's tear; 8% here stacked on top of it and left
        ~80px of white where ~40 was wanted. The side gutter is px, not a
        percentage, so it does not shrink with the viewport. */
-    padding: 10px 20px 12% !important;
+    /* Bottom: 12% was 123px of white under the BETTER lines at 1023 and
+       68px at 768 before the pre-footer's tear. (WI-11.) */
+    padding: 10px 20px clamp(44px, 6%, 60px) !important;
   }
 
   /* The heading's three lines are sized in vw and pulled together with
@@ -388,8 +390,15 @@
   .regen-diff-wrap h2 span:nth-child(3) { font-size: clamp(26px, 6.6vw, 38px) !important; line-height: 1.1; }
 
   /* The intro takes the column, not the design's 42%. */
+  /* 30em keeps the intro under ~75 characters a line. At the full column it
+     ran ~135 at 1023 and ~103 at 768. The review proposed 36em, but Lato sets
+     narrow -- ~7px a character at 16px -- so 36em (576px) still ran 83 a line.
+     sec7tablettest measures characters per line, not the box. (WI-11.) */
   .regen-diff-wrap > p {
-    max-width: 100% !important;
+    max-width: 30em !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-wrap: balance;
     font-size: 16px !important;
     line-height: 1.55;
     margin-top: 6% !important;
@@ -404,6 +413,12 @@
   .regen-soil__stage {
     width: 100% !important;
   }
+  /* The "BETTER FOR..." lines are the payoff, not a fifth callout: on phones
+     they sat 15px under the last callout, closer than the callouts sit to
+     each other (35px). (WI-11.) */
+  .regen-diff-better {
+    margin-top: 44px !important;
+  }
 
   /* The callouts stack. They need separation from each other, and their type
      needs to be the same size as the intro's -- they are the section's real
@@ -413,7 +428,7 @@
      single stacked column that reads as ragged against the centred heading
      and intro above it. */
   .regen-callout {
-    margin-top: 10%;
+    margin-top: clamp(28px, 6vw, 44px);
     text-align: center;
   }
   .regen-callout h3 {
@@ -431,6 +446,39 @@
      they follow it. */
   .regen-diff-better p {
     font-size: 22px !important;
+  }
+}
+
+/* ── Section 7 on tablets and phones (review item WI-11) ───────────────
+   Below 1024 the section was one stacked column at every width, so a tablet
+   got a long ribbon: 1963px at 1023 against 903px at 1024, with callouts
+   running ~138 characters a line. From 600 the callouts take two columns
+   under the diagram -- left, right, left, right in the DOM, so they land in
+   the same corners as at desktop -- and the diagram drops to 88% so it reads
+   as the centre of the layout rather than a full-bleed photo.
+
+   The diagram's artwork has a band of soft empty sky at its top. Lifting it
+   by that band closes the gap between the intro and the picture; the band
+   is a share of the ARTWORK's width, so it is 7% of the column where the
+   artwork is full width and 7% x 0.88 where it is 88%. */
+@media (max-width: 599px) {
+  .regen-soil {
+    margin-top: calc(24px - 7%) !important;
+  }
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .regen-soil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    margin-top: calc(24px - 6.16%) !important;
+  }
+  .regen-soil__stage {
+    grid-column: 1 / -1;
+    width: 88% !important;
+  }
+  .regen-callout {
+    margin-top: 32px;
   }
 }
 
