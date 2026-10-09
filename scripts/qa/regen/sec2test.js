@@ -67,11 +67,8 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
                   if(el.offsetHeight>0) o[k]=+(el.offsetHeight/fr.height*100).toFixed(2);}
                 return o;})(),
               // Play ring geometry, and whether the annotation lands on it.
-              // It had been `inset-0 m-auto`, i.e. centred, which ignores the
-              // design entirely: 43.5%/39.31% at 13% wide against the design's
-              // 47.90%/58.55% at 8.05%. Sitting high and oversized, it collided
-              // with the "Hear Chris" text -- in the design the two never touch
-              // (text ends y1565, ring starts y1600).
+              // In the design the two never touch (text ends y1565, ring
+              // starts y1600). Expected values are below the measurement.
               play:(()=>{const el=s.querySelector('button'); if(!el) return null;
                 const r=el.getBoundingClientRect();
                 const h=anns.find(d=>/Hear Chris/.test(d.textContent));
@@ -102,12 +99,18 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       // artboard. Measured from the stroke artwork, which is exact, rather
       // than off a scaled screenshot.
       ck('video frame at design width', Math.abs(m.framePct-53.7)<1.5, `${m.framePct}% vs 53.7%`);
-      // Layer 77: x994 y1600 167x167 on the 1135x698 frame.
+      // Layer 77: x994 y1600 167x167 on the artboard; the frame's origin is
+      // (470,1314) and it is 1135x698, so in FRAME terms that is 46.17% /
+      // 40.97% at 14.71% wide. This check used to assert 47.90%/58.55% at
+      // 8.05% -- 994/2075 and 167/2075 are ARTBOARD percentages, applied to the
+      // frame by mistake -- so it enforced a ring 24% of the frame too low and
+      // 45% too small, with the "Hear Chris" arrow pointing at the treeline.
+      // (Review item WI-3.)
       if (m.play) {
         ck('play ring at design position',
-           Math.abs(m.play.left-47.90)<1.5 && Math.abs(m.play.top-58.55)<2,
-           `${m.play.left}%/${m.play.top}% vs 47.90%/58.55%`);
-        ck('play ring at design size', Math.abs(m.play.w-8.05)<1.2, `${m.play.w}% vs 8.05%`);
+           Math.abs(m.play.left-46.17)<1.5 && Math.abs(m.play.top-40.97)<2,
+           `${m.play.left}%/${m.play.top}% vs 46.17%/40.97%`);
+        ck('play ring at design size', Math.abs(m.play.w-14.71)<1.2, `${m.play.w}% vs 14.71%`);
         ck('annotation clear of the play ring', !m.play.hits, m.play.hits ? 'overlapping' : 'clear');
       }
       // Text block heights against the design's TEXT node boxes (88 and 132

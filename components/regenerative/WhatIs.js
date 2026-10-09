@@ -101,40 +101,51 @@ export function WhatIs() {
 
             {/* Play button: a real control, not a picture of one.
 
-                Placed from the design (Layer 77: x994 y1600 167x167 on the
-                1135x698 frame). It had been `inset-0 m-auto`, which centres it
-                and ignores the design entirely -- that put it at 43.5%/39.31%
-                and 13% wide against the design's 47.90%/58.55% at 8.05%, so it
-                sat high and oversized and the "Hear Chris" text landed on top
-                of it. In the design the two do not touch: the text ends at
-                y1565 and the ring starts at y1600. */}
+                Placed from the design. Layer 77 is x994 y1600 167x167 on the
+                artboard, and the frame's origin is (470,1314) at 1135x698, so
+                in FRAME terms the control sits at 46.17% / 40.97% and is 14.71%
+                wide. It had been at 47.90% / 58.55% / 8.05% -- 994/2075 and
+                167/2075, ARTBOARD percentages applied to the frame -- which put
+                the ring 24% of the frame too low and 45% too small, so the
+                "Hear Chris" arrow pointed at the treeline, and on phones it was
+                a 25px target with a 1px ring. (Review item WI-3.)
+
+                The button is Layer 77's box and is the hit area; the visible
+                ring is Ellipse 5, 4.8% inside it (x1002 y1609 143x143). */}
             <button
               type="button"
               aria-label="Play the video about regenerative farming"
               className="absolute flex items-center justify-center"
               style={{
-                left: "47.90%",
-                top: "58.55%",
-                width: "8.05%",
+                left: "46.17%",
+                top: "40.97%",
+                width: "14.71%",
                 aspectRatio: "1",
                 borderRadius: "9999px",
-                background: "rgba(255,255,255,0.16)",
-                border: "0.35vw solid #FFFFFF",
+                background: "transparent",
+                border: "0 solid transparent",
+                padding: 0,
                 cursor: "pointer",
                 zIndex: 3,
               }}
             >
               <span
+                aria-hidden="true"
                 style={{
-                  display: "block",
-                  width: 0,
-                  height: 0,
-                  marginLeft: "18%",
-                  borderTop: "0.9vw solid transparent",
-                  borderBottom: "0.9vw solid transparent",
-                  borderLeft: "1.5vw solid #F8A014",
+                  position: "absolute",
+                  inset: "4.8%",
+                  borderRadius: "9999px",
+                  border: "max(2px, 0.6cqw) solid #FFFFFF",
+                  background: "rgba(255,255,255,0.16)",
                 }}
               />
+              <svg
+                viewBox="0 0 10 12"
+                aria-hidden="true"
+                style={{ position: "relative", width: "34%", marginLeft: "8%" }}
+              >
+                <path d="M0 0L10 6L0 12z" fill="#F8A014" />
+              </svg>
             </button>
 
             {/* "Hear Chris talk" -- live type, not a bitmap.
