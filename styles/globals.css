@@ -687,10 +687,21 @@
     transform: none;
     position: relative;      /* not static: the grass is absolute inset-0 and
                                 would paint over a static stage */
-    display: block;
-    padding: 8% 7% 10%;
+    /* A column, so the visual order can differ from the DOM's: heading and
+       copy first, then the carton landing ON the PURCHASE sign, then the
+       "Get 'em here" arrow pointing into it. In DOM order the carton sat at
+       the top of the stack, 332px above the sign it belongs to at 390.
+       (Review item WI-8.) */
+    display: flex;
+    flex-direction: column;
+    padding: 10% 7% 10%;
     z-index: 2;
   }
+  .regen-agri-stage h2 { order: 1; }
+  .regen-agri-stage p { order: 2; }
+  .regen-agri-stage img[src*="carton"] { order: 3; }
+  .regen-agri-stage a[href="/products"] { order: 4; }
+  .regen-agri-stage img[src*="ann-getem"] { order: 5; }
   .regen-agri-stage > * {
     position: relative !important;
     left: auto !important;
@@ -724,15 +735,30 @@
   /* !important because the sizes are inline styles on the elements -- they
      carry the design's cqw values, which are correct at desktop and 4.5px on
      a phone. */
-  .regen-agri-stage h2 span:first-child { font-size: 8.2vw !important; }
-  .regen-agri-stage h2 span:last-child  { font-size: 7.4vw !important; }
+  /* The design's lockup is a script "Regenerative" over an Ultra
+     "AGRICULTURE" of about the same ink width (0.96x). At 8.2vw / 7.4vw the
+     script came out 0.59x -- a caption over a headline. Capped so neither
+     keeps growing across 640-767. */
+  .regen-agri-stage h2 span:first-child { font-size: clamp(47px, 13.3vw, 61px) !important; line-height: 1 !important; }
+  .regen-agri-stage h2 span:last-child  { font-size: clamp(26px, 7.4vw, 34px) !important; }
   /* margin-top:0 -- the breathing room above the copy is this rule's own
      padding-top, so the paper ground stays continuous. A margin here would
      put grass between the two halves of the block. */
-  .regen-agri-stage p { font-size: 3.9vw !important; margin-top: 0 !important; }
-  .regen-agri-stage img[src*="carton"] { width: 62% !important; margin: 6% auto 0; display: block; }
-  .regen-agri-stage a[href="/products"] { display: block; width: 74% !important; margin: 6% auto 0; }
-  .regen-agri-stage img[src*="ann-getem"] { width: 28% !important; margin: 3% 0 0 auto; display: block; }
+  /* 15-17px: 3.9vw alone was 14px at 360 and 29.9px at 767. */
+  .regen-agri-stage p { font-size: clamp(15px, 3.9vw, 17px) !important; line-height: 1.55; margin-top: 0 !important; }
+  /* The carton sits ON the sign, as in the design: a negative bottom margin
+     pulls the sign up under it. pointer-events: none on it and the arrow, so
+     the images that now overlap the sign cannot steal its taps -- sec3phonetest
+     hit-tests the sign at two points. */
+  .regen-agri-stage img[src*="carton"] {
+    width: 44% !important; margin: 8% auto -9%; display: block;
+    position: relative; z-index: 4; pointer-events: none;
+  }
+  .regen-agri-stage a[href="/products"] { display: block; width: 74% !important; margin: 0 auto; }
+  .regen-agri-stage img[src*="ann-getem"] {
+    width: 28% !important; margin: -9% 4% 0 auto; display: block;
+    align-self: flex-end; z-index: 4; pointer-events: none;
+  }
 }
 
 [data-regen-video-wrap] {
