@@ -11,10 +11,24 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     await p.waitForTimeout(1200);
     const m=await p.evaluate(()=>{
       const de=document.documentElement;
-      // anything sticking out past the viewport
+      // Anything PAINTED that sticks out past the viewport. Elements that draw
+      // nothing of their own -- a transparent, borderless container, or
+      // screen-reader-only text -- are skipped: the hero lockup is enlarged on
+      // phones by scaling its full-width h1 (WI-4), so that empty box overhangs
+      // both edges by design while every visible part of it stays on screen.
+      // Images, text and anything with a fill or border are still checked, so
+      // a wordmark pushed off the edge fails here (verified).
+      const paints=e=>{
+        if(e.classList.contains('sr-only')) return false;
+        if(/^(IMG|SVG|VIDEO|CANVAS|PICTURE)$/i.test(e.tagName)) return true;
+        const cs=getComputedStyle(e);
+        if(cs.backgroundImage!=='none' || !/rgba\(0, 0, 0, 0\)|transparent/.test(cs.backgroundColor)) return true;
+        if(parseFloat(cs.borderTopWidth)||parseFloat(cs.borderLeftWidth)) return true;
+        return [...e.childNodes].some(n=>n.nodeType===3 && n.textContent.trim());
+      };
       const wide=[...document.querySelectorAll('body *')].filter(e=>{
         const r=e.getBoundingClientRect();
-        return r.width>0 && (r.right>innerWidth+2 || r.left<-2);
+        return r.width>0 && (r.right>innerWidth+2 || r.left<-2) && paints(e);
       }).slice(0,4).map(e=>e.tagName+'.'+(e.className||'').toString().split(' ')[0].slice(0,24));
       return {overflow:de.scrollWidth>innerWidth+1,
               scrollW:de.scrollWidth, vw:innerWidth,
