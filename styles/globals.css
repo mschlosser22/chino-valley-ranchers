@@ -614,13 +614,20 @@
   position: absolute;
   inset: 0;
 }
+/* No one-word last line ("system." alone at 360-430). */
+.regen-next-stage p {
+  text-wrap: pretty;
+}
 
 @media (max-width: 767px) {
   .regen-next-section { min-height: 0 !important; }
   .regen-next-stage {
     position: relative;
     display: block;
-    padding: 8% 7% 10%;
+    /* 40vw of the hens photograph shows above the paper block. At 8% the
+       block started almost at the section's top and the photograph -- the
+       point of the section -- was a 31px strip at 390. (Review item WI-7.) */
+    padding: 40vw 7% 10%;
     z-index: 2;
   }
   /* Descendants, not just children: the heading's two lines carry their own
@@ -636,9 +643,14 @@
   .regen-next-stage h2,
   .regen-next-stage p { background: #F4F2EE; margin: 0; }
   .regen-next-stage h2 { padding: 7% 7% 2%; }
-  .regen-next-stage p  { padding: 0 7% 8%; font-size: 3.9vw !important; }
-  .regen-next-stage h2 span:first-child { font-size: 7.4vw !important; }
-  .regen-next-stage h2 span:last-child  { font-size: 8.6vw !important; }
+  .regen-next-stage p  { padding: 0 7% 8%; font-size: clamp(15px, 3.9vw, 17px) !important; line-height: 1.55; }
+  /* The design ranks the script "Generation" over "THE NEXT": its ink is
+     1.31x as wide. At 7.4vw / 8.6vw that had inverted to 0.79x. Ultra sets
+     far wider per point than the script, so it takes a 1.94x size ratio to
+     get the 1.31x width ratio. Capped, so neither the type nor the body
+     copy keeps growing across 640-767 (the body was 29.9px at 767). */
+  .regen-next-stage h2 span:first-child { font-size: clamp(22px, 6.2vw, 30px) !important; }
+  .regen-next-stage h2 span:last-child  { font-size: clamp(43px, 12vw, 58px) !important; }
   /* The divider sits between the heading's ground and the copy's, so it needs
      the same ground across the FULL width or it reads as a notch in the block.
 

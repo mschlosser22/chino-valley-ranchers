@@ -157,9 +157,12 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       // as touching the border. 2.5% of the card height is the working margin.
       ck('content clears the card edges', m.cardFit > m.cardH*0.025,
          `closest edge ${m.cardFit}px, need >${(m.cardH*0.025).toFixed(1)}px`);
+    // The design's ranking -- the script "Generation" wider than "THE NEXT" by
+    // 1.31x -- holds on phones too. It was only checked from 768 up, and on
+    // phones it had inverted to 0.79x (review item WI-7).
+    ck('script line is wider than the display line',
+       Math.abs(m.headRatio.w-1.31)<0.08, `${m.headRatio.w}x vs 1.31x`);
     if(w>=768){
-      ck('script line is wider than the display line',
-         Math.abs(m.headRatio.w-1.31)<0.08, `${m.headRatio.w}x vs 1.31x`);
       ck('the two lines interlock', m.headRatio.overlap>0, `${m.headRatio.overlap}px overlap`);
       ck('"THE NEXT" sets on one line', m.headLines[0].lines===1, `${m.headLines[0].lines} lines`);
       ck('"Generation" sets on one line', m.headLines[1].lines===1, `${m.headLines[1].lines} lines`);
