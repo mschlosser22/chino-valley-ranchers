@@ -586,6 +586,26 @@
   transform: translateY(-20.38%);
 }
 
+/* ── Section 3 at tablet widths (review item WI-9) ─────────────────────
+   From 768 the section is back on the design's absolute layout, where the
+   body is 1.574cqw -- 12.1px at 768, below readable and below sec3test's own
+   13px floor (which never ran at this width). 14px, not 15: at 15 the copy
+   runs off the torn bottom of the card at 768. Up to 899 the column is a
+   little wider, set tighter and nudged up to make the room; from 900 the
+   artboard's own proportions have it. */
+@media (min-width: 768px) and (max-width: 1100px) {
+  .regen-agri-stage p {
+    font-size: max(1.574cqw, 14px) !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 899px) {
+  .regen-agri-stage p {
+    line-height: 1.42 !important;
+    width: 46% !important;
+    top: 55.6% !important;
+  }
+}
+
 /* Section 4's card type is sized in cqw so it holds the design's proportions
    against the card. Between the phone breakpoint and desktop that lands the
    body at 11px, which is not readable -- a floor keeps it sane without
