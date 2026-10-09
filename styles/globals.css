@@ -787,3 +787,45 @@
      underneath. */
   z-index: 3;
 }
+
+/* The photograph. Anchored to the TOP, never centred: above 2075px the
+   section's min-height clamps at 622 while the width keeps growing, so `cover`
+   scales by width and crops the surplus height -- and `center` takes half of
+   that off the top, which is exactly where the torn edge lives. At 2200 that
+   sheared 19px off the tear and at 2560 some 73px, leaving a dead-straight
+   line across the carton. 768 and up overrides the x-position to `left`. */
+.regen-prefooter-section {
+  background-image: url(/images/regen/prefooter-bg.webp);
+  background-size: cover;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+/* ── Pre-footer on phones (review item WI-5) ───────────────────────────
+   The photograph is the open carton (asset x0-930 of 2075) beside a dark
+   ramp rebuilt for the type. Cropped `right top` on phones, it showed only
+   the ramp: the carton -- the subject of the band -- was absent at every
+   phone width. The type was put on the dark side deliberately; this
+   reverses that by STACKING instead (review question Q10): the carton fills
+   the width above and the type sits below it on solid ground.
+
+   At 223vw the asset's x0-930 is exactly the viewport width. The image is
+   then 66.85vw tall, so a gradient carries it into solid #1C1D15 from 52vw to
+   66vw -- a gradient layer rather than background-color, so the transparent
+   rows of the torn top edge stay transparent -- and the type starts at 69vw,
+   on solid ground rather than in the ramp.
+
+   The section rises by the tear's rendered depth at this scale: 56 of 2075
+   at 223vw is 6.02vw (see the margin-top rule above for why it must). */
+@media (max-width: 767px) {
+  .regen-prefooter-section {
+    background:
+      linear-gradient(to bottom, rgba(28, 29, 21, 0) 0, rgba(28, 29, 21, 0) 52vw,
+                      #1c1d15 66vw, #1c1d15 100%),
+      url(/images/regen/prefooter-bg.webp) left top / 223vw auto no-repeat;
+    margin-top: -6.02vw;
+  }
+  .regen-prefooter-grid > div:last-child {
+    padding-top: 69vw !important;
+  }
+}

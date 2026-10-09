@@ -27,23 +27,10 @@ export function EggsOpen() {
           56px depth, soft-edged by 1.5px so it does not alias. */}
       <section
       className="regen-prefooter-section relative"
-      style={{
-        backgroundImage: "url(/images/regen/prefooter-bg.webp)",
-        backgroundSize: "cover",
-        // On phones the carton half of the photograph would sit directly
-        // under the type; shifting the focal point right puts the type on
-        // the darker pasture instead, where it reads.
-        //
-        // Anchored to the TOP, never centred. Above 2075px the section's
-        // min-height clamps at 622 while the width keeps growing, so `cover`
-        // scales by width and crops the surplus height -- and `center` takes
-        // half of that off the top, which is exactly where the torn edge
-        // lives. At 2200 that sheared 19px off the tear and at 2560 some 73px,
-        // more than the whole rip, leaving a dead-straight line across the
-        // carton. The bottom of this photograph is plain carton and loses
-        // nothing to the same crop.
-        backgroundPosition: "right top",
-      }}
+      /* Background is in globals.css (.regen-prefooter-section): it changes
+         composition below 768, and an inline style would need !important to
+         override at every breakpoint. The notes on why it is anchored to the
+         TOP live there with it. */
     >
       <div
         className="regen-prefooter-grid mx-auto grid"
