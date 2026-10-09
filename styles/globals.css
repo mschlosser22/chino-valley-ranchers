@@ -248,6 +248,63 @@
   }
 }
 
+/* ── Section 6 on phones (review item WI-1) ─────────────────────────────
+   The burlap's mask is stretched to the section's own height and its bottom
+   tear starts at row 998 of 1262, so the last 21% of the section is torn away
+   at every width. Stacked in one column, the hen was the last thing in the
+   section and always landed in that band: its bottom sat at 97-98% of the
+   section and the tear cut it through the body, legs and feet gone.
+
+   Below 768 the ROC mark and the hen now sit side by side, as the desktop
+   design has them, which takes the hen out of the torn band. The copy spans
+   both columns above them: `display: contents` on the copy column lets its
+   paragraph and logo become grid items of their own.
+
+   The rest brings the section onto the page's phone system: the 7% gutter
+   sections 2, 3, 4 and 8 use (it was the desktop 18.27%, 71px at 390), body
+   copy at 16px (it was 13), and the heading at least the size of the
+   "BETTER FOR..." lines further down -- at 20px it was smaller than them,
+   inverting the hierarchy -- wrapping rather than nowrap, which pushed it
+   21px off-centre at 360.
+
+   !important throughout: padding, gap and margins on these elements are
+   inline styles, and an inline `gap` beats any non-important row-gap. */
+@media (max-width: 767px) {
+  .regen-standards-inner {
+    padding: 9% 7% calc(28vw + 32px) !important;
+  }
+  .regen-burlap h2 {
+    font-size: max(26px, 4.7vw) !important;
+    white-space: normal !important;
+    text-align: center;
+  }
+  .regen-standards-copy {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+  .regen-standards-grid {
+    margin-top: 16px !important;
+    grid-template-columns: 56% 1fr !important;
+    column-gap: 4% !important;
+    row-gap: 20px !important;
+    align-items: end !important;
+  }
+  .regen-standards-grid > div:first-child {
+    display: contents;
+  }
+  .regen-standards-grid > div:first-child > p {
+    grid-column: 1 / -1;
+  }
+  .regen-burlap img[src*="roc-logo"] {
+    width: 100% !important;
+    margin-top: 0 !important;
+  }
+  .regen-burlap img[src*="hen-standing"] {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+
 /* ── Section 7 on phones ───────────────────────────────────────────────
    The section is built from the design's desktop proportions, and every one
    of them is a percentage of the viewport, so they all collapse together on a
@@ -405,11 +462,12 @@
        height is 58vw here, so the tail is 11.08vw. The lift covers it and the
        tear's own depth, leaving the heading ~40px below the tear.
 
-       The hen does not occupy this space. Its cut-out box runs to 97% of the
-       section, which is why a box-based clearance check reads a collision,
-       but the tear crops it: scanning the rendered pixels at 390, the burlap
-       and hen stop at one row and the heading's first ink is 109px below it,
-       with nothing painted in between. */
+       Section 6's hen used to run to 97% of the section here, into the torn
+       band, which the tear cropped through the body. Since WI-1 the logo and
+       hen sit side by side and the hen ends above the tear (<=78.5% of the
+       section, enforced by sec6phonetest), so nothing of section 6 reaches
+       into this space at all. The lift still lands the heading 35-47px below
+       the tear from 360 to 767. */
     margin-top: calc(-11.08vw - 61px);
   }
 }

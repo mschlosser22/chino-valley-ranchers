@@ -89,7 +89,7 @@ export function Certified() {
       }}
     >
       <div
-        className="relative mx-auto"
+        className="relative mx-auto regen-standards-inner"
         /* Extra top padding to clear the photo row's tear, which now overlaps
            this section by 3.76vw so the burlap shows through it. Without it the
            heading sat 72px from the section's top and read as crowding the
@@ -128,7 +128,7 @@ export function Certified() {
         >
           <div>
             <p
-              className="m-0"
+              className="m-0 regen-standards-copy"
               style={{
                 fontFamily: "'Lato', system-ui, sans-serif",
                 color: "#2B2B2B",

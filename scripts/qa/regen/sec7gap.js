@@ -89,11 +89,10 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     // measurement was green.
     if (tearY !== null && m.inkTop - tearY > 6) {
       // The band between the tear and the heading must be EMPTY. Box-based
-      // clearance is useless here: section 6's hen runs to 97% of the
-      // section's height on a phone, so comparing boxes reports a collision
-      // at every narrow width even though the tear crops the hen well above
-      // the heading. That false reading nearly had me revert a correct fix.
-      // This samples the rendered pixels instead.
+      // clearance has misled here before: section 6's hen used to run to 97%
+      // of the section's height on a phone (the tear cropped it), so comparing
+      // boxes reported a collision at every narrow width. Since WI-1 the hen
+      // ends above the tear, but the pixel sampling stays as the honest test.
       const band = await p.screenshot({clip:{x:0, y:Math.ceil(tearY)+2, width:w,
                                              height:Math.max(1,Math.floor(m.inkTop-tearY)-4)},
                                        fullPage:true});

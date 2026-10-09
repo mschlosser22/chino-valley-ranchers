@@ -39,10 +39,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
           if(r.height<4) return;
           if(r.bottom>hb.top+4 && r.top<hb.bottom-4 && r.right>hb.left && r.left<hb.right){
             // Record the box overlap; whether it is a real clash is decided
-            // below by sampling the rendered pixels. Section 6's hen runs to
-            // 97% of its section's height on a phone, so its box reaches
-            // section 7's heading, but the burlap's torn edge crops it well
-            // above -- a box test alone failed a correct layout.
+            // below by sampling the rendered pixels. Section 6's hen used to
+            // run to 97% of its section's height on a phone, its box reaching
+            // section 7's heading while the torn edge cropped it. Since WI-1 it
+            // ends above the tear, but the pixel check stays: a box test alone
+            // has failed a correct layout here before.
             clashes.push({label:img.getAttribute('src').split('/').pop()+' over "'+h.textContent.trim().slice(0,22)+'"',
                           x:Math.round(Math.max(r.left,hb.left)),
                           y:Math.round(Math.max(r.top,hb.top)),
