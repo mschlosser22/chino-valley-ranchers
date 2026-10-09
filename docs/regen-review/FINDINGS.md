@@ -8,8 +8,11 @@
 > - Pre-footer crops the carton out on phones -- **confirmed** visually at 390.
 > - "You want more?" annotation clipped at 640-767 -- **confirmed** at 700:
 >   `arrow-more.png` spans x 684-736 on a 700px viewport.
-> - Photo-row tiles overrun the frame on phones -- **real but overstated**:
->   13px at 360 and 390, not 33px. Treat the WI-2 magnitude as approximate.
+> - Photo-row tiles overrun the grid on phones -- **confirmed, 33px**. (This
+>   note first said "overstated, 13px": that measurement was taken against the
+>   frame IMAGE, which fills the whole section, instead of the photo grid between
+>   the frame's rules. Re-measured against the grid it is 33.1px, exactly as
+>   reported. 4 of 4 confirmed.)
 
 # Regenerative landing page: mobile-first design review
 

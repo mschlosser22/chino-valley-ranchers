@@ -21,7 +21,14 @@
    across the pictures. */
 const FRAME = 27.47;                 // vw, Layer 59's 570 of the 2075 artboard
 const CLEAR = 0.7772;                // share of the frame between its tears
-const BAND = `clamp(150px, ${(FRAME * CLEAR).toFixed(2)}vw, 443px)`;
+/* The tiles fill the grid, which is the band between the frame's two rules.
+   This was clamp(150px, 21.35vw, 443px): on phones the section holds its
+   150px floor, the band between the rules is ~117px of that, and the 150px
+   tiles ran 33px past the bottom rule. 100% only works because the outer grid
+   also pins its row to minmax(0, 1fr) -- with an auto row the grid grows to
+   the images' intrinsic height and they overrun by 44px at 768 and 83px at
+   1440 instead. (Review item WI-2; sec5tilestest.) */
+const BAND = "100%";
 const TEAR_TOP = FRAME * 49 / 570;    // vw, depth of the frame's top tear
 const TEAR_BOT = FRAME * 78 / 570;    // vw, depth of its bottom tear
 const GAP = 5;
@@ -39,6 +46,9 @@ const SHOT = (size, x, y) => ({
   backgroundSize: `${size} auto`,
   backgroundPosition: `${x} ${y}`,
   backgroundRepeat: "no-repeat",
+  /* Any sliver the photograph does not reach reads as shade, not as a white
+     notch in the row. */
+  backgroundColor: "#6b5a3a",
 });
 
 export function ImageGrid() {
@@ -119,6 +129,7 @@ export function ImageGrid() {
              on top of those drew a second set, which is the white lines
              standing proud of the row. */
           gap: 0,
+          gridTemplateRows: "minmax(0, 1fr)",
         }}
       >
         <img
