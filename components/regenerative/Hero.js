@@ -76,7 +76,7 @@ export function RegenerativeHero() {
             nav, which is the band the design drew. */}
         <div className="absolute inset-x-0 bottom-0" style={{ top: "4rem" }}>
 
-        <h1 className="m-0">
+        <h1 className="m-0 regen-hero-lockup">
           {/* The wordmark is artwork, so the accessible name lives here.
               Without it the page has no h1 text at all. */}
           <span className="sr-only">
@@ -223,7 +223,7 @@ export function RegenerativeHero() {
           <img
             src="/images/regen/carton.webp"
             alt="A carton of Chino Valley Ranchers organic regenerative eggs"
-            className="absolute"
+            className="absolute regen-hero-carton"
             style={{ left: "27.9%", top: "53.9%", width: "49.4%" }}
           />
         </div>
