@@ -896,9 +896,18 @@ html {
      pulls the sign up under it. pointer-events: none on it and the arrow, so
      the images that now overlap the sign cannot steal its taps -- sec3phonetest
      hit-tests the sign at two points. */
+  /* The carton sits IN FRONT of the sign, over its top-left corner.
+     sign-purchase.jpg has the bottom of the carton baked into that corner
+     (x0-15%, y0-8% of the sign), because at desktop the real carton sits up
+     and to the left and continues straight into it. Centred above the sign,
+     the carton was cut off by it and the baked piece showed as a stray white
+     curl. Placed over the corner, the carton hides it and still clears the
+     lettering, which starts 14% down. z-index needs !important: the inline
+     zIndex 2 had been beating the 4 here, so the sign (3) painted over it.
+     (sec3cartontest.) */
   .regen-agri-stage img[src*="carton"] {
-    width: 44% !important; margin: 8% auto -9%; display: block;
-    position: relative; z-index: 4; pointer-events: none;
+    width: 44% !important; margin: 8% auto -10% 2%; display: block;
+    position: relative; z-index: 4 !important; pointer-events: none;
   }
   .regen-agri-stage a[href="/products"] { display: block; width: 74% !important; margin: 0 auto; }
   .regen-agri-stage img[src*="ann-getem"] {
