@@ -869,7 +869,12 @@
 }
 
 .regen-video {
-  width: 100%;
+  /* Capped at 502px, the width the tablet ramp below starts from. Uncapped,
+     the frame was 660px at 767 and 502px at 768 -- a 24% step that the 768
+     ramp alone cannot remove, because the frame has to leave the "You want
+     more?" annotation room on the paper beside it. Capped, the width only
+     ever grows: 86% of the viewport up to 584px, 502px to 768, then the ramp. */
+  width: min(100%, 502px);
   margin-top: 6%;
 }
 
@@ -877,6 +882,18 @@
   .regen-video {
     width: min(62.4%, 985px);
     margin-top: 4%;
+  }
+}
+
+/* From full width to 62.4% in one pixel at 768 was a 38% step (review item
+   WI-14). Across the tablet range the frame instead ramps linearly from 502px
+   at 768 to the 549.5px that min(62.4%, 985px) gives at 1024, so there is no
+   step at either end. 502px leaves the "You want more?" annotation room on
+   the paper to its right; the phone cap above holds the frame at 502px up to
+   here so the two meet. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .regen-video {
+    width: calc(502px + (100vw - 768px) * 0.1855);
   }
 }
 

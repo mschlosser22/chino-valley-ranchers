@@ -184,9 +184,12 @@ export function WhatIs() {
               40/44, 2px tracking, -12.17deg) in #006088. It sits on the paper
               clear of the frame; the gap is measured to the painted stroke, not
               to the frame box, because the stroke is ragged and bulges widest
-              exactly where this sits. */}
+              exactly where this sits.
+
+              md, not sm: from 640 to 767 the frame fills the width, so there is
+              no paper beside it and the annotation ran off the screen. */}
           <div
-            className="absolute hidden sm:block"
+            className="absolute hidden md:block"
             aria-hidden="true"
             style={{
               left: "103.6%", top: "72.21%", whiteSpace: "nowrap",
@@ -203,7 +206,7 @@ export function WhatIs() {
             src="/images/regen/arrow-more.png"
             alt=""
             aria-hidden="true"
-            className="absolute hidden sm:block"
+            className="absolute hidden md:block"
             style={{ left: "105.5%", top: "90.54%", width: "8.55%", zIndex: 4, pointerEvents: "none" }}
           />
         </div>
