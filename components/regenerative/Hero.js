@@ -259,6 +259,13 @@ export function RegenerativeHero() {
           // to about 130%. Sized from the measured overflow rather than
           // guessed -- at 8.2vw the hens ran 65px past the section.
           height: "12.8vw",
+          /* Positioned, so it paints over the stage. The tear above ends
+             with margin-bottom:-1px, which starts this band one row inside
+             the stage; unpositioned, the photograph painted over that row
+             and left a dark 1px line across the paper at 1440. Still below
+             the carton and hens' overlay (z-index 4). */
+          position: "relative",
+          zIndex: 1,
           background: "#E9E5DE",
         backgroundImage: "url(/images/regen/paper-texture.png)",
         backgroundSize: "12.34vw 12.34vw",
