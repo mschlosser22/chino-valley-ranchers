@@ -239,12 +239,28 @@
    burlap's bottom tear cut 14px off the logo. (The tear is not the box edge:
    the mask's rip starts at row 997 of 1262, about 21% above it.)
 
-   A floor over the tight end of the range. Measured against the tear rather
-   than the box: the logo clears by 275px at 767 and 32px at 900, and was the
-   only width in the range that failed. */
-@media (min-width: 768px) and (max-width: 860px) {
+   A floor across the two-column tablet range, measured against the tear
+   rather than the box (review item WI-13). The content here is close to a
+   fixed height -- the copy rewraps as the column widens -- so it ends 447 to
+   479px down the section from 768 to 1023, while a vw floor grows with the
+   width: 64vw cut the mark by the tear up to 864 and 76vw would leave 200px of
+   empty burlap at 990. Mostly fixed with a little growth tracks the content:
+   598px at 768, 633px at 1023, keeping the mark and the annotation above
+   78.5% of the height, where the tear begins. */
+@media (min-width: 768px) and (max-width: 1023px) {
   .regen-burlap {
-    min-height: 64vw !important;
+    min-height: calc(490px + 14vw) !important;
+  }
+}
+
+/* Body copy on tablets (review item WI-13). The inline clamp bottoms out at
+   13px across 768-1023, below the 15-16px the rest of the page sets. 15px
+   rather than 16: the column is about 300px here and the longer paragraph
+   pushes the mark down into the bottom tear. Section 7 is deliberately not
+   in a shared floor rule -- it would pull that intro down from 16. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .regen-standards-copy {
+    font-size: 15px !important;
   }
 }
 
@@ -329,7 +345,7 @@
   .regen-standards-grid > div:first-child > p {
     grid-column: 1 / -1;
   }
-  .regen-burlap img[src*="roc-logo"] {
+  .regen-roc-wrap {
     width: 100% !important;
     margin-top: 0 !important;
   }

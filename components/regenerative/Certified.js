@@ -142,15 +142,38 @@ export function Certified() {
               highest standard for organic agriculture in the world.
             </p>
 
-            <img
-              src="/images/regen/roc-logo.png"
-              alt="Regenerative Organic Certified"
-              className="block"
+            {/* The annotation is positioned against the mark, not the hen's
+                column. Placed in the hen's column, its arrow only met the
+                mark at the width it was tuned for: at 768 the column's height
+                and the mark's height scale differently and the tip sat 59px
+                above the "e". In the mark's own box the tip is the same
+                fraction of the mark at every width. */}
+            <div
+              className="relative regen-roc-wrap"
               /* 89.1% of the column. The column narrowed when the two halves
                  were equalised, and a width relative to it has to grow to keep
                  the mark at the design's 569 of the 2075 artboard. */
               style={{ width: "89.1%", marginTop: "9%" }}
-            />
+            >
+              <img
+                src="/images/regen/roc-logo.png"
+                alt="Regenerative Organic Certified"
+                className="block"
+                style={{ width: "100%" }}
+              />
+              <img
+                src="/images/regen/ann-certified.png"
+                alt="We&rsquo;re certified!"
+                className="absolute hidden md:block"
+                /* The arrow points AT the wordmark's final "e" without touching
+                   it. In the design the mark's "e" is at (919, 5016) and the
+                   arrow's tip at (962, 5039) -- 43 and 23 design px clear,
+                   which is 30 and 16 css px at 1440. These are the 1440
+                   placement re-expressed against the mark's box: 43% of its
+                   width is the design's 11.6% of the canvas. */
+                style={{ left: "100%", top: "31.6%", width: "43%" }}
+              />
+            </div>
           </div>
 
           {/* The hen and the annotation share the right column. The hen is a
@@ -163,24 +186,6 @@ export function Certified() {
               aria-hidden="true"
               className="block"
               style={{ width: "72%", marginLeft: "16%" }}
-            />
-            <img
-              src="/images/regen/ann-certified.png"
-              alt="We&rsquo;re certified!"
-              className="absolute hidden sm:block"
-              /* Placed so the arrow's tip points AT the ROC mark. In the
-                 design the arrow sits 29px right of the logo and vertically
-                 within it (x958..1035 against the logo's x360..929), with the
-                 wording below -- the lockup spans x915..1167, y5039..5285, so
-                 it overhangs this column's left edge by 18.47% of its width.
-                 At left:-6% the tip curved up into empty burlap instead. */
-              /* The arrow points AT the wordmark's final "e" without touching
-                 it. In the design the mark's "e" is at (919, 5016) and the
-                 arrow's tip at (962, 5039) -- 43 and 23 design px clear, which
-                 is 30 and 16 css px at 1440. Landing the tip on the letter
-                 itself, as the previous placement did, is closer than the
-                 design draws it. */
-              style={{ left: "-17.02%", top: "67.26%", width: "38.32%" }}
             />
           </div>
         </div>
