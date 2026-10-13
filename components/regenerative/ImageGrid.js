@@ -150,21 +150,22 @@ export function ImageGrid() {
             background-position, so the photograph is continuous behind them. */}
         <div />
 
+        {/* The stacked pair's photograph is painted ONCE, on their column,
+            and the two windows are openings onto it. Painted per window, each
+            fitted its own box: at 390 the boxes are 55px wide and the shot is
+            sized by width, so both windows showed nearly the same rows of it
+            (114 of 150 shared) -- the bird repeated, one above the other. On
+            the column the two are adjacent slices of one picture at every
+            width, which is what the design's single clipping frame does. The
+            1.36fr split between them is covered by the frame's own rule. */}
         <div
           className="grid"
-          style={{ height: BAND, gridTemplateRows: "50.11fr 1.36fr 48.53fr", gap: 0 }}
+          style={{ height: BAND, gridTemplateRows: "50.11fr 1.36fr 48.53fr", gap: 0,
+                   ...SHOT("481.92%", "24.06%", "61%") }}
         >
-          <div
-            role="img"
-            aria-label="Hens ranging among trees"
-            style={SHOT("481.92%", "24.06%", "34.96%")}
-          />
+          <div role="img" aria-label="Hens ranging among trees" />
           <div />
-          <div
-            role="img"
-            aria-label="A hen's plumage in close detail"
-            style={SHOT("481.92%", "24.06%", "78.42%")}
-          />
+          <div role="img" aria-label="A hen's plumage in close detail" />
         </div>
 
         <div />

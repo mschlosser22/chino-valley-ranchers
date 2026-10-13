@@ -172,6 +172,7 @@ export function WhatIs() {
             </div>
             <img
               src="/images/regen/arrow-hear.png"
+              loading="lazy"
               alt=""
               aria-hidden="true"
               className="absolute hidden sm:block"
@@ -204,6 +205,7 @@ export function WhatIs() {
           </div>
           <img
             src="/images/regen/arrow-more.png"
+            loading="lazy"
             alt=""
             aria-hidden="true"
             className="absolute hidden md:block"

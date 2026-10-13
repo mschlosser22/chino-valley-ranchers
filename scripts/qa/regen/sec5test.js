@@ -47,7 +47,10 @@ const R = []; const ck = (n, p, d = '') => { R.push(p); console.log(`${p ? 'PASS
         // bird consistent -- they differ only because the boxes differ
         windowsShareShot:(()=>{const w=[...row.querySelectorAll('[role="img"]')];
           if(w.length!==3) return false;
-          return w.every(d=>/row-hen-c/.test(getComputedStyle(d).backgroundImage));})(),
+          // The window or the column it opens onto (the stacked pair share
+          // one painted shot on their column -- WI-21).
+          return w.every(d=>/row-hen-c/.test(getComputedStyle(d).backgroundImage)
+                         || /row-hen-c/.test(getComputedStyle(d.parentElement).backgroundImage));})(),
         // the frame draws its own gutters; a grid gap on top of them is what
         // stood proud of the row
         gridGap: (()=>{const g=row.querySelector('.grid');

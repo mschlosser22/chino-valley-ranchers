@@ -29,7 +29,9 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               framePct:+(fr.width/innerWidth*100).toFixed(1),
               aspect:+(fr.width/fr.height).toFixed(3),
               stillOK:still.complete&&still.naturalWidth>0,
-              anns:anns.length, annOK:arrows.length===2&&arrows.every(a=>a.complete&&a.naturalWidth>0),
+              anns:anns.length, // Shown arrows must load. Hidden ones are loading="lazy" and are
+              // deliberately never fetched on a phone (WI-21, secpolishtest).
+              annOK:arrows.length===2&&arrows.every(a=>getComputedStyle(a).display==='none'||(a.complete&&a.naturalWidth>0)),
               annVisible:anns.filter(a=>a.getBoundingClientRect().width>0).length,
               // "You want more?" sits on the paper OUTSIDE the frame in the
               // design, with a small gap past the right edge. Assert the

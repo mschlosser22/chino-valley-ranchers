@@ -36,8 +36,13 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
                 over:Math.max(g.top-r.top, r.bottom-g.bottom)};
       });
       // Shared shot is 1306x734; size is a % of the window width.
+      // Read from whichever element paints the shot: the window itself, or
+      // (for the stacked pair, WI-21) the column it is an opening onto. Reading
+      // the window alone gave NaN once its own background went, and NaN never
+      // counts as "too thin" -- the check passed with nothing to measure.
       const cover=[...grid.querySelectorAll('[role="img"]')].map(e=>{
-        const r=e.getBoundingClientRect(); const cs=getComputedStyle(e);
+        const painter=/row-hen-c/.test(getComputedStyle(e).backgroundImage)?e:e.parentElement;
+        const r=painter.getBoundingClientRect(); const cs=getComputedStyle(painter);
         const pct=parseFloat(cs.backgroundSize)/100;
         return {rendered:+(r.width*pct*734/1306).toFixed(1), box:+r.height.toFixed(1)};
       });
@@ -46,7 +51,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     console.log(`  --- ${w}px (grid ${m.gridH}px tall) ---`);
     const worst=m.tiles.reduce((a,t)=>t.over>a.over?t:a,{over:-1e9});
     ck(`${w}: every tile inside the photo grid`, worst.over<=1, `worst ${worst.name} ${worst.over.toFixed(1)}px past the grid`);
-    const thin=m.cover.filter(c=>c.rendered<c.box-0.5);
+    const thin=m.cover.filter(c=>!(c.rendered>=c.box-0.5));
     ck(`${w}: shared photograph covers every window`, thin.length===0,
        thin.map(c=>`${c.rendered}px drawn in a ${c.box}px window`).join(', ')||'all covered');
     await p.close();

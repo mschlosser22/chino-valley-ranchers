@@ -13,7 +13,12 @@ import { TornEdge } from './TornEdge';
    lettering needs no artwork. */
 export function RegenerativeHero() {
   return (
-    <section className="relative overflow-hidden bg-[#006088]">
+    <section
+      className="relative overflow-hidden"
+      /* Inline, not bg-[#006088]: Tailwind 2.2.19 has no arbitrary values, so
+         that class compiled to nothing and the section was transparent. */
+      style={{ backgroundColor: "#006088" }}
+    >
       {/* Everything in this band is positioned from the Figma node tree
           (file muIeDVJN5mgz3Ep0hualTF, artboard 5:5 = 2075 x 8469), as a
           percentage of the artboard WIDTH so the whole composition scales
@@ -67,6 +72,13 @@ export function RegenerativeHero() {
             opaque, and .regen-hero-photo starts the photograph under it. */}
         <img
           src="/images/regen/hero-cattle.jpg"
+          /* A 1200w source for phones: at 390 DPR3 the full 2376px photo was
+             downloaded for a 1170px need. fetchpriority is lowercase because
+             React 18 passes unknown lowercase attributes through but warns on
+             fetchPriority. It is the page's LCP image. */
+          srcSet="/images/regen/hero-cattle-1200.jpg 1200w, /images/regen/hero-cattle.jpg 2376w"
+          sizes="100vw"
+          fetchpriority="high"
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover regen-hero-photo"

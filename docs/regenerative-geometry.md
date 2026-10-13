@@ -6,64 +6,6 @@ Do not hand-edit; re-run the script instead.
 Artboard **2075 x 8469**. All raw numbers are design pixels.
 
 
-## How this was produced
-
-The Figma MCP is unavailable on this engagement: the account holds a View seat
-on the client's Professional plan, which allows 6 tool calls per *month*, and
-they are spent. So the geometry comes from the `.fig` itself.
-
-`canvas.fig` is a fig-kiwi container -- 8-byte magic, uint32 version, then
-length-prefixed blocks. Block 0 is the schema as raw zlib (-15 window); block 1
-is the document as ZSTD. `strings` finds nothing in either, which is not
-evidence they cannot be read. Kiwi encodes floats as the IEEE bits rotated LEFT
-by 9, so the exponent lands in the first byte and a lone 0x00 encodes 0.0;
-decoded as plain little-endian floats they come out around 1e33, which reads as
-a corrupt file rather than a codec mismatch.
-
-Section seams come from the full-width background planes (`Layer 52`,
-`Layer 53`, `Bg shape`, `TEXTURE BG` and friends), not the frame hierarchy --
-the band frames are oversized clipping wrappers, several spanning most of the
-artboard, so their own x/y/w/h say nothing about where a section sits. Each leaf
-is filed under the band its centre falls in. Bands overlap on purpose, because
-the torn paper edges straddle the seams.
-
-**Validation:** this file independently reproduces every value derived by hand
-for section 2 -- frame strokes at 53.69% and 53.98%, video frame 54.70%, heading
-74.07%, "You want more?" at x1608 against a frame edge at x1605. Those were
-confirmed correct in the browser before this document existed.
-
-## Reading the numbers
-
-`w%` is a share of the artboard width and goes straight into CSS. `top%` and
-`h%` are shares of the band's own height. Do not cross the two: a percentage
-`top` resolves against the container's HEIGHT, so design Y values expressed as a
-share of artboard *width* land high by exactly the band's aspect ratio. That one
-error put every element in the hero too high on the first build.
-
-Sizing needs both dimensions. Section 2's annotation lockups sat at the correct
-left/top/width for four rounds while being 1.7x too tall, because nothing
-asserted height. Check `h%` as well as `w%`.
-
-## Where the build currently stands
-
-Live section height / design height, measured at 1440 (see `scripts/qa/regen/`):
-
-| section | design h/2075 | live | match |
-|---|--:|--:|--:|
-| 1 Hero | 0.639 | 0.633 | 99% |
-| 2 What is Regenerative | 0.657 | 0.516 | 79% |
-| 3 Regen Agriculture | 0.608 | 0.366 | 60% |
-| 4 The Next Generation | 0.657 | 0.479 | 73% |
-| 5 Photo Row | 0.378 | 0.135 | 36% |
-| 6 Highest Standards | 0.695 | 0.528 | 76% |
-| 7 What Makes Regen Different | 0.711 | 0.832 | 86% (too tall) |
-| 8 Pre Footer | 0.728 | 0.300 | 41% |
-
-Only the hero is within tolerance. Sections 3-9 were built from the flattened
-render with width-only checks, and every one of them is materially short except
-section 7, which overshoots. These are vertical-rhythm errors, not content
-errors -- the sections are all present, they are compressed.
-
 ## 1  HERO
 
 Band y 0..1326, height **1326** (artboard/band aspect 1.565).
@@ -91,12 +33,6 @@ Share of artboard: top 0.00%, height 15.66%.
 | welcome to | TEXT | 738 | 336 | 500 | 59 | 35.57 | 24.10 | 25.35 | 4.45 |
 | Rectangle 9 | VECTOR | 708 | 543 | 742 | 70 | 34.12 | 35.76 | 40.95 | 5.28 |
 | Organic Regenerative Eggs | TEXT | 722 | 557 | 750 | 45 | 34.80 | 36.14 | 41.97 | 3.39 |
-| new carton | ROUNDED_RECTANGLE | 560 | 591 | 1023 | 550 | 26.99 | 49.30 | 44.57 | 41.48 |
-| new carton | ROUNDED_RECTANGLE | 587 | 617 | 965 | 491 | 28.29 | 46.51 | 46.53 | 37.03 |
-| Layer 28 copy 2 | ROUNDED_RECTANGLE | 319 | 934 | 206 | 226 | 15.37 | 9.93 | 70.44 | 17.04 |
-| Shape 5 | VECTOR | 1618 | 948 | 208 | 196 | 77.99 | 10.03 | 71.53 | 14.81 |
-| Shape 6 | VECTOR | 1375 | 961 | 203 | 164 | 66.25 | 9.78 | 72.46 | 12.34 |
-| What is regenerative? | TEXT | 257 | 1165 | 1537 | 93 | 12.38 | 74.07 | 87.84 | 7.01 |
 
 ## 2  WHAT IS REGENERATIVE
 
@@ -122,9 +58,6 @@ Share of artboard: top 9.47%, height 16.09%.
 | Shape 4 copy 4 | VECTOR | 1172 | 1543 | 143 | 129 | 56.48 | 6.89 | 54.36 | 9.47 |
 | Layer 77 | ROUNDED_RECTANGLE | 994 | 1600 | 167 | 167 | 47.90 | 8.05 | 58.55 | 12.25 |
 | Ellipse 5 | VECTOR | 1002 | 1609 | 143 | 143 | 48.29 | 6.89 | 59.21 | 10.49 |
-| You want more? | TEXT | 1608 | 1818 | 166 | 132 | 77.48 | 8.00 | 74.54 | 9.68 |
-| Shape 4 copy 2 | VECTOR | 1629 | 1946 | 97 | 161 | 78.51 | 4.68 | 83.93 | 11.81 |
-| Layer 45 | ROUNDED_RECTANGLE | 472 | 1975 | 1114 | 37 | 22.75 | 53.69 | 86.06 | 2.71 |
 
 ## 3  REGEN AGRICULTURE
 
@@ -150,14 +83,6 @@ Share of artboard: top 21.10%, height 14.90%.
 | Rounded Rectangle 1 copy 4 | VECTOR | 1347 | 2417 | 504 | 365 | 64.92 | 24.27 | 49.92 | 28.92 |
 | Layer 21 | ROUNDED_RECTANGLE | 1328 | 2418 | 691 | 365 | 64.00 | 33.30 | 50.00 | 28.92 |
 | purchase  our organic regenerative egg | TEXT | 1400 | 2460 | 389 | 280 | 67.49 | 18.75 | 53.32 | 22.19 |
-| is a collection of practices that focu | TEXT | 388 | 2498 | 844 | 392 | 18.71 | 40.67 | 56.35 | 31.08 |
-| Layer 46 | ROUNDED_RECTANGLE | 1347 | 2534 | 504 | 248 | 64.92 | 24.29 | 59.19 | 19.65 |
-| Layer 26 copy 2 | ROUNDED_RECTANGLE | 674 | 2538 | 323 | 415 | 32.48 | 15.57 | 59.51 | 32.88 |
-| Layer 26 | ROUNDED_RECTANGLE | -36 | 2668 | 371 | 490 | -1.73 | 17.88 | 69.81 | 38.83 |
-| Layer 26 copy 4 | ROUNDED_RECTANGLE | 1325 | 2673 | 371 | 490 | 63.86 | 17.88 | 70.21 | 38.83 |
-| Shape 4 copy 3 | VECTOR | 1697 | 2717 | 97 | 161 | 81.79 | 4.67 | 73.69 | 12.76 |
-| Layer 50 | ROUNDED_RECTANGLE | -1 | 2828 | 2078 | 221 | -0.05 | 100.14 | 82.49 | 17.51 |
-| Get ‘em here! | TEXT | 1673 | 2865 | 198 | 88 | 80.63 | 9.54 | 85.45 | 6.97 |
 
 ## 4  THE NEXT GENERATION
 
@@ -206,9 +131,6 @@ Share of artboard: top 44.96%, height 9.26%.
 | Rectangle 10 copy 7 | VECTOR | 526 | 3987 | 271 | 222 | 25.35 | 13.06 | 22.83 | 28.32 |
 | Rectangle 10 copy 6 | VECTOR | 803 | 3987 | 292 | 443 | 38.70 | 14.07 | 22.83 | 56.51 |
 | Rectangle 10 copy 6 | VECTOR | 803 | 3987 | 292 | 443 | 38.70 | 14.07 | 22.83 | 56.51 |
-| Rectangle 10 copy 3 | VECTOR | 526 | 4215 | 271 | 215 | 25.35 | 13.06 | 51.91 | 27.42 |
-| Rectangle 10 copy 3 | VECTOR | 526 | 4215 | 271 | 215 | 25.35 | 13.06 | 51.91 | 27.42 |
-| highest standards | TEXT | 379 | 4536 | 1315 | 93 | 18.26 | 63.37 | 92.82 | 11.86 |
 
 ## 6  HIGHEST STANDARDS
 
@@ -228,8 +150,6 @@ Share of artboard: top 50.48%, height 17.04%.
 | Regen Organic Cert | VECTOR | 360 | 4970 | 569 | 218 | 17.37 | 27.41 | 48.15 | 15.11 |
 | Shape 4 copy | VECTOR | 958 | 5039 | 77 | 114 | 46.16 | 3.71 | 52.93 | 7.87 |
 | We’re certified! | TEXT | 915 | 5197 | 252 | 88 | 44.11 | 12.14 | 63.90 | 6.10 |
-| WHAT MAKES | TEXT | 712 | 5513 | 692 | 79 | 34.32 | 33.35 | 85.79 | 5.47 |
-| Regenerative copy 2 | TEXT | 592 | 5552 | 947 | 163 | 28.55 | 45.64 | 88.50 | 11.30 |
 
 ## 7  WHAT MAKES REGEN DIFFERENT
 
@@ -262,30 +182,18 @@ Share of artboard: top 65.10%, height 17.42%.
 
 ## 8  PRE FOOTER
 
-Band y 6441..7951, height **1510** (artboard/band aspect 1.374).
-Share of artboard: top 76.05%, height 17.83%.
+Band y 7039..7686, height **647** (artboard/band aspect 3.207).
+Share of artboard: top 83.11%, height 7.64%.
 
 | layer | type | x | y | w | h | x% | w% | top% | h% |
 |---|---|--:|--:|--:|--:|--:|--:|--:|--:|
-| eggs open copy | ROUNDED_RECTANGLE | -681 | 5892 | 1704 | 1885 | -32.82 | 82.12 | -36.36 | 124.83 |
-| Farming for Tomorrow | TEXT | 1662 | 6420 | 249 | 74 | 80.11 | 12.00 | -1.37 | 4.90 |
-| Layer 2 copy 4 | ROUNDED_RECTANGLE | -8 | 6441 | 2398 | 1266 | -0.39 | 115.57 | 0.00 | 83.84 |
-| Layer 2 copy 4 | ROUNDED_RECTANGLE | -8 | 6441 | 2398 | 1266 | -0.39 | 115.57 | 0.00 | 83.84 |
-| Regenerative farming isn’t just about  | TEXT | 1639 | 6515 | 306 | 248 | 78.99 | 14.73 | 4.87 | 16.40 |
-| Living Roots | TEXT | 150 | 6525 | 257 | 32 | 7.24 | 12.39 | 5.59 | 2.12 |
-| Keeping living roots in the ground yea | TEXT | 124 | 6591 | 310 | 247 | 5.98 | 14.95 | 9.91 | 16.37 |
-| BETTER FOR THE LAND.  BETTER FOR OUR H | TEXT | 743 | 6752 | 602 | 237 | 35.80 | 29.01 | 20.57 | 15.70 |
-| Rectangle 12 | VECTOR | 750 | 6827 | 575 | 4 | 36.14 | 27.71 | 25.56 | 0.26 |
-| Rectangle 12 copy | VECTOR | 750 | 6906 | 575 | 4 | 36.14 | 27.71 | 30.79 | 0.26 |
-| TEXTURE BG | ROUNDED_RECTANGLE | -47 | 7039 | 2437 | 912 | -2.27 | 117.45 | 39.60 | 60.40 |
-| Our regenerative eggs  are pasture Rai | TEXT | 990 | 7177 | 878 | 183 | 47.69 | 42.31 | 48.73 | 12.12 |
-| Sustainable And Regenerative Farming P | TEXT | 1048 | 7389 | 743 | 366 | 50.51 | 35.81 | 62.80 | 24.22 |
-| Rectangle 11 | VECTOR | 1082 | 7512 | 675 | 5 | 52.14 | 32.53 | 70.93 | 0.33 |
-| Layer 63 | ROUNDED_RECTANGLE | 502 | 7650 | 265 | 68 | 24.19 | 12.77 | 80.07 | 4.50 |
-| Layer 64 | ROUNDED_RECTANGLE | 149 | 7668 | 1224 | 405 | 7.18 | 58.99 | 81.26 | 26.82 |
-| Vector Smart Object copy 2 | ROUNDED_RECTANGLE | 336 | 7747 | 264 | 175 | 16.19 | 12.72 | 86.49 | 11.59 |
-|  Contact CVR   331 W. Citrus Street, C | TEXT | 1313 | 7759 | 364 | 169 | 63.28 | 17.54 | 87.29 | 11.19 |
-| Our Story        Our Eggs         Reci | TEXT | 823 | 7768 | 133 | 218 | 39.67 | 6.41 | 87.88 | 14.44 |
+| Layer 2 copy 4 | ROUNDED_RECTANGLE | -8 | 6441 | 2398 | 1266 | -0.39 | 115.57 | -92.43 | 195.67 |
+| Layer 2 copy 4 | ROUNDED_RECTANGLE | -8 | 6441 | 2398 | 1266 | -0.39 | 115.57 | -92.43 | 195.67 |
+| TEXTURE BG | ROUNDED_RECTANGLE | -47 | 7039 | 2437 | 912 | -2.27 | 117.45 | 0.00 | 140.96 |
+| Our regenerative eggs  are pasture Rai | TEXT | 990 | 7177 | 878 | 183 | 47.69 | 42.31 | 21.30 | 28.28 |
+| Sustainable And Regenerative Farming P | TEXT | 1048 | 7389 | 743 | 366 | 50.51 | 35.81 | 54.14 | 56.52 |
+| Rectangle 11 | VECTOR | 1082 | 7512 | 675 | 5 | 52.14 | 32.53 | 73.11 | 0.77 |
+| Layer 63 | ROUNDED_RECTANGLE | 502 | 7650 | 265 | 68 | 24.19 | 12.77 | 94.44 | 10.51 |
 
 ## 9  FOOTER
 
