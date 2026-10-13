@@ -459,8 +459,11 @@
     margin-top: clamp(28px, 6vw, 44px);
     text-align: center;
   }
+  /* Ultra sets far wider than the din-condensed these were at 20px. */
   .regen-callout h3 {
-    font-size: 20px !important;
+    font-size: 18px !important;
+    letter-spacing: 0.02em;
+    line-height: 1.2 !important;
   }
   .regen-callout p {
     font-size: 16px !important;
@@ -521,7 +524,19 @@
     line-height: 1.5;
   }
   .regen-callout h3 {
-    font-size: max(1.62vw, 19px) !important;
+    font-size: max(1.54vw, 17px) !important;
+  }
+  /* At this end of the range the 15px copy floor makes "Healthy Soil" wider
+     than its slot, and its right edge ran onto the hen in the diagram (1.5% of
+     its glyphs at 1024). Pulled toward the edge and narrowed to stay on the
+     sky. "Farming for Tomorrow" gets a little more measure from the gutter. */
+  .regen-callout--soil {
+    left: 2.6% !important;
+    width: 19.5% !important;
+  }
+  .regen-callout--farming {
+    width: 17% !important;
+    right: 2.5% !important;
   }
   /* The floor makes the blocks taller, and "Healthy Soil" -- the longest of
      the four -- then reached its own arrow: its copy runs to 51.2% of the

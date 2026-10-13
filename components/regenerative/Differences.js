@@ -16,12 +16,14 @@ import { TornEdge } from './TornEdge';
    design pins each to a corner and points a hand-drawn arrow at the part of
    the soil it describes, so the arrows would lose their meaning in a row of
    equal columns. */
+/* \u2060 (word joiner) before each em dash keeps it on the line with the word
+   before it. Without it the dash could open a line -- "—improving" at 1440. */
 const CALLOUTS = [
   {
     key: "soil",
     title: "Healthy Soil",
     body:
-      "We build soil health through cover crops, compost, and rotational grazing—improving water retention, sequestering carbon, and creating a strong foundation for life.",
+      "We build soil health through cover crops, compost, and rotational grazing\u2060—improving water retention, sequestering carbon, and creating a strong foundation for life.",
     side: "left",
     offset: "5.98%",
     width: "20.96%",
@@ -36,7 +38,7 @@ const CALLOUTS = [
     key: "animals",
     title: "Animals & Nature Together",
     body:
-      "Our hens play an essential role in a balanced ecosystem—fertilizing the land naturally, controlling pests, and helping plants thrive.",
+      "Our hens play an essential role in a balanced ecosystem\u2060—fertilizing the land naturally, controlling pests, and helping plants thrive.",
     side: "right",
     offset: "5.59%",
     width: "18.31%",
@@ -69,7 +71,7 @@ const CALLOUTS = [
     key: "farming",
     title: "Farming for Tomorrow",
     body:
-      "Regenerative farming isn’t just about today—it’s about leaving the land better for future generations and the food they will depend on.",
+      "Regenerative farming isn’t just about today\u2060—it’s about leaving the land better for future generations and the food they will depend on.",
     side: "right",
     /* 4.5%, which lands this block's ink at 78.92% of the section -- the
        design's own 78.99% (its text runs x1639..1945 of the 2075 artboard).
@@ -255,7 +257,7 @@ export function Differences() {
                where the arrows can point at something. */
             <div
               key={c.key}
-              className={`regen-callout regen-callout--${c.side}`}
+              className={`regen-callout regen-callout--${c.side} regen-callout--${c.key}`}
               /* Placed from the design's own text nodes rather than a flat 2%
                  inset. The design anchors these to the SECTION, outside the
                  artwork's box -- "Our hens play" runs x1579..1959 while the
@@ -268,10 +270,17 @@ export function Differences() {
               <h3
                 className="m-0"
                 style={{
-                  fontFamily: "din-condensed, 'Arial Narrow', sans-serif",
-                  fontWeight: 700,
+                  /* The design's titles are Ultra 32px with 0.64px tracking on
+                     the 2075 artboard (nodes 5:273-5:276) -- 1.54vw, .02em.
+                     They had been set in din-condensed. */
+                  fontFamily: "'Ultra', Rockwell, Georgia, serif",
+                  fontWeight: 400,
                   color: "#006088",
-                  fontSize: "clamp(15px, 1.62vw, 28px)",
+                  /* Capped where the section's wrapper stops growing (about
+                     1,500px, at a 1600 viewport), so the type keeps its
+                     proportion to the slot it sits in. */
+                  fontSize: "clamp(15px, 1.54vw, 24.5px)",
+                  letterSpacing: "0.02em",
                   lineHeight: 1.15,
                 }}
               >
@@ -282,7 +291,10 @@ export function Differences() {
                 style={{
                   fontFamily: "'Lato', system-ui, sans-serif",
                   color: "#2B2B2B",
-                  fontSize: "clamp(12px, 1.16vw, 20px)",
+                  /* 18.5px, not 20: the wrapper caps at a 1600 viewport, and
+                     type that kept growing to 1,724px ran "Healthy Soil" onto
+                     the hen's tail at 1920. */
+                  fontSize: "clamp(12px, 1.16vw, 18.5px)",
                   lineHeight: 1.5,
                   marginTop: "0.5em",
                 }}
