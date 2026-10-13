@@ -783,7 +783,15 @@
     padding: 3% 44%;
     margin: 0;
     display: block;
-    background: #F4F2EE;
+    /* The design's rules either side of the hen (review item WI-16). The
+       spans that draw them at desktop are absolutely placed and hidden here,
+       so they are painted as this element's own background instead: 25% of
+       its width at 20% and 80%, which puts them at 15-40% and 60-85%, clear
+       of the hen at 44-56%. */
+    background:
+      linear-gradient(#2B2B2B, #2B2B2B) 20% 50% / 25% 2px no-repeat,
+      linear-gradient(#2B2B2B, #2B2B2B) 80% 50% / 25% 2px no-repeat,
+      #F4F2EE;
   }
   .regen-next-stage span[aria-hidden] { display: none; }
 }
