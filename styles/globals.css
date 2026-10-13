@@ -963,6 +963,19 @@ html {
   }
 }
 
+/* At the narrow end of the two-column range the photo's cross-fade into the
+   dark ramp ran behind the first line of the heading (4.5:1 at its worst
+   pixel at 768). Shifting the photograph left by 6vw moves the fade out from
+   under the type. Only to 880: below 933 the section is 280px tall and
+   `cover` sizes the image by height, to 934px wide, so a 6vw shift uncovers
+   the right edge from 881 up (all white at 900). Past 880 the fade already
+   clears the heading. (Review item WI-20.) */
+@media (min-width: 768px) and (max-width: 880px) {
+  .regen-prefooter-section {
+    background-position: -6vw top !important;
+  }
+}
+
 /* The pre-footer's photograph carries its own torn top edge, so the section
    has to sit ON the white band above rather than below it -- otherwise the
    rip's transparent part shows the page's own white and the seam reads as a
@@ -1028,6 +1041,55 @@ html {
   }
   .regen-prefooter-grid > div:last-child {
     padding-top: 69vw !important;
+  }
+}
+
+/* ── Pre-footer column at desktop (review item WI-20) ───────────────────
+   The type column sat right of the design's: the heading's ink centred at
+   1051 at 1440 against the design's 992. A 38/62 split with a 75% column puts
+   it back. The design's claims are Lato 48px with 0.96px tracking (node
+   5:198) -- 2.31vw and .02em, at 77% of the column -- and the heading carries
+   2.56px tracking on 51.26px (node 5:200), .05em. 1024 and up only: at 768
+   the column would land on the photograph's cross-fade. */
+@media (min-width: 1024px) {
+  .regen-prefooter-grid {
+    grid-template-columns: 38% 62%;
+  }
+  .regen-prefooter-grid > div:last-child {
+    max-width: 75% !important;
+  }
+  /* 2.47vw is the design's own 51.26px on the 2075 artboard. At the 2.62vw
+     this had been, the design's tracking broke the heading onto four lines. */
+  .regen-prefooter-title {
+    font-size: clamp(18px, 2.47vw, 45px) !important;
+    letter-spacing: 0.05em !important;
+  }
+  .regen-prefooter-section p {
+    font-size: clamp(14px, 2.31vw, 40px) !important;
+    letter-spacing: 0.02em;
+    max-width: 77%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* At the design's size the claims run two lines each, as they do in the
+     .fig, and only fit the band with the design's own setting. Its layout
+     data (derivedTextData) pitches the claims at 49px on 48px type and the
+     heading at 61px on 51.26px, with one blank 49px line between the claims
+     where the rule sits. At this build's 1.35 and 1.24 the band grew from
+     432px to 482px at 1440. 1.1 rather than 1.02 for the claims: Lato's
+     descenders touch the next line's caps any tighter. */
+  .regen-prefooter-title {
+    line-height: 1.19 !important;
+  }
+  .regen-prefooter-section p {
+    line-height: 1.1 !important;
+  }
+  .regen-prefooter-section p:first-of-type {
+    margin-top: 0.6em !important;
+    padding-bottom: 0.5em !important;
+  }
+  .regen-prefooter-section p:last-of-type {
+    margin-top: 0.5em !important;
   }
 }
 
