@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 
+/* The nav is fixed and 64px tall (h-16 in Nav.js), so anything scrolled into
+   view -- an anchor link, or the browser following keyboard focus -- landed
+   underneath it. Reserving its height plus a little air. Site-wide, because
+   the nav is. (Regenerative review item WI-19.) */
+html {
+  scroll-padding-top: 80px;
+}
+
 /*@font-face {
     font-family: 'ultraregular';
     src: url('/fonts/Ultra-webfont.eot');
