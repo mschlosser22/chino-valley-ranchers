@@ -63,12 +63,13 @@ export function RegenerativeHero() {
         style={{ height: "calc(100vw * 945 / 2075 + 4rem)" }}
       >
         {/* The photograph fills the whole box, nav strip included -- the
-            translucent bar is meant to sit over it. */}
+            translucent bar is meant to sit over it. Below lg the bar is
+            opaque, and .regen-hero-photo starts the photograph under it. */}
         <img
           src="/images/regen/hero-cattle.jpg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover regen-hero-photo"
           style={{ objectPosition: "60% 42%" }}
         />
 

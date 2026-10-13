@@ -264,6 +264,18 @@
   }
 }
 
+/* Hero photograph below the nav (review item WI-15). 1023 is tied to Nav.js:
+   the bar is bg-opacity-100 and only turns translucent at lg
+   (lg:bg-opacity-80). Below that it is a solid strip, and the top 64px of the
+   photograph -- the cattle's backs on a phone -- painted under it unseen. The
+   lockup positions against its own box and does not move. */
+@media (max-width: 1023px) {
+  .regen-hero-photo {
+    top: 4rem !important;
+    height: calc(100% - 4rem) !important;
+  }
+}
+
 /* ── Hero lockup on phones (review item WI-4) ───────────────────────────
    The lockup is the desktop artboard scaled by the viewport, so on a phone it
    is a miniature: "ORGANIC REGENERATIVE EGGS" rendered at 7.8px at 360 and
