@@ -1,3 +1,16 @@
+import { useEffect, useRef, useState } from "react";
+
+import { useConsent } from "../../context/consent";
+
+/* The video the business supplied on 5 Nov 2026 (youtu.be/8HHTYPax3IU). Only
+   the id is kept: the share link's `si` parameter is a share-tracking token. */
+const VIDEO_ID = "8HHTYPax3IU";
+/* Privacy-enhanced domain, as everywhere else on the site (see
+   components/video/ConsentGatedVideo.js). autoplay because the player only
+   exists once the visitor has pressed play; rel=0 keeps the end screen to
+   this channel's videos. */
+const VIDEO_SRC = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&playsinline=1`;
+
 /* Section 2 of the CVR Regen Page design: the "What is Regenerative?" heading
    and the video, on the torn paper ground that carries down from the hero.
 
@@ -10,6 +23,20 @@
    has to keep its exact relationship to the words -- setting the text live
    and positioning an arrow separately would drift at every breakpoint. */
 export function WhatIs() {
+  /* The designed still and play ring stand in for the player until the play
+     button is pressed, so the page makes no request to YouTube before the
+     visitor asks for the video -- with or without marketing consent. Without
+     it, a line under the video says where the video plays from, as the site's
+     other embeds do. (Review item WI-3b; sec2videotest.) */
+  const [playing, setPlaying] = useState(false);
+  const { consent, ready, openPreferences } = useConsent();
+  const mediaAllowed = ready && consent.marketing;
+  const playerRef = useRef(null);
+  useEffect(() => {
+    // Keyboard users pressed a button that has now gone; carry focus on.
+    if (playing && playerRef.current) playerRef.current.focus();
+  }, [playing]);
+
   // The design's paper is a linen texture, not a flat fill -- sampled at
   // #E9E5DE with real grain. A flat colour read as plastic against the
   // photographs either side.
@@ -69,6 +96,21 @@ export function WhatIs() {
               style={{ left: "1.23%", top: "1.58%", width: "97.62%", height: "96.28%" }}
             />
 
+            {/* The player takes the still's exact box, under the brush strokes
+                (z-index 2), so the painted frame still edges it. */}
+            {playing && (
+              <iframe
+                ref={playerRef}
+                src={VIDEO_SRC}
+                title="Chris talks about regenerative farming"
+                className="absolute block"
+                style={{ left: "1.23%", top: "1.58%", width: "97.62%", height: "96.28%",
+                         border: 0, zIndex: 1, background: "#000" }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )}
+
             {/* The frame is four brush strokes lifted from the design file, not
                 a CSS border. The design's edge is a rough painted stroke with
                 broken texture and a ragged profile -- a flat rectangle read as
@@ -112,9 +154,12 @@ export function WhatIs() {
 
                 The button is Layer 77's box and is the hit area; the visible
                 ring is Ellipse 5, 4.8% inside it (x1002 y1609 143x143). */}
+            {!playing && (
+              <>
             <button
               type="button"
               aria-label="Play the video about regenerative farming"
+              onClick={() => setPlaying(true)}
               className="absolute flex items-center justify-center"
               style={{
                 left: "46.17%",
@@ -178,6 +223,8 @@ export function WhatIs() {
               className="absolute hidden sm:block"
               style={{ left: "61.85%", top: "32.81%", width: "12.60%", zIndex: 3, pointerEvents: "none" }}
             />
+              </>
+            )}
           </div>
 
           {/* "You want more?" -- live type for the same reason: the export
@@ -212,6 +259,29 @@ export function WhatIs() {
             style={{ left: "105.5%", top: "90.54%", width: "8.55%", zIndex: 4, pointerEvents: "none" }}
           />
         </div>
+
+        {/* Outside the video wrapper on purpose: the annotations are placed as
+            percentages of its height, and a line inside it would move them. */}
+        {!mediaAllowed && !playing && (
+          <p
+            className="mx-auto text-center"
+            style={{
+              fontFamily: "'Lato', system-ui, sans-serif",
+              fontSize: 14, lineHeight: 1.45, color: "#4A4A45",
+              maxWidth: "36em", margin: "14px auto 0",
+            }}
+          >
+            Playing this video loads it from YouTube, which may set cookies.{" "}
+            <button
+              type="button"
+              onClick={openPreferences}
+              style={{ color: "#006088", textDecoration: "underline", background: "none",
+                       border: 0, padding: 0, font: "inherit", cursor: "pointer" }}
+            >
+              Cookie settings
+            </button>
+          </p>
+        )}
       </div>
     </section>
   );
