@@ -26,7 +26,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       const para=st.querySelector('p');
       const rg=document.createRange(); rg.selectNodeContents(para); const ink=rg.getBoundingClientRect();
       const card=st.querySelector('img[src*="card-agri"]').getBoundingClientRect();
-      const sign=st.querySelector('a[href="/products"]').getBoundingClientRect();
+      const sign=st.querySelector('a.regen-agri-cta').getBoundingClientRect();
       return {fs:parseFloat(getComputedStyle(para).fontSize),
               ink:{l:ink.left,r:ink.right,b:ink.bottom}, cardB:card.bottom,
               clearSign:+(sign.left-ink.right).toFixed(1)};

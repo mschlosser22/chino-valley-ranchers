@@ -13,10 +13,10 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
   for(const w of [360,390,430,600,767]){
     const p=await b.newContext({viewport:{width:w,height:900}}).then(c=>c.newPage());
     await p.goto('http://localhost:7500/regenerative',{waitUntil:'networkidle',timeout:60000});
-    await p.locator('.regen-agri-stage a[href="/products"]').scrollIntoViewIfNeeded(); await p.waitForTimeout(400);
+    await p.locator('.regen-agri-stage a.regen-agri-cta').scrollIntoViewIfNeeded(); await p.waitForTimeout(400);
     const m=await p.evaluate(async()=>{
       const st=document.querySelector('.regen-agri-stage');
-      const c=st.querySelector('img[src*="carton"]'), a=st.querySelector('a[href="/products"]'), s=a.querySelector('img');
+      const c=st.querySelector('img[src*="carton"]'), a=st.querySelector('a.regen-agri-cta'), s=a.querySelector('img');
       await Promise.all([c,s].map(i=>i.decode().catch(()=>{})));
       const cr=c.getBoundingClientRect(), sr=s.getBoundingClientRect();
       const alphaOf=(img)=>{const cv=document.createElement('canvas');cv.width=img.naturalWidth;cv.height=img.naturalHeight;

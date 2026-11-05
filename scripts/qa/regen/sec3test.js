@@ -18,7 +18,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       // that parent is the full-width absolute wrapper, which measured 100%.
       const card=s.querySelector('img[src*="card-agri"]').getBoundingClientRect();
       const secr=s.getBoundingClientRect();
-      const signLink=s.querySelector('a[href="/products"]');
+      const signLink=s.querySelector('a.regen-agri-cta');
       const sign=s.querySelector('img[src*="sign-purchase"]');
       const sr=sign.getBoundingClientRect();
       const grass=s.querySelector('img[src*="grass"]');
@@ -27,7 +27,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               cardPct:+(card.width/innerWidth*100).toFixed(1),
               signPct:+(sr.width/innerWidth*100).toFixed(1),
               signAspect:+(sr.width/sr.height).toFixed(2),
-              isLink:!!signLink, signAlt:sign.getAttribute('alt'),
+              isLink:!!signLink, signHref:signLink&&signLink.getAttribute('href'), signAlt:sign.getAttribute('alt'),
               grassOK:grass&&grass.complete&&grass.naturalWidth>0,
               burst:!!s.querySelector('img[src*="burst"]'),
               carton:!!s.querySelector('img[src*="carton"]'),
@@ -120,7 +120,10 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       ck('Ultra heading at design size', Math.abs(m.typePx.ultra-68.77)<3, `${m.typePx.ultra}px vs 68.8px`);
       ck('body copy at design size', Math.abs(m.typePx.body-32.66)<2, `${m.typePx.body}px vs 32.7px`);
     }
-    ck('sign is a real link to /products', m.isLink);
+    ck('sign is a real link', m.isLink);
+    // The business asked (5 Nov 2026) for the sign to go to the store locator.
+    // It had linked to /products.
+    ck('sign links to the store locator', m.signHref==='/store-locator', String(m.signHref));
     ck('sign carries its wording as alt text', /purchase our organic/i.test(m.signAlt||''), m.signAlt);
     ck('grass ground loads', m.grassOK);
     ck('carton present', m.carton);

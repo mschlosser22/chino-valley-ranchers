@@ -846,7 +846,7 @@ html {
   .regen-agri-stage h2 { order: 1; }
   .regen-agri-stage p { order: 2; }
   .regen-agri-stage img[src*="carton"] { order: 3; }
-  .regen-agri-stage a[href="/products"] { order: 4; }
+  .regen-agri-stage a.regen-agri-cta { order: 4; }
   .regen-agri-stage img[src*="ann-getem"] { order: 5; }
   .regen-agri-stage > * {
     position: relative !important;
@@ -909,7 +909,7 @@ html {
     width: 44% !important; margin: 8% auto -10% 2%; display: block;
     position: relative; z-index: 4 !important; pointer-events: none;
   }
-  .regen-agri-stage a[href="/products"] { display: block; width: 74% !important; margin: 0 auto; }
+  .regen-agri-stage a.regen-agri-cta { display: block; width: 74% !important; margin: 0 auto; }
   .regen-agri-stage img[src*="ann-getem"] {
     width: 28% !important; margin: -9% 4% 0 auto; display: block;
     align-self: flex-end; z-index: 4; pointer-events: none;

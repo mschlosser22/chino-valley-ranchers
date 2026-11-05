@@ -161,10 +161,13 @@ export function Content() {
         </p>
 
         {/* Red wood sign. A real link, not a picture of a button -- the artwork
-            carries the lettering, so the name comes from the anchor. */}
+            carries the lettering, so the name comes from the anchor. It goes
+            to the store locator, at the business's request (5 Nov 2026); it
+            had linked to /products. Styled by class, not by href, so the
+            destination can change without touching the layout rules. */}
         <a
-          href="/products"
-          className="absolute block"
+          href="/store-locator"
+          className="absolute block regen-agri-cta"
           /* The red board itself is 504x365 (Rounded Rectangle 1 copy 4),
              aspect 1.381, which matches sign-purchase.jpg's 1.387. Layer 21's
              691 width is the GROUP -- board plus annotation -- and using it
@@ -173,7 +176,7 @@ export function Content() {
         >
           <img
             src="/images/regen/sign-purchase.jpg"
-            alt="Purchase our organic regenerative eggs"
+            alt="Purchase our organic regenerative eggs: find a store near you"
             className="block w-full"
             style={{ boxShadow: "0 10px 26px rgba(0,0,0,0.28)" }}
           />
