@@ -1,0 +1,55 @@
+Section IX of 'CVR Jammy Website copy.pdf', the client-approved copy doc.
+Extracted with `pdftotext -layout`. This is the reference scripts/qa/jammy/
+item21.js checks the rendered FAQ against -- if the doc is revised, replace
+this file from the new PDF rather than editing it by hand.
+
+IX. FAQs
+
+
+       HL:
+       Frequently Asked Questions
+
+
+       What is The Jammy Egg?
+             ➔​ The Jammy Egg is a soft-boiled egg. It has a rich, golden yolk. It comes fully cooked,
+                 peeled, and ready to eat. Jammy is made from real, natural family-farmed eggs from
+                 Chino Valley Ranchers.
+
+
+       Is the egg fully cooked?
+             ➔​ Yes. The Jammy Egg is fully cooked and ready to enjoy. No boiling, peeling, or timing
+                 required.
+
+
+       How is Jammy different from a hard-boiled egg?
+
+
+                                                                                                            3
+              ➔​ A hard-boiled egg has a fully firm yolk. The Jammy Egg has a softer, creamier center,
+                  similar to a 6-minute soft-boiled egg. The soft, jammy texture of the yolk is a key
+                  difference.
+
+
+        How is The Jammy Egg packaged and stored?
+              ➔​ Each bag includes four individually wrapped and sealed Jammy Eggs. Keep the bag
+                  refrigerated and enjoy by the date printed on the package.
+
+
+        How do I use The Jammy Egg?
+              ➔​ You can eat it on its own with salt, pepper, or your favorite toppings. Or add it to foods
+                  like toast, ramen, salads, sandwiches, grain bowls, and more.
+
+
+        Do I eat it hot or cold?
+              ➔​ The Jammy Egg is ready to eat cold, straight from the fridge. It can also be eaten
+                  warm. Just add it to boiling water for 30 seconds.
+
+
+        How are Jammy Eggs raised and produced?
+              ➔​ Jammy Eggs come from cage-free hens raised with care. Our farms are American
+                  Humane Certified™, following rigorous standards designed to support the health, safety,
+                  and well-being of our hens. We also use a premium feed recipe developed by Chino
+                  Valley Ranchers, helping create the deep golden yolk color Jammy is known for.
+
+
+

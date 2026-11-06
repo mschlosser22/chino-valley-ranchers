@@ -65,21 +65,15 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Ultra"
             rel="stylesheet"
           />
-          {/* Adobe kit on the client's own account. It carries
-              nexa-rust-script-shad-2, rockwell, din-condensed, cubano and
-              proxima-nova.
+          {/* Adobe Fonts. This kit is on the client's own Adobe account and
+              carries proxima-nova (400/700), cubano (400), rockwell, the Nexa
+              Rust family and din-condensed (400/300).
 
-              This replaces kit yyq5ssh, which serves din-condensed alone from
-              an account we do not control. The Regenerative design leans on
-              Nexa Rust Script for four headings; against yyq5ssh those were
-              silently falling back to a plain serif, which is what a font
-              audit of the rendered page turned up -- document.fonts.check()
-              reports true for a face it cannot load, so the only reliable
-              test is measuring rendered glyph widths.
-
-              The same swap is on feature/jammy-v2 (PR #59). Whichever lands
-              first carries it; the other will conflict on this line and
-              should keep gqk7pcv. */}
+              It replaces kit yyq5ssh, which served din-condensed alone from an
+              account we do not control and which has been live since 2021. If
+              that subscription had ever lapsed the site would have lost the
+              face silently. Both din-condensed weights are reproduced here, so
+              nothing outside the Jammy page changes. */}
           <link rel="stylesheet" href="https://use.typekit.net/gqk7pcv.css" />
           {/* Styled Components CSS */}
           {this.props.styles}
