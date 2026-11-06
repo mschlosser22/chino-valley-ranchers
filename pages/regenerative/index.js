@@ -13,8 +13,8 @@ import { Content } from '../../components/regenerative/Content';
 import { ImageFull } from '../../components/regenerative/ImageFull';
 import { ImageGrid } from '../../components/regenerative/ImageGrid';
 import { Certified } from '../../components/regenerative/Certified';
+import { Differences } from '../../components/regenerative/Differences';
 import { EggsOpen } from '../../components/regenerative/EggsOpen';
-import { Logos } from '../../components/regenerative/Logos';
 
 export default function Products() {
 
@@ -37,8 +37,8 @@ export default function Products() {
         <ImageFull />
         <ImageGrid />
         <Certified />
+        <Differences />
         <EggsOpen />
-        <Logos />
       </div>
 
     </div>

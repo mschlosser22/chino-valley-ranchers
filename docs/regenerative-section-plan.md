@@ -1,0 +1,322 @@
+# Regenerative rebuild — section plan
+
+Design: `CVR Regen Page.fig`, canvas 2115x8509. Visual reference is the
+matching full-page render (`CVR-Regen-LP-R1-v2-clean.png`, 2075x8469 — same
+design, 20px bleed trimmed).
+
+Working top-down, one section at a time.
+
+## Where the page stands
+
+The live page is **1.51x too short relative to its width** against the design —
+aspect 2.71 vs 4.08. That is not padding drift; sections are missing outright
+and several are flattened to a plain band where the design has layered artwork.
+
+| # | Design section | Component today | Gap |
+|---|---|---|---|
+| 1 | Hero — WELCOME TO Regenerative | `Hero` (13 lines) | Script wordmark, cattle photo, torn base, carton overlap |
+| 2 | WHAT IS REGENERATIVE? + video | `WhatIs` (13 lines) | Video frame, hen cut-outs, script annotations, arrows |
+| 3 | Regenerative AGRICULTURE | `Content` (36 lines) | Grass bg, torn card, carton + burst, red wood sign |
+| 4 | THE NEXT Generation | `ImageFull` (12 lines) | Hen cut-out on sky, torn card |
+| 5 | Photo Row | `ImageGrid` (8 lines) | Closest to design already |
+| 6 | HIGHEST STANDARDS | `Certified` (20 lines) | Burlap bg, hen cut-out, script annotation |
+| 7 | WHAT MAKES Regenerative DIFFERENT? | **missing** | Soil cross-section, four callouts, curved arrows |
+| 8 | BETTER FOR THE LAND / HENS / YOU | **missing** | Three underlined green lines |
+| 9 | Pre-footer — pasture raised | `EggsOpen` (21 lines) | Type scale and layout |
+| 10 | Footer | site `Footer` | — |
+
+`Logos` rendered a certification strip that was **not in this design**. It was
+flagged rather than removed until the client could confirm; on 2026-09-13 they
+confirmed it should go, and the component and its usage were deleted. The four
+mark images stay in `public/images/` — removing a section is easily reversed,
+deleting shared assets is not.
+
+## Recurring design devices
+
+These repeat down the page and are worth building once:
+
+- **Torn-paper edges** — top and bottom of most bands. The .fig carries them as
+  alpha PNGs plus separate masks, so they can be real cut edges rather than CSS
+  approximations.
+- **Script annotations** — "Hear Chris talk about regenerative", "You want
+  more?", "Get em here!", "We're certified!" — Nexa Rust Script B Shadow 2,
+  each paired with a hand-drawn curved arrow.
+- **Cut-out hens** — several poses, full alpha, overlapping band edges.
+- **Textures** — burlap, wood, grass as section grounds.
+
+## Type
+
+Ultra (headings), DIN Condensed 700, Lato 500/700 (body), Rockwell,
+Nexa Rust Script B Shadow 2 (annotations). All load today except
+`lato` 700 and `nexa-rust-script-shad-2` — see
+`docs/regenerative-design-source.md`.
+
+## Fixed before starting
+
+`EggsOpen` nested `<h3>` inside `<p>`, which broke hydration and forced the
+whole route to client-render. Present on main; fixed on this branch.
+
+
+## Section 1 — Hero (in progress)
+
+**Done:** cattle photo, teal ribbon, script wordmark, DIN sub-line, torn edge,
+carton overlap, paper ground.
+
+Measured rather than eyeballed:
+
+- Wordmark spans **68.0%** of the viewport — the design's exact figure.
+- `nexa-rust-script-shad-2` is in the client's Adobe kit and carries its own
+  offset shadow, so the wordmark is **live type**, not artwork. An earlier
+  check said it was unavailable; that was wrong — the check ran on a page that
+  never requested the face.
+- Palette sampled from the render: teal `#006088`, orange `#F8A010`,
+  red `#B01010`, paper `#EFEAE0`.
+
+Two mistakes worth recording:
+
+- The first "torn edge" asset picked was a **shadow layer**, not the paper —
+  max alpha 215, dark olive, 0% opaque. Caught by inspecting the alpha channel
+  rather than trusting the filename-free ID.
+- The real paper asset ships **fully opaque**, with the tear drawn as light
+  pixels rather than transparency. The alpha had to be rebuilt from luminance
+  before the tear would cut.
+
+**Both open items closed.** 17/17 checks pass at 1440px and 390px
+(`scripts/qa/regen/sec1test.js`).
+
+*Tear depth.* Measured across the design's unoccluded left and right thirds,
+the edge varies ~13% of canvas width — but looking at the crop, that figure is
+the sharp rise at the two outer corners, not the tear's texture. Across the
+body it is ~3.3%. The paper asset carries only 1.79%, so the edge is now built
+from the deeper mask layer (`cbefd9444fce`, 3.32%) tinted to the paper colour.
+Chasing the 13% number would have produced a tear the design does not have.
+
+*Hens.* Placed at the design's own positions — 15.4% / 66.3% / 78.0% from the
+left, each ~9.8% of canvas width. Only the standing pose exists as an asset in
+the .fig; the two pecking poses are not separate layers, so they are lifted
+from the render by their teal (#00608B) with rebuilt alpha. They are flat
+single-colour shapes, so nothing is lost. Hidden below `sm` where they crowd
+the carton and the design offers no mobile frame.
+
+"WHAT IS REGENERATIVE?" belongs to section 2.
+
+
+## Section 2 — What is Regenerative? + video (done)
+
+21/21 checks at 1440px and 390px (`scripts/qa/regen/sec2test.js`).
+
+Measured against the design and matching to within 0.1%:
+
+| | Design | Live |
+|---|---|---|
+| Heading width | 73.7% | 73.8% |
+| Video frame width | 54.3% | 54.4% |
+| Frame aspect | 1.644 | 1.644 |
+
+The two script annotations ship as artwork, not live type. Each is one lockup
+of Nexa Rust script plus a hand-drawn arrow, and the arrow has to hold its
+exact relationship to the words — setting the text live and positioning an
+arrow beside it would drift at every breakpoint. Neither is a separate layer
+in the .fig, so both are lifted from the render by colour with rebuilt alpha
+(orange `#F8A010`, teal `#00608B`). Hidden below `sm`, where they would cover
+the video.
+
+The play control is a real `<button>` with an aria-label, not a picture of
+one.
+
+**Known stand-in:** the design's video frame is a rough painted edge drawn
+into the composite rather than kept as its own layer. It is a flat teal border
+for now. Separating that artwork cleanly is possible but wants the mask layers
+checked first — noted rather than quietly approximated.
+
+
+## Section 3 — Regenerative AGRICULTURE (done)
+
+23/23 checks at 1440px and 390px (`scripts/qa/regen/sec3test.js`).
+
+| | Design | Live |
+|---|---|---|
+| Torn card width | 62.7% | 62.7% |
+| Red sign width | 24.2% | 24.2% |
+| Sign aspect | 1.39 | 1.39 |
+
+The heading is two faces on two lines as drawn — Nexa Rust script for
+"Regenerative", DIN Condensed for "AGRICULTURE".
+
+The PURCHASE sign is a real `<a href="/products">` and its wording lives in the
+image's alt text, so it is operable and announced rather than being a picture
+of a button.
+
+**Grass crop.** The source photograph is a landscape with sky and hills in the
+top 41%; the design uses only the grass. Two attempts at detecting the horizon
+failed before one worked — testing for blue-dominant pixels found no sky at all
+because the haze is warm, and testing per-pixel green dominance still left a
+warm band. Requiring the *row mean* to be green-dominant cut it correctly.
+
+**Extraction note.** The "Get 'em here!" annotation sits over grass, and sunlit
+grass is close enough to the brand orange that a plain colour-distance mask
+pulled in half the field. It needed a tighter test — high red, low blue, and a
+wide red-to-blue gap — plus a median filter.
+
+
+## Section 4 — THE NEXT Generation (done)
+
+22/22 checks at 1440px and 390px (`scripts/qa/regen/sec4test.js`).
+
+| | Design | Live |
+|---|---|---|
+| Torn card width | 52.5% | 52.4% |
+| "THE NEXT" | 20.9% | 20.9% |
+| "Generation" | 28.0% | 28.0% |
+
+Colours sampled from the render rather than reused from another section: teal
+`#005A82`, orange `#F0A014` — both a shade different from the hero's.
+
+**The hen is a real cut-out.** The .fig ships the photograph
+(`5825610d112b`) and its alpha mask (`a48b3dd8c54c`) as separate layers, so
+they are composited rather than the shape being approximated. Matching them
+took an aspect-ratio check — 0.89 against the mask's 0.90 — because neither
+carries a filename.
+
+**A false alarm worth recording.** The hen looked absent from two comparison
+captures. It was rendering correctly the whole time; the capture clipped at
+the section's scroll position, and the pasture background contains its own
+hens, which disguised the gap. Checking `getBoundingClientRect` against the
+viewport showed `visible: false` and settled it — the fix was to the capture,
+not the page.
+
+**Fixed in section 6:** `Certified.js` passed `backgroundImage` as a prop on a
+`<div>`, which React rejects as an invalid DOM attribute. **The page now has
+zero console errors**, down from 11 when this branch started.
+
+
+## Section 5 — Photo Row (done)
+
+18/18 checks at 1440px and 390px (`scripts/qa/regen/sec5test.js`).
+
+Columns are deliberately unequal, measured by finding the white gutters in the
+design: **25.2 / 13.3 / 14.4 / 47.1**. Equal quarters would read as a different
+composition, so they are explicit grid fractions.
+
+It was a single flat JPEG before — one image, one alt text, no way to reflow.
+Now five photographs with distinct alt text.
+
+**Column two is two photographs stacked**, not one. That is only visible by
+cropping the design and looking: the split uses the same gutter width as the
+column separators, so at a glance it reads as a single tall photo. Column three
+is a tight head-and-comb crop, not the same frame as column two.
+
+**Barn framing.** The source is a mirrored pair — the same barn photographed
+once and flipped — so it is cropped to its left half to match the design, which
+shows one barn filling the column.
+
+**One real bug caught by the checks:** the stacked column sized to its own
+content and stood 19px taller than the other three, breaking the row's bottom
+edge. It needed an explicit height.
+
+
+## Section 6 — HIGHEST STANDARDS (done)
+
+21/21 checks at 1440px and 390px (`scripts/qa/regen/sec6test.js`).
+
+| | Design | Live |
+|---|---|---|
+| Heading | 63.0% | 63.0% |
+| ROC mark | 25.9% | 25.9% |
+| Annotation | 11.6% | 11.6% |
+
+The ROC mark carries its name in alt text — it is a certification claim, so it
+has to be readable by a screen reader rather than decorative.
+
+**Burlap took two passes.** Colour-matching alone was not enough: the source
+weave carries about 40% more contrast than the design's, so the first attempt
+matched per-channel mean and standard deviation to the design's sampled values
+(226,185,148 / 26,49,61). That fixed the tone but the texture still read as
+coarse sacking, because `background-size: cover` scales the weave up with the
+viewport. It now tiles at a fixed 620px, which holds the thread at roughly the
+drawn scale, and the tile is cross-faded at its edges so the repeat does not
+show. The body copy sits quietly on it now, which it did not before.
+
+**Console errors: 11 -> 0** across the whole branch.
+
+
+## Sections 7 and 8 — WHAT MAKES Regenerative DIFFERENT? / BETTER FOR... (done)
+
+27/27 checks at 1440px and 390px (`scripts/qa/regen/sec7test.js`).
+
+**Neither section existed on the page before.** They are built as one component
+because the three "BETTER FOR..." lines sit inside the same white band as the
+soil diagram and share its centre line.
+
+| | Design | Live |
+|---|---|---|
+| "WHAT MAKES" | 31.1% | 31.2% |
+| "Regenerative" | 45.3% | 45.3% |
+| "DIFFERENT?" | 28.1% | 28.1% |
+| Soil diagram | 72.9% | 72.9% |
+
+The soil diagram's 51.6% in an earlier version of this table was measured off
+a flattened render and is the visible soil block, excluding the sky's
+transparent margin. The design's artwork node (`Farm-minified 1`) is 1513 of
+the 2075 artboard — 72.9% — and its 1513x1029 aspect matches the asset's
+1500x1020 exactly, which 51.6% cannot. The sky needs that full width to sit
+behind the intro copy, as the design draws it.
+
+The callouts are pinned to the four corners rather than laid out in a grid.
+The design points a hand-drawn arrow from each one at the part of the soil it
+describes, so equal columns would leave the arrows pointing at nothing. Below
+`lg` they stack under the diagram and the arrows are dropped, since they cannot
+point at anything useful once the layout reflows.
+
+The soil diagram carries a 94-character alt describing what the cross-section
+shows — hens above ground, roots and soil life below. It is the only place on
+the page where that information exists.
+
+**Finding the arrows.** Masking for brand orange returned six clusters, not
+four: two of them are the hens standing in the artwork itself, which are close
+enough in hue to pass the filter. Cropping each arrow from its own quadrant
+using the cluster bounds was what separated them.
+
+
+## Section 9 — Pre-footer (done)
+
+24/24 checks (`scripts/qa/regen/sec9test.js`). Band aspect 3.33 against the
+design's 3.34; the headline breaks in three lines as drawn.
+
+The headline is **live text**. The design bakes it into the composite and the
+component this replaces effectively did too, so the background had to be
+rebuilt without it — the right half is a per-row colour ramp sampled from the
+clean far-right column, blended with a heavily blurred copy of the real texture
+and cross-faded into the photograph before the lettering starts.
+
+Three attempts. Tiling a slice of the render repeated the carton, not the
+pasture. A colour ramp fixed the subject but left hard vertical seams.
+Feathering removed the seams but started the ramp *after* the type began, so
+"OU" and "AR" ghosted through. Moving the crossover to x780–930, ahead of the
+type at x950, worked.
+
+## Where the page stands
+
+**All ten sections built. 173/173 checks pass** at 1440px and 390px.
+
+| | Before | Now | Design |
+|---|---|---|---|
+| Page aspect | 2.71 | 4.50 | 4.08 |
+| Console errors | 11 | 0 | — |
+
+The page was **1.51x too short** relative to its width when this branch
+started, with two sections missing outright. It now runs slightly *longer* than
+the design (1.10x), which is expected: text reflows at a real viewport width
+rather than sitting in a fixed 2075px canvas.
+
+Assets are 4.4MB, down from 6.9MB. The four photographic cut-outs moved from
+PNG to WebP — PNG is the wrong format for a photograph with alpha, and
+quantizing `soil-block` actually made it *larger* (1.5MB -> 2.3MB) before the
+format change fixed it properly. The remaining PNGs are flat-colour artwork,
+where PNG is correct.
+
+**Resolved 2026-09-13:** `Logos` rendered a certification strip that is not in
+this design. The client confirmed it should be removed, so the component and
+its usage are gone. The pre-footer now meets the site footer directly, which
+it does cleanly — that seam is a straight edge in the design too, and only the
+pre-footer's *top* is torn.

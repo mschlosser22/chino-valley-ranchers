@@ -1,14 +1,288 @@
+import { useEffect, useRef, useState } from "react";
+
+import { useConsent } from "../../context/consent";
+
+/* The video the business supplied on 5 Nov 2026 (youtu.be/8HHTYPax3IU). Only
+   the id is kept: the share link's `si` parameter is a share-tracking token. */
+const VIDEO_ID = "8HHTYPax3IU";
+/* Privacy-enhanced domain, as everywhere else on the site (see
+   components/video/ConsentGatedVideo.js). autoplay because the player only
+   exists once the visitor has pressed play; rel=0 keeps the end screen to
+   this channel's videos. */
+const VIDEO_SRC = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&playsinline=1`;
+
+/* Section 2 of the CVR Regen Page design: the "What is Regenerative?" heading
+   and the video, on the torn paper ground that carries down from the hero.
+
+   Geometry measured off the design render (2075px wide):
+     heading      73.7% of canvas width, cap-height 69px
+     video frame  54.3% wide, aspect 1.644, x 22.9%-77.2%
+
+   The two script annotations are artwork rather than live type. Each is a
+   single lockup of Nexa Rust script plus a hand-drawn arrow, and the arrow
+   has to keep its exact relationship to the words -- setting the text live
+   and positioning an arrow separately would drift at every breakpoint. */
 export function WhatIs() {
+  /* The designed still and play ring stand in for the player until the play
+     button is pressed, so the page makes no request to YouTube before the
+     visitor asks for the video -- with or without marketing consent. Without
+     it, a line under the video says where the video plays from, as the site's
+     other embeds do. (Review item WI-3b; sec2videotest.) */
+  const [playing, setPlaying] = useState(false);
+  const { consent, ready, openPreferences } = useConsent();
+  const mediaAllowed = ready && consent.marketing;
+  const playerRef = useRef(null);
+  useEffect(() => {
+    // Keyboard users pressed a button that has now gone; carry focus on.
+    if (playing && playerRef.current) playerRef.current.focus();
+  }, [playing]);
+
+  // The design's paper is a linen texture, not a flat fill -- sampled at
+  // #E9E5DE with real grain. A flat colour read as plastic against the
+  // photographs either side.
   return (
-    <>
-        <div className="relative bg-chinolightblue">
-            <div className="w-full pt-16 pb-24 grid grid-cols-1 lg:grid-cols-2 max-w-5xl mx-auto gap-12 px-8">
-                <div className="relative text-center text-white top-[35%] uppercase  text-2xl lg:text-4xl font-ultra tracking-wide px-4">What is Regenerative?</div>
-                <div>
-                    <img src="/images/whatisregenerative.jpg" alt="What is Regenerative?" className="w-full" />
-                </div>
+    <section
+      className="relative"
+      style={{
+        background: "#E9E5DE",
+        backgroundImage: "url(/images/regen/paper-texture.png)",
+        backgroundSize: "12.34vw 12.34vw",
+        backgroundRepeat: "repeat",
+      }}
+    >
+      {/* overflow:hidden keeps the paper ground from scrolling the page
+          sideways, but it also clips whatever overhangs -- the "You want more?"
+          arrow hangs below the video frame by design. 8% bottom padding clears
+          its tail; at 6% the tip was cut off by 8px. */}
+      <div className="mx-auto" style={{ maxWidth: 1600, padding: "0 7% 8%", overflow: "hidden" }}>
+        <h2
+          className="text-center m-0 uppercase"
+          style={{
+            fontFamily: "'Ultra', Rockwell, Georgia, serif",
+            color: "#B01014",
+            fontSize: "clamp(26px, 4.69vw, 81px)",
+            lineHeight: 1.05,
+            letterSpacing: "0.01em",
+            paddingTop: "3%",
+          }}
+        >
+          What is Regenerative?
+        </h2>
+
+        {/* The frame, the still and both annotations share one positioning
+            context so the annotations stay pinned to the video as it scales. */}
+        <div
+          /* Width lives in .regen-video: the design's 53.69% of the artboard
+             (62.4% of this padded column) above 768px, full width below, where
+             the desktop ratio leaves the video marooned in empty paper. The
+             desktop figure is the frame stroke's own 1114px on the 2075px
+             artboard, read from the design file rather than a screenshot. */
+          className="relative mx-auto regen-video"
+          /* containerType so the annotation type can be sized in cqw and track
+             the video block rather than the viewport -- the design's 40px type
+             is a fixed share of the 1135px frame. */
+          data-regen-video-wrap
+        >
+          <div className="relative" style={{ aspectRatio: "1.644", maxWidth: "100%" }}>
+            {/* The still is inset behind the strokes, as in the design
+                (Rectangle 8: x484 y1325 1108x672 inside the 1135x698 frame).
+                Filling the frame edge-to-edge leaves slivers of photo showing
+                past the brush strokes, since the strokes are ragged and sit
+                inside the box rather than straddling it. */}
+            <img
+              src="/images/regen/video-still.jpg"
+              alt="Chris talking about regenerative farming"
+              className="absolute object-cover block"
+              style={{ left: "1.23%", top: "1.58%", width: "97.62%", height: "96.28%" }}
+            />
+
+            {/* The player takes the still's exact box, under the brush strokes
+                (z-index 2), so the painted frame still edges it. */}
+            {playing && (
+              <iframe
+                ref={playerRef}
+                src={VIDEO_SRC}
+                title="Chris talks about regenerative farming"
+                className="absolute block"
+                style={{ left: "1.23%", top: "1.58%", width: "97.62%", height: "96.28%",
+                         border: 0, zIndex: 1, background: "#000" }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )}
+
+            {/* The frame is four brush strokes lifted from the design file, not
+                a CSS border. The design's edge is a rough painted stroke with
+                broken texture and a ragged profile -- a flat rectangle read as
+                a UI chrome box against hand-drawn artwork either side. Each
+                strip is stretched along its own axis only, so the grain of the
+                stroke never squashes. */}
+            {/* Each stroke's own box, from the design (Layers 43/44/44 copy/45
+                against the 1135x698 frame). They sit ENTIRELY INSIDE the frame:
+                the right stroke ends at x1605, which is the frame's own right
+                edge. They had been anchored to the edges with translate(±45%),
+                which pushed each one half its width outside -- 7.4px past the
+                frame at 1440 -- and the "You want more?" text, correctly placed
+                3px past the frame edge, landed on top of the overhang. */}
+            {[
+              { src: "frame-top",    left: "0.44%",  top: "0.00%",  width: "98.68%", height: "3.87%" },
+              { src: "frame-bottom", left: "0.18%",  top: "94.70%", width: "98.15%", height: "5.30%" },
+              { src: "frame-left",   left: "0.00%",  top: "1.86%",  width: "2.56%",  height: "97.28%" },
+              { src: "frame-right",  left: "97.44%", top: "1.86%",  width: "2.56%",  height: "97.28%" },
+            ].map((e) => (
+              <img
+                key={e.src}
+                src={`/images/regen/${e.src}.png`}
+                alt=""
+                aria-hidden="true"
+                className="absolute"
+                style={{ left: e.left, top: e.top, width: e.width, height: e.height,
+                         maxWidth: "none", zIndex: 2, pointerEvents: "none" }}
+              />
+            ))}
+
+            {/* Play button: a real control, not a picture of one.
+
+                Placed from the design. Layer 77 is x994 y1600 167x167 on the
+                artboard, and the frame's origin is (470,1314) at 1135x698, so
+                in FRAME terms the control sits at 46.17% / 40.97% and is 14.71%
+                wide. It had been at 47.90% / 58.55% / 8.05% -- 994/2075 and
+                167/2075, ARTBOARD percentages applied to the frame -- which put
+                the ring 24% of the frame too low and 45% too small, so the
+                "Hear Chris" arrow pointed at the treeline, and on phones it was
+                a 25px target with a 1px ring. (Review item WI-3.)
+
+                The button is Layer 77's box and is the hit area; the visible
+                ring is Ellipse 5, 4.8% inside it (x1002 y1609 143x143). */}
+            {!playing && (
+              <>
+            <button
+              type="button"
+              aria-label="Play the video about regenerative farming"
+              onClick={() => setPlaying(true)}
+              className="absolute flex items-center justify-center"
+              style={{
+                left: "46.17%",
+                top: "40.97%",
+                width: "14.71%",
+                aspectRatio: "1",
+                borderRadius: "9999px",
+                background: "transparent",
+                border: "0 solid transparent",
+                padding: 0,
+                cursor: "pointer",
+                zIndex: 3,
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  inset: "4.8%",
+                  borderRadius: "9999px",
+                  border: "max(2px, 0.6cqw) solid #FFFFFF",
+                  background: "rgba(255,255,255,0.16)",
+                }}
+              />
+              <svg
+                viewBox="0 0 10 12"
+                aria-hidden="true"
+                style={{ position: "relative", width: "34%", marginLeft: "8%" }}
+              >
+                <path d="M0 0L10 6L0 12z" fill="#F8A014" />
+              </svg>
+            </button>
+
+            {/* "Hear Chris talk" -- live type, not a bitmap.
+
+                The exported PNG clipped its own glyphs at the canvas edge, so
+                the text is set from the design's type spec instead: Ultra 40px
+                / 44px line height / 2px tracking, centred, rotated -12.17deg,
+                #F9A115. Ultra is already loaded for the headings. Geometry from
+                the .fig: text box x1026 y1477 517x88, arrow (Shape 4 copy 4)
+                x1172 y1543 143x129, both against the 1135x698 frame. */}
+            <div
+              className="absolute hidden sm:block"
+              aria-hidden="true"
+              style={{
+                left: "48.98%", top: "23.35%", whiteSpace: "nowrap",
+                transform: "rotate(-12.17deg)", transformOrigin: "top left",
+                fontFamily: "'Ultra', Rockwell, Georgia, serif",
+                fontSize: "3.53cqw", lineHeight: 1.1, letterSpacing: "0.05em",
+                color: "#F9A115", textAlign: "center", zIndex: 3,
+                pointerEvents: "none",
+              }}
+            >
+              Hear Chris talk<br />about regenerative
             </div>
+            <img
+              src="/images/regen/arrow-hear.png"
+              loading="lazy"
+              alt=""
+              aria-hidden="true"
+              className="absolute hidden sm:block"
+              style={{ left: "61.85%", top: "32.81%", width: "12.60%", zIndex: 3, pointerEvents: "none" }}
+            />
+              </>
+            )}
+          </div>
+
+          {/* "You want more?" -- live type for the same reason: the export
+              clipped the Y, w and m against its left edge. Same spec (Ultra
+              40/44, 2px tracking, -12.17deg) in #006088. It sits on the paper
+              clear of the frame; the gap is measured to the painted stroke, not
+              to the frame box, because the stroke is ragged and bulges widest
+              exactly where this sits.
+
+              md, not sm: from 640 to 767 the frame fills the width, so there is
+              no paper beside it and the annotation ran off the screen. */}
+          <div
+            className="absolute hidden md:block"
+            aria-hidden="true"
+            style={{
+              left: "103.6%", top: "72.21%", whiteSpace: "nowrap",
+              transform: "rotate(-12.17deg)", transformOrigin: "top left",
+              fontFamily: "'Ultra', Rockwell, Georgia, serif",
+              fontSize: "3.53cqw", lineHeight: 1.1, letterSpacing: "0.05em",
+              color: "#006088", textAlign: "center", zIndex: 4,
+              pointerEvents: "none",
+            }}
+          >
+            You<br />want<br />more?
+          </div>
+          <img
+            src="/images/regen/arrow-more.png"
+            loading="lazy"
+            alt=""
+            aria-hidden="true"
+            className="absolute hidden md:block"
+            style={{ left: "105.5%", top: "90.54%", width: "8.55%", zIndex: 4, pointerEvents: "none" }}
+          />
         </div>
-    </>
+
+        {/* Outside the video wrapper on purpose: the annotations are placed as
+            percentages of its height, and a line inside it would move them. */}
+        {!mediaAllowed && !playing && (
+          <p
+            className="mx-auto text-center"
+            style={{
+              fontFamily: "'Lato', system-ui, sans-serif",
+              fontSize: 14, lineHeight: 1.45, color: "#4A4A45",
+              maxWidth: "36em", margin: "14px auto 0",
+            }}
+          >
+            Playing this video loads it from YouTube, which may set cookies.{" "}
+            <button
+              type="button"
+              onClick={openPreferences}
+              style={{ color: "#006088", textDecoration: "underline", background: "none",
+                       border: 0, padding: 0, font: "inherit", cursor: "pointer" }}
+            >
+              Cookie settings
+            </button>
+          </p>
+        )}
+      </div>
+    </section>
   );
 }

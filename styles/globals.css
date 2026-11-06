@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 
+/* The nav is fixed and 64px tall (h-16 in Nav.js), so anything scrolled into
+   view -- an anchor link, or the browser following keyboard focus -- landed
+   underneath it. Reserving its height plus a little air. Site-wide, because
+   the nav is. (Regenerative review item WI-19.) */
+html {
+  scroll-padding-top: 80px;
+}
+
 /*@font-face {
     font-family: 'ultraregular';
     src: url('/fonts/Ultra-webfont.eot');
@@ -181,6 +189,949 @@
 }
 
 @tailwind utilities;
+
+/* ── Regenerative: the four soil callouts ──────────────────────────────
+   Rendered once, positioned differently by breakpoint. They were
+   previously duplicated -- one absolutely positioned set for desktop and
+   one stacked set for phones, each hidden at the other size -- which meant
+   a screen reader announced all four topics twice. */
+.regen-callout {
+  text-align: left;
+  margin-top: 8%;
+}
+.regen-callout__arrow {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  /* Custom properties rather than inline left/width: below this breakpoint the
+     callouts are in normal flow and must take the full column, so the design's
+     narrow measure can only apply where they are actually positioned. Inline
+     styles would have applied at every width. */
+  .regen-callout {
+    position: absolute;
+    width: var(--w);
+    top: var(--y);
+    margin-top: 0;
+    text-align: center;
+  }
+  .regen-callout--left {
+    left: var(--x);
+  }
+  .regen-callout--right {
+    right: var(--x);
+  }
+  /* The arrows only make sense once the callouts sit around the diagram. */
+  .regen-callout__arrow {
+    display: block;
+    position: absolute;
+  }
+}
+
+/* ── Regenerative: two-column bands on phones ──────────────────────────
+   Both of these keep a two-column grid from the design. At 390px that
+   leaves roughly 175px a column, which squeezes the body copy into a
+   narrow ribbon and runs the pre-footer type over the carton photograph.
+   They stack below md and take the full width. */
+.regen-standards-grid {
+  grid-template-columns: 1fr;
+}
+.regen-prefooter-grid {
+  grid-template-columns: 1fr;
+}
+
+/* Section 6 is 58vw tall, which is its design ratio and correct across most
+   of the range. At exactly 768px that is 445px, and it is also where the
+   .regen-standards-grid switches to two columns and the ROC mark takes its
+   design size -- so the content grows just as the box stops growing, and the
+   burlap's bottom tear cut 14px off the logo. (The tear is not the box edge:
+   the mask's rip starts at row 997 of 1262, about 21% above it.)
+
+   A floor across the two-column tablet range, measured against the tear
+   rather than the box (review item WI-13). The content here is close to a
+   fixed height -- the copy rewraps as the column widens -- so it ends 447 to
+   479px down the section from 768 to 1023, while a vw floor grows with the
+   width: 64vw cut the mark by the tear up to 864 and 76vw would leave 200px of
+   empty burlap at 990. Mostly fixed with a little growth tracks the content:
+   598px at 768, 633px at 1023, keeping the mark and the annotation above
+   78.5% of the height, where the tear begins. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .regen-burlap {
+    min-height: calc(490px + 14vw) !important;
+  }
+}
+
+/* Body copy on tablets (review item WI-13). The inline clamp bottoms out at
+   13px across 768-1023, below the 15-16px the rest of the page sets. 15px
+   rather than 16: the column is about 300px here and the longer paragraph
+   pushes the mark down into the bottom tear. Section 7 is deliberately not
+   in a shared floor rule -- it would pull that intro down from 16. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .regen-standards-copy {
+    font-size: 15px !important;
+  }
+}
+
+/* Hero photograph below the nav (review item WI-15). 1023 is tied to Nav.js:
+   the bar is bg-opacity-100 and only turns translucent at lg
+   (lg:bg-opacity-80). Below that it is a solid strip, and the top 64px of the
+   photograph -- the cattle's backs on a phone -- painted under it unseen. The
+   lockup positions against its own box and does not move. */
+@media (max-width: 1023px) {
+  .regen-hero-photo {
+    top: 4rem !important;
+    height: calc(100% - 4rem) !important;
+  }
+}
+
+/* ── Hero lockup on phones (review item WI-4) ───────────────────────────
+   The lockup is the desktop artboard scaled by the viewport, so on a phone it
+   is a miniature: "ORGANIC REGENERATIVE EGGS" rendered at 7.8px at 360 and
+   "WELCOME TO" at 10px. The whole lockup -- ribbon, WELCOME TO, wordmark,
+   band and sub-line -- is enlarged as one unit so its internal geometry stays
+   the design's, scaled about the wordmark's centre. The carton drops with it
+   to keep the design's overlap with the band rather than covering the type.
+
+   The scale lives here, not in a `scale-[1.3]` class: Tailwind 2.2.19 has no
+   arbitrary values and that would compile to nothing. The wordmark steps
+   88% -> 78% -> 68% of the width across 480 and 640. */
+@media (max-width: 479px) {
+  .regen-hero-lockup {
+    position: absolute;
+    inset: 0;
+    transform: scale(1.3);
+    transform-origin: 49.2% 28%;
+  }
+  .regen-hero-carton {
+    top: 60% !important;
+  }
+}
+@media (min-width: 480px) and (max-width: 639px) {
+  .regen-hero-lockup {
+    position: absolute;
+    inset: 0;
+    transform: scale(1.15);
+    transform-origin: 49.2% 28%;
+  }
+  .regen-hero-carton {
+    top: 57% !important;
+  }
+}
+
+/* ── Section 6 on phones (review item WI-1) ─────────────────────────────
+   The burlap's mask is stretched to the section's own height and its bottom
+   tear starts at row 998 of 1262, so the last 21% of the section is torn away
+   at every width. Stacked in one column, the hen was the last thing in the
+   section and always landed in that band: its bottom sat at 97-98% of the
+   section and the tear cut it through the body, legs and feet gone.
+
+   Below 768 the ROC mark and the hen now sit side by side, as the desktop
+   design has them, which takes the hen out of the torn band. The copy spans
+   both columns above them: `display: contents` on the copy column lets its
+   paragraph and logo become grid items of their own.
+
+   The rest brings the section onto the page's phone system: the 7% gutter
+   sections 2, 3, 4 and 8 use (it was the desktop 18.27%, 71px at 390), body
+   copy at 16px (it was 13), and the heading at least the size of the
+   "BETTER FOR..." lines further down -- at 20px it was smaller than them,
+   inverting the hierarchy -- wrapping rather than nowrap, which pushed it
+   21px off-centre at 360.
+
+   !important throughout: padding, gap and margins on these elements are
+   inline styles, and an inline `gap` beats any non-important row-gap. */
+@media (max-width: 767px) {
+  .regen-standards-inner {
+    padding: 9% 7% calc(28vw + 32px) !important;
+  }
+  .regen-burlap h2 {
+    font-size: max(26px, 4.7vw) !important;
+    white-space: normal !important;
+    text-align: center;
+  }
+  .regen-standards-copy {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+  .regen-standards-grid {
+    margin-top: 16px !important;
+    grid-template-columns: 56% 1fr !important;
+    column-gap: 4% !important;
+    row-gap: 20px !important;
+    align-items: end !important;
+  }
+  .regen-standards-grid > div:first-child {
+    display: contents;
+  }
+  .regen-standards-grid > div:first-child > p {
+    grid-column: 1 / -1;
+  }
+  .regen-roc-wrap {
+    width: 100% !important;
+    margin-top: 0 !important;
+  }
+  .regen-burlap img[src*="hen-standing"] {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+
+/* ── Section 7 on phones ───────────────────────────────────────────────
+   The section is built from the design's desktop proportions, and every one
+   of them is a percentage of the viewport, so they all collapse together on a
+   phone. Measured at 390px before this block: the three heading lines
+   overlapped each other by 5px (they carry negative margins tuned for a
+   155px display size), the intro was a 154px ribbon at 13px type because its
+   max-width is the design's 42%, the diagram rendered 201px wide, and the
+   wrapper's 3% side padding came to 12px, so the copy ran almost to the
+   screen edge.
+
+   Below 1024px the section is laid out for a narrow screen instead: a real
+   gutter, one readable measure for the running text, a diagram that fills the
+   column, and the callouts as a plain stack with space between them.
+
+   1023px, not 767px, because .regen-callout only becomes absolutely
+   positioned around the diagram at 1024px -- that is where the arrows can
+   point at something. Between 768 and 1023 the callouts were already stacked
+   but still carried the desktop type scale, which put 12px copy on a
+   768px-wide line and left the diagram at 52% of the screen. The two
+   breakpoints have to agree. */
+@media (max-width: 1023px) {
+  /* A gutter that does not shrink with the viewport. 3% of 390px is 12px;
+     this is the same 20px at every phone size. */
+  .regen-diff-wrap {
+    /* The top value is small because the lift above already places this
+       section against section 6's tear; 8% here stacked on top of it and left
+       ~80px of white where ~40 was wanted. The side gutter is px, not a
+       percentage, so it does not shrink with the viewport. */
+    /* Bottom: 12% was 123px of white under the BETTER lines at 1023 and
+       68px at 768 before the pre-footer's tear. (WI-11.) */
+    padding: 10px 20px clamp(44px, 6%, 60px) !important;
+  }
+
+  /* The heading's three lines are sized in vw and pulled together with
+     negative em margins, which is right at the design's proportions and
+     overlapping at a phone's. Each line gets its own size and the negative
+     margins come off. */
+  .regen-diff-wrap h2 span {
+    margin-top: 0 !important;
+    display: block;
+  }
+  /* Capped (review item WI-10). As plain 7.6vw / 15vw / 7.6vw the script
+     reached 153px at 1023 and then fell to the desktop's 92px at 1024 -- a
+     60px jump across one pixel of viewport. The script's cap is the desktop
+     size at 1024, so the two layouts meet; the slab lines start at the 26px
+     tier the page's other phone headings share (WI-1, WI-6). */
+  .regen-diff-wrap h2 span:nth-child(1) { font-size: clamp(26px, 6.6vw, 38px) !important; line-height: 1.1; }
+  .regen-diff-wrap h2 span:nth-child(2) { font-size: clamp(46px, 11.5vw, 92px) !important; line-height: 0.95; }
+  .regen-diff-wrap h2 span:nth-child(3) { font-size: clamp(26px, 6.6vw, 38px) !important; line-height: 1.1; }
+
+  /* The intro takes the column, not the design's 42%. */
+  /* 30em keeps the intro under ~75 characters a line. At the full column it
+     ran ~135 at 1023 and ~103 at 768. The review proposed 36em, but Lato sets
+     narrow -- ~7px a character at 16px -- so 36em (576px) still ran 83 a line.
+     sec7tablettest measures characters per line, not the box. (WI-11.) */
+  .regen-diff-wrap > p {
+    max-width: 30em !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-wrap: balance;
+    font-size: 16px !important;
+    line-height: 1.55;
+    margin-top: 6% !important;
+  }
+
+  /* The diagram fills the column. At 51.6% it was a 201px thumbnail on a
+     390px screen, and the detail it exists to show -- roots, worms, the soil
+     profile -- was illegible. */
+  .regen-soil {
+    margin-top: 8% !important;
+  }
+  .regen-soil__stage {
+    width: 100% !important;
+  }
+  /* The "BETTER FOR..." lines are the payoff, not a fifth callout: on phones
+     they sat 15px under the last callout, closer than the callouts sit to
+     each other (35px). (WI-11.) */
+  .regen-diff-better {
+    margin-top: 44px !important;
+  }
+
+  /* The callouts stack. They need separation from each other, and their type
+     needs to be the same size as the intro's -- they are the section's real
+     content, not captions. */
+  /* Centred on narrow screens. The base rule left-aligns them, which is
+     right at desktop where each sits beside the diagram it points at; in a
+     single stacked column that reads as ragged against the centred heading
+     and intro above it. */
+  .regen-callout {
+    margin-top: clamp(28px, 6vw, 44px);
+    text-align: center;
+  }
+  /* Ultra sets far wider than the din-condensed these were at 20px. */
+  .regen-callout h3 {
+    font-size: 18px !important;
+    letter-spacing: 0.02em;
+    line-height: 1.2 !important;
+  }
+  .regen-callout p {
+    font-size: 16px !important;
+    line-height: 1.55;
+    margin-top: 0.4em !important;
+  }
+
+  /* The three "BETTER FOR..." lines are the section's payoff, and at the
+     desktop ratio they landed at 15px -- smaller than the body copy above
+     them. They lead now. The underline rules are sized against the text, so
+     they follow it. */
+  .regen-diff-better p {
+    font-size: 22px !important;
+  }
+}
+
+/* ── Section 7 on tablets and phones (review item WI-11) ───────────────
+   Below 1024 the section was one stacked column at every width, so a tablet
+   got a long ribbon: 1963px at 1023 against 903px at 1024, with callouts
+   running ~138 characters a line. From 600 the callouts take two columns
+   under the diagram -- left, right, left, right in the DOM, so they land in
+   the same corners as at desktop -- and the diagram drops to 88% so it reads
+   as the centre of the layout rather than a full-bleed photo.
+
+   The diagram's artwork has a band of soft empty sky at its top. Lifting it
+   by that band closes the gap between the intro and the picture; the band
+   is a share of the ARTWORK's width, so it is 7% of the column where the
+   artwork is full width and 7% x 0.88 where it is 88%. */
+@media (max-width: 599px) {
+  .regen-soil {
+    margin-top: calc(24px - 7%) !important;
+  }
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .regen-soil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    margin-top: calc(24px - 6.16%) !important;
+  }
+  .regen-soil__stage {
+    grid-column: 1 / -1;
+    width: 88% !important;
+  }
+  .regen-callout {
+    margin-top: 32px;
+  }
+}
+
+/* The callouts' type is sized in vw so it holds the design's proportions
+   against the diagram, which is right at 1440 (17px) and too small at the
+   narrow end of the desktop range: 12px at 1024, 14px at 1200. A floor keeps
+   the copy readable without changing anything at the design's own width --
+   the same treatment section 4's card already has. */
+@media (min-width: 1024px) and (max-width: 1330px) {
+  .regen-callout p {
+    font-size: max(1.16vw, 15px) !important;
+    line-height: 1.5;
+  }
+  .regen-callout h3 {
+    font-size: max(1.54vw, 17px) !important;
+  }
+  /* At this end of the range the 15px copy floor makes "Healthy Soil" wider
+     than its slot, and its right edge ran onto the hen in the diagram (1.5% of
+     its glyphs at 1024). Pulled toward the edge and narrowed to stay on the
+     sky. "Farming for Tomorrow" gets a little more measure from the gutter. */
+  .regen-callout--soil {
+    left: 2.6% !important;
+    width: 19.5% !important;
+  }
+  .regen-callout--farming {
+    width: 17% !important;
+    right: 2.5% !important;
+  }
+  /* The floor makes the blocks taller, and "Healthy Soil" -- the longest of
+     the four -- then reached its own arrow: its copy runs to 51.2% of the
+     diagram at 1024 against an arrow starting at 44.6%. The arrow drops below
+     it here. Same fix as the "Animals" arrow at 1440, and for the same
+     reason: these arrows are placed against the design's text nodes, which
+     are shorter than the copy this build actually sets. */
+  .regen-soil__stage img[src*="arr-soil"] {
+    top: 53.5% !important;
+  }
+}
+
+/* Section 7 sits on top of section 6's dead tail.
+
+   The burlap band's BOX runs about 160px past its own painted tear at 1440 --
+   the mask's bottom rip starts at row 997 of 1262, so the last fifth of the
+   element is transparent by design. That empty tail stacked under this section
+   and read as ~200px of blank white above the "WHAT MAKES" heading; the client
+   asked for about 40. Trimming the burlap's min-height instead ran its tear
+   through the ROC mark and the hen, so the tail stays and section 7 is pulled
+   up over it.
+
+   Gated at 1100px, and measured against the burlap's LAST PAINTED ROW rather
+   than the section box -- the box is exactly what is misleading here. The lift
+   is a share of the viewport while the tail is a share of the burlap's own
+   height, so below 1100px the two diverge: at 1440 the heading cleared
+   section 6's content by 82px, at 768 by 11, and at 390 it overlapped the
+   hen by 3. Narrow screens keep the untouched stack. */
+@media (min-width: 1100px) {
+  .regen-diff-lift {
+    margin-top: -15.5vw;
+  }
+}
+
+/* Narrow screens need the same lift, for the same reason: section 6's mask
+   leaves a transparent tail below its visible tear, and without a lift that
+   tail reads as dead white above this heading -- 124px at 360, 185px at 1023,
+   against the ~40px the client asked for.
+
+   Two values because section 6's own layout switches at 768 (its grid goes to
+   two columns and its min-height floor applies), which changes how much tail
+   it leaves. Measured from the tear rather than the box at each width, then
+   expressed as the vw that lands the heading ~40px below it.
+
+   An earlier note here said an ungated -15.5vw overlapped the hen at 390.
+   That was measured before section 6 gained its 768-860 height floor and
+   before this section had a mobile layout; the clearances are re-verified
+   below and at every width in between. */
+@media (max-width: 767px) {
+  .regen-diff-lift {
+    /* Section 6's transparent tail is a constant 19.1% of its own height at
+       every width -- its mask's rip runs rows 997-1262 of 1262 -- and that
+       height is 58vw here, so the tail is 11.08vw. The lift covers it and the
+       tear's own depth, leaving the heading ~40px below the tear.
+
+       Section 6's hen used to run to 97% of the section here, into the torn
+       band, which the tear cropped through the body. Since WI-1 the logo and
+       hen sit side by side and the hen ends above the tear (<=78.5% of the
+       section, enforced by sec6phonetest), so nothing of section 6 reaches
+       into this space at all. The lift still lands the heading 35-47px below
+       the tear from 360 to 767. */
+    margin-top: calc(-11.08vw - 61px);
+  }
+}
+@media (min-width: 768px) and (max-width: 860px) {
+  /* Section 6 takes its 64vw floor over this range, so its tail is 12.22vw. */
+  .regen-diff-lift {
+    margin-top: calc(-12.22vw - 0px);
+  }
+}
+@media (min-width: 861px) and (max-width: 1099px) {
+  .regen-diff-lift {
+    margin-top: calc(-11.08vw - 5px);
+  }
+}
+
+/* The soil diagram's sky runs behind section 7's intro copy.
+
+   In the design the artwork (Farm-minified 1) is at y5671 while the intro text
+   runs y5850..6214 -- the sky starts 179px above the paragraph and the copy
+   overlaps its upper half. The build had the diagram in plain flow below the
+   text at 54.9% wide, so the sky never reached the paragraph and the copy sat
+   on bare white.
+
+   Two values, both from the design's own nodes: 72.92% is 1513 of the 2075
+   artboard, and the lift is the 179px overlap as a share of that artboard.
+
+   Stacked layouts only get the width. Below lg the callouts fall into normal
+   flow beneath the diagram, so lifting it would pull the soil up over the
+   intro copy instead of the sky sitting behind it. */
+.regen-soil {
+  margin-top: 1%;
+}
+/* The stage IS the artwork's box, so the arrows' design percentages resolve
+   against the thing they point at. Sizing them against the outer wrapper
+   instead would need a percentage multiplied by a ratio, which CSS cannot
+   express -- and hard-coding the product would silently break the moment the
+   artwork's width changed again. */
+.regen-soil__stage {
+  position: relative;
+  width: 54.9%;
+  margin-inline: auto;
+}
+.regen-soil__art {
+  display: block;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .regen-soil {
+    /* 179 of 2075 = 8.63% of the artboard width. */
+    margin-top: -8.63%;
+  }
+  .regen-soil__stage {
+    /* 77.57%, not 72.92%. The design's artwork is 1513 of the 2075 ARTBOARD
+       = 72.92% of the section, but this stage's percentage resolves against
+       the wrapper, which the section's 3% side padding has already narrowed
+       to 94%. 72.92% of that is 68.55% of the section -- measurably short of
+       the design, and the reason the check below asserts the width against
+       the section rather than against this box. */
+    width: 77.57%;
+  }
+}
+
+/* The design's video frame is 53.7% of a 2075px desktop artboard. Carried
+   down to a phone that leaves a small box adrift in empty paper, so it takes
+   the full column below the breakpoint and the design ratio above it. */
+/* The section-2 annotations are set in cqw so their type scales with the video
+   block, matching the design where 40px Ultra is a fixed share of the 1135px
+   frame. Without a container context cqw silently falls back and the type is
+   the wrong size at every breakpoint. */
+/* Section 3's stage: absolute at desktop so the design's coordinates apply
+   directly, a plain stacked block on phones. It carries no Tailwind position
+   utility, so neither breakpoint has to out-specify the other. */
+.regen-agri-stage {
+  position: absolute;
+  inset: 0;
+  /* The design leaves a 238px gap between the tear and the card at 1440. The
+     client halved it twice, so the stage is lifted 20.38% of the band and the
+     gap lands at ~60px. Shifting the whole stage keeps the design's internal
+     spacing exactly, rather than renumbering seven elements. Scoped to the
+     absolute layout: on phones the stage is a stacked block, where the same
+     transform pulled the content 117px above its own section. */
+  transform: translateY(-20.38%);
+}
+
+/* ── Section 3 at tablet widths (review item WI-9) ─────────────────────
+   From 768 the section is back on the design's absolute layout, where the
+   body is 1.574cqw -- 12.1px at 768, below readable and below sec3test's own
+   13px floor (which never ran at this width). 14px, not 15: at 15 the copy
+   runs off the torn bottom of the card at 768. Up to 899 the column is a
+   little wider, set tighter and nudged up to make the room; from 900 the
+   artboard's own proportions have it. */
+@media (min-width: 768px) and (max-width: 1100px) {
+  .regen-agri-stage p {
+    font-size: max(1.574cqw, 14px) !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 899px) {
+  .regen-agri-stage p {
+    line-height: 1.42 !important;
+    width: 46% !important;
+    top: 55.6% !important;
+  }
+}
+
+/* Section 4's card type is sized in cqw so it holds the design's proportions
+   against the card. Between the phone breakpoint and desktop that lands the
+   body at 11px, which is not readable -- a floor keeps it sane without
+   changing the desktop proportions. */
+/* Narrowed to 1036 and rebalanced (review item WI-12). With "THE NEXT" on a
+   24px floor while "Generation" kept scaling, the script's 1.31x lead fell
+   to 1.12-1.14x, the content packed into the top of the card (17.7px above
+   it, 119.4px below at 1024) and the hen divider sat on the paragraph. A
+   lower floor restores the ratio, and every element moves down by a share
+   of how far the card has grown past 768 -- (100cqw - 768px) x 0.17 -- so
+   the block re-centres as the card gets taller. Above 1036 the design's own
+   coordinates already balance. */
+@media (min-width: 768px) and (max-width: 1036px) {
+  .regen-next-stage p {
+    font-size: max(1.447cqw, 15px) !important;
+    /* the floor makes the copy taller, so it needs more of the card's width
+       or it runs past the torn edges */
+    left: 42% !important;
+    width: 48% !important;
+    line-height: 1.34;
+  }
+  .regen-next-stage h2 span:first-child { font-size: max(2.65cqw, 20px) !important; }
+  .regen-next-stage h2 span:last-child  { font-size: max(5.140cqw, 36px) !important; }
+  .regen-next-stage h2 span:first-child { top: 41% !important; }
+  .regen-next-stage h2 span:last-child  { top: 46% !important; }
+  .regen-next-stage img[src*="hen-divider"] { top: 54% !important; }
+  .regen-next-stage span[aria-hidden] { top: 57.5% !important; }
+  .regen-next-stage p { top: 61% !important; }
+  .regen-next-stage h2 span,
+  .regen-next-stage img[src*="hen-divider"],
+  .regen-next-stage span[aria-hidden],
+  .regen-next-stage p {
+    margin-top: calc((100cqw - 768px) * 0.17);
+  }
+}
+
+/* Section 4's stage: the design's absolute coordinates on desktop, a stacked
+   block on phones, same split as section 3. */
+.regen-next-stage {
+  position: absolute;
+  inset: 0;
+}
+/* No one-word last line ("system." alone at 360-430). */
+.regen-next-stage p {
+  text-wrap: pretty;
+}
+
+@media (max-width: 767px) {
+  .regen-next-section { min-height: 0 !important; }
+  .regen-next-stage {
+    position: relative;
+    display: block;
+    /* 40vw of the hens photograph shows above the paper block. At 8% the
+       block started almost at the section's top and the photograph -- the
+       point of the section -- was a 31px strip at 390. (Review item WI-7.) */
+    padding: 40vw 7% 10%;
+    z-index: 2;
+  }
+  /* Descendants, not just children: the heading's two lines carry their own
+     absolute positions now, so a child-only reset left them off-screen. */
+  .regen-next-stage > *,
+  .regen-next-stage h2 span {
+    position: relative !important;
+    left: auto !important; top: auto !important; width: auto !important;
+    max-width: 100%;
+    white-space: normal !important;
+  }
+  .regen-next-stage img[src*="card-next"] { display: none; }
+  .regen-next-stage h2,
+  .regen-next-stage p { background: #F4F2EE; margin: 0; }
+  .regen-next-stage h2 { padding: 7% 7% 2%; }
+  .regen-next-stage p  { padding: 0 7% 8%; font-size: clamp(15px, 3.9vw, 17px) !important; line-height: 1.55; }
+  /* The design ranks the script "Generation" over "THE NEXT": its ink is
+     1.31x as wide. At 7.4vw / 8.6vw that had inverted to 0.79x. Ultra sets
+     far wider per point than the script, so it takes a 1.94x size ratio to
+     get the 1.31x width ratio. Capped, so neither the type nor the body
+     copy keeps growing across 640-767 (the body was 29.9px at 767). */
+  .regen-next-stage h2 span:first-child { font-size: clamp(22px, 6.2vw, 30px) !important; }
+  .regen-next-stage h2 span:last-child  { font-size: clamp(43px, 12vw, 58px) !important; }
+  /* The divider sits between the heading's ground and the copy's, so it needs
+     the same ground across the FULL width or it reads as a notch in the block.
+
+     It is an <img>, so `width` sizes the artwork itself and the ground can
+     only be as wide as the element. An earlier version kept width:12% and
+     tried to spread the ground sideways with a box-shadow, unclipping it with
+     `clip-path: inset(0 -100vw)` -- but clip-path clips everything the
+     element paints, shadows included, so the ground still measured 10% of the
+     viewport. The element takes the full width now and the artwork is sized
+     by max-width instead, which is what `width` was really being asked to do. */
+  .regen-next-stage img[src*="hen-divider"] {
+    width: 100% !important;
+    max-width: 12%;
+    box-sizing: content-box;
+    padding: 3% 44%;
+    margin: 0;
+    display: block;
+    /* The design's rules either side of the hen (review item WI-16). The
+       spans that draw them at desktop are absolutely placed and hidden here,
+       so they are painted as this element's own background instead: 25% of
+       its width at 20% and 80%, which puts them at 15-40% and 60-85%, clear
+       of the hen at 44-56%. */
+    background:
+      linear-gradient(#2B2B2B, #2B2B2B) 20% 50% / 25% 2px no-repeat,
+      linear-gradient(#2B2B2B, #2B2B2B) 80% 50% / 25% 2px no-repeat,
+      #F4F2EE;
+  }
+  .regen-next-stage span[aria-hidden] { display: none; }
+}
+
+/* Section 3 is laid out from the design's absolute coordinates, which is right
+   at desktop but collapses on a phone: the band's own aspect gives a 237px-tall
+   section and cqw type lands at 4.5px. Below 768px it becomes an ordinary
+   stacked block -- card, then heading, then copy -- at readable sizes. */
+@media (max-width: 767px) {
+  /* The band's own aspect (60.82vw) is a desktop ratio; on a phone it reserves
+     778px of empty grass. Let the stacked content set the height instead. */
+  .regen-agri-section {
+    min-height: 0 !important;
+  }
+  .regen-agri-stage {
+    transform: none;
+    position: relative;      /* not static: the grass is absolute inset-0 and
+                                would paint over a static stage */
+    /* A column, so the visual order can differ from the DOM's: heading and
+       copy first, then the carton landing ON the PURCHASE sign, then the
+       "Get 'em here" arrow pointing into it. In DOM order the carton sat at
+       the top of the stack, 332px above the sign it belongs to at 390.
+       (Review item WI-8.) */
+    display: flex;
+    flex-direction: column;
+    padding: 10% 7% 10%;
+    z-index: 2;
+  }
+  .regen-agri-stage h2 { order: 1; }
+  .regen-agri-stage p { order: 2; }
+  .regen-agri-stage img[src*="carton"] { order: 3; }
+  .regen-agri-stage a.regen-agri-cta { order: 4; }
+  .regen-agri-stage img[src*="ann-getem"] { order: 5; }
+  .regen-agri-stage > * {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: 100%;
+  }
+  .regen-agri-stage img[src*="card-agri"],
+  .regen-agri-stage img[src*="burst"] {
+    display: none;
+  }
+  /* The paper ground has to sit behind the heading AND the copy -- they are
+     siblings, so it goes on both with the padding split, rather than on a
+     wrapper that does not exist. Body text on bare grass was unreadable.
+
+     The two grounds must also MEET. Any margin between the elements shows as
+     a stripe of grass through the middle of what should read as one block:
+     the copy's own 0.9em top margin opened a 14px band. The space between
+     heading and copy is padding on the two adjoining edges instead, so the
+     backgrounds stay flush. */
+  .regen-agri-stage h2 {
+    background: #F4F2EE;
+    padding: 7% 7% 2%;
+    margin: 0;
+  }
+  .regen-agri-stage p {
+    background: #F4F2EE;
+    padding: 4% 7% 8%;
+    margin: 0;
+  }
+  /* !important because the sizes are inline styles on the elements -- they
+     carry the design's cqw values, which are correct at desktop and 4.5px on
+     a phone. */
+  /* The design's lockup is a script "Regenerative" over an Ultra
+     "AGRICULTURE" of about the same ink width (0.96x). At 8.2vw / 7.4vw the
+     script came out 0.59x -- a caption over a headline. Capped so neither
+     keeps growing across 640-767. */
+  .regen-agri-stage h2 span:first-child { font-size: clamp(47px, 13.3vw, 61px) !important; line-height: 1 !important; }
+  .regen-agri-stage h2 span:last-child  { font-size: clamp(26px, 7.4vw, 34px) !important; }
+  /* margin-top:0 -- the breathing room above the copy is this rule's own
+     padding-top, so the paper ground stays continuous. A margin here would
+     put grass between the two halves of the block. */
+  /* 15-17px: 3.9vw alone was 14px at 360 and 29.9px at 767. */
+  .regen-agri-stage p { font-size: clamp(15px, 3.9vw, 17px) !important; line-height: 1.55; margin-top: 0 !important; }
+  /* The carton sits ON the sign, as in the design: a negative bottom margin
+     pulls the sign up under it. pointer-events: none on it and the arrow, so
+     the images that now overlap the sign cannot steal its taps -- sec3phonetest
+     hit-tests the sign at two points. */
+  /* The carton sits IN FRONT of the sign, over its top-left corner.
+     sign-purchase.jpg has the bottom of the carton baked into that corner
+     (x0-15%, y0-8% of the sign), because at desktop the real carton sits up
+     and to the left and continues straight into it. Centred above the sign,
+     the carton was cut off by it and the baked piece showed as a stray white
+     curl. Placed over the corner, the carton hides it and still clears the
+     lettering, which starts 14% down. z-index needs !important: the inline
+     zIndex 2 had been beating the 4 here, so the sign (3) painted over it.
+     (sec3cartontest.) */
+  .regen-agri-stage img[src*="carton"] {
+    width: 44% !important; margin: 8% auto -10% 2%; display: block;
+    position: relative; z-index: 4 !important; pointer-events: none;
+  }
+  .regen-agri-stage a.regen-agri-cta { display: block; width: 74% !important; margin: 0 auto; }
+  .regen-agri-stage img[src*="ann-getem"] {
+    width: 28% !important; margin: -9% 4% 0 auto; display: block;
+    align-self: flex-end; z-index: 4; pointer-events: none;
+  }
+}
+
+[data-regen-video-wrap] {
+  container-type: inline-size;
+}
+
+.regen-video {
+  /* Capped at 502px, the width the tablet ramp below starts from. Uncapped,
+     the frame was 660px at 767 and 502px at 768 -- a 24% step that the 768
+     ramp alone cannot remove, because the frame has to leave the "You want
+     more?" annotation room on the paper beside it. Capped, the width only
+     ever grows: 86% of the viewport up to 584px, 502px to 768, then the ramp. */
+  width: min(100%, 502px);
+  margin-top: 6%;
+}
+
+@media (min-width: 768px) {
+  .regen-video {
+    width: min(62.4%, 985px);
+    margin-top: 4%;
+  }
+}
+
+/* From full width to 62.4% in one pixel at 768 was a 38% step (review item
+   WI-14). Across the tablet range the frame instead ramps linearly from 502px
+   at 768 to the 549.5px that min(62.4%, 985px) gives at 1024, so there is no
+   step at either end. 502px leaves the "You want more?" annotation room on
+   the paper to its right; the phone cap above holds the frame at 502px up to
+   here so the two meet. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .regen-video {
+    width: calc(502px + (100vw - 768px) * 0.1855);
+  }
+}
+
+@media (min-width: 768px) {
+  .regen-standards-grid {
+    /* Equal halves. The design's heading spans x379..1694 and the two columns
+       below divide that span evenly; 1.05fr made the copy wider than the hen
+       and the block read as lopsided under a centred heading. */
+    grid-template-columns: 1fr 1fr;
+  }
+  .regen-prefooter-grid {
+    grid-template-columns: 46% 54%;
+  }
+}
+
+/* The pre-footer photograph is composed for a two-column band. Once it
+   stacks, the type needs the darker right-hand side of the frame behind it
+   rather than the carton. */
+@media (min-width: 768px) {
+  .regen-prefooter-section {
+    /* `top`, not `center`: see EggsOpen.js. Centring crops the surplus height
+       half off the top above 2075px, which shears the torn edge flat. */
+    background-position: left top !important;
+  }
+}
+
+/* At the narrow end of the two-column range the photo's cross-fade into the
+   dark ramp ran behind the first line of the heading (4.5:1 at its worst
+   pixel at 768). Shifting the photograph left by 6vw moves the fade out from
+   under the type. Only to 880: below 933 the section is 280px tall and
+   `cover` sizes the image by height, to 934px wide, so a 6vw shift uncovers
+   the right edge from 881 up (all white at 900). Past 880 the fade already
+   clears the heading. (Review item WI-20.) */
+@media (min-width: 768px) and (max-width: 880px) {
+  .regen-prefooter-section {
+    background-position: -6vw top !important;
+  }
+}
+
+/* The pre-footer's photograph carries its own torn top edge, so the section
+   has to sit ON the white band above rather than below it -- otherwise the
+   rip's transparent part shows the page's own white and the seam reads as a
+   straight line again. 2.7vw is the tear's own depth (56 of the asset's 2075
+   width), so the section rises by exactly as much as it is torn away. */
+.regen-prefooter-section {
+  /* The section rises by exactly the tear's RENDERED depth, so the torn rows
+     land on the white band above and nothing of the rip is left inside the
+     section where it would be invisible against its own photograph.
+
+     The asset's rip is 56px of a 2075x622 image, and the background is sized
+     with `cover`, so the rendered depth is 56 x max(width/2075, height/622).
+     A flat 2.7vw matches only while WIDTH drives that scale: below about
+     1035px the section's min-height takes over, the tear stays 25px, and the
+     lift kept shrinking -- at 390px it was 10.5px against a 25px tear, and
+     the seam read as a straight line again. max() of the two terms is the
+     same rule CSS's own `cover` applies. */
+  margin-top: calc(-56 * max(100vw / 2075, clamp(280px, 30vw, 622px) / 622));
+  position: relative;
+  /* Above section 7's lift wrapper, which is z-index 2. At 1 the white band
+     painted straight over this section's torn rows and the seam went back to
+     a hard line -- the tear was rendering correctly the whole time, just
+     underneath. */
+  z-index: 3;
+}
+
+/* The photograph. Anchored to the TOP, never centred: above 2075px the
+   section's min-height clamps at 622 while the width keeps growing, so `cover`
+   scales by width and crops the surplus height -- and `center` takes half of
+   that off the top, which is exactly where the torn edge lives. At 2200 that
+   sheared 19px off the tear and at 2560 some 73px, leaving a dead-straight
+   line across the carton. 768 and up overrides the x-position to `left`. */
+.regen-prefooter-section {
+  background-image: url(/images/regen/prefooter-bg.webp);
+  background-size: cover;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+/* ── Pre-footer on phones (review item WI-5) ───────────────────────────
+   The photograph is the open carton (asset x0-930 of 2075) beside a dark
+   ramp rebuilt for the type. Cropped `right top` on phones, it showed only
+   the ramp: the carton -- the subject of the band -- was absent at every
+   phone width. The type was put on the dark side deliberately; this
+   reverses that by STACKING instead (review question Q10): the carton fills
+   the width above and the type sits below it on solid ground.
+
+   At 223vw the asset's x0-930 is exactly the viewport width. The image is
+   then 66.85vw tall, so a gradient carries it into solid #1C1D15 from 52vw to
+   66vw -- a gradient layer rather than background-color, so the transparent
+   rows of the torn top edge stay transparent -- and the type starts at 69vw,
+   on solid ground rather than in the ramp.
+
+   The section rises by the tear's rendered depth at this scale: 56 of 2075
+   at 223vw is 6.02vw (see the margin-top rule above for why it must). */
+@media (max-width: 767px) {
+  .regen-prefooter-section {
+    background:
+      linear-gradient(to bottom, rgba(28, 29, 21, 0) 0, rgba(28, 29, 21, 0) 52vw,
+                      #1c1d15 66vw, #1c1d15 100%),
+      url(/images/regen/prefooter-bg.webp) left top / 223vw auto no-repeat;
+    margin-top: -6.02vw;
+  }
+  .regen-prefooter-grid > div:last-child {
+    padding-top: 69vw !important;
+  }
+}
+
+/* ── Pre-footer column at desktop (review item WI-20) ───────────────────
+   The type column sat right of the design's: the heading's ink centred at
+   1051 at 1440 against the design's 992. A 38/62 split with a 75% column puts
+   it back. The design's claims are Lato 48px with 0.96px tracking (node
+   5:198) -- 2.31vw and .02em, at 77% of the column -- and the heading carries
+   2.56px tracking on 51.26px (node 5:200), .05em. 1024 and up only: at 768
+   the column would land on the photograph's cross-fade. */
+@media (min-width: 1024px) {
+  .regen-prefooter-grid {
+    grid-template-columns: 38% 62%;
+  }
+  .regen-prefooter-grid > div:last-child {
+    max-width: 75% !important;
+  }
+  /* 2.47vw is the design's own 51.26px on the 2075 artboard. At the 2.62vw
+     this had been, the design's tracking broke the heading onto four lines. */
+  .regen-prefooter-title {
+    font-size: clamp(18px, 2.47vw, 45px) !important;
+    letter-spacing: 0.05em !important;
+  }
+  .regen-prefooter-section p {
+    font-size: clamp(14px, 2.31vw, 40px) !important;
+    letter-spacing: 0.02em;
+    max-width: 77%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* At the design's size the claims run two lines each, as they do in the
+     .fig, and only fit the band with the design's own setting. Its layout
+     data (derivedTextData) pitches the claims at 49px on 48px type and the
+     heading at 61px on 51.26px, with one blank 49px line between the claims
+     where the rule sits. At this build's 1.35 and 1.24 the band grew from
+     432px to 482px at 1440. 1.1 rather than 1.02 for the claims: Lato's
+     descenders touch the next line's caps any tighter. */
+  .regen-prefooter-title {
+    line-height: 1.19 !important;
+  }
+  .regen-prefooter-section p {
+    line-height: 1.1 !important;
+  }
+  .regen-prefooter-section p:first-of-type {
+    margin-top: 0.6em !important;
+    padding-bottom: 0.5em !important;
+  }
+  .regen-prefooter-section p:last-of-type {
+    margin-top: 0.5em !important;
+  }
+}
+
+/* ── Pre-footer type (review item WI-6) ────────────────────────────────
+   The headline closes the page, but below 1024 it fell to 18-20px -- smaller
+   than section 7's 22px "BETTER FOR..." lines just above it (0.82x at 390),
+   so the page's last statement read as a footnote. It now leads them by at
+   least 1.15x: 26px on tablets, and on phones the same 26px floor as the
+   page's other slab headings (WI-1), growing to 29px.
+
+   The claims were 14px on phones against 16px body copy elsewhere, and
+   wrapped to orphans ("practices." alone, 0.26 of the widest line at 360).
+   They take body size and a balanced wrap, and the column uses the full
+   width less a 20px gutter rather than 86% of it. */
+@media (max-width: 1023px) {
+  .regen-prefooter-title {
+    font-size: 26px !important;
+    letter-spacing: 0.03em !important;
+  }
+}
+@media (max-width: 767px) {
+  .regen-prefooter-title {
+    font-size: clamp(26px, 6.8vw, 29px) !important;
+  }
+  .regen-prefooter-grid > div:last-child {
+    max-width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .regen-prefooter-section p {
+    font-size: clamp(16px, 4.4vw, 18px) !important;
+  }
+}
 
 /* ─────────────────────────────────────────────────────────────
    JAMMY LANDING PAGE (/jammy)
