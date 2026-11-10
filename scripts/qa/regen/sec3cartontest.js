@@ -43,6 +43,11 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     ck(`baked carton fragment on the sign is covered at ${w}`, m.frag>0 && m.covered/m.frag>=0.98, `${m.covered}/${m.frag} fragment samples covered`);
     ck(`carton clear of the sign's lettering at ${w}`, m.onText===0, `${m.onText} samples on the lettering`);
     ck(`carton fully on screen at ${w}`, m.left>=0 && m.right<=m.iw, `${Math.round(m.left)}..${Math.round(m.right)} of ${m.iw}`);
+    // The business asked (9 Nov 2026) for the carton as large as possible on
+    // mobile. The full screen width is the largest that still covers the
+    // sign's baked corner and clears its lettering at every phone width; the
+    // artwork's own transparent corners keep it off the screen edges.
+    ck(`carton as large as the screen allows at ${w}`, (m.right-m.left)>=m.iw*0.99, `${Math.round((m.right-m.left)/m.iw*100)}% of the screen`);
     await p.close();
   }
   await b.close();

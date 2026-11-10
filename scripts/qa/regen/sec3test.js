@@ -27,7 +27,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
               cardPct:+(card.width/innerWidth*100).toFixed(1),
               signPct:+(sr.width/innerWidth*100).toFixed(1),
               signAspect:+(sr.width/sr.height).toFixed(2),
-              isLink:!!signLink, signHref:signLink&&signLink.getAttribute('href'), signAlt:sign.getAttribute('alt'),
+              isLink:!!signLink, signHref:signLink&&signLink.getAttribute('href'), signTarget:signLink&&signLink.getAttribute('target'), signRel:signLink&&signLink.getAttribute('rel'), signAlt:sign.getAttribute('alt'),
               grassOK:grass&&grass.complete&&grass.naturalWidth>0,
               burst:!!s.querySelector('img[src*="burst"]'),
               carton:!!s.querySelector('img[src*="carton"]'),
@@ -124,6 +124,8 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     // The business asked (5 Nov 2026) for the sign to go to the store locator.
     // It had linked to /products.
     ck('sign links to the store locator', m.signHref==='/store-locator', String(m.signHref));
+    // ...in a new window, at the business's request (9 Nov 2026).
+    ck('store locator opens in a new window', m.signTarget==='_blank' && /noopener/.test(m.signRel||''), `target=${m.signTarget} rel=${m.signRel}`);
     ck('sign carries its wording as alt text', /purchase our organic/i.test(m.signAlt||''), m.signAlt);
     ck('grass ground loads', m.grassOK);
     ck('carton present', m.carton);

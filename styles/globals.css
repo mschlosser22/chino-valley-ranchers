@@ -905,8 +905,14 @@ html {
      lettering, which starts 14% down. z-index needs !important: the inline
      zIndex 2 had been beating the 4 here, so the sign (3) painted over it.
      (sec3cartontest.) */
+  /* As large as possible, at the business's request (9 Nov 2026): the full
+     screen width, breaking out of the stage's 7% side padding. That is the
+     largest size that still covers the baked corner and clears the lettering
+     at every phone width (sec3cartontest); the artwork's own transparent
+     corners keep the carton off the screen edges. */
   .regen-agri-stage img[src*="carton"] {
-    width: 44% !important; margin: 8% auto -10% 2%; display: block;
+    width: 100vw !important; max-width: none !important;
+    margin: 8% auto -14% calc(50% - 50vw); display: block;
     position: relative; z-index: 4 !important; pointer-events: none;
   }
   .regen-agri-stage a.regen-agri-cta { display: block; width: 74% !important; margin: 0 auto; }
