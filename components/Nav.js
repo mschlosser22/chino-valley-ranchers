@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Fragment, useState, useContext, useEffect } from "react";
+import { Fragment, useState, useContext, useEffect, useCallback } from "react";
 import { Disclosure, Dialog, Menu, Transition } from "@headlessui/react";
 import {
   MenuIcon,
@@ -10,6 +10,14 @@ import {
 import { useCMS } from "tinacms";
 
 import { TinaCMS, TinaProvider } from "tinacms";
+
+import {
+  useMegaMenu,
+  MegaMenuTrigger,
+  MegaMenuPanel,
+  MobileEggsMenu,
+} from "./nav/MegaMenu";
+import { StoryMenu } from "./nav/StoryMenu";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -28,6 +36,17 @@ export function Nav(props) {
   //console.log(`CMS is enabled: ${cms.enabled}`)
 
   const [open, setOpen] = useState(false);
+  // OUR STORY's dropdown and the OUR EGGS mega menu: opening either closes
+  // the other, so only one is ever open.
+  const [storyOpen, setStoryOpen] = useState(false);
+  const megaMenu = useMegaMenu({ onOpen: () => setStoryOpen(false) });
+  const setStoryMenu = useCallback(
+    (next) => {
+      if (next) megaMenu.hide();
+      setStoryOpen(next);
+    },
+    [megaMenu.hide]
+  );
 
   //const {navigation} = props
   const navigation = [
@@ -43,7 +62,9 @@ export function Nav(props) {
         { name: "Careers", href: "/opportunities" },
       ],
     },
-    { name: "Our Eggs", href: "/products", current: false },
+    // Opens the mega menu (components/nav/MegaMenu.js); /products is linked
+    // from inside it.
+    { name: "Our Eggs", href: "/products", current: false, mega: true },
     { name: "Recipes", href: "/recipes", current: false },
     { name: "News", href: "/news", current: false },
     { name: "Being Humane", href: "/being-humane", current: false },
@@ -82,7 +103,7 @@ export function Nav(props) {
 
                 <div
                   className={`hidden lg:block z-50 min-w-[237px] ${
-                    small ? "pt-2" : "pt-28"
+                    small ? "pt-2" : "pt-28 cvr-nav-logo--large"
                   }`}
                 >
                   <a href="/">
@@ -108,69 +129,22 @@ export function Nav(props) {
                 </div>
 
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                  <div className="hidden lg:block lg:ml-6">
+                  <div className="hidden lg:block lg:ml-6 cvr-nav-items">
                     <div className="flex space-x-1">
                       {navigation.map((item) =>
-                        item.children && item.children.length ? (
-                          <Menu
+                        item.mega ? (
+                          <MegaMenuTrigger
                             key={item.name}
-                            as="div"
-                            className="relative text-left z-50"
-                          >
-                            {({ open }) => (
-                              <div>
-                                <Menu.Button className="flex items-center text-sm font-medium text-gray-900 rounded-md focus:outline-none">
-                                  <span
-                                    className={`px-3 py-2 rounded-md text-sm font-medium text-white uppercase ${
-                                      item.current
-                                        ? "bg-gray-900"
-                                        : "hover:bg-gray-700 hover:text-white"
-                                    } ${
-                                      item.primary
-                                        ? "bg-yellow-500 text-gray-700"
-                                        : null
-                                    }`}
-                                  >
-                                    {item.name}
-                                  </span>
-                                </Menu.Button>
-
-                                <Transition
-                                  show={open}
-                                  as={Fragment}
-                                  enter="transition ease-out duration-100"
-                                  enterFrom="transform opacity-0 scale-95"
-                                  enterTo="transform opacity-100 scale-100"
-                                  leave="transition ease-in duration-75"
-                                  leaveFrom="transform opacity-100 scale-100"
-                                  leaveTo="transform opacity-0 scale-95"
-                                >
-                                  <Menu.Items
-                                    static
-                                    className="origin-top-right absolute z-30 right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                                  >
-                                    <div className="py-1">
-                                      {item.children.map((child) => (
-                                        <Menu.Item key={child.name}>
-                                          {({ active }) => (
-                                            <a
-                                              href={child.href}
-                                              className={classNames(
-                                                active ? "bg-gray-100" : "",
-                                                "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                              )}
-                                            >
-                                              {child.name}
-                                            </a>
-                                          )}
-                                        </Menu.Item>
-                                      ))}
-                                    </div>
-                                  </Menu.Items>
-                                </Transition>
-                              </div>
-                            )}
-                          </Menu>
+                            menu={megaMenu}
+                            className="px-3 py-2 rounded-md text-sm font-medium text-white uppercase hover:bg-gray-700"
+                          />
+                        ) : item.children && item.children.length ? (
+                          <StoryMenu
+                            key={item.name}
+                            item={item}
+                            open={storyOpen}
+                            onOpenChange={setStoryMenu}
+                          />
                         ) : (
                           <a
                             key={item.name}
@@ -194,7 +168,7 @@ export function Nav(props) {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:pr-0">
-                  <div className="gap-2 hidden lg:flex lg:items-center">
+                  <div className="gap-2 hidden lg:flex lg:items-center cvr-nav-social">
                     <a
                       href="https://www.instagram.com/chinovalleyranchers/"
                       className="cursor-pointer inline-block h-[28px]"
@@ -261,10 +235,17 @@ export function Nav(props) {
               </div>
             </div>
 
-            <Disclosure.Panel className="lg:hidden">
+            <MegaMenuPanel menu={megaMenu} />
+
+            <Disclosure.Panel className="lg:hidden cvr-mobile-menu">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigation.map((item) =>
-                  item.children && item.children.length ? (
+                  item.mega ? (
+                    <MobileEggsMenu
+                      key={item.name}
+                      itemClassName="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-1 rounded-md text-base font-medium"
+                    />
+                  ) : item.children && item.children.length ? (
                     <div key={item.name}>
                       <a
                         key={item.name}

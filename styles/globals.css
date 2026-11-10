@@ -2008,3 +2008,347 @@ html {
   height: auto;
 }
 
+
+/* ── Mega menu (OUR EGGS) ──────────────────────────────────────────────
+   Figma "CVR Mega Menu" (Nov 2026), desktop only (1024px and up). Geometry
+   is the design's, as proportions of the nav's content box -- max-w-7xl
+   less px-8, 1216px at 1280 and up -- at 0.84 CSS px per design unit, the
+   ratio at which the design's bar (75 -> 63px), logo (264 -> 222px) and nav
+   items line up with the live ones. --u is one CSS px at the full 1216px.
+
+   Two colours are nudged from the Figma for WCAG AA, everything else is as
+   drawn: the mid blue #3487B0 -> #307EA4 (white text 4.01 -> 4.52:1) and the
+   active tab's text #00608B -> #004F76 (on #76C3EA 3.53 -> 4.52:1). The
+   product links and headings are DIN at 21.8px, which counts as large text,
+   so the design's orange-on-blue (3.33:1) and heading bars (3.97:1) pass as
+   drawn; their size never drops below 18.7px for that reason.
+   (scripts/qa/nav/megamenu.js) */
+.mm-trigger {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.mm-trigger.mm-trigger--open {
+  color: #f9a115;
+}
+.mm-chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+.mm-trigger--open .mm-chevron {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mm-chevron { transition: none; }
+}
+
+.mm-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 40; /* under the logo (z-50), which overhangs the panel as drawn */
+  background: rgba(0, 96, 139, 0.97);
+}
+@media (max-width: 1023px) {
+  .mm-panel { display: none !important; }
+}
+.mm-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.mm-stage {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 1216 / 460;
+}
+.mm-stage * {
+  --u: calc(100cqw / 1216);
+  --fs: max(18.7px, calc(21.8 * var(--u)));
+}
+
+/* Category tabs and the all-eggs link. */
+.mm-tabs {
+  position: absolute;
+  left: 0.21%;
+  top: 39.78%;
+  width: 16.78%;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2.6 * var(--u));
+}
+.mm-tab {
+  height: max(30px, calc(36.1 * var(--u)));
+  padding: 0 0 0 calc(25.2 * var(--u));
+  border-radius: 3px 3px 0 0;
+  background: #307ea4;
+  color: #ffffff;
+  text-align: left;
+  font-family: din-condensed, "Arial Narrow", sans-serif;
+  font-size: max(14px, calc(15.5 * var(--u)));
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.mm-tab--active {
+  background: #76c3ea;
+  color: #004f76;
+}
+.mm-tab:focus-visible,
+.mm-link:focus-visible,
+.mm-all:focus-visible {
+  outline: 2px solid #f9a115;
+  outline-offset: 2px;
+}
+.mm-all {
+  margin-top: calc(14 * var(--u));
+  color: #ffffff;
+  font-family: din-condensed, "Arial Narrow", sans-serif;
+  font-size: max(14px, calc(15.5 * var(--u)));
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.mm-all:hover {
+  color: #f9a115;
+}
+
+/* The design's thin rules ("Navigation Structural Elements"). */
+.mm-rule {
+  position: absolute;
+  height: 2px;
+  background: #3487b0;
+  pointer-events: none;
+}
+.mm-rule--conn-l { left: 16.99%; width: 4.14%; top: 43.83%; }
+.mm-rule--conn-r { left: 67.19%; width: 4.19%; top: 43.83%; }
+.mm-rule--div-l  { left: 21.13%; width: 30.1%; top: 88.7%; }
+.mm-rule--div-r  { left: 67.27%; width: 30.02%; top: 88.7%; }
+
+/* Product columns. */
+.mm-col {
+  position: absolute;
+  top: 8.26%;
+}
+.mm-col--1 { left: 24.18%; width: 22.5%; }
+.mm-col--2 { left: 47.2%; width: 19.6%; }
+.mm-col--1.mm-col--wide { width: 42%; }
+.mm-group + .mm-group {
+  margin-top: calc(23 * var(--u));
+}
+.mm-heading {
+  margin: 0;
+  height: max(calc(35.3 * var(--u)), 1.3em);
+  display: flex;
+  align-items: center;
+  font-family: din-condensed, "Arial Narrow", sans-serif;
+  font-size: var(--fs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.mm-heading span {
+  display: inline-block;
+  padding: 0 calc(5 * var(--u));
+  line-height: max(calc(27.7 * var(--u)), 1.1em);
+  border-radius: 3px;
+  background: rgba(131, 206, 244, 0.9);
+  color: #00608b;
+  white-space: nowrap;
+}
+.mm-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mm-list li {
+  line-height: max(calc(35.3 * var(--u)), 1.3em);
+}
+.mm-link {
+  /* inline-block so a two-line product keeps its indent on both lines. */
+  display: inline-block;
+  padding-left: calc(5 * var(--u));
+  color: #ffffff;
+  font-family: din-condensed, "Arial Narrow", sans-serif;
+  font-size: var(--fs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+/* Hover (and keyboard focus) is the design's "Hover" frame: the product turns
+   orange with a 2px orange rule under it, and the card follows. */
+.mm-link:hover,
+.mm-link:focus-visible,
+.mm-link--active {
+  color: #f9a115;
+  text-decoration: underline;
+  text-decoration-color: #f9a115;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+}
+
+/* Featured product card. */
+.mm-card-slot {
+  position: absolute;
+  left: 71.38%;
+  top: 11.52%;
+  width: 26.07%;
+  aspect-ratio: 377 / 400;
+}
+/* Below the full 1216px the card's type stops shrinking at its readable
+   floor while the card keeps shrinking, and the longer descriptions ran off
+   its bottom edge (10px at 1024). The card grows ~5% taller there instead;
+   its position and width stay the design's. */
+@media (max-width: 1279px) {
+  .mm-card-slot { aspect-ratio: 377 / 420; }
+}
+.mm-card {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: calc(33.6 * var(--u));
+  background: #307ea4;
+  /* The design's 4px inside stroke at 42% white, and its 50% inner shadow. */
+  box-shadow: inset 0 0 0 calc(3.36 * var(--u)) rgba(255, 255, 255, 0.42),
+    inset 0 0 calc(9.24 * var(--u)) rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  text-decoration: none;
+}
+.mm-card__ground {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mm-card__ground::before {
+  content: "";
+  position: absolute;
+  left: 4.24%;
+  top: -18.75%;
+  width: 99.2%;
+  height: 82.5%;
+  background: url(/images/mega-menu/egg-texture.png) center / 100% 100% no-repeat;
+}
+.mm-card__product,
+.mm-card__deco {
+  position: absolute;
+  max-width: none;
+  object-fit: contain;
+  pointer-events: none;
+}
+.mm-card__product { z-index: 1; }
+.mm-card__deco { z-index: 2; }
+/* Pinned to the card's bottom with a minimum height, so text that fits
+   starts at the design's 58.5% and longer text grows UP over the pack's
+   transparent lower edge rather than off the card. */
+.mm-card__text {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 5%;
+  min-height: 36.5%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(6 * var(--u));
+  text-align: center;
+}
+.mm-card__title {
+  font-family: din-condensed, "Arial Narrow", sans-serif;
+  /* White on #307EA4 is 4.52:1, so unlike the links the title does not need
+     the large-text floor and can scale down with the card. */
+  font-size: max(15px, calc(21.8 * var(--u)));
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.mm-card__desc {
+  padding: 0 2%;
+  font-family: Lato, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: max(12px, calc(13.44 * var(--u)));
+  line-height: 1.4;
+}
+
+/* Mega menu, phones and tablets: OUR EGGS expands inside the hamburger menu. */
+.mm-mobile {
+  padding: 4px 0 8px 12px;
+}
+.mm-mobile__cat + .mm-mobile__cat {
+  margin-top: 6px;
+}
+.mm-mobile__cat-label {
+  margin: 10px 0 2px;
+  padding: 0 12px;
+  color: #76c3ea;
+  font-family: din-condensed, "Arial Narrow", sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.mm-mobile__heading {
+  margin: 6px 0 0;
+  padding: 0 12px;
+  color: #9ca3af;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.mm-mobile__link {
+  display: block;
+  padding: 7px 12px 7px 24px;
+  border-radius: 6px;
+  color: #d1d5db;
+  font-size: 16px;
+  line-height: 24px;
+}
+.mm-mobile__link:hover,
+.mm-mobile__link:focus-visible {
+  background: #374151;
+  color: #ffffff;
+}
+
+/* Nav bar from 1024 to 1279px. The seven items need ~800px on one line and
+   the bar had ~607px left after the 237px logo and the social icons, so
+   "OUR STORY", "BEING HUMANE" and "CONTACT CVR" each broke onto two or three
+   lines. Here the items tighten (13px, 8px padding), the large logo scales to
+   the same 0.79 the mega menu panel does at 1024 (186px), and below 1150px the
+   social icons -- also in the footer -- leave the bar. 1280 and up is
+   unchanged. (scripts/qa/nav/megamenu.js "one line, in one row") */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .cvr-nav-logo--large img {
+    width: 186px !important;
+    height: auto !important;
+  }
+  .cvr-nav-items {
+    margin-left: 0.5rem !important;
+  }
+  /* OUR STORY's padding is on the span inside its Menu.Button, not the
+     button itself. */
+  .cvr-nav-items a,
+  .cvr-nav-items .mm-trigger,
+  .cvr-nav-items button > span {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 13px !important;
+    white-space: nowrap;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1149px) {
+  .cvr-nav-social {
+    display: none !important;
+  }
+}
+
+/* The phone menu sits in the fixed nav, so when it is taller than the screen
+   it has to scroll inside itself; it ran off the bottom with no way to reach
+   the last items. Capped at the screen less the 4rem bar. */
+.cvr-mobile-menu {
+  max-height: calc(100vh - 4rem);
+  max-height: calc(100dvh - 4rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
