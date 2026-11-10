@@ -265,6 +265,7 @@ export function RegenerativeHero() {
           clears both and takes the paper to where section 2's heading
           begins. */}
       <div
+        className="regen-hero-runout"
         style={{
           // Deep enough to hold everything that overhangs the band: the
           // carton to 112.3% and the hens, once lowered clear of the tear,

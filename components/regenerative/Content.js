@@ -167,6 +167,10 @@ export function Content() {
             destination can change without touching the layout rules. */}
         <a
           href="/store-locator"
+          /* A new window, at the business's request (9 Nov 2026), so the
+             visitor keeps their place on this page. */
+          target="_blank"
+          rel="noopener noreferrer"
           className="absolute block regen-agri-cta"
           /* The red board itself is 504x365 (Rounded Rectangle 1 copy 4),
              aspect 1.381, which matches sign-purchase.jpg's 1.387. Layer 21's
@@ -176,7 +180,7 @@ export function Content() {
         >
           <img
             src="/images/regen/sign-purchase.jpg"
-            alt="Purchase our organic regenerative eggs: find a store near you"
+            alt="Purchase our organic regenerative eggs: find a store near you (opens in a new window)"
             className="block w-full"
             style={{ boxShadow: "0 10px 26px rgba(0,0,0,0.28)" }}
           />

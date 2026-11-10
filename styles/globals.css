@@ -318,6 +318,25 @@ html {
   }
 }
 
+/* Hero carton on phones: the full screen width, at the business's request
+   (9 Nov 2026), matching section 3's. Its top sits at 60% of the band, the
+   highest it can go with its artwork clear of "ORGANIC REGENERATIVE EGGS" at
+   every phone width -- only its transparent corner meets the band. At this
+   size it reaches about 23vw further down than before, so the paper run-out
+   below the tear grows by that much to keep it inside the section.
+   (sec1phonetest.) */
+@media (max-width: 639px) {
+  .regen-hero-carton {
+    width: 100vw !important;
+    max-width: none !important;
+    left: 0 !important;
+    top: 60% !important;
+  }
+  .regen-hero-runout {
+    height: calc(36vw + 12px) !important;
+  }
+}
+
 /* ── Section 6 on phones (review item WI-1) ─────────────────────────────
    The burlap's mask is stretched to the section's own height and its bottom
    tear starts at row 998 of 1262, so the last 21% of the section is torn away
@@ -905,8 +924,14 @@ html {
      lettering, which starts 14% down. z-index needs !important: the inline
      zIndex 2 had been beating the 4 here, so the sign (3) painted over it.
      (sec3cartontest.) */
+  /* As large as possible, at the business's request (9 Nov 2026): the full
+     screen width, breaking out of the stage's 7% side padding. That is the
+     largest size that still covers the baked corner and clears the lettering
+     at every phone width (sec3cartontest); the artwork's own transparent
+     corners keep the carton off the screen edges. */
   .regen-agri-stage img[src*="carton"] {
-    width: 44% !important; margin: 8% auto -10% 2%; display: block;
+    width: 100vw !important; max-width: none !important;
+    margin: 8% auto -14% calc(50% - 50vw); display: block;
     position: relative; z-index: 4 !important; pointer-events: none;
   }
   .regen-agri-stage a.regen-agri-cta { display: block; width: 74% !important; margin: 0 auto; }
