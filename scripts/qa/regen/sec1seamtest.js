@@ -17,10 +17,25 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
     const m=await p.evaluate(()=>{
       const img=document.querySelector('img[src*="hero-cattle"]');
       const stage=img.parentElement.getBoundingClientRect();
-      // Overhanging artwork, so their columns can be skipped.
-      const skip=[...document.querySelectorAll('section img')].filter(e=>e!==img&&e.closest('section')===img.closest('section'))
-        .map(e=>e.getBoundingClientRect()).filter(r=>r.top<stage.bottom+2&&r.bottom>stage.bottom-2).map(r=>[r.left,r.right]);
-      return {y:stage.bottom, skip};
+      // Overhanging artwork (carton, hens): skip the columns where it is
+      // OPAQUE on this row. Skipping its whole box stopped working once the
+      // phone carton went full width (9 Nov 2026): every column was skipped
+      // and the check measured nothing (NaN), though the carton's
+      // transparent corners leave the seam visible either side.
+      const y0=stage.bottom, skip=[];
+      for(const e of [...document.querySelectorAll('section img')].filter(e=>e!==img&&e.closest('section')===img.closest('section'))){
+        const r=e.getBoundingClientRect();
+        if(!(r.top<y0+2&&r.bottom>y0-2)||!e.naturalWidth) continue;
+        const cv=document.createElement('canvas');cv.width=e.naturalWidth;cv.height=e.naturalHeight;
+        const cx=cv.getContext('2d');cx.drawImage(e,0,0);
+        const iy=Math.min(cv.height-1,Math.max(0,Math.floor((y0-r.top)/r.height*cv.height)));
+        const row=cx.getImageData(0,iy,cv.width,1).data;
+        let start=null;
+        for(let ix=0;ix<=cv.width;ix++){const op=ix<cv.width&&row[ix*4+3]>10;
+          if(op&&start===null)start=ix;
+          if(!op&&start!==null){skip.push([r.left+start/cv.width*r.width, r.left+ix/cv.width*r.width]);start=null;}}
+      }
+      return {y:y0, skip};
     });
     const y=Math.floor(m.y);
     const png=await p.screenshot({clip:{x:0,y,width:w,height:1}});
@@ -33,7 +48,7 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       n++; if(L<150) dark++;
     }
     const share=dark/n;
-    ck(`no photo row at the paper seam at ${w} DPR${dpr}`, share<0.05, `${(share*100).toFixed(1)}% dark at y=${y}`);
+    ck(`no photo row at the paper seam at ${w} DPR${dpr}`, n>0&&share<0.05, `${(share*100).toFixed(1)}% dark at y=${y} over ${n} samples`);
     await p.close();
   }
   await b.close();

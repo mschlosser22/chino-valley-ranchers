@@ -34,13 +34,32 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
       const rg=document.createRange(); rg.selectNodeContents(sub); const subInk=rg.getBoundingClientRect();
       return {scale:+scale.toFixed(3), sub:sizeOf(/organic regenerative eggs/i), welcome:sizeOf(/welcome to/i),
               wmL:+wm.left.toFixed(1), wmR:+wm.right.toFixed(1), vw:innerWidth,
-              subBottom:subInk.bottom, cartonTop:carton.top, cartonBottom:carton.bottom, secBottom:sec.bottom};
+              subBottom:subInk.bottom, cartonTop:carton.top, cartonBottom:carton.bottom, secBottom:sec.bottom,
+              cartonW:carton.width, cartonL:carton.left, cartonR:carton.right,
+              // The carton's OPAQUE pixels against the sub-line's glyphs. Its
+              // box overlaps the band by design; the artwork must not.
+              onSub:await (async()=>{const img=document.querySelector('img[src*="carton.webp"]');await img.decode().catch(()=>{});
+                const cv=document.createElement('canvas');cv.width=img.naturalWidth;cv.height=img.naturalHeight;
+                const x=cv.getContext('2d');x.drawImage(img,0,0);const d=x.getImageData(0,0,cv.width,cv.height).data;
+                let hits=0;const tw=document.createTreeWalker(sub,NodeFilter.SHOW_TEXT);let n;
+                while(n=tw.nextNode()){for(let i=0;i<n.length;i++){if(/\s/.test(n.data[i]))continue;
+                  const r=document.createRange();r.setStart(n,i);r.setEnd(n,i+1);const q=r.getBoundingClientRect();
+                  for(const fx of [.2,.5,.8])for(const fy of [.2,.5,.8]){const X=q.left+q.width*fx,Y=q.top+q.height*fy;
+                    if(X<carton.left||X>=carton.right||Y<carton.top||Y>=carton.bottom)continue;
+                    const ix=Math.floor((X-carton.left)/carton.width*cv.width),iy=Math.floor((Y-carton.top)/carton.height*cv.height);
+                    if(d[(iy*cv.width+ix)*4+3]>40)hits++;}}}
+                return hits;})()};
     });
     console.log(`  --- ${w}px (lockup scale ${m.scale}) ---`);
     ck(`${w}: sub-line legible`, m.sub>=10, `${m.sub}px rendered`);
     ck(`${w}: "WELCOME TO" legible`, m.welcome>=12, `${m.welcome}px rendered`);
     ck(`${w}: wordmark stays on screen`, m.wmL>=0 && m.wmR<=m.vw, `x ${m.wmL}..${m.wmR} of ${m.vw}`);
     ck(`${w}: carton inside the section`, m.cartonBottom<=m.secBottom+1, `${(m.cartonBottom-m.secBottom).toFixed(1)}px past`);
+    // The business asked (9 Nov 2026) for the hero carton bigger on mobile,
+    // matching section 3's: the full screen width.
+    ck(`${w}: carton as large as the screen allows`, m.cartonW>=m.vw*0.99, `${Math.round(m.cartonW/m.vw*100)}% of the screen`);
+    ck(`${w}: carton on screen`, m.cartonL>=-0.5 && m.cartonR<=m.vw+0.5, `x ${Math.round(m.cartonL)}..${Math.round(m.cartonR)}`);
+    ck(`${w}: carton artwork clear of the sub-line`, m.onSub===0, `${m.onSub} glyph samples under the carton`);
     await p.close();
   }
   await b.close();
