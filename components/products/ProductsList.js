@@ -48,8 +48,8 @@ export function ProductsList(props) {
                     </p>
                   ))}
                 </div>
-                <div className="col-span-12 lg:col-span-7 relative h-[128px] lg:h-full">
-                  <div className="lg:absolute z-0 min-h-full w-full mb-8 lg:mb-0">
+                <div className="col-span-12 lg:col-span-7 relative lg:h-full">
+                  <div className="cvr-product-photo lg:absolute z-0 min-h-full w-full mb-8 lg:mb-0">
                     <Image
                       src={product.photo.src}
                       className="h-full w-full object-cover"
@@ -100,8 +100,8 @@ export function ProductsList(props) {
                     {product.description}
                   </p>
                 </div>
-                <div className="col-span-12 lg:col-span-7 relative h-[128px] lg:h-full">
-                  <div className="lg:absolute z-0 min-h-full w-full mb-8 lg:mb-0">
+                <div className="col-span-12 lg:col-span-7 relative lg:h-full">
+                  <div className="cvr-product-photo lg:absolute z-0 min-h-full w-full mb-8 lg:mb-0">
                     <Image
                       src={product.photo.src}
                       className="h-full w-full object-cover"

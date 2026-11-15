@@ -1,0 +1,19 @@
+{
+  "name": "Organic Regenerative",
+  "order": 0,
+  "description": [
+    "Our Organic Regenerative eggs go beyond organic. They come from pasture-raised hens on family farms that use regenerative practices like cover crops, compost, rotational grazing and keeping living roots in the ground year-round. These practices build healthier soil and support a balanced ecosystem, and our hens help by naturally fertilizing the land and keeping pests in check.",
+    "As the original trailblazers of organic egg farming, we’re proud that these eggs are Regenerative Organic Certified, one of the highest standards for organic agriculture in the world. Better for the land, better for our hens, and better eggs for you."
+  ],
+  "photo": {
+    "src": "/images/products/regenerative.webp",
+    "alt": "Organic Regenerative Eggs"
+  },
+  "button": {
+    "link": {
+      "url": "/regenerative"
+    },
+    "text": "Learn More"
+  },
+  "blocks": []
+}
