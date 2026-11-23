@@ -2351,6 +2351,8 @@ html {
   max-height: calc(100dvh - 4rem);
   overflow-y: auto;
   overscroll-behavior: contain;
+}
+
 /* /products: phones and tablets. The slot's h-[128px] never compiled (no JIT), so
    the fill image only had the button's height and cartons painted ~60px tall.
    Give the slot a real box: full column width (capped on tablets), 0.6 aspect. */
