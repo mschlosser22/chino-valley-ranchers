@@ -169,9 +169,24 @@ function pct([l, t, w, h]) {
   return { left: `${l}%`, top: `${t}%`, width: `${w}%`, height: `${h}%` };
 }
 
+/* A box that hangs off the card's right edge (the Jammy slice) keeps the
+   Figma placement while it fits, and slides left just enough to stay 16px
+   inside the window where the card sits near the edge (~1100-1300px). The
+   room right of the card is the page gutter, (100vw - 100cqw) / 2, plus the
+   2.55% of the stage between the card slot and the stage's right edge. The
+   16px also covers a classic scrollbar, which 100vw includes. */
+function pctKeepOnScreen(box) {
+  const [l, , w] = box;
+  const style = pct(box);
+  if (l + w > 100) {
+    style.left = `min(${l}%, calc(${100 - w}% + (100vw - 100cqw) / 2 + 2.55cqw - 16px))`;
+  }
+  return style;
+}
+
 function ProductCard({ id }) {
   const p = PRODUCTS[id];
-  const eggs = p.eggs === undefined ? CARD_DEFAULTS.eggs : p.eggs;
+  const eggs = p.eggs || null;
   const burst = p.burst || CARD_DEFAULTS.burst;
   return (
     /* The card repeats the hovered product's link for the mouse; it is
@@ -193,7 +208,13 @@ function ProductCard({ id }) {
         decoding="async"
       />
       {eggs && (
-        <img src="/images/mega-menu/two-eggs.png" alt="" className="mm-card__deco" style={pct(eggs)} />
+        <img
+          src={`/images/mega-menu/${eggs.src}.webp`}
+          alt=""
+          className="mm-card__deco"
+          style={pctKeepOnScreen(eggs.box)}
+          decoding="async"
+        />
       )}
       <img src="/images/mega-menu/burst.svg" alt="" className="mm-card__deco" style={pct(burst)} />
       {/* Title and description stack, so a two-line title pushes the copy
@@ -228,9 +249,14 @@ export function MegaMenuPanel({ menu }) {
   useEffect(() => {
     if (!menu.open) return;
     const t = setTimeout(() => {
+      const srcs = new Set();
       Object.values(PRODUCTS).forEach((p) => {
+        srcs.add(p.image);
+        if (p.eggs) srcs.add(p.eggs.src);
+      });
+      srcs.forEach((s) => {
         const img = new Image();
-        img.src = `/images/mega-menu/${p.image}.webp`;
+        img.src = `/images/mega-menu/${s}.webp`;
       });
     }, 400);
     return () => clearTimeout(t);

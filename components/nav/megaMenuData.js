@@ -15,11 +15,27 @@
    the card (377x400 design units): [left, top, width, height]. Most packaging
    shots overhang the card's top and sides, as drawn. The Veg-A-Fed Omega-3
    card in the Figma reuses the Organic Free Range image as a placeholder, so it
-   takes the Veg-A-Fed card's layout, which is the same packaging format. */
+   takes the Veg-A-Fed card's layout, which is the same packaging format.
+
+   Shell-egg accents (CVR feedback, Figma "CVR Mega Menu (1)", Nov 2026): the
+   old two-egg shot is replaced per card by a polished shot with a soft
+   shadow, in the colour of that product's eggs (each carton says Large
+   Brown or Large White). Veg-A-Fed is the only white-egg product. Jammy
+   swaps its shell eggs for a sliced soft-boiled egg. The Figma left the old
+   two-egg shot on the Organic card only; it takes the brown shot used by
+   the other organic shell-egg cards so no card keeps the unpolished image.
+
+   "Free-range": CVR asked for wording without it. The Figma copy is still
+   placeholder, so the Organic card and the liquid egg whites use other
+   sentences from their own product pages. Note the Organic carton photo
+   itself still prints "Free Range". */
 
 const PACK = [-10.08, 0.0, 116.45, 61.5]; // Veg-A-Fed / standard carton
-const EGGS = [68.97, 34.5, 31.56, 18.5]; // the two eggs beside the pack
 const BURST = [78.78, -4.25, 22.81, 19.49]; // the orange burst, top right
+// Accent shots and their Figma boxes.
+const BROWN = { src: "eggs-brown", box: [63.66, 29.75, 39.52, 30.25] };
+const THREE = { src: "eggs-three", box: [53.85, 28.25, 61.8, 32.75] };
+const WHITE = { src: "eggs-white", box: [61.27, 29.0, 41.91, 32.0] };
 
 export const MEGA_MENU = [
   {
@@ -55,7 +71,11 @@ export const MEGA_MENU = [
       [
         {
           heading: "Liquid Eggs",
-          items: ["liquid-egg-whites", "pasture-raised-liquid-whole-eggs"],
+          items: [
+            "liquid-egg-whites",
+            "pasture-raised-liquid-whole-eggs",
+            "cage-free-liquid-egg-whites",
+          ],
         },
       ],
       [],
@@ -78,6 +98,7 @@ export const PRODUCTS = {
       "These pasture raised eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam on family farms.",
     image: "pasture-raised",
     box: [-9.28, 0.5, 115.12, 61.0],
+    eggs: BROWN,
   },
   "pasture-raised-organic": {
     name: "Organic Pasture-Raised",
@@ -86,14 +107,17 @@ export const PRODUCTS = {
       "Our pasture raised organic eggs are delicious! These eggs come exclusively from hens who enjoy the many benefits of sunshine, fresh air and water, and lots of room to roam.",
     image: "pasture-raised-organic",
     box: [-4.51, 1.25, 108.75, 54.5],
+    eggs: BROWN,
   },
   organic: {
-    name: "Organic Free Range",
+    name: "Organic",
     href: "/products/organic",
+    // The product page's second sentence; its first says "free-range" twice.
     description:
-      "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+      "To ensure purity and quality, we mill our own feed onsite at Southern California’s only dedicated organic poultry feed mill.",
     image: "organic",
     box: [-9.02, 1.25, 114.32, 59.75],
+    eggs: BROWN,
   },
   "organic-omega-3": {
     name: "Organic Omega-3",
@@ -102,6 +126,7 @@ export const PRODUCTS = {
       "Our Organic Omega-3 eggs come from hens raised in free roaming environments and fed a special organic diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
     image: "organic-omega-3",
     box: [-9.81, -0.25, 115.92, 61.25],
+    eggs: THREE,
   },
   "organic-omega-3-soy-free": {
     name: "Organic Omega-3 Soy-Free Corn-Free",
@@ -112,6 +137,7 @@ export const PRODUCTS = {
       "Our Organic Omega-3 eggs are fed a special soy-free, corn-free diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
     image: "organic-omega-3-soy-free",
     box: [-5.04, 1.5, 109.55, 54.75],
+    eggs: BROWN,
   },
   "nutri-fresh-fertile": {
     name: "Nutri-Fresh Fertile",
@@ -120,6 +146,7 @@ export const PRODUCTS = {
       "Our Nutri-Fresh Fertile eggs come from hens raised right along side roosters in a free roaming environment.",
     image: "nutri-fresh-fertile",
     box: [-10.61, 11.84, 116.98, 49.0],
+    eggs: THREE,
   },
   regenerative: {
     name: "Regenerative Eggs",
@@ -128,6 +155,7 @@ export const PRODUCTS = {
       "Our regenerative eggs are pasture raised on family farms, with sustainable and regenerative farming practices.",
     image: "regenerative",
     box: [-4.43, 1.25, 111.95, 53.85],
+    eggs: THREE,
   },
   comet: {
     name: "Comet Eggs",
@@ -136,6 +164,7 @@ export const PRODUCTS = {
       "Comet Eggs have become the latest trend in interstellar haute cuisine. Discriminating chefs everywhere choose Comet Eggs for their striking orange yolks.",
     image: "comet",
     box: [-12.2, -9.25, 127.85, 80.25],
+    eggs: BROWN,
   },
   "veg-a-fed": {
     name: "VEG-A-FED",
@@ -144,6 +173,7 @@ export const PRODUCTS = {
       "Our Veg-A-Fed eggs come from hens raised in free roaming environments and fed a pure vegetarian diet consisting of premium grains, seeds & meal.",
     image: "veg-a-fed",
     box: PACK,
+    eggs: WHITE,
   },
   "veg-a-fed-omega-3": {
     name: "VEG-A-FED Omega-3",
@@ -152,6 +182,7 @@ export const PRODUCTS = {
       "Our Veg-a-Fed Omega-3 eggs come from hens raised in free roaming environments and fed a special vegetarian diet that contains flax seed—a grain naturally high in Omega-3 fatty acids.",
     image: "veg-a-fed-omega-3",
     box: PACK,
+    eggs: BROWN,
   },
   "humane-harvest": {
     name: "Humane Harvest",
@@ -160,15 +191,18 @@ export const PRODUCTS = {
       "Our Humane Harvest eggs come from hens raised in free roaming environments and fed a pure vegetarian diet consisting of premium grains, seeds & meal.",
     image: "humane-harvest",
     box: [-10.08, 0.25, 115.92, 61.5],
+    eggs: BROWN,
   },
   "liquid-egg-whites": {
-    name: "Liquid Egg Whites",
+    // "Organic" now that the tab also has the cage-free egg whites.
+    name: "Organic Liquid Egg Whites",
     href: "/products/liquid-egg-whites",
     description:
-      "Our 100% Liquid Organic Egg Whites come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
+      "Our 100% Liquid Organic Egg Whites are naturally fat free, cholesterol free, and contain no additives or artificial ingredients.",
     image: "liquid-egg-whites",
     box: [18.3, -4.5, 90.19, 63.0],
     burst: [62.07, -8.5, 22.81, 19.49],
+    eggs: THREE,
   },
   "pasture-raised-liquid-whole-eggs": {
     name: "Pasture Raised Liquid Whole Eggs",
@@ -180,6 +214,19 @@ export const PRODUCTS = {
     burst: [61.01, -8.5, 22.81, 19.49],
     eggs: null, // its pack shot already has eggs beside it
   },
+  // New in the Figma's second round. There is no product page yet, so the
+  // card goes to the store locator; copy is from the carton ("Cage Free 100%
+  // Liquid Egg Whites, Pasteurized") and the organic page's wording.
+  "cage-free-liquid-egg-whites": {
+    name: "Cage-Free Liquid Egg Whites",
+    href: "/store-locator",
+    description:
+      "Our 100% Liquid Cage-Free Egg Whites are pasteurized, naturally fat free and cholesterol free, with no additives or artificial ingredients.",
+    image: "cage-free-liquid-egg-whites",
+    box: [15.12, -12.25, 69.5, 68.75],
+    burst: [61.01, -8.5, 22.81, 19.49],
+    eggs: { src: "eggs-three", box: [46.68, 25.75, 61.8, 32.75] },
+  },
   jammy: {
     name: "Jammy Eggs",
     href: "/jammy",
@@ -187,9 +234,11 @@ export const PRODUCTS = {
       "The only egg with a golden, jammy center that makes any meal a moment.",
     image: "jammy",
     box: [17.24, -7.25, 69.5, 73.75],
-    eggs: [66.84, 36.75, 31.56, 18.5],
+    // A sliced soft-boiled egg in place of shell eggs (CVR feedback). It
+    // overhangs the card's right edge, as drawn.
+    eggs: { src: "jammy-halves", box: [89.66, 36.0, 32.89, 22.5] },
     burst: [63.66, -9.75, 22.81, 19.49],
   },
 };
 
-export const CARD_DEFAULTS = { eggs: EGGS, burst: BURST };
+export const CARD_DEFAULTS = { burst: BURST };

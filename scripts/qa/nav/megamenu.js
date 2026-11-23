@@ -15,13 +15,13 @@ const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}
 const BASE='http://localhost:7500';
 const EGGS=[
   ['Pasture-Raised','/products/pasture-raised'],['Organic Pasture-Raised','/products/pasture-raised-organic'],
-  ['Organic Free Range','/products/organic'],['Organic Omega-3','/products/organic-omega-3'],
+  ['Organic','/products/organic'],['Organic Omega-3','/products/organic-omega-3'],
   ['Organic Omega-3 Soy-Free Corn-Free','/products/organic-omega-3-soy-free'],
   ['Nutri-Fresh Fertile','/products/nutri-fresh-fertile'],['Regenerative Eggs','/regenerative'],
   ['Comet Eggs','/products/comet-eggs'],['VEG-A-FED','/products/veg-a-fed'],['VEG-A-FED Omega-3','/products/veg-a-fed-omega-3'],
   ['Humane Harvest','/products/humane-harvest'],
 ];
-const LIQUID=[['Liquid Egg Whites','/products/liquid-egg-whites'],['Pasture Raised Liquid Whole Eggs','/products/pasture-raised-liquid-whole-eggs']];
+const LIQUID=[['Organic Liquid Egg Whites','/products/liquid-egg-whites'],['Pasture Raised Liquid Whole Eggs','/products/pasture-raised-liquid-whole-eggs'],['Cage-Free Liquid Egg Whites','/store-locator']];
 const COOKED=[['Jammy Eggs','/jammy']];
 const lin=c=>{c/=255;return c<=0.03928?c/12.92:((c+0.055)/1.055)**2.4};
 const rgb=s=>(s.match(/[\d.]+/g)||[]).map(Number);
@@ -80,7 +80,7 @@ const near=(a,b,t)=>Math.abs(a-b)<=t;
       const q=s=>panel.querySelector(s);
       const r=e=>e?e.getBoundingClientRect():null;
       const col1=r(q('[data-mm-col="1"]')), col2=r(q('[data-mm-col="2"]')), card=r(q('[data-mm-card]'));
-      const link=[...panel.querySelectorAll('a')].find(a=>/organic free range/i.test(a.textContent));
+      const link=[...panel.querySelectorAll('a')].find(a=>/^\s*organic\s*$/i.test(a.textContent));
       const head=panel.querySelector('[data-mm-heading]');
       const bar=nav.getBoundingClientRect();
       return {cl,cw,bar:bar.bottom,pTop:pr.top,pL:pr.left,pR:pr.right,pH:pr.height,iw:innerWidth,
@@ -105,7 +105,7 @@ const near=(a,b,t)=>Math.abs(a-b)<=t;
 
     // Default card, hover swaps card and underlines.
     const card=p.locator('[data-mm-card]');
-    ck(`card opens on Organic Free Range at ${w}`, /organic free range/i.test(await card.innerText()));
+    ck(`card opens on Organic at ${w}`, /^organic$/i.test((await card.locator('[data-mm-title]').innerText()).trim()));
     if(w===1440){
       for(const [name] of EGGS){
         const a=p.locator('[role=tabpanel]:not([hidden]) a',{hasText:new RegExp('^\\s*'+name.replace(/[-]/g,'\\-')+'\\s*$','i')}).first();
@@ -128,7 +128,7 @@ const near=(a,b,t)=>Math.abs(a-b)<=t;
       }
       // Tabs.
       await p.getByRole('tab',{name:/liquid eggs/i}).click();
-      ck('Liquid Eggs tab shows its two products', await p.locator('[role=tabpanel]:not([hidden]) a',{hasText:/liquid/i}).count()===2);
+      ck('Liquid Eggs tab shows its three products', await p.locator('[role=tabpanel]:not([hidden]) a',{hasText:/liquid/i}).count()===3);
       ck('selected tab reports itself', await p.getByRole('tab',{name:/liquid eggs/i}).getAttribute('aria-selected')==='true');
       await p.getByRole('tab',{name:/cooked products/i}).click();
       ck('Cooked Products tab shows Jammy Eggs', /jammy eggs/i.test(await p.locator('[role=tabpanel]:not([hidden])').innerText()));
