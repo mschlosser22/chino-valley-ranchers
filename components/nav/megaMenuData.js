@@ -234,9 +234,11 @@ export const PRODUCTS = {
       "The only egg with a golden, jammy center that makes any meal a moment.",
     image: "jammy",
     box: [17.24, -7.25, 69.5, 73.75],
-    // A sliced soft-boiled egg in place of shell eggs (CVR feedback). It
-    // overhangs the card's right edge, as drawn.
-    eggs: { src: "jammy-halves", box: [89.66, 36.0, 32.89, 22.5] },
+    // A sliced soft-boiled egg in place of shell eggs (CVR feedback). The
+    // Figma hung it off the card's right edge; CVR round 2 asked for it
+    // "closer to the bag", so it tucks against the bag's lower-right corner
+    // like the shell eggs do on the carton cards.
+    eggs: { src: "jammy-halves", box: [60.5, 36.0, 32.89, 22.5] },
     burst: [63.66, -9.75, 22.81, 19.49],
   },
 };

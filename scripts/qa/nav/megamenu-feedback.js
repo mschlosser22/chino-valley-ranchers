@@ -28,7 +28,7 @@ const CARDS=[
   ['Liquid Eggs','Organic Liquid Egg Whites','eggs-three',THREE],
   ['Liquid Eggs','Pasture Raised Liquid Whole Eggs',null,null],
   ['Liquid Eggs','Cage-Free Liquid Egg Whites','eggs-three',[46.68,25.75,61.8,32.75]],
-  ['Cooked Products','Jammy Eggs','jammy-halves',[89.66,36.0,32.89,22.5]],
+  ['Cooked Products','Jammy Eggs','jammy-halves',[60.5,36.0,32.89,22.5]],  // round 2: moved in against the bag
 ];
 (async()=>{
   const b=await chromium.launch();
