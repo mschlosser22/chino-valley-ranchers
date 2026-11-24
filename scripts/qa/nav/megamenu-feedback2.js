@@ -28,6 +28,8 @@ const PAGES=['pasture-raised','pasture-raised-organic','nutri-fresh-fertile','or
       ck(`${path}: hero headline is "Room To Roam"`, h==='Room To Roam', `"${h}"`);
       const body=await p.evaluate(()=>document.body.textContent);
       ck(`${path}: "Free Range & Fantastic" is gone`, !/free range\s*&(amp;)?\s*fantastic/i.test(body));
+      // The Nutri-Fresh page title was misspelled "Nurti-Fresh" (visible in CVR's screenshot).
+      if(path.endsWith('nutri-fresh-fertile')) ck(`${path}: title spelled "Nutri-Fresh Fertile"`, /nutri-fresh fertile/i.test(body)&&!/nurti/i.test(body), (body.match(/n\w{3}i-fresh fertile/gi)||[]).join(', '));
     }
     await p.close();
   }
