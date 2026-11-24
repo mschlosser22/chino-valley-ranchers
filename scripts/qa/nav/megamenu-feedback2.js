@@ -1,7 +1,7 @@
 // CVR feedback round 2 (Nov 23 2026), checked against the staging preview.
 //
-//  1. Pasture-Raised, Organic Pasture-Raised and Nutri-Fresh Fertile product
-//     pages: the hero headline "Free Range & Fantastic" becomes "Room To Roam".
+//  1. Product pages: the hero headline "Free Range & Fantastic" becomes
+//     "Room To Roam" (all ten pages that had it).
 //  2. Jammy card: "pull those egg slices in closer to the bag so it's not way
 //     out of place". The slice must sit inside the card and overlap the bag's
 //     lower-right corner, the way the shell eggs sit on every carton card.
@@ -13,7 +13,10 @@ const { chromium } = require('playwright');
 const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}${d?' — '+d:''}`)};
 const BASE=process.env.BASE||'http://localhost:7500';
 const SOLID={ 'jammy.webp':[0.187,0.046,0.813,0.829], 'jammy-halves.webp':[0.079,0.025,0.914,0.887] };
-const PAGES=['/products/pasture-raised','/products/pasture-raised-organic','/products/nutri-fresh-fertile'];
+// CVR named three pages; the user then asked for every product page that
+// carried the old headline.
+const PAGES=['pasture-raised','pasture-raised-organic','nutri-fresh-fertile','organic','organic-omega-3',
+  'organic-omega-3-soy-free','comet-eggs','veg-a-fed','veg-a-fed-omega-3','humane-harvest'].map(s=>'/products/'+s);
 (async()=>{
   const b=await chromium.launch();
   // 1. Headlines
