@@ -72,9 +72,10 @@ export const MEGA_MENU = [
         {
           heading: "Liquid Eggs",
           items: [
+            // CVR: the two egg whites side by side, whole eggs after.
             "liquid-egg-whites",
-            "pasture-raised-liquid-whole-eggs",
             "cage-free-liquid-egg-whites",
+            "pasture-raised-liquid-whole-eggs",
           ],
         },
       ],
@@ -112,9 +113,10 @@ export const PRODUCTS = {
   organic: {
     name: "Organic",
     href: "/products/organic",
-    // The product page's second sentence; its first says "free-range" twice.
+    // CVR's own wording (Nov 25 2026). It reinstates "free-range", which
+    // round 1 had asked to drop, so this card is the one deliberate exception.
     description:
-      "To ensure purity and quality, we mill our own feed onsite at Southern California’s only dedicated organic poultry feed mill.",
+      "Our Organic Free-Range eggs come from hens that live on free-range farms and fed only the finest organic (non-GMO) grains & seeds from certified pesticide-free fields.",
     image: "organic",
     box: [-9.02, 1.25, 114.32, 59.75],
     eggs: BROWN,

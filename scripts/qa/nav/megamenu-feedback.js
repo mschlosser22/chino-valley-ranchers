@@ -2,7 +2,8 @@
 // "CVR Mega Menu (1)". Expected boxes are the Figma's own placements as % of
 // the 377x400 card: [left, top, width, height].
 //
-//  1. No "free-range" anywhere in the menu (headline, copy, link labels).
+//  1. No "free-range" anywhere in the menu (headline, copy, link labels),
+//     except the Organic copy CVR wrote themselves in round 3 (Nov 25 2026).
 //  2. Veg-A-Fed shows white eggs (its carton is Large White). Every other
 //     shell-egg product is brown, per its carton.
 //  3. Liquid Eggs adds Cage-Free Liquid Egg Whites.
@@ -11,6 +12,8 @@
 const { chromium } = require('playwright');
 const R=[];const ck=(n,p,d='')=>{R.push(p);console.log(`${p?'PASS':'FAIL'}  ${n}${d?' — '+d:''}`)};
 const BASE=process.env.BASE||'http://localhost:7500';
+// CVR's own Organic copy (round 3) uses "free-range" on purpose; ignore just that sentence.
+const APPROVED=/Our Organic Free-Range eggs come from hens that live on free-range farms[^.]*\./g;
 const THREE=[53.85,28.25,61.8,32.75], BROWN=[63.66,29.75,39.52,30.25];
 // tab, link text, accent image, accent box (null = no accent)
 const CARDS=[
@@ -69,7 +72,7 @@ const CARDS=[
       if(name.startsWith('Cage-Free')) ck(`Cage-Free carton loads at ${w}`, !!m.prod&&m.prod.ok&&/cage-free-liquid-egg-whites/.test(m.prod.src), m.prod?m.prod.src.split('/').pop():'none');
     }
     // 1. free-range, in everything the menu renders (desktop panel incl. every card)
-    const txt=await panel.evaluate(el=>el.textContent);
+    const txt=(await panel.evaluate(el=>el.textContent)).replace(APPROVED,'');
     ck(`no "free-range" in the desktop menu at ${w}`, !/free[\s\-‑]*range/i.test(txt), (txt.match(/.{0,30}free[\s-]*range.{0,30}/i)||[''])[0]);
     // Jammy halves overhang the card's right edge, as drawn; must stay on screen.
     // The homepage already scrolls sideways 80px at 1280 on main (an image),
@@ -96,7 +99,7 @@ const CARDS=[
     const m=p.locator('.cvr-mobile-menu');
     const eggsBtn=m.getByRole('button',{name:/our eggs/i});
     if(await eggsBtn.count()) {await eggsBtn.first().click(); await p.waitForTimeout(300);}
-    const txt=await m.evaluate(el=>el.textContent);
+    const txt=(await m.evaluate(el=>el.textContent)).replace(APPROVED,'');
     ck('no "free-range" in the phone menu', !/free[\s\-‑]*range/i.test(txt));
     ck('phone menu lists Cage-Free Liquid Egg Whites', /cage-free liquid egg whites/i.test(txt));
     ck('phone menu lists Organic Liquid Egg Whites', /organic liquid egg whites/i.test(txt));
