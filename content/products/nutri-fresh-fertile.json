@@ -18,12 +18,12 @@
   "blocks": [
     {
       "_template": "hero",
-      "heading": "Free Range & Fantastic",
+      "heading": "Room To Roam",
       "image": "/images/hero-products.jpg"
     },
     {
       "_template": "productDescription",
-      "name": "Nurti-Fresh Fertile",
+      "name": "Nutri-Fresh Fertile",
       "text": [
         "Our Nutri-Fresh Fertile eggs come from hens raised right along side roosters in a free roaming environment. The hens then produce fresh naturally fertilized eggs.",
         "Hens and roosters alike can walk around, scratch in the sunlight and enjoy plenty of fresh air and water. They are fed a pure vegetarian diet of premium grains, seeds & meal."
